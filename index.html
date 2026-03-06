@@ -1,0 +1,1011 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pitstop Portal — GOWID NEXUS</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600&family=Noto+Sans+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+/* ─── Reset & Base ───────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg:         #0a0a0a;
+  --surface:    #111111;
+  --surface2:   #161616;
+  --border:     #1e1e1e;
+  --border-mid: #2a2a2a;
+  --text-pri:   #e2e2e2;
+  --text-sec:   #888888;
+  --text-dim:   #4a4a4a;
+  --accent:     #c8a96e;
+  --accent-dim: #7a6030;
+  --danger:     #b03030;
+  --mono:       'Noto Sans Mono', monospace;
+  --sans:       'Noto Sans KR', sans-serif;
+  --r:          2px;
+}
+
+html, body {
+  height: 100%;
+  background: var(--bg);
+  color: var(--text-pri);
+  font-family: var(--sans);
+  font-size: 13px;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ─── Screen routing ─────────────────────────────────────────────── */
+.screen          { display: none; height: 100vh; }
+.screen.active   { display: flex; }
+
+/* ═══════════════════════════════════════════════════════════════════
+   LOGIN SCREEN
+═══════════════════════════════════════════════════════════════════ */
+#screen-login {
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  background: var(--bg);
+}
+
+.login-card {
+  width: 320px;
+  border: 1px solid var(--border-mid);
+  background: var(--surface);
+  padding: 40px 32px 32px;
+}
+
+.login-wordmark {
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  margin-bottom: 32px;
+}
+
+.login-title {
+  font-size: 17px;
+  font-weight: 500;
+  color: var(--text-pri);
+  margin-bottom: 3px;
+}
+
+.login-sub {
+  font-size: 11px;
+  color: var(--text-sec);
+  margin-bottom: 28px;
+}
+
+.f-label {
+  display: block;
+  font-size: 9px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-sec);
+  margin-bottom: 6px;
+}
+
+.f-input {
+  width: 100%;
+  background: var(--bg);
+  border: 1px solid var(--border-mid);
+  color: var(--text-pri);
+  font-family: var(--mono);
+  font-size: 16px;
+  letter-spacing: 0.35em;
+  padding: 10px 12px;
+  outline: none;
+  border-radius: var(--r);
+  transition: border-color 0.15s;
+}
+
+.f-input:focus       { border-color: var(--accent-dim); }
+.f-input.err         { border-color: var(--danger); animation: shake 0.28s ease; }
+
+@keyframes shake {
+  0%,100% { transform: translateX(0); }
+  20%      { transform: translateX(-5px); }
+  60%      { transform: translateX(5px); }
+}
+
+.login-err {
+  height: 15px;
+  margin-top: 6px;
+  font-size: 11px;
+  color: var(--danger);
+  opacity: 0;
+  transition: opacity 0.15s;
+}
+.login-err.show { opacity: 1; }
+
+.btn-enter {
+  width: 100%;
+  margin-top: 22px;
+  padding: 10px;
+  background: transparent;
+  border: 1px solid var(--accent-dim);
+  color: var(--accent);
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  cursor: pointer;
+  border-radius: var(--r);
+  transition: background 0.15s, color 0.15s;
+}
+.btn-enter:hover { background: var(--accent-dim); color: #0a0a0a; }
+
+.login-footer-note {
+  margin-top: 18px;
+  text-align: center;
+  font-family: var(--mono);
+  font-size: 9px;
+  color: var(--text-dim);
+  letter-spacing: 0.08em;
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   SEARCH SCREEN
+═══════════════════════════════════════════════════════════════════ */
+#screen-search {
+  flex-direction: column;
+  align-items: stretch;
+}
+
+/* Topbar */
+.topbar {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 0 20px;
+  height: 46px;
+  border-bottom: 1px solid var(--border);
+  background: var(--surface);
+  flex-shrink: 0;
+}
+
+.tb-logo {
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+}
+
+.tb-sep  { color: var(--border-mid); }
+
+.tb-page {
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--text-sec);
+}
+
+.tb-spacer { flex: 1; }
+
+.tb-date {
+  font-family: var(--mono);
+  font-size: 10px;
+  color: var(--text-dim);
+}
+
+.btn-logout {
+  background: none;
+  border: 1px solid var(--border-mid);
+  color: var(--text-dim);
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: 0.1em;
+  padding: 4px 10px;
+  cursor: pointer;
+  border-radius: var(--r);
+  transition: color 0.12s, border-color 0.12s;
+}
+.btn-logout:hover { color: var(--text-sec); border-color: var(--text-dim); }
+
+/* Body */
+.search-body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 56px 20px 40px;
+  overflow-y: auto;
+}
+
+.hero {
+  text-align: center;
+  margin-bottom: 36px;
+}
+
+.hero-label {
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  margin-bottom: 10px;
+}
+
+.hero-title {
+  font-size: 22px;
+  font-weight: 300;
+  color: var(--text-pri);
+  margin-bottom: 6px;
+  letter-spacing: -0.01em;
+}
+
+.hero-sub {
+  font-size: 12px;
+  color: var(--text-sec);
+}
+
+/* Search widget */
+.search-wrap {
+  width: 100%;
+  max-width: 540px;
+  position: relative;
+}
+
+.si-row {
+  position: relative;
+}
+
+.si-icon {
+  position: absolute;
+  left: 11px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 15px;
+  color: var(--text-dim);
+  pointer-events: none;
+  user-select: none;
+}
+
+.search-input {
+  width: 100%;
+  background: var(--surface);
+  border: 1px solid var(--border-mid);
+  color: var(--text-pri);
+  font-family: var(--sans);
+  font-size: 14px;
+  padding: 12px 44px 12px 36px;
+  outline: none;
+  border-radius: var(--r);
+  transition: border-color 0.15s;
+}
+.search-input:focus,
+.search-input.has-drop { border-color: var(--accent-dim); }
+.search-input::placeholder { color: var(--text-dim); }
+
+.si-count {
+  position: absolute;
+  right: 11px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-family: var(--mono);
+  font-size: 10px;
+  color: var(--text-dim);
+  pointer-events: none;
+}
+
+/* Dropdown */
+.dropdown {
+  display: none;
+  position: absolute;
+  top: calc(100% + 5px);
+  left: 0;
+  right: 0;
+  background: var(--surface);
+  border: 1px solid var(--border-mid);
+  border-radius: var(--r);
+  max-height: 400px;
+  overflow-y: auto;
+  z-index: 200;
+  box-shadow: 0 12px 32px rgba(0,0,0,0.6);
+}
+.dropdown.open { display: block; }
+
+.drop-head {
+  padding: 7px 14px 5px;
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  border-bottom: 1px solid var(--border);
+  background: var(--surface2);
+}
+
+.drop-item {
+  display: flex;
+  align-items: center;
+  padding: 10px 14px;
+  gap: 10px;
+  cursor: pointer;
+  border-bottom: 1px solid var(--border);
+  transition: background 0.08s;
+}
+.drop-item:last-child { border-bottom: none; }
+.drop-item:hover,
+.drop-item.hi         { background: #1c1c1c; }
+
+.di-num {
+  font-family: var(--mono);
+  font-size: 10px;
+  color: var(--text-dim);
+  width: 20px;
+  text-align: right;
+  flex-shrink: 0;
+}
+
+.di-body {
+  flex: 1;
+  min-width: 0;
+}
+
+.di-name {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-pri);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.di-folder {
+  font-size: 11px;
+  color: var(--text-sec);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.di-ts {
+  flex-shrink: 0;
+  text-align: right;
+  font-family: var(--mono);
+  line-height: 1.5;
+}
+
+.di-ts-date { font-size: 11px; color: var(--text-sec); }
+.di-ts-time { font-size: 10px; color: var(--text-dim); }
+
+.di-arrow {
+  font-size: 14px;
+  color: var(--border-mid);
+  flex-shrink: 0;
+}
+
+.no-result {
+  padding: 24px;
+  text-align: center;
+  font-size: 12px;
+  color: var(--text-dim);
+}
+
+mark {
+  background: transparent;
+  color: var(--accent);
+}
+
+/* Stats row */
+.stats-row {
+  width: 100%;
+  max-width: 540px;
+  margin-top: 24px;
+  display: flex;
+  border: 1px solid var(--border);
+  border-radius: var(--r);
+  overflow: hidden;
+}
+
+.stat {
+  flex: 1;
+  padding: 14px 16px;
+  text-align: center;
+  border-right: 1px solid var(--border);
+}
+.stat:last-child { border-right: none; }
+
+.stat-val {
+  font-family: var(--mono);
+  font-size: 22px;
+  font-weight: 500;
+  color: var(--accent);
+}
+
+.stat-lbl {
+  font-size: 10px;
+  color: var(--text-dim);
+  margin-top: 3px;
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   VIEWER SCREEN
+═══════════════════════════════════════════════════════════════════ */
+#screen-viewer {
+  flex-direction: column;
+}
+
+.vtopbar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 0 14px;
+  height: 44px;
+  border-bottom: 1px solid var(--border);
+  background: var(--surface);
+  flex-shrink: 0;
+}
+
+.btn-back {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  background: none;
+  border: 1px solid var(--border-mid);
+  color: var(--text-sec);
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  padding: 5px 10px;
+  cursor: pointer;
+  border-radius: var(--r);
+  transition: color 0.12s, border-color 0.12s;
+  white-space: nowrap;
+}
+.btn-back:hover { color: var(--text-pri); border-color: var(--text-sec); }
+
+.v-company {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-pri);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.v-file {
+  font-family: var(--mono);
+  font-size: 10px;
+  color: var(--text-dim);
+  background: var(--bg);
+  border: 1px solid var(--border);
+  padding: 3px 8px;
+  border-radius: var(--r);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 260px;
+}
+
+.v-spacer { flex: 1; }
+
+.v-ts {
+  font-family: var(--mono);
+  font-size: 10px;
+  color: var(--text-dim);
+  white-space: nowrap;
+}
+
+.frame-wrap {
+  flex: 1;
+  position: relative;
+  overflow: hidden;
+}
+
+.frame-loading {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  background: var(--bg);
+  z-index: 10;
+  transition: opacity 0.25s;
+}
+.frame-loading.gone { opacity: 0; pointer-events: none; }
+
+.spinner {
+  width: 22px;
+  height: 22px;
+  border: 2px solid var(--border-mid);
+  border-top-color: var(--accent-dim);
+  border-radius: 50%;
+  animation: spin 0.75s linear infinite;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+
+.loading-text {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--text-dim);
+}
+
+.report-frame {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+/* ─── Scrollbar ─────────────────────────────────────────────────── */
+::-webkit-scrollbar        { width: 5px; height: 5px; }
+::-webkit-scrollbar-track  { background: var(--bg); }
+::-webkit-scrollbar-thumb  { background: var(--border-mid); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: #3a3a3a; }
+
+/* ─── Responsive ────────────────────────────────────────────────── */
+@media (max-width: 580px) {
+  .search-body { padding: 32px 14px 28px; }
+  .hero-title  { font-size: 18px; }
+  .stats-row   { flex-wrap: wrap; }
+  .stat        { flex: 1 1 45%; }
+  .di-ts-date  { display: none; }
+  .v-file      { display: none; }
+}
+</style>
+</head>
+<body>
+
+<!-- DATA — portal_generator.py가 Jinja2로 주입 -->
+<script>
+const BASE_PATH = "";
+const COMPANIES = [
+  {
+    "folder_name": "\uc6f0\ub85c",
+    "company_name": "\uc8fc\uc2dd\ud68c\uc0ac \uc6f0\ub85c",
+    "ceo": "\uae40\uc720\ub9ac\uc548\ub098",
+    "collected_at": "2026-02-19T15:46:12.087595",
+    "survey_timestamp": "2026. 2. 9 \uc624\ud6c4 9:42:20",
+    "preview_file": "\uc6f0\ub85c_\ud53c\ud2b8\uc2a4\ud0d1_\ud504\ub9ac\ubdf0_20260220.html",
+    "has_preview": true,
+    "revenue": "20\uc5b5~30\uc5b5 \ubbf8\ub9cc",
+    "headcount": "30\uba85~50\uba85 \ubbf8\ub9cc",
+    "funding_need": "5\uc5b5~10\uc5b5 \ubbf8\ub9cc",
+    "intro_short": "(\uc8fc)\uc6f0\ub85c\ub294 \uc804\uad6d\uc758 \uc815\ubd80 \uc815\ucc45/\uaddc\uc81c/\uc608\uc0b0/\uc0ac\uc5c5 \ub370\uc774\ud130\ub97c \uc218\uc9d1-\uac00\uacf5\ud558\uc5ec, \n\uac1c\uc778-\uae30\uc5c5-\uc815\ubd80\uc5d0\uac8c \ub9de\ucda4\ud615 \uc11c\ube44\uc2a4\ub97c \uc81c\uacf5\ud558\uace0, \uc815\ubd80\uc815\ucc45 \ubc0f \uc608\uc0b0\uc774 \uc798"
+  },
+  {
+    "folder_name": "\ubaa8\ud2b8\uc5d0\uc774\uc544\uc774",
+    "company_name": "\uc8fc\uc2dd\ud68c\uc0ac \ubaa8\ud2b8\uc5d0\uc774\uc544\uc774",
+    "ceo": "\ucc9c\uc601\ub85d",
+    "collected_at": "2026-02-19T13:10:04.703832",
+    "survey_timestamp": "2026. 2. 10 \uc624\ud6c4 12:48:17",
+    "preview_file": "\ubaa8\ud2b8\uc5d0\uc774\uc544\uc774_\ud53c\ud2b8\uc2a4\ud0d1_\ud504\ub9ac\ubdf0_20260226.html",
+    "has_preview": true,
+    "revenue": "10\uc5b5~20\uc5b5 \ubbf8\ub9cc",
+    "headcount": "5\uba85~10\uba85 \ubbf8\ub9cc",
+    "funding_need": "10\uc5b5 \uc774\uc0c1",
+    "intro_short": "AI \uc5d0\uc774\uc804\ud2b8 \uac1c\ubc1c"
+  },
+  {
+    "folder_name": "\uc628\uc624\ud504\ubbf9\uc2a4",
+    "company_name": "\uc8fc\uc2dd\ud68c\uc0ac \uc628\uc624\ud504\ubbf9\uc2a4",
+    "ceo": "\uc591\uc900\ucca0",
+    "collected_at": "2026-02-19T15:46:43.663775",
+    "survey_timestamp": "2026. 2. 12 \uc624\ud6c4 1:39:44",
+    "preview_file": "\uc628\uc624\ud504\ubbf9\uc2a4_\ud53c\ud2b8\uc2a4\ud0d1_\ud504\ub9ac\ubdf0_20260226.html",
+    "has_preview": true,
+    "revenue": "10\uc5b5~20\uc5b5 \ubbf8\ub9cc",
+    "headcount": "5\uba85~10\uba85 \ubbf8\ub9cc",
+    "funding_need": "2\uc5b5~5\uc5b5 \ubbf8\ub9cc",
+    "intro_short": "\ud68c\uc0ac \uc5c5\uc885\n\n- \uc774\ubca4\ud2b8\ud14c\ud06c \ud50c\ub7ab\ud3fc(\uc628\u00b7\uc624\ud504\ub77c\uc778 \ud1b5\ud569 Event Management System / CEMS) \ubc0f \ubaa8\uc784\u00b7\uc774\ubca4\ud2b8 \ub9c8\ucf13\ud50c\ub808\uc774\uc2a4\n\n\uc8fc\uc694"
+  },
+  {
+    "folder_name": "\ub9c8\uc9c4\ub9e5\uc2a4",
+    "company_name": "\uc8fc\uc2dd\ud68c\uc0ac \ub9c8\uc9c4\ub9e5\uc2a4",
+    "ceo": "\ucc44\uc9c0\ud6c8",
+    "collected_at": "2026-02-19T15:47:28.134544",
+    "survey_timestamp": "2026. 2. 16 \uc624\ud6c4 10:08:10",
+    "preview_file": "\ub9c8\uc9c4\ub9e5\uc2a4_\ud53c\ud2b8\uc2a4\ud0d1_\ud504\ub9ac\ubdf0_20260224.html",
+    "has_preview": true,
+    "revenue": "20\uc5b5~30\uc5b5 \ubbf8\ub9cc",
+    "headcount": "5\uba85~10\uba85 \ubbf8\ub9cc",
+    "funding_need": "2\uc5b5~5\uc5b5 \ubbf8\ub9cc",
+    "intro_short": "\uc5ec\ud589/\uc219\ubc15 \uc608\uc57d \uc2dc\uc2a4\ud15c B2B \uc11c\ube44\uc2a4(Sass)"
+  },
+  {
+    "folder_name": "\uba54\ub274\uc787",
+    "company_name": "\uc8fc\uc2dd\ud68c\uc0ac \uba54\ub274\uc787",
+    "ceo": "\ubc15\uc8fc\uc601",
+    "collected_at": "2026-03-06T09:40:43.265769",
+    "survey_timestamp": "2026. 3. 3 \uc624\ud6c4 2:55:37",
+    "preview_file": "\uba54\ub274\uc787_\ud53c\ud2b8\uc2a4\ud0d1_\ud504\ub9ac\ubdf0_20260306.html",
+    "has_preview": true,
+    "revenue": "100\uc5b5 \uc774\uc0c1",
+    "headcount": "33",
+    "funding_need": "10\uc5b5 \uc774\uc0c1",
+    "intro_short": "\uba54\ub274\uc787\uc740 \ud0dc\ube14\ub9bf \uae30\ubc18 \ubb34\uc778\uc8fc\ubb3c(\uc2a4\ub9c8\ud2b8\uc624\ub354) \uc194\ub8e8\uc158\uc744 \uc790\uccb4 \uac1c\ubc1c \ubc0f \uacf5\uae09\ud558\ub294 B2B \uae30\uc5c5\uc785\ub2c8\ub2e4.\n\n\uc8fc\uc694 \uace0\uac1d\uc740 SK\uc274\ub354\uc2a4(ADT)\uc774\uace0 \uc624\ub354\ud328\ub4dc(\ud0dc"
+  },
+  {
+    "folder_name": "\uc778\ud14c\uc774\ud06c",
+    "company_name": "\uc778\ud14c\uc774\ud06c \uc8fc\uc2dd\ud68c\uc0ac",
+    "ceo": "\ud55c\ub179\uc5fd",
+    "collected_at": "2026-03-06T09:18:28.475421",
+    "survey_timestamp": "2026. 3. 5 \uc624\uc804 10:44:06",
+    "preview_file": "\uc778\ud14c\uc774\ud06c_\ud53c\ud2b8\uc2a4\ud0d1_\ud504\ub9ac\ubdf0_20260306.html",
+    "has_preview": true,
+    "revenue": "100\uc5b5 \uc774\uc0c1",
+    "headcount": "55",
+    "funding_need": "10\uc5b5 \uc774\uc0c1",
+    "intro_short": "\ub300\uccb4\ub2e8\ubc31 \ubc0f \ub300\uccb4\ub2f9 \uc911\uc2ec \uc18c\uc7ac B2B & \uc644\uc81c\ud488 B2C \ube44\uc988\ub2c8\uc2a4"
+  },
+  {
+    "folder_name": "\uc640\uc774\uc624\uc5d8\uc624",
+    "company_name": "\uc640\uc774\uc624\uc5d8\uc624",
+    "ceo": "\ud669\uc720\ubbf8",
+    "collected_at": "2026-03-06T09:19:17.807288",
+    "survey_timestamp": "2026. 3. 6 \uc624\uc804 2:44:38",
+    "preview_file": "\uc640\uc774\uc624\uc5d8\uc624_\ud53c\ud2b8\uc2a4\ud0d1_\ud504\ub9ac\ubdf0_20260306.html",
+    "has_preview": true,
+    "revenue": "30\uc5b5~50\uc5b5 \ubbf8\ub9cc",
+    "headcount": "25",
+    "funding_need": "2\uc5b5~5\uc5b5 \ubbf8\ub9cc",
+    "intro_short": "\uc804\uc138\uacc4 \ud2b8\ub80c\ub4dc\ub97c \uac00\uc7a5 \ube60\ub974\uac8c \ub9cc\ub098\ubcfc \uc218 \uc788\ub294 \ud06c\ub85c\uc2a4\ubcf4\ub354 \uc774\ucee4\uba38\uc2a4 \ud50c\ub7ab\ud3fc \ud06c\ub85c\ucf13\uc744 \uc6b4\uc601\ud558\uace0 \uc788\uc2b5\ub2c8\ub2e4. \ucd5c\uadfc \uc77c\ubcf8,\ubbf8\uad6d \ub4f1\uc758 \uae00\ub85c\ubc8c \uc11c\ube44\uc2a4 \ub7f0\uce6d \ud6c4"
+  }
+];
+const PASSWORD = "2026";
+</script>
+
+<!-- ═══════════════════════════════════════════════════════════════
+     SCREEN 1 — LOGIN
+════════════════════════════════════════════════════════════════ -->
+<div id="screen-login" class="screen active">
+  <div class="login-card">
+    <div class="login-wordmark">GOWID NEXUS &nbsp;/&nbsp; Pitstop</div>
+    <div class="login-title">포털 접속</div>
+    <div class="login-sub">피트스탑 진단 프리뷰 열람 시스템</div>
+
+    <label class="f-label" for="pw">Access Code</label>
+    <input
+      class="f-input"
+      id="pw"
+      type="password"
+      placeholder="••••"
+      maxlength="8"
+      autocomplete="off"
+    >
+    <div class="login-err" id="login-err">액세스 코드가 올바르지 않습니다.</div>
+
+    <button class="btn-enter" id="btn-login">ENTER &rarr;</button>
+    <div class="login-footer-note">Internal Use Only &mdash; GOWID NEXUS</div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════════
+     SCREEN 2 — SEARCH
+════════════════════════════════════════════════════════════════ -->
+<div id="screen-search" class="screen">
+
+  <div class="topbar">
+    <span class="tb-logo">GOWID NEXUS</span>
+    <span class="tb-sep">/</span>
+    <span class="tb-page">Pitstop Portal</span>
+    <div class="tb-spacer"></div>
+    <span class="tb-date" id="tb-date"></span>
+    <button class="btn-logout" id="btn-logout">LOGOUT</button>
+  </div>
+
+  <div class="search-body">
+    <div class="hero">
+      <div class="hero-label">Startup Diagnostic Preview</div>
+      <div class="hero-title">회사 검색</div>
+      <div class="hero-sub">회사명을 입력하거나 클릭하여 전체 목록을 확인하세요</div>
+    </div>
+
+    <div class="search-wrap">
+      <div class="si-row">
+        <span class="si-icon" aria-hidden="true">⌕</span>
+        <input
+          class="search-input"
+          id="s-input"
+          type="text"
+          placeholder="회사명 검색..."
+          autocomplete="off"
+          spellcheck="false"
+        >
+        <span class="si-count" id="s-count"></span>
+      </div>
+      <div class="dropdown" id="dropdown"></div>
+    </div>
+
+    <div class="stats-row">
+      <div class="stat">
+        <div class="stat-val" id="st-total">—</div>
+        <div class="stat-lbl">총 진단 건수</div>
+      </div>
+      <div class="stat">
+        <div class="stat-val" id="st-oldest">—</div>
+        <div class="stat-lbl">최초 신청일</div>
+      </div>
+      <div class="stat">
+        <div class="stat-val" id="st-recent">—</div>
+        <div class="stat-lbl">최근 신청일</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════════
+     SCREEN 3 — VIEWER
+════════════════════════════════════════════════════════════════ -->
+<div id="screen-viewer" class="screen">
+  <div class="vtopbar">
+    <button class="btn-back" id="btn-back">&larr; BACK</button>
+    <span class="v-company" id="v-company"></span>
+    <span class="v-file"    id="v-file"></span>
+    <div class="v-spacer"></div>
+    <span class="v-ts"      id="v-ts"></span>
+  </div>
+
+  <div class="frame-wrap">
+    <div class="frame-loading" id="frame-loading">
+      <div class="spinner"></div>
+      <div class="loading-text">리포트 로딩 중...</div>
+    </div>
+    <iframe
+      class="report-frame"
+      id="report-frame"
+      src=""
+      sandbox="allow-same-origin allow-scripts allow-popups allow-forms"
+    ></iframe>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════════
+     SCRIPT
+════════════════════════════════════════════════════════════════ -->
+<script>
+(function () {
+  /* ── 헬퍼 ─────────────────────────────────────────────────── */
+  const $  = id => document.getElementById(id);
+  const esc = s => s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+
+  /* timestamp "2026. 2. 9 오후 9:42" → { date:"2026.02.09", time:"오후 9:42" } */
+  function parseTs(ts) {
+    const m = ts.match(/^(\d+)\.\s*(\d+)\.\s*(\d+)\s+(.+)$/);
+    if (!m) return { date: ts, time: '' };
+    return {
+      date: `${m[1]}.${m[2].padStart(2,'0')}.${m[3].padStart(2,'0')}`,
+      time: m[4]
+    };
+  }
+
+  function hlText(text, q) {
+    if (!q) return text;
+    return text.replace(new RegExp('(' + esc(q) + ')', 'gi'), '<mark>$1</mark>');
+  }
+
+  /* ── Screen 전환 ─────────────────────────────────────────── */
+  function show(name) {
+    document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+    document.getElementById('screen-' + name).classList.add('active');
+  }
+
+  /* ── LOGIN ───────────────────────────────────────────────── */
+  const pwEl      = $('pw');
+  const errEl     = $('login-err');
+  const btnLogin  = $('btn-login');
+
+  function doLogin() {
+    if (pwEl.value.trim() === PASSWORD) {
+      errEl.classList.remove('show');
+      sessionStorage.setItem('ps_auth', '1');
+      initSearch();
+      show('search');
+      $('s-input').focus();
+    } else {
+      errEl.classList.add('show');
+      pwEl.classList.add('err');
+      pwEl.value = '';
+      setTimeout(() => pwEl.classList.remove('err'), 400);
+      pwEl.focus();
+    }
+  }
+
+  btnLogin.addEventListener('click', doLogin);
+  pwEl.addEventListener('keydown', e => { if (e.key === 'Enter') doLogin(); });
+
+  /* 기존 세션 복원 (딥링크는 맨 아래에서 처리) */
+  if (sessionStorage.getItem('ps_auth') === '1') {
+    initSearch();
+    show('search');
+  }
+
+  /* ── LOGOUT ─────────────────────────────────────────────── */
+  $('btn-logout').addEventListener('click', () => {
+    sessionStorage.removeItem('ps_auth');
+    pwEl.value = '';
+    show('login');
+    pwEl.focus();
+  });
+
+  /* ── SEARCH 초기화 ───────────────────────────────────────── */
+  function initSearch() {
+    const n = COMPANIES.length;
+    $('st-total').textContent  = n;
+    $('st-oldest').textContent = parseTs(COMPANIES[0].survey_timestamp).date;
+    $('st-recent').textContent = parseTs(COMPANIES[n - 1].survey_timestamp).date;
+
+    const now = new Date();
+    const yy  = now.getFullYear();
+    const mm  = String(now.getMonth() + 1).padStart(2, '0');
+    const dd  = String(now.getDate()).padStart(2, '0');
+    $('tb-date').textContent = `${yy}.${mm}.${dd}`;
+  }
+
+  /* ── DROPDOWN ────────────────────────────────────────────── */
+  const sInput   = $('s-input');
+  const dropdown = $('dropdown');
+  const sCount   = $('s-count');
+  let   hiIdx    = -1;
+
+  function filterList(q) {
+    if (!q) return COMPANIES;
+    const lq = q.toLowerCase();
+    return COMPANIES.filter(c =>
+      c.company_name.toLowerCase().includes(lq) ||
+      c.folder_name.toLowerCase().includes(lq) ||
+      c.ceo.toLowerCase().includes(lq)
+    );
+  }
+
+  function renderDropdown(q) {
+    hiIdx = -1;
+    const list = filterList(q);
+
+    if (list.length === 0) {
+      dropdown.innerHTML = `<div class="no-result">검색 결과 없음 — <b>${q}</b></div>`;
+      sCount.textContent = '0';
+      return;
+    }
+
+    sCount.textContent = q ? `${list.length} / ${COMPANIES.length}` : String(COMPANIES.length);
+
+    const rows = list.map(c => {
+      const globalIdx = COMPANIES.indexOf(c) + 1;
+      const ts = parseTs(c.survey_timestamp);
+      const hlName   = hlText(c.company_name,   q);
+      const hlFolder = hlText(c.folder_name, q);
+      return `
+        <div class="drop-item" data-folder="${c.folder_name}">
+          <span class="di-num">${String(globalIdx).padStart(2,'0')}</span>
+          <div class="di-body">
+            <div class="di-name">${hlName}</div>
+            <div class="di-folder">${hlFolder}</div>
+          </div>
+          <div class="di-ts">
+            <div class="di-ts-date">${ts.date}</div>
+            <div class="di-ts-time">${ts.time}</div>
+          </div>
+          <span class="di-arrow">›</span>
+        </div>`;
+    }).join('');
+
+    dropdown.innerHTML =
+      `<div class="drop-head">진단 회사 — 신청순</div>` + rows;
+
+    dropdown.querySelectorAll('.drop-item').forEach(el => {
+      el.addEventListener('click', () => {
+        const c = COMPANIES.find(x => x.folder_name === el.dataset.folder);
+        if (c) openViewer(c);
+      });
+    });
+  }
+
+  function openDrop() {
+    renderDropdown(sInput.value.trim());
+    dropdown.classList.add('open');
+    sInput.classList.add('has-drop');
+  }
+
+  function closeDrop() {
+    dropdown.classList.remove('open');
+    sInput.classList.remove('has-drop');
+    sCount.textContent = '';
+    hiIdx = -1;
+  }
+
+  sInput.addEventListener('focus', openDrop);
+  sInput.addEventListener('input', () => {
+    renderDropdown(sInput.value.trim());
+    dropdown.classList.add('open');
+    sInput.classList.add('has-drop');
+  });
+
+  /* 키보드 탐색 */
+  sInput.addEventListener('keydown', e => {
+    const items = dropdown.querySelectorAll('.drop-item');
+    if (e.key === 'ArrowDown') {
+      e.preventDefault();
+      hiIdx = Math.min(hiIdx + 1, items.length - 1);
+      updateHi(items);
+    } else if (e.key === 'ArrowUp') {
+      e.preventDefault();
+      hiIdx = Math.max(hiIdx - 1, 0);
+      updateHi(items);
+    } else if (e.key === 'Enter') {
+      if (hiIdx >= 0 && items[hiIdx]) items[hiIdx].click();
+    } else if (e.key === 'Escape') {
+      closeDrop();
+      sInput.blur();
+    }
+  });
+
+  function updateHi(items) {
+    items.forEach((el, i) => el.classList.toggle('hi', i === hiIdx));
+    if (items[hiIdx]) items[hiIdx].scrollIntoView({ block: 'nearest' });
+  }
+
+  /* 외부 클릭 */
+  document.addEventListener('click', e => {
+    if (!e.target.closest('.search-wrap')) closeDrop();
+  });
+
+  /* ── VIEWER ─────────────────────────────────────────────── */
+  const frame        = $('report-frame');
+  const frameLoading = $('frame-loading');
+
+  function openViewer(company) {
+    /* BASE_PATH + folder + "/" + previewFile
+       BASE_PATH = "" → "웰로/웰로_피트스탑_프리뷰_20260220.html" */
+    const src = BASE_PATH + company.folder_name + '/' + company.preview_file;
+
+    $('v-company').textContent = company.company_name;
+    $('v-file').textContent    = company.preview_file;
+    $('v-ts').textContent      = '신청 ' + company.survey_timestamp;
+
+    frameLoading.classList.remove('gone');
+    frame.src = src;
+
+    closeDrop();
+    sInput.value = '';
+    show('viewer');
+  }
+
+  frame.addEventListener('load', () => {
+    frameLoading.classList.add('gone');
+  });
+
+  $('btn-back').addEventListener('click', () => {
+    frame.src = '';
+    show('search');
+    sInput.focus();
+  });
+
+  /* ── DEEP LINK (?company=웰로) ─────────────────────── */
+  (function handleDeepLink() {
+    const params = new URLSearchParams(location.search);
+    const target = params.get('company');
+    if (!target) return;
+
+    sessionStorage.setItem('ps_auth', '1');
+    initSearch();
+
+    const lq = target.toLowerCase();
+    const match = COMPANIES.find(c =>
+      c.folder_name.toLowerCase() === lq ||
+      c.company_name.toLowerCase().includes(lq)
+    );
+
+    if (match && match.has_preview) {
+      openViewer(match);
+    } else {
+      show('search');
+      sInput.value = target;
+      renderDropdown(target);
+      dropdown.classList.add('open');
+      sInput.classList.add('has-drop');
+    }
+  })();
+
+})();
+</script>
+</body>
+</html>
