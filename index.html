@@ -333,6 +333,33 @@ html, body {
 .drop-item:hover,
 .drop-item.hi         { background: #1c1c1c; }
 
+/* 분석 중 (블러) */
+.drop-item.analyzing {
+  cursor: default;
+  pointer-events: none;
+  position: relative;
+}
+.drop-item.analyzing .di-body,
+.drop-item.analyzing .di-ts,
+.drop-item.analyzing .di-arrow { filter: blur(4px); opacity: 0.35; user-select: none; }
+.drop-item.analyzing .di-num   { opacity: 0.35; }
+.analyzing-badge {
+  position: absolute;
+  right: 40px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent);
+  border: 1px solid var(--accent-dim);
+  padding: 3px 10px;
+  border-radius: var(--r);
+  z-index: 2;
+  background: var(--surface);
+}
+
 .di-num {
   font-family: var(--mono);
   font-size: 10px;
@@ -868,13 +895,19 @@ const PASSWORD = "2026";
 
     sCount.textContent = q ? `${list.length} / ${COMPANIES.length}` : String(COMPANIES.length);
 
+    /* 3월 지원 = 분석 중 (블러 + 클릭 불가) */
+    const ANALYZING = new Set(['\uba54\ub274\uc787', '\uc778\ud14c\uc774\ud06c', '\uc640\uc774\uc624\uc5d8\uc624']);
+
     const rows = list.map(c => {
       const globalIdx = COMPANIES.indexOf(c) + 1;
       const ts = parseTs(c.survey_timestamp);
       const hlName   = hlText(c.company_name,   q);
       const hlFolder = hlText(c.folder_name, q);
+      const isAnalyzing = ANALYZING.has(c.folder_name);
+      const cls = isAnalyzing ? 'drop-item analyzing' : 'drop-item';
+      const badge = isAnalyzing ? '<span class="analyzing-badge">분석 중</span>' : '';
       return `
-        <div class="drop-item" data-folder="${c.folder_name}">
+        <div class="${cls}" data-folder="${c.folder_name}">
           <span class="di-num">${String(globalIdx).padStart(2,'0')}</span>
           <div class="di-body">
             <div class="di-name">${hlName}</div>
@@ -885,6 +918,7 @@ const PASSWORD = "2026";
             <div class="di-ts-time">${ts.time}</div>
           </div>
           <span class="di-arrow">›</span>
+          ${badge}
         </div>`;
     }).join('');
 
@@ -994,7 +1028,8 @@ const PASSWORD = "2026";
       c.company_name.toLowerCase().includes(lq)
     );
 
-    if (match && match.has_preview) {
+    const ANALYZING_DL = new Set(['\uba54\ub274\uc787', '\uc778\ud14c\uc774\ud06c', '\uc640\uc774\uc624\uc5d8\uc624']);
+    if (match && match.has_preview && !ANALYZING_DL.has(match.folder_name)) {
       openViewer(match);
     } else {
       show('search');
