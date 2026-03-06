@@ -333,31 +333,24 @@ html, body {
 .drop-item:hover,
 .drop-item.hi         { background: #1c1c1c; }
 
-/* 분석 중 (블러) */
+/* 분석 중 — 클릭 불가, 회사명 옆 배지 */
 .drop-item.analyzing {
   cursor: default;
   pointer-events: none;
-  position: relative;
+  opacity: 0.55;
 }
-.drop-item.analyzing .di-body,
-.drop-item.analyzing .di-ts,
-.drop-item.analyzing .di-arrow { filter: blur(4px); opacity: 0.35; user-select: none; }
-.drop-item.analyzing .di-num   { opacity: 0.35; }
+.drop-item.analyzing:hover { background: transparent; }
 .analyzing-badge {
-  position: absolute;
-  right: 40px;
-  top: 50%;
-  transform: translateY(-50%);
+  display: inline-block;
   font-family: var(--mono);
   font-size: 9px;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
+  letter-spacing: 0.08em;
   color: var(--accent);
   border: 1px solid var(--accent-dim);
-  padding: 3px 10px;
+  padding: 1px 7px;
   border-radius: var(--r);
-  z-index: 2;
-  background: var(--surface);
+  margin-left: 8px;
+  vertical-align: middle;
 }
 
 .di-num {
@@ -895,8 +888,8 @@ const PASSWORD = "2026";
 
     sCount.textContent = q ? `${list.length} / ${COMPANIES.length}` : String(COMPANIES.length);
 
-    /* 3월 지원 = 분석 중 (블러 + 클릭 불가) */
-    const ANALYZING = new Set(['\uba54\ub274\uc787', '\uc778\ud14c\uc774\ud06c', '\uc640\uc774\uc624\uc5d8\uc624']);
+    /* 분석 중 — 클릭 불가 + 회사명 옆 배지 */
+    const ANALYZING = new Set(['\uc778\ud14c\uc774\ud06c', '\uc640\uc774\uc624\uc5d8\uc624']);
 
     const rows = list.map(c => {
       const globalIdx = COMPANIES.indexOf(c) + 1;
@@ -910,7 +903,7 @@ const PASSWORD = "2026";
         <div class="${cls}" data-folder="${c.folder_name}">
           <span class="di-num">${String(globalIdx).padStart(2,'0')}</span>
           <div class="di-body">
-            <div class="di-name">${hlName}</div>
+            <div class="di-name">${hlName}${badge}</div>
             <div class="di-folder">${hlFolder}</div>
           </div>
           <div class="di-ts">
@@ -918,7 +911,6 @@ const PASSWORD = "2026";
             <div class="di-ts-time">${ts.time}</div>
           </div>
           <span class="di-arrow">›</span>
-          ${badge}
         </div>`;
     }).join('');
 
@@ -1028,7 +1020,7 @@ const PASSWORD = "2026";
       c.company_name.toLowerCase().includes(lq)
     );
 
-    const ANALYZING_DL = new Set(['\uba54\ub274\uc787', '\uc778\ud14c\uc774\ud06c', '\uc640\uc774\uc624\uc5d8\uc624']);
+    const ANALYZING_DL = new Set(['\uc778\ud14c\uc774\ud06c', '\uc640\uc774\uc624\uc5d8\uc624']);
     if (match && match.has_preview && !ANALYZING_DL.has(match.folder_name)) {
       openViewer(match);
     } else {
