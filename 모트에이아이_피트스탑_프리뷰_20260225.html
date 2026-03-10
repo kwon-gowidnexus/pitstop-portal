@@ -1,0 +1,3063 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>주식회사 모트에이아이 피트스탑 프리뷰</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700&family=Noto+Sans:ital,wght@0,300..700;1,300..700&family=Noto+Sans+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        /* ══════════════════════════════════════════════
+           IB-STYLE PREVIEW REPORT — BLACK & WHITE
+           Font: Noto Sans KR / Noto Sans / Noto Sans Mono
+           ══════════════════════════════════════════════ */
+
+        :root {
+            --black: #000000;
+            --near-black: #111111;
+            --dark: #222222;
+            --text: #1a1a1a;
+            --text-secondary: #4a4a4a;
+            --text-tertiary: #777777;
+            --border: #c8c8c8;
+            --border-light: #e0e0e0;
+            --rule: #000000;
+            --bg: #ffffff;
+            --bg-alt: #f5f5f5;
+            --bg-warm: #fafafa;
+            --negative: #8b0000;
+            --positive: #1a4d2e;
+            --caution: #7a5c00;
+            --review-color: #4a2d7a;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Noto Sans KR', 'Noto Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+            font-size: 13px;
+            line-height: 1.55;
+            color: var(--text);
+            background-color: var(--bg);
+            max-width: 1080px;
+            margin: 0 auto;
+            padding: 28px 24px;
+            font-variant-numeric: tabular-nums lining-nums;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* ─── Header ──────────────────────────────── */
+        .header {
+            text-align: center;
+            padding: 32px 36px 28px;
+            background: var(--black);
+            color: #ffffff;
+            margin-bottom: 24px;
+        }
+        .header .internal-tag {
+            font-family: 'Noto Sans', sans-serif;
+            font-size: 10px;
+            font-weight: 600;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: #ff6b6b;
+            margin-bottom: 8px;
+        }
+        .header .confidential {
+            font-family: 'Noto Sans', sans-serif;
+            font-size: 10px;
+            font-weight: 500;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            opacity: 0.5;
+            margin-bottom: 12px;
+        }
+        .header h1 {
+            font-family: 'Noto Sans', sans-serif;
+            font-size: 24px;
+            font-weight: 700;
+            letter-spacing: 3px;
+            margin-bottom: 4px;
+        }
+        .header .subtitle {
+            font-family: 'Noto Sans', sans-serif;
+            font-size: 12px;
+            font-weight: 400;
+            letter-spacing: 6px;
+            text-transform: uppercase;
+            opacity: 0.6;
+        }
+        .header .meta {
+            margin-top: 18px;
+            display: flex;
+            justify-content: center;
+            gap: 36px;
+            flex-wrap: wrap;
+            padding-top: 14px;
+            border-top: 1px solid rgba(255,255,255,0.15);
+        }
+        .header .meta-item { text-align: left; }
+        .header .meta-label {
+            font-size: 10px;
+            font-weight: 500;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            opacity: 0.45;
+        }
+        .header .meta-value {
+            font-size: 13px;
+            font-weight: 600;
+            margin-top: 1px;
+        }
+
+        /* ─── Typography ──────────────────────────── */
+        h2 {
+            font-family: 'Noto Sans KR', sans-serif;
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--black);
+            margin: 28px 0 10px;
+            padding: 0 0 6px;
+            border-bottom: 2px solid var(--black);
+            letter-spacing: 0.5px;
+        }
+        h3 {
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--near-black);
+            margin: 16px 0 6px;
+            letter-spacing: 0.3px;
+        }
+        h4 {
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--text-secondary);
+            margin: 12px 0 4px;
+        }
+        p { margin-bottom: 6px; font-size: 13px; line-height: 1.6; }
+        strong { font-weight: 600; }
+
+        /* ─── Tables ──────────────────────────────── */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 8px 0;
+            font-size: 12px;
+        }
+        th, td {
+            padding: 5px 10px;
+            text-align: left;
+            border-bottom: 1px solid var(--border-light);
+            vertical-align: top;
+        }
+        th {
+            font-size: 10px;
+            font-weight: 600;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            border-bottom: 2px solid var(--black);
+            background: transparent;
+        }
+        tr:last-child td { border-bottom: 1px solid var(--border); }
+        tr:hover { background-color: var(--bg-warm); }
+        td.num, th.num {
+            text-align: right;
+            font-family: 'Noto Sans Mono', monospace;
+        }
+
+        /* ─── Scrollable Table ────────────────────── */
+        .table-scroll {
+            overflow-x: auto;
+            margin: 8px 0;
+        }
+        .table-scroll table {
+            min-width: 900px;
+        }
+
+        /* ─── Cards ───────────────────────────────── */
+        .card {
+            background: var(--bg);
+            border: 1px solid var(--border);
+            padding: 10px 14px;
+            margin: 6px 0;
+        }
+        .card h4 { margin-top: 0; color: var(--near-black); }
+        .card-highlight { border-left: 3px solid var(--caution); }
+        .card-danger { border-left: 3px solid var(--negative); }
+        .card-success { border-left: 3px solid var(--positive); }
+        .card-info { border-left: 3px solid var(--dark); }
+
+        /* ─── Badges ──────────────────────────────── */
+        .badge {
+            display: inline-block;
+            padding: 2px 8px;
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            border-radius: 2px;
+        }
+        .badge-danger { background: var(--negative); color: #fff; }
+        .badge-warning { background: var(--caution); color: #fff; }
+        .badge-review { background: var(--review-color); color: #fff; }
+        .badge-info { background: var(--text-tertiary); color: #fff; }
+        .badge-success { background: var(--positive); color: #fff; }
+        .badge-high { background: var(--positive); color: #fff; }
+        .badge-medium { background: var(--caution); color: #fff; }
+        .badge-low { background: var(--negative); color: #fff; }
+        .badge-achieved { background: var(--positive); color: #fff; }
+
+        /* ─── Priority Bars ──────────────────────── */
+        .priority-bar-container {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin: 4px 0;
+        }
+        .priority-label {
+            font-size: 12px;
+            font-weight: 500;
+            min-width: 80px;
+            text-align: right;
+        }
+        .priority-bar-track {
+            flex: 1;
+            height: 20px;
+            background: var(--bg-alt);
+            border: 1px solid var(--border-light);
+            position: relative;
+        }
+        .priority-bar-fill {
+            height: 100%;
+            background: var(--black);
+            transition: width 0.3s;
+        }
+        .priority-level {
+            font-size: 11px;
+            font-weight: 600;
+            min-width: 60px;
+            color: var(--text-secondary);
+        }
+
+        /* ─── Pain Points Box ────────────────────── */
+        .pain-points-box {
+            background: var(--bg-alt);
+            border: 1px solid var(--border);
+            padding: 14px 18px;
+            margin: 8px 0;
+            white-space: pre-wrap;
+            font-size: 12px;
+            line-height: 1.7;
+            max-height: 400px;
+            overflow-y: auto;
+        }
+
+        /* ─── Anomaly Table ──────────────────────── */
+        .anomaly-summary {
+            display: flex;
+            gap: 12px;
+            margin: 10px 0;
+            flex-wrap: wrap;
+        }
+        .anomaly-count {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 13px;
+            font-weight: 600;
+        }
+        .anomaly-count .count {
+            font-family: 'Noto Sans Mono', monospace;
+            font-size: 18px;
+            font-weight: 700;
+        }
+
+        /* ─── Concern Cards ──────────────────────── */
+        .concern-card {
+            background: var(--bg);
+            border: 1px solid var(--border);
+            border-left: 4px solid var(--black);
+            padding: 10px 14px;
+            margin: 6px 0;
+        }
+        .concern-rank {
+            font-family: 'Noto Sans Mono', monospace;
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--text-tertiary);
+            float: left;
+            margin-right: 12px;
+            line-height: 1;
+        }
+        .concern-perspective {
+            font-size: 10px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            color: var(--text-tertiary);
+        }
+        .concern-title {
+            font-size: 13px;
+            font-weight: 700;
+            color: var(--near-black);
+            margin: 2px 0;
+        }
+        .concern-detail {
+            font-size: 12px;
+            color: var(--text-secondary);
+            line-height: 1.5;
+            margin-top: 4px;
+        }
+
+        /* ─── Sector Section ─────────────────────── */
+        .peer-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            margin: 8px 0;
+        }
+        .peer-card {
+            background: var(--bg);
+            border: 1px solid var(--border);
+            padding: 10px 14px;
+        }
+        .peer-card h4 { margin-top: 0; }
+
+        /* ─── TRA Decision Box ───────────────────── */
+        .decision-box {
+            border: 3px solid var(--black);
+            padding: 20px 24px;
+            margin: 12px 0;
+            text-align: center;
+        }
+        .decision-verdict {
+            font-family: 'Noto Sans Mono', monospace;
+            font-size: 36px;
+            font-weight: 700;
+            letter-spacing: 4px;
+        }
+        .decision-verdict.go { color: var(--positive); }
+        .decision-verdict.drop { color: var(--negative); }
+        .decision-verdict.conditional { color: var(--caution); }
+        .decision-subtitle {
+            font-size: 12px;
+            color: var(--text-secondary);
+            margin-top: 6px;
+            letter-spacing: 0.5px;
+        }
+        .drop-reasons {
+            margin: 10px 0;
+            padding: 10px 14px;
+            background: #fff5f5;
+            border: 1px solid var(--negative);
+        }
+        .drop-reasons li {
+            font-size: 12px;
+            color: var(--negative);
+            margin: 4px 0 4px 16px;
+            font-weight: 500;
+        }
+
+        /* ─── Scenario Cards ─────────────────────── */
+        .scenario-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            margin: 12px 0;
+        }
+        .scenario-card {
+            border: 1px solid var(--border);
+            padding: 14px 12px;
+            display: flex;
+            flex-direction: column;
+        }
+        .scenario-card.sc-info { border-top: 3px solid var(--dark); }
+        .scenario-card.sc-success { border-top: 3px solid var(--positive); }
+        .scenario-card.sc-danger { border-top: 3px solid var(--negative); }
+        .scenario-label {
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            margin-bottom: 4px;
+        }
+        .sc-info .scenario-label { color: var(--dark); }
+        .sc-success .scenario-label { color: var(--positive); }
+        .sc-danger .scenario-label { color: var(--negative); }
+        .scenario-title {
+            font-size: 13px;
+            font-weight: 700;
+            color: var(--near-black);
+            margin-bottom: 6px;
+        }
+        .scenario-desc {
+            font-size: 11px;
+            color: var(--text-secondary);
+            line-height: 1.55;
+            flex: 1;
+        }
+        .scenario-prob {
+            font-size: 10px;
+            font-weight: 600;
+            color: var(--text-tertiary);
+            margin-top: 8px;
+            padding-top: 6px;
+            border-top: 1px solid var(--border-light);
+        }
+        .scenario-note {
+            font-size: 10px;
+            color: var(--caution);
+            font-weight: 600;
+            margin-top: 6px;
+        }
+        .text-muted { color: var(--text-tertiary); font-size: 10px; }
+        .assumption-note {
+            background: var(--bg-alt);
+            border: 1px solid var(--caution);
+            border-left: 3px solid var(--caution);
+            padding: 8px 14px;
+            margin: 8px 0;
+            font-size: 12px;
+        }
+
+        /* ─── TRA Assessment ─────────────────────── */
+        .tra-box {
+            background: var(--bg);
+            border: 2px solid var(--black);
+            padding: 16px 20px;
+            margin: 10px 0;
+            text-align: center;
+        }
+        .tra-assessment {
+            font-family: 'Noto Sans Mono', monospace;
+            font-size: 28px;
+            font-weight: 700;
+        }
+        .tra-label {
+            font-size: 12px;
+            color: var(--text-secondary);
+            margin-top: 4px;
+        }
+
+        /* ─── Interview Checklist ─────────────────── */
+        .checklist-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 8px;
+            padding: 6px 0;
+            border-bottom: 1px solid var(--border-light);
+        }
+        .checklist-checkbox {
+            width: 16px;
+            height: 16px;
+            border: 2px solid var(--border);
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+        .checklist-source {
+            font-size: 10px;
+            font-weight: 600;
+            color: var(--text-tertiary);
+            text-transform: uppercase;
+            letter-spacing: 0.3px;
+        }
+        .checklist-text {
+            font-size: 12px;
+            line-height: 1.5;
+        }
+
+        /* ─── KPI Grid ───────────────────────────── */
+        .kpi-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            gap: 8px;
+            margin: 10px 0;
+        }
+        .kpi-card {
+            background: var(--bg);
+            border: 1px solid var(--border);
+            padding: 10px 8px;
+            text-align: center;
+        }
+        .kpi-value {
+            font-family: 'Noto Sans Mono', monospace;
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--black);
+        }
+        .kpi-label {
+            font-size: 10px;
+            color: var(--text-tertiary);
+            margin-top: 2px;
+            text-transform: uppercase;
+            letter-spacing: 0.3px;
+        }
+        .kpi-card.danger .kpi-value { color: var(--negative); }
+        .kpi-card.success .kpi-value { color: var(--positive); }
+        .kpi-card.warning .kpi-value { color: var(--caution); }
+
+        /* ─── Section Divider ─────────────────────── */
+        .section-divider {
+            border: none;
+            border-top: 1px solid var(--border);
+            margin: 24px 0;
+        }
+
+        /* ─── Footer ──────────────────────────────── */
+        .footer {
+            text-align: center;
+            padding: 16px 24px;
+            margin-top: 24px;
+            border-top: 2px solid var(--black);
+        }
+        .footer .logo {
+            font-family: 'Noto Sans', sans-serif;
+            font-size: 13px;
+            font-weight: 700;
+            color: var(--black);
+            letter-spacing: 3px;
+        }
+        .footer .preview-warning {
+            margin-top: 8px;
+            font-size: 11px;
+            font-weight: 700;
+            color: var(--negative);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        /* ─── Lists ───────────────────────────────── */
+        ul, ol { margin: 4px 0 4px 20px; }
+        li { margin-bottom: 2px; font-size: 12px; line-height: 1.55; }
+
+        /* ─── Utility ─────────────────────────────── */
+        .text-negative { color: var(--negative); }
+        .text-positive { color: var(--positive); }
+        .text-caution { color: var(--caution); }
+        .font-mono { font-family: 'Noto Sans Mono', monospace; }
+        .text-right { text-align: right; }
+        .text-center { text-align: center; }
+        .fw-bold { font-weight: 700; }
+        .mt-0 { margin-top: 0; }
+
+        /* ─── Print / PDF (A4 최적화) ────────────── */
+        @media print {
+            @page {
+                size: A4 portrait;
+                margin: 12mm 10mm 14mm 10mm;
+            }
+            @page :first { margin-top: 0; }
+
+            * {
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
+                color-adjust: exact !important;
+            }
+
+            /* ── 본문 기본 ────────────────────────── */
+            body {
+                max-width: 100%;
+                padding: 0;
+                margin: 0;
+                font-size: 8pt;
+                line-height: 1.4;
+            }
+            p { font-size: 8pt; line-height: 1.45; margin-bottom: 3px; }
+            strong { font-weight: 700; }
+
+            /* ── 헤더 ────────────────────────────── */
+            .header {
+                padding: 14px 16px 12px;
+                margin-bottom: 6px;
+                page-break-after: avoid;
+                page-break-inside: avoid;
+            }
+            .header .internal-tag { font-size: 7pt; margin-bottom: 4px; }
+            .header .confidential { font-size: 7pt; margin-bottom: 6px; }
+            .header h1 { font-size: 16pt; letter-spacing: 2px; margin-bottom: 2px; }
+            .header .subtitle { font-size: 8pt; letter-spacing: 4px; }
+            .header .meta {
+                margin-top: 10px;
+                padding-top: 8px;
+                gap: 20px;
+            }
+            .header .meta-label { font-size: 7pt; }
+            .header .meta-value { font-size: 9pt; }
+
+            /* ── 타이포그래피 ────────────────────── */
+            h2 {
+                font-size: 11pt;
+                margin: 10px 0 4px;
+                padding-bottom: 3px;
+                border-bottom-width: 1.5px;
+                page-break-after: avoid;
+                break-after: avoid;
+            }
+            h3 {
+                font-size: 9pt;
+                margin: 7px 0 3px;
+                page-break-after: avoid;
+                break-after: avoid;
+            }
+            h4 {
+                font-size: 8pt;
+                margin: 5px 0 2px;
+                page-break-after: avoid;
+                break-after: avoid;
+            }
+
+            /* ── 테이블 ──────────────────────────── */
+            table {
+                font-size: 7pt;
+                margin: 4px 0;
+            }
+            th, td {
+                padding: 2.5px 4px !important;
+                line-height: 1.3;
+            }
+            th {
+                font-size: 6.5pt;
+                border-bottom-width: 1.5px;
+            }
+            .table-scroll {
+                overflow: visible !important;
+            }
+            .table-scroll table {
+                min-width: 0 !important;
+                width: 100%;
+            }
+            td.num, th.num {
+                font-size: 7pt;
+                padding: 2.5px 3px !important;
+            }
+            .text-muted { font-size: 6pt; }
+
+            /* ── 카드 ────────────────────────────── */
+            .card {
+                padding: 5px 8px !important;
+                margin: 3px 0 !important;
+            }
+            .card-highlight, .card-danger, .card-success, .card-info {
+                border-left-width: 2px;
+            }
+
+            /* ── 뱃지 ────────────────────────────── */
+            .badge {
+                font-size: 6pt;
+                padding: 1px 5px;
+            }
+
+            /* ── 우선순위 바 ──────────────────────── */
+            .priority-bar-container { gap: 6px; margin: 2px 0; }
+            .priority-label { font-size: 8pt; min-width: 60px; }
+            .priority-bar-track { height: 14px; }
+            .priority-level { font-size: 7.5pt; min-width: 45px; }
+
+            /* ── Pain Points ─────────────────────── */
+            .pain-points-box {
+                max-height: none;
+                overflow: visible;
+                font-size: 7.5pt;
+                padding: 8px 12px;
+                line-height: 1.5;
+            }
+
+            /* ── 이상 항목 요약 ───────────────────── */
+            .anomaly-summary { gap: 8px; margin: 5px 0; }
+            .anomaly-count { font-size: 8pt; }
+            .anomaly-count .count { font-size: 13pt; }
+
+            /* ── 우려 카드 ────────────────────────── */
+            .concern-card {
+                padding: 6px 10px;
+                margin: 4px 0;
+                border-left-width: 3px;
+            }
+            .concern-rank { font-size: 12pt; margin-right: 8px; }
+            .concern-perspective { font-size: 6.5pt; }
+            .concern-title { font-size: 8.5pt; }
+            .concern-detail { font-size: 7.5pt; line-height: 1.4; }
+
+            /* ── Peer 그리드 ──────────────────────── */
+            .peer-grid { gap: 6px; margin: 4px 0; }
+            .peer-card { padding: 6px 8px; }
+
+            /* ── KPI 그리드 ───────────────────────── */
+            .kpi-grid {
+                grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+                gap: 5px;
+                margin: 5px 0;
+            }
+            .kpi-card { padding: 6px 5px; }
+            .kpi-value { font-size: 14pt; }
+            .kpi-label { font-size: 6pt; }
+
+            /* ── 시나리오 그리드 ──────────────────── */
+            .scenario-grid { gap: 6px; margin: 6px 0; }
+            .scenario-card { padding: 8px 8px; }
+            .scenario-label { font-size: 7pt; }
+            .scenario-title { font-size: 8.5pt; margin-bottom: 3px; }
+            .scenario-desc { font-size: 7pt; line-height: 1.4; }
+            .scenario-note { font-size: 6.5pt; margin-top: 3px; }
+            .scenario-prob { font-size: 6.5pt; margin-top: 4px; padding-top: 3px; }
+
+            /* ── TRA 박스 ────────────────────────── */
+            .tra-box {
+                padding: 8px 12px;
+                margin: 5px 0;
+                border-width: 1.5px;
+            }
+            .tra-assessment { font-size: 18pt; }
+
+            /* ── Decision 박스 ────────────────────── */
+            .decision-box { padding: 10px 14px; border-width: 2px; margin: 6px 0; }
+            .decision-verdict { font-size: 22pt; letter-spacing: 3px; }
+            .decision-subtitle { font-size: 8pt; }
+            .drop-reasons { padding: 5px 10px; margin: 4px 0; }
+            .drop-reasons li { font-size: 7.5pt; }
+
+            /* ── 가정 노트 ────────────────────────── */
+            .assumption-note {
+                padding: 5px 10px;
+                margin: 4px 0;
+                font-size: 7.5pt;
+                border-left-width: 2px;
+            }
+
+            /* ── 체크리스트 ───────────────────────── */
+            .checklist-item { padding: 3px 0; gap: 5px; }
+            .checklist-checkbox { width: 11px; height: 11px; border-width: 1.5px; }
+            .checklist-source { font-size: 6pt; }
+            .checklist-text { font-size: 7.5pt; line-height: 1.4; }
+
+            /* ── 구분선 ──────────────────────────── */
+            .section-divider { margin: 10px 0; }
+            hr { margin: 6px 0; }
+
+            /* ── 푸터 ────────────────────────────── */
+            .footer {
+                padding: 8px 16px !important;
+                margin-top: 10px !important;
+                border-top-width: 1.5px;
+            }
+            .footer .logo { font-size: 9pt; letter-spacing: 2px; }
+            .footer .preview-warning { font-size: 7.5pt; letter-spacing: 1.5px; }
+
+            /* ── 리스트 ──────────────────────────── */
+            ul, ol { margin: 2px 0 2px 14px; }
+            li { font-size: 7.5pt; line-height: 1.4; margin-bottom: 1px; }
+
+            /* ── 페이지 브레이크 ──────────────────── */
+            table, .card, .peer-grid, .tra-box, .decision-box,
+            .anomaly-summary, .concern-card, .kpi-grid,
+            .priority-bar-container, .scenario-grid,
+            .assumption-note, .checklist-item {
+                page-break-inside: avoid;
+                break-inside: avoid;
+            }
+
+            /* 섹션 B, E, F는 새 페이지에서 시작 */
+            .page-break-before {
+                page-break-before: always;
+                break-before: page;
+            }
+        }
+
+        /* ─── Responsive ──────────────────────────── */
+        @media (max-width: 768px) {
+            body { padding: 16px 12px; }
+            .header { padding: 20px 16px; }
+            .header h1 { font-size: 18px; letter-spacing: 1px; }
+            .header .meta { flex-direction: column; gap: 12px; }
+            .peer-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ═══════════════════════════════════════ -->
+    <!-- HEADER                                  -->
+    <!-- ═══════════════════════════════════════ -->
+    <div class="header">
+        <div class="internal-tag">Internal &mdash; For Review Only</div>
+        <h1>GOWID NEXUS | PIT-STOP</h1>
+        <div class="subtitle">Preview Report</div>
+        <div class="meta">
+            <div class="meta-item">
+                <div class="meta-label">Company</div>
+                <div class="meta-value">주식회사 모트에이아이</div>
+            </div>
+            <div class="meta-item">
+                <div class="meta-label">CEO</div>
+                <div class="meta-value">천영록</div>
+            </div>
+            <div class="meta-item">
+                <div class="meta-label">Date</div>
+                <div class="meta-value">2026년 02월 25일</div>
+            </div>
+            <div class="meta-item">
+                <div class="meta-label">Doc ID</div>
+                <div class="meta-value">PV-20260225-모트에</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════ -->
+    <!-- A. 기업 개요 (정성)                      -->
+    <!-- ═══════════════════════════════════════ -->
+    <h2>A. 기업 개요</h2>
+
+    <h3>A.1 기본정보</h3>
+    <table>
+        <tr><th>항목</th><th>내용</th></tr>
+        
+        <tr>
+            <td><strong>회사명</strong></td>
+            <td>주식회사 모트에이아이</td>
+        </tr>
+        
+        <tr>
+            <td><strong>대표이사</strong></td>
+            <td>천영록</td>
+        </tr>
+        
+        <tr>
+            <td><strong>설립일</strong></td>
+            <td>2015. 9. 30</td>
+        </tr>
+        
+        <tr>
+            <td><strong>웹사이트</strong></td>
+            <td><a href="https://www.moatai.io/" target="_blank">https://www.moatai.io/</a></td>
+        </tr>
+        
+        <tr>
+            <td><strong>사업 소개</strong></td>
+            <td>AI 에이전트 개발</td>
+        </tr>
+        
+        <tr>
+            <td><strong>임직원 수</strong></td>
+            <td>5명~10명 미만  (고위드: 5명)</td>
+        </tr>
+        
+        <tr>
+            <td><strong>최근 매출 규모</strong></td>
+            <td>10억~20억 미만  (고위드 12개월 매출입금: 10.9억)<br><span style="font-size:10px; color:var(--text-tertiary);">※ 설문은 회계 기준(발생주의), 고위드는 실제 입금 기준(현금주의)으로 차이 발생 가능</span></td>
+        </tr>
+        
+        <tr>
+            <td><strong>누적 투자 유치</strong></td>
+            <td>100억 이상  (고위드: 한화자산운용,와디즈파트너스)<br><span style="font-size:10px; color:var(--text-tertiary);">※ 고위드 데이터는 은행 연동 기준 유상증자 입금 누적액</span></td>
+        </tr>
+        
+        <tr>
+            <td><strong>필요 자금</strong></td>
+            <td>10억 이상</td>
+        </tr>
+        
+    </table>
+
+    <h3>A.2 대표자 기술 Pain Points</h3>
+    <div class="pain-points-box">모트AI는 영업적으로는 턴어라운드를 시작했지만 현금흐름과 재무상에선 어려움을 지속하고 있습니다. 갚아야할 자금의 기한은 다가오고, 그로 인한 갈등과 시간 소모가 있습니다. B2B 영업이 속도가 나기도 하고 때론 느려지기도 하는데 이로 인한 자금 사이클의 리스크에 시달리며, 추가 자금을 유치하기엔 비즈니스 모델의 완성도가 낮습니다. 다만, AI 시대에 맞는 집중력 있는 활동과, 영업이익 흑자 전환, 구조조정의 완비 등으로 상황은 지속 개선되고 있습니다.
+
+많은 자금소모와 고생을 통해 얻은 경영적 학습으로 기업으로 성장해왔는데, 이에 대한 책임이 무겁다고 생각합니다. 이에 피트스탑 같은 프로그램이 더 성장하고 개선할 수 있는 경영자에게 꼭 필요한 자원을 제공하는 것 같아 감사한 마음이 들었습니다.
+
+바라는 점은 (1) 각종 b2b AI 서비스와 제품을 더 빠르게 공급하고 활용할 수 있는 매출처와 플랫폼, 그리고 (2) 단기적 자금 순환에 여유를 주고 일부 대환을 할 수 있는 5억 원의 융자가 있으면 좋겠습니다. 자금적 도움을 통해 시간을 벌어주시면, 당사는 그 시간을 통해 더 시너지 높은 AI 작업을 함께 하여 더 큰 수익화를 나눌 수 있으면 좋겠습니다.
+
+감사합니다.</div>
+
+    <h3>A.3 자금 사용 우선순위</h3>
+    
+    <div class="priority-bar-container">
+        <div class="priority-label">운영자금</div>
+        <div class="priority-bar-track">
+            <div class="priority-bar-fill" style="width: 100%;"></div>
+        </div>
+        <div class="priority-level">매우 높음</div>
+    </div>
+    
+    <div class="priority-bar-container">
+        <div class="priority-label">부채상환</div>
+        <div class="priority-bar-track">
+            <div class="priority-bar-fill" style="width: 80%;"></div>
+        </div>
+        <div class="priority-level">높음</div>
+    </div>
+    
+    <div class="priority-bar-container">
+        <div class="priority-label">인건비/HR</div>
+        <div class="priority-bar-track">
+            <div class="priority-bar-fill" style="width: 100%;"></div>
+        </div>
+        <div class="priority-level">매우 높음</div>
+    </div>
+    
+    <div class="priority-bar-container">
+        <div class="priority-label">마케팅</div>
+        <div class="priority-bar-track">
+            <div class="priority-bar-fill" style="width: 60%;"></div>
+        </div>
+        <div class="priority-level">보통</div>
+    </div>
+    
+    <div class="priority-bar-container">
+        <div class="priority-label">기술개발</div>
+        <div class="priority-bar-track">
+            <div class="priority-bar-fill" style="width: 80%;"></div>
+        </div>
+        <div class="priority-level">높음</div>
+    </div>
+    
+
+    <hr class="section-divider">
+
+    <!-- ═══════════════════════════════════════ -->
+    <!-- B. 재무 데이터 (정량)                    -->
+    <!-- ═══════════════════════════════════════ -->
+    <h2 class="page-break-before">B. 재무 데이터</h2>
+
+    <h3>B.1 가결산/추정 재무상태표 (2025(가))</h3>
+    
+    <table>
+        <tr><th>항목</th><th class="num">금액</th></tr>
+        
+        <tr>
+            <td>유동자산</td>
+            <td class="num">1.4억</td>
+        </tr>
+        
+        <tr>
+            <td>비유동자산</td>
+            <td class="num">19.6억</td>
+        </tr>
+        <tr>
+            <td style="padding-left: 30px; color: var(--text-secondary);">  (지분법적용투자주식)</td>
+            <td class="num" style="color: var(--caution);">~10.3억</td>
+        </tr>
+        <tr>
+            <td style="padding-left: 30px; color: var(--text-secondary);">  (무형자산 — 소프트웨어)</td>
+            <td class="num" style="color: var(--caution);">~9.2억</td>
+        </tr>
+        <tr>
+            <td style="padding-left: 30px; color: var(--text-secondary);">  (유형자산·보증금)</td>
+            <td class="num">0.0억</td>
+        </tr>
+
+        <tr>
+            <td><strong>자산총계</strong></td>
+            <td class="num">21.1억</td>
+        </tr>
+        <tr>
+            <td style="padding-left: 30px; color: var(--negative); font-size:11px;"><strong>실질 담보 가능 자산</strong></td>
+            <td class="num" style="color: var(--negative); font-weight:700;">~1.4억</td>
+        </tr>
+        
+        <tr>
+            <td>유동부채</td>
+            <td class="num">8.6억</td>
+        </tr>
+        
+        <tr>
+            <td>비유동부채</td>
+            <td class="num">41.9억</td>
+        </tr>
+        
+        <tr>
+            <td style="padding-left: 30px; color: var(--text-secondary);">  (전환사채)</td>
+            <td class="num">22.1억</td>
+        </tr>
+        
+        <tr>
+            <td><strong>부채총계</strong></td>
+            <td class="num">50.5억</td>
+        </tr>
+        
+        <tr>
+            <td>자본금</td>
+            <td class="num">0.94억</td>
+        </tr>
+        
+        <tr>
+            <td>자본잉여금</td>
+            <td class="num">79.2억</td>
+        </tr>
+        
+        <tr>
+            <td>이익잉여금(결손금)</td>
+            <td class="num" style="color: var(--negative); font-weight: 600;">-109.5억</td>
+        </tr>
+        
+        <tr>
+            <td><strong>자본총계</strong></td>
+            <td class="num" style="color: var(--negative); font-weight: 600;">-29.4억</td>
+        </tr>
+        
+    </table>
+    
+
+    
+    <h3>B.2 월별 손익계산서 (2025(가))</h3>
+    <div class="table-scroll">
+        <table>
+            <tr>
+                
+                <th>항목</th>
+                
+                <th>연간</th>
+                
+                <th class="num">1월</th>
+                
+                <th class="num">2월</th>
+                
+                <th class="num">3월</th>
+                
+                <th class="num">4월</th>
+                
+                <th class="num">5월</th>
+                
+                <th class="num">6월</th>
+                
+                <th class="num">7월</th>
+                
+                <th class="num">8월</th>
+                
+                <th class="num">9월</th>
+                
+                <th class="num">10월</th>
+                
+                <th class="num">11월</th>
+                
+                <th class="num">12월</th>
+                
+            </tr>
+            
+            <tr>
+                <td><strong>매출액</strong></td>
+                <td class="num">11.8억</td>
+                
+                <td class="num">2.8억</td>
+                
+                <td class="num">0.11억</td>
+                
+                <td class="num">0.42억</td>
+                
+                <td class="num">0.09억</td>
+                
+                <td class="num">2.6억</td>
+                
+                <td class="num">0.15억</td>
+                
+                <td class="num">0.14억</td>
+                
+                <td class="num">0.71억</td>
+                
+                <td class="num">3.8억</td>
+                
+                <td class="num">0.14억</td>
+                
+                <td class="num">0.14억</td>
+                
+                <td class="num">0.63억</td>
+                
+            </tr>
+            
+            <tr>
+                <td><strong>매출총이익</strong></td>
+                <td class="num">11.8억</td>
+                
+                <td class="num">2.8억</td>
+                
+                <td class="num">0.11억</td>
+                
+                <td class="num">0.42억</td>
+                
+                <td class="num">0.09억</td>
+                
+                <td class="num">2.6억</td>
+                
+                <td class="num">0.15억</td>
+                
+                <td class="num">0.14억</td>
+                
+                <td class="num">0.71억</td>
+                
+                <td class="num">3.8억</td>
+                
+                <td class="num">0.14억</td>
+                
+                <td class="num">0.14억</td>
+                
+                <td class="num">0.63억</td>
+                
+            </tr>
+            
+            <tr>
+                <td><strong>판관비</strong></td>
+                <td class="num">10.6억</td>
+                
+                <td class="num">0.77억</td>
+                
+                <td class="num">0.72억</td>
+                
+                <td class="num">0.86억</td>
+                
+                <td class="num">0.49억</td>
+                
+                <td class="num">0.55억</td>
+                
+                <td class="num">0.53억</td>
+                
+                <td class="num">0.47억</td>
+                
+                <td class="num">0.47억</td>
+                
+                <td class="num">0.57억</td>
+                
+                <td class="num">0.49억</td>
+                
+                <td class="num">0.49억</td>
+                
+                <td class="num">4.2억</td>
+                
+            </tr>
+            
+            <tr>
+                <td><strong>영업이익</strong></td>
+                <td class="num">1.2억</td>
+                
+                <td class="num">2.1억</td>
+                
+                <td class="num" style="color: var(--negative); font-weight: 600;">-0.61억</td>
+                
+                <td class="num" style="color: var(--negative); font-weight: 600;">-0.44억</td>
+                
+                <td class="num" style="color: var(--negative); font-weight: 600;">-0.39억</td>
+                
+                <td class="num">2.0억</td>
+                
+                <td class="num" style="color: var(--negative); font-weight: 600;">-0.38억</td>
+                
+                <td class="num" style="color: var(--negative); font-weight: 600;">-0.32억</td>
+                
+                <td class="num">0.23억</td>
+                
+                <td class="num">3.3억</td>
+                
+                <td class="num" style="color: var(--negative); font-weight: 600;">-0.35억</td>
+                
+                <td class="num" style="color: var(--negative); font-weight: 600;">-0.35억</td>
+                
+                <td class="num" style="color: var(--negative); font-weight: 600;">-3.5억</td>
+                
+            </tr>
+            
+            <tr>
+                <td><strong>영업외수익</strong></td>
+                <td class="num">0.06억</td>
+                
+                <td class="num">0.05억</td>
+                
+                <td class="num">0.00억</td>
+                
+                <td class="num">0.00억</td>
+                
+                <td class="num">0.00억</td>
+                
+                <td class="num">0.00억</td>
+                
+                <td class="num">0.00억</td>
+                
+                <td class="num">0.01억</td>
+                
+                <td class="num">0.00억</td>
+                
+                <td class="num">0.00억</td>
+                
+                <td class="num">0.00억</td>
+                
+                <td class="num">0.00억</td>
+                
+                <td class="num">0.00억</td>
+                
+            </tr>
+            
+            <tr>
+                <td><strong>영업외비용</strong></td>
+                <td class="num">1.6억</td>
+                
+                <td class="num">0.39억</td>
+                
+                <td class="num">0.17억</td>
+                
+                <td class="num">0.10억</td>
+                
+                <td class="num">0.18억</td>
+                
+                <td class="num">0.03억</td>
+                
+                <td class="num">0.12억</td>
+                
+                <td class="num">0.10억</td>
+                
+                <td class="num">0.11억</td>
+                
+                <td class="num">0.10억</td>
+                
+                <td class="num">0.09억</td>
+                
+                <td class="num">0.09억</td>
+                
+                <td class="num">0.10억</td>
+                
+            </tr>
+            
+            <tr>
+                <td><strong>당기순이익</strong></td>
+                <td class="num">-0.29억</td>
+                
+                <td class="num">1.7억</td>
+                
+                <td class="num" style="color: var(--negative); font-weight: 600;">-0.78억</td>
+                
+                <td class="num" style="color: var(--negative); font-weight: 600;">-0.53억</td>
+                
+                <td class="num" style="color: var(--negative); font-weight: 600;">-0.57억</td>
+                
+                <td class="num">2.0억</td>
+                
+                <td class="num" style="color: var(--negative); font-weight: 600;">-0.50억</td>
+                
+                <td class="num" style="color: var(--negative); font-weight: 600;">-0.41억</td>
+                
+                <td class="num">0.13억</td>
+                
+                <td class="num">3.2억</td>
+                
+                <td class="num" style="color: var(--negative); font-weight: 600;">-0.44억</td>
+                
+                <td class="num" style="color: var(--negative); font-weight: 600;">-0.44억</td>
+                
+                <td class="num" style="color: var(--negative); font-weight: 600;">-3.6억</td>
+                
+            </tr>
+            
+        </table>
+    </div>
+    
+
+    
+    <h3>B.3 4개년 재무제표 요약</h3>
+    <div class="table-scroll">
+    <table>
+        <tr>
+            <th>구분</th>
+            
+            <th class="num">2022</th>
+            
+            <th class="num">2023</th>
+            
+            <th class="num">2024</th>
+            
+            <th class="num">2025(가)</th>
+            
+        </tr>
+        
+        <tr>
+            <td><strong>매출액</strong></td>
+            
+            <td class="num">5.7억</td>
+            
+            <td class="num">8.2억</td>
+            
+            <td class="num">11.5억</td>
+            
+            <td class="num">11.8억</td>
+            
+        </tr>
+        
+        <tr>
+            <td><strong>매출총이익</strong></td>
+            
+            <td class="num">5.7억</td>
+            
+            <td class="num">8.2억</td>
+            
+            <td class="num">11.5억</td>
+            
+            <td class="num">11.8억</td>
+            
+        </tr>
+        
+        <tr>
+            <td><strong>판매비와관리비</strong></td>
+            
+            <td class="num">22.7억</td>
+            
+            <td class="num">16.7억</td>
+            
+            <td class="num">25.3억</td>
+            
+            <td class="num">10.6억</td>
+            
+        </tr>
+        
+        <tr>
+            <td><strong>영업이익</strong></td>
+            
+            <td class="num" style="color: var(--negative); font-weight: 600;">-17.1억</td>
+            
+            <td class="num" style="color: var(--negative); font-weight: 600;">-8.6억</td>
+            
+            <td class="num" style="color: var(--negative); font-weight: 600;">-13.8억</td>
+            
+            <td class="num">1.2억</td>
+            
+        </tr>
+        
+        <tr>
+            <td><strong>영업외수익</strong></td>
+            
+            <td class="num">0.47억</td>
+            
+            <td class="num">4.1억</td>
+            
+            <td class="num">0.61억</td>
+            
+            <td class="num">0.06억</td>
+            
+        </tr>
+        
+        <tr>
+            <td><strong>영업외비용</strong></td>
+            
+            <td class="num">1.1억</td>
+            
+            <td class="num">3.7억</td>
+            
+            <td class="num">20.6억</td>
+            
+            <td class="num">1.6억</td>
+            
+        </tr>
+        
+        <tr>
+            <td><strong>법인세 등</strong></td>
+            
+            <td class="num">—</td>
+            
+            <td class="num">—</td>
+            
+            <td class="num">0.04억</td>
+            
+            <td class="num">—</td>
+            
+        </tr>
+        
+        <tr>
+            <td><strong>당기순이익</strong></td>
+            
+            <td class="num" style="color: var(--negative); font-weight: 600;">-17.7억</td>
+            
+            <td class="num" style="color: var(--negative); font-weight: 600;">-8.2억</td>
+            
+            <td class="num" style="color: var(--negative); font-weight: 600;">-33.9억</td>
+            
+            <td class="num" style="color: var(--negative); font-weight: 600;">-0.27억</td>
+            
+        </tr>
+        
+        <tr>
+            <td><strong>자산총계</strong></td>
+            
+            <td class="num">40.1억</td>
+            
+            <td class="num">53.2억</td>
+            
+            <td class="num">24.0억</td>
+            
+            <td class="num">21.1억</td>
+            
+        </tr>
+        
+        <tr>
+            <td><strong>부채총계</strong></td>
+            
+            <td class="num">27.4억</td>
+            
+            <td class="num">48.7억</td>
+            
+            <td class="num">53.1억</td>
+            
+            <td class="num">50.5억</td>
+            
+        </tr>
+        
+        <tr>
+            <td><strong>자본총계</strong></td>
+            
+            <td class="num">12.6억</td>
+            
+            <td class="num">4.5억</td>
+            
+            <td class="num" style="color: var(--negative); font-weight: 600;">-29.1억</td>
+            
+            <td class="num" style="color: var(--negative); font-weight: 600;">-29.4억</td>
+            
+        </tr>
+        
+    </table>
+    </div>
+    
+
+    <!-- ═══════════════════════════════════════ -->
+    <!-- B.5 12월 결산 조정 확인 (보완자료)          -->
+    <!-- ═══════════════════════════════════════ -->
+    <h3>B.5 12월 결산 조정 확인 <span class="badge badge-success">확인 완료</span></h3>
+    <div class="card card-info">
+        <h4 class="mt-0">12월 직원급여·상여금 음수 처리 — 연구인력 인건비 계정 전환</h4>
+        <p>기존 기업연구소 연구인원(2명) 인건비가 <strong>급여 계정</strong>으로 처리되어 있었으며, 12월 말에 <strong>경상개발연구비 계정</strong>으로 전환 처리한 내역입니다. 이에 따라 12월 급여(-1.61억)와 상여금(-0.02억)이 음수 발생하고, 경상개발연구비(+1.98억)가 대응 증가합니다.</p>
+        <p style="font-size:11px; color:var(--text-secondary);">→ 회계 분식이 아닌 <strong>정상적 계정 재분류</strong>. 실질적 인건비 부담은 변동 없음. 다만 연간 월별 추이 해석 시 12월 데이터 조정 필요.</p>
+    </div>
+
+    <!-- ═══════════════════════════════════════ -->
+    <!-- B.6 차입금 구조 상세                       -->
+    <!-- ═══════════════════════════════════════ -->
+    <h3>B.6 차입금 구조 상세 <span class="badge badge-danger">CRITICAL</span></h3>
+
+    <h4>장기차입금 (은행) — 20.2억</h4>
+    <table>
+        <tr><th>구분</th><th>취급금액</th><th>금리</th><th>만기일</th><th>상환방법</th><th>비고</th></tr>
+        <tr>
+            <td><strong>중기대출 건1</strong></td>
+            <td class="num">10.0억</td>
+            <td class="num">4.27%</td>
+            <td><span style="color:var(--negative); font-weight:700;">2026-03-06</span></td>
+            <td>만기일시</td>
+            <td style="font-size:11px; color:var(--negative);">D-9 임박 — 대환 진행 중 (→3.8%)</td>
+        </tr>
+        <tr>
+            <td><strong>중기대출 건2</strong></td>
+            <td class="num">9.0억</td>
+            <td class="num">4.79%</td>
+            <td><span style="color:var(--negative); font-weight:700;">2026-03-06</span></td>
+            <td>만기일시</td>
+            <td style="font-size:11px; color:var(--negative);">D-9 임박 — 대환 진행 중 (→3.8%)</td>
+        </tr>
+        <tr>
+            <td><strong>기타운전자금</strong></td>
+            <td class="num">1.22억</td>
+            <td class="num">3.70%</td>
+            <td>2030-12-15</td>
+            <td>원금균등(16회)</td>
+            <td style="font-size:11px;">회당 762만원, 최초 2027-03-15</td>
+        </tr>
+        <tr style="border-top: 2px solid var(--black);">
+            <td><strong>소계</strong></td>
+            <td class="num"><strong>20.22억</strong></td>
+            <td colspan="4"></td>
+        </tr>
+    </table>
+
+    <h4>단기차입금 (금전소비대차) — 잔여 2.1억</h4>
+    <table>
+        <tr><th>대여자</th><th>원금</th><th class="num">잔여</th><th>이자율</th><th>만기</th></tr>
+        <tr><td>김형우</td><td class="num">1.0억</td><td class="num text-positive">상환 완료</td><td class="num">12%</td><td>2025-12-31</td></tr>
+        <tr><td>최연희</td><td class="num">1.0억</td><td class="num text-positive">상환 완료</td><td class="num">15%</td><td>2025-12-31</td></tr>
+        <tr><td>지은정</td><td class="num">1.0억</td><td class="num text-negative">0.5억</td><td class="num">12%</td><td>2026-03-31</td></tr>
+        <tr><td>박정혜</td><td class="num">0.6억</td><td class="num text-negative">0.6억</td><td class="num">4.6%</td><td>2026-12-31</td></tr>
+        <tr><td>박지수</td><td class="num">0.4억</td><td class="num text-negative">0.4억</td><td class="num">6.48%</td><td>2026-12-31</td></tr>
+        <tr><td>브이씨엠</td><td class="num">1.0억</td><td class="num text-negative">0.6억</td><td class="num">6%</td><td>2026-12-31</td></tr>
+        <tr style="border-top: 2px solid var(--black);">
+            <td><strong>소계</strong></td>
+            <td class="num">5.0억</td>
+            <td class="num"><strong>2.1억</strong></td>
+            <td colspan="2"></td>
+        </tr>
+    </table>
+    <p style="font-size:11px; color:var(--text-secondary);">※ 개인 대여금 중 일부(김형우 12%, 최연희 15%)는 고금리. 지은정 0.5억은 2026-03-31 만기 임박.</p>
+
+    <h4>전환사채 (CB) — 잔여 25.0억</h4>
+    <table>
+        <tr><th>회차</th><th>인원</th><th class="num">잔여총액</th><th>이자율</th><th>만기</th><th>전환가</th></tr>
+        <tr>
+            <td>5회차</td><td>1명 (이기연)</td><td class="num">0.3억</td><td class="num">3%</td><td>2027-04-04</td><td class="num">212,375원</td>
+        </tr>
+        <tr>
+            <td>6회차</td><td>18명</td><td class="num">11.12억</td><td class="num">3%</td><td>2027-05-08</td><td class="num">53,049원</td>
+        </tr>
+        <tr>
+            <td>7회차</td><td>5명</td><td class="num">13.53억</td><td class="num">3%</td><td>2027-08-03</td><td class="num">53,049원</td>
+        </tr>
+        <tr style="border-top: 2px solid var(--black);">
+            <td><strong>소계</strong></td><td>24명</td><td class="num"><strong>24.95억</strong></td><td colspan="3"></td>
+        </tr>
+    </table>
+    <p style="font-size:11px; color:var(--text-secondary);">※ 6-7회차 전환가 53,049원 기준 전환 시 약 46,500주 추가 발행 → 기존 188,506주 대비 <strong>24.7% 희석</strong>. 지연이자율 12%.</p>
+
+    <div class="card card-danger">
+        <h4 class="mt-0">총 부채 구조 요약</h4>
+        <table>
+            <tr><th>구분</th><th class="num">금액</th><th>긴급도</th></tr>
+            <tr><td>장기차입금 (은행)</td><td class="num">20.22억</td><td><span class="badge badge-danger">19억 D-9 만기</span></td></tr>
+            <tr><td>단기차입금 (금전소비대차)</td><td class="num">2.1억 (잔여)</td><td><span class="badge badge-warning">2026 내 만기</span></td></tr>
+            <tr><td>전환사채 (CB)</td><td class="num">24.95억</td><td><span class="badge badge-review">2027 만기</span></td></tr>
+            <tr><td>상환전환우선주 (RCPS)</td><td class="num">41.57억</td><td><span class="badge badge-info">자본성 부채</span></td></tr>
+            <tr style="border-top: 2px solid var(--black);">
+                <td><strong>총계</strong></td><td class="num"><strong>88.84억</strong></td><td></td>
+            </tr>
+        </table>
+        <p style="font-size:11px; margin-top:4px;">자산총계(21.1억) 대비 총 부채(88.84억) = <strong>부채비율 421%</strong>. 자본잠식으로 부채비율 산정 불가(실질 무한대).</p>
+    </div>
+
+    <!-- ═══════════════════════════════════════ -->
+    <!-- B.6+ 비유동자산 실질가치 분석               -->
+    <!-- ═══════════════════════════════════════ -->
+    <h3>B.6+ 비유동자산 실질가치 분석 <span class="badge badge-danger">CRITICAL</span></h3>
+    <table>
+        <tr><th>구분</th><th class="num">장부가</th><th>담보 적격성</th><th>실질 가치</th></tr>
+        <tr>
+            <td>유동자산 (현금·매출채권)</td>
+            <td class="num">1.4억</td>
+            <td><span class="badge badge-success">적격</span></td>
+            <td class="num">~1.4억</td>
+        </tr>
+        <tr>
+            <td>지분법적용투자주식 (관계회사)</td>
+            <td class="num">10.3억</td>
+            <td><span class="badge badge-danger">부적격</span></td>
+            <td class="num" style="color:var(--negative);">불명</td>
+        </tr>
+        <tr>
+            <td>무형자산 — 소프트웨어</td>
+            <td class="num">9.2억</td>
+            <td><span class="badge badge-danger">부적격</span></td>
+            <td class="num" style="color:var(--negative);">0원</td>
+        </tr>
+        <tr>
+            <td>유형자산·보증금</td>
+            <td class="num">0.0억</td>
+            <td>—</td>
+            <td class="num">0원</td>
+        </tr>
+        <tr style="border-top: 2px solid var(--black);">
+            <td><strong>합계</strong></td>
+            <td class="num"><strong>21.1억</strong></td>
+            <td></td>
+            <td class="num" style="color:var(--negative); font-weight:700;"><strong>~1.4억</strong></td>
+        </tr>
+    </table>
+    <p style="font-size:11px; color:var(--negative);">자산총계 21.1억 중 담보 가능 자산은 유동자산 ~1.4억뿐. 투자주식(비상장 관계회사 지분)과 무형자산(소프트웨어)은 담보 부적격. 은행 대출 20.2억의 담보는 기보 보증으로 추정.</p>
+
+    <div class="card card-highlight">
+        <h4 class="mt-0">관계회사 "두물머리투자자문" — 2024년 17.5억 처분손 발생</h4>
+        <p>회사명이 "(주)두물머리"에서 "(주)모트에이아이"로 변경 (사업자번호 동일). 관계회사 "두물머리투자자문"에 대한 지분법적용투자주식이 비유동자산의 53%를 차지.</p>
+        <table>
+            <tr><th>연도말</th><th class="num">투자주식</th><th class="num">변동</th><th>비고</th></tr>
+            <tr><td>2022</td><td class="num">26.0억</td><td class="num">—</td><td></td></tr>
+            <tr><td>2023</td><td class="num">31.0억</td><td class="num">+5.0억</td><td>추가 출자</td></tr>
+            <tr><td>2024</td><td class="num">10.3억</td><td class="num text-negative">-20.7억</td><td>대규모 매각, <strong>처분손실 17.5억</strong></td></tr>
+            <tr><td>2025(가)</td><td class="num">~10.3억</td><td class="num">—</td><td>잔여 — 추가 평가손 가능</td></tr>
+        </table>
+        <p style="font-size:11px; color:var(--caution); margin-top:4px;">→ 2024년 당기순손실 -33.9억 중 17.5억이 이 처분손(일회성). 2025년 재발 없음 확인. 다만 잔여 10.3억의 현재 공정가치와 추가 처분 계획은 인터뷰 확인 필요.</p>
+    </div>
+
+    <!-- ═══════════════════════════════════════ -->
+    <!-- B.6++ 현금 BEP 분석                       -->
+    <!-- ═══════════════════════════════════════ -->
+    <h3>B.6++ 현금 BEP vs 회계 BEP <span class="badge badge-success">긍정 발견</span></h3>
+    <div class="card card-success">
+        <h4 class="mt-0">무형자산상각 3.7억/년 = SGA의 35% (비현금 비용)</h4>
+        <p>판관비 10.6억 중 무형자산상각(소프트웨어) 3.7억은 <strong>비현금 비용</strong>입니다. 현금 기준으로 재계산하면:</p>
+        <table>
+            <tr><th>구분</th><th class="num">회계 기준</th><th class="num">현금 기준</th><th>차이</th></tr>
+            <tr><td>매출</td><td class="num">11.8억</td><td class="num">11.8억</td><td></td></tr>
+            <tr><td>판관비 (SGA)</td><td class="num">-10.6억</td><td class="num">-6.9억</td><td>상각 3.7억 제외</td></tr>
+            <tr style="border-top: 1px solid var(--border);">
+                <td><strong>영업이익</strong></td><td class="num">1.2억</td><td class="num" style="color:var(--positive); font-weight:700;">4.9억</td><td></td>
+            </tr>
+            <tr><td>이자비용</td><td class="num">-1.24억</td><td class="num">-1.24억</td><td></td></tr>
+            <tr><td>기타 영업외</td><td class="num">-0.34억</td><td class="num">-0.34억</td><td></td></tr>
+            <tr style="border-top: 2px solid var(--black);">
+                <td><strong>순이익</strong></td>
+                <td class="num" style="color:var(--negative);">-0.29억</td>
+                <td class="num" style="color:var(--positive); font-weight:700;">+3.3억</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td><strong>월 환산</strong></td>
+                <td class="num" style="color:var(--negative);">-0.02억/월</td>
+                <td class="num" style="color:var(--positive); font-weight:700;">+0.28억/월</td>
+                <td></td>
+            </tr>
+        </table>
+        <p style="font-size:11px; color:var(--positive); margin-top:4px;"><strong>회계적으로는 적자(-0.29억)이나 현금 기준으로는 연 3.3억 흑자.</strong> 이 회사는 실질적으로 현금을 창출하고 있으며, 상각 완료 시(~2027년) 회계상으로도 자동 흑자 전환.</p>
+    </div>
+
+    <!-- ═══════════════════════════════════════ -->
+    <!-- B.7 매출 파이프라인 2026                   -->
+    <!-- ═══════════════════════════════════════ -->
+    <h3>B.7 매출 파이프라인 2026(E)</h3>
+
+    <div class="kpi-grid" style="margin-bottom:12px">
+        <div class="kpi-card">
+            <div class="kpi-value">45.6억</div>
+            <div class="kpi-label">2026 매출 목표</div>
+        </div>
+        <div class="kpi-card success">
+            <div class="kpi-value">5.0억</div>
+            <div class="kpi-label">확정 매출</div>
+        </div>
+        <div class="kpi-card warning">
+            <div class="kpi-value">15.0억</div>
+            <div class="kpi-label">유력 매출</div>
+        </div>
+        <div class="kpi-card">
+            <div class="kpi-value">3.9x</div>
+            <div class="kpi-label">YoY 성장률</div>
+        </div>
+    </div>
+
+    <h4>프로젝트별 매출 파이프라인 (단위: 백만원)</h4>
+    <table>
+        <tr><th>거래처</th><th>프로젝트</th><th class="num">금액</th><th>유형</th><th>분류</th></tr>
+        <tr><td><strong>유진투자증권</strong></td><td>사내 그룹웨어 AI 재설계</td><td class="num">1,200</td><td>개발</td><td>금융</td></tr>
+        <tr><td><strong>유진투자증권</strong></td><td>AI 조건검색 2차</td><td class="num">1,000</td><td>개발</td><td>금융</td></tr>
+        <tr><td><strong>노란풍선</strong></td><td>AI OS 설계 및 컨설팅</td><td class="num">600</td><td>컨설팅</td><td>일반</td></tr>
+        <tr><td><strong>한국투자신탁운용</strong></td><td>AI 에이전트</td><td class="num">400</td><td>개발</td><td>금융</td></tr>
+        <tr><td><strong>폴턴삭스</strong></td><td>AI OS 설계 + 매출 셰어</td><td class="num">400</td><td>개발</td><td>일반</td></tr>
+        <tr><td><strong>베리타AI</strong></td><td>AI OS 설계 + 매출 셰어</td><td class="num">260</td><td>개발</td><td>일반</td></tr>
+        <tr><td>유진투자증권</td><td>AI 조건검색 (운영)</td><td class="num">260</td><td>운영</td><td>금융</td></tr>
+        <tr><td>한화투자증권</td><td>AI 다이렉트인덱싱 (운영)</td><td class="num">100</td><td>운영</td><td>금융</td></tr>
+        <tr><td>OKUsystem</td><td>AI OS 설계 및 컨설팅</td><td class="num">100</td><td>컨설팅</td><td>일반</td></tr>
+        <tr><td>신생 VC</td><td>AI OS 설계 및 컨설팅</td><td class="num">100</td><td>컨설팅</td><td>일반</td></tr>
+        <tr><td>유진투자증권</td><td>AI 애널리스트</td><td class="num">80</td><td>개발</td><td>금융</td></tr>
+        <tr><td>한국투자신탁운용</td><td>AI 에이전트 (추가)</td><td class="num">60</td><td>개발</td><td>금융</td></tr>
+        <tr style="border-top: 2px solid var(--black);">
+            <td><strong>합계</strong></td><td></td><td class="num"><strong>4,560</strong></td><td colspan="2"></td>
+        </tr>
+    </table>
+
+    <div class="card card-highlight">
+        <h4 class="mt-0">매출 집중도 리스크</h4>
+        <table>
+            <tr><th>고객</th><th class="num">금액(백만)</th><th class="num">비중</th></tr>
+            <tr><td><strong>유진투자증권</strong></td><td class="num">2,540</td><td class="num" style="color:var(--negative); font-weight:700;">55.7%</td></tr>
+            <tr><td>노란풍선</td><td class="num">600</td><td class="num">13.2%</td></tr>
+            <tr><td>한국투자신탁운용</td><td class="num">460</td><td class="num">10.1%</td></tr>
+            <tr><td>폴턴삭스</td><td class="num">400</td><td class="num">8.8%</td></tr>
+            <tr><td>기타 4사</td><td class="num">560</td><td class="num">12.3%</td></tr>
+        </table>
+        <p style="font-size:11px; color:var(--negative); margin-top:4px;">유진투자증권 단일 고객 비중 55.7% — 해당 프로젝트 지연/취소 시 BEP 미달 리스크. Top 3 고객 집중도 79.0%.</p>
+    </div>
+
+    <p style="font-size:11px; color:var(--text-secondary);">
+        ※ 매출 유형별: 개발 74.6%(3,400M) / 컨설팅 17.5%(800M) / 운영 7.9%(360M)<br>
+        ※ 분류별: 금융 68.0%(3,100M) / 일반 32.0%(1,460M) — 2025년 금융 95.4%에서 다소 분산<br>
+        ※ <strong style="color:var(--negative);">매출 목표 3종 불일치:</strong> 회사소개서(35억) vs 보완내용 답변(40억) vs 매출실적엑셀(45.6억) — 인터뷰에서 현실적 목표 기준 확인 필수
+    </p>
+
+    <!-- ═══════════════════════════════════════ -->
+    <!-- B.8 주주 구조 상세                         -->
+    <!-- ═══════════════════════════════════════ -->
+    <h3>B.8 주주 구조 (2026.01.21 기준)</h3>
+    <table>
+        <tr><th>주주</th><th>주식종류</th><th class="num">주식수</th><th class="num">지분율</th><th>비고</th></tr>
+        <tr><td><strong>천영록 (대표)</strong></td><td>보통주</td><td class="num">52,497</td><td class="num">27.85%</td><td>최대주주</td></tr>
+        <tr><td><strong>송락현</strong></td><td>보통주</td><td class="num">20,000</td><td class="num">10.61%</td><td>10%+ 주요주주</td></tr>
+        <tr><td><strong>박지수</strong></td><td>보통주</td><td class="num">18,000</td><td class="num">9.55%</td><td>5%+ 주요주주</td></tr>
+        <tr><td><strong>이승규</strong></td><td>보통주</td><td class="num">10,000</td><td class="num">5.30%</td><td>5%+ 주요주주</td></tr>
+        <tr><td>개인투자자 (와디즈 등)</td><td>보통주</td><td class="num">54,448</td><td class="num">28.88%</td><td>다수 소액주주</td></tr>
+        <tr style="border-top: 1px solid var(--border);">
+            <td colspan="2"><em>보통주 소계</em></td><td class="num"><em>154,945</em></td><td class="num"><em>82.20%</em></td><td></td>
+        </tr>
+        <tr><td><strong>한화자산운용</strong></td><td>RCPS</td><td class="num">19,442</td><td class="num">10.31%</td><td>35.0억 투자 / 동의권 보유</td></tr>
+        <tr><td>새한신용정보</td><td>RCPS</td><td class="num">8,730</td><td class="num">4.63%</td><td>2.5억 투자</td></tr>
+        <tr><td>TP-핀테크제1호조합</td><td>RCPS</td><td class="num">3,722</td><td class="num">1.97%</td><td>1.1억 투자 / 정관변경·신주발행 동의</td></tr>
+        <tr><td>와디즈유니크밸류</td><td>RCPS</td><td class="num">1,667</td><td class="num">0.88%</td><td>3.0억 투자</td></tr>
+        <tr style="border-top: 1px solid var(--border);">
+            <td colspan="2"><em>RCPS 소계</em></td><td class="num"><em>33,561</em></td><td class="num"><em>17.80%</em></td><td><em>총 41.6억</em></td>
+        </tr>
+        <tr style="border-top: 2px solid var(--black);">
+            <td colspan="2"><strong>전체 합계</strong></td><td class="num"><strong>188,506</strong></td><td class="num"><strong>100.00%</strong></td><td></td>
+        </tr>
+    </table>
+
+    <div class="card card-highlight">
+        <h4 class="mt-0">RCPS 주주 동의권 요약</h4>
+        <ul>
+            <li><strong>한화자산운용</strong>: 건당 전년도 자산총계 10%+ 또는 연간 누계 20%+ 규모의 자산 취득/처분, 투자, 자금대여, 담보제공, 보증, 신규 차입, 채무부담 시 동의 필요</li>
+            <li><strong>TP-핀테크</strong>: 정관변경, <strong>신주발행</strong>, 주식관련사채 발행, 스톡옵션 부여, 배당, 대표이사 선임/해임 시 동의 필요</li>
+            <li><strong>새한신용정보</strong>: 자회사 신설, 관계회사/제3자 투자, 자금대여 또는 보증 시 동의 필요</li>
+            <li><strong>와디즈유니크밸류</strong>: 국내외 회사 설립 또는 50%+ 지분 취득 시 동의 필요</li>
+        </ul>
+        <p style="font-size:11px; color:var(--negative); margin-top:4px;">→ 메자닌(CB/BW) 신규 발행 시 TP-핀테크 동의 필수 (신주발행·주식관련사채 동의권). 한화자산운용은 금액 규모에 따라 동의 필요.</p>
+    </div>
+
+    <h4>전환가격 단계</h4>
+    <table>
+        <tr><th>투자시기</th><th>투자자</th><th class="num">전환가(원/주)</th><th class="num">총 투자금</th></tr>
+        <tr><td>2017~2018</td><td>새한신용정보, TP-핀테크</td><td class="num">28,630</td><td class="num">3.6억</td></tr>
+        <tr><td>2020</td><td>한화자산운용, 와디즈유니크밸류</td><td class="num">180,020</td><td class="num">38.0억</td></tr>
+        <tr><td>2024</td><td>이기연 (CB 5회차)</td><td class="num">212,375</td><td class="num">0.3억</td></tr>
+        <tr><td>2025</td><td>CB 6-7회차 (23명)</td><td class="num">53,049</td><td class="num">24.65억</td></tr>
+    </table>
+    <p style="font-size:11px; color:var(--text-secondary);">※ 2025년 CB 전환가(53,049원)가 2020년 RCPS 전환가(180,020원)보다 <strong>70.5% 낮음</strong> → 한화자산운용 RCPS 대비 대폭 다운라운드. 기존 RCPS 주주 anti-dilution 조항 확인 필요.</p>
+
+    <hr class="section-divider">
+
+    <!-- ═══════════════════════════════════════ -->
+    <!-- C. 이상 항목 체크포인트                   -->
+    <!-- ═══════════════════════════════════════ -->
+    <h2>C. 이상 항목 체크포인트</h2>
+
+    <div class="anomaly-summary">
+        <div class="anomaly-count">
+            <span class="badge badge-danger">CRITICAL</span>
+            <span class="count">4</span>
+        </div>
+        <div class="anomaly-count">
+            <span class="badge badge-warning">WARNING</span>
+            <span class="count">4</span>
+        </div>
+        <div class="anomaly-count">
+            <span class="badge badge-review">REVIEW</span>
+            <span class="count">2</span>
+        </div>
+        <div class="anomaly-count">
+            <span class="badge badge-info">INFO</span>
+            <span class="count">0</span>
+        </div>
+    </div>
+
+    
+    <table>
+        <tr>
+            <th style="width: 90px;">심각도</th>
+            <th style="width: 200px;">항목</th>
+            <th>상세</th>
+            <th style="width: 250px;">확인 필요 사항</th>
+        </tr>
+        
+        <tr>
+            <td><span class="badge badge-success">확인완료</span></td>
+            <td><strong>직원급여 음수 발생</strong><br><span style="font-size: 10px; color: var(--text-tertiary);">직원급여 12월: -1.6억</span></td>
+            <td>2025년 12월 직원급여 -161,110,890원 (연간 합계 대비 -72%)</td>
+            <td style="font-size: 11px;"><strong style="color:var(--positive);">확인:</strong> 기업연구소 연구인원(2명) 인건비를 급여→경상개발연구비 계정으로 전환 처리</td>
+        </tr>
+
+        <tr>
+            <td><span class="badge badge-success">확인완료</span></td>
+            <td><strong>상여금 음수 발생</strong><br><span style="font-size: 10px; color: var(--text-tertiary);">상여금 12월: -0.02억</span></td>
+            <td>2025년 12월 상여금 -2,093,250원 (연간 합계 대비 -67%)</td>
+            <td style="font-size: 11px;"><strong style="color:var(--positive);">확인:</strong> 상동 — 연구인원 인건비 계정 전환에 따른 역전</td>
+        </tr>
+        
+        <tr>
+            <td><span class="badge badge-danger">CRITICAL</span></td>
+            <td><strong>이자비용이 영업이익과 동수준</strong><br><span style="font-size: 10px; color: var(--text-tertiary);">ICR: 0.97x (1.0x 미만)</span></td>
+            <td>영업이익 1.2억, 이자비용 1.24억 (영업외비용 1.6억 중 79%). ICR 0.97x. 영업외비용에는 잡손실 0.05억 + 전기오류수정 0.29억 포함.</td>
+            <td style="font-size: 11px;"><strong style="color:var(--positive);">확인:</strong> 은행 20.2억(4.3~4.8%), 개인 2.1억(4.6~12%), CB 25.0억(3%). 은행 19억 3/6 만기→대환 진행 중(→3.8%)</td>
+        </tr>
+        
+        <tr>
+            <td><span class="badge badge-danger">CRITICAL</span></td>
+            <td><strong>완전자본잠식 (자본총계 -29.4억)</strong><br><span style="font-size: 10px; color: var(--text-tertiary);">자본총계: -29.4억</span></td>
+            <td>자본총계 -29.4억으로 완전자본잠식 상태. 결손금 109.5억이 자본금+자본잉여금을 초과.</td>
+            <td style="font-size: 11px;">완전자본잠식 해소 방안 확인 — 유상증자, 결손금 보전, 전환사채 전환 등 계획 여부</td>
+        </tr>
+        
+        <tr>
+            <td><span class="badge badge-warning">WARNING</span></td>
+            <td><strong>자본잉여금 존재 + 결손금 동시 발생</strong><br><span style="font-size: 10px; color: var(--text-tertiary);">자본잉여금: 79.2억, 결손금: 109.5억</span></td>
+            <td>자본잉여금 79.2억 vs 결손금 109.5억</td>
+            <td style="font-size: 11px;">투자금(자본잉여금) 유입 후 지속 적자로 결손 누적 — 자본 효율성 검토 필요</td>
+        </tr>
+        
+        <tr>
+            <td><span class="badge badge-warning">WARNING</span></td>
+            <td><strong>복리후생비 2월 급증 (6.7배)</strong><br><span style="font-size: 10px; color: var(--text-tertiary);">복리후생비: 1월 → 2월 6.7배</span></td>
+            <td>1월 0.00억 → 2월 0.03억 (6.7배 변동)</td>
+            <td style="font-size: 11px;">복리후생비 2월 급변동 원인 확인 (일시적 이벤트? 구조적 변화?)</td>
+        </tr>
+        
+        <tr>
+            <td><span class="badge badge-warning">WARNING</span></td>
+            <td><strong>복리후생비 5월 급증 (9.0배)</strong><br><span style="font-size: 10px; color: var(--text-tertiary);">복리후생비: 4월 → 5월 9.0배</span></td>
+            <td>4월 0.01억 → 5월 0.05억 (9.0배 변동)</td>
+            <td style="font-size: 11px;">복리후생비 5월 급변동 원인 확인 (일시적 이벤트? 구조적 변화?)</td>
+        </tr>
+        
+        <tr>
+            <td><span class="badge badge-warning">WARNING</span></td>
+            <td><strong>세금과공과금 9월 급증 (15.6배)</strong><br><span style="font-size: 10px; color: var(--text-tertiary);">세금과공과금: 8월 → 9월 15.6배</span></td>
+            <td>8월 0.00억 → 9월 0.03억 (15.6배 변동)</td>
+            <td style="font-size: 11px;">세금과공과금 9월 급변동 원인 확인 (일시적 이벤트? 구조적 변화?)</td>
+        </tr>
+        
+        <tr>
+            <td><span class="badge badge-review">REVIEW</span></td>
+            <td><strong>인건비(급여+상여) 12월 급감/반전 (4.6배)</strong><br><span style="font-size: 10px; color: var(--text-tertiary);">인건비(급여+상여): 11월 → 12월 4.6배</span></td>
+            <td>11월 0.35억 → 12월 -1.6억 (4.6배 변동)</td>
+            <td style="font-size: 11px;">인건비(급여+상여) 12월 급변동 원인 확인 (일시적 이벤트? 구조적 변화?)</td>
+        </tr>
+        
+        <tr>
+            <td><span class="badge badge-review">REVIEW</span></td>
+            <td><strong>복리후생비 9월 급증 (4.6배)</strong><br><span style="font-size: 10px; color: var(--text-tertiary);">복리후생비: 8월 → 9월 4.6배</span></td>
+            <td>8월 0.01억 → 9월 0.04억 (4.6배 변동)</td>
+            <td style="font-size: 11px;">복리후생비 9월 급변동 원인 확인 (일시적 이벤트? 구조적 변화?)</td>
+        </tr>
+        
+    </table>
+    
+
+    <hr class="section-divider">
+
+    <!-- ═══════════════════════════════════════ -->
+    <!-- D. 종합 우려 포인트                       -->
+    <!-- ═══════════════════════════════════════ -->
+    <h2>D. 종합 우려 포인트</h2>
+
+    
+    
+    <div class="concern-card">
+        <div class="concern-rank">#1</div>
+        <div class="concern-perspective">BEP 관점</div>
+        <div class="concern-title">영업이익 연간 1.2억 흑자, 8개월 영업적자</div>
+        <div class="concern-detail">영업이익 기준 연간 BEP 달성(1.2억). 그러나 12개월 중 8개월 영업적자 (적자 월 평균 0.80억). 적자 월: 2월, 3월, 4월, 6월, 7월, 10월, 11월, 12월. 영업외비용 1.6억으로 인해 당기순이익 -0.29억 적자 전환.</div>
+    </div>
+    
+    <div class="concern-card">
+        <div class="concern-rank">#2</div>
+        <div class="concern-perspective">BEP 관점</div>
+        <div class="concern-title">영업외비용 1.6억 (이자비용 1.24억) — 영업이익 잠식</div>
+        <div class="concern-detail">영업이익 1.2억 대비 영업외비용 1.6억(이자비용 1.24억 + 잡손실·전기오류수정 0.34억)으로 영업이익을 초과. ICR 0.97x. 다만 <strong>현금 기준으로는 무형자산상각 3.7억 제외 시 연 3.3억 흑자</strong>.</div>
+    </div>
+    
+    <div class="concern-card">
+        <div class="concern-rank">#3</div>
+        <div class="concern-perspective">Equity 관점</div>
+        <div class="concern-title">완전자본잠식 (자본총계 -29.4억) — 투자 유치 장벽</div>
+        <div class="concern-detail">자본총계가 -29.4억으로 완전자본잠식 상태. 신규 투자자 입장에서 기존 부채 구조 및 결손금 규모가 투자 판단의 핵심 리스크. 전환사채 전환, 유상증자, 구조조정 등을 통한 자본잠식 해소 계획이 필수.</div>
+    </div>
+    
+    <div class="concern-card">
+        <div class="concern-rank">#4</div>
+        <div class="concern-perspective">Equity 관점</div>
+        <div class="concern-title">누적 투자 100억 이상 유치 후 지속 적자 — 자본 효율성 이슈</div>
+        <div class="concern-detail">누적 투자 유치 100억 이상이나 순손실 지속 중. 투자 자본의 생산성 및 회수 시점 검증 필요. 후속 라운드 밸류에이션 정당화를 위한 실적 개선이 핵심.</div>
+    </div>
+    
+    <div class="concern-card">
+        <div class="concern-rank">#4</div>
+        <div class="concern-perspective">Equity 관점</div>
+        <div class="concern-title">소규모 팀(5~10명) — Key-man 리스크</div>
+        <div class="concern-detail">소규모 팀 구조에서 핵심 인력 이탈 시 사업 연속성 위협. 대표이사 의존도가 높을 경우 Equity 취득 리스크 증가.</div>
+    </div>
+
+    <div class="concern-card" style="border-left-color: var(--negative);">
+        <div class="concern-rank">#5</div>
+        <div class="concern-perspective">유동성 관점</div>
+        <div class="concern-title">은행 대출 19억 만기 D-9 (2026.03.06) — 대환 미확정</div>
+        <div class="concern-detail">중소기업자금대출 2건(10억+9억, 금리 4.27~4.79%) 만기 2026-03-06. 대환(→3.8%)을 진행 중이나 아직 확정되지 않은 상태. 대환 실패 시 19억 일시상환 의무 → 즉각적 유동성 위기.</div>
+    </div>
+
+    <div class="concern-card" style="border-left-color: var(--caution);">
+        <div class="concern-rank">#6</div>
+        <div class="concern-perspective">BEP 관점</div>
+        <div class="concern-title">2026 매출 유진투자증권 55.7% 집중 — 단일고객 의존</div>
+        <div class="concern-detail">2026년 매출 목표 45.6억 중 유진투자증권 25.4억(55.7%). Top 3 고객 집중도 79.0%. 유진투자증권 프로젝트 지연·취소 시 매출 파이프라인 절반 이상 소멸. 2025년에도 금융 매출 95.4%로 산업 집중도 과도.</div>
+    </div>
+
+    <div class="concern-card" style="border-left-color: var(--caution);">
+        <div class="concern-rank">#7</div>
+        <div class="concern-perspective">Equity 관점</div>
+        <div class="concern-title">CB 전환 시 24.7% 희석 + RCPS 동의권 제약</div>
+        <div class="concern-detail">전환사채 6-7회차(전환가 53,049원) 전환 시 ~46,500주 추가 발행 → 기존 지분 24.7% 희석. 2020년 RCPS 전환가(180,020원) 대비 70.5% 다운라운드. TP-핀테크 조합의 신주발행·주식관련사채 발행 동의권이 메자닌 투자의 구조적 장벽.</div>
+    </div>
+
+    <div class="concern-card" style="border-left-color: var(--dark);">
+        <div class="concern-rank">#8</div>
+        <div class="concern-perspective">BM 관점</div>
+        <div class="concern-title">경쟁사 특정 불가 — 빅테크 Agentic AI와의 경쟁 구조</div>
+        <div class="concern-detail">대표 답변: "뚜렷하게 각인될 경쟁사를 특정하긴 어려움. 빅테크들이 제공하는 Agentic system 전반이 파트너가 될 수도 있고 경쟁구조가 될 수도 있는 환경." 경쟁 우위(moat) 정의가 불명확하며, AI 에이전트 시장의 진입장벽이 낮아질 가능성.</div>
+    </div>
+    
+    
+
+    <hr class="section-divider">
+
+    <!-- ═══════════════════════════════════════ -->
+    <!-- E. 업종 분석                              -->
+    <!-- ═══════════════════════════════════════ -->
+    <h2 class="page-break-before">E. 업종 분석</h2>
+
+    
+    <h3>E.1 섹터 식별 + 시장 현황</h3>
+    <div class="card card-info">
+        <h4 class="mt-0">AI Agent / B2B AI Service</h4>
+        <p>글로벌 AI Agent 시장은 2025년 약 $7.8B(~11조 원) 규모이며, 2030년 $50B+ 전망(CAGR 43~46%)입니다. 엔터프라이즈 85%가 AI 에이전트 도입을 계획 중이며, 단순 챗봇에서 자율 태스크 수행(Agentic AI)으로 패러다임이 전환되고 있습니다. 국내 AI 에이전트 시장도 연 40%+ 성장하며 1조 원 규모로 향하고 있습니다.</p>
+    </div>
+
+    <h3>E.2 국내/해외 Peer 비교</h3>
+    <div class="peer-grid">
+        <div class="peer-card">
+            <h4 class="mt-0">국내 Peers</h4>
+            <table>
+                <tr><th>기업</th><th>비고</th></tr>
+                
+                <tr>
+                    <td><strong>포티투마루(42Maru)</strong></td>
+                    <td>대화형 AI 에이전트 '사이트버니', 기업용 QA/RAG, 시리즈B 누적 174억</td>
+                </tr>
+                
+                <tr>
+                    <td><strong>디윅스(Dwiks)</strong></td>
+                    <td>AI 워크플로우 자동화 'WEA', 2024 매출 34억, Pre-A</td>
+                </tr>
+                
+                <tr>
+                    <td><strong>마인드로직</strong></td>
+                    <td>생성형 AI 챗봇 '팩트챗', 19개 대학 도입, 누적 70억+</td>
+                </tr>
+                
+                <tr>
+                    <td><strong>스켈터랩스</strong></td>
+                    <td>자체 LLM '벨라' 기반 B2B AI 에이전트, 메타넷 인수(누적 404억)</td>
+                </tr>
+                
+            </table>
+        </div>
+        <div class="peer-card">
+            <h4 class="mt-0">해외 Peers</h4>
+            <table>
+                <tr><th>기업</th><th>비고</th></tr>
+                
+                <tr>
+                    <td><strong>Sierra AI</strong></td>
+                    <td>기업 고객용 AI 에이전트 플랫폼, ARR $150M, $10B 밸류에이션</td>
+                </tr>
+                
+                <tr>
+                    <td><strong>Cognition Labs (Devin)</strong></td>
+                    <td>AI 코딩 에이전트, ARR $155M, $10.2B 밸류에이션</td>
+                </tr>
+                
+                <tr>
+                    <td><strong>Relevance AI</strong></td>
+                    <td>노코드 AI 에이전트 빌더, 시리즈B $37M, 월 4만 에이전트</td>
+                </tr>
+                
+                <tr>
+                    <td><strong>CrewAI</strong></td>
+                    <td>멀티 에이전트 오케스트레이션, 시리즈A $18M, 150 엔터프라이즈 고객</td>
+                </tr>
+                
+            </table>
+        </div>
+    </div>
+
+    <h3>E.3 핵심 KPI</h3>
+    <table>
+        <tr><th>KPI</th><th>벤치마크</th><th>의미</th></tr>
+        
+        <tr>
+            <td><strong>ARR Growth Rate</strong></td>
+            <td class="font-mono">>100% YoY</td>
+            <td>AI 에이전트 초기 단계에서 높은 성장률이 투자자 핵심 지표</td>
+        </tr>
+        
+        <tr>
+            <td><strong>Net Revenue Retention (NRR)</strong></td>
+            <td class="font-mono">>120%</td>
+            <td>기존 고객 확장 매출이 신규 고객 획득 비용을 상쇄</td>
+        </tr>
+        
+        <tr>
+            <td><strong>Gross Margin</strong></td>
+            <td class="font-mono">>60%</td>
+            <td>AI 인프라 비용(GPU/API) 제외 후 실질 마진 — B2B 서비스형은 60%+도 양호</td>
+        </tr>
+        
+        <tr>
+            <td><strong>CAC Payback Period</strong></td>
+            <td class="font-mono"><18개월</td>
+            <td>B2B 영업 효율성 판단 기준</td>
+        </tr>
+        
+        <tr>
+            <td><strong>Monthly Burn Rate</strong></td>
+            <td class="font-mono">런웨이 18개월+</td>
+            <td>AI 스타트업은 초기 투자 기간이 길어 런웨이 확보 필수</td>
+        </tr>
+        
+    </table>
+
+    <h3>E.4 글로벌 VC 투자 시 중점 지표</h3>
+    <table>
+        <tr><th>Source</th><th>Criterion</th></tr>
+        
+        <tr>
+            <td><strong>YC</strong></td>
+            <td>Product-market fit with clear enterprise demand — 실제 유료 고객이 반복 구매하는가?</td>
+        </tr>
+        
+        <tr>
+            <td><strong>a16z</strong></td>
+            <td>Defensible moat via proprietary data or model — 자체 데이터/모델로 경쟁 우위 확보 가능한가?</td>
+        </tr>
+        
+        <tr>
+            <td><strong>Sequoia</strong></td>
+            <td>10x improvement over existing workflow — 기존 대비 10배 효율 개선을 제공하는가?</td>
+        </tr>
+        
+        <tr>
+            <td><strong>Insight Partners</strong></td>
+            <td>Agentic AI monetization path — 에이전트 단위 과금/성과 기반 수익 모델이 확보되었는가?</td>
+        </tr>
+        
+    </table>
+    
+
+    <hr class="section-divider">
+
+    <!-- ═══════════════════════════════════════ -->
+    <!-- F. [Appendix] TRA 관점                   -->
+    <!-- ═══════════════════════════════════════ -->
+    <h2 class="page-break-before">F. TRA 관점 — 메자닌 투자 비대칭 판단</h2>
+
+    
+    <!-- F.1 리스크 팩트 -->
+    
+    <h3>F.1 리스크 팩트</h3>
+    <table>
+        <tr><th style="width:90px">심각도</th><th>팩트</th><th>인터뷰 확인</th></tr>
+        
+        <tr>
+            <td><span class="badge badge-danger">CRITICAL</span></td>
+            <td><strong>완전자본잠식 (자본총계 -29.4억)</strong></td>
+            <td>자본잠식 해소 계획 확인</td>
+        </tr>
+        
+        <tr>
+            <td><span class="badge badge-warning">WARNING</span></td>
+            <td><strong>ICR 0.97x — 이자보상배율 1.0x 미만</strong></td>
+            <td>차입금 조건 및 이자율 구조</td>
+        </tr>
+        
+    </table>
+    
+
+    <!-- F.2 BEP 민감도 분석 -->
+    <h3>F.2 BEP 민감도 분석</h3>
+    <div class="assumption-note">
+        <strong>아래 수치는 가정(assumption)입니다.</strong> 실제 적용 가능 비율은 인터뷰를 통해 확인해야 합니다.
+        보수적/중립/낙관 3개 시나리오로 BEP 도달 가능성을 범위로 제시합니다.
+    </div>
+
+    <div class="kpi-grid" style="margin-bottom: 12px">
+        <div class="kpi-card success">
+            <div class="kpi-value">0.10억</div>
+            <div class="kpi-label">월 영업이익(평균)</div>
+        </div>
+        <div class="kpi-card danger">
+            <div class="kpi-value">0.13억</div>
+            <div class="kpi-label">월 영업외 순비용</div>
+        </div>
+        <div class="kpi-card danger">
+            <div class="kpi-value">-0.02억</div>
+            <div class="kpi-label">월 당기순이익</div>
+        </div>
+    </div>
+
+    
+    <div class="table-scroll">
+    <table>
+        <tr>
+            <th>레버</th>
+            <th class="num">현재값(연)</th>
+            <th class="num" colspan="2">보수적</th>
+            <th class="num" colspan="2">중립</th>
+            <th class="num" colspan="2">낙관</th>
+            <th>인터뷰 확인</th>
+        </tr>
+        
+        <tr>
+            <td><strong>이자비용 절감</strong></td>
+            <td class="num">1.24억</td>
+            <td class="num text-muted">10%</td>
+            <td class="num">0.12억</td>
+            <td class="num text-muted">30%</td>
+            <td class="num">0.37억</td>
+            <td class="num text-muted">50%</td>
+            <td class="num">0.62억</td>
+            <td style="font-size:11px">대환 금리인하(4.8→3.8%), CB 전환 시 이자 절감</td>
+        </tr>
+        
+        <tr>
+            <td><strong>인건비 효율화</strong></td>
+            <td class="num">2.3억</td>
+            <td class="num text-muted">5%</td>
+            <td class="num">0.11억</td>
+            <td class="num text-muted">15%</td>
+            <td class="num">0.34억</td>
+            <td class="num text-muted">25%</td>
+            <td class="num">0.57억</td>
+            <td style="font-size:11px">조직 구조 · 인력 계획</td>
+        </tr>
+        
+        <tr>
+            <td><strong>판관비 구조조정</strong></td>
+            <td class="num">10.6억</td>
+            <td class="num text-muted">10%</td>
+            <td class="num">1.1억</td>
+            <td class="num text-muted">20%</td>
+            <td class="num">2.1억</td>
+            <td class="num text-muted">35%</td>
+            <td class="num">3.7억</td>
+            <td style="font-size:11px">고정비/변동비 구분</td>
+        </tr>
+        
+        <tr>
+            <td><strong>매출 성장 (6개월)</strong></td>
+            <td class="num">11.8억</td>
+            <td class="num text-muted">5%</td>
+            <td class="num">0.59억</td>
+            <td class="num text-muted">20%</td>
+            <td class="num">2.4억</td>
+            <td class="num text-muted">40%</td>
+            <td class="num">4.7억</td>
+            <td style="font-size:11px">파이프라인 · 수주 현황</td>
+        </tr>
+        
+        <tr style="border-top: 2px solid var(--black)">
+            <td><strong>합산 월 개선 가능</strong></td>
+            <td class="num"></td>
+            <td class="num" colspan="2"><strong>0.16억</strong></td>
+            <td class="num" colspan="2"><strong>0.44억</strong></td>
+            <td class="num" colspan="2"><strong>0.80억</strong></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td><strong>BEP 6개월 판정</strong></td>
+            <td class="num"></td>
+            <td class="num" colspan="2"><span class="badge badge-success">도달 가능</span></td>
+            <td class="num" colspan="2"><span class="badge badge-success">도달 가능</span></td>
+            <td class="num" colspan="2"><span class="badge badge-success">도달 가능</span></td>
+            <td></td>
+        </tr>
+    </table>
+    </div>
+    
+
+    <!-- F.3 메자닌 시나리오 -->
+    
+    <h3>F.3 메자닌 시나리오</h3>
+    <div class="scenario-grid">
+        
+        <div class="scenario-card sc-info">
+            <div class="scenario-label">하방 (Base)</div>
+            <div class="scenario-title">원금 상환 + 이자 수취</div>
+            <div class="scenario-desc">메자닌 투자 후 BEP 도달 시, 약정에 따라 원금 상환 및 이자 수취. 현재 영업이익 흑자 구조.</div>
+            
+            <div class="scenario-prob">조건: BEP 도달 시</div>
+        </div>
+        
+        <div class="scenario-card sc-success">
+            <div class="scenario-label">상방 (Upside)</div>
+            <div class="scenario-title">주식 전환 → 지분 획득 → Equity 업사이드</div>
+            <div class="scenario-desc">현재 완전자본잠식 — 전환 시점의 기업가치 산정이 핵심. 턴어라운드 시 저평가 진입으로 고수익 실현 구조.</div>
+            
+            <div class="scenario-note">※ 기존 우선주 주주 합의 필수 — 인터뷰 확인 필요</div>
+            
+            <div class="scenario-prob">조건: BEP 도달 + 성장 지속 시</div>
+        </div>
+        
+        <div class="scenario-card sc-danger">
+            <div class="scenario-label">최하방 (Worst)</div>
+            <div class="scenario-title">BEP 미달 → 원금·이자 상환 차질</div>
+            <div class="scenario-desc">6개월 내 BEP 미도달 시 원금-이자 상환에 차질. 담보 설정으로 원금의 일부 확보 구조 필요.</div>
+            
+            <div class="scenario-note">※ 실질 담보 가능 자산 ~1.4억(유동자산). 비유동자산 19.6억은 담보 부적격(비상장 투자주식+무형자산). 기존 부채 88.8억 대비 담보 여력 극히 제한.</div>
+            
+            <div class="scenario-prob">조건: BEP 미달 시</div>
+        </div>
+        
+    </div>
+    
+    
+
+    <!-- F.4 주주 구조 리스크 -->
+    
+    <h3>F.4 주주 구조 리스크 <span class="badge badge-success">분석 완료</span></h3>
+    <table>
+        <tr>
+            <th style="width:90px">심각도</th>
+            <th>항목</th>
+            <th>리스크</th>
+            <th>확인 결과</th>
+        </tr>
+
+        <tr>
+            <td><span class="badge badge-danger">HIGH</span></td>
+            <td><strong>전환사채(CB) 24.95억 — 다운라운드</strong></td>
+            <td>6-7회차 전환가 53,049원 → 2020년 RCPS(180,020원) 대비 70.5% 하락. 전환 시 46,500주 추가 → 24.7% 희석</td>
+            <td style="font-size:11px;">3개 회차(5-7회), 24명 투자자. 만기 2027년. 지연이자 12%</td>
+        </tr>
+
+        <tr>
+            <td><span class="badge badge-danger">HIGH</span></td>
+            <td><strong>TP-핀테크 동의권 — 메자닌 발행 차단 가능</strong></td>
+            <td>정관변경, <strong>신주발행, 주식관련사채 발행</strong>, 스톡옵션, 배당, 대표이사 선해임 동의권 보유</td>
+            <td style="font-size:11px;">투자금 1.1억 소액이나 동의권 범위가 광범위. 메자닌 발행 시 반드시 사전 동의 필요</td>
+        </tr>
+
+        <tr>
+            <td><span class="badge badge-warning">MEDIUM</span></td>
+            <td><strong>한화자산운용 동의권 — 자산 10%+ 거래</strong></td>
+            <td>RCPS 35억 투자(지분 10.31%). 건당 전년도 자산총계 10%+ 또는 연간 누계 20%+ 거래 시 동의</td>
+            <td style="font-size:11px;">자산총계 21.1억의 10% = 2.1억 → 2.1억 이상의 차입·투자 시 한화 동의 필요</td>
+        </tr>
+
+        <tr>
+            <td><span class="badge badge-warning">MEDIUM</span></td>
+            <td><strong>RCPS Anti-dilution 리스크</strong></td>
+            <td>2020년 RCPS 전환가(180,020원) vs 2025년 CB 전환가(53,049원) → anti-dilution 조항 발동 여부</td>
+            <td style="font-size:11px;">한화자산운용 SHA에서 anti-dilution(가중평균방식/전면조정방식) 확인 필요</td>
+        </tr>
+
+        <tr>
+            <td><span class="badge badge-review">REVIEW</span></td>
+            <td><strong>와디즈 개인투자자 다수 (54,448주, 28.88%)</strong></td>
+            <td>크라우드펀딩 투자자 다수 보유 → 주주 관리 복잡성, 주주총회 의결 어려움</td>
+            <td style="font-size:11px;">와디즈 플랫폼 투자자 수 및 의결권 위임 구조 확인 필요</td>
+        </tr>
+
+        <tr>
+            <td><span class="badge badge-review">REVIEW</span></td>
+            <td><strong>박지수 — 주주 겸 대여자 (이중역할)</strong></td>
+            <td>보통주 18,000주(9.55%, 주요주주) 보유 + 금전소비대차 0.4억(6.48%, 2026-12-31 만기) 대여자. 상환 우선순위에서 이해충돌 가능</td>
+            <td style="font-size:11px;">주주로서의 장기적 이익 vs 대여자로서의 단기 상환 압력 사이 이해충돌 여부 확인</td>
+        </tr>
+
+    </table>
+    
+
+    <!-- F.5 인터뷰 확인 필수사항 -->
+    
+    <h3>F.5 인터뷰 확인 필수사항</h3>
+    
+    <div class="checklist-item">
+        <div class="checklist-checkbox" style="background:var(--positive); border-color:var(--positive);"></div>
+        <div>
+            <div class="checklist-source">이상감지: CRITICAL — <span style="color:var(--positive);">확인 완료</span></div>
+            <div class="checklist-text"><s>직원급여, 상여금 12월 음수(역전) 원인 확인</s> → 기업연구소 연구인원(2명) 인건비 급여→경상개발연구비 계정 전환. 정상적 회계 재분류.</div>
+        </div>
+    </div>
+
+    <div class="checklist-item">
+        <div class="checklist-checkbox" style="background:var(--positive); border-color:var(--positive);"></div>
+        <div>
+            <div class="checklist-source">이상감지: CRITICAL — <span style="color:var(--positive);">확인 완료</span></div>
+            <div class="checklist-text"><s>차입금 구조, 금리 조건, 만기 스케줄 상세 확인</s> → 은행 20.2억(4.3~4.8%, 3/6만기 대환→3.8%), 개인 2.1억(4.6~12%), CB 25.0억(3%, 2027만기). 총 부채 88.8억.</div>
+        </div>
+    </div>
+    
+    <div class="checklist-item">
+        <div class="checklist-checkbox"></div>
+        <div>
+            <div class="checklist-source">이상감지: CRITICAL</div>
+            <div class="checklist-text">완전자본잠식 해소 방안 확인 — 유상증자, 결손금 보전, 전환사채 전환 등 계획 여부</div>
+        </div>
+    </div>
+    
+    <div class="checklist-item">
+        <div class="checklist-checkbox"></div>
+        <div>
+            <div class="checklist-source">이상감지: WARNING</div>
+            <div class="checklist-text">투자금(자본잉여금) 유입 후 지속 적자로 결손 누적 — 자본 효율성 검토 필요</div>
+        </div>
+    </div>
+    
+    <div class="checklist-item">
+        <div class="checklist-checkbox"></div>
+        <div>
+            <div class="checklist-source">이상감지: WARNING</div>
+            <div class="checklist-text">월간 급변동 항목 일괄 확인: 복리후생비 2월, 복리후생비 5월, 세금과공과금 9월, 인건비(급여+상여) 12월, 복리후생비 9월 — 일시적 이벤트(보상, 결산 조정)인지 구조적 변화인지?</div>
+        </div>
+    </div>
+    
+    <div class="checklist-item">
+        <div class="checklist-checkbox" style="background:var(--negative); border-color:var(--negative);"></div>
+        <div>
+            <div class="checklist-source">기본 확인사항 — <span style="color:var(--negative);">리스크 확인</span></div>
+            <div class="checklist-text"><s>주요 고객 집중도</s> → 2026 목표 기준 유진투자증권 55.7%(25.4억/45.6억). Top 3 집중도 79.0%. 단일고객 의존 과도.</div>
+        </div>
+    </div>
+
+    <div class="checklist-item">
+        <div class="checklist-checkbox"></div>
+        <div>
+            <div class="checklist-source">기본 확인사항</div>
+            <div class="checklist-text">IP 보유 현황 — 핵심 기술 특허/저작권 보유 여부 (GPT Store 국내 최초 Plugin, MTS 챗봇 등 레퍼런스는 있으나 특허 확인 필요)</div>
+        </div>
+    </div>
+    
+    <div class="checklist-item">
+        <div class="checklist-checkbox"></div>
+        <div>
+            <div class="checklist-source">기본 확인사항</div>
+            <div class="checklist-text">핵심 인력 Key-man 의존도 및 리텐션 계획</div>
+        </div>
+    </div>
+    
+    <div class="checklist-item">
+        <div class="checklist-checkbox" style="background:var(--caution); border-color:var(--caution);"></div>
+        <div>
+            <div class="checklist-source">기본 확인사항 — <span style="color:var(--caution);">부분 확인</span></div>
+            <div class="checklist-text"><s>경쟁사 대비 기술적 차별점 (moat)</s> → 대표 답변: "뚜렷한 경쟁사 특정 어려움. 빅테크 Agentic system이 파트너겸 경쟁." 금융권 10사+ 레퍼런스가 실질적 moat이나, 기술적 해자 정의는 미흡.</div>
+        </div>
+    </div>
+
+    <div class="checklist-item">
+        <div class="checklist-checkbox" style="background:var(--positive); border-color:var(--positive);"></div>
+        <div>
+            <div class="checklist-source">기본 확인사항 — <span style="color:var(--positive);">확인 완료</span></div>
+            <div class="checklist-text"><s>향후 12개월 매출 파이프라인</s> → 2026년 45.6억 목표 (확정 5억, 유력 15억). 12개 프로젝트, 8개 고객사. 유형: 개발 74.6% / 컨설팅 17.5% / 운영 7.9%.</div>
+        </div>
+    </div>
+
+    <div class="checklist-item">
+        <div class="checklist-checkbox" style="background:var(--positive); border-color:var(--positive);"></div>
+        <div>
+            <div class="checklist-source">기본 확인사항 — <span style="color:var(--positive);">확인 완료</span></div>
+            <div class="checklist-text"><s>우선주 주주 현황</s> → RCPS 4사 총 41.6억(33,561주, 17.80%): 한화자산운용 35.0억(180,020원), 와디즈 3.0억, 새한 2.5억, TP-핀테크 1.1억(28,630원).</div>
+        </div>
+    </div>
+
+    <div class="checklist-item">
+        <div class="checklist-checkbox" style="background:var(--positive); border-color:var(--positive);"></div>
+        <div>
+            <div class="checklist-source">기본 확인사항 — <span style="color:var(--positive);">확인 완료</span></div>
+            <div class="checklist-text"><s>주주간 계약(SHA) 핵심 조항</s> → TP-핀테크: 신주발행·사채발행·정관변경 동의. 한화: 자산 10%+ 거래 동의. 새한: 제3자 투자·보증 동의. Anti-dilution 조항은 인터뷰 추가 확인 필요.</div>
+        </div>
+    </div>
+
+    <div class="checklist-item">
+        <div class="checklist-checkbox" style="background:var(--positive); border-color:var(--positive);"></div>
+        <div>
+            <div class="checklist-source">기본 확인사항 — <span style="color:var(--positive);">확인 완료</span></div>
+            <div class="checklist-text"><s>기존 CB/BW 발행 이력 및 잔여 전환권</s> → CB 3개 회차(5-7회) 잔여 24.95억, 전환가 53,049~212,375원. 전환 시 ~46,500주 추가(24.7% 희석). BW 없음.</div>
+        </div>
+    </div>
+
+    <div class="checklist-item">
+        <div class="checklist-checkbox"></div>
+        <div>
+            <div class="checklist-source">추가 확인사항 (보완자료 분석 후)</div>
+            <div class="checklist-text">은행 대출 19억 대환 결과 확인 — 2026.03.06 만기, 대환 실패 시 유동성 위기</div>
+        </div>
+    </div>
+
+    <div class="checklist-item">
+        <div class="checklist-checkbox"></div>
+        <div>
+            <div class="checklist-source">추가 확인사항 (보완자료 분석 후)</div>
+            <div class="checklist-text">2026 매출 45.6억 vs 회사소개서 35억 — 어느 수치가 현실적 목표인지? 유진투자증권 대형 프로젝트(12억, 10억) 수주 확정 여부?</div>
+        </div>
+    </div>
+
+    <div class="checklist-item">
+        <div class="checklist-checkbox"></div>
+        <div>
+            <div class="checklist-source">추가 확인사항 (보완자료 분석 후)</div>
+            <div class="checklist-text">한화자산운용 RCPS anti-dilution 조항 — 2025 CB 전환가(53,049원)가 RCPS 전환가(180,020원)의 30% 수준 → 조정 발동 여부 확인</div>
+        </div>
+    </div>
+
+    <div class="checklist-item">
+        <div class="checklist-checkbox"></div>
+        <div>
+            <div class="checklist-source">추가 확인사항 (보완자료 분석 후)</div>
+            <div class="checklist-text">MAAP 플랫폼 반복매출(ARR) 비중 — 현재 매출 구조가 프로젝트 단발성인지, 운영·라이센스 기반 반복매출이 성장 중인지?</div>
+        </div>
+    </div>
+    
+    
+
+    <hr class="section-divider">
+
+    <!-- ═══════════════════════════════════════ -->
+    <!-- G. 피트스탑 적합성 평가                    -->
+    <!-- ═══════════════════════════════════════ -->
+    <h2 class="page-break-before">G. 피트스탑 적합성 평가</h2>
+
+    <div class="tra-box">
+        <div class="tra-assessment" style="color: var(--caution);">CONDITIONAL GO</div>
+        <div class="tra-label">피트스탑 적합성 — 조건부 적합 (선결 7조건 충족 전제)</div>
+    </div>
+
+    <!-- G.1 오버행 분석 -->
+    <h3>G.1 오버행 분석 — 자본 구조 워터폴</h3>
+
+    <div class="card card-danger">
+        <h4 class="mt-0">청산 시 우선순위 (Waterfall)</h4>
+        <table>
+            <tr><th style="width:30px">순위</th><th>구분</th><th class="num">금액</th><th>회수 가능성</th></tr>
+            <tr><td>1</td><td>은행 장기차입금</td><td class="num">20.2억</td><td>담보부(기보 추정) — 자산 21.1억으로 겨우 커버</td></tr>
+            <tr><td>2</td><td>개인 단기차입금</td><td class="num">2.1억</td><td style="color:var(--negative);">무담보 → 회수 0원</td></tr>
+            <tr><td>3</td><td>전환사채(CB)</td><td class="num">25.0억</td><td style="color:var(--negative);">무담보 → 회수 0원</td></tr>
+            <tr><td>4</td><td>RCPS</td><td class="num">41.6억</td><td style="color:var(--negative);">잔여재산 우선분배 → 회수 0원</td></tr>
+            <tr><td>5</td><td>보통주</td><td class="num">—</td><td style="color:var(--negative);">회수 0원</td></tr>
+            <tr><td style="color:var(--negative); font-weight:700;">?</td><td style="color:var(--negative);"><strong>신규 5억 → 어디에 위치?</strong></td><td class="num" style="color:var(--negative);">5.0억</td><td style="color:var(--negative); font-weight:700;">최후순위 — 실질 회수 불가</td></tr>
+            <tr style="border-top: 2px solid var(--black);">
+                <td></td><td><strong>총 클레임</strong></td><td class="num"><strong>88.8억</strong></td><td>vs 실질 담보 가능 자산 <strong>~1.4억</strong></td>
+            </tr>
+        </table>
+        <p style="font-size:11px; color:var(--negative); margin-top:4px;">자산 21.1억 위에 88.8억의 클레임. 은행 외에는 아무도 1원도 못 받는 구조. 신규 5억은 구조적으로 최후순위.</p>
+    </div>
+
+    <h4>완전 희석 시나리오 (Fully Diluted Cap Table)</h4>
+    <table>
+        <tr><th>단계</th><th class="num">주식수</th><th class="num">희석률</th><th class="num">대표 지분</th></tr>
+        <tr><td>현재</td><td class="num">188,506</td><td class="num">—</td><td class="num">27.85%</td></tr>
+        <tr><td>+ CB 전환 (6-7회차, 53,049원)</td><td class="num">+46,609</td><td class="num">24.7%</td><td class="num">22.33%</td></tr>
+        <tr><td>+ RCPS anti-dilution (한화+와디즈, full ratchet 가정)</td><td class="num">+50,524</td><td class="num">추가 17.7%</td><td class="num">18.38%</td></tr>
+        <tr style="border-top: 2px solid var(--black);">
+            <td><strong>최대 완전 희석</strong></td><td class="num"><strong>285,639</strong></td><td class="num" style="color:var(--negative); font-weight:700;">+51.5%</td><td class="num" style="color:var(--negative); font-weight:700;">18.38%</td>
+        </tr>
+    </table>
+    <p style="font-size:11px; color:var(--text-secondary);">※ Anti-dilution이 full ratchet이면 한화(19,442→65,977주)+와디즈(1,667→5,656주)로 RCPS 주식수 2.4배. 새한·TP는 기존 전환가(28,630원)가 CB보다 이미 낮으므로 해당 없음.</p>
+
+    <!-- G.2 Go / Risk -->
+    <h3>G.2 적합 판단 근거</h3>
+
+    <div class="card card-success">
+        <h4 class="mt-0">긍정 요소 (Go Factors)</h4>
+        <table>
+            <tr><th style="width:30px">#</th><th>항목</th><th>근거</th></tr>
+            <tr>
+                <td>1</td>
+                <td><strong>현금 기준 연 3.3억 흑자</strong></td>
+                <td>회계상 순손실 -0.29억이나, 무형자산상각 3.7억(비현금)을 제외하면 <strong>현금 순이익 +3.3억</strong>. 회사는 실질적으로 현금을 창출 중. 상각 완료 시(~2027년) 회계상으로도 자동 흑자 전환.</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td><strong>자체 구조조정 실행력 입증</strong></td>
+                <td>판관비 25.3→10.6억(-58%) 감축. 관계회사(두물머리투자자문) 지분 정리(17.5억 손실 감수). 개인 고금리 차입(12~15%) 2건 상환 완료. <strong>말이 아니라 실행으로 보여줌.</strong></td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td><strong>금융권 10사+ 레퍼런스</strong></td>
+                <td>유진·삼성·기업·농협·한화·교보·신한 등 대형 금융사 프로젝트 수행. AI 에이전트 시장 CAGR 43~46%. 금융 특화 경험은 쉽게 복제 불가.</td>
+            </tr>
+            <tr>
+                <td>4</td>
+                <td><strong>자금 니즈가 구체적</strong></td>
+                <td>5억 융자 → 대환 금리 인하(4.8→3.8%) → 이자 절감 0.13억 + 단기 차입 정리 → 현금흐름 안정화. 경로가 단순하고 측정 가능.</td>
+            </tr>
+            <tr>
+                <td>5</td>
+                <td><strong>매출 성장 + 파이프라인</strong></td>
+                <td>4개년 매출 5.7→8.2→11.5→11.8억. GPM 100%. 2026년 45.6억 목표(확정 5억 + 유력 15억). 운영매출(ARR) 3.6억(7.9%) 시작.</td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="card card-danger">
+        <h4 class="mt-0">리스크 요소 (Risk Factors)</h4>
+        <table>
+            <tr><th style="width:30px">#</th><th>항목</th><th>근거</th></tr>
+            <tr>
+                <td>1</td>
+                <td><strong>오버행 88.8억 — 신규 5억은 최후순위</strong></td>
+                <td>총 클레임 88.8억 vs 실질 담보 1.4억. 워터폴에서 신규 투자금은 은행(20.2억)·CB(25.0억)·RCPS(41.6억) 뒤. 5억 투입으로 3.2% 지분 = implied 밸류 156억(자본잠식 회사에 비현실적).</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td><strong>RCPS 상환 청구 = 즉사 시나리오</strong></td>
+                <td>한화 2020.10 투자 → 상환 청구 가능 시점 이미 도래(추정). 상환 청구 시 41.6억 상환 의무 → 현금 0 → 부도. 이 시나리오가 한 번도 분석되지 않았음.</td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td><strong>CB 2027 만기 — 지연이자 12% 폭탄</strong></td>
+                <td>만기 시 25억 미상환하면 이자율 3%→12%. 연 3.0억 추가 이자 → 현금 순이익 3.3억 전액 소진. 전환 유도 실패 시 구조적 함정.</td>
+            </tr>
+            <tr>
+                <td>4</td>
+                <td><strong>자산 실질가치 1.4억 — 담보 없음</strong></td>
+                <td>비유동자산 19.6억 중 투자주식 10.3억(비상장, 시가 불명) + 무형자산 9.2억(소프트웨어, 담보 부적격). 유형 담보 자산 사실상 0원.</td>
+            </tr>
+            <tr>
+                <td>5</td>
+                <td><strong>완전 희석 시 대표 지분 18.4%</strong></td>
+                <td>CB+anti-dilution 발동 시 대표 27.85%→18.38%. 경영권 불안정. 와디즈 개인투자자 28.88%의 의결 방향에 따라 주총 결과 불확실.</td>
+            </tr>
+            <tr>
+                <td>6</td>
+                <td><strong>단일고객 55.7% + 매출 목표 3종 불일치</strong></td>
+                <td>유진투자증권 25.4억/45.6억. <strong>매출 목표 3종 불일치:</strong> 회사소개서(35억) vs 보완내용(40억) vs 엑셀(45.6억). 어느 수치가 현실적 목표인지 불명.</td>
+            </tr>
+        </table>
+    </div>
+
+    <!-- G.3 선결 조건 -->
+    <h3>G.3 선결 조건 — 7개 (Tier별)</h3>
+
+    <div class="card card-danger">
+        <h4 class="mt-0">Tier 1: 이것 없으면 논의 불가 (즉시, 1주 내)</h4>
+        <table>
+            <tr><th style="width:30px">#</th><th>조건</th><th>이유</th><th>불통과 시</th></tr>
+            <tr>
+                <td>1</td>
+                <td><strong>은행 19억 대환 확정 증빙</strong></td>
+                <td>2026.03.06 만기. 대환 실패 = 즉각 부도</td>
+                <td><span class="badge badge-danger">DROP</span></td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td><strong>한화 RCPS 상환 청구 의사 없음 확인</strong></td>
+                <td>상환 청구 가능 시점 이미 도래(추정). 청구 시 41.6억 상환 = 부도</td>
+                <td><span class="badge badge-danger">DROP</span></td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td><strong>TP-핀테크 신주발행/사채발행 동의 서면</strong></td>
+                <td>1.1억 소액이나 동의권 범위 광범위. 거부 시 메자닌 발행 자체 불가</td>
+                <td><span class="badge badge-danger">DROP</span></td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="card card-highlight">
+        <h4 class="mt-0">Tier 2: 투자 구조 설계 전 확인</h4>
+        <table>
+            <tr><th style="width:30px">#</th><th>조건</th><th>이유</th></tr>
+            <tr>
+                <td>4</td>
+                <td><strong>한화 anti-dilution 조항 종류 + 2025 CB 발행 시 waiver 여부</strong></td>
+                <td>Full ratchet이면 +50,524주 폭탄. Weighted average이면 영향 제한적. 이미 waiver 받았을 수 있음.</td>
+            </tr>
+            <tr>
+                <td>5</td>
+                <td><strong>CB 24명 전환 의향 vs 상환 요구 파악</strong></td>
+                <td>전환 → 부채 25억 해소 + 자본잠식 축소. 상환 → 2027년 현금 25억 유출. CB 전환 선행이 투자 구조의 핵심.</td>
+            </tr>
+            <tr>
+                <td>6</td>
+                <td><strong>관계회사(두물머리투자자문) 잔여 10.3억 현황</strong></td>
+                <td>현재 공정가치? 추가 처분 계획? 2024년 17.5억 손실 재발 가능성.</td>
+            </tr>
+            <tr>
+                <td>7</td>
+                <td><strong>유진투자증권 22억(48%) LOI/계약서</strong></td>
+                <td>2026 매출 절반의 근거. 구두 약속이면 파이프라인 신뢰도 급락.</td>
+            </tr>
+        </table>
+    </div>
+
+    <!-- G.4 CB 전환 시 시나리오 -->
+    <h3>G.4 CB 전환 시나리오 — 오버행 해소 경로</h3>
+    <div class="card card-info">
+        <h4 class="mt-0">CB 25억 전환 완료 시 자본 구조 변화</h4>
+        <table>
+            <tr><th>항목</th><th class="num">현재</th><th class="num">CB 전환 후</th><th>변화</th></tr>
+            <tr><td>부채총계</td><td class="num">50.5억</td><td class="num">~25.5억</td><td style="color:var(--positive);">-25.0억</td></tr>
+            <tr><td>자본총계</td><td class="num">-29.4억</td><td class="num">~-4.4억</td><td style="color:var(--positive);">+25.0억 (자본잠식 대부분 해소)</td></tr>
+            <tr><td>연 이자비용</td><td class="num">1.24억</td><td class="num">~0.49억</td><td style="color:var(--positive);">-0.75억 절감</td></tr>
+            <tr><td>오버행 (부채성)</td><td class="num">47.3억</td><td class="num">22.3억</td><td style="color:var(--positive);">-25.0억</td></tr>
+        </table>
+        <p style="font-size:11px; margin-top:4px;"><strong>CB 전환이 피트스탑 투자 구조의 핵심 전제.</strong> 전환 완료 후 신규 5억 투입 시 워터폴 순위가 크게 개선됨 (은행 20.2억 뒤 → 개인 2.1억 뒤).</p>
+    </div>
+
+    <!-- G.5 종합 의견 -->
+    <h3>G.5 종합 의견</h3>
+    <div class="card card-info" style="border-left: 4px solid var(--dark);">
+        <p style="font-size:13px; line-height:1.7;">
+            모트에이아이는 <strong>조건부로 피트스탑에 적합</strong>합니다. 사업 펀더멘탈(현금 BEP 3.3억 흑자, 금융권 레퍼런스, 구조조정 실행력)은 양호하나, <strong>자본 구조가 과도하게 복잡하고 오버행이 극심합니다.</strong>
+        </p>
+        <p style="font-size:13px; line-height:1.7;">
+            <strong>오버행 88.8억 위에 5억을 넣는 것은 구조적으로 최후순위에 서는 것</strong>이며, RCPS 상환 청구(41.6억)나 CB 지연이자 전환(25억 × 12%)이 발동하면 회사가 즉사할 수 있습니다. 따라서 사업성만으로 GO 판정을 내릴 수 없고, <strong>자본 구조 정리가 투자의 선결 조건</strong>입니다.
+        </p>
+        <p style="font-size:13px; line-height:1.7;">
+            구체적으로: (1) <strong>Tier 1 선결 3조건</strong>(대환 확정, RCPS 상환유예, TP-핀테크 동의)이 충족되지 않으면 DROP, (2) CB 25억 전환이 선행되어야 오버행이 해소되고 신규 투자금의 회수 가능성이 확보됩니다. (3) 현금 BEP 달성(연 3.3억)은 긍정적이나, 이는 상각 완료(~2027)까지의 시한부 이점이므로 그 사이에 매출 성장(45.6억 목표)이 실현되어야 합니다.
+        </p>
+        <p style="font-size:13px; line-height:1.7;">
+            <strong>피트스탑 진행 순서 권고:</strong> Tier 1 확인(1주) → CB 전환 협상(1~2개월) → 전환 완료 후 5억 메자닌 집행 → 대환+운전자금 → 이자비용 절감 → 회계상 흑자 전환 → 매출 성장 가속.
+        </p>
+    </div>
+
+    <hr class="section-divider">
+
+    <!-- ═══════════════════════════════════════ -->
+    <!-- H. 피트스탑 시뮬레이션                    -->
+    <!-- ═══════════════════════════════════════ -->
+    <h2 class="page-break-before">H. 피트스탑 시뮬레이션 — 다운사이드/업사이드 분석</h2>
+
+    <div class="assumption-note">
+        <strong>본 섹션은 가정(assumption) 기반 시뮬레이션입니다.</strong> 핵심 전제: ① GPM 100%(매출원가 없음, 순수 서비스), ② 고정 SGA 6.0억(상각 3.7 + 기반비용 2.3), ③ 변동 SGA = 매출의 40%(인건비 35% + 프로젝트 경비 5%), ④ CB 25억 전환 선행 완료, ⑤ 메자닌 5억 금리 8%, 만기 3년, 전환권 포함. 모든 수치는 인터뷰 및 실사에서 검증 필요.
+    </div>
+
+    <!-- ─── H.1 ─────────────────────────────── -->
+    <h3>H.1 2026 매출 시나리오별 P&L 프로젝션</h3>
+
+    <div class="table-scroll">
+    <table>
+        <tr>
+            <th>항목</th>
+            <th class="num">2025(실적)</th>
+            <th class="num" style="border-left: 2px solid var(--border);">보수 (20억)</th>
+            <th class="num">기본 (35억)</th>
+            <th class="num">상방 (45.6억)</th>
+        </tr>
+        <tr>
+            <td style="font-size:10px; color:var(--text-tertiary);">매출 기준</td>
+            <td class="num" style="font-size:10px;">실적</td>
+            <td class="num" style="font-size:10px; border-left: 2px solid var(--border);">확정5+유력15</td>
+            <td class="num" style="font-size:10px;">회사소개서 목표</td>
+            <td class="num" style="font-size:10px;">파이프라인 전체</td>
+        </tr>
+        <tr>
+            <td><strong>매출액</strong></td>
+            <td class="num">11.8억</td>
+            <td class="num" style="border-left: 2px solid var(--border);">20.0억</td>
+            <td class="num">35.0억</td>
+            <td class="num">45.6억</td>
+        </tr>
+        <tr>
+            <td>&nbsp;&nbsp;SGA (고정: 상각3.7+기반2.3)</td>
+            <td class="num" style="color:var(--text-tertiary);">—</td>
+            <td class="num" style="border-left: 2px solid var(--border);">6.0억</td>
+            <td class="num">6.0억</td>
+            <td class="num">6.0억</td>
+        </tr>
+        <tr>
+            <td>&nbsp;&nbsp;SGA (변동: 매출×40%)</td>
+            <td class="num" style="color:var(--text-tertiary);">—</td>
+            <td class="num" style="border-left: 2px solid var(--border);">8.0억</td>
+            <td class="num">14.0억</td>
+            <td class="num">18.2억</td>
+        </tr>
+        <tr>
+            <td><strong>판관비 합계</strong></td>
+            <td class="num">10.6억</td>
+            <td class="num" style="border-left: 2px solid var(--border);">14.0억</td>
+            <td class="num">20.0억</td>
+            <td class="num">24.2억</td>
+        </tr>
+        <tr>
+            <td>&nbsp;&nbsp;필요 인원 (인당 1.7억)</td>
+            <td class="num" style="color:var(--text-tertiary);">~7명</td>
+            <td class="num" style="border-left: 2px solid var(--border); color:var(--text-secondary);">~12명</td>
+            <td class="num" style="color:var(--text-secondary);">~21명</td>
+            <td class="num" style="color:var(--text-secondary);">~27명</td>
+        </tr>
+        <tr style="border-top: 2px solid var(--black);">
+            <td><strong>영업이익</strong></td>
+            <td class="num">1.2억</td>
+            <td class="num" style="border-left: 2px solid var(--border); color:var(--positive); font-weight:700;">6.0억</td>
+            <td class="num" style="color:var(--positive); font-weight:700;">15.0억</td>
+            <td class="num" style="color:var(--positive); font-weight:700;">21.4억</td>
+        </tr>
+        <tr>
+            <td>&nbsp;&nbsp;OPM</td>
+            <td class="num">10%</td>
+            <td class="num" style="border-left: 2px solid var(--border);">30%</td>
+            <td class="num">43%</td>
+            <td class="num">47%</td>
+        </tr>
+        <tr>
+            <td>이자비용 (CB전환 후)</td>
+            <td class="num">-1.2억</td>
+            <td class="num" style="border-left: 2px solid var(--border);">-1.2억</td>
+            <td class="num">-1.2억</td>
+            <td class="num">-1.2억</td>
+        </tr>
+        <tr>
+            <td>기타 영업외</td>
+            <td class="num">-0.3억</td>
+            <td class="num" style="border-left: 2px solid var(--border);">-0.1억</td>
+            <td class="num">-0.1億</td>
+            <td class="num">-0.1억</td>
+        </tr>
+        <tr style="border-top: 1px solid var(--border);">
+            <td><strong>당기순이익</strong></td>
+            <td class="num" style="color:var(--negative);">-0.3억</td>
+            <td class="num" style="border-left: 2px solid var(--border); color:var(--positive); font-weight:700;">4.7억</td>
+            <td class="num" style="color:var(--positive); font-weight:700;">13.7億</td>
+            <td class="num" style="color:var(--positive); font-weight:700;">20.1억</td>
+        </tr>
+        <tr>
+            <td><strong>현금 순이익</strong> <span style="font-size:10px;">(+상각 3.7)</span></td>
+            <td class="num" style="color:var(--positive);">3.3억</td>
+            <td class="num" style="border-left: 2px solid var(--border); color:var(--positive); font-weight:700;">8.4억</td>
+            <td class="num" style="color:var(--positive); font-weight:700;">17.4億</td>
+            <td class="num" style="color:var(--positive); font-weight:700;">23.8억</td>
+        </tr>
+    </table>
+    </div>
+    <p style="font-size:11px; color:var(--text-secondary);">
+        ※ SGA 모델 검증: 2025 실적 대입 시 SGA = 6.0 + 0.40×11.8 = 10.7억 (실제 10.6억과 0.1억 차이). 인건비 구조: 직원급여+상여+퇴직+R&D재분류 = 4.55억(7명, 인당 0.65억).<br>
+        ※ 인당 매출 1.7억은 현재 수준. MAAP 플랫폼 활용 시 2.0~2.5억으로 개선 가능 → 변동비율 40%→30%대 하향 여지.<br>
+        ※ 무형자산상각 3.7억/yr은 잔여 9.2억 기준 <strong>2028년 종료</strong> → 이후 OPM 10%p+ 구조적 개선.
+    </p>
+
+    <!-- ─── H.2 ─────────────────────────────── -->
+    <h3>H.2 5억 투입 후 자금·이자 구조 변화</h3>
+
+    <h4>자금 배분 계획</h4>
+    <table>
+        <tr><th>용도</th><th class="num">금액</th><th>효과</th></tr>
+        <tr>
+            <td>단기차입금 상환 (지은정0.5+브이씨엠0.6)</td>
+            <td class="num">1.1억</td>
+            <td>고금리(6~12%) 차입 정리, 채권자 수 축소</td>
+        </tr>
+        <tr>
+            <td>은행 대환 지원 (보증료·수수료)</td>
+            <td class="num">0.5億</td>
+            <td>기보 19억 대환 확정 지원, 금리 4.5→3.8%</td>
+        </tr>
+        <tr>
+            <td>운영자금 (6개월 버퍼)</td>
+            <td class="num">3.4億</td>
+            <td>매출 수금 타이밍 리스크 대비 + 신규 채용 자금</td>
+        </tr>
+        <tr style="border-top: 2px solid var(--black);">
+            <td><strong>합계</strong></td>
+            <td class="num"><strong>5.0억</strong></td>
+            <td></td>
+        </tr>
+    </table>
+
+    <h4>이자비용 단계별 변화 (연간)</h4>
+    <table>
+        <tr>
+            <th>구분</th>
+            <th class="num">현재</th>
+            <th class="num">Phase 1<br><span style="font-size:9px;">대환+5억 투입</span></th>
+            <th class="num">Phase 2<br><span style="font-size:9px;">+ CB 전환 완료</span></th>
+        </tr>
+        <tr>
+            <td>은행 20.2억</td>
+            <td class="num">~0.91억 (4.5%)</td>
+            <td class="num" style="color:var(--positive);">0.77억 (3.8%)</td>
+            <td class="num">0.77억</td>
+        </tr>
+        <tr>
+            <td>개인 차입금</td>
+            <td class="num">~0.17億</td>
+            <td class="num" style="color:var(--positive);">0.06억 <span style="font-size:10px;">↓</span></td>
+            <td class="num">0.06억</td>
+        </tr>
+        <tr>
+            <td>CB 25.0億 (3%)</td>
+            <td class="num">~0.75億</td>
+            <td class="num">0.75億</td>
+            <td class="num" style="color:var(--positive); font-weight:700;">0億 (전환)</td>
+        </tr>
+        <tr>
+            <td>메자닌 5.0億 (8%)</td>
+            <td class="num">—</td>
+            <td class="num" style="color:var(--negative);">+0.40億</td>
+            <td class="num">0.40億</td>
+        </tr>
+        <tr style="border-top: 2px solid var(--black);">
+            <td><strong>이자 합계 (추정)</strong></td>
+            <td class="num"><strong>~1.83億</strong></td>
+            <td class="num"><strong>~1.98億</strong></td>
+            <td class="num" style="color:var(--positive); font-weight:700;"><strong>~1.23億</strong></td>
+        </tr>
+        <tr>
+            <td><strong>부채총계</strong></td>
+            <td class="num">50.5億</td>
+            <td class="num">54.4億</td>
+            <td class="num" style="color:var(--positive); font-weight:700;">29.4億</td>
+        </tr>
+        <tr>
+            <td><strong>자본총계</strong></td>
+            <td class="num" style="color:var(--negative);">-29.4億</td>
+            <td class="num" style="color:var(--negative);">-29.4億</td>
+            <td class="num" style="color:var(--caution); font-weight:700;">-4.4億</td>
+        </tr>
+    </table>
+    <p style="font-size:11px; color:var(--text-secondary);">
+        ※ 재무제표 이자비용(1.24億)은 CB 이자 일부를 만기 상환 시 지급(발생주의 vs 현금주의 차이)으로 계약 기반 추정(1.83億)과 괴리.<br>
+        <strong>핵심 인사이트:</strong> 5億 투입의 진짜 효과는 이자 절감이 아니라 <strong>자본구조 정상화</strong>. CB 전환 완료 시 부채 50.5→29.4億(-42%), 자본잠식 -29.4→-4.4億(85% 해소).
+    </p>
+
+    <!-- ─── H.3 ─────────────────────────────── -->
+    <h3>H.3 출자전환 타이밍 + 의사결정</h3>
+
+    <h4>피트스탑 타임라인</h4>
+    <table>
+        <tr><th style="width:100px;">시점</th><th>이벤트</th><th>의사결정</th></tr>
+        <tr>
+            <td><strong>T+0</strong><br><span style="font-size:10px;">2026 Q1</span></td>
+            <td>Tier 1 조건 충족, 메자닌 5億 집행</td>
+            <td>대환 실행 + 단기차입 상환 + 운영자금 확보</td>
+        </tr>
+        <tr>
+            <td><strong>T+6mo</strong><br><span style="font-size:10px;">2026 Q3</span></td>
+            <td>H1 매출 실적 확인, CB 전환 협상</td>
+            <td>CB 24명 전환 의향 파악 + 전환 조건 확정</td>
+        </tr>
+        <tr>
+            <td><strong>T+12mo</strong><br><span style="font-size:10px;">2027 Q1</span></td>
+            <td>2026 연간 실적 확정, CB 전환 마감</td>
+            <td><strong>출자전환 1차 검토.</strong> 매출 25億+ 확인 시 전환 유리</td>
+        </tr>
+        <tr style="background:var(--bg-alt);">
+            <td><strong>T+18mo</strong><br><span style="font-size:10px;">2027 Q3</span></td>
+            <td>무형자산상각 잔여 ~1.8億. 회계 이익 급증 구간</td>
+            <td style="color:var(--positive); font-weight:600;">출자전환 최적 구간 — 상각 종료 전(저평가) 전환</td>
+        </tr>
+        <tr>
+            <td><strong>T+24mo</strong><br><span style="font-size:10px;">2028 Q1</span></td>
+            <td>상각 종료, OPM 구조적 개선, 2027 실적 확정</td>
+            <td>전환 마지막 기회. 이후 밸류 상승 시 전환가 불리</td>
+        </tr>
+        <tr>
+            <td><strong>T+36~48mo</strong><br><span style="font-size:10px;">2029~2030</span></td>
+            <td>Exit 윈도우 오픈</td>
+            <td>M&A / Secondary / 자사주매입</td>
+        </tr>
+    </table>
+
+    <div class="card card-info">
+        <h4 class="mt-0">출자전환 의사결정 기준</h4>
+        <table>
+            <tr><th>조건</th><th style="color:var(--positive);">전환 (→ Equity)</th><th style="color:var(--negative);">미전환 (Mezzanine 유지)</th></tr>
+            <tr>
+                <td>2026 매출</td>
+                <td>25億+ (보수 시나리오 초과)</td>
+                <td>20億 미만 (침체)</td>
+            </tr>
+            <tr>
+                <td>CB 전환</td>
+                <td>완료 (자본잠식 85%+ 해소)</td>
+                <td>미전환 (부채 50億 잔존)</td>
+            </tr>
+            <tr>
+                <td>영업이익</td>
+                <td>5億+ (연간)</td>
+                <td>2億 미만</td>
+            </tr>
+            <tr>
+                <td>2027 파이프라인</td>
+                <td>매출 50億+ 확보</td>
+                <td>파이프라인 불확실</td>
+            </tr>
+        </table>
+        <p style="font-size:11px; margin-top:4px;"><strong>미전환 시:</strong> 3년 만기에 원금 5億 + 이자 1.2億 회수 (총 6.2億, 1.24x). <strong>전환 시:</strong> 이자 수취 포기, Equity 업사이드 추구.</p>
+    </div>
+
+    <h4>전환가 시나리오</h4>
+    <table>
+        <tr><th>전환가</th><th class="num">주식수</th><th class="num">지분율<br><span style="font-size:9px;">(완전희석 기준)</span></th><th>비고</th></tr>
+        <tr>
+            <td>53,049원 (CB 동가)</td>
+            <td class="num">9,425주</td>
+            <td class="num">3.9%</td>
+            <td>최근 CB와 동일 — 투자자 불리 (자본잠식 미반영)</td>
+        </tr>
+        <tr style="background:var(--bg-alt); font-weight:600;">
+            <td>35,000원 (33% 할인)</td>
+            <td class="num">14,286주</td>
+            <td class="num">5.7%</td>
+            <td>기본 시나리오 — 자본잠식+오버행 리스크 반영</td>
+        </tr>
+        <tr>
+            <td>20,000원 (62% 할인)</td>
+            <td class="num">25,000주</td>
+            <td class="num">9.6%</td>
+            <td>Deep discount — 고위드 유리, 대표 지분 17.2%로 축소</td>
+        </tr>
+    </table>
+    <p style="font-size:11px; color:var(--text-secondary);">※ 완전희석 기준 = 현재 188,506주 + CB 전환 46,600주 + 메자닌 전환분. Anti-dilution 미반영. 전환가는 투자 계약 시 협상.</p>
+
+    <!-- ─── H.4 ─────────────────────────────── -->
+    <h3>H.4 Exit 시나리오 + 투자 수익률</h3>
+
+    <div class="assumption-note">
+        가정: 2026 매출 기준 연 20% CAGR 성장, 무형자산상각 2028 종료(OPM 추가 개선), 전환가 35,000원(지분 5.7%), Exit Year 4(~2030).
+    </div>
+
+    <div class="table-scroll">
+    <table>
+        <tr>
+            <th>항목</th>
+            <th class="num" style="border-left: 2px solid var(--border);">보수</th>
+            <th class="num">기본</th>
+            <th class="num">상방</th>
+        </tr>
+        <tr>
+            <td>2026 매출</td>
+            <td class="num" style="border-left: 2px solid var(--border);">20億</td>
+            <td class="num">35億</td>
+            <td class="num">45.6億</td>
+        </tr>
+        <tr>
+            <td>2029 매출 (20% CAGR)</td>
+            <td class="num" style="border-left: 2px solid var(--border);">34.6億</td>
+            <td class="num">60.5億</td>
+            <td class="num">78.8億</td>
+        </tr>
+        <tr>
+            <td>2029 OPM (상각 종료)</td>
+            <td class="num" style="border-left: 2px solid var(--border);">~48%</td>
+            <td class="num">~53%</td>
+            <td class="num">~55%</td>
+        </tr>
+        <tr>
+            <td>2029 영업이익</td>
+            <td class="num" style="border-left: 2px solid var(--border);">~17億</td>
+            <td class="num">~32億</td>
+            <td class="num">~43億</td>
+        </tr>
+        <tr>
+            <td>적용 배수 (PSR)</td>
+            <td class="num" style="border-left: 2px solid var(--border);">4x</td>
+            <td class="num">5x</td>
+            <td class="num">6x</td>
+        </tr>
+        <tr style="border-top: 2px solid var(--black);">
+            <td><strong>Exit 기업가치</strong></td>
+            <td class="num" style="border-left: 2px solid var(--border);"><strong>138億</strong></td>
+            <td class="num"><strong>303億</strong></td>
+            <td class="num"><strong>473億</strong></td>
+        </tr>
+        <tr>
+            <td>5.7% 지분 가치</td>
+            <td class="num" style="border-left: 2px solid var(--border); color:var(--positive);">7.9億</td>
+            <td class="num" style="color:var(--positive);">17.3億</td>
+            <td class="num" style="color:var(--positive);">27.0億</td>
+        </tr>
+        <tr>
+            <td>이자수익 (2년 × 8%)</td>
+            <td class="num" style="border-left: 2px solid var(--border);">0.8億</td>
+            <td class="num">0.8億</td>
+            <td class="num">0.8億</td>
+        </tr>
+        <tr style="border-top: 1px solid var(--border);">
+            <td><strong>총 수익 (이자+Equity)</strong></td>
+            <td class="num" style="border-left: 2px solid var(--border); font-weight:700;">8.7億</td>
+            <td class="num" style="font-weight:700;">18.1億</td>
+            <td class="num" style="font-weight:700;">27.8億</td>
+        </tr>
+        <tr>
+            <td><strong>투자 배수</strong></td>
+            <td class="num" style="border-left: 2px solid var(--border); color:var(--positive); font-weight:700;">1.7x</td>
+            <td class="num" style="color:var(--positive); font-weight:700;">3.6x</td>
+            <td class="num" style="color:var(--positive); font-weight:700;">5.6x</td>
+        </tr>
+        <tr>
+            <td><strong>IRR (4년)</strong></td>
+            <td class="num" style="border-left: 2px solid var(--border);">~15%</td>
+            <td class="num" style="font-weight:700;">~38%</td>
+            <td class="num" style="font-weight:700;">~53%</td>
+        </tr>
+    </table>
+    </div>
+    <p style="font-size:11px; color:var(--text-secondary);">
+        ※ PSR 배수: 국내 B2B AI/SaaS 기업 참고 — 포티투마루(174億 투자, ~6x), 스켈터랩스(404億 누적). 글로벌: Sierra AI(ARR $150M, $10B = 67x).<br>
+        ※ Exit 경로: ① M&A(대형 SI/컨설팅 인수) ② Secondary(후속 라운드 투자자 매각) ③ 자사주매입(이익잉여금 활용). IPO는 매출 100億+, 3년+ 흑자 필요 → 2031년 이후.
+    </p>
+
+    <!-- ─── H.5 ─────────────────────────────── -->
+    <h3>H.5 종합 투자 수익 매트릭스</h3>
+
+    <table>
+        <tr>
+            <th>시나리오</th>
+            <th class="num">2026 매출</th>
+            <th>투자 형태</th>
+            <th class="num">총 수익</th>
+            <th class="num">배수</th>
+            <th class="num">IRR</th>
+        </tr>
+        <tr style="background:#fff0f0;">
+            <td><strong>① 파산</strong> <span class="badge badge-danger">WORST</span></td>
+            <td class="num">—</td>
+            <td style="font-size:11px;">RCPS 청구 / 대환 실패 → 부도</td>
+            <td class="num" style="color:var(--negative); font-weight:700;">0億</td>
+            <td class="num" style="color:var(--negative); font-weight:700;">0x</td>
+            <td class="num" style="color:var(--negative);">-100%</td>
+        </tr>
+        <tr style="background:#fff8f0;">
+            <td><strong>② 침체</strong></td>
+            <td class="num">~12億</td>
+            <td style="font-size:11px;">전환 안함, 원금+이자 회수 (3년)</td>
+            <td class="num">6.2億</td>
+            <td class="num">1.24x</td>
+            <td class="num">~7%</td>
+        </tr>
+        <tr style="background:#f0f7f0;">
+            <td><strong>③ 보수</strong></td>
+            <td class="num">20億</td>
+            <td style="font-size:11px;">2년 이자 + Equity 전환 + Exit 4년</td>
+            <td class="num" style="color:var(--positive);">8.7億</td>
+            <td class="num" style="color:var(--positive);">1.7x</td>
+            <td class="num">~15%</td>
+        </tr>
+        <tr style="background:#e8f5e8;">
+            <td><strong>④ 기본</strong></td>
+            <td class="num">35億</td>
+            <td style="font-size:11px;">2년 이자 + Equity 전환 + Exit 4년</td>
+            <td class="num" style="color:var(--positive); font-weight:700;">18.1億</td>
+            <td class="num" style="color:var(--positive); font-weight:700;">3.6x</td>
+            <td class="num" style="font-weight:700;">~38%</td>
+        </tr>
+        <tr style="background:#e0f0e0;">
+            <td><strong>⑤ 상방</strong> <span class="badge badge-success">BEST</span></td>
+            <td class="num">45.6億</td>
+            <td style="font-size:11px;">2년 이자 + Equity 전환 + Exit 4년</td>
+            <td class="num" style="color:var(--positive); font-weight:700;">27.8億</td>
+            <td class="num" style="color:var(--positive); font-weight:700;">5.6x</td>
+            <td class="num" style="font-weight:700;">~53%</td>
+        </tr>
+    </table>
+
+    <div class="card card-info" style="margin-top:12px;">
+        <h4 class="mt-0">확률 가정 기반 기대값</h4>
+        <table>
+            <tr><th>시나리오</th><th class="num">확률 가정</th><th class="num">확률 가중 수익</th></tr>
+            <tr><td>① 파산</td><td class="num">10%</td><td class="num">0億</td></tr>
+            <tr><td>② 침체</td><td class="num">20%</td><td class="num">1.24億</td></tr>
+            <tr><td>③ 보수</td><td class="num">30%</td><td class="num">2.61億</td></tr>
+            <tr><td>④ 기본</td><td class="num">30%</td><td class="num">5.43億</td></tr>
+            <tr><td>⑤ 상방</td><td class="num">10%</td><td class="num">2.78億</td></tr>
+            <tr style="border-top: 2px solid var(--black);">
+                <td><strong>기대값</strong></td>
+                <td class="num"><strong>100%</strong></td>
+                <td class="num" style="color:var(--positive); font-weight:700;"><strong>12.1億 (2.4x)</strong></td>
+            </tr>
+        </table>
+        <p style="font-size:11px; color:var(--text-secondary); margin-top:4px;">확률은 가정입니다. Tier 1 선결 조건(G.3) 충족 시 ① 파산 확률 10%→3%로 대폭 감소, 기대 배수 2.4x→2.7x. 핵심 스윙 팩터: CB 전환 성공 여부, 유진투자증권 수주 확정.</p>
+    </div>
+
+    <div class="card card-success" style="margin-top:12px;">
+        <h4 class="mt-0">시뮬레이션 핵심 결론</h4>
+        <ol>
+            <li><strong>2026년 확정+유력 매출(20億)만 달성해도 영업이익 6.0億(OPM 30%)</strong> — 현재 대비 5배. 현금 순이익 8.4億.</li>
+            <li><strong>5億 투입의 핵심 효과는 이자 절감이 아니라 자본구조 정상화.</strong> CB 전환 선행 시 부채 50.5→29.4億, 자본잠식 -29.4→-4.4億. 이 구조 변화가 후속 투자·은행 관계·성장 자금 확보의 전제.</li>
+            <li><strong>출자전환 최적 시점은 T+18개월(2027 Q3).</strong> 상각 종료 전(저평가 구간)에 전환 → 상각 종료 후(2028~) OPM 10%p+ 구조적 개선의 수혜를 Equity로 향유.</li>
+            <li><strong>기본 시나리오(35億) 달성 시 투자 배수 3.6x, IRR 38%.</strong> 다운사이드(침체)에서도 메자닌 유지하면 1.24x(원금+이자) 확보.</li>
+            <li><strong>최대 리스크는 CB 미전환 + RCPS 상환 청구.</strong> 이 경우 5億 전액 손실. Tier 1 선결 조건이 이 리스크의 게이트이며, 조건 충족 후에만 집행해야 함.</li>
+        </ol>
+    </div>
+
+    <!-- ═══════════════════════════════════════ -->
+    <!-- FOOTER                                  -->
+    <!-- ═══════════════════════════════════════ -->
+    <div class="footer">
+        <div class="logo">GOWID NEXUS | PIT-STOP</div>
+        <div class="preview-warning">PREVIEW &mdash; NOT FOR DISTRIBUTION</div>
+    </div>
+
+</body>
+</html>

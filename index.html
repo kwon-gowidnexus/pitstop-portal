@@ -333,26 +333,6 @@ html, body {
 .drop-item:hover,
 .drop-item.hi         { background: #1c1c1c; }
 
-/* 분석 중 — 클릭 불가, 회사명 옆 배지 */
-.drop-item.analyzing {
-  cursor: default;
-  pointer-events: none;
-  opacity: 0.55;
-}
-.drop-item.analyzing:hover { background: transparent; }
-.analyzing-badge {
-  display: inline-block;
-  font-family: var(--mono);
-  font-size: 9px;
-  letter-spacing: 0.08em;
-  color: var(--accent);
-  border: 1px solid var(--accent-dim);
-  padding: 1px 7px;
-  border-radius: var(--r);
-  margin-left: 8px;
-  vertical-align: middle;
-}
-
 .di-num {
   font-family: var(--mono);
   font-size: 10px;
@@ -636,7 +616,7 @@ const COMPANIES = [
     "ceo": "\ubc15\uc8fc\uc601",
     "collected_at": "2026-03-06T09:40:43.265769",
     "survey_timestamp": "2026. 3. 3 \uc624\ud6c4 2:55:37",
-    "preview_file": "\uba54\ub274\uc787_\ud53c\ud2b8\uc2a4\ud0d1_\ud504\ub9ac\ubdf0_20260306.html",
+    "preview_file": "\uba54\ub274\uc787_\ud53c\ud2b8\uc2a4\ud0d1_\ud504\ub9ac\ubdf0_20260309.html",
     "has_preview": true,
     "revenue": "100\uc5b5 \uc774\uc0c1",
     "headcount": "33",
@@ -749,6 +729,7 @@ const PASSWORD = "2026";
         <div class="stat-lbl">최근 신청일</div>
       </div>
     </div>
+
   </div>
 </div>
 
@@ -858,6 +839,7 @@ const PASSWORD = "2026";
     const mm  = String(now.getMonth() + 1).padStart(2, '0');
     const dd  = String(now.getDate()).padStart(2, '0');
     $('tb-date').textContent = `${yy}.${mm}.${dd}`;
+
   }
 
   /* ── DROPDOWN ────────────────────────────────────────────── */
@@ -888,22 +870,16 @@ const PASSWORD = "2026";
 
     sCount.textContent = q ? `${list.length} / ${COMPANIES.length}` : String(COMPANIES.length);
 
-    /* 분석 중 — 클릭 불가 + 회사명 옆 배지 */
-    const ANALYZING = new Set(['\uc778\ud14c\uc774\ud06c', '\uc640\uc774\uc624\uc5d8\uc624']);
-
     const rows = list.map(c => {
       const globalIdx = COMPANIES.indexOf(c) + 1;
       const ts = parseTs(c.survey_timestamp);
       const hlName   = hlText(c.company_name,   q);
       const hlFolder = hlText(c.folder_name, q);
-      const isAnalyzing = ANALYZING.has(c.folder_name);
-      const cls = isAnalyzing ? 'drop-item analyzing' : 'drop-item';
-      const badge = isAnalyzing ? '<span class="analyzing-badge">분석 중</span>' : '';
       return `
-        <div class="${cls}" data-folder="${c.folder_name}">
+        <div class="drop-item" data-folder="${c.folder_name}">
           <span class="di-num">${String(globalIdx).padStart(2,'0')}</span>
           <div class="di-body">
-            <div class="di-name">${hlName}${badge}</div>
+            <div class="di-name">${hlName}</div>
             <div class="di-folder">${hlFolder}</div>
           </div>
           <div class="di-ts">
@@ -1020,8 +996,7 @@ const PASSWORD = "2026";
       c.company_name.toLowerCase().includes(lq)
     );
 
-    const ANALYZING_DL = new Set(['\uc778\ud14c\uc774\ud06c', '\uc640\uc774\uc624\uc5d8\uc624']);
-    if (match && match.has_preview && !ANALYZING_DL.has(match.folder_name)) {
+    if (match && match.has_preview) {
       openViewer(match);
     } else {
       show('search');
