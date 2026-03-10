@@ -109,6 +109,13 @@
         .kpi-card.success .kpi-value { color: var(--positive); }
         .kpi-card.warning .kpi-value { color: var(--caution); }
         .section-divider { border: none; border-top: 1px solid var(--border); margin: 24px 0; }
+        details { margin: 10px 0; border: 1px solid var(--border-light); background: var(--bg-warm); }
+        details summary { padding: 10px 14px; font-size: 12px; font-weight: 600; color: var(--text-secondary); cursor: pointer; letter-spacing: 0.3px; user-select: none; }
+        details summary:hover { background: var(--bg-alt); }
+        details[open] summary { border-bottom: 1px solid var(--border-light); }
+        details .detail-body { padding: 12px 14px; }
+        .narrative { font-size: 13px; line-height: 1.75; color: var(--text); margin: 8px 0 12px; }
+        .narrative strong { color: var(--near-black); }
         .footer { text-align: center; padding: 16px 24px; margin-top: 24px; border-top: 2px solid var(--black); }
         .footer .logo { font-family: 'Noto Sans', sans-serif; font-size: 13px; font-weight: 700; color: var(--black); letter-spacing: 3px; }
         .footer .preview-warning { margin-top: 8px; font-size: 11px; font-weight: 700; color: var(--negative); letter-spacing: 2px; text-transform: uppercase; }
@@ -353,103 +360,106 @@
 
     <hr class="section-divider">
 
-    <!-- 1. 회사 현황 -->
-    <h2>1. 회사 현황</h2>
+    <!-- ============================== -->
+    <!-- 이 회사의 이야기                -->
+    <!-- ============================== -->
+    <h2>온오프믹스는 어떤 회사인가</h2>
 
-    <h3>1.1 회사 제출 내용</h3>
-    <p style="font-size:12px; color:var(--text-secondary); margin-bottom:8px;">온오프믹스가 피트스탑 신청 시 직접 제출한 정보입니다. 1.4절의 DW 교차검증에서 은행 데이터로 사실 여부를 확인합니다.</p>
-
-    <h4>기본정보</h4>
-    <table>
-        <tr><th>항목</th><th>내용</th></tr>
-        <tr><td><strong>회사명</strong></td><td>주식회사 온오프믹스</td></tr>
-        <tr><td><strong>대표이사</strong></td><td>양준철</td></tr>
-        <tr><td><strong>설립일</strong></td><td>2010. 2. 9 (16년차)</td></tr>
-        <tr><td><strong>사업</strong></td><td>이벤트테크 플랫폼 (온·오프라인 통합 CEMS) + 모임·이벤트 마켓플레이스</td></tr>
-        <tr><td><strong>임직원</strong></td><td>5~10명 미만 (고위드: 10명) &mdash; 2023년 47명에서 구조조정</td></tr>
-        <tr><td><strong>최근 매출</strong></td><td>10~20억 미만 (2025 IS 기준: 17.6억)</td></tr>
-        <tr><td><strong>누적 투자</strong></td><td>30~50억 (프라이머·D.CAMP·CCVC·ES·칸서스)</td></tr>
-        <tr><td><strong>필요 자금</strong></td><td>2~5억 (운영자금 + 선급금 사업 재개)</td></tr>
-    </table>
-
-    <h3>1.2 비즈니스 모델</h3>
-    <p style="font-size:12px; color:var(--text-secondary); margin-bottom:8px;">온오프믹스가 무엇을 만들고, 누구에게 팔고, 어떻게 돈을 버는지에 대한 정리입니다.</p>
-
-    <div class="card card-info" style="border-left: 4px solid var(--dark);">
-        <h4 class="mt-0">회사 한 줄 소개</h4>
-        <p style="line-height:1.7;">
-            <strong>온오프믹스</strong>는 2010년 설립된 <strong>국내 대표 이벤트/모임 플랫폼</strong>입니다.
-            이벤트 주최자가 온라인으로 모객·티켓 판매·현장 운영·정산까지 한 번에 처리할 수 있는 통합 솔루션(CEMS)을 제공하며,
-            네이버예약·지마켓 등 <strong>다채널 판매 대행</strong>과 MICE(컨벤션/전시) 전문 솔루션으로 영역을 확장했습니다.
-            현재 <strong>네이버예약 공식 판매대행사</strong> 지위를 보유하고 있습니다.
-        </p>
+    <div class="narrative">
+        <strong>온오프믹스</strong>는 2010년에 만들어진 국내 대표 이벤트/모임 플랫폼입니다. 이벤트 주최자가 모객부터 티켓 판매, 현장 운영, 정산까지 한 번에 처리할 수 있는 통합 솔루션(CEMS)을 제공합니다. 16년간 운영하며 <strong>네이버예약 공식 판매대행사</strong>라는 희소한 지위를 확보했고, KIOSK·POS·AI통번역 등 <strong>13개 모듈</strong>의 MICE 솔루션을 보유하고 있습니다.
+    </div>
+    <div class="narrative">
+        매출의 <strong>62.5%가 네이버·지마켓 등 다채널 정산수수료</strong>, 24.8%가 광고수수료입니다. 플랫폼 위에서 거래가 일어나면 자동으로 수수료가 발생하는 구조라, 거래량만 유지되면 현금이 돕니다. 실제로 은행 총 입금이 연 <strong>~130억</strong>에 달합니다. 다만 이 중 자체 매출(IS 기준)은 17.6억이고, 나머지 ~112억은 이벤트 주최자에게 돌려주는 정산 Pass-through입니다.
+    </div>
+    <div class="narrative">
+        문제는 이 회사가 <strong>극심한 계절성</strong>에 노출되어 있다는 점입니다. 봄(3~5월)과 가을(9~10월) 이벤트 시즌에 거래가 집중되고, 겨울(11~2월)은 구조적 비수기입니다. 여기에 네이버파이낸셜 단일 채널 의존도가 <strong>37.9%</strong>로 높아, 채널 정책이 바뀌면 매출이 급감할 수 있습니다.
     </div>
 
-    <h4>주요 제품 라인업</h4>
-    <table>
-        <tr><th>제품</th><th>설명</th><th>수익 모델</th></tr>
-        <tr>
-            <td><strong>온오프믹스닷컴</strong></td>
-            <td>이벤트/모임 개설·모객·티켓 판매 플랫폼. 주최자가 웹페이지를 만들고 참가비를 수취.</td>
-            <td>결제수수료 + 광고</td>
-        </tr>
-        <tr>
-            <td><strong>다채널 판매 (CMS)</strong></td>
-            <td>네이버예약·지마켓 등 외부 채널에 티켓/상품을 동시 등록·판매·정산하는 Channel Management System.</td>
-            <td>채널정산수수료 (매출 62%)</td>
-        </tr>
-        <tr>
-            <td><strong>MICE 솔루션</strong></td>
-            <td>컨벤션/전시/인센티브투어용 통합 시스템. KIOSK·POS·Speed Gate·입출입관리·AI 통번역·명찰출력.</td>
-            <td>솔루션 이용료 + 구축비</td>
-        </tr>
-        <tr>
-            <td><strong>선급금 대행</strong></td>
-            <td>공연/이벤트 티켓을 온오프믹스가 선매입하여 다채널 유통 후 정산하는 금융형 모델. 과거 5건+ 실적.</td>
-            <td>판매수수료 + 마진</td>
-        </tr>
-    </table>
+    <details>
+        <summary>상세: 기본정보 + 제품 라인업 + 수익구조</summary>
+        <div class="detail-body">
+            <h4>기본정보</h4>
+            <table>
+                <tr><th>항목</th><th>내용</th></tr>
+                <tr><td><strong>회사명</strong></td><td>주식회사 온오프믹스</td></tr>
+                <tr><td><strong>대표이사</strong></td><td>양준철</td></tr>
+                <tr><td><strong>설립일</strong></td><td>2010. 2. 9 (16년차)</td></tr>
+                <tr><td><strong>사업</strong></td><td>이벤트테크 플랫폼 (온·오프라인 통합 CEMS) + 모임·이벤트 마켓플레이스</td></tr>
+                <tr><td><strong>임직원</strong></td><td>5~10명 미만 (고위드: 10명) &mdash; 2023년 47명에서 구조조정</td></tr>
+                <tr><td><strong>최근 매출</strong></td><td>10~20억 미만 (2025 IS 기준: 17.6억)</td></tr>
+                <tr><td><strong>누적 투자</strong></td><td>30~50억 (프라이머·D.CAMP·CCVC·ES·칸서스)</td></tr>
+                <tr><td><strong>필요 자금</strong></td><td>2~5억 (운영자금 + 선급금 사업 재개)</td></tr>
+            </table>
 
-    <h4>수익 구조 (2025 기준)</h4>
-    <div class="peer-grid">
-        <div class="peer-card">
-            <h4 class="mt-0">거래 기반 매출 (~90%)</h4>
-            <p style="font-size:12px; line-height:1.6;"><strong>채널/선결제 정산수수료 11.0억(62.5%)</strong> + 광고수수료 4.4억(24.8%) + 결제수수료 0.5억. 네이버·지마켓 등 채널에서의 거래량에 비례하여 수수료 수취. <strong>계절성이 극심</strong>(봄·가을 이벤트 시즌 집중).</p>
-        </div>
-        <div class="peer-card">
-            <h4 class="mt-0">솔루션/프로젝트 매출 (~10%)</h4>
-            <p style="font-size:12px; line-height:1.6;">제휴서비스 1.2억 + 프로그램개발 0.2억 + 솔루션 0.1억. MICE 현장 솔루션 구축, 웹사이트 제작, 레저 티켓 연동 등. <strong>구조조정 후 인력 부족으로 프로젝트 수주 축소 상태.</strong></p>
-        </div>
-    </div>
+            <h4>주요 제품 라인업</h4>
+            <table>
+                <tr><th>제품</th><th>설명</th><th>수익 모델</th></tr>
+                <tr><td><strong>온오프믹스닷컴</strong></td><td>이벤트/모임 개설·모객·티켓 판매 플랫폼</td><td>결제수수료 + 광고</td></tr>
+                <tr><td><strong>다채널 판매 (CMS)</strong></td><td>네이버예약·지마켓 등 외부 채널 동시 등록·판매·정산</td><td>채널정산수수료 (매출 62%)</td></tr>
+                <tr><td><strong>MICE 솔루션</strong></td><td>컨벤션/전시용 KIOSK·POS·Speed Gate·AI 통번역·명찰출력</td><td>솔루션 이용료 + 구축비</td></tr>
+                <tr><td><strong>선급금 대행</strong></td><td>이벤트 티켓 선매입 후 다채널 유통·정산 (과거 5건+ 실적)</td><td>판매수수료 + 마진</td></tr>
+            </table>
 
-    <h4>경쟁력과 리스크</h4>
-    <div class="peer-grid">
-        <div class="peer-card" style="border-top: 3px solid var(--positive);">
-            <h4 class="mt-0" style="color:var(--positive);">강점</h4>
-            <ul>
-                <li><strong>16년 브랜드 + 플랫폼 자산:</strong> 국내 이벤트/모임 플랫폼 선두 (2010~)</li>
-                <li><strong>네이버예약 공식 판매대행사</strong> &mdash; 희소 지위, 유상 매입 의향 있는 업체(이도) 존재</li>
-                <li>CEMS 13개 모듈 보유 (KIOSK·POS·AI통번역 등)</li>
-                <li>구조조정 실행력: 47&rarr;9명, 판관비 -51%</li>
-            </ul>
+            <h4>수익 구조 (2025 기준)</h4>
+            <div class="peer-grid">
+                <div class="peer-card">
+                    <h4 class="mt-0">거래 기반 매출 (~90%)</h4>
+                    <p style="font-size:12px; line-height:1.6;"><strong>채널/선결제 정산수수료 11.0억(62.5%)</strong> + 광고수수료 4.4억(24.8%) + 결제수수료 0.5억. 계절성 극심(봄·가을 집중).</p>
+                </div>
+                <div class="peer-card">
+                    <h4 class="mt-0">솔루션/프로젝트 매출 (~10%)</h4>
+                    <p style="font-size:12px; line-height:1.6;">제휴서비스 1.2억 + 프로그램개발 0.2억 + 솔루션 0.1억. 구조조정 후 인력 부족으로 수주 축소 상태.</p>
+                </div>
+            </div>
+
+            <h4>경쟁력과 리스크</h4>
+            <div class="peer-grid">
+                <div class="peer-card" style="border-top: 3px solid var(--positive);">
+                    <h4 class="mt-0" style="color:var(--positive);">강점</h4>
+                    <ul>
+                        <li><strong>16년 브랜드 + 플랫폼 자산:</strong> 국내 이벤트/모임 플랫폼 선두</li>
+                        <li><strong>네이버예약 공식 판매대행사</strong> &mdash; 이도 주식회사가 유상 매입 의향</li>
+                        <li>CEMS 13개 모듈 보유</li>
+                        <li>구조조정 실행력: 47&rarr;9명, 판관비 -51%</li>
+                    </ul>
+                </div>
+                <div class="peer-card" style="border-top: 3px solid var(--negative);">
+                    <h4 class="mt-0" style="color:var(--negative);">약점</h4>
+                    <ul>
+                        <li><strong>완전자본잠식:</strong> 자본 -19.1억</li>
+                        <li><strong>매출 역성장:</strong> 30.9&rarr;17.6억 (-43%)</li>
+                        <li>네이버 37.9% 의존</li>
+                        <li>이자부 부채 17.7억 + 퇴직급여 4.0억</li>
+                    </ul>
+                </div>
+            </div>
         </div>
-        <div class="peer-card" style="border-top: 3px solid var(--negative);">
-            <h4 class="mt-0" style="color:var(--negative);">약점</h4>
-            <ul>
-                <li><strong>완전자본잠식:</strong> 자본 -19.1억 (결손금 69.8억 &gt; 자본금+주발초 50.7억)</li>
-                <li><strong>매출 역성장:</strong> 30.9억(2024)&rarr;17.6억(2025), -43%</li>
-                <li>네이버파이낸셜 채널 37.9% 의존 &rarr; 채널 정책 변경 리스크</li>
-                <li>이자부 부채 17.7억 + 퇴직급여충당 4.0억 &rarr; 연간 이자 0.70억 부담</li>
-            </ul>
-        </div>
-    </div>
+    </details>
 
     <hr class="section-divider">
 
-    <h3>1.3 대표 Pain Points</h3>
+    <!-- ============================== -->
+    <!-- 왜 위기에 처했나               -->
+    <!-- ============================== -->
+    <h2>왜 위기에 처했나 &mdash; 16년 플랫폼의 위기</h2>
 
-    <h4>대표 Pain Points (원문 요약)</h4>
-    <div class="pain-points-box" style="max-height:200px;">1. 2022년 칸서스자산운용과 85억(신주65+구주20) 투자유치 계약 &rarr; 1차 30억만 집행, 2차 55억은 2년간 미뤄지다 최종 미집행으로 정리
+    <div class="narrative">
+        온오프믹스의 위기는 <strong>2022년 칸서스자산운용 투자</strong>에서 시작됩니다. 85억(신주 65 + 구주 20) 계약을 체결했으나 1차 30억만 집행되고, 2차 55억은 2년간 미뤄지다 최종 미집행으로 정리되었습니다. 이 30억이 채무인지 주식인지가 핵심 리스크였는데, BS 분석 결과 <strong>2022년 자본금 +20억, 주발초 +10억 = 정확히 30억 증가</strong>가 확인되어 <strong>유상증자(보통주)로 확정</strong>되었습니다. 상환 의무 없음.
+    </div>
+    <div class="narrative">
+        그러나 55억 미집행으로 자금 계획이 틀어진 상태에서 <strong>2023년 넥스트스토리 사업 인수</strong>, 47명까지의 인력 확장이 겹치면서 판관비가 47.8억까지 폭증했습니다. 매출(25.6억)을 훨씬 넘는 비용 구조가 만들어진 겁니다. 여기에 <strong>티몬/위메프 사태로 3억 미정산</strong>이 더해지며 현금 경색이 심화되었습니다.
+    </div>
+    <div class="narrative">
+        양준철 대표는 <strong>과감한 구조조정</strong>으로 대응했습니다. 2024년 47&rarr;25명, 2025년 25&rarr;9명으로 인원을 줄이고, 사무실을 이전(임차 1.6억&rarr;0.1억/년)하며 판관비를 <strong>47.8억에서 23.5억으로 -51% 감축</strong>했습니다. 그 결과 영업적자가 -22.2억(2023)에서 <strong>-5.8억(2025)으로 60% 축소</strong>되었습니다. 대표 개인도 <strong>2.48억을 가수금으로 투입</strong>(은행 확인)하며 회사 존속에 사활을 걸고 있습니다.
+    </div>
+    <div class="narrative">
+        현재 자본총계는 <strong>-19.1억(완전자본잠식)</strong>입니다. 결손금 69.8억이 자본금+주발초 50.7억을 넘어 19.1억이 초과잠식된 상태입니다. 2024년에 진입(-12.6억)한 뒤 2025년에 심화(-19.1억)되었습니다.
+    </div>
+
+    <details>
+        <summary>상세: 대표 Pain Points 원문</summary>
+        <div class="detail-body">
+            <div class="pain-points-box" style="max-height:none;">1. 2022년 칸서스자산운용과 85억(신주65+구주20) 투자유치 계약 &rarr; 1차 30억만 집행, 2차 55억은 2년간 미뤄지다 최종 미집행으로 정리
 2. 티몬/위메프 사태로 미정산 약 3억 발생
 3. 선급금 모델(선매입&rarr;유통&rarr;정산)을 운용할 자금 없어 거래액 확대 불가 (과거 5건+ 실적 보유)
 4. 2024년 47&rarr;25명, 2025년 25&rarr;9명 구조조정. 퇴직금+미지급급여 분납 협의
@@ -457,274 +467,272 @@
 6. 3월 KIMST R&D 사업 PM 수주 진행 중 (매출 5억 규모 기대)
 7. 네이버예약 공식 판매대행사 지위 보유 &rarr; 이도 주식회사가 유상 구매 의향
 8. BM과 파이프라인은 있으나 Cash Flow 경색이 핵심 문제</div>
+        </div>
+    </details>
 
-    <h4>4개년 재무상태표 (BS) — 보완자료 전량 확보</h4>
-    <p style="font-size:11px; color:var(--text-secondary); margin-bottom:4px;">2022~2025 4개년 BS+IS 전량을 보완자료 엑셀에서 파싱. 칸서스 투자 형태와 자본잠식 현황이 확정되었습니다.</p>
-
-    <div class="table-scroll">
-    <table>
-        <tr><th>항목</th><th class="num">2021</th><th class="num">2022</th><th class="num">2023</th><th class="num">2024</th><th class="num">2025</th></tr>
-        <tr><td><strong>자산총계</strong></td><td class="num">9.7억</td><td class="num">35.4억</td><td class="num">33.2억</td><td class="num">30.3억</td><td class="num">13.9억</td></tr>
-        <tr><td>&nbsp; 유동자산</td><td class="num">7.0</td><td class="num">33.3</td><td class="num">24.5</td><td class="num">25.6</td><td class="num">11.5</td></tr>
-        <tr><td>&nbsp; 비유동자산</td><td class="num">2.7</td><td class="num">2.1</td><td class="num">8.7</td><td class="num">4.7</td><td class="num">2.4</td></tr>
-        <tr style="border-top: 2px solid var(--black);"><td><strong>부채총계</strong></td><td class="num">7.0억</td><td class="num">11.7억</td><td class="num" style="color:var(--negative);">31.3억</td><td class="num" style="color:var(--negative);">42.9억</td><td class="num" style="color:var(--negative);">33.0억</td></tr>
-        <tr><td>&nbsp; 유동부채</td><td class="num">2.1</td><td class="num">3.3</td><td class="num" style="color:var(--negative);">21.4</td><td class="num" style="color:var(--negative);">29.3</td><td class="num">18.8</td></tr>
-        <tr><td>&nbsp; 비유동부채</td><td class="num">4.9</td><td class="num">8.4</td><td class="num">9.8</td><td class="num">13.6</td><td class="num">14.2</td></tr>
-        <tr style="border-top: 2px solid var(--black);"><td><strong>자본금</strong></td><td class="num">0.15억</td><td class="num" style="color:var(--positive); font-weight:700;">20.15억</td><td class="num">20.15억</td><td class="num">20.15억</td><td class="num">20.15억</td></tr>
-        <tr><td><strong>주발초</strong></td><td class="num">20.5억</td><td class="num" style="color:var(--positive); font-weight:700;">30.5억</td><td class="num">30.5억</td><td class="num">30.5억</td><td class="num">30.5억</td></tr>
-        <tr><td><strong>결손금</strong></td><td class="num" style="color:var(--negative);">17.9억</td><td class="num" style="color:var(--negative);">27.0억</td><td class="num" style="color:var(--negative);">48.8억</td><td class="num" style="color:var(--negative);">63.3억</td><td class="num" style="color:var(--negative);">69.8억</td></tr>
-        <tr style="border-top: 2px solid var(--black); background:var(--bg-alt);"><td><strong>자본총계</strong></td><td class="num">2.8억</td><td class="num" style="color:var(--positive); font-weight:700;">23.7억</td><td class="num" style="color:var(--caution);">1.9억</td><td class="num" style="color:var(--negative); font-weight:700;">-12.6억</td><td class="num" style="color:var(--negative); font-weight:700;">-19.1억</td></tr>
-    </table>
-    </div>
-
-    <div class="card card-success" style="margin-top:8px;">
-        <h4 class="mt-0" style="color:var(--positive);">[확정] 칸서스 30억 = 유상증자 (주식)</h4>
-        <p>2021&rarr;2022 BS에서 자본금 +20.0억, 주발초 +10.0억 = <strong>정확히 30억 증가</strong>. 부채 항목에 칸서스 관련 기록 없음. 이자비용 2022~2023 거의 0원. <strong>칸서스 1차 30억은 보통주 유상증자로 확정.</strong> 채무가 아니므로 원금 상환 의무 없음.</p>
-    </div>
-
-    <div class="card card-danger" style="margin-top:8px;">
-        <h4 class="mt-0" style="color:var(--negative);">[심각] 완전자본잠식 (2024~ 진입)</h4>
-        <p>결손금 69.8억 &gt; 자본금+주발초 50.7억 &rarr; <strong>초과잠식 19.1억</strong>. 2024년 진입(-12.6억) 후 2025년 심화(-19.1억). 신규 투자 유치·대출 심사·거래처 신뢰에 장벽. 다만 비상장사이므로 관리종목 리스크는 해당 없음.</p>
-    </div>
-
-    <h4>부채 구성 상세 (2025)</h4>
-    <table>
-        <tr><th>구분</th><th class="num">금액</th><th>비고</th></tr>
-        <tr><td colspan="3" style="font-weight:600; background:var(--bg-alt);">이자부 부채 (합계 17.7억)</td></tr>
-        <tr><td>&nbsp; 단기차입금</td><td class="num">9.0억</td><td style="font-size:10px;">2024년 18.9억에서 약 10억 상환 &mdash; 적극적 부채 축소</td></tr>
-        <tr><td>&nbsp; 유동성장기부채</td><td class="num">5.0억</td><td style="font-size:10px;">1년 내 만기 도래분 (2024: 7.0억에서 감소)</td></tr>
-        <tr><td>&nbsp; 장기차입금</td><td class="num">3.7억</td><td style="font-size:10px;">2024년 신규 발생, 유지 중</td></tr>
-        <tr><td colspan="3" style="font-weight:600; background:var(--bg-alt);">비이자부 부채 (합계 15.3억)</td></tr>
-        <tr><td>&nbsp; 매입채무</td><td class="num">4.5억</td><td style="font-size:10px;">이벤트 정산 미지급 (정상 영업)</td></tr>
-        <tr><td>&nbsp; 기타장기부채</td><td class="num">6.5억</td><td style="font-size:10px;">리스부채 또는 기타 비유동 (2022년 8.4억에서 점차 감소)</td></tr>
-        <tr><td>&nbsp; 퇴직급여충당</td><td class="num">4.0억</td><td style="font-size:10px; color:var(--caution);">구조조정 퇴직금 누적 (2024: 1.3억 &rarr; 4.0억)</td></tr>
-        <tr><td>&nbsp; 미지급비용 등</td><td class="num">0.3억</td><td style="font-size:10px;"></td></tr>
-        <tr style="border-top: 2px solid var(--black);"><td><strong>부채 합계</strong></td><td class="num" style="font-weight:700;">33.0억</td><td style="font-size:10px;">2024년 42.9억에서 약 10억 감소 &mdash; 구조조정 병행 부채 축소</td></tr>
-    </table>
-    <p style="font-size:11px; color:var(--text-secondary);">이자율 역산: 이자비용 0.70억 / 이자부부채 17.7억 &asymp; 4.0%. 정책자금·보증서대출 비율이 높은 것으로 추정.</p>
-
-    <h4>이자비용 패턴 (2025 월별)</h4>
-    <p style="font-size:11px; color:var(--text-secondary); margin-bottom:4px;">연간 이자비용 0.70억. 상반기 부채 상환에 따라 월별 감소 추세.</p>
-    <table>
-        <tr><th>기간</th><th class="num">월 이자</th><th>비고</th></tr>
-        <tr><td>1~4월</td><td class="num">~780만</td><td style="font-size:10px;">단기차입금 18.9억 + 장기부채 잔고 기반</td></tr>
-        <tr><td>5~9월</td><td class="num">~600만</td><td style="font-size:10px;">단기차입금 부분 상환 진행 중</td></tr>
-        <tr><td>10~12월</td><td class="num">~290만</td><td style="font-size:10px; color:var(--positive);">상환 효과 &mdash; 이자 부담 62% 감소</td></tr>
-    </table>
-    <p style="font-size:11px; color:var(--text-secondary);">칸서스 30억은 유상증자(주식)이므로 이자와 무관. 이자비용은 2023년 이후 발생한 단기차입금(운전자금)에서 비롯.</p>
-
-    <h4>4개년 재무 추이</h4>
-    <div class="table-scroll">
-    <table>
-        <tr><th>구분</th><th class="num">2022</th><th class="num">2023</th><th class="num">2024</th><th class="num">2025(가)</th></tr>
-        <tr><td><strong>매출액</strong></td><td class="num">14.8억</td><td class="num">25.6억</td><td class="num" style="color:var(--positive);">30.9억</td><td class="num" style="color:var(--negative);">17.6억</td></tr>
-        <tr><td><strong>판관비</strong></td><td class="num">24.1억</td><td class="num">47.8억</td><td class="num">45.4억</td><td class="num" style="color:var(--positive);">23.5억</td></tr>
-        <tr><td><strong>영업이익</strong></td>
-            <td class="num" style="color:var(--negative);">-9.2억</td>
-            <td class="num" style="color:var(--negative);">-22.2억</td>
-            <td class="num" style="color:var(--negative);">-14.5억</td>
-            <td class="num" style="color:var(--negative);">-5.8억</td></tr>
-        <tr><td>이자비용</td>
-            <td class="num">0.0억</td>
-            <td class="num">0.0억</td>
-            <td class="num" style="color:var(--negative);">0.57억</td>
-            <td class="num" style="color:var(--negative);">0.70억</td></tr>
-        <tr><td><strong>당기순손실</strong></td>
-            <td class="num" style="color:var(--negative);">-9.1억</td>
-            <td class="num" style="color:var(--negative);">-21.8억</td>
-            <td class="num" style="color:var(--negative);">-14.6억</td>
-            <td class="num" style="color:var(--negative);">-6.5억</td></tr>
-        <tr style="border-top: 1px solid var(--border);"><td><strong>자본총계</strong></td>
-            <td class="num" style="color:var(--positive);">23.7억</td>
-            <td class="num" style="color:var(--caution);">1.9억</td>
-            <td class="num" style="color:var(--negative); font-weight:700;">-12.6억</td>
-            <td class="num" style="color:var(--negative); font-weight:700;">-19.1억</td></tr>
-        <tr><td>임직원 수</td><td class="num">~30명</td><td class="num">47명</td><td class="num">25명</td><td class="num">9명</td></tr>
-    </table>
-    </div>
-    <p style="font-size:11px; color:var(--text-secondary);">2023년 판관비 47.8억(47명) &rarr; 2025년 23.5억(9명): <strong>-51% 감축 실행</strong>. 매출 역성장(-43%)에도 영업적자 축소(-60%)는 구조조정 효과.</p>
-
-    <hr class="section-divider">
-    <h3>1.4 고위드 DW 교차검증</h3>
-    <p style="font-size:12px; color:var(--text-secondary); margin-bottom:4px;">
-        회사가 제출한 재무자료가 실제와 일치하는지, 고위드가 보유한 <strong>은행 계좌 실시간 연동 데이터</strong>로 독립 검증한 결과입니다.
-        은행 입금에는 온오프믹스 자체 매출뿐 아니라 <strong>이벤트 정산 Pass-through 금액</strong>이 포함되어 있어, IS 매출(17.6억)보다 훨씬 큽니다.
-    </p>
-
-    <h4>월말 잔고 추이 (2025~2026)</h4>
-    <table>
-        <tr><th>시점</th><th class="num">잔고</th><th>비고</th></tr>
-        <tr><td>2025-05</td><td class="num" style="color:var(--positive); font-weight:700;">9.71억</td><td style="font-size:10px; color:var(--positive);">피크 &mdash; 봄 이벤트 시즌 정산 집중</td></tr>
-        <tr><td>2025-08</td><td class="num">~5.0억</td><td style="font-size:10px;">하계 비수기 진입</td></tr>
-        <tr><td>2025-10</td><td class="num">4.40억</td><td style="font-size:10px;">10월 매출입금 6.15억</td></tr>
-        <tr><td>2025-11</td><td class="num" style="color:var(--negative); font-weight:700;">2.68억</td><td style="font-size:10px; color:var(--negative);">저점 &mdash; 연말 비수기</td></tr>
-        <tr><td>2025-12</td><td class="num">4.58억</td><td style="font-size:10px;">매출입금 6.96억으로 반등</td></tr>
-        <tr><td>2026-01</td><td class="num">3.74억</td><td style="font-size:10px;">총출금 11.61억 &gt; 총입금 10.76억</td></tr>
-        <tr style="background:var(--bg-alt);"><td><strong>2026-02 (2/21)</strong></td><td class="num" style="color:var(--positive); font-weight:700;">4.41억</td><td style="font-size:10px; color:var(--positive);">MTD 영업CF +4.66억. 2/11 일시 6.88억 도달</td></tr>
-    </table>
-    <p style="font-size:11px; color:var(--text-secondary);">잔고 변동폭 2.68~9.71억 (3.6배) &mdash; <strong>극심한 계절성</strong>. 5월 피크 후 하반기 지속 하락 패턴. 11월 저점(2.68억) 후 회복세: 12월 4.58 &rarr; 1월 3.74 &rarr; 2월 4.41억.</p>
-
-    <h4>월별 현금흐름 (RCF, 2025-H2 ~ 2026-02)</h4>
-    <p style="font-size:11px; color:var(--text-secondary); margin-bottom:4px;">은행 입출금 기반 현금흐름 분류 (단위: 억원)</p>
-    <div class="table-scroll">
-    <table>
-        <tr><th>월</th><th class="num">매출입금</th><th class="num">영업출금</th><th class="num">영업CF</th><th class="num">총입금</th><th class="num">총출금</th><th>비고</th></tr>
-        <tr><td>2025-07</td><td class="num">10.80</td><td class="num">3.97</td><td class="num" style="color:var(--positive);">+6.84</td><td class="num">13.55</td><td class="num">13.12</td><td style="font-size:10px;">이벤트 시즌 정산</td></tr>
-        <tr><td>2025-08</td><td class="num">10.83</td><td class="num">5.13</td><td class="num" style="color:var(--positive);">+6.48</td><td class="num">12.78</td><td class="num">11.61</td><td style="font-size:10px;"></td></tr>
-        <tr><td>2025-09</td><td class="num">5.81</td><td class="num">3.79</td><td class="num" style="color:var(--positive);">+2.02</td><td class="num">8.70</td><td class="num">12.05</td><td style="font-size:10px;">총출금 &gt; 총입금, 차입 0.45억</td></tr>
-        <tr><td>2025-10</td><td class="num">6.15</td><td class="num">3.13</td><td class="num" style="color:var(--positive);">+3.03</td><td class="num">8.40</td><td class="num">7.59</td><td style="font-size:10px;"></td></tr>
-        <tr><td>2025-11</td><td class="num">3.80</td><td class="num">2.37</td><td class="num" style="color:var(--positive);">+1.43</td><td class="num">6.01</td><td class="num">7.73</td><td style="font-size:10px; color:var(--negative);">비수기, 총출금 초과</td></tr>
-        <tr><td>2025-12</td><td class="num">6.96</td><td class="num">2.16</td><td class="num" style="color:var(--positive);">+4.80</td><td class="num">8.66</td><td class="num">6.75</td><td style="font-size:10px;">연말 이벤트 정산</td></tr>
-        <tr><td>2026-01</td><td class="num">9.56</td><td class="num">4.13</td><td class="num" style="color:var(--positive);">+5.43</td><td class="num">10.76</td><td class="num">11.61</td><td style="font-size:10px;">차입 0.47억 발생</td></tr>
-        <tr style="background:var(--bg-alt);"><td><strong>2026-02</strong></td><td class="num"><strong>6.92</strong></td><td class="num"><strong>2.25</strong></td><td class="num" style="color:var(--positive); font-weight:700;"><strong>+4.66</strong></td><td class="num"><strong>7.95</strong></td><td class="num"><strong>7.28</strong></td><td style="font-size:10px;">MTD (2/21까지), 급여 0.52억 지급</td></tr>
-    </table>
-    </div>
-    <p style="font-size:11px; color:var(--text-secondary);"><strong>영업CF는 8개월 연속 플러스</strong> (월 1.4~6.8억). 플랫폼 거래 수수료 모델의 장점. 다만 총 입출금 기준(재무활동 포함)으로는 간헐적 적자 발생.</p>
-
-    <h4>주요 입금원 (2025 연간, 은행 기준)</h4>
-    <table>
-        <tr><th>입금원</th><th class="num">금액</th><th class="num">비중</th><th>비고</th></tr>
-        <tr><td><strong>네이버파이낸셜</strong></td><td class="num">49.2억</td><td class="num">37.9%</td><td style="font-size:10px;">네이버예약 채널 정산금 (Pass-through 포함)</td></tr>
-        <tr><td>적요없음</td><td class="num">36.4억</td><td class="num">28.1%</td><td style="font-size:10px;">적요 미기재 입금 &mdash; 자체 결제 정산 추정</td></tr>
-        <tr><td>지마켓</td><td class="num">4.3억</td><td class="num">3.3%</td><td style="font-size:10px;">지마켓 채널 정산</td></tr>
-        <tr><td>나이스페이먼츠</td><td class="num">3.6억</td><td class="num">2.8%</td><td style="font-size:10px;">PG 정산</td></tr>
-        <tr><td><strong>경기콘텐츠진흥원</strong></td><td class="num">3.1억</td><td class="num">2.4%</td><td style="font-size:10px; color:var(--positive);">경기도 협약 사업비</td></tr>
-        <tr><td>카드사 합산</td><td class="num">~12억</td><td class="num">~9%</td><td style="font-size:10px;">BC·KB·삼성·우리카드 등</td></tr>
-        <tr><td style="color:var(--caution);">양준철 (대표)</td><td class="num" style="color:var(--caution);">2.48억</td><td class="num">1.9%</td><td style="font-size:10px; color:var(--caution);">가수금 &mdash; 개인 자금 투입</td></tr>
-    </table>
-    <p style="font-size:11px; color:var(--text-secondary);">은행 총 입금 ~130억 중 온오프믹스 자체 매출(IS 기준)은 17.6억. 차이 ~112억은 이벤트 주최자 정산금 Pass-through. 네이버파이낸셜 37.9% 단일 채널 의존 주의.</p>
-
-    <hr class="section-divider">
-    <h3>1.5 교차검증 인사이트</h3>
-    <p style="font-size:12px; color:var(--text-secondary); margin-bottom:8px;">위 은행 데이터에서 도출한 핵심 시사점입니다.</p>
-
-    <div class="card card-danger">
-        <h4 class="mt-0">위기 신호</h4>
-        <ol>
-            <li><strong>잔고 하락 추세:</strong> 5월 9.71억 &rarr; 11월 2.68억. 7개월간 -73%. 계절성이 주 요인이나 절대 수준도 낮음.</li>
-            <li><strong>대표 사재 의존:</strong> 양준철 대표 가수금 2.48억 (은행 확인). 회사 존속이 개인 자금에 의존.</li>
-            <li><strong>차입 발생:</strong> 2025-09부터 간헐적 차입(4,500~4,700만원). 운영비 부족 시그널.</li>
-        </ol>
-    </div>
-
-    <div class="card card-success">
-        <h4 class="mt-0">긍정 신호</h4>
-        <ol>
-            <li><strong>거래 플랫폼 건재:</strong> 은행 총 입금 ~130억. 이벤트 거래가 활발히 일어나고 있으며 플랫폼 자체는 작동 중.</li>
-            <li><strong>다채널 수익:</strong> 네이버·지마켓·카드사·PG 등 다수 채널에서 정산 발생 &rarr; 매출원 분산.</li>
-            <li><strong>경기도 사업비 입금:</strong> 경기콘텐츠진흥원 3.1억 확인. 공공 사업 수주 실적.</li>
-            <li><strong>잔고 회복세 확인:</strong> 11월 저점(2.68억) &rarr; 12월 4.58 &rarr; 1월 3.74 &rarr; 2월 4.41억. 영업CF 8개월 연속 흑자.</li>
-        </ol>
-    </div>
-
-    <div class="card card-highlight">
-        <h4 class="mt-0">현금 계절성 패턴 &mdash; 봄 피크, 겨울 저점</h4>
-        <p>이벤트/MICE 업종 특성상 <strong>3~5월(봄 시즌)</strong>과 <strong>9~10월(가을 시즌)</strong>에 거래량이 집중됩니다.
-        겨울(11~2월)은 구조적 비수기이며, 이 시기에 운영자금이 부족해지는 패턴입니다.</p>
-        <ul>
-            <li>피트스탑 자금이 투입되면 <strong>비수기 현금 갭을 메우는 버퍼</strong> 역할 + 선급금 사업 재개 가능</li>
-            <li>선급금 사업은 봄 시즌 전(2~3월)에 선매입해야 효과 극대화</li>
-        </ul>
-    </div>
-
-    <!-- 2. 피트스탑 판정 -->
-    <h2 class="page-break-before">2. 피트스탑 판정 &mdash; 받을 수 있는가?</h2>
-    <p style="font-size:12px; color:var(--text-secondary); margin-bottom:8px;">
-        피트스탑 투자를 집행하기 전, 반드시 충족해야 하는 <strong>선결 조건</strong>을 정리합니다.
-        Tier 1(즉시 확인)이 하나라도 불통과되면 투자를 진행하지 않습니다.
-    </p>
-
-    <h3>2.1 선결 조건 (5개)</h3>
-
-    <div class="card card-success">
-        <h4 class="mt-0">Tier 1: 해소됨 (BS 보완자료 확보)</h4>
-        <table>
-            <tr><th style="width:30px">#</th><th>조건</th><th>결과</th><th style="width:90px">상태</th></tr>
-            <tr><td>1</td><td><strong>칸서스 30억 투자 형태 확인</strong></td><td>BS 확인: 2022년 자본금+주발초 정확히 +30억 &rarr; <strong>유상증자(보통주) 확정</strong>. 채무 아님.</td><td><span class="badge badge-success">CLEAR</span></td></tr>
-            <tr><td>2</td><td><strong>부채·자본 확인 (BS 전량)</strong></td><td>2022~2025 4개년 BS 확보. 부채 33.0억, <strong>완전자본잠식 -19.1억</strong> 확인.</td><td><span class="badge badge-success">CLEAR</span></td></tr>
-        </table>
-        <p style="font-size:11px; color:var(--text-secondary); margin-top:6px;">Tier 1 선결조건 모두 해소. 칸서스 = 주식이므로 상환 리스크 없음. 다만 완전자본잠식은 투자 구조 설계 시 반영 필요.</p>
-    </div>
-
-    <div class="card card-highlight">
-        <h4 class="mt-0">Tier 2: 투자 구조 설계 전 확인</h4>
-        <table>
-            <tr><th style="width:30px">#</th><th>조건</th><th>이유</th></tr>
-            <tr><td>3</td><td><strong>KIMST R&D 5억 수주 확정 여부</strong></td><td>확정 시 2026 매출 + 런웨이 안정화의 핵심. 구두 vs 계약 단계?</td></tr>
-            <tr><td>4</td><td><strong>네이버예약 대행사 지위 유지 조건</strong></td><td>매출 37.9%의 근간. 해지/변경 리스크? 이도 매입 시 영향은?</td></tr>
-            <tr><td>5</td><td><strong>티몬/위메프 3억 미수금 회수 가능성</strong></td><td>회수 시 즉시 현금 유입. 불가 시 손실 확정.</td></tr>
-        </table>
-    </div>
-
-    <h3>2.2 GO 근거 vs RISK 근거</h3>
-
-    <div class="peer-grid">
-        <div class="peer-card" style="border-top: 3px solid var(--positive);">
-            <h4 class="mt-0" style="color:var(--positive);">GO Factors</h4>
+    <details>
+        <summary>상세: 4개년 재무상태표 (BS) + 칸서스 확정 근거</summary>
+        <div class="detail-body">
+            <div class="table-scroll">
             <table>
-                <tr><th>#</th><th>항목</th><th>근거</th></tr>
-                <tr><td>1</td><td><strong>구조조정 실행력</strong></td><td>47&rarr;9명, 판관비 -51%. 사무실 이전(임차 1.6억&rarr;0.1억). 실행 완료.</td></tr>
-                <tr><td>2</td><td><strong>BEP 근접</strong></td><td>구조조정 후 고정비 ~7.5억, BEP ~15.5억. H2 run rate 16.2억으로 근접.</td></tr>
-                <tr><td>3</td><td><strong>플랫폼 자산</strong></td><td>16년 브랜드, 네이버예약 대행사, CEMS 13개 모듈, 130억 거래량.</td></tr>
-                <tr><td>4</td><td><strong>선급금 사업</strong></td><td>과거 5건+ 실적. 자금만 있으면 즉시 재개 &rarr; 매출 3~5억 추가 기대.</td></tr>
-                <tr><td>5</td><td><strong>파이프라인</strong></td><td>KIMST 5억 + 경기도 사업 + 트래픽 회복. 매출 반등 가능성.</td></tr>
+                <tr><th>항목</th><th class="num">2021</th><th class="num">2022</th><th class="num">2023</th><th class="num">2024</th><th class="num">2025</th></tr>
+                <tr><td><strong>자산총계</strong></td><td class="num">9.7억</td><td class="num">35.4억</td><td class="num">33.2억</td><td class="num">30.3억</td><td class="num">13.9억</td></tr>
+                <tr><td>&nbsp; 유동자산</td><td class="num">7.0</td><td class="num">33.3</td><td class="num">24.5</td><td class="num">25.6</td><td class="num">11.5</td></tr>
+                <tr><td>&nbsp; 비유동자산</td><td class="num">2.7</td><td class="num">2.1</td><td class="num">8.7</td><td class="num">4.7</td><td class="num">2.4</td></tr>
+                <tr style="border-top: 2px solid var(--black);"><td><strong>부채총계</strong></td><td class="num">7.0억</td><td class="num">11.7억</td><td class="num" style="color:var(--negative);">31.3억</td><td class="num" style="color:var(--negative);">42.9억</td><td class="num" style="color:var(--negative);">33.0억</td></tr>
+                <tr><td>&nbsp; 유동부채</td><td class="num">2.1</td><td class="num">3.3</td><td class="num" style="color:var(--negative);">21.4</td><td class="num" style="color:var(--negative);">29.3</td><td class="num">18.8</td></tr>
+                <tr><td>&nbsp; 비유동부채</td><td class="num">4.9</td><td class="num">8.4</td><td class="num">9.8</td><td class="num">13.6</td><td class="num">14.2</td></tr>
+                <tr style="border-top: 2px solid var(--black);"><td><strong>자본금</strong></td><td class="num">0.15억</td><td class="num" style="color:var(--positive); font-weight:700;">20.15억</td><td class="num">20.15억</td><td class="num">20.15억</td><td class="num">20.15억</td></tr>
+                <tr><td><strong>주발초</strong></td><td class="num">20.5억</td><td class="num" style="color:var(--positive); font-weight:700;">30.5억</td><td class="num">30.5억</td><td class="num">30.5억</td><td class="num">30.5억</td></tr>
+                <tr><td><strong>결손금</strong></td><td class="num" style="color:var(--negative);">17.9억</td><td class="num" style="color:var(--negative);">27.0억</td><td class="num" style="color:var(--negative);">48.8억</td><td class="num" style="color:var(--negative);">63.3억</td><td class="num" style="color:var(--negative);">69.8억</td></tr>
+                <tr style="border-top: 2px solid var(--black); background:var(--bg-alt);"><td><strong>자본총계</strong></td><td class="num">2.8억</td><td class="num" style="color:var(--positive); font-weight:700;">23.7억</td><td class="num" style="color:var(--caution);">1.9억</td><td class="num" style="color:var(--negative); font-weight:700;">-12.6억</td><td class="num" style="color:var(--negative); font-weight:700;">-19.1억</td></tr>
+            </table>
+            </div>
+            <div class="card card-success" style="margin-top:8px;">
+                <h4 class="mt-0" style="color:var(--positive);">[확정] 칸서스 30억 = 유상증자 (주식)</h4>
+                <p>2021&rarr;2022 BS에서 자본금 +20.0억, 주발초 +10.0억 = 정확히 30억 증가. 부채 항목에 칸서스 관련 기록 없음. 이자비용 2022~2023 거의 0원. 채무가 아니므로 원금 상환 의무 없음.</p>
+            </div>
+            <div class="card card-danger" style="margin-top:8px;">
+                <h4 class="mt-0" style="color:var(--negative);">[심각] 완전자본잠식 (2024~ 진입)</h4>
+                <p>결손금 69.8억 &gt; 자본금+주발초 50.7억 &rarr; 초과잠식 19.1억. 비상장사이므로 관리종목 리스크는 해당 없으나 신규 투자 유치·대출 심사·거래처 신뢰에 장벽.</p>
+            </div>
+        </div>
+    </details>
+
+    <details>
+        <summary>상세: 부채 구성 + 이자비용 패턴</summary>
+        <div class="detail-body">
+            <h4>부채 구성 상세 (2025)</h4>
+            <table>
+                <tr><th>구분</th><th class="num">금액</th><th>비고</th></tr>
+                <tr><td colspan="3" style="font-weight:600; background:var(--bg-alt);">이자부 부채 (합계 17.7억)</td></tr>
+                <tr><td>&nbsp; 단기차입금</td><td class="num">9.0억</td><td style="font-size:10px;">2024년 18.9억에서 약 10억 상환</td></tr>
+                <tr><td>&nbsp; 유동성장기부채</td><td class="num">5.0억</td><td style="font-size:10px;">1년 내 만기 도래분</td></tr>
+                <tr><td>&nbsp; 장기차입금</td><td class="num">3.7억</td><td style="font-size:10px;">2024년 신규 발생</td></tr>
+                <tr><td colspan="3" style="font-weight:600; background:var(--bg-alt);">비이자부 부채 (합계 15.3억)</td></tr>
+                <tr><td>&nbsp; 매입채무</td><td class="num">4.5억</td><td style="font-size:10px;">이벤트 정산 미지급 (정상 영업)</td></tr>
+                <tr><td>&nbsp; 기타장기부채</td><td class="num">6.5억</td><td style="font-size:10px;">리스부채 또는 기타 비유동</td></tr>
+                <tr><td>&nbsp; 퇴직급여충당</td><td class="num">4.0억</td><td style="font-size:10px; color:var(--caution);">구조조정 퇴직금 누적</td></tr>
+                <tr><td>&nbsp; 미지급비용 등</td><td class="num">0.3억</td><td style="font-size:10px;"></td></tr>
+                <tr style="border-top: 2px solid var(--black);"><td><strong>부채 합계</strong></td><td class="num" style="font-weight:700;">33.0억</td><td style="font-size:10px;">2024년 42.9억에서 약 10억 감소</td></tr>
+            </table>
+            <p style="font-size:11px; color:var(--text-secondary);">이자율 역산: 0.70억 / 17.7억 &asymp; 4.0%. 정책자금·보증서대출 비율 높은 것으로 추정.</p>
+
+            <h4>이자비용 패턴 (2025 월별)</h4>
+            <table>
+                <tr><th>기간</th><th class="num">월 이자</th><th>비고</th></tr>
+                <tr><td>1~4월</td><td class="num">~780만</td><td style="font-size:10px;">단기차입금 18.9억 + 장기부채 기반</td></tr>
+                <tr><td>5~9월</td><td class="num">~600만</td><td style="font-size:10px;">부분 상환 진행 중</td></tr>
+                <tr><td>10~12월</td><td class="num">~290만</td><td style="font-size:10px; color:var(--positive);">상환 효과 &mdash; 이자 부담 62% 감소</td></tr>
             </table>
         </div>
-        <div class="peer-card" style="border-top: 3px solid var(--negative);">
-            <h4 class="mt-0" style="color:var(--negative);">RISK Factors</h4>
+    </details>
+
+    <details>
+        <summary>상세: 4개년 손익 추이 (IS)</summary>
+        <div class="detail-body">
+            <div class="table-scroll">
             <table>
-                <tr><th>#</th><th>항목</th><th>근거</th></tr>
-                <tr><td>1</td><td><strong>완전자본잠식 -19.1억</strong></td><td>결손금 69.8억 &gt; 자본 50.7억. 신규 투자 유치·대출 심사 장벽. 퇴직급여충당 4.0억도 부담.</td></tr>
-                <tr><td>2</td><td><strong>매출 역성장 -43%</strong></td><td>30.9&rarr;17.6억. 구조조정 영향 + 넥스트스토리 사업 축소. 반등 미확인.</td></tr>
-                <tr><td>3</td><td><strong>이자부 부채 17.7억</strong></td><td>단기차입 9.0 + 유동성장기 5.0 + 장기 3.7. 연 0.70억 이자 부담.</td></tr>
-                <tr><td>4</td><td><strong>네이버 37.9% 의존</strong></td><td>네이버파이낸셜 단일 채널 의존. 정책 변경 시 매출 급감.</td></tr>
-                <tr><td>5</td><td><strong>9명 최소 인원</strong></td><td>개발·영업·운영 동시. 1명 이탈 시 사업 연속성 위협.</td></tr>
+                <tr><th>구분</th><th class="num">2022</th><th class="num">2023</th><th class="num">2024</th><th class="num">2025(가)</th></tr>
+                <tr><td><strong>매출액</strong></td><td class="num">14.8억</td><td class="num">25.6억</td><td class="num" style="color:var(--positive);">30.9억</td><td class="num" style="color:var(--negative);">17.6억</td></tr>
+                <tr><td><strong>판관비</strong></td><td class="num">24.1억</td><td class="num">47.8억</td><td class="num">45.4억</td><td class="num" style="color:var(--positive);">23.5억</td></tr>
+                <tr><td><strong>영업이익</strong></td><td class="num" style="color:var(--negative);">-9.2억</td><td class="num" style="color:var(--negative);">-22.2억</td><td class="num" style="color:var(--negative);">-14.5억</td><td class="num" style="color:var(--negative);">-5.8억</td></tr>
+                <tr><td>이자비용</td><td class="num">0.0억</td><td class="num">0.0억</td><td class="num" style="color:var(--negative);">0.57억</td><td class="num" style="color:var(--negative);">0.70억</td></tr>
+                <tr><td><strong>당기순손실</strong></td><td class="num" style="color:var(--negative);">-9.1억</td><td class="num" style="color:var(--negative);">-21.8억</td><td class="num" style="color:var(--negative);">-14.6억</td><td class="num" style="color:var(--negative);">-6.5억</td></tr>
+                <tr style="border-top: 1px solid var(--border);"><td><strong>자본총계</strong></td><td class="num" style="color:var(--positive);">23.7억</td><td class="num" style="color:var(--caution);">1.9억</td><td class="num" style="color:var(--negative); font-weight:700;">-12.6억</td><td class="num" style="color:var(--negative); font-weight:700;">-19.1억</td></tr>
+                <tr><td>임직원 수</td><td class="num">~30명</td><td class="num">47명</td><td class="num">25명</td><td class="num">9명</td></tr>
             </table>
+            </div>
+            <p style="font-size:11px; color:var(--text-secondary);">2023년 판관비 47.8억(47명) &rarr; 2025년 23.5억(9명): -51% 감축 실행. 매출 역성장(-43%)에도 영업적자 축소(-60%)는 구조조정 효과.</p>
+        </div>
+    </details>
+
+    <hr class="section-divider">
+
+    <!-- ============================== -->
+    <!-- 은행 데이터 검증               -->
+    <!-- ============================== -->
+    <h2>은행 데이터가 말해주는 것</h2>
+
+    <div class="narrative">
+        회사가 제출한 재무자료를 고위드가 보유한 <strong>은행 계좌 실시간 연동 데이터</strong>로 독립 검증했습니다. 결론부터 말하면, <strong>플랫폼은 살아 있습니다</strong>. 은행 총 입금이 연 ~130억으로 이벤트 거래가 활발히 일어나고 있고, 네이버·지마켓·카드사·PG 등 다채널에서 정산이 발생합니다. 경기콘텐츠진흥원 사업비 3.1억도 입금이 확인됩니다.
+    </div>
+    <div class="narrative">
+        하지만 <strong>위기 신호도 분명합니다</strong>. 잔고가 5월 피크(9.71억)에서 11월 저점(2.68억)까지 7개월간 -73% 빠졌습니다. 대표 양준철이 개인 자금 <strong>2.48억을 가수금으로 투입</strong>한 것이 은행에서 확인되고, 2025년 9월부터 간헐적 차입(4,500~4,700만원)이 발생하고 있습니다.
+    </div>
+    <div class="narrative">
+        긍정적인 건 <strong>영업CF가 8개월 연속 플러스</strong>(월 1.4~6.8억)라는 점입니다. 플랫폼 수수료 모델 덕분에 매출이 발생하면 현금이 바로 들어옵니다. 11월 저점(2.68억) 이후 잔고도 회복세를 보이고 있습니다: 12월 4.58 &rarr; 1월 3.74 &rarr; 2월 4.41억. 피트스탑 자금이 투입되면 <strong>비수기 현금 갭을 메우는 버퍼</strong> 역할을 할 수 있고, 봄 시즌 전(2~3월)에 선급금 사업을 선매입하면 효과가 극대화됩니다.
+    </div>
+
+    <div class="peer-grid" style="margin-top:12px;">
+        <div class="card card-danger">
+            <h4 class="mt-0">위기 신호</h4>
+            <ol>
+                <li><strong>잔고 하락 추세:</strong> 5월 9.71억 &rarr; 11월 2.68억 (-73%)</li>
+                <li><strong>대표 사재 의존:</strong> 양준철 가수금 2.48억 (은행 확인)</li>
+                <li><strong>차입 발생:</strong> 2025-09부터 간헐적 차입 (운영비 부족 시그널)</li>
+            </ol>
+        </div>
+        <div class="card card-success">
+            <h4 class="mt-0">긍정 신호</h4>
+            <ol>
+                <li><strong>플랫폼 건재:</strong> 은행 총 입금 ~130억, 거래 활발</li>
+                <li><strong>영업CF 8개월 연속 흑자</strong> (월 1.4~6.8억)</li>
+                <li><strong>공공 수주:</strong> 경기콘텐츠진흥원 3.1억 입금 확인</li>
+                <li><strong>잔고 회복세:</strong> 11월 2.68 &rarr; 2월 4.41억</li>
+            </ol>
         </div>
     </div>
 
-    <!-- 3. 메자닌 집행 -->
-    <h2 class="page-break-before">3. 메자닌 집행 시 &mdash; 원금 + 이자 회수</h2>
-    <p style="font-size:12px; color:var(--text-secondary); margin-bottom:8px;">
-        실제로 3억을 투자(메자닌 집행)했을 때, 원금과 이자를 어떻게 돌려받을 수 있는지를 분석합니다.
-    </p>
+    <details>
+        <summary>상세: 월말 잔고 추이 (2025~2026)</summary>
+        <div class="detail-body">
+            <table>
+                <tr><th>시점</th><th class="num">잔고</th><th>비고</th></tr>
+                <tr><td>2025-05</td><td class="num" style="color:var(--positive); font-weight:700;">9.71억</td><td style="font-size:10px; color:var(--positive);">피크 &mdash; 봄 이벤트 시즌</td></tr>
+                <tr><td>2025-08</td><td class="num">~5.0억</td><td style="font-size:10px;">하계 비수기 진입</td></tr>
+                <tr><td>2025-10</td><td class="num">4.40억</td><td style="font-size:10px;">10월 매출입금 6.15억</td></tr>
+                <tr><td>2025-11</td><td class="num" style="color:var(--negative); font-weight:700;">2.68억</td><td style="font-size:10px; color:var(--negative);">저점 &mdash; 연말 비수기</td></tr>
+                <tr><td>2025-12</td><td class="num">4.58억</td><td style="font-size:10px;">매출입금 6.96억으로 반등</td></tr>
+                <tr><td>2026-01</td><td class="num">3.74억</td><td style="font-size:10px;">총출금 &gt; 총입금</td></tr>
+                <tr style="background:var(--bg-alt);"><td><strong>2026-02 (2/21)</strong></td><td class="num" style="color:var(--positive); font-weight:700;">4.41억</td><td style="font-size:10px; color:var(--positive);">MTD 영업CF +4.66억</td></tr>
+            </table>
+            <p style="font-size:11px; color:var(--text-secondary);">잔고 변동폭 2.68~9.71억 (3.6배). 극심한 계절성 &mdash; 봄 피크, 겨울 저점.</p>
+        </div>
+    </details>
 
-    <div class="assumption-note">
-        <strong>전제:</strong> 메자닌 3억 (필요 자금 2~5억 중간값), 금리 8%, 만기 2년, 전환권 포함. 칸서스 30억 = 유상증자(주식) 확정 (BS 확인). 이자부 부채 17.7억 존재.
+    <details>
+        <summary>상세: 월별 현금흐름 (RCF, 2025-H2 ~ 2026-02)</summary>
+        <div class="detail-body">
+            <div class="table-scroll">
+            <table>
+                <tr><th>월</th><th class="num">매출입금</th><th class="num">영업출금</th><th class="num">영업CF</th><th class="num">총입금</th><th class="num">총출금</th><th>비고</th></tr>
+                <tr><td>2025-07</td><td class="num">10.80</td><td class="num">3.97</td><td class="num" style="color:var(--positive);">+6.84</td><td class="num">13.55</td><td class="num">13.12</td><td style="font-size:10px;">이벤트 시즌</td></tr>
+                <tr><td>2025-08</td><td class="num">10.83</td><td class="num">5.13</td><td class="num" style="color:var(--positive);">+6.48</td><td class="num">12.78</td><td class="num">11.61</td><td style="font-size:10px;"></td></tr>
+                <tr><td>2025-09</td><td class="num">5.81</td><td class="num">3.79</td><td class="num" style="color:var(--positive);">+2.02</td><td class="num">8.70</td><td class="num">12.05</td><td style="font-size:10px;">차입 0.45억</td></tr>
+                <tr><td>2025-10</td><td class="num">6.15</td><td class="num">3.13</td><td class="num" style="color:var(--positive);">+3.03</td><td class="num">8.40</td><td class="num">7.59</td><td style="font-size:10px;"></td></tr>
+                <tr><td>2025-11</td><td class="num">3.80</td><td class="num">2.37</td><td class="num" style="color:var(--positive);">+1.43</td><td class="num">6.01</td><td class="num">7.73</td><td style="font-size:10px; color:var(--negative);">비수기</td></tr>
+                <tr><td>2025-12</td><td class="num">6.96</td><td class="num">2.16</td><td class="num" style="color:var(--positive);">+4.80</td><td class="num">8.66</td><td class="num">6.75</td><td style="font-size:10px;"></td></tr>
+                <tr><td>2026-01</td><td class="num">9.56</td><td class="num">4.13</td><td class="num" style="color:var(--positive);">+5.43</td><td class="num">10.76</td><td class="num">11.61</td><td style="font-size:10px;">차입 0.47억</td></tr>
+                <tr style="background:var(--bg-alt);"><td><strong>2026-02</strong></td><td class="num"><strong>6.92</strong></td><td class="num"><strong>2.25</strong></td><td class="num" style="color:var(--positive); font-weight:700;"><strong>+4.66</strong></td><td class="num"><strong>7.95</strong></td><td class="num"><strong>7.28</strong></td><td style="font-size:10px;">MTD (2/21)</td></tr>
+            </table>
+            </div>
+            <p style="font-size:11px; color:var(--text-secondary);">영업CF는 8개월 연속 플러스 (월 1.4~6.8억). 총 입출금 기준으로는 간헐적 적자 발생.</p>
+        </div>
+    </details>
+
+    <details>
+        <summary>상세: 주요 입금원 분석 (2025 연간)</summary>
+        <div class="detail-body">
+            <table>
+                <tr><th>입금원</th><th class="num">금액</th><th class="num">비중</th><th>비고</th></tr>
+                <tr><td><strong>네이버파이낸셜</strong></td><td class="num">49.2억</td><td class="num">37.9%</td><td style="font-size:10px;">네이버예약 채널 정산금</td></tr>
+                <tr><td>적요없음</td><td class="num">36.4억</td><td class="num">28.1%</td><td style="font-size:10px;">자체 결제 정산 추정</td></tr>
+                <tr><td>지마켓</td><td class="num">4.3억</td><td class="num">3.3%</td><td style="font-size:10px;">지마켓 채널 정산</td></tr>
+                <tr><td>나이스페이먼츠</td><td class="num">3.6억</td><td class="num">2.8%</td><td style="font-size:10px;">PG 정산</td></tr>
+                <tr><td><strong>경기콘텐츠진흥원</strong></td><td class="num">3.1억</td><td class="num">2.4%</td><td style="font-size:10px; color:var(--positive);">경기도 협약 사업비</td></tr>
+                <tr><td>카드사 합산</td><td class="num">~12억</td><td class="num">~9%</td><td style="font-size:10px;">BC·KB·삼성·우리카드 등</td></tr>
+                <tr><td style="color:var(--caution);">양준철 (대표)</td><td class="num" style="color:var(--caution);">2.48억</td><td class="num">1.9%</td><td style="font-size:10px; color:var(--caution);">가수금 &mdash; 개인 자금 투입</td></tr>
+            </table>
+            <p style="font-size:11px; color:var(--text-secondary);">은행 총 입금 ~130억 중 자체 매출 17.6억. 차이 ~112억은 이벤트 정산 Pass-through. 네이버파이낸셜 37.9% 단일 채널 의존 주의.</p>
+        </div>
+    </details>
+
+    <hr class="section-divider">
+
+    <!-- ============================== -->
+    <!-- 투자 판단                      -->
+    <!-- ============================== -->
+    <h2 class="page-break-before">투자할 수 있는가 &mdash; 선결조건과 GO/RISK</h2>
+
+    <div class="narrative">
+        피트스탑 투자의 최대 걸림돌이었던 <strong>칸서스 30억의 정체</strong>가 해소되었습니다. BS 분석으로 유상증자(보통주)임이 확정되어 상환 의무가 없습니다. 4개년 BS도 전량 확보했습니다. <strong>Tier 1 선결조건은 모두 CLEAR</strong>입니다.
+    </div>
+    <div class="narrative">
+        남은 건 Tier 2입니다. <strong>KIMST R&D 5억 수주</strong>가 확정되면 2026년 매출과 런웨이가 안정화되는 핵심 스윙 팩터입니다. <strong>네이버예약 대행사 지위</strong>가 매출 37.9%의 근간이므로 유지 조건과 해지 리스크를 확인해야 합니다. 티몬/위메프 3억 미수금의 회수 가능성도 체크 대상입니다.
+    </div>
+    <div class="narrative">
+        <strong>GO 판단의 핵심 근거</strong>는 구조조정 실행력(47&rarr;9명, 판관비 -51%)과 BEP 근접(고정비 7.5억, BEP 15.5억 vs H2 run rate 16.2억), 그리고 16년 플랫폼 자산(네이버예약 대행사, CEMS 13개 모듈, 130억 거래량)입니다. 선급금 사업은 자금만 있으면 즉시 재개 가능하며 매출 3~5억 추가를 기대할 수 있습니다.
+    </div>
+    <div class="narrative">
+        <strong>RISK의 핵심</strong>은 완전자본잠식(-19.1억), 매출 역성장(-43%), 이자부 부채 17.7억, 네이버 37.9% 의존, 그리고 9명이라는 최소 인원 리스크입니다.
     </div>
 
-    <h3>3.1 자금 배분 계획</h3>
-    <table>
-        <tr><th>용도</th><th class="num">금액</th><th>효과</th></tr>
-        <tr><td>선급금 사업 재개</td><td class="num">1.5억</td><td>봄 시즌 선매입 &rarr; 매출 3~5억 추가 기대 (과거 실적 기반)</td></tr>
-        <tr><td>비수기 운영자금 버퍼 (4개월)</td><td class="num">1.0억</td><td>11~2월 현금 갭 대비. 급여·임차·PG 수수료 커버.</td></tr>
-        <tr><td>MICE 영업 + 기술 유지보수</td><td class="num">0.5억</td><td>KIMST 수주 지원 + 플랫폼 기술 부채 해소</td></tr>
-        <tr style="border-top: 2px solid var(--black);"><td><strong>합계</strong></td><td class="num"><strong>3.0억</strong></td><td></td></tr>
-    </table>
+    <details>
+        <summary>상세: 선결조건 5개 (Tier 1 + Tier 2)</summary>
+        <div class="detail-body">
+            <div class="card card-success">
+                <h4 class="mt-0">Tier 1: 해소됨 (BS 보완자료 확보)</h4>
+                <table>
+                    <tr><th style="width:30px">#</th><th>조건</th><th>결과</th><th style="width:90px">상태</th></tr>
+                    <tr><td>1</td><td><strong>칸서스 30억 투자 형태 확인</strong></td><td>BS 확인: 자본금+주발초 정확히 +30억 &rarr; <strong>유상증자(보통주) 확정</strong></td><td><span class="badge badge-success">CLEAR</span></td></tr>
+                    <tr><td>2</td><td><strong>부채·자본 확인 (BS 전량)</strong></td><td>4개년 BS 확보. 부채 33.0억, 완전자본잠식 -19.1억 확인</td><td><span class="badge badge-success">CLEAR</span></td></tr>
+                </table>
+            </div>
+            <div class="card card-highlight">
+                <h4 class="mt-0">Tier 2: 투자 구조 설계 전 확인</h4>
+                <table>
+                    <tr><th style="width:30px">#</th><th>조건</th><th>이유</th></tr>
+                    <tr><td>3</td><td><strong>KIMST R&D 5억 수주 확정 여부</strong></td><td>구두 vs 계약 단계? 2026 매출 안정화의 핵심</td></tr>
+                    <tr><td>4</td><td><strong>네이버예약 대행사 지위 유지 조건</strong></td><td>매출 37.9%의 근간. 해지/변경 리스크?</td></tr>
+                    <tr><td>5</td><td><strong>티몬/위메프 3억 미수금 회수 가능성</strong></td><td>회수 시 즉시 현금 유입</td></tr>
+                </table>
+            </div>
+        </div>
+    </details>
 
-    <h3>3.2 투자 전후 이자 구조 (연간)</h3>
-    <table>
-        <tr>
-            <th>구분</th>
-            <th class="num">현재</th>
-            <th class="num">투자 후<br><span style="font-size:9px;">3억 투입</span></th>
-        </tr>
-        <tr><td>기존 이자 (잔여 차입)</td><td class="num">~0.35억</td><td class="num">0.35억</td></tr>
-        <tr><td>메자닌 3.0억 (8%)</td><td class="num">&mdash;</td><td class="num" style="color:var(--negative);">+0.24억</td></tr>
-        <tr style="border-top: 2px solid var(--black);">
-            <td><strong>이자 합계</strong></td>
-            <td class="num"><strong>~0.35억</strong></td>
-            <td class="num"><strong>~0.59억</strong></td>
-        </tr>
-    </table>
-    <p style="font-size:11px; color:var(--text-secondary);">이자 부담 0.24억 증가. 선급금 사업 추가 매출(3~5억)의 마진(~50%)으로 상쇄 가능.</p>
+    <details>
+        <summary>상세: GO 근거 vs RISK 근거</summary>
+        <div class="detail-body">
+            <div class="peer-grid">
+                <div class="peer-card" style="border-top: 3px solid var(--positive);">
+                    <h4 class="mt-0" style="color:var(--positive);">GO Factors</h4>
+                    <table>
+                        <tr><th>#</th><th>항목</th><th>근거</th></tr>
+                        <tr><td>1</td><td><strong>구조조정 실행력</strong></td><td>47&rarr;9명, 판관비 -51%. 사무실 이전(1.6억&rarr;0.1억). 실행 완료.</td></tr>
+                        <tr><td>2</td><td><strong>BEP 근접</strong></td><td>고정비 ~7.5억, BEP ~15.5억. H2 run rate 16.2억으로 근접.</td></tr>
+                        <tr><td>3</td><td><strong>플랫폼 자산</strong></td><td>16년 브랜드, 네이버예약 대행사, CEMS 13개 모듈, 130억 거래량.</td></tr>
+                        <tr><td>4</td><td><strong>선급금 사업</strong></td><td>과거 5건+. 자금 투입 시 즉시 재개 &rarr; 매출 3~5억 추가.</td></tr>
+                        <tr><td>5</td><td><strong>파이프라인</strong></td><td>KIMST 5억 + 경기도 사업 + 트래픽 회복.</td></tr>
+                    </table>
+                </div>
+                <div class="peer-card" style="border-top: 3px solid var(--negative);">
+                    <h4 class="mt-0" style="color:var(--negative);">RISK Factors</h4>
+                    <table>
+                        <tr><th>#</th><th>항목</th><th>근거</th></tr>
+                        <tr><td>1</td><td><strong>완전자본잠식 -19.1억</strong></td><td>결손금 69.8억 &gt; 자본 50.7억. 퇴직급여 4.0억도 부담.</td></tr>
+                        <tr><td>2</td><td><strong>매출 역성장 -43%</strong></td><td>30.9&rarr;17.6억. 반등 미확인.</td></tr>
+                        <tr><td>3</td><td><strong>이자부 부채 17.7억</strong></td><td>연 0.70억 이자 부담.</td></tr>
+                        <tr><td>4</td><td><strong>네이버 37.9% 의존</strong></td><td>정책 변경 시 매출 급감.</td></tr>
+                        <tr><td>5</td><td><strong>9명 최소 인원</strong></td><td>1명 이탈 시 사업 연속성 위협.</td></tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </details>
 
-    <h3>3.3 원금+이자 회수 조건</h3>
+    <hr class="section-divider">
+
+    <!-- ============================== -->
+    <!-- 메자닌 집행                    -->
+    <!-- ============================== -->
+    <h2 class="page-break-before">3억 메자닌 &mdash; 어디에 쓰고, 어떻게 돌려받나</h2>
+
+    <div class="narrative">
+        3억 메자닌(8%, 2년, 전환권)을 집행한다면 <strong>1.5억은 선급금 사업 재개</strong>(봄 시즌 선매입으로 매출 3~5억 추가), <strong>1.0억은 비수기 운영자금 버퍼</strong>(11~2월 현금 갭 대비), <strong>0.5억은 MICE 영업 + 기술 유지보수</strong>에 배분합니다.
+    </div>
+    <div class="narrative">
+        투자 후 연간 이자 부담은 기존 0.35억 + 메자닌 0.24억 = <strong>총 0.59억</strong>이 됩니다. 선급금 사업 추가 매출(3~5억)의 마진(~50%)으로 충분히 상쇄 가능한 수준입니다.
+    </div>
+    <div class="narrative">
+        구조조정 후 고정비가 ~7.5억으로 줄었고, 변동비율이 매출의 ~48%입니다. 이자 포함 <strong>BEP는 15.6억</strong>인데, 2025년 하반기 run rate가 이미 <strong>16.2억</strong>(연환산)입니다. 즉 현행 매출만 유지해도 BEP를 넘깁니다. 선급금 사업 재개(+3~5억) + KIMST 수주(+5억)가 더해지면 매출 20~25억으로 <strong>순이익 2.3~4.9억</strong>이 가능합니다.
+    </div>
+
     <div class="scenario-grid">
         <div class="scenario-card sc-info">
             <div class="scenario-label">정상 회수</div>
             <div class="scenario-title">2년 만기 상환</div>
-            <div class="scenario-desc">원금 3억 + 이자 0.48억 = <strong>3.48억 (1.16x)</strong>. 영업 BEP 달성 + 선급금 사업 매출로 연간 0.5~1.5억 현금 창출 시 상환 가능.</div>
+            <div class="scenario-desc">원금 3억 + 이자 0.48억 = <strong>3.48억 (1.16x)</strong>. BEP 달성 + 선급금 매출로 연 0.5~1.5억 현금 창출 시 상환 가능.</div>
             <div class="scenario-prob">조건: BEP 유지 + 매출 18억+ 안정</div>
         </div>
         <div class="scenario-card sc-success">
@@ -736,169 +744,96 @@
         <div class="scenario-card sc-danger">
             <div class="scenario-label">회수 불가</div>
             <div class="scenario-title">사업 중단 / 부채 디폴트</div>
-            <div class="scenario-desc">기존 이자부 부채 17.7억 디폴트 또는 매출 회복 실패 시 현금 고갈. 완전자본잠식(-19.1억) 상태에서 추가 부실 발생 시 원금 회수 불가.</div>
+            <div class="scenario-desc">기존 부채 17.7억 디폴트 또는 매출 회복 실패. 원금 전액 손실.</div>
             <div class="scenario-prob">확률: ~10~15%</div>
         </div>
     </div>
 
-    <!-- 4. BEP 분석 + 전환 -->
-    <h2>4. BEP 분석 + 주식 전환</h2>
-    <p style="font-size:12px; color:var(--text-secondary); margin-bottom:8px;">
-        온오프믹스의 손익분기점(BEP)과, 투자금을 주식으로 전환하는 시나리오를 분석합니다.
-    </p>
-
-    <h3>4.1 고정비·변동비 분해 (구조조정 후)</h3>
-    <table>
-        <tr><th>구분</th><th>항목</th><th class="num">연간 추정</th><th>비고</th></tr>
-        <tr><td rowspan="4"><strong>고정비</strong></td><td>급여 (9명)</td><td class="num">~6.0억</td><td style="font-size:10px;">H2 run rate 기준</td></tr>
-        <tr><td>임차료</td><td class="num">~0.11억</td><td style="font-size:10px;">이전 후 92만/월</td></tr>
-        <tr><td>감가+무형상각</td><td class="num">~0.68억</td><td style="font-size:10px;">무형상각 0.58억 + 감가 0.10억</td></tr>
-        <tr><td>기타 고정</td><td class="num">~0.73억</td><td style="font-size:10px;">복리후생·보험·세금·통신 등</td></tr>
-        <tr style="border-top: 1px solid var(--border);"><td colspan="2"><strong>고정비 합계</strong></td><td class="num"><strong>~7.52억</strong></td><td></td></tr>
-        <tr><td rowspan="3"><strong>변동비</strong></td><td>레저솔루션+채널 수수료</td><td class="num">매출의 ~30%</td><td style="font-size:10px;">채널 매출에 비례</td></tr>
-        <tr><td>나이스+KCP+기타 PG</td><td class="num">매출의 ~11%</td><td style="font-size:10px;">결제 처리 수수료</td></tr>
-        <tr><td>판촉·행사·외주</td><td class="num">매출의 ~7%</td><td style="font-size:10px;">활동 수준에 비례</td></tr>
-        <tr style="border-top: 1px solid var(--border);"><td colspan="2"><strong>변동비율 합계</strong></td><td class="num"><strong>매출의 ~48%</strong></td><td></td></tr>
-    </table>
-
-    <div class="card card-info">
-        <h4 class="mt-0">BEP 계산</h4>
-        <p>BEP = 고정비 &divide; (1 - 변동비율) = 7.52 &divide; 0.52 = <strong>14.5억</strong></p>
-        <p>이자비용 포함 BEP = (7.52 + 0.59) &divide; 0.52 = <strong>15.6억</strong></p>
-        <p style="color:var(--positive); font-weight:600;">H2 2025 매출 run rate: ~16.2억 (연환산) &rarr; BEP 15.6억 대비 +0.6억 여유. <strong>구조적으로 BEP 근접.</strong></p>
+    <div class="narrative">
+        전환가는 Post-money <strong>20억 기준 지분 15%</strong>가 기본입니다(PSR 1.1x). 최적 전환 시점은 <strong>T+18개월(2027 Q3)</strong> &mdash; BEP 안정화 후 성장이 시작되는 구간입니다.
     </div>
 
-    <h3>4.2 매출별 BEP 민감도</h3>
-    <table>
-        <tr><th>2026 매출</th><th class="num">변동비</th><th class="num">고정비</th><th class="num">이자</th><th class="num">순이익</th><th>판정</th></tr>
-        <tr><td>12억 (비관)</td><td class="num">5.8억</td><td class="num">7.5억</td><td class="num">0.6억</td><td class="num" style="color:var(--negative); font-weight:700;">-1.9억</td><td><span class="badge badge-danger">적자</span></td></tr>
-        <tr><td>16억 (현행)</td><td class="num">7.7억</td><td class="num">7.5억</td><td class="num">0.6억</td><td class="num" style="color:var(--positive);">+0.2억</td><td><span class="badge badge-success">BEP</span></td></tr>
-        <tr style="background:var(--bg-alt);"><td><strong>20억 (기본)</strong></td><td class="num">9.6억</td><td class="num">7.5억</td><td class="num">0.6억</td><td class="num" style="color:var(--positive); font-weight:700;">+2.3억</td><td><span class="badge badge-success">흑자</span></td></tr>
-        <tr><td>25억 (상방)</td><td class="num">12.0억</td><td class="num">7.5억</td><td class="num">0.6억</td><td class="num" style="color:var(--positive); font-weight:700;">+4.9억</td><td><span class="badge badge-success">흑자</span></td></tr>
-    </table>
-    <p style="font-size:11px; color:var(--text-secondary);">선급금 사업 재개(+3~5억) + KIMST 수주(+5억) + 트래픽 회복 시 20~25억 달성 가능성. 핵심: KIMST 확정 여부.</p>
+    <details>
+        <summary>상세: 자금배분 + 이자구조 + BEP분석 + 전환가</summary>
+        <div class="detail-body">
+            <h4>자금 배분 계획</h4>
+            <table>
+                <tr><th>용도</th><th class="num">금액</th><th>효과</th></tr>
+                <tr><td>선급금 사업 재개</td><td class="num">1.5억</td><td>봄 시즌 선매입 &rarr; 매출 3~5억 추가</td></tr>
+                <tr><td>비수기 운영자금 버퍼</td><td class="num">1.0억</td><td>11~2월 현금 갭 대비</td></tr>
+                <tr><td>MICE 영업 + 기술 유지보수</td><td class="num">0.5억</td><td>KIMST 수주 지원</td></tr>
+                <tr style="border-top: 2px solid var(--black);"><td><strong>합계</strong></td><td class="num"><strong>3.0억</strong></td><td></td></tr>
+            </table>
 
-    <h3>4.3 전환가 시나리오</h3>
-    <table>
-        <tr><th>내재 밸류에이션<br><span style="font-size:9px;">(Post-money)</span></th><th class="num">투자금</th><th class="num">지분율</th><th>비고</th></tr>
-        <tr><td>30억</td><td class="num">3억</td><td class="num">10.0%</td><td>최근 투자 라운드(칸서스) 대비 대폭 할인. 보수적.</td></tr>
-        <tr style="background:var(--bg-alt); font-weight:600;"><td>20억</td><td class="num">3억</td><td class="num">15.0%</td><td>기본 &mdash; 현 상태 반영 (적자, 역성장, 자본잠식)</td></tr>
-        <tr><td>15억</td><td class="num">3억</td><td class="num">20.0%</td><td>Deep discount &mdash; 사실상 구조조정 기업 프라이싱</td></tr>
-    </table>
-    <p style="font-size:11px; color:var(--text-secondary);">2025 매출 17.6억 기준 PSR: 30억=1.7x, 20억=1.1x, 15억=0.9x. 이벤트테크 플랫폼 PSR 1~2x 범위.</p>
+            <h4>투자 전후 이자 구조 (연간)</h4>
+            <table>
+                <tr><th>구분</th><th class="num">현재</th><th class="num">투자 후</th></tr>
+                <tr><td>기존 이자</td><td class="num">~0.35억</td><td class="num">0.35억</td></tr>
+                <tr><td>메자닌 3.0억 (8%)</td><td class="num">&mdash;</td><td class="num" style="color:var(--negative);">+0.24억</td></tr>
+                <tr style="border-top: 2px solid var(--black);"><td><strong>이자 합계</strong></td><td class="num"><strong>~0.35억</strong></td><td class="num"><strong>~0.59억</strong></td></tr>
+            </table>
 
-    <h3>4.4 최적 전환 시점</h3>
-    <table>
-        <tr><th style="width:100px;">시점</th><th>이벤트</th><th>의사결정</th></tr>
-        <tr><td><strong>T+0</strong> (2026 Q1)</td><td>Tier 1 조건 충족, 메자닌 3억 집행</td><td>선급금 사업 재개 + 운영자금 확보</td></tr>
-        <tr><td><strong>T+6mo</strong> (2026 Q3)</td><td>봄 시즌 매출 확인</td><td>KIMST 수주 진행 + 선급금 매출 실현</td></tr>
-        <tr><td><strong>T+12mo</strong> (2027 Q1)</td><td>2026 연간 실적 확정</td><td>출자전환 1차 검토. 매출 20억+ 시 전환 유리</td></tr>
-        <tr style="background:var(--bg-alt);"><td><strong>T+18mo</strong> (2027 Q3)</td><td>2년차 성장 확인</td><td style="color:var(--positive); font-weight:600;">출자전환 최적 구간 &mdash; BEP 안정화 후 성장 시작점</td></tr>
-        <tr><td><strong>T+24~36mo</strong></td><td>Exit 윈도우</td><td>M&amp;A / 전략적 투자자 / Secondary</td></tr>
-    </table>
+            <h4>고정비·변동비 분해 (구조조정 후)</h4>
+            <table>
+                <tr><th>구분</th><th>항목</th><th class="num">연간 추정</th><th>비고</th></tr>
+                <tr><td rowspan="4"><strong>고정비</strong></td><td>급여 (9명)</td><td class="num">~6.0억</td><td style="font-size:10px;">H2 run rate</td></tr>
+                <tr><td>임차료</td><td class="num">~0.11억</td><td style="font-size:10px;">92만/월</td></tr>
+                <tr><td>감가+무형상각</td><td class="num">~0.68억</td><td style="font-size:10px;"></td></tr>
+                <tr><td>기타 고정</td><td class="num">~0.73억</td><td style="font-size:10px;"></td></tr>
+                <tr style="border-top: 1px solid var(--border);"><td colspan="2"><strong>고정비 합계</strong></td><td class="num"><strong>~7.52억</strong></td><td></td></tr>
+                <tr><td colspan="2"><strong>변동비율 합계</strong></td><td class="num"><strong>매출의 ~48%</strong></td><td></td></tr>
+            </table>
 
-    <!-- 5. Exit 시나리오 -->
-    <h2 class="page-break-before">5. Exit 시나리오 &mdash; 기대 수익률</h2>
-    <p style="font-size:12px; color:var(--text-secondary); margin-bottom:8px;">
-        투자금을 최종적으로 회수하는 시나리오입니다. 플랫폼 기업은 M&amp;A, 전략적 투자자 유치, 네이버예약 대행사 지위 매각 등의 Exit 옵션이 있습니다.
-    </p>
+            <div class="card card-info">
+                <h4 class="mt-0">BEP 계산</h4>
+                <p>BEP = 7.52 &divide; 0.52 = <strong>14.5억</strong> / 이자 포함 = <strong>15.6억</strong></p>
+                <p style="color:var(--positive); font-weight:600;">H2 run rate 16.2억 &rarr; BEP 대비 +0.6억 여유. 구조적으로 BEP 근접.</p>
+            </div>
 
-    <div class="assumption-note">
-        <strong>가정:</strong> 메자닌 3억/8%/2년/전환권, 변동비율 48%, 고정비 7.5억, 칸서스=유상증자 확정(BS확인), 이자부부채 17.7억, 전환가 20억 기준(지분 15%), Exit Year 3.
+            <h4>매출별 BEP 민감도</h4>
+            <table>
+                <tr><th>2026 매출</th><th class="num">변동비</th><th class="num">고정비</th><th class="num">이자</th><th class="num">순이익</th><th>판정</th></tr>
+                <tr><td>12억 (비관)</td><td class="num">5.8억</td><td class="num">7.5억</td><td class="num">0.6억</td><td class="num" style="color:var(--negative);">-1.9억</td><td><span class="badge badge-danger">적자</span></td></tr>
+                <tr><td>16억 (현행)</td><td class="num">7.7억</td><td class="num">7.5억</td><td class="num">0.6억</td><td class="num" style="color:var(--positive);">+0.2억</td><td><span class="badge badge-success">BEP</span></td></tr>
+                <tr style="background:var(--bg-alt);"><td><strong>20억 (기본)</strong></td><td class="num">9.6억</td><td class="num">7.5억</td><td class="num">0.6억</td><td class="num" style="color:var(--positive); font-weight:700;">+2.3억</td><td><span class="badge badge-success">흑자</span></td></tr>
+                <tr><td>25억 (상방)</td><td class="num">12.0억</td><td class="num">7.5억</td><td class="num">0.6억</td><td class="num" style="color:var(--positive); font-weight:700;">+4.9억</td><td><span class="badge badge-success">흑자</span></td></tr>
+            </table>
+
+            <h4>전환가 시나리오</h4>
+            <table>
+                <tr><th>Post-money</th><th class="num">투자금</th><th class="num">지분율</th><th>비고</th></tr>
+                <tr><td>30억</td><td class="num">3억</td><td class="num">10.0%</td><td>보수적</td></tr>
+                <tr style="background:var(--bg-alt); font-weight:600;"><td>20억</td><td class="num">3억</td><td class="num">15.0%</td><td>기본 (PSR 1.1x)</td></tr>
+                <tr><td>15억</td><td class="num">3억</td><td class="num">20.0%</td><td>Deep discount</td></tr>
+            </table>
+
+            <h4>최적 전환 시점</h4>
+            <table>
+                <tr><th style="width:100px;">시점</th><th>이벤트</th><th>의사결정</th></tr>
+                <tr><td><strong>T+0</strong></td><td>메자닌 3억 집행</td><td>선급금 사업 재개 + 운영자금 확보</td></tr>
+                <tr><td><strong>T+6mo</strong></td><td>봄 시즌 매출 확인</td><td>KIMST 수주 + 선급금 매출 실현</td></tr>
+                <tr><td><strong>T+12mo</strong></td><td>2026 연간 실적</td><td>출자전환 1차 검토</td></tr>
+                <tr style="background:var(--bg-alt);"><td><strong>T+18mo</strong></td><td>2년차 성장 확인</td><td style="color:var(--positive); font-weight:600;">출자전환 최적 구간</td></tr>
+                <tr><td><strong>T+24~36mo</strong></td><td>Exit 윈도우</td><td>M&amp;A / Secondary</td></tr>
+            </table>
+        </div>
+    </details>
+
+    <hr class="section-divider">
+
+    <!-- ============================== -->
+    <!-- 최종 판단                      -->
+    <!-- ============================== -->
+    <h2 class="page-break-before">최종 판단 &mdash; 리스크 대비 매력도</h2>
+
+    <div class="narrative">
+        5개 시나리오(사업 중단 ~ 플랫폼 회복)를 확률 가중하면, 3억 투자의 기대값은 <strong>8.2억(2.7x)</strong>입니다. 기본 시나리오(매출 22억)에서 <strong>3.5x / IRR 37%</strong>, 비관(15억)에서도 <strong>1.9x</strong>입니다. 최대 리스크는 매출 회복 실패 + 기존 부채 17.7억 디폴트로 인한 원금 전액 손실(확률 10%, Tier 1 해소 후 5%로 하향 가능)입니다.
+    </div>
+    <div class="narrative">
+        비관 시나리오에서도 구조조정 효과로 거의 BEP(순손실 -0.3억)에 도달하고, 기본(22억) 시 순이익 3.3억으로 투자금을 1.1년 내 회수할 수 있는 규모입니다. 핵심 스윙 팩터는 <strong>KIMST 수주 확정</strong>과 <strong>기존 부채 17.7억 관리</strong>입니다.
     </div>
 
-    <h3>5.1 매출 시나리오별 P&amp;L 프로젝션</h3>
-    <div class="table-scroll">
-    <table>
-        <tr>
-            <th>항목</th>
-            <th class="num">2025(실적)</th>
-            <th class="num" style="border-left: 2px solid var(--border);">비관 (15억)</th>
-            <th class="num">기본 (22억)</th>
-            <th class="num">상방 (30억)</th>
-        </tr>
-        <tr>
-            <td style="font-size:10px; color:var(--text-tertiary);">매출 기준</td>
-            <td class="num" style="font-size:10px;">실적</td>
-            <td class="num" style="font-size:10px; border-left: 2px solid var(--border);">현행 유지 (역성장 지속)</td>
-            <td class="num" style="font-size:10px;">선급금+KIMST</td>
-            <td class="num" style="font-size:10px;">플랫폼 회복+파이프라인</td>
-        </tr>
-        <tr><td><strong>매출액</strong></td><td class="num">17.6억</td><td class="num" style="border-left: 2px solid var(--border);">15.0억</td><td class="num">22.0억</td><td class="num">30.0억</td></tr>
-        <tr><td>&nbsp;&nbsp;변동비 (48%)</td><td class="num" style="color:var(--text-tertiary);">&mdash;</td><td class="num" style="border-left: 2px solid var(--border);">7.2억</td><td class="num">10.6억</td><td class="num">14.4억</td></tr>
-        <tr><td>&nbsp;&nbsp;고정비</td><td class="num" style="color:var(--text-tertiary);">&mdash;</td><td class="num" style="border-left: 2px solid var(--border);">7.5억</td><td class="num">7.5억</td><td class="num">8.0억</td></tr>
-        <tr style="border-top: 2px solid var(--black);">
-            <td><strong>영업이익</strong></td>
-            <td class="num" style="color:var(--negative);">-5.8억</td>
-            <td class="num" style="border-left: 2px solid var(--border); color:var(--positive);">0.3억</td>
-            <td class="num" style="color:var(--positive); font-weight:700;">3.9억</td>
-            <td class="num" style="color:var(--positive); font-weight:700;">7.6억</td>
-        </tr>
-        <tr><td>이자비용 <span style="font-size:9px; color:var(--text-tertiary);">※</span></td><td class="num">-0.70억</td><td class="num" style="border-left: 2px solid var(--border);">-0.59억</td><td class="num">-0.59억</td><td class="num">-0.59억</td></tr>
-        <tr style="border-top: 1px solid var(--border);">
-            <td><strong>당기순이익</strong></td>
-            <td class="num" style="color:var(--negative);">-6.5억</td>
-            <td class="num" style="border-left: 2px solid var(--border); color:var(--negative);">-0.3억</td>
-            <td class="num" style="color:var(--positive); font-weight:700;">3.3억</td>
-            <td class="num" style="color:var(--positive); font-weight:700;">7.0억</td>
-        </tr>
-    </table>
-    </div>
-    <p style="font-size:11px; color:var(--text-secondary);">※ 현재 이자 0.70억은 2025 실적(상반기 고금리 포함). 2025 하반기 상환 후 잔여 이자 ~0.35억 + 메자닌 0.24억 = forward 0.59억.<br>비관 시나리오에서도 구조조정 효과로 거의 BEP(순손실 -0.3억). 기본(22억) 시 순이익 3.3억으로 투자금 1.1년 내 회수 가능 규모.</p>
-
-    <h3>5.2 Exit 기업가치 + 투자 수익률</h3>
-    <div class="table-scroll">
-    <table>
-        <tr>
-            <th>항목</th>
-            <th class="num" style="border-left: 2px solid var(--border);">비관</th>
-            <th class="num">기본</th>
-            <th class="num">상방</th>
-        </tr>
-        <tr><td>2026 매출</td><td class="num" style="border-left: 2px solid var(--border);">15억</td><td class="num">22억</td><td class="num">30억</td></tr>
-        <tr><td>2029 매출 (15% CAGR)</td><td class="num" style="border-left: 2px solid var(--border);">22.8억</td><td class="num">33.5억</td><td class="num">45.6억</td></tr>
-        <tr><td>적용 배수 (PSR)</td><td class="num" style="border-left: 2px solid var(--border);">1.5x</td><td class="num">2.0x</td><td class="num">2.5x</td></tr>
-        <tr style="border-top: 2px solid var(--black);">
-            <td><strong>Exit 기업가치</strong></td>
-            <td class="num" style="border-left: 2px solid var(--border);"><strong>34억</strong></td>
-            <td class="num"><strong>67억</strong></td>
-            <td class="num"><strong>114억</strong></td>
-        </tr>
-        <tr>
-            <td>15% 지분 가치</td>
-            <td class="num" style="border-left: 2px solid var(--border); color:var(--positive);">5.1억</td>
-            <td class="num" style="color:var(--positive);">10.1억</td>
-            <td class="num" style="color:var(--positive);">17.1억</td>
-        </tr>
-        <tr><td>이자수익 (2년 x 8%)</td><td class="num" style="border-left: 2px solid var(--border);">0.48억</td><td class="num">0.48억</td><td class="num">0.48억</td></tr>
-        <tr style="border-top: 1px solid var(--border);">
-            <td><strong>총 수익</strong></td>
-            <td class="num" style="border-left: 2px solid var(--border); font-weight:700;">5.6억</td>
-            <td class="num" style="font-weight:700;">10.5억</td>
-            <td class="num" style="font-weight:700;">17.6억</td>
-        </tr>
-        <tr>
-            <td><strong>투자 배수</strong></td>
-            <td class="num" style="border-left: 2px solid var(--border); color:var(--positive); font-weight:700;">1.9x</td>
-            <td class="num" style="color:var(--positive); font-weight:700;">3.5x</td>
-            <td class="num" style="color:var(--positive); font-weight:700;">5.9x</td>
-        </tr>
-        <tr>
-            <td><strong>IRR (4년)</strong></td>
-            <td class="num" style="border-left: 2px solid var(--border);">~17%</td>
-            <td class="num" style="font-weight:700;">~37%</td>
-            <td class="num" style="font-weight:700;">~55%</td>
-        </tr>
-    </table>
-    </div>
-
-    <!-- 6. 종합 리스크-수익률 -->
-    <h2>6. 종합 리스크 vs 수익률</h2>
-    <p style="font-size:12px; color:var(--text-secondary); margin-bottom:8px;">
-        최악(사업 중단)부터 최선(플랫폼 회복)까지 5개 시나리오를 종합하여, 확률 가중 기대값으로 투자의 매력도를 판단합니다.
-    </p>
-
-    <h3>6.1 5개 시나리오 매트릭스</h3>
+    <h3>5개 시나리오 매트릭스</h3>
     <table>
         <tr>
             <th>시나리오</th>
@@ -911,7 +846,7 @@
         <tr style="background:#fff0f0;">
             <td><strong>&#9312; 사업 중단</strong> <span class="badge badge-danger">WORST</span></td>
             <td class="num">&mdash;</td>
-            <td style="font-size:11px;">기존 부채 17.7억 디폴트 / 매출 회복 실패</td>
+            <td style="font-size:11px;">부채 디폴트 / 매출 실패</td>
             <td class="num" style="color:var(--negative); font-weight:700;">0억</td>
             <td class="num" style="color:var(--negative); font-weight:700;">0x</td>
             <td class="num" style="color:var(--negative);">-100%</td>
@@ -919,7 +854,7 @@
         <tr style="background:#fff8f0;">
             <td><strong>&#9313; 침체</strong></td>
             <td class="num">~12억</td>
-            <td style="font-size:11px;">전환 안함, 원금+이자 회수 (2년)</td>
+            <td style="font-size:11px;">원금+이자 회수 (2년)</td>
             <td class="num">3.48억</td>
             <td class="num">1.16x</td>
             <td class="num">~8%</td>
@@ -927,7 +862,7 @@
         <tr style="background:#f0f7f0;">
             <td><strong>&#9314; 비관</strong></td>
             <td class="num">15억</td>
-            <td style="font-size:11px;">2년 이자 + Equity 전환 + Exit 4년</td>
+            <td style="font-size:11px;">이자 + 전환 + Exit 4년</td>
             <td class="num" style="color:var(--positive);">5.6억</td>
             <td class="num" style="color:var(--positive);">1.9x</td>
             <td class="num">~17%</td>
@@ -935,7 +870,7 @@
         <tr style="background:#e8f5e8;">
             <td><strong>&#9315; 기본</strong></td>
             <td class="num">22억</td>
-            <td style="font-size:11px;">2년 이자 + Equity 전환 + Exit 4년</td>
+            <td style="font-size:11px;">이자 + 전환 + Exit 4년</td>
             <td class="num" style="color:var(--positive); font-weight:700;">10.5억</td>
             <td class="num" style="color:var(--positive); font-weight:700;">3.5x</td>
             <td class="num" style="font-weight:700;">~37%</td>
@@ -943,14 +878,14 @@
         <tr style="background:#e0f0e0;">
             <td><strong>&#9316; 상방</strong> <span class="badge badge-success">BEST</span></td>
             <td class="num">30억</td>
-            <td style="font-size:11px;">2년 이자 + Equity 전환 + Exit 4년</td>
+            <td style="font-size:11px;">이자 + 전환 + Exit 4년</td>
             <td class="num" style="color:var(--positive); font-weight:700;">17.6억</td>
             <td class="num" style="color:var(--positive); font-weight:700;">5.9x</td>
             <td class="num" style="font-weight:700;">~55%</td>
         </tr>
     </table>
 
-    <h3>6.2 확률 가중 기대값</h3>
+    <h3>확률 가중 기대값</h3>
     <table>
         <tr><th>시나리오</th><th class="num">확률</th><th class="num">확률 가중 수익</th></tr>
         <tr><td>사업 중단</td><td class="num">10%</td><td class="num">0억</td></tr>
@@ -964,32 +899,70 @@
             <td class="num" style="color:var(--positive); font-weight:700;"><strong>8.2억 (2.7x)</strong></td>
         </tr>
     </table>
-    <p style="font-size:11px; color:var(--text-secondary);">Tier 1 해소 완료 (칸서스=유상증자 확정). 사업 중단 확률 10%&rarr;5%로 하향 가능. 핵심 스윙 팩터: KIMST 수주 확정, 기존 부채 17.7억 관리.</p>
 
-    <h3>6.3 최종 결론</h3>
+    <details>
+        <summary>상세: P&L 프로젝션 + Exit 기업가치</summary>
+        <div class="detail-body">
+            <div class="assumption-note">
+                <strong>가정:</strong> 메자닌 3억/8%/2년/전환권, 변동비율 48%, 고정비 7.5억, 전환가 20억(지분 15%), Exit Year 3.
+            </div>
+            <h4>매출 시나리오별 P&amp;L 프로젝션</h4>
+            <div class="table-scroll">
+            <table>
+                <tr><th>항목</th><th class="num">2025(실적)</th><th class="num" style="border-left: 2px solid var(--border);">비관 (15억)</th><th class="num">기본 (22억)</th><th class="num">상방 (30억)</th></tr>
+                <tr><td><strong>매출액</strong></td><td class="num">17.6억</td><td class="num" style="border-left: 2px solid var(--border);">15.0억</td><td class="num">22.0억</td><td class="num">30.0억</td></tr>
+                <tr><td>&nbsp;&nbsp;변동비 (48%)</td><td class="num" style="color:var(--text-tertiary);">&mdash;</td><td class="num" style="border-left: 2px solid var(--border);">7.2억</td><td class="num">10.6억</td><td class="num">14.4억</td></tr>
+                <tr><td>&nbsp;&nbsp;고정비</td><td class="num" style="color:var(--text-tertiary);">&mdash;</td><td class="num" style="border-left: 2px solid var(--border);">7.5억</td><td class="num">7.5억</td><td class="num">8.0억</td></tr>
+                <tr style="border-top: 2px solid var(--black);"><td><strong>영업이익</strong></td><td class="num" style="color:var(--negative);">-5.8억</td><td class="num" style="border-left: 2px solid var(--border); color:var(--positive);">0.3억</td><td class="num" style="color:var(--positive); font-weight:700;">3.9억</td><td class="num" style="color:var(--positive); font-weight:700;">7.6억</td></tr>
+                <tr><td>이자비용</td><td class="num">-0.70억</td><td class="num" style="border-left: 2px solid var(--border);">-0.59억</td><td class="num">-0.59억</td><td class="num">-0.59억</td></tr>
+                <tr style="border-top: 1px solid var(--border);"><td><strong>당기순이익</strong></td><td class="num" style="color:var(--negative);">-6.5억</td><td class="num" style="border-left: 2px solid var(--border); color:var(--negative);">-0.3억</td><td class="num" style="color:var(--positive); font-weight:700;">3.3억</td><td class="num" style="color:var(--positive); font-weight:700;">7.0억</td></tr>
+            </table>
+            </div>
+
+            <h4>Exit 기업가치 + 투자 수익률</h4>
+            <div class="table-scroll">
+            <table>
+                <tr><th>항목</th><th class="num" style="border-left: 2px solid var(--border);">비관</th><th class="num">기본</th><th class="num">상방</th></tr>
+                <tr><td>2026 매출</td><td class="num" style="border-left: 2px solid var(--border);">15억</td><td class="num">22억</td><td class="num">30억</td></tr>
+                <tr><td>2029 매출 (15% CAGR)</td><td class="num" style="border-left: 2px solid var(--border);">22.8억</td><td class="num">33.5억</td><td class="num">45.6억</td></tr>
+                <tr><td>PSR</td><td class="num" style="border-left: 2px solid var(--border);">1.5x</td><td class="num">2.0x</td><td class="num">2.5x</td></tr>
+                <tr style="border-top: 2px solid var(--black);"><td><strong>Exit 기업가치</strong></td><td class="num" style="border-left: 2px solid var(--border);"><strong>34억</strong></td><td class="num"><strong>67억</strong></td><td class="num"><strong>114억</strong></td></tr>
+                <tr><td>15% 지분 가치</td><td class="num" style="border-left: 2px solid var(--border); color:var(--positive);">5.1억</td><td class="num" style="color:var(--positive);">10.1억</td><td class="num" style="color:var(--positive);">17.1억</td></tr>
+                <tr><td>이자수익 (2년)</td><td class="num" style="border-left: 2px solid var(--border);">0.48억</td><td class="num">0.48억</td><td class="num">0.48억</td></tr>
+                <tr style="border-top: 1px solid var(--border);"><td><strong>총 수익</strong></td><td class="num" style="border-left: 2px solid var(--border); font-weight:700;">5.6억</td><td class="num" style="font-weight:700;">10.5억</td><td class="num" style="font-weight:700;">17.6억</td></tr>
+                <tr><td><strong>배수 / IRR</strong></td><td class="num" style="border-left: 2px solid var(--border); color:var(--positive);">1.9x / ~17%</td><td class="num" style="color:var(--positive); font-weight:700;">3.5x / ~37%</td><td class="num" style="color:var(--positive); font-weight:700;">5.9x / ~55%</td></tr>
+            </table>
+            </div>
+        </div>
+    </details>
+
+    <hr class="section-divider">
+
+    <!-- ============================== -->
+    <!-- 최종 결론 + 다음 단계          -->
+    <!-- ============================== -->
+    <h2>결론과 다음 단계</h2>
+
     <div class="card card-info" style="border-left: 4px solid var(--dark);">
-        <h4 class="mt-0">Q. 피트스탑을 받을 수 있는가?</h4>
-        <p><strong>YES (Tier 1 해소).</strong> 칸서스 30억 = 유상증자(주식) BS 확인. 부채·자본 전량 확보. 완전자본잠식(-19.1억) 존재하나 칸서스 채무 리스크 제거로 투자 구조 설계 가능.</p>
+        <h4 class="mt-0">피트스탑을 받을 수 있는가?</h4>
+        <p><strong>YES (Tier 1 해소).</strong> 칸서스 30억 = 유상증자 확정. 완전자본잠식(-19.1억) 존재하나 채무 리스크 제거로 투자 구조 설계 가능.</p>
 
-        <h4>Q. 메자닌 집행 시 원금+이자를 받으려면?</h4>
-        <p>구조조정 후 BEP ~15.5억에 근접한 상태. 현행 run rate 유지만으로도 <strong>원금 3억 + 이자 0.48억 = 3.48억(1.16x)</strong> 회수 가능 경로 존재. 다만 기존 이자부 부채 17.7억 상환과 경합 &mdash; 피트스탑 메자닌의 선순위/후순위 설정 중요.</p>
+        <h4>원금+이자를 받으려면?</h4>
+        <p>BEP ~15.5억에 근접. 현행 유지만으로도 <strong>3.48억(1.16x)</strong> 회수 가능. 다만 기존 부채 17.7억과 경합 &mdash; 선순위/후순위 설정 중요.</p>
 
-        <h4>Q. 주식 전환되려면?</h4>
-        <p>2026 매출 20억+ 확인 + 영업 흑자 전환 시 전환 유리. <strong>최적 시점 T+18개월(2027 Q3)</strong> &mdash; BEP 안정화 후 성장 시작점.</p>
+        <h4>주식 전환되려면?</h4>
+        <p>2026 매출 20억+ + 영업 흑자 시 전환 유리. <strong>최적 시점 T+18개월</strong>.</p>
 
-        <h4>Q. Exit 시 기대 수익률은?</h4>
-        <p>기본 시나리오(22억 매출) 기준 <strong>3.5x / IRR 37%</strong>. 비관(15억)에서도 1.9x. 최대 리스크는 매출 회복 실패 + 기존 부채 17.7억 상환 불능(원금 전액 손실).</p>
-
-        <h4>Q. 전체 리스크 대비 수익률은?</h4>
-        <p>확률 가중 기대값 <strong>8.2억(2.7x)</strong>. 3억 투자 대비 매력적. 칸서스 채무 리스크 제거로 사업중단 확률 하향 가능(10%&rarr;5%). 완전자본잠식 + 기존 부채 17.7억이 잔여 핵심 리스크.</p>
+        <h4>전체 리스크 대비 수익률은?</h4>
+        <p>확률 가중 <strong>8.2억(2.7x)</strong>. 3억 대비 매력적. 핵심 리스크: 자본잠식 + 부채 17.7억.</p>
     </div>
 
     <div class="card card-danger" style="margin-top:8px;">
-        <h4 class="mt-0">피트스탑 진행 순서 권고</h4>
+        <h4 class="mt-0">다음 단계</h4>
         <ol>
-            <li><strong>Tier 1 해소 완료:</strong> 칸서스=유상증자 확정, BS 전량 확보. <span class="badge badge-success">CLEAR</span></li>
-            <li><strong>Tier 2 확인 (2주):</strong> KIMST 수주, 네이버 대행사 지위, 티몬/위메프 미수금, 퇴직급여 4.0억 지급 일정</li>
-            <li><strong>투자 구조 설계:</strong> 자본잠식(-19.1억) + 기존 부채 17.7억 반영. 선순위/후순위·담보·전환가 확정</li>
+            <li><strong>Tier 1 해소 완료</strong> <span class="badge badge-success">CLEAR</span></li>
+            <li><strong>Tier 2 확인 (2주):</strong> KIMST 수주, 네이버 대행사 지위, 티몬/위메프 미수금, 퇴직급여 4.0억</li>
+            <li><strong>투자 구조 설계:</strong> 자본잠식 + 기존 부채 반영. 선순위/후순위·담보·전환가 확정</li>
             <li><strong>메자닌 3억 집행 &rarr; 선급금 사업 재개 (봄 시즌 전)</strong></li>
             <li><strong>T+18mo 출자전환 검토 &rarr; T+24~36mo Exit</strong></li>
         </ol>
@@ -998,10 +971,11 @@
     <hr class="section-divider">
 
     <!-- APPENDIX -->
-    <h2 class="page-break-before">Appendix &mdash; 상세 분석 자료</h2>
-    <p style="font-size:12px; color:var(--text-secondary); margin-bottom:8px;">본문의 판단을 뒷받침하는 상세 데이터입니다.</p>
+    <h2 class="page-break-before">Appendix</h2>
 
-    <h3>A. 2025 매출 구성 상세</h3>
+    <details open>
+        <summary>A. 2025 매출 구성 상세</summary>
+        <div class="detail-body">
     <table>
         <tr><th>매출 항목</th><th class="num">금액 (억)</th><th class="num">비중</th><th>설명</th></tr>
         <tr><td><strong>채널/선결제 정산수수료</strong></td><td class="num">11.03</td><td class="num">62.5%</td><td style="font-size:10px;">네이버·지마켓 등 다채널 판매 정산 커미션</td></tr>
@@ -1012,9 +986,13 @@
         <tr><td>레저/기타 + 솔루션 + 환불</td><td class="num">0.30</td><td class="num">1.7%</td><td style="font-size:10px;">솔루션 월정액, 레저 티켓 등</td></tr>
         <tr style="border-top: 2px solid var(--black);"><td><strong>합계</strong></td><td class="num"><strong>17.64</strong></td><td class="num"><strong>100%</strong></td><td></td></tr>
     </table>
-    <p style="font-size:11px; color:var(--negative);">채널정산수수료(62.5%) + 광고(24.8%) = 87.3%. 이 두 항목이 사실상 전부. 솔루션/개발 매출 비중 극소.</p>
+    <p style="font-size:11px; color:var(--negative);">채널정산수수료(62.5%) + 광고(24.8%) = 87.3%. 이 두 항목이 사실상 전부.</p>
+        </div>
+    </details>
 
-    <h3>B. 주주 구조 + 투자 이력</h3>
+    <details>
+        <summary>B. 주주 구조 + 투자 이력</summary>
+        <div class="detail-body">
     <table>
         <tr><th>주주</th><th class="num">지분율</th><th>비고</th></tr>
         <tr><td><strong>양준철 (대표)</strong></td><td class="num">50.13%</td><td>최대주주 + 경영권</td></tr>
@@ -1037,8 +1015,12 @@
         <tr><td>2023</td><td>(넥스트스토리 사업 인수)</td><td class="num">&mdash;</td><td style="font-size:10px;">레저&플레이스 사업부문 인수</td></tr>
         <tr style="border-top: 2px solid var(--black);"><td colspan="2"><strong>누적</strong></td><td class="num"><strong>~50.2억</strong></td><td></td></tr>
     </table>
+        </div>
+    </details>
 
-    <h3>C. 인터뷰 체크리스트</h3>
+    <details>
+        <summary>C. 인터뷰 체크리스트</summary>
+        <div class="detail-body">
     <p style="font-size:11px; color:var(--text-secondary); margin-bottom:4px;">대면 인터뷰에서 확인해야 할 항목 목록입니다.</p>
 
     <div class="checklist-item">
@@ -1132,8 +1114,8 @@
             <div class="checklist-text">퇴직금·미지급급여 분납 잔액 + 노동 분쟁 리스크</div>
         </div>
     </div>
-
-    
+        </div>
+    </details>
 
     <!-- FOOTER -->
     <div class="footer">
