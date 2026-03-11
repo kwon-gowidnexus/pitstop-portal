@@ -467,6 +467,50 @@
             font-size: 12px;
             line-height: 1.5;
         }
+        .checklist-reason {
+            font-size: 10px;
+            line-height: 1.4;
+            color: var(--text-tertiary);
+            margin-top: 2px;
+            padding-left: 8px;
+            border-left: 2px solid var(--border-light);
+        }
+        .interview-checklist-details {
+            margin: 16px 0;
+            border: 1px solid var(--border);
+            border-radius: 4px;
+        }
+        .interview-checklist-summary {
+            padding: 10px 14px;
+            font-size: 13px;
+            font-weight: 700;
+            cursor: pointer;
+            background: var(--bg-subtle);
+            list-style: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .interview-checklist-summary::-webkit-details-marker { display: none; }
+        .interview-checklist-summary::before {
+            content: "▸";
+            font-size: 12px;
+            transition: transform 0.15s;
+        }
+        .interview-checklist-details[open] > .interview-checklist-summary::before {
+            transform: rotate(90deg);
+        }
+        .checklist-count {
+            font-size: 11px;
+            font-weight: 600;
+            color: #fff;
+            background: var(--text-tertiary);
+            padding: 1px 7px;
+            border-radius: 10px;
+        }
+        .interview-checklist-body {
+            padding: 4px 14px 10px;
+        }
 
         /* ─── KPI Grid ───────────────────────────── */
         .kpi-grid {
@@ -731,6 +775,12 @@
             .checklist-checkbox { width: 11px; height: 11px; border-width: 1.5px; }
             .checklist-source { font-size: 6pt; }
             .checklist-text { font-size: 7.5pt; line-height: 1.4; }
+            .checklist-reason { font-size: 6pt; line-height: 1.3; margin-top: 1px; padding-left: 5px; }
+            .interview-checklist-details { border-width: 0.5pt; margin: 6px 0; }
+            .interview-checklist-details[open] { display: block; }
+            .interview-checklist-summary { font-size: 8pt; padding: 4px 8px; }
+            .interview-checklist-body { padding: 2px 8px 4px; }
+            .checklist-count { font-size: 6pt; padding: 0 4px; }
 
             /* ── 구분선 ──────────────────────────── */
             .section-divider { margin: 10px 0; }
@@ -843,6 +893,9 @@
     <!-- ═══════════════════════════════════════ -->
     <!-- A. 기업 개요 (정성)                      -->
     <!-- ═══════════════════════════════════════ -->
+    
+    
+
     <!-- GO-NOGO-ASSESSMENT-START -->
     <hr class="section-divider">
 
@@ -856,7 +909,7 @@
     <!-- 판정 결과 -->
     <div style="text-align:center;padding:20px;margin:16px 0;border:2px solid #e0e0e0;background:#fafafa;">
         <div style="font-size:11px;color:#777;letter-spacing:2px;text-transform:uppercase;margin-bottom:8px;">VERDICT</div>
-        <span style="display:inline-block;padding:4px 14px;border-radius:3px;font-weight:700;font-size:14px;letter-spacing:0.5px;background:#fce4ec;color:#8b0000;border:1px solid #8b0000;">절대 No-Go</span>
+        <span style="display:inline-block;padding:4px 14px;border-radius:3px;font-weight:700;font-size:14px;letter-spacing:0.5px;background:#fce4ec;color:#8b0000;border:1px solid #8b0000;">Red Zone</span>
         <div style="font-size:12px;color:#555;margin-top:10px;">캐시 엔진 강력. 부채 정리 시 최대 반전 가능.</div>
     </div>
 
@@ -888,7 +941,7 @@
     <!-- 딜 요약 -->
     <div style="margin:16px 0;padding:12px 16px;background:#f8f8f8;border-left:3px solid #333;">
         <div style="font-size:11px;font-weight:600;color:#555;letter-spacing:1px;text-transform:uppercase;margin-bottom:6px;">DEAL SUMMARY</div>
-        <div style="font-size:12px;line-height:1.7;color:#333;">태블릿 무인주문(스마트오더) B2B SaaS, 매출 136.9억, OP +4.1억 흑자. 직원 33명, 주요 고객 SK쉴더스(ADT).<br>금융부채 102억(사채 31억+대출 71억) vs 현금 2억 — IBK 10억 만기 2026.03.20 임박, 만기/현금 비율 22.5x로 3축 전부 Red.<br>절대 No-Go: 캐시 엔진 강력(OP +4.1억)하여 부채 정리 시 최대 반전 후보이나, 사채 31억 성격 미확인 + 만기 도래 부채 즉시 대응 불가 상태.</div>
+        <div style="font-size:12px;line-height:1.7;color:#333;">태블릿 무인주문(스마트오더) B2B SaaS, 매출 136.9억, OP +4.1억 흑자. 직원 33명, 주요 고객 SK쉴더스(ADT).<br>금융부채 102억(사채 31억+대출 71억) vs 현금 2억 — IBK 10억 만기 2026.03.20 임박, 만기/현금 비율 22.5x로 3축 전부 Red.<br>Red Zone: 캐시 엔진 강력(OP +4.1억)하여 부채 정리 시 최대 반전 후보이나, 사채 31억 성격 미확인 + 만기 도래 부채 즉시 대응 불가 상태.</div>
     </div>
 
     <!-- 부채 3축 판정 -->
@@ -920,7 +973,7 @@
         </tr>
             </tbody>
         </table>
-        <div style="font-size:11px;color:#999;margin-top:6px;">Red 3개 — Red 3 = 절대 No-Go</div>
+        <div style="font-size:11px;color:#999;margin-top:6px;">Red 3개 — Red 3 = Red Zone</div>
         <div style="font-size:11px;color:#bbb;margin-top:4px;">* DSC Ratio(Debt Service Coverage) = 영업이익 &divide; 연간 원리금 상환액. 1.0x 이상이면 영업이익으로 부채 상환 가능.</div>
     </div>
 
@@ -2238,91 +2291,7 @@
     </table>
     
 
-    <!-- F.4 인터뷰 확인 필수사항 -->
-    
-    <h3>F.4 인터뷰 확인 필수사항</h3>
-    
-    <div class="checklist-item">
-        <div class="checklist-checkbox"></div>
-        <div>
-            <div class="checklist-source">이상감지: CRITICAL</div>
-            <div class="checklist-text">퇴직급여 4월, 12월 음수(역전) 원인 확인 — 퇴직자 정산? 전기 오류 수정? 회계 조정?</div>
-        </div>
-    </div>
-    
-    <div class="checklist-item">
-        <div class="checklist-checkbox"></div>
-        <div>
-            <div class="checklist-source">이상감지: CRITICAL</div>
-            <div class="checklist-text">차입금 구조, 금리 조건, 만기 스케줄 상세 확인 필요</div>
-        </div>
-    </div>
-    
-    <div class="checklist-item">
-        <div class="checklist-checkbox"></div>
-        <div>
-            <div class="checklist-source">이상감지: WARNING</div>
-            <div class="checklist-text">월간 급변동 항목 일괄 확인: 퇴직급여 7월, 퇴직급여 12월, 소모품비 12월, 운반비 6월 — 일시적 이벤트(보상, 결산 조정)인지 구조적 변화인지?</div>
-        </div>
-    </div>
-    
-    <div class="checklist-item">
-        <div class="checklist-checkbox"></div>
-        <div>
-            <div class="checklist-source">이상감지: REVIEW</div>
-            <div class="checklist-text">인건비(급여+상여) 12월 결산 조정 상세 확인 — 연말 일괄 처리? 회계 기준 변경?</div>
-        </div>
-    </div>
-    
-    <div class="checklist-item">
-        <div class="checklist-checkbox"></div>
-        <div>
-            <div class="checklist-source">이상감지: REVIEW</div>
-            <div class="checklist-text">퇴직급여 12월 결산 조정 상세 확인 — 연말 일괄 처리? 회계 기준 변경?</div>
-        </div>
-    </div>
-    
-    <div class="checklist-item">
-        <div class="checklist-checkbox"></div>
-        <div>
-            <div class="checklist-source">재무 기반</div>
-            <div class="checklist-text">주요 고객 집중도 — 매출의 50% 이상이 단일 고객에 의존하는지?</div>
-        </div>
-    </div>
-    
-    <div class="checklist-item">
-        <div class="checklist-checkbox"></div>
-        <div>
-            <div class="checklist-source">재무 기반</div>
-            <div class="checklist-text">IP 보유 현황 — 핵심 기술 특허/저작권 보유 여부</div>
-        </div>
-    </div>
-    
-    <div class="checklist-item">
-        <div class="checklist-checkbox"></div>
-        <div>
-            <div class="checklist-source">재무 기반</div>
-            <div class="checklist-text">핵심 인력 Key-man 의존도 및 리텐션 계획</div>
-        </div>
-    </div>
-    
-    <div class="checklist-item">
-        <div class="checklist-checkbox"></div>
-        <div>
-            <div class="checklist-source">재무 기반</div>
-            <div class="checklist-text">경쟁사 대비 기술적 차별점 (moat)</div>
-        </div>
-    </div>
-    
-    <div class="checklist-item">
-        <div class="checklist-checkbox"></div>
-        <div>
-            <div class="checklist-source">재무 기반</div>
-            <div class="checklist-text">향후 12개월 매출 파이프라인 현황</div>
-        </div>
-    </div>
-    
-    
+    <!-- F.4 인터뷰 확인 필수사항: 상단(딜 서머리 아래)으로 이동 -->
 
     <!-- ═══════════════════════════════════════ -->
     <!-- CAPITAL FLOW ANALYZER                   -->
@@ -2354,5 +2323,5 @@
     </div>
 
 </body>
-<!-- DW-UPDATED: 2026-03-11 17:37 KST -->
+<!-- DW-UPDATED: 2026-03-11 19:53 KST -->
 </html>
