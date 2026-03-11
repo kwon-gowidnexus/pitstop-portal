@@ -467,6 +467,14 @@
             font-size: 12px;
             line-height: 1.5;
         }
+        .checklist-reason {
+            font-size: 10px;
+            line-height: 1.4;
+            color: var(--text-tertiary);
+            margin-top: 2px;
+            padding-left: 8px;
+            border-left: 2px solid var(--border-light);
+        }
 
         /* ─── KPI Grid ───────────────────────────── */
         .kpi-grid {
@@ -731,6 +739,7 @@
             .checklist-checkbox { width: 11px; height: 11px; border-width: 1.5px; }
             .checklist-source { font-size: 6pt; }
             .checklist-text { font-size: 7.5pt; line-height: 1.4; }
+            .checklist-reason { font-size: 6pt; line-height: 1.3; margin-top: 1px; padding-left: 5px; }
 
             /* ── 구분선 ──────────────────────────── */
             .section-divider { margin: 10px 0; }
@@ -2247,6 +2256,9 @@
         <div>
             <div class="checklist-source">이상감지: CRITICAL</div>
             <div class="checklist-text">퇴직급여 4월, 12월 음수(역전) 원인 확인 — 퇴직자 정산? 전기 오류 수정? 회계 조정?</div>
+            
+            <div class="checklist-reason">이상감지 알고리즘이 퇴직급여에서 음수값 탐지. 통상 양수여야 하는 항목의 역전은 회계 조정·퇴직 정산 등을 시사.</div>
+            
         </div>
     </div>
     
@@ -2255,6 +2267,9 @@
         <div>
             <div class="checklist-source">이상감지: CRITICAL</div>
             <div class="checklist-text">차입금 구조, 금리 조건, 만기 스케줄 상세 확인 필요</div>
+            
+            <div class="checklist-reason">[이자비용이 영업이익 초과] CRITICAL 탐지. 영업이익 0.21억 < 영업외비용 5.3억, ICR 0.04x</div>
+            
         </div>
     </div>
     
@@ -2262,7 +2277,10 @@
         <div class="checklist-checkbox"></div>
         <div>
             <div class="checklist-source">이상감지: WARNING</div>
-            <div class="checklist-text">월간 급변동 항목 일괄 확인: 퇴직급여 7월, 퇴직급여 12월, 소모품비 12월, 운반비 6월 — 일시적 이벤트(보상, 결산 조정)인지 구조적 변화인지?</div>
+            <div class="checklist-text">월간 급변동 항목 일괄 확인: 퇴직급여 7월, 퇴직급여 12월, 소모품비 12월, 운반비 6월 — 일시적 이벤트인지 구조적 변화인지?</div>
+            
+            <div class="checklist-reason">월별 손익에서 전월 대비 ±50% 이상 급변동 탐지. 구조적 변화면 BEP 시나리오에 직접 영향.</div>
+            
         </div>
     </div>
     
@@ -2271,6 +2289,9 @@
         <div>
             <div class="checklist-source">이상감지: REVIEW</div>
             <div class="checklist-text">인건비(급여+상여) 12월 결산 조정 상세 확인 — 연말 일괄 처리? 회계 기준 변경?</div>
+            
+            <div class="checklist-reason">[인건비(급여+상여) 12월 편중 (Z=-3.2σ)] REVIEW 탐지. 1~11월 평균 1.8억 vs 12월 0.75억 (Z-score: -3.2σ)</div>
+            
         </div>
     </div>
     
@@ -2279,46 +2300,89 @@
         <div>
             <div class="checklist-source">이상감지: REVIEW</div>
             <div class="checklist-text">퇴직급여 12월 결산 조정 상세 확인 — 연말 일괄 처리? 회계 기준 변경?</div>
+            
+            <div class="checklist-reason">[퇴직급여 12월 편중 (Z=-12.0σ)] REVIEW 탐지. 1~11월 평균 0.21억 vs 12월 -2.2억 (Z-score: -12.0σ)</div>
+            
         </div>
     </div>
     
     <div class="checklist-item">
         <div class="checklist-checkbox"></div>
         <div>
-            <div class="checklist-source">재무 기반</div>
-            <div class="checklist-text">주요 고객 집중도 — 매출의 50% 이상이 단일 고객에 의존하는지?</div>
+            <div class="checklist-source">P&L 분석</div>
+            <div class="checklist-text">지급수수료+광고선전비 매출 대비 18% — 채널별 ROI 측정 현황과 비효율 채널 존재 여부?</div>
+            
+            <div class="checklist-reason">커미션+광고 24.1억/년, 매출 대비 18%. 효율적 채널 집중 시 7.2억 절감 가능성 점검.</div>
+            
         </div>
     </div>
     
     <div class="checklist-item">
         <div class="checklist-checkbox"></div>
         <div>
-            <div class="checklist-source">재무 기반</div>
-            <div class="checklist-text">IP 보유 현황 — 핵심 기술 특허/저작권 보유 여부</div>
+            <div class="checklist-source">부채 분석</div>
+            <div class="checklist-text">이자비용 5.3억/년이 영업이익 0.21억을 초과 — 차입금 구조 상세? 금리 재협상 또는 출자전환 가능성?</div>
+            
+            <div class="checklist-reason">영업이익을 이자비용이 잠식하여 당기순손실 전환. 부채 구조 개편 없이는 흑자 전환 불가.</div>
+            
         </div>
     </div>
     
     <div class="checklist-item">
         <div class="checklist-checkbox"></div>
         <div>
-            <div class="checklist-source">재무 기반</div>
-            <div class="checklist-text">핵심 인력 Key-man 의존도 및 리텐션 계획</div>
+            <div class="checklist-source">DW 실거래</div>
+            <div class="checklist-text">DW 기준 런웨이 2.3개월 — 경영진 인식과 차이? 런웨이 12개월 이하 시 자금조달 타임라인?</div>
+            
+            <div class="checklist-reason">평균 잔고 3.4억, 월 번레이트 1.5억 기준. 현재 속도면 2개월 후 자금 소진.</div>
+            
         </div>
     </div>
     
     <div class="checklist-item">
         <div class="checklist-checkbox"></div>
         <div>
-            <div class="checklist-source">재무 기반</div>
-            <div class="checklist-text">경쟁사 대비 기술적 차별점 (moat)</div>
+            <div class="checklist-source">교차검증</div>
+            <div class="checklist-text">DW 12개월 매출입금 155.4억 vs 신청서 '100억 이상' — 매출 인식 기준 차이?</div>
+            
+            <div class="checklist-reason">DW 실거래 기준 매출입금과 신청서 기재 매출의 55% 괴리. 회계 매출 vs 현금 입금 차이, 계열사 내부 거래 등 확인.</div>
+            
         </div>
     </div>
     
     <div class="checklist-item">
         <div class="checklist-checkbox"></div>
         <div>
-            <div class="checklist-source">재무 기반</div>
-            <div class="checklist-text">향후 12개월 매출 파이프라인 현황</div>
+            <div class="checklist-source">신청서 분석</div>
+            <div class="checklist-text">운전자금 부족을 호소 — 현재 월 운전자금 소요액과 주요 항목(원재료, 인건비, 외주비)? 매입-매출 사이클?</div>
+            
+            <div class="checklist-reason">신청서 pain points에서 '운전자금' 키워드 탐지: "안녕하세요, 담당자님.
+메뉴잇 팀 김경훈 입니다.
+
+메뉴잇은 태블릿 기반 무인주문(스마트오더) 솔루션을 B2B로 공급하고, 국내는 SK쉴더스(A..."</div>
+            
+        </div>
+    </div>
+    
+    <div class="checklist-item">
+        <div class="checklist-checkbox"></div>
+        <div>
+            <div class="checklist-source">신청서 우선순위</div>
+            <div class="checklist-text">'운영 효율화'를 높은 우선순위로 표시 — 구체적인 실행 계획과 예상 비용, 기대 효과?</div>
+            
+            <div class="checklist-reason">피트스탑 신청 시 '운영 효율화' 항목에 높은 우선순위 기재. 경영진의 구체적 실행 의지와 계획 확인 필요.</div>
+            
+        </div>
+    </div>
+    
+    <div class="checklist-item">
+        <div class="checklist-checkbox"></div>
+        <div>
+            <div class="checklist-source">자금 계획</div>
+            <div class="checklist-text">자금 소요 '10억 이상' 기재 — 현재 DW 런웨이 2개월 고려 시 자금 조달 구체적 타임라인?</div>
+            
+            <div class="checklist-reason">신청서에 '10억 이상' 자금 니즈 기재 + DW 런웨이 2개월. 런웨이 소진 전 조달 완료 가능 여부 확인.</div>
+            
         </div>
     </div>
     
@@ -2354,5 +2418,5 @@
     </div>
 
 </body>
-<!-- DW-UPDATED: 2026-03-11 17:37 KST -->
+<!-- DW-UPDATED: 2026-03-11 19:34 KST -->
 </html>
