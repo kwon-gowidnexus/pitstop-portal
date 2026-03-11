@@ -1,0 +1,2146 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>주식회사 마진맥스 피트스탑 프리뷰</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700&family=Noto+Sans:ital,wght@0,300..700;1,300..700&family=Noto+Sans+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        /* ══════════════════════════════════════════════
+           IB-STYLE PREVIEW REPORT — BLACK & WHITE
+           Font: Noto Sans KR / Noto Sans / Noto Sans Mono
+           ══════════════════════════════════════════════ */
+
+        :root {
+            --black: #000000;
+            --near-black: #111111;
+            --dark: #222222;
+            --text: #1a1a1a;
+            --text-secondary: #4a4a4a;
+            --text-tertiary: #777777;
+            --border: #c8c8c8;
+            --border-light: #e0e0e0;
+            --rule: #000000;
+            --bg: #ffffff;
+            --bg-alt: #f5f5f5;
+            --bg-warm: #fafafa;
+            --negative: #8b0000;
+            --positive: #1a4d2e;
+            --caution: #7a5c00;
+            --review-color: #4a2d7a;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Noto Sans KR', 'Noto Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+            font-size: 13px;
+            line-height: 1.55;
+            color: var(--text);
+            background-color: var(--bg);
+            max-width: 1080px;
+            margin: 0 auto;
+            padding: 28px 24px;
+            font-variant-numeric: tabular-nums lining-nums;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* ─── Header ──────────────────────────────── */
+        .header {
+            text-align: center;
+            padding: 32px 36px 28px;
+            background: var(--black);
+            color: #ffffff;
+            margin-bottom: 24px;
+        }
+        .header .internal-tag {
+            font-family: 'Noto Sans', sans-serif;
+            font-size: 10px;
+            font-weight: 600;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: #ff6b6b;
+            margin-bottom: 8px;
+        }
+        .header .confidential {
+            font-family: 'Noto Sans', sans-serif;
+            font-size: 10px;
+            font-weight: 500;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            opacity: 0.5;
+            margin-bottom: 12px;
+        }
+        .header h1 {
+            font-family: 'Noto Sans', sans-serif;
+            font-size: 24px;
+            font-weight: 700;
+            letter-spacing: 3px;
+            margin-bottom: 4px;
+        }
+        .header .subtitle {
+            font-family: 'Noto Sans', sans-serif;
+            font-size: 12px;
+            font-weight: 400;
+            letter-spacing: 6px;
+            text-transform: uppercase;
+            opacity: 0.6;
+        }
+        .header .meta {
+            margin-top: 18px;
+            display: flex;
+            justify-content: center;
+            gap: 36px;
+            flex-wrap: wrap;
+            padding-top: 14px;
+            border-top: 1px solid rgba(255,255,255,0.15);
+        }
+        .header .meta-item { text-align: left; }
+        .header .meta-label {
+            font-size: 10px;
+            font-weight: 500;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            opacity: 0.45;
+        }
+        .header .meta-value {
+            font-size: 13px;
+            font-weight: 600;
+            margin-top: 1px;
+        }
+
+        /* ─── Typography ──────────────────────────── */
+        h2 {
+            font-family: 'Noto Sans KR', sans-serif;
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--black);
+            margin: 28px 0 10px;
+            padding: 0 0 6px;
+            border-bottom: 2px solid var(--black);
+            letter-spacing: 0.5px;
+        }
+        h3 {
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--near-black);
+            margin: 16px 0 6px;
+            letter-spacing: 0.3px;
+        }
+        h4 {
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--text-secondary);
+            margin: 12px 0 4px;
+        }
+        p { margin-bottom: 6px; font-size: 13px; line-height: 1.6; }
+        strong { font-weight: 600; }
+
+        /* ─── Tables ──────────────────────────────── */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 8px 0;
+            font-size: 12px;
+        }
+        th, td {
+            padding: 5px 10px;
+            text-align: left;
+            border-bottom: 1px solid var(--border-light);
+            vertical-align: top;
+        }
+        th {
+            font-size: 10px;
+            font-weight: 600;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            border-bottom: 2px solid var(--black);
+            background: transparent;
+        }
+        tr:last-child td { border-bottom: 1px solid var(--border); }
+        tr:hover { background-color: var(--bg-warm); }
+        td.num, th.num {
+            text-align: right;
+            font-family: 'Noto Sans Mono', monospace;
+        }
+
+        /* ─── Scrollable Table ────────────────────── */
+        .table-scroll {
+            overflow-x: auto;
+            margin: 8px 0;
+        }
+        .table-scroll table {
+            min-width: 900px;
+        }
+
+        /* ─── Cards ───────────────────────────────── */
+        .card {
+            background: var(--bg);
+            border: 1px solid var(--border);
+            padding: 10px 14px;
+            margin: 6px 0;
+        }
+        .card h4 { margin-top: 0; color: var(--near-black); }
+        .card-highlight { border-left: 3px solid var(--caution); }
+        .card-danger { border-left: 3px solid var(--negative); }
+        .card-success { border-left: 3px solid var(--positive); }
+        .card-info { border-left: 3px solid var(--dark); }
+
+        /* ─── Badges ──────────────────────────────── */
+        .badge {
+            display: inline-block;
+            padding: 2px 8px;
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            border-radius: 2px;
+        }
+        .badge-danger { background: var(--negative); color: #fff; }
+        .badge-warning { background: var(--caution); color: #fff; }
+        .badge-review { background: var(--review-color); color: #fff; }
+        .badge-info { background: var(--text-tertiary); color: #fff; }
+        .badge-success { background: var(--positive); color: #fff; }
+        .badge-high { background: var(--positive); color: #fff; }
+        .badge-medium { background: var(--caution); color: #fff; }
+        .badge-low { background: var(--negative); color: #fff; }
+        .badge-achieved { background: var(--positive); color: #fff; }
+
+        /* ─── Priority Bars ──────────────────────── */
+        .priority-bar-container {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin: 4px 0;
+        }
+        .priority-label {
+            font-size: 12px;
+            font-weight: 500;
+            min-width: 80px;
+            text-align: right;
+        }
+        .priority-bar-track {
+            flex: 1;
+            height: 20px;
+            background: var(--bg-alt);
+            border: 1px solid var(--border-light);
+            position: relative;
+        }
+        .priority-bar-fill {
+            height: 100%;
+            background: var(--black);
+            transition: width 0.3s;
+        }
+        .priority-level {
+            font-size: 11px;
+            font-weight: 600;
+            min-width: 60px;
+            color: var(--text-secondary);
+        }
+
+        /* ─── Pain Points Box ────────────────────── */
+        .pain-points-box {
+            background: var(--bg-alt);
+            border: 1px solid var(--border);
+            padding: 14px 18px;
+            margin: 8px 0;
+            white-space: pre-wrap;
+            font-size: 12px;
+            line-height: 1.7;
+            max-height: 400px;
+            overflow-y: auto;
+        }
+
+        /* ─── Anomaly Table ──────────────────────── */
+        .anomaly-summary {
+            display: flex;
+            gap: 12px;
+            margin: 10px 0;
+            flex-wrap: wrap;
+        }
+        .anomaly-count {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 13px;
+            font-weight: 600;
+        }
+        .anomaly-count .count {
+            font-family: 'Noto Sans Mono', monospace;
+            font-size: 18px;
+            font-weight: 700;
+        }
+
+        /* ─── Concern Cards ──────────────────────── */
+        .concern-card {
+            background: var(--bg);
+            border: 1px solid var(--border);
+            border-left: 4px solid var(--black);
+            padding: 10px 14px;
+            margin: 6px 0;
+        }
+        .concern-rank {
+            font-family: 'Noto Sans Mono', monospace;
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--text-tertiary);
+            float: left;
+            margin-right: 12px;
+            line-height: 1;
+        }
+        .concern-perspective {
+            font-size: 10px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            color: var(--text-tertiary);
+        }
+        .concern-title {
+            font-size: 13px;
+            font-weight: 700;
+            color: var(--near-black);
+            margin: 2px 0;
+        }
+        .concern-detail {
+            font-size: 12px;
+            color: var(--text-secondary);
+            line-height: 1.5;
+            margin-top: 4px;
+        }
+
+        /* ─── Sector Section ─────────────────────── */
+        .peer-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            margin: 8px 0;
+        }
+        .peer-card {
+            background: var(--bg);
+            border: 1px solid var(--border);
+            padding: 10px 14px;
+        }
+        .peer-card h4 { margin-top: 0; }
+
+        /* ─── TRA Decision Box ───────────────────── */
+        .decision-box {
+            border: 3px solid var(--black);
+            padding: 20px 24px;
+            margin: 12px 0;
+            text-align: center;
+        }
+        .decision-verdict {
+            font-family: 'Noto Sans Mono', monospace;
+            font-size: 36px;
+            font-weight: 700;
+            letter-spacing: 4px;
+        }
+        .decision-verdict.go { color: var(--positive); }
+        .decision-verdict.drop { color: var(--negative); }
+        .decision-verdict.conditional { color: var(--caution); }
+        .decision-subtitle {
+            font-size: 12px;
+            color: var(--text-secondary);
+            margin-top: 6px;
+            letter-spacing: 0.5px;
+        }
+        .drop-reasons {
+            margin: 10px 0;
+            padding: 10px 14px;
+            background: #fff5f5;
+            border: 1px solid var(--negative);
+        }
+        .drop-reasons li {
+            font-size: 12px;
+            color: var(--negative);
+            margin: 4px 0 4px 16px;
+            font-weight: 500;
+        }
+
+        /* ─── Scenario Cards ─────────────────────── */
+        .scenario-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            margin: 12px 0;
+        }
+        .scenario-card {
+            border: 1px solid var(--border);
+            padding: 14px 12px;
+            display: flex;
+            flex-direction: column;
+        }
+        .scenario-card.sc-info { border-top: 3px solid var(--dark); }
+        .scenario-card.sc-success { border-top: 3px solid var(--positive); }
+        .scenario-card.sc-danger { border-top: 3px solid var(--negative); }
+        .scenario-label {
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            margin-bottom: 4px;
+        }
+        .sc-info .scenario-label { color: var(--dark); }
+        .sc-success .scenario-label { color: var(--positive); }
+        .sc-danger .scenario-label { color: var(--negative); }
+        .scenario-title {
+            font-size: 13px;
+            font-weight: 700;
+            color: var(--near-black);
+            margin-bottom: 6px;
+        }
+        .scenario-desc {
+            font-size: 11px;
+            color: var(--text-secondary);
+            line-height: 1.55;
+            flex: 1;
+        }
+        .scenario-prob {
+            font-size: 10px;
+            font-weight: 600;
+            color: var(--text-tertiary);
+            margin-top: 8px;
+            padding-top: 6px;
+            border-top: 1px solid var(--border-light);
+        }
+        .scenario-note {
+            font-size: 10px;
+            color: var(--caution);
+            font-weight: 600;
+            margin-top: 6px;
+        }
+        .text-muted { color: var(--text-tertiary); font-size: 10px; }
+        .assumption-note {
+            background: var(--bg-alt);
+            border: 1px solid var(--caution);
+            border-left: 3px solid var(--caution);
+            padding: 8px 14px;
+            margin: 8px 0;
+            font-size: 12px;
+        }
+
+        /* ─── TRA Assessment ─────────────────────── */
+        .tra-box {
+            background: var(--bg);
+            border: 2px solid var(--black);
+            padding: 16px 20px;
+            margin: 10px 0;
+            text-align: center;
+        }
+        .tra-assessment {
+            font-family: 'Noto Sans Mono', monospace;
+            font-size: 28px;
+            font-weight: 700;
+        }
+        .tra-label {
+            font-size: 12px;
+            color: var(--text-secondary);
+            margin-top: 4px;
+        }
+
+        /* ─── Interview Checklist ─────────────────── */
+        .checklist-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 8px;
+            padding: 6px 0;
+            border-bottom: 1px solid var(--border-light);
+        }
+        .checklist-checkbox {
+            width: 16px;
+            height: 16px;
+            border: 2px solid var(--border);
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+        .checklist-source {
+            font-size: 10px;
+            font-weight: 600;
+            color: var(--text-tertiary);
+            text-transform: uppercase;
+            letter-spacing: 0.3px;
+        }
+        .checklist-text {
+            font-size: 12px;
+            line-height: 1.5;
+        }
+
+        /* ─── KPI Grid ───────────────────────────── */
+        .kpi-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            gap: 8px;
+            margin: 10px 0;
+        }
+        .kpi-card {
+            background: var(--bg);
+            border: 1px solid var(--border);
+            padding: 10px 8px;
+            text-align: center;
+        }
+        .kpi-value {
+            font-family: 'Noto Sans Mono', monospace;
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--black);
+        }
+        .kpi-label {
+            font-size: 10px;
+            color: var(--text-tertiary);
+            margin-top: 2px;
+            text-transform: uppercase;
+            letter-spacing: 0.3px;
+        }
+        .kpi-card.danger .kpi-value { color: var(--negative); }
+        .kpi-card.success .kpi-value { color: var(--positive); }
+        .kpi-card.warning .kpi-value { color: var(--caution); }
+
+        /* ─── Section Divider ─────────────────────── */
+        .section-divider {
+            border: none;
+            border-top: 1px solid var(--border);
+            margin: 24px 0;
+        }
+
+        /* ─── Footer ──────────────────────────────── */
+        .footer {
+            text-align: center;
+            padding: 16px 24px;
+            margin-top: 24px;
+            border-top: 2px solid var(--black);
+        }
+        .footer .logo {
+            font-family: 'Noto Sans', sans-serif;
+            font-size: 13px;
+            font-weight: 700;
+            color: var(--black);
+            letter-spacing: 3px;
+        }
+        .footer .preview-warning {
+            margin-top: 8px;
+            font-size: 11px;
+            font-weight: 700;
+            color: var(--negative);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        /* ─── Lists ───────────────────────────────── */
+        ul, ol { margin: 4px 0 4px 20px; }
+        li { margin-bottom: 2px; font-size: 12px; line-height: 1.55; }
+
+        /* ─── Utility ─────────────────────────────── */
+        .text-negative { color: var(--negative); }
+        .text-positive { color: var(--positive); }
+        .text-caution { color: var(--caution); }
+        .font-mono { font-family: 'Noto Sans Mono', monospace; }
+        .text-right { text-align: right; }
+        .text-center { text-align: center; }
+        .fw-bold { font-weight: 700; }
+        .mt-0 { margin-top: 0; }
+
+        /* ─── Print / PDF (A4 최적화) ────────────── */
+        @media print {
+            @page {
+                size: A4 portrait;
+                margin: 12mm 10mm 14mm 10mm;
+            }
+            @page :first { margin-top: 0; }
+
+            * {
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
+                color-adjust: exact !important;
+            }
+
+            /* ── 본문 기본 ────────────────────────── */
+            body {
+                max-width: 100%;
+                padding: 0;
+                margin: 0;
+                font-size: 8pt;
+                line-height: 1.4;
+            }
+            p { font-size: 8pt; line-height: 1.45; margin-bottom: 3px; }
+            strong { font-weight: 700; }
+
+            /* ── 헤더 ────────────────────────────── */
+            .header {
+                padding: 14px 16px 12px;
+                margin-bottom: 6px;
+                page-break-after: avoid;
+                page-break-inside: avoid;
+            }
+            .header .internal-tag { font-size: 7pt; margin-bottom: 4px; }
+            .header .confidential { font-size: 7pt; margin-bottom: 6px; }
+            .header h1 { font-size: 16pt; letter-spacing: 2px; margin-bottom: 2px; }
+            .header .subtitle { font-size: 8pt; letter-spacing: 4px; }
+            .header .meta {
+                margin-top: 10px;
+                padding-top: 8px;
+                gap: 20px;
+            }
+            .header .meta-label { font-size: 7pt; }
+            .header .meta-value { font-size: 9pt; }
+
+            /* ── 타이포그래피 ────────────────────── */
+            h2 {
+                font-size: 11pt;
+                margin: 10px 0 4px;
+                padding-bottom: 3px;
+                border-bottom-width: 1.5px;
+                page-break-after: avoid;
+                break-after: avoid;
+            }
+            h3 {
+                font-size: 9pt;
+                margin: 7px 0 3px;
+                page-break-after: avoid;
+                break-after: avoid;
+            }
+            h4 {
+                font-size: 8pt;
+                margin: 5px 0 2px;
+                page-break-after: avoid;
+                break-after: avoid;
+            }
+
+            /* ── 테이블 ──────────────────────────── */
+            table {
+                font-size: 7pt;
+                margin: 4px 0;
+            }
+            th, td {
+                padding: 2.5px 4px !important;
+                line-height: 1.3;
+            }
+            th {
+                font-size: 6.5pt;
+                border-bottom-width: 1.5px;
+            }
+            .table-scroll {
+                overflow: visible !important;
+            }
+            .table-scroll table {
+                min-width: 0 !important;
+                width: 100%;
+            }
+            td.num, th.num {
+                font-size: 7pt;
+                padding: 2.5px 3px !important;
+            }
+            .text-muted { font-size: 6pt; }
+
+            /* ── 카드 ────────────────────────────── */
+            .card {
+                padding: 5px 8px !important;
+                margin: 3px 0 !important;
+            }
+            .card-highlight, .card-danger, .card-success, .card-info {
+                border-left-width: 2px;
+            }
+
+            /* ── 뱃지 ────────────────────────────── */
+            .badge {
+                font-size: 6pt;
+                padding: 1px 5px;
+            }
+
+            /* ── 우선순위 바 ──────────────────────── */
+            .priority-bar-container { gap: 6px; margin: 2px 0; }
+            .priority-label { font-size: 8pt; min-width: 60px; }
+            .priority-bar-track { height: 14px; }
+            .priority-level { font-size: 7.5pt; min-width: 45px; }
+
+            /* ── Pain Points ─────────────────────── */
+            .pain-points-box {
+                max-height: none;
+                overflow: visible;
+                font-size: 7.5pt;
+                padding: 8px 12px;
+                line-height: 1.5;
+            }
+
+            /* ── 이상 항목 요약 ───────────────────── */
+            .anomaly-summary { gap: 8px; margin: 5px 0; }
+            .anomaly-count { font-size: 8pt; }
+            .anomaly-count .count { font-size: 13pt; }
+
+            /* ── 우려 카드 ────────────────────────── */
+            .concern-card {
+                padding: 6px 10px;
+                margin: 4px 0;
+                border-left-width: 3px;
+            }
+            .concern-rank { font-size: 12pt; margin-right: 8px; }
+            .concern-perspective { font-size: 6.5pt; }
+            .concern-title { font-size: 8.5pt; }
+            .concern-detail { font-size: 7.5pt; line-height: 1.4; }
+
+            /* ── Peer 그리드 ──────────────────────── */
+            .peer-grid { gap: 6px; margin: 4px 0; }
+            .peer-card { padding: 6px 8px; }
+
+            /* ── KPI 그리드 ───────────────────────── */
+            .kpi-grid {
+                grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+                gap: 5px;
+                margin: 5px 0;
+            }
+            .kpi-card { padding: 6px 5px; }
+            .kpi-value { font-size: 14pt; }
+            .kpi-label { font-size: 6pt; }
+
+            /* ── 시나리오 그리드 ──────────────────── */
+            .scenario-grid { gap: 6px; margin: 6px 0; }
+            .scenario-card { padding: 8px 8px; }
+            .scenario-label { font-size: 7pt; }
+            .scenario-title { font-size: 8.5pt; margin-bottom: 3px; }
+            .scenario-desc { font-size: 7pt; line-height: 1.4; }
+            .scenario-note { font-size: 6.5pt; margin-top: 3px; }
+            .scenario-prob { font-size: 6.5pt; margin-top: 4px; padding-top: 3px; }
+
+            /* ── TRA 박스 ────────────────────────── */
+            .tra-box {
+                padding: 8px 12px;
+                margin: 5px 0;
+                border-width: 1.5px;
+            }
+            .tra-assessment { font-size: 18pt; }
+
+            /* ── Decision 박스 ────────────────────── */
+            .decision-box { padding: 10px 14px; border-width: 2px; margin: 6px 0; }
+            .decision-verdict { font-size: 22pt; letter-spacing: 3px; }
+            .decision-subtitle { font-size: 8pt; }
+            .drop-reasons { padding: 5px 10px; margin: 4px 0; }
+            .drop-reasons li { font-size: 7.5pt; }
+
+            /* ── 가정 노트 ────────────────────────── */
+            .assumption-note {
+                padding: 5px 10px;
+                margin: 4px 0;
+                font-size: 7.5pt;
+                border-left-width: 2px;
+            }
+
+            /* ── 체크리스트 ───────────────────────── */
+            .checklist-item { padding: 3px 0; gap: 5px; }
+            .checklist-checkbox { width: 11px; height: 11px; border-width: 1.5px; }
+            .checklist-source { font-size: 6pt; }
+            .checklist-text { font-size: 7.5pt; line-height: 1.4; }
+
+            /* ── 구분선 ──────────────────────────── */
+            .section-divider { margin: 10px 0; }
+            hr { margin: 6px 0; }
+
+            /* ── 푸터 ────────────────────────────── */
+            .footer {
+                padding: 8px 16px !important;
+                margin-top: 10px !important;
+                border-top-width: 1.5px;
+            }
+            .footer .logo { font-size: 9pt; letter-spacing: 2px; }
+            .footer .preview-warning { font-size: 7.5pt; letter-spacing: 1.5px; }
+
+            /* ── 리스트 ──────────────────────────── */
+            ul, ol { margin: 2px 0 2px 14px; }
+            li { font-size: 7.5pt; line-height: 1.4; margin-bottom: 1px; }
+
+            /* ── 페이지 브레이크 ──────────────────── */
+            table, .card, .peer-grid, .tra-box, .decision-box,
+            .anomaly-summary, .concern-card, .kpi-grid,
+            .priority-bar-container, .scenario-grid,
+            .assumption-note, .checklist-item {
+                page-break-inside: avoid;
+                break-inside: avoid;
+            }
+
+            /* 섹션 B, E, F는 새 페이지에서 시작 */
+            .page-break-before {
+                page-break-before: always;
+                break-before: page;
+            }
+        }
+
+        /* ─── Responsive ──────────────────────────── */
+        @media (max-width: 768px) {
+            body { padding: 16px 12px; }
+            .header { padding: 20px 16px; }
+            .header h1 { font-size: 18px; letter-spacing: 1px; }
+            .header .meta { flex-direction: column; gap: 12px; }
+            .peer-grid { grid-template-columns: 1fr; }
+        }
+
+        /* ─── Capital Flow Button ────────────────── */
+        .cf-fab {
+            position: fixed;
+            bottom: 28px;
+            right: 28px;
+            z-index: 9000;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 22px;
+            background: var(--near-black);
+            color: #fff;
+            border: none;
+            border-radius: 6px;
+            font-family: 'Noto Sans KR', sans-serif;
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            cursor: pointer;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.25);
+            transition: background 0.15s, transform 0.1s;
+        }
+        .cf-fab:hover { background: #333; transform: translateY(-1px); }
+        .cf-fab:active { transform: translateY(0); }
+        .cf-fab-icon {
+            width: 18px; height: 18px;
+            border: 2px solid #fff;
+            border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 11px; font-weight: 700; line-height: 1;
+        }
+
+        @media print {
+            .cf-fab { display: none !important; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ═══════════════════════════════════════ -->
+    <!-- HEADER                                  -->
+    <!-- ═══════════════════════════════════════ -->
+    <div class="header">
+        <div class="internal-tag">Internal &mdash; For Review Only</div>
+        <h1>GOWID NEXUS | PIT-STOP</h1>
+        <div class="subtitle">Preview Report</div>
+        <div class="meta">
+            <div class="meta-item">
+                <div class="meta-label">Company</div>
+                <div class="meta-value">주식회사 마진맥스</div>
+            </div>
+            <div class="meta-item">
+                <div class="meta-label">CEO</div>
+                <div class="meta-value">채지훈</div>
+            </div>
+            <div class="meta-item">
+                <div class="meta-label">Date</div>
+                <div class="meta-value">2026년 03월 11일</div>
+            </div>
+            <div class="meta-item">
+                <div class="meta-label">Doc ID</div>
+                <div class="meta-value">PV-20260311-마진맥</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════ -->
+    <!-- A. 기업 개요 (정성)                      -->
+    <!-- ═══════════════════════════════════════ -->
+    <!-- GO-NOGO-ASSESSMENT-START -->
+    <hr class="section-divider">
+
+    <!-- Go/No-Go Assessment -->
+    <div style="margin:20px 0 16px;">
+        <div style="font-family:'Noto Sans',sans-serif;font-size:10px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:#777;margin-bottom:6px;">INTERNAL ASSESSMENT</div>
+        <div style="font-size:18px;font-weight:700;letter-spacing:-0.3px;">Go / No-Go 판정</div>
+        <div style="font-size:11px;color:#999;margin-top:4px;">Updated 2026-03-10 &mdash; 부채 3축 + 7조건 프레임워크</div>
+    </div>
+
+    <!-- 판정 결과 -->
+    <div style="text-align:center;padding:20px;margin:16px 0;border:2px solid #e0e0e0;background:#fafafa;">
+        <div style="font-size:11px;color:#777;letter-spacing:2px;text-transform:uppercase;margin-bottom:8px;">VERDICT</div>
+        <span style="display:inline-block;padding:4px 14px;border-radius:3px;font-weight:700;font-size:14px;letter-spacing:0.5px;background:#e8f5e9;color:#1a4d2e;border:1px solid #1a4d2e;">Go 가능</span>
+        <div style="font-size:12px;color:#555;margin-top:10px;">부채 0, 흑자, 최적 타겟. 설립 3년차.</div>
+    </div>
+
+    <!-- 재무 요약 -->
+    <div style="display:flex;gap:12px;margin:16px 0;flex-wrap:wrap;">
+        <div style="flex:1;min-width:100px;padding:12px;background:#f5f5f5;border:1px solid #e0e0e0;text-align:center;">
+            <div style="font-size:11px;color:#777;">매출</div>
+            <div style="font-size:16px;font-weight:700;font-family:'Noto Sans Mono',monospace;">17.3억</div>
+        </div>
+        <div style="flex:1;min-width:100px;padding:12px;background:#f5f5f5;border:1px solid #e0e0e0;text-align:center;">
+            <div style="font-size:11px;color:#777;">영업이익</div>
+            <div style="font-size:16px;font-weight:700;font-family:'Noto Sans Mono',monospace;color:#1a4d2e;">+1.8억</div>
+        </div>
+        <div style="flex:1;min-width:100px;padding:12px;background:#f5f5f5;border:1px solid #e0e0e0;text-align:center;">
+            <div style="font-size:11px;color:#777;">금융부채</div>
+            <div style="font-size:16px;font-weight:700;font-family:'Noto Sans Mono',monospace;">0억</div>
+        </div>
+        <div style="flex:1;min-width:100px;padding:12px;background:#f5f5f5;border:1px solid #e0e0e0;text-align:center;">
+            <div style="font-size:11px;color:#777;">현금</div>
+            <div style="font-size:16px;font-weight:700;font-family:'Noto Sans Mono',monospace;">1.6억</div>
+        </div>
+        <div style="flex:1;min-width:100px;padding:12px;background:#f5f5f5;border:1px solid #e0e0e0;text-align:center;">
+            <div style="font-size:11px;color:#777;">자본</div>
+            <div style="font-size:16px;font-weight:700;font-family:'Noto Sans Mono',monospace;">2.8억</div>
+        </div>
+    </div>
+
+    <!-- 부채 3축 판정 -->
+    <div style="margin:16px 0;">
+        <div style="font-size:13px;font-weight:700;margin-bottom:8px;">부채 3축 판정</div>
+        <table style="width:100%;border-collapse:collapse;font-size:13px;">
+            <thead>
+                <tr style="border-bottom:2px solid #000;">
+                    <th style="padding:6px 10px;text-align:left;font-weight:600;">지표</th>
+                    <th style="padding:6px 10px;text-align:center;font-weight:600;">판정</th>
+                    <th style="padding:6px 10px;text-align:left;font-weight:600;">비고</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+            <td style="padding:6px 10px;font-weight:500;">(1) DSC Ratio — OP/원리금</td>
+            <td style="padding:6px 10px;text-align:center;background:#e8f5e9;color:#1a4d2e;font-weight:600;">N/A</td>
+            <td style="padding:6px 10px;color:#777;font-size:12px;">금융권 차입금 0 -- DSC 산정 불요</td>
+        </tr>
+                <tr>
+            <td style="padding:6px 10px;font-weight:500;">(2) 부채/매출 비율</td>
+            <td style="padding:6px 10px;text-align:center;background:#e8f5e9;color:#1a4d2e;font-weight:600;">0%</td>
+            <td style="padding:6px 10px;color:#777;font-size:12px;">부채총계 0.3억 전액 매입채무 등 운영성 부채</td>
+        </tr>
+                <tr>
+            <td style="padding:6px 10px;font-weight:500;">(3) 만기도래/현금 비율</td>
+            <td style="padding:6px 10px;text-align:center;background:#e8f5e9;color:#1a4d2e;font-weight:600;">0x</td>
+            <td style="padding:6px 10px;color:#777;font-size:12px;">만기 도래 차입금 없음</td>
+        </tr>
+            </tbody>
+        </table>
+        <div style="font-size:11px;color:#999;margin-top:6px;">Red 0개 — Red 0 = Go 가능</div>
+    </div>
+
+    <!-- 7조건 체크 -->
+    <div style="margin:16px 0;">
+        <div style="font-size:13px;font-weight:700;margin-bottom:8px;">Go/No-Go 7조건</div>
+        <table style="width:100%;border-collapse:collapse;font-size:13px;">
+            <thead>
+                <tr style="border-bottom:2px solid #000;">
+                    <th style="padding:4px 10px;text-align:left;font-weight:600;white-space:nowrap;">조건</th>
+                    <th style="padding:4px 10px;text-align:center;font-weight:600;width:50px;">상태</th>
+                    <th style="padding:4px 10px;text-align:left;font-weight:600;">근거</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+            <td style="padding:4px 10px;">금융권 부채 정리</td>
+            <td style="padding:4px 10px;text-align:center;"><span style="color:#1a4d2e;font-weight:700;">O</span></td>
+            <td style="padding:4px 10px;color:#555;font-size:12px;">금융권 부채 제로. 부채총계 0.3억은 전액 운영성</td>
+        </tr><tr>
+            <td style="padding:4px 10px;">출자전환 완료</td>
+            <td style="padding:4px 10px;text-align:center;"><span style="color:#1a4d2e;font-weight:700;">O</span></td>
+            <td style="padding:4px 10px;color:#555;font-size:12px;">CB/BW 없음. 출자전환 이슈 없음</td>
+        </tr><tr>
+            <td style="padding:4px 10px;">캐시 엔진</td>
+            <td style="padding:4px 10px;text-align:center;"><span style="color:#1a4d2e;font-weight:700;">O</span></td>
+            <td style="padding:4px 10px;color:#555;font-size:12px;">OP +1.8억 흑자. OPM 10.7%(FY24)</td>
+        </tr><tr>
+            <td style="padding:4px 10px;">독점 자산</td>
+            <td style="padding:4px 10px;text-align:center;"><span style="color:#999;">?</span></td>
+            <td style="padding:4px 10px;color:#555;font-size:12px;">숙박 B2B SaaS -- 독점 기술/데이터 인터뷰 확인 필요</td>
+        </tr><tr>
+            <td style="padding:4px 10px;">지분 구조</td>
+            <td style="padding:4px 10px;text-align:center;"><span style="color:#999;">?</span></td>
+            <td style="padding:4px 10px;color:#555;font-size:12px;">빈태찬 46% 최대주주. 대표 이원화 구조 확인 필요</td>
+        </tr><tr>
+            <td style="padding:4px 10px;">대표 역량</td>
+            <td style="padding:4px 10px;text-align:center;"><span style="color:#999;">?</span></td>
+            <td style="padding:4px 10px;color:#555;font-size:12px;">설문 CEO 채지훈(18%) vs 법인세 대표 빈태찬(46%) 불일치</td>
+        </tr><tr>
+            <td style="padding:4px 10px;">구조조정 의지</td>
+            <td style="padding:4px 10px;text-align:center;"><span style="color:#bbb;">N/A</span></td>
+            <td style="padding:4px 10px;color:#555;font-size:12px;">흑자 기업 -- 구조조정 불요</td>
+        </tr>
+            </tbody>
+        </table>
+        <div style="font-size:11px;color:#999;margin-top:6px;">O = 충족 &nbsp; X = 미충족 &nbsp; &ndash; = 부분충족 &nbsp; ? = 미확인</div>
+    </div>
+
+    <!-- 다음 액션 -->
+    <div style="margin:16px 0;padding:12px 16px;background:#f0f4ff;border-left:3px solid #333;">
+        <div style="font-size:11px;font-weight:600;color:#555;letter-spacing:1px;text-transform:uppercase;margin-bottom:4px;">NEXT ACTION</div>
+        <div style="font-size:13px;font-weight:500;">인터뷰 -> 독점자산/대표역량 확인</div>
+    </div>
+
+    <!-- GO-NOGO-ASSESSMENT-END -->
+
+    <h2>A. 기업 개요</h2>
+
+    <h3>A.1 기본정보</h3>
+    <table>
+        <tr><th>항목</th><th>내용</th></tr>
+        
+        <tr>
+            <td><strong>회사명</strong></td>
+            <td style="white-space: pre-line;">주식회사 마진맥스</td>
+        </tr>
+        
+        <tr>
+            <td><strong>대표이사</strong></td>
+            <td style="white-space: pre-line;">채지훈</td>
+        </tr>
+        
+        <tr>
+            <td><strong>설립일</strong></td>
+            <td style="white-space: pre-line;">2022. 5. 30</td>
+        </tr>
+        
+        <tr>
+            <td><strong>웹사이트</strong></td>
+            <td style="white-space: pre-line;">marginmax.kr</td>
+        </tr>
+        
+        <tr>
+            <td><strong>사업 소개</strong></td>
+            <td style="white-space: pre-line;">여행/숙박 예약 시스템 B2B 서비스(Sass)</td>
+        </tr>
+        
+        <tr>
+            <td><strong>임직원 수</strong></td>
+            <td style="white-space: pre-line;">5명~10명 미만  (고위드: 7명)</td>
+        </tr>
+        
+        <tr>
+            <td><strong>최근 매출 규모</strong></td>
+            <td style="white-space: pre-line;">20억~30억 미만  (고위드 12개월 매출입금: 108.3억)<br><span style="font-size:10px; color:var(--text-tertiary);">※ 설문은 회계 기준(발생주의), 고위드는 실제 입금 기준(현금주의)으로 차이 발생 가능</span></td>
+        </tr>
+        
+        <tr>
+            <td><strong>누적 투자 유치</strong></td>
+            <td style="white-space: pre-line;">10억~20억 미만  (고위드: 유증 88.0억)<br><span style="font-size:10px; color:var(--text-tertiary);">※ 고위드 데이터는 은행 연동 기준 유상증자 입금 누적액</span></td>
+        </tr>
+        
+        <tr>
+            <td><strong>필요 자금</strong></td>
+            <td style="white-space: pre-line;">2억~5억 미만</td>
+        </tr>
+        
+    </table>
+
+    <h3>A.2 대표자 기술 Pain Points</h3>
+    <div class="pain-points-box">고위드넥서스가 피트스탑 서비스 외 당사 서비스에 대해 투자 검토를 요청 드립니다.
+ㄴ 고민은 당사가 소규모 인력으로 구성되어 아이디어 실행이 빠르다고 느끼지만 그에 비해 운용 자금이 부족하여 실행하지 못하는 프로젝트가 여러 있습니다.</div>
+
+    <h3>A.3 자금 사용 우선순위</h3>
+    
+    <div class="priority-bar-container">
+        <div class="priority-label">운영자금</div>
+        <div class="priority-bar-track">
+            <div class="priority-bar-fill" style="width: 80%;"></div>
+        </div>
+        <div class="priority-level">높음</div>
+    </div>
+    
+    <div class="priority-bar-container">
+        <div class="priority-label">부채상환</div>
+        <div class="priority-bar-track">
+            <div class="priority-bar-fill" style="width: 0%;"></div>
+        </div>
+        <div class="priority-level">해당 없음</div>
+    </div>
+    
+    <div class="priority-bar-container">
+        <div class="priority-label">인건비/HR</div>
+        <div class="priority-bar-track">
+            <div class="priority-bar-fill" style="width: 40%;"></div>
+        </div>
+        <div class="priority-level">낮음</div>
+    </div>
+    
+    <div class="priority-bar-container">
+        <div class="priority-label">마케팅</div>
+        <div class="priority-bar-track">
+            <div class="priority-bar-fill" style="width: 0%;"></div>
+        </div>
+        <div class="priority-level">해당 없음</div>
+    </div>
+    
+    <div class="priority-bar-container">
+        <div class="priority-label">기술개발</div>
+        <div class="priority-bar-track">
+            <div class="priority-bar-fill" style="width: 0%;"></div>
+        </div>
+        <div class="priority-level">해당 없음</div>
+    </div>
+    
+
+    <hr class="section-divider">
+
+    <!-- ═══════════════════════════════════════ -->
+    <!-- B. 재무 데이터 (정량)                    -->
+    <!-- ═══════════════════════════════════════ -->
+    <h2 class="page-break-before">B. 재무 데이터</h2>
+
+    <h3>B.1 가결산/추정 재무상태표 (2024)</h3>
+    
+    <table>
+        <tr><th>항목</th><th class="num">금액</th></tr>
+        
+        <tr>
+            <td>유동자산</td>
+            <td class="num">2.4억</td>
+        </tr>
+        
+        <tr>
+            <td style="padding-left: 30px; color: var(--text-secondary);">  (현금성자산)</td>
+            <td class="num">1.6억</td>
+        </tr>
+        
+        <tr>
+            <td>비유동자산</td>
+            <td class="num">0.79억</td>
+        </tr>
+        
+        <tr>
+            <td><strong>자산총계</strong></td>
+            <td class="num">3.1억</td>
+        </tr>
+        
+        <tr>
+            <td>유동부채</td>
+            <td class="num">0.30억</td>
+        </tr>
+        
+        <tr>
+            <td>비유동부채</td>
+            <td class="num">0.01억</td>
+        </tr>
+        
+        <tr>
+            <td><strong>부채총계</strong></td>
+            <td class="num">0.30억</td>
+        </tr>
+        
+        <tr>
+            <td>자본금</td>
+            <td class="num">0.07억</td>
+        </tr>
+        
+        <tr>
+            <td>자본잉여금</td>
+            <td class="num">2.0억</td>
+        </tr>
+        
+        <tr>
+            <td>이익잉여금(결손금)</td>
+            <td class="num">0.78억</td>
+        </tr>
+        
+        <tr>
+            <td><strong>자본총계</strong></td>
+            <td class="num">2.8억</td>
+        </tr>
+        
+    </table>
+    
+
+    
+    <h3>B.2 월별 손익계산서 (2024)</h3>
+    <div class="table-scroll">
+        <table>
+            <tr>
+                
+                <th>항목</th>
+                
+                <th>연간</th>
+                
+                <th class="num">1월</th>
+                
+                <th class="num">2월</th>
+                
+                <th class="num">3월</th>
+                
+                <th class="num">4월</th>
+                
+                <th class="num">5월</th>
+                
+                <th class="num">6월</th>
+                
+                <th class="num">7월</th>
+                
+                <th class="num">8월</th>
+                
+                <th class="num">9월</th>
+                
+                <th class="num">10월</th>
+                
+                <th class="num">11월</th>
+                
+                <th class="num">12월</th>
+                
+            </tr>
+            
+            <tr>
+                <td><strong>매출액</strong></td>
+                <td class="num">19.2억</td>
+                
+                <td class="num">1.2억</td>
+                
+                <td class="num">0.92억</td>
+                
+                <td class="num">1.2억</td>
+                
+                <td class="num">1.0억</td>
+                
+                <td class="num">1.6억</td>
+                
+                <td class="num">1.6억</td>
+                
+                <td class="num">2.2억</td>
+                
+                <td class="num">3.5억</td>
+                
+                <td class="num">1.1억</td>
+                
+                <td class="num">2.3억</td>
+                
+                <td class="num">1.2억</td>
+                
+                <td class="num">1.2억</td>
+                
+            </tr>
+            
+            <tr>
+                <td><strong>매출총이익</strong></td>
+                <td class="num">19.2억</td>
+                
+                <td class="num">1.2억</td>
+                
+                <td class="num">0.92억</td>
+                
+                <td class="num">1.2억</td>
+                
+                <td class="num">1.0억</td>
+                
+                <td class="num">1.6억</td>
+                
+                <td class="num">1.6억</td>
+                
+                <td class="num">2.2억</td>
+                
+                <td class="num">3.5억</td>
+                
+                <td class="num">1.1억</td>
+                
+                <td class="num">2.3억</td>
+                
+                <td class="num">1.2억</td>
+                
+                <td class="num">1.2억</td>
+                
+            </tr>
+            
+            <tr>
+                <td><strong>판관비</strong></td>
+                <td class="num">18.0억</td>
+                
+                <td class="num">1.2억</td>
+                
+                <td class="num">0.96억</td>
+                
+                <td class="num">1.1억</td>
+                
+                <td class="num">1.2억</td>
+                
+                <td class="num">1.6억</td>
+                
+                <td class="num">1.5억</td>
+                
+                <td class="num">1.8억</td>
+                
+                <td class="num">2.3억</td>
+                
+                <td class="num">1.8억</td>
+                
+                <td class="num">1.7억</td>
+                
+                <td class="num">1.8억</td>
+                
+                <td class="num">1.1억</td>
+                
+            </tr>
+            
+            <tr>
+                <td><strong>영업이익</strong></td>
+                <td class="num">1.2억</td>
+                
+                <td class="num">0.02억</td>
+                
+                <td class="num" style="color: var(--negative); font-weight: 600;">-0.04억</td>
+                
+                <td class="num">0.09억</td>
+                
+                <td class="num" style="color: var(--negative); font-weight: 600;">-0.11억</td>
+                
+                <td class="num">0.03억</td>
+                
+                <td class="num">0.12억</td>
+                
+                <td class="num">0.42억</td>
+                
+                <td class="num">1.2억</td>
+                
+                <td class="num" style="color: var(--negative); font-weight: 600;">-0.69억</td>
+                
+                <td class="num">0.60억</td>
+                
+                <td class="num" style="color: var(--negative); font-weight: 600;">-0.54억</td>
+                
+                <td class="num">0.16억</td>
+                
+            </tr>
+            
+            <tr>
+                <td><strong>영업외수익</strong></td>
+                <td class="num">0.06억</td>
+                
+                <td class="num">0.00억</td>
+                
+                <td class="num">0.00억</td>
+                
+                <td class="num">0.00억</td>
+                
+                <td class="num">0.00억</td>
+                
+                <td class="num">0.00억</td>
+                
+                <td class="num">0.00억</td>
+                
+                <td class="num">0.00억</td>
+                
+                <td class="num">0.05억</td>
+                
+                <td class="num">0.01억</td>
+                
+                <td class="num">0.00억</td>
+                
+                <td class="num">0.00억</td>
+                
+                <td class="num">0.00억</td>
+                
+            </tr>
+            
+            <tr>
+                <td><strong>영업외비용</strong></td>
+                <td class="num">0.04억</td>
+                
+                <td class="num">0.00억</td>
+                
+                <td class="num">0.00억</td>
+                
+                <td class="num">0.00억</td>
+                
+                <td class="num">0.00억</td>
+                
+                <td class="num">0.00억</td>
+                
+                <td class="num">0.02억</td>
+                
+                <td class="num">0.00억</td>
+                
+                <td class="num">0.00억</td>
+                
+                <td class="num">0.00억</td>
+                
+                <td class="num">0.00억</td>
+                
+                <td class="num">0.00억</td>
+                
+                <td class="num">0.00억</td>
+                
+            </tr>
+            
+            <tr>
+                <td><strong>당기순이익</strong></td>
+                <td class="num">1.2억</td>
+                
+                <td class="num">0.02억</td>
+                
+                <td class="num" style="color: var(--negative); font-weight: 600;">-0.04억</td>
+                
+                <td class="num">0.09억</td>
+                
+                <td class="num" style="color: var(--negative); font-weight: 600;">-0.12억</td>
+                
+                <td class="num">0.02억</td>
+                
+                <td class="num">0.10억</td>
+                
+                <td class="num">0.41억</td>
+                
+                <td class="num">1.2억</td>
+                
+                <td class="num" style="color: var(--negative); font-weight: 600;">-0.69억</td>
+                
+                <td class="num">0.60억</td>
+                
+                <td class="num" style="color: var(--negative); font-weight: 600;">-0.54억</td>
+                
+                <td class="num">0.16억</td>
+                
+            </tr>
+            
+        </table>
+    </div>
+    
+
+    
+    <h3>B.3 1개년 재무제표 요약</h3>
+    <div class="table-scroll">
+    <table>
+        <tr>
+            <th>구분</th>
+            
+            <th class="num">2024</th>
+            
+        </tr>
+        
+        <tr>
+            <td><strong>매출액</strong></td>
+            
+            <td class="num">17.3억</td>
+            
+        </tr>
+        
+        <tr>
+            <td><strong>매출총이익</strong></td>
+            
+            <td class="num">17.3억</td>
+            
+        </tr>
+        
+        <tr>
+            <td><strong>판매비와관리비</strong></td>
+            
+            <td class="num">15.4억</td>
+            
+        </tr>
+        
+        <tr>
+            <td><strong>영업이익</strong></td>
+            
+            <td class="num">1.8억</td>
+            
+        </tr>
+        
+        <tr>
+            <td><strong>영업외수익</strong></td>
+            
+            <td class="num">0.10억</td>
+            
+        </tr>
+        
+        <tr>
+            <td><strong>영업외비용</strong></td>
+            
+            <td class="num">0.00억</td>
+            
+        </tr>
+        
+        <tr>
+            <td><strong>법인세 등</strong></td>
+            
+            <td class="num">0.07억</td>
+            
+        </tr>
+        
+        <tr>
+            <td><strong>당기순이익</strong></td>
+            
+            <td class="num">1.9억</td>
+            
+        </tr>
+        
+        <tr>
+            <td><strong>자산총계</strong></td>
+            
+            <td class="num">3.1억</td>
+            
+        </tr>
+        
+        <tr>
+            <td><strong>부채총계</strong></td>
+            
+            <td class="num">0.30억</td>
+            
+        </tr>
+        
+        <tr>
+            <td><strong>자본총계</strong></td>
+            
+            <td class="num">2.8억</td>
+            
+        </tr>
+        
+    </table>
+    </div>
+    
+
+    <!-- ═══════════════════════════════════════ -->
+    <!-- B.4 런웨이 추정                           -->
+    <!-- ═══════════════════════════════════════ -->
+    
+    <h3>B.4 런웨이 추정</h3>
+
+    <!-- KPI 카드: 추정현금 / 월burn(순손실) / 런웨이(순손실) -->
+    <div class="kpi-grid">
+        
+        <div class="kpi-card">
+            <div class="kpi-value">1.6억</div>
+            <div class="kpi-label">추정 현금잔고 (2024)</div>
+        </div>
+        
+        
+        <div class="kpi-card success">
+            <div class="kpi-value">0.16억/월</div>
+            <div class="kpi-label">월 Burn Rate (당기순손실)</div>
+        </div>
+        
+        
+    </div>
+
+    <!-- 산출 근거 -->
+    <div style="font-size: 10px; color: var(--text-tertiary); margin-top: 6px; line-height: 1.6;">
+        ※ 추정 현금 1.6억 ÷ 월 당기순손실 0.16억 = 런웨이 —
+        
+        <br>※ 참고: 영업손실 기준 월 0.15억/월 → 런웨이 —
+        
+    </div>
+    
+
+    <!-- ═══════════════════════════════════════ -->
+    <!-- B.5 Capital Flow 실시간 진단              -->
+    <!-- ═══════════════════════════════════════ -->
+    
+    <h3>B.5 Capital Flow 실시간 진단</h3>
+    <div style="font-size: 10px; color: var(--text-tertiary); margin-bottom: 12px;">
+        ※ 고위드 DW 실거래 데이터 기준 (2026-03)
+    </div>
+
+    <!-- 런웨이 KPI 카드 -->
+    <div class="kpi-grid">
+        <div class="kpi-card warning">
+            <div class="kpi-value">9.2개월</div>
+            <div class="kpi-label">DW 런웨이</div>
+        </div>
+        <div class="kpi-card">
+            <div class="kpi-value">2.1억</div>
+            <div class="kpi-label">평균 잔고</div>
+        </div>
+        <div class="kpi-card">
+            <div class="kpi-value">0.23억/월</div>
+            <div class="kpi-label">Burn Rate (DW)</div>
+        </div>
+    </div>
+
+    <!-- 교차검증 비교표 -->
+    
+    <h4 style="margin-top: 20px; margin-bottom: 8px;">접수서류 vs DW 교차검증</h4>
+    
+    <div style="font-size: 11px; color: var(--negative); margin-bottom: 8px; font-weight: 600;">
+        ⚠ 20% 이상 괴리 항목 발견 — 인터뷰 확인 필요
+    </div>
+    
+    <table style="width: 100%; border-collapse: collapse; font-size: 12px; margin-bottom: 16px;">
+        <thead>
+            <tr style="border-bottom: 2px solid var(--rule);">
+                <th style="padding: 6px 8px; text-align: left; font-weight: 600;">검증 축</th>
+                <th style="padding: 6px 8px; text-align: left; font-weight: 600;">접수서류</th>
+                <th style="padding: 6px 8px; text-align: left; font-weight: 600;">DW (실거래)</th>
+                <th style="padding: 6px 8px; text-align: center; font-weight: 600;">괴리율</th>
+            </tr>
+        </thead>
+        <tbody>
+            
+            <tr style="border-bottom: 1px solid var(--border-light); background: #fff5f5;">
+                <td style="padding: 6px 8px; font-weight: 500;">매출</td>
+                <td style="padding: 6px 8px;">20억~30억 미만</td>
+                <td style="padding: 6px 8px;">
+                    108.3억
+                    <span style="font-size: 10px; color: var(--text-tertiary);">12개월 매출입금 (현금주의)</span>
+                </td>
+                <td style="padding: 6px 8px; text-align: center; font-weight: 600; color: var(--negative);">
+                    441% ⚠
+                </td>
+            </tr>
+            
+            <tr style="border-bottom: 1px solid var(--border-light); background: #fff5f5;">
+                <td style="padding: 6px 8px; font-weight: 500;">임직원</td>
+                <td style="padding: 6px 8px;">5명~10명 미만</td>
+                <td style="padding: 6px 8px;">
+                    7명
+                    <span style="font-size: 10px; color: var(--text-tertiary);">4대보험 가입자 수</span>
+                </td>
+                <td style="padding: 6px 8px; text-align: center; font-weight: 600; color: var(--negative);">
+                    40% ⚠
+                </td>
+            </tr>
+            
+            <tr style="border-bottom: 1px solid var(--border-light);">
+                <td style="padding: 6px 8px; font-weight: 500;">누적 투자</td>
+                <td style="padding: 6px 8px;">10억~20억 미만</td>
+                <td style="padding: 6px 8px;">
+                    88.0억
+                    <span style="font-size: 10px; color: var(--text-tertiary);">은행 유상증자 입금 누적</span>
+                </td>
+                <td style="padding: 6px 8px; text-align: center; font-weight: 600;">
+                    —
+                </td>
+            </tr>
+            
+        </tbody>
+    </table>
+    
+
+    <!-- CF 외부 링크 -->
+    
+    <div style="text-align: right; margin-top: 8px;">
+        <a href="https://capital-flow-two.vercel.app/company/8268602651" target="_blank"
+           style="font-size: 11px; color: var(--text-secondary); text-decoration: none; border: 1px solid var(--border); padding: 4px 12px; border-radius: 3px;">
+            Capital Flow 상세 →
+        </a>
+    </div>
+    
+    
+
+    <hr class="section-divider">
+
+    <!-- ═══════════════════════════════════════ -->
+    <!-- C. 이상 항목 체크포인트                   -->
+    <!-- ═══════════════════════════════════════ -->
+    <h2>C. 이상 항목 체크포인트</h2>
+
+    <div class="anomaly-summary">
+        <div class="anomaly-count">
+            <span class="badge badge-danger">CRITICAL</span>
+            <span class="count">0</span>
+        </div>
+        <div class="anomaly-count">
+            <span class="badge badge-warning">WARNING</span>
+            <span class="count">1</span>
+        </div>
+        <div class="anomaly-count">
+            <span class="badge badge-review">REVIEW</span>
+            <span class="count">5</span>
+        </div>
+        <div class="anomaly-count">
+            <span class="badge badge-info">INFO</span>
+            <span class="count">0</span>
+        </div>
+    </div>
+
+    
+    <table>
+        <tr>
+            <th style="width: 90px;">심각도</th>
+            <th style="width: 200px;">항목</th>
+            <th>상세</th>
+            <th style="width: 250px;">확인 필요 사항</th>
+        </tr>
+        
+        <tr>
+            <td><span class="badge badge-warning">WARNING</span></td>
+            <td><strong>광고선전비 4월 급증 (6.2배)</strong><br><span style="font-size: 10px; color: var(--text-tertiary);">광고선전비: 3월 → 4월 6.2배</span></td>
+            <td>3월 0.01억 → 4월 0.04억 (6.2배 변동)</td>
+            <td style="font-size: 11px;">광고선전비 4월 급변동 원인 확인 (일시적 이벤트? 구조적 변화?)</td>
+        </tr>
+        
+        <tr>
+            <td><span class="badge badge-review">REVIEW</span></td>
+            <td><strong>상여금 7월 급증 (3.0배)</strong><br><span style="font-size: 10px; color: var(--text-tertiary);">상여금: 6월 → 7월 3.0배</span></td>
+            <td>6월 0.03억 → 7월 0.09억 (3.0배 변동)</td>
+            <td style="font-size: 11px;">상여금 7월 급변동 원인 확인 (일시적 이벤트? 구조적 변화?)</td>
+        </tr>
+        
+        <tr>
+            <td><span class="badge badge-review">REVIEW</span></td>
+            <td><strong>접대비 8월 급증 (4.8배)</strong><br><span style="font-size: 10px; color: var(--text-tertiary);">접대비: 7월 → 8월 4.8배</span></td>
+            <td>7월 0.00억 → 8월 0.01억 (4.8배 변동)</td>
+            <td style="font-size: 11px;">접대비 8월 급변동 원인 확인 (일시적 이벤트? 구조적 변화?)</td>
+        </tr>
+        
+        <tr>
+            <td><span class="badge badge-review">REVIEW</span></td>
+            <td><strong>접대비 11월 급증 (3.8배)</strong><br><span style="font-size: 10px; color: var(--text-tertiary);">접대비: 10월 → 11월 3.8배</span></td>
+            <td>10월 0.01억 → 11월 0.04억 (3.8배 변동)</td>
+            <td style="font-size: 11px;">접대비 11월 급변동 원인 확인 (일시적 이벤트? 구조적 변화?)</td>
+        </tr>
+        
+        <tr>
+            <td><span class="badge badge-review">REVIEW</span></td>
+            <td><strong>소모품비 6월 급증 (4.8배)</strong><br><span style="font-size: 10px; color: var(--text-tertiary);">소모품비: 5월 → 6월 4.8배</span></td>
+            <td>5월 0.00억 → 6월 0.01억 (4.8배 변동)</td>
+            <td style="font-size: 11px;">소모품비 6월 급변동 원인 확인 (일시적 이벤트? 구조적 변화?)</td>
+        </tr>
+        
+        <tr>
+            <td><span class="badge badge-review">REVIEW</span></td>
+            <td><strong>광고선전비 5월 급증 (4.7배)</strong><br><span style="font-size: 10px; color: var(--text-tertiary);">광고선전비: 4월 → 5월 4.7배</span></td>
+            <td>4월 0.04억 → 5월 0.21억 (4.7배 변동)</td>
+            <td style="font-size: 11px;">광고선전비 5월 급변동 원인 확인 (일시적 이벤트? 구조적 변화?)</td>
+        </tr>
+        
+    </table>
+    
+
+    <hr class="section-divider">
+
+    <!-- ═══════════════════════════════════════ -->
+    <!-- D. 종합 우려 포인트                       -->
+    <!-- ═══════════════════════════════════════ -->
+    <h2>D. 종합 우려 포인트</h2>
+
+    
+    
+    <div class="concern-card">
+        <div class="concern-rank">#2</div>
+        <div class="concern-perspective">BEP 관점</div>
+        <div class="concern-title">이자비용 0.04억 — 영업이익 잠식</div>
+        <div class="concern-detail">영업이익 1.2억 대비 영업외비용 0.04억으로 영업이익의 3% 수준 (관리 가능).</div>
+    </div>
+    
+    <div class="concern-card">
+        <div class="concern-rank">#2</div>
+        <div class="concern-perspective">Equity 관점</div>
+        <div class="concern-title">소규모 팀(5~10명) — Key-man 리스크</div>
+        <div class="concern-detail">소규모 팀 구조에서 핵심 인력 이탈 시 사업 연속성 위협. 대표이사 의존도가 높을 경우 Equity 취득 리스크 증가.</div>
+    </div>
+    
+    
+
+    <hr class="section-divider">
+
+    <!-- ═══════════════════════════════════════ -->
+    <!-- E. 업종 분석                              -->
+    <!-- ═══════════════════════════════════════ -->
+    <h2 class="page-break-before">E. 업종 분석</h2>
+
+    
+    <h3>E.1 섹터 식별 + 시장 현황</h3>
+    <div class="card card-info">
+        <h4 class="mt-0">Travel Tech / 여행·숙박 B2B SaaS</h4>
+        <p>국내 숙박 예약 시장은 2025년 약 15조 원 규모이며, B2B 채널매니저/PMS 시장은 약 3,000~5,000억 원으로 추정됩니다. 중소 숙박업소(약 7만 개)의 디지털 전환율은 30% 미만으로 성장 여력이 큽니다. 글로벌 Hospitality Tech 시장은 $30B+ 규모이며, 클라우드 PMS와 채널매니저의 통합 솔루션이 핵심 트렌드입니다.</p>
+    </div>
+
+    <h3>E.2 국내/해외 Peer 비교</h3>
+    <div class="peer-grid">
+        <div class="peer-card">
+            <h4 class="mt-0">국내 Peers</h4>
+            <table>
+                <tr><th>기업</th><th>비고</th></tr>
+                
+                <tr>
+                    <td><strong>온다(ONDA)</strong></td>
+                    <td>숙박 채널매니저·PMS, 거래액 741억(2023), 매출 51억, 시리즈B 80억</td>
+                </tr>
+                
+                <tr>
+                    <td><strong>야놀자 클라우드</strong></td>
+                    <td>PMS·채널매니저·키오스크 통합, 매출 2,926억(2023), 국내 PMS 점유율 70%+</td>
+                </tr>
+                
+                <tr>
+                    <td><strong>나우웨이팅</strong></td>
+                    <td>F&B 대기관리 → 예약·POS 확장, 매출 70억(2023)</td>
+                </tr>
+                
+                <tr>
+                    <td><strong>여기어때(위드이노베이션)</strong></td>
+                    <td>OTA 겸 숙박 솔루션, 시리즈D, 매출 2,700억+</td>
+                </tr>
+                
+            </table>
+        </div>
+        <div class="peer-card">
+            <h4 class="mt-0">해외 Peers</h4>
+            <table>
+                <tr><th>기업</th><th>비고</th></tr>
+                
+                <tr>
+                    <td><strong>SiteMinder (ASX: SDR)</strong></td>
+                    <td>호텔 채널매니저·예약엔진, 시총 $1.37B, ARR $200M+, 150개국 4만 호텔</td>
+                </tr>
+                
+                <tr>
+                    <td><strong>Cloudbeds</strong></td>
+                    <td>올인원 PMS+채널매니저, 누적 투자 $253M, 150개국</td>
+                </tr>
+                
+                <tr>
+                    <td><strong>Mews</strong></td>
+                    <td>클라우드 PMS, Series D $300M, 밸류 $2.5B, 100개국 5,500 호텔</td>
+                </tr>
+                
+                <tr>
+                    <td><strong>Guesty</strong></td>
+                    <td>단기임대(Airbnb) 관리 SaaS, 밸류 $900M, Series F $130M</td>
+                </tr>
+                
+                <tr>
+                    <td><strong>RateGain (NSE: RateGain)</strong></td>
+                    <td>레이트쇼핑·채널매니저·마케팅, 시총 $857M, 매출 $112M</td>
+                </tr>
+                
+            </table>
+        </div>
+    </div>
+
+    <h3>E.3 핵심 KPI</h3>
+    <table>
+        <tr><th>KPI</th><th>벤치마크</th><th>의미</th></tr>
+        
+        <tr>
+            <td><strong>거래액 (GMV/Booking Volume)</strong></td>
+            <td class="font-mono">월 50억+ (시리즈A)</td>
+            <td>숙박 B2B SaaS의 플랫폼 규모 핵심 지표</td>
+        </tr>
+        
+        <tr>
+            <td><strong>Take Rate (수수료율)</strong></td>
+            <td class="font-mono">3~15%</td>
+            <td>커미션 기반 BM의 수익성 결정 지표 — 가맹점 수·거래액과 연동</td>
+        </tr>
+        
+        <tr>
+            <td><strong>객실/숙소 연결 수</strong></td>
+            <td class="font-mono">1,000실+ (시리즈A)</td>
+            <td>공급 측 네트워크 효과 — 연결 숙소 수가 OTA 협상력의 근간</td>
+        </tr>
+        
+        <tr>
+            <td><strong>Churn Rate (월)</strong></td>
+            <td class="font-mono"><3%</td>
+            <td>B2B SaaS 고객 이탈률 — 숙박업 특성상 전환 비용이 높아 낮은 이탈률 기대</td>
+        </tr>
+        
+        <tr>
+            <td><strong>NRR (Net Revenue Retention)</strong></td>
+            <td class="font-mono">>110%</td>
+            <td>기존 고객 매출 확장 (객실 추가, 부가서비스) 역량</td>
+        </tr>
+        
+    </table>
+
+    <h3>E.4 글로벌 VC 투자 시 중점 지표</h3>
+    <table>
+        <tr><th>Source</th><th>Criterion</th></tr>
+        
+        <tr>
+            <td><strong>a16z</strong></td>
+            <td>Supply-side aggregation moat — 숙박 공급처 확보 규모와 OTA 채널 커버리지가 경쟁 우위의 핵심</td>
+        </tr>
+        
+        <tr>
+            <td><strong>Thayer Ventures</strong></td>
+            <td>Hospitality vertical SaaS with embedded fintech — PMS/채널매니저에 결제·정산·대출을 내장하는 확장성</td>
+        </tr>
+        
+        <tr>
+            <td><strong>Sequoia</strong></td>
+            <td>Land-and-expand in fragmented market — 중소 숙박업소 시장의 파편화를 SaaS로 통합하는 전략</td>
+        </tr>
+        
+        <tr>
+            <td><strong>General VC</strong></td>
+            <td>Gross Margin >60% with commission + SaaS hybrid model — 수수료 매출의 구조적 마진 확인</td>
+        </tr>
+        
+    </table>
+    
+
+    <hr class="section-divider">
+
+    <!-- ═══════════════════════════════════════ -->
+    <!-- F. [Appendix] TRA 관점                   -->
+    <!-- ═══════════════════════════════════════ -->
+    <h2 class="page-break-before">F. TRA 관점 — 메자닌 투자 비대칭 판단</h2>
+
+    
+    <!-- F.1 리스크 팩트 -->
+    
+
+    <!-- F.2 BEP 민감도 분석 -->
+    
+    <h3>F.2 BEP 민감도 분석</h3>
+    <div class="assumption-note">
+        <strong>아래 수치는 가정(assumption)입니다.</strong> 실제 적용 가능 비율은 인터뷰를 통해 확인해야 합니다.
+        보수적/중립/낙관 3개 시나리오로 BEP 도달 가능성을 범위로 제시합니다.
+    </div>
+
+    <div class="kpi-grid" style="margin-bottom: 12px">
+        <div class="kpi-card success">
+            <div class="kpi-value">0.10억</div>
+            <div class="kpi-label">월 영업이익(평균)</div>
+        </div>
+        <div class="kpi-card danger">
+            <div class="kpi-value">0.00억</div>
+            <div class="kpi-label">월 영업외 순비용</div>
+        </div>
+        <div class="kpi-card success">
+            <div class="kpi-value">0.10억</div>
+            <div class="kpi-label">월 당기순이익</div>
+        </div>
+    </div>
+
+    
+    <div class="table-scroll">
+    <table>
+        <tr>
+            <th>레버</th>
+            <th class="num">현재값(연)</th>
+            <th class="num" colspan="2">보수적</th>
+            <th class="num" colspan="2">중립</th>
+            <th class="num" colspan="2">낙관</th>
+            <th>인터뷰 확인</th>
+        </tr>
+        
+        <tr>
+            <td><strong>이자비용 절감</strong></td>
+            <td class="num">0.04억</td>
+            <td class="num text-muted">10%</td>
+            <td class="num">0.00억</td>
+            <td class="num text-muted">30%</td>
+            <td class="num">0.01억</td>
+            <td class="num text-muted">50%</td>
+            <td class="num">0.02억</td>
+            <td style="font-size:11px">차환/금리인하 실현 가능성</td>
+        </tr>
+        
+        <tr>
+            <td><strong>인건비 효율화</strong></td>
+            <td class="num">3.4억</td>
+            <td class="num text-muted">5%</td>
+            <td class="num">0.17억</td>
+            <td class="num text-muted">15%</td>
+            <td class="num">0.51억</td>
+            <td class="num text-muted">25%</td>
+            <td class="num">0.84억</td>
+            <td style="font-size:11px">조직 구조 · 인력 계획</td>
+        </tr>
+        
+        <tr>
+            <td><strong>판관비 구조조정</strong></td>
+            <td class="num">18.0억</td>
+            <td class="num text-muted">10%</td>
+            <td class="num">1.8억</td>
+            <td class="num text-muted">20%</td>
+            <td class="num">3.6억</td>
+            <td class="num text-muted">35%</td>
+            <td class="num">6.3억</td>
+            <td style="font-size:11px">고정비/변동비 구분</td>
+        </tr>
+        
+        <tr>
+            <td><strong>매출 성장 (6개월)</strong></td>
+            <td class="num">19.2억</td>
+            <td class="num text-muted">5%</td>
+            <td class="num">0.96억</td>
+            <td class="num text-muted">20%</td>
+            <td class="num">3.8억</td>
+            <td class="num text-muted">40%</td>
+            <td class="num">7.7억</td>
+            <td style="font-size:11px">파이프라인 · 수주 현황</td>
+        </tr>
+        
+        <tr style="border-top: 2px solid var(--black)">
+            <td><strong>합산 월 개선 가능</strong></td>
+            <td class="num"></td>
+            <td class="num" colspan="2"><strong>0.24억</strong></td>
+            <td class="num" colspan="2"><strong>0.66억</strong></td>
+            <td class="num" colspan="2"><strong>1.2억</strong></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td><strong>BEP 6개월 판정</strong></td>
+            <td class="num"></td>
+            <td class="num" colspan="2"><span class="badge badge-success">달성</span></td>
+            <td class="num" colspan="2"><span class="badge badge-success">달성</span></td>
+            <td class="num" colspan="2"><span class="badge badge-success">달성</span></td>
+            <td></td>
+        </tr>
+    </table>
+    </div>
+    
+    
+
+    <!-- F.3 메자닌 시나리오 -->
+    
+    <h3>F.3 메자닌 시나리오</h3>
+    <div class="scenario-grid">
+        
+        <div class="scenario-card sc-info">
+            <div class="scenario-label">하방 (Base)</div>
+            <div class="scenario-title">원금 상환 + 이자 수취</div>
+            <div class="scenario-desc">메자닌 투자 후 BEP 도달 시, 약정에 따라 원금 상환 및 이자 수취. 현재 영업이익 흑자 구조.</div>
+            
+            <div class="scenario-prob">조건: BEP 도달 시</div>
+        </div>
+        
+        <div class="scenario-card sc-success">
+            <div class="scenario-label">상방 (Upside)</div>
+            <div class="scenario-title">주식 전환 → 지분 획득 → Equity 업사이드</div>
+            <div class="scenario-desc">BEP 달성 후 성장 궤도 진입 시 주식 전환을 통한 지분 확보. 하방(이자) 대비 상방(Equity)이 비대칭적으로 높은 구조.</div>
+            
+            <div class="scenario-note">※ 기존 우선주 주주 합의 필수 — 인터뷰 확인 필요</div>
+            
+            <div class="scenario-prob">조건: BEP 도달 + 성장 지속 시</div>
+        </div>
+        
+        <div class="scenario-card sc-danger">
+            <div class="scenario-label">최하방 (Worst)</div>
+            <div class="scenario-title">BEP 미달 → 원금·이자 상환 차질</div>
+            <div class="scenario-desc">6개월 내 BEP 미도달 시 원금-이자 상환에 차질. 담보 설정으로 원금의 일부 확보 구조 필요.</div>
+            
+            <div class="scenario-note">※ 담보 가용: 자산총계 3.1억</div>
+            
+            <div class="scenario-prob">조건: BEP 미달 시</div>
+        </div>
+        
+    </div>
+    
+    
+
+    <!-- F.4 주주 구조 리스크 -->
+    
+    <h3>F.4 주주 구조 리스크</h3>
+    <table>
+        <tr>
+            <th style="width:90px">심각도</th>
+            <th>항목</th>
+            <th>리스크</th>
+            <th>확인 필요사항</th>
+        </tr>
+        
+        <tr>
+            <td><span class="badge badge-danger">HIGH</span></td>
+            <td><strong>자본잉여금 2.0억 — 기존 우선주 투자 이력 추정</strong></td>
+            <td>우선주 주주의 동의권 · 우선매수권 · 희석방지 조항이 메자닌에 영향</td>
+            <td>주주간 계약(SHA): ROFR, Tag/Drag-along, Anti-dilution 조항 확인</td>
+        </tr>
+        
+        <tr>
+            <td><span class="badge badge-danger">HIGH</span></td>
+            <td><strong>문서 현황: 주주명부 미확보 / 회사소개서 미확보</strong></td>
+            <td>주주명부 미분석 — 우선주 현황, SHA 조항 미확인 상태</td>
+            <td>주주명부 분석 → 우선주 종류/수량/전환조건/주요 주주 정리</td>
+        </tr>
+        
+    </table>
+    
+
+    <!-- F.5 인터뷰 확인 필수사항 -->
+    
+    <h3>F.5 인터뷰 확인 필수사항</h3>
+    
+    <div class="checklist-item">
+        <div class="checklist-checkbox"></div>
+        <div>
+            <div class="checklist-source">이상감지: WARNING</div>
+            <div class="checklist-text">월간 급변동 항목 일괄 확인: 광고선전비 4월, 상여금 7월, 접대비 8월, 접대비 11월, 소모품비 6월, 광고선전비 5월 — 일시적 이벤트(보상, 결산 조정)인지 구조적 변화인지?</div>
+        </div>
+    </div>
+    
+    <div class="checklist-item">
+        <div class="checklist-checkbox"></div>
+        <div>
+            <div class="checklist-source">기본 확인사항</div>
+            <div class="checklist-text">차입금 만기 구조 및 상환 스케줄 확인</div>
+        </div>
+    </div>
+    
+    <div class="checklist-item">
+        <div class="checklist-checkbox"></div>
+        <div>
+            <div class="checklist-source">기본 확인사항</div>
+            <div class="checklist-text">주요 고객 집중도 — 매출의 50% 이상이 단일 고객에 의존하는지?</div>
+        </div>
+    </div>
+    
+    <div class="checklist-item">
+        <div class="checklist-checkbox"></div>
+        <div>
+            <div class="checklist-source">기본 확인사항</div>
+            <div class="checklist-text">IP 보유 현황 — 핵심 기술 특허/저작권 보유 여부</div>
+        </div>
+    </div>
+    
+    <div class="checklist-item">
+        <div class="checklist-checkbox"></div>
+        <div>
+            <div class="checklist-source">기본 확인사항</div>
+            <div class="checklist-text">핵심 인력 Key-man 의존도 및 리텐션 계획</div>
+        </div>
+    </div>
+    
+    <div class="checklist-item">
+        <div class="checklist-checkbox"></div>
+        <div>
+            <div class="checklist-source">기본 확인사항</div>
+            <div class="checklist-text">향후 12개월 매출 파이프라인 현황</div>
+        </div>
+    </div>
+    
+    <div class="checklist-item">
+        <div class="checklist-checkbox"></div>
+        <div>
+            <div class="checklist-source">기본 확인사항</div>
+            <div class="checklist-text">우선주 주주 현황 — 시리즈별 투자자, 전환 조건(전환가/리픽싱), 잔여 수량</div>
+        </div>
+    </div>
+    
+    <div class="checklist-item">
+        <div class="checklist-checkbox"></div>
+        <div>
+            <div class="checklist-source">기본 확인사항</div>
+            <div class="checklist-text">주주간 계약(SHA) 핵심 조항 — ROFR, Tag/Drag-along, Anti-dilution, 신주발행 동의권</div>
+        </div>
+    </div>
+    
+    <div class="checklist-item">
+        <div class="checklist-checkbox"></div>
+        <div>
+            <div class="checklist-source">기본 확인사항</div>
+            <div class="checklist-text">기존 CB/BW 발행 이력 및 잔여 전환권 — 메자닌 신규 발행 시 희석 영향</div>
+        </div>
+    </div>
+    
+    
+
+    <!-- ═══════════════════════════════════════ -->
+    <!-- CAPITAL FLOW ANALYZER                   -->
+    <!-- ═══════════════════════════════════════ -->
+    
+    <button class="cf-fab" id="cfFab">
+        <span class="cf-fab-icon">CF</span>
+        Capital Flow &mdash; 마진맥스
+    </button>
+
+    <script>
+    (function(){
+        var fab = document.getElementById('cfFab');
+        var cfUrl = "https://capital-flow-two.vercel.app/company/8268602651";
+
+        fab.addEventListener('click', function(){
+            window.open(cfUrl, '_blank');
+        });
+    })();
+    </script>
+    
+
+    <!-- ═══════════════════════════════════════ -->
+    <!-- FOOTER                                  -->
+    <!-- ═══════════════════════════════════════ -->
+    <div class="footer">
+        <div class="logo">GOWID NEXUS | PIT-STOP</div>
+        <div class="preview-warning">PREVIEW &mdash; NOT FOR DISTRIBUTION</div>
+    </div>
+
+</body>
+<!-- DW-UPDATED: 2026-03-11 16:09 KST -->
+</html>
