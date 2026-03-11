@@ -861,7 +861,8 @@
     </div>
 
     <!-- 재무 요약 -->
-    <div style="display:flex;gap:12px;margin:16px 0;flex-wrap:wrap;">
+    <div style="font-size:11px;color:#999;margin-bottom:4px;">※ FY2025 (2024.01~2024.12) 기준 재무데이터</div>
+    <div style="display:flex;gap:12px;margin:4px 0 16px;flex-wrap:wrap;">
         <div style="flex:1;min-width:100px;padding:12px;background:#f5f5f5;border:1px solid #e0e0e0;text-align:center;">
             <div style="font-size:11px;color:#777;">매출</div>
             <div style="font-size:16px;font-weight:700;font-family:'Noto Sans Mono',monospace;">17.6억</div>
@@ -882,6 +883,12 @@
             <div style="font-size:11px;color:#777;">자본</div>
             <div style="font-size:16px;font-weight:700;font-family:'Noto Sans Mono',monospace;color:#8b0000;">-12.6억</div>
         </div>
+    </div>
+
+    <!-- 딜 요약 -->
+    <div style="margin:16px 0;padding:12px 16px;background:#f8f8f8;border-left:3px solid #333;">
+        <div style="font-size:11px;font-weight:600;color:#555;letter-spacing:1px;text-transform:uppercase;margin-bottom:6px;">DEAL SUMMARY</div>
+        <div style="font-size:12px;line-height:1.7;color:#333;">이벤트테크 플랫폼(CEMS), 매출 17.6억, OP -5.8억 적자. 직원 5~10명, 13년 운영, 자본잠식 -12.6억.<br>KIMST 방산 수주 확정 여부가 턴어라운드 핵심 — 수주 실패 시 이벤트 플랫폼 단독으로 BEP 달성 불투명.<br>조건부 No-Go: 부채 절대금액 소(7.2억)이나 자본잠식 상태. IBK 5억 상환 플랜 + KIMST 수주 확정 시 재평가.</div>
     </div>
 
     <!-- 부채 3축 판정 -->
@@ -914,6 +921,7 @@
             </tbody>
         </table>
         <div style="font-size:11px;color:#999;margin-top:6px;">Red 2개 — Red 2 = 조건부 No-Go</div>
+        <div style="font-size:11px;color:#bbb;margin-top:4px;">* DSC Ratio(Debt Service Coverage) = 영업이익 &divide; 연간 원리금 상환액. 1.0x 이상이면 영업이익으로 부채 상환 가능.</div>
     </div>
 
     <!-- 7조건 체크 -->
@@ -1116,6 +1124,49 @@
         <h4 class="mt-0">미확보</h4>
         <p>재무상태표 데이터가 확보되지 않았습니다. 감사보고서 또는 가결산 자료 제출이 필요합니다.</p>
     </div>
+    
+
+    
+    <h3>B.1-2 손익계산서 요약 (2025)</h3>
+    <table>
+        <tr><th>항목</th><th class="num">금액</th></tr>
+        
+        <tr>
+            <td><strong>매출</strong></td>
+            <td class="num">17.6억</td>
+        </tr>
+        
+        <tr>
+            <td><strong>매출총이익</strong></td>
+            <td class="num">17.6억</td>
+        </tr>
+        
+        <tr>
+            <td>판매관리비</td>
+            <td class="num">23.5억</td>
+        </tr>
+        
+        <tr>
+            <td><strong>영업이익</strong></td>
+            <td class="num" style="color: var(--negative); font-weight: 600;">-5.8억</td>
+        </tr>
+        
+        <tr>
+            <td>영업외비용</td>
+            <td class="num">0.73억</td>
+        </tr>
+        
+        <tr>
+            <td>영업외수익</td>
+            <td class="num">0.10억</td>
+        </tr>
+        
+        <tr>
+            <td><strong>당기순이익</strong></td>
+            <td class="num" style="color: var(--negative); font-weight: 600;">-6.5억</td>
+        </tr>
+        
+    </table>
     
 
     
@@ -1567,15 +1618,6 @@
     </table>
     
 
-    <!-- CF 외부 링크 -->
-    
-    <div style="text-align: right; margin-top: 8px;">
-        <a href="https://capital-flow-two.vercel.app/company/2218134988" target="_blank"
-           style="font-size: 11px; color: var(--text-secondary); text-decoration: none; border: 1px solid var(--border); padding: 4px 12px; border-radius: 3px;">
-            Capital Flow 상세 →
-        </a>
-    </div>
-    
     
 
     <hr class="section-divider">
@@ -1708,6 +1750,7 @@
     <h2>D. 종합 우려 포인트</h2>
 
     
+    <h3>D-1. 우려 포인트</h3>
     
     <div class="concern-card">
         <div class="concern-rank">#1</div>
@@ -1735,6 +1778,70 @@
         <div class="concern-perspective">Equity 관점</div>
         <div class="concern-title">소규모 팀(5~10명) — Key-man 리스크</div>
         <div class="concern-detail">소규모 팀 구조에서 핵심 인력 이탈 시 사업 연속성 위협. 대표이사 의존도가 높을 경우 Equity 취득 리스크 증가.</div>
+    </div>
+    
+    
+
+    
+    <h3>D-2. 피트스탑 개선 방향 제안</h3>
+    <div class="assumption-note" style="margin-bottom:8px;">
+        ※ 접수서류 재무데이터 기반 자동 산출. 인터뷰에서 실현 가능성을 확인해야 합니다.
+    </div>
+    
+    <div class="card" style="margin-bottom:8px; border-left:3px solid var(--negative);">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;">
+            <strong>인건비 매출 대비 55% → 25%로 감축</strong>
+            <span class="badge badge-danger" style="font-size:10px;">P1</span>
+        </div>
+        <table style="font-size:12px;width:100%;margin:4px 0;">
+            <tr><td style="width:60px;color:#999;">현재</td><td>인건비 9.7억/년 (매출 대비 55%)</td></tr>
+            <tr><td style="color:#999;">목표</td><td>인건비 4.4억/년 (25%)</td></tr>
+            <tr><td style="color:#999;">효과</td><td><strong>월 0.44억 절감, 연 5.2억 절감</strong></td></tr>
+            <tr><td style="color:#999;">BEP</td><td>월 적자의 90% 커버</td></tr>
+            <tr><td style="color:#999;">액션</td><td>핵심 인력 식별 → 비핵심 정리 → 외주/프리랜서 전환</td></tr>
+        </table>
+    </div>
+    
+    <div class="card" style="margin-bottom:8px; border-left:3px solid #d4a017;">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;">
+            <strong>지급수수료+광고선전비 매출 대비 30% → 12%로 감축</strong>
+            <span class="badge badge-warning" style="font-size:10px;">P2</span>
+        </div>
+        <table style="font-size:12px;width:100%;margin:4px 0;">
+            <tr><td style="width:60px;color:#999;">현재</td><td>커미션+광고 5.3억/년 (매출 대비 30%)</td></tr>
+            <tr><td style="color:#999;">목표</td><td>커미션+광고 3.2억/년 (40% 감축)</td></tr>
+            <tr><td style="color:#999;">효과</td><td><strong>월 0.18억 절감, 연 2.1억 절감</strong></td></tr>
+            <tr><td style="color:#999;">BEP</td><td>월 적자의 36% 커버</td></tr>
+            <tr><td style="color:#999;">액션</td><td>외부 채널 ROI 측정 → 저효율 채널 중단 → 인하우스 전환</td></tr>
+        </table>
+    </div>
+    
+    <div class="card" style="margin-bottom:8px; border-left:3px solid #d4a017;">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;">
+            <strong>이자비용 0.73억/년 → 금리 인하/출자전환 효과</strong>
+            <span class="badge badge-warning" style="font-size:10px;">P2</span>
+        </div>
+        <table style="font-size:12px;width:100%;margin:4px 0;">
+            <tr><td style="width:60px;color:#999;">현재</td><td>영업외비용(이자 등) 0.73억/년</td></tr>
+            <tr><td style="color:#999;">목표</td><td>금리 인하 10%p 시 0.66억/년</td></tr>
+            <tr><td style="color:#999;">효과</td><td><strong>금리 인하 10%p → 연 0.07억 절감</strong></td></tr>
+            <tr><td style="color:#999;">BEP</td><td>월 적자의 1% 커버</td></tr>
+            <tr><td style="color:#999;">액션</td><td>차입금 금리 재협상 → 고금리 사채 출자전환 → 은행 대환대출 검토</td></tr>
+        </table>
+    </div>
+    
+    <div class="card" style="margin-bottom:8px; border-left:3px solid #d4a017;">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;">
+            <strong>현 비용구조 기준 BEP 필요 매출 11.7억</strong>
+            <span class="badge badge-warning" style="font-size:10px;">P2</span>
+        </div>
+        <table style="font-size:12px;width:100%;margin:4px 0;">
+            <tr><td style="width:60px;color:#999;">현재</td><td>매출 17.6억, 매출총이익률 200%</td></tr>
+            <tr><td style="color:#999;">목표</td><td>매출 11.7억 (+-33%)</td></tr>
+            <tr><td style="color:#999;">효과</td><td><strong>영업이익 BEP 달성 (현재 적자 5.8억 해소)</strong></td></tr>
+            <tr><td style="color:#999;">BEP</td><td>BEP 100% 달성</td></tr>
+            <tr><td style="color:#999;">액션</td><td>매출 파이프라인 확대 → 객단가/리텐션 개선 → 신규 채널 발굴</td></tr>
+        </table>
     </div>
     
     
@@ -2080,15 +2187,31 @@
     <div class="checklist-item">
         <div class="checklist-checkbox"></div>
         <div>
-            <div class="checklist-source">기본 확인사항</div>
-            <div class="checklist-text">차입금 만기 구조 및 상환 스케줄 확인</div>
+            <div class="checklist-source">BEP 기반</div>
+            <div class="checklist-text">현재 월 고정비 기준, BEP 도달을 위한 매출 목표치와 달성 일정 (현재 월 영업적자 0.49억 기준)</div>
         </div>
     </div>
     
     <div class="checklist-item">
         <div class="checklist-checkbox"></div>
         <div>
-            <div class="checklist-source">기본 확인사항</div>
+            <div class="checklist-source">BEP 기반</div>
+            <div class="checklist-text">인건비/판관비 중 즉시 삭감 가능한 항목과 목표 금액 (현 판관비 23.5억/년 기준)</div>
+        </div>
+    </div>
+    
+    <div class="checklist-item">
+        <div class="checklist-checkbox"></div>
+        <div>
+            <div class="checklist-source">BEP 기반</div>
+            <div class="checklist-text">현재 번레이트 기준 런웨이를 몇 개월로 인식하는지? 추가 자금 조달 계획과 타임라인?</div>
+        </div>
+    </div>
+    
+    <div class="checklist-item">
+        <div class="checklist-checkbox"></div>
+        <div>
+            <div class="checklist-source">재무 기반</div>
             <div class="checklist-text">주요 고객 집중도 — 매출의 50% 이상이 단일 고객에 의존하는지?</div>
         </div>
     </div>
@@ -2096,7 +2219,7 @@
     <div class="checklist-item">
         <div class="checklist-checkbox"></div>
         <div>
-            <div class="checklist-source">기본 확인사항</div>
+            <div class="checklist-source">재무 기반</div>
             <div class="checklist-text">IP 보유 현황 — 핵심 기술 특허/저작권 보유 여부</div>
         </div>
     </div>
@@ -2104,7 +2227,7 @@
     <div class="checklist-item">
         <div class="checklist-checkbox"></div>
         <div>
-            <div class="checklist-source">기본 확인사항</div>
+            <div class="checklist-source">재무 기반</div>
             <div class="checklist-text">핵심 인력 Key-man 의존도 및 리텐션 계획</div>
         </div>
     </div>
@@ -2112,7 +2235,7 @@
     <div class="checklist-item">
         <div class="checklist-checkbox"></div>
         <div>
-            <div class="checklist-source">기본 확인사항</div>
+            <div class="checklist-source">재무 기반</div>
             <div class="checklist-text">경쟁사 대비 기술적 차별점 (moat)</div>
         </div>
     </div>
@@ -2120,15 +2243,15 @@
     <div class="checklist-item">
         <div class="checklist-checkbox"></div>
         <div>
-            <div class="checklist-source">기본 확인사항</div>
-            <div class="checklist-text">향후 12개월 매출 파이프라인 현황</div>
+            <div class="checklist-source">부채 기반</div>
+            <div class="checklist-text">차입금 만기 구조 및 상환 스케줄 확인</div>
         </div>
     </div>
     
     <div class="checklist-item">
         <div class="checklist-checkbox"></div>
         <div>
-            <div class="checklist-source">기본 확인사항</div>
+            <div class="checklist-source">주주 기반</div>
             <div class="checklist-text">우선주 주주 현황 — 시리즈별 투자자, 전환 조건(전환가/리픽싱), 잔여 수량</div>
         </div>
     </div>
@@ -2136,16 +2259,8 @@
     <div class="checklist-item">
         <div class="checklist-checkbox"></div>
         <div>
-            <div class="checklist-source">기본 확인사항</div>
+            <div class="checklist-source">주주 기반</div>
             <div class="checklist-text">주주간 계약(SHA) 핵심 조항 — ROFR, Tag/Drag-along, Anti-dilution, 신주발행 동의권</div>
-        </div>
-    </div>
-    
-    <div class="checklist-item">
-        <div class="checklist-checkbox"></div>
-        <div>
-            <div class="checklist-source">기본 확인사항</div>
-            <div class="checklist-text">기존 CB/BW 발행 이력 및 잔여 전환권 — 메자닌 신규 발행 시 희석 영향</div>
         </div>
     </div>
     
@@ -2181,5 +2296,5 @@
     </div>
 
 </body>
-<!-- DW-UPDATED: 2026-03-11 17:11 KST -->
+<!-- DW-UPDATED: 2026-03-11 17:37 KST -->
 </html>

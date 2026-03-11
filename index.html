@@ -535,6 +535,86 @@ mark {
   border: none;
 }
 
+/* ─── Closed badge & muted ──────────────────────────────────────── */
+.badge-closed {
+  display: inline-block;
+  font-size: 10px;
+  padding: 2px 6px;
+  background: var(--border-mid);
+  color: var(--text-dim);
+  border-radius: 2px;
+  letter-spacing: 1px;
+  font-family: var(--mono);
+  line-height: 1.4;
+  vertical-align: middle;
+  flex-shrink: 0;
+}
+
+.drop-item.is-closed .di-name {
+  color: var(--text-sec);
+}
+
+.drop-item.is-closed .di-folder,
+.drop-item.is-closed .di-ts-date,
+.drop-item.is-closed .di-ts-time,
+.drop-item.is-closed .di-num {
+  color: var(--text-dim);
+  opacity: 0.7;
+}
+
+.drop-item.is-closed .di-arrow {
+  color: var(--border);
+}
+
+/* Closed info banner (viewer 상단) */
+.closed-banner {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 11px 16px;
+  background: var(--surface2);
+  border-left: 3px solid var(--border-mid);
+  border-bottom: 1px solid var(--border);
+  flex-shrink: 0;
+}
+
+.cb-icon {
+  font-size: 13px;
+  color: var(--text-dim);
+  margin-top: 1px;
+  flex-shrink: 0;
+}
+
+.cb-body {
+  flex: 1;
+  min-width: 0;
+}
+
+.cb-title {
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  margin-bottom: 3px;
+}
+
+.cb-reason {
+  font-size: 12px;
+  color: var(--text-sec);
+}
+
+.cb-delete {
+  font-family: var(--mono);
+  font-size: 10px;
+  color: var(--text-dim);
+  margin-top: 4px;
+}
+
+.cb-delete span {
+  color: var(--text-sec);
+}
+
 /* ─── Scrollbar ─────────────────────────────────────────────────── */
 ::-webkit-scrollbar        { width: 5px; height: 5px; }
 ::-webkit-scrollbar-track  { background: var(--bg); }
@@ -569,7 +649,9 @@ const COMPANIES = [
     "revenue": "20\uc5b5~30\uc5b5 \ubbf8\ub9cc",
     "headcount": "30\uba85~50\uba85 \ubbf8\ub9cc",
     "funding_need": "5\uc5b5~10\uc5b5 \ubbf8\ub9cc",
-    "intro_short": "(\uc8fc)\uc6f0\ub85c\ub294 \uc804\uad6d\uc758 \uc815\ubd80 \uc815\ucc45/\uaddc\uc81c/\uc608\uc0b0/\uc0ac\uc5c5 \ub370\uc774\ud130\ub97c \uc218\uc9d1-\uac00\uacf5\ud558\uc5ec, \n\uac1c\uc778-\uae30\uc5c5-\uc815\ubd80\uc5d0\uac8c \ub9de\ucda4\ud615 \uc11c\ube44\uc2a4\ub97c \uc81c\uacf5\ud558\uace0, \uc815\ubd80\uc815\ucc45 \ubc0f \uc608\uc0b0\uc774 \uc798"
+    "intro_short": "(\uc8fc)\uc6f0\ub85c\ub294 \uc804\uad6d\uc758 \uc815\ubd80 \uc815\ucc45/\uaddc\uc81c/\uc608\uc0b0/\uc0ac\uc5c5 \ub370\uc774\ud130\ub97c \uc218\uc9d1-\uac00\uacf5\ud558\uc5ec, \n\uac1c\uc778-\uae30\uc5c5-\uc815\ubd80\uc5d0\uac8c \ub9de\ucda4\ud615 \uc11c\ube44\uc2a4\ub97c \uc81c\uacf5\ud558\uace0, \uc815\ubd80\uc815\ucc45 \ubc0f \uc608\uc0b0\uc774 \uc798",
+    "status": "closed",
+    "close_reason": "\uc778\ud130\ube70 \ud6c4 \ubd80\uc801\ud569 \ud310\uc815 \uc804\ub2ec\ub85c \uc885\ub8cc"
   },
   {
     "folder_name": "\ubaa8\ud2b8\uc5d0\uc774\uc544\uc774",
@@ -608,7 +690,9 @@ const COMPANIES = [
     "revenue": "20\uc5b5~30\uc5b5 \ubbf8\ub9cc",
     "headcount": "5\uba85~10\uba85 \ubbf8\ub9cc",
     "funding_need": "2\uc5b5~5\uc5b5 \ubbf8\ub9cc",
-    "intro_short": "\uc5ec\ud589/\uc219\ubc15 \uc608\uc57d \uc2dc\uc2a4\ud15c B2B \uc11c\ube44\uc2a4(Sass)"
+    "intro_short": "\uc5ec\ud589/\uc219\ubc15 \uc608\uc57d \uc2dc\uc2a4\ud15c B2B \uc11c\ube44\uc2a4(Sass)",
+    "status": "closed",
+    "close_reason": "\uc601\uc5c5\uc774\uc775 \uc591\ud638, \ud22c\uc790 \uc694\uccad \uac74\uc73c\ub85c \uace0\uc704\ub4dc Fuel \uc5f0\uacb0\ub85c \uc885\ub8cc"
   },
   {
     "folder_name": "\uba54\ub274\uc787",
@@ -745,6 +829,15 @@ const PASSWORD = "2026";
     <span class="v-ts"      id="v-ts"></span>
   </div>
 
+  <div id="closed-banner" class="closed-banner" style="display:none;">
+    <div class="cb-icon">◌</div>
+    <div class="cb-body">
+      <div class="cb-title">종료된 딜</div>
+      <div class="cb-reason" id="cb-reason"></div>
+      <div class="cb-delete">자료 삭제 예정일 &nbsp;<span id="cb-delete-date"></span></div>
+    </div>
+  </div>
+
   <div class="frame-wrap">
     <div class="frame-loading" id="frame-loading">
       <div class="spinner"></div>
@@ -776,6 +869,17 @@ const PASSWORD = "2026";
       date: `${m[1]}.${m[2].padStart(2,'0')}.${m[3].padStart(2,'0')}`,
       time: m[4]
     };
+  }
+
+  /* survey_timestamp에서 6개월 후 삭제 예정일 계산 → "YYYY.MM.DD" */
+  function surveyTsToDeleteDate(ts) {
+    const m = ts.match(/^(\d+)\.\s*(\d+)\.\s*(\d+)/);
+    if (!m) return '—';
+    const d = new Date(parseInt(m[1]), parseInt(m[2]) - 1 + 6, parseInt(m[3]));
+    const yy = d.getFullYear();
+    const mm = String(d.getMonth() + 1).padStart(2, '0');
+    const dd = String(d.getDate()).padStart(2, '0');
+    return `${yy}.${mm}.${dd}`;
   }
 
   function hlText(text, q) {
@@ -875,11 +979,15 @@ const PASSWORD = "2026";
       const ts = parseTs(c.survey_timestamp);
       const hlName   = hlText(c.company_name,   q);
       const hlFolder = hlText(c.folder_name, q);
+      const isClosed = c.status === 'closed';
+      const closedBadge = isClosed
+        ? `<span class="badge-closed">CLOSED</span>`
+        : '';
       return `
-        <div class="drop-item" data-folder="${c.folder_name}">
+        <div class="drop-item${isClosed ? ' is-closed' : ''}" data-folder="${c.folder_name}">
           <span class="di-num">${String(globalIdx).padStart(2,'0')}</span>
           <div class="di-body">
-            <div class="di-name">${hlName}</div>
+            <div class="di-name" style="display:flex;align-items:center;gap:7px;">${hlName}${closedBadge}</div>
             <div class="di-folder">${hlFolder}</div>
           </div>
           <div class="di-ts">
@@ -957,11 +1065,21 @@ const PASSWORD = "2026";
   function openViewer(company) {
     /* BASE_PATH + folder + "/" + previewFile
        BASE_PATH = "" → "웰로/웰로_피트스탑_프리뷰_20260220.html" */
-    const src = BASE_PATH + company.folder_name + '/' + company.preview_file + '?v=20260311b';
+    const src = BASE_PATH + company.folder_name + '/' + company.preview_file + '?v=20260311c';
 
     $('v-company').textContent = company.company_name;
     $('v-file').textContent    = company.preview_file;
     $('v-ts').textContent      = '신청 ' + company.survey_timestamp;
+
+    /* closed 배너 처리 */
+    const banner = $('closed-banner');
+    if (company.status === 'closed') {
+      $('cb-reason').textContent     = company.close_reason || '';
+      $('cb-delete-date').textContent = surveyTsToDeleteDate(company.survey_timestamp);
+      banner.style.display = 'flex';
+    } else {
+      banner.style.display = 'none';
+    }
 
     frameLoading.classList.remove('gone');
     frame.src = src;

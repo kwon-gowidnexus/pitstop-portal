@@ -861,7 +861,8 @@
     </div>
 
     <!-- 재무 요약 -->
-    <div style="display:flex;gap:12px;margin:16px 0;flex-wrap:wrap;">
+    <div style="font-size:11px;color:#999;margin-bottom:4px;">※ FY2025 (2024.01~2024.12) 기준 재무데이터</div>
+    <div style="display:flex;gap:12px;margin:4px 0 16px;flex-wrap:wrap;">
         <div style="flex:1;min-width:100px;padding:12px;background:#f5f5f5;border:1px solid #e0e0e0;text-align:center;">
             <div style="font-size:11px;color:#777;">매출</div>
             <div style="font-size:16px;font-weight:700;font-family:'Noto Sans Mono',monospace;">136.9억</div>
@@ -882,6 +883,12 @@
             <div style="font-size:11px;color:#777;">자본</div>
             <div style="font-size:16px;font-weight:700;font-family:'Noto Sans Mono',monospace;color:#8b0000;">-34.8억</div>
         </div>
+    </div>
+
+    <!-- 딜 요약 -->
+    <div style="margin:16px 0;padding:12px 16px;background:#f8f8f8;border-left:3px solid #333;">
+        <div style="font-size:11px;font-weight:600;color:#555;letter-spacing:1px;text-transform:uppercase;margin-bottom:6px;">DEAL SUMMARY</div>
+        <div style="font-size:12px;line-height:1.7;color:#333;">태블릿 무인주문(스마트오더) B2B SaaS, 매출 136.9억, OP +4.1억 흑자. 직원 33명, 주요 고객 SK쉴더스(ADT).<br>금융부채 102억(사채 31억+대출 71억) vs 현금 2억 — IBK 10억 만기 2026.03.20 임박, 만기/현금 비율 22.5x로 3축 전부 Red.<br>절대 No-Go: 캐시 엔진 강력(OP +4.1억)하여 부채 정리 시 최대 반전 후보이나, 사채 31억 성격 미확인 + 만기 도래 부채 즉시 대응 불가 상태.</div>
     </div>
 
     <!-- 부채 3축 판정 -->
@@ -914,6 +921,7 @@
             </tbody>
         </table>
         <div style="font-size:11px;color:#999;margin-top:6px;">Red 3개 — Red 3 = 절대 No-Go</div>
+        <div style="font-size:11px;color:#bbb;margin-top:4px;">* DSC Ratio(Debt Service Coverage) = 영업이익 &divide; 연간 원리금 상환액. 1.0x 이상이면 영업이익으로 부채 상환 가능.</div>
     </div>
 
     <!-- 7조건 체크 -->
@@ -1137,6 +1145,54 @@
         <tr>
             <td><strong>자본총계</strong></td>
             <td class="num" style="color: var(--negative); font-weight: 600;">-38.8억</td>
+        </tr>
+        
+    </table>
+    
+
+    
+    <h3>B.1-2 손익계산서 요약 (2025)</h3>
+    <table>
+        <tr><th>항목</th><th class="num">금액</th></tr>
+        
+        <tr>
+            <td><strong>매출</strong></td>
+            <td class="num">136.9억</td>
+        </tr>
+        
+        <tr>
+            <td>매출원가</td>
+            <td class="num">69.5억</td>
+        </tr>
+        
+        <tr>
+            <td><strong>매출총이익</strong></td>
+            <td class="num">67.5억</td>
+        </tr>
+        
+        <tr>
+            <td>판매관리비</td>
+            <td class="num">67.2억</td>
+        </tr>
+        
+        <tr>
+            <td><strong>영업이익</strong></td>
+            <td class="num">0.21억</td>
+        </tr>
+        
+        <tr>
+            <td>영업외비용</td>
+            <td class="num">5.3억</td>
+        </tr>
+        
+        <tr>
+            <td>영업외수익</td>
+            <td class="num">26.5억</td>
+        </tr>
+        
+        <tr>
+            <td><strong>당기순이익</strong></td>
+            <td class="num">21.4억</td>
         </tr>
         
     </table>
@@ -1724,15 +1780,6 @@
     </table>
     
 
-    <!-- CF 외부 링크 -->
-    
-    <div style="text-align: right; margin-top: 8px;">
-        <a href="https://capital-flow-two.vercel.app/company/1278700330" target="_blank"
-           style="font-size: 11px; color: var(--text-secondary); text-decoration: none; border: 1px solid var(--border); padding: 4px 12px; border-radius: 3px;">
-            Capital Flow 상세 →
-        </a>
-    </div>
-    
     
 
     <hr class="section-divider">
@@ -1844,12 +1891,49 @@
     <h2>D. 종합 우려 포인트</h2>
 
     
+    <h3>D-1. 우려 포인트</h3>
     
     <div class="concern-card">
         <div class="concern-rank">#2</div>
         <div class="concern-perspective">BEP 관점</div>
         <div class="concern-title">이자비용 5.3억 — 영업이익 잠식</div>
         <div class="concern-detail">영업이익 0.21억 대비 영업외비용 5.3억으로 영업이익을 초과하여 구조적 적자 발생.</div>
+    </div>
+    
+    
+
+    
+    <h3>D-2. 피트스탑 개선 방향 제안</h3>
+    <div class="assumption-note" style="margin-bottom:8px;">
+        ※ 접수서류 재무데이터 기반 자동 산출. 인터뷰에서 실현 가능성을 확인해야 합니다.
+    </div>
+    
+    <div class="card" style="margin-bottom:8px; border-left:3px solid #d4a017;">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;">
+            <strong>이자비용 5.3억/년 → 금리 인하/출자전환 효과</strong>
+            <span class="badge badge-warning" style="font-size:10px;">P2</span>
+        </div>
+        <table style="font-size:12px;width:100%;margin:4px 0;">
+            <tr><td style="width:60px;color:#999;">현재</td><td>영업외비용(이자 등) 5.3억/년</td></tr>
+            <tr><td style="color:#999;">목표</td><td>금리 인하 10%p 시 4.8억/년</td></tr>
+            <tr><td style="color:#999;">효과</td><td><strong>금리 인하 10%p → 연 0.53억 절감</strong></td></tr>
+            <tr><td style="color:#999;">BEP</td><td>흑자 기업 — 이익률 개선 효과</td></tr>
+            <tr><td style="color:#999;">액션</td><td>차입금 금리 재협상 → 고금리 사채 출자전환 → 은행 대환대출 검토</td></tr>
+        </table>
+    </div>
+    
+    <div class="card" style="margin-bottom:8px; border-left:3px solid #555;">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;">
+            <strong>경상출금 20% 절감 → 런웨이 0개월 → 0개월 연장</strong>
+            <span class="badge badge-info" style="font-size:10px;">P3</span>
+        </div>
+        <table style="font-size:12px;width:100%;margin:4px 0;">
+            <tr><td style="width:60px;color:#999;">현재</td><td>경상출금 0.96억/월, 번레이트 1.5억/월</td></tr>
+            <tr><td style="color:#999;">목표</td><td>경상출금 0.77억/월 (20% 절감)</td></tr>
+            <tr><td style="color:#999;">효과</td><td><strong>런웨이 0개월 → 0개월 (DW 실거래 기준)</strong></td></tr>
+            <tr><td style="color:#999;">BEP</td><td>흑자 기업 — 이익률 개선 효과</td></tr>
+            <tr><td style="color:#999;">액션</td><td>고정비 항목 리뷰 → SaaS/구독 비용 점검 → 협력사 계약 재협상</td></tr>
+        </table>
     </div>
     
     
@@ -2201,7 +2285,7 @@
     <div class="checklist-item">
         <div class="checklist-checkbox"></div>
         <div>
-            <div class="checklist-source">기본 확인사항</div>
+            <div class="checklist-source">재무 기반</div>
             <div class="checklist-text">주요 고객 집중도 — 매출의 50% 이상이 단일 고객에 의존하는지?</div>
         </div>
     </div>
@@ -2209,7 +2293,7 @@
     <div class="checklist-item">
         <div class="checklist-checkbox"></div>
         <div>
-            <div class="checklist-source">기본 확인사항</div>
+            <div class="checklist-source">재무 기반</div>
             <div class="checklist-text">IP 보유 현황 — 핵심 기술 특허/저작권 보유 여부</div>
         </div>
     </div>
@@ -2217,7 +2301,7 @@
     <div class="checklist-item">
         <div class="checklist-checkbox"></div>
         <div>
-            <div class="checklist-source">기본 확인사항</div>
+            <div class="checklist-source">재무 기반</div>
             <div class="checklist-text">핵심 인력 Key-man 의존도 및 리텐션 계획</div>
         </div>
     </div>
@@ -2225,7 +2309,7 @@
     <div class="checklist-item">
         <div class="checklist-checkbox"></div>
         <div>
-            <div class="checklist-source">기본 확인사항</div>
+            <div class="checklist-source">재무 기반</div>
             <div class="checklist-text">경쟁사 대비 기술적 차별점 (moat)</div>
         </div>
     </div>
@@ -2233,32 +2317,8 @@
     <div class="checklist-item">
         <div class="checklist-checkbox"></div>
         <div>
-            <div class="checklist-source">기본 확인사항</div>
+            <div class="checklist-source">재무 기반</div>
             <div class="checklist-text">향후 12개월 매출 파이프라인 현황</div>
-        </div>
-    </div>
-    
-    <div class="checklist-item">
-        <div class="checklist-checkbox"></div>
-        <div>
-            <div class="checklist-source">기본 확인사항</div>
-            <div class="checklist-text">우선주 주주 현황 — 시리즈별 투자자, 전환 조건(전환가/리픽싱), 잔여 수량</div>
-        </div>
-    </div>
-    
-    <div class="checklist-item">
-        <div class="checklist-checkbox"></div>
-        <div>
-            <div class="checklist-source">기본 확인사항</div>
-            <div class="checklist-text">주주간 계약(SHA) 핵심 조항 — ROFR, Tag/Drag-along, Anti-dilution, 신주발행 동의권</div>
-        </div>
-    </div>
-    
-    <div class="checklist-item">
-        <div class="checklist-checkbox"></div>
-        <div>
-            <div class="checklist-source">기본 확인사항</div>
-            <div class="checklist-text">기존 CB/BW 발행 이력 및 잔여 전환권 — 메자닌 신규 발행 시 희석 영향</div>
         </div>
     </div>
     
@@ -2294,5 +2354,5 @@
     </div>
 
 </body>
-<!-- DW-UPDATED: 2026-03-11 17:11 KST -->
+<!-- DW-UPDATED: 2026-03-11 17:37 KST -->
 </html>
