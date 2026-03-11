@@ -664,7 +664,9 @@ const COMPANIES = [
     "revenue": "10\uc5b5~20\uc5b5 \ubbf8\ub9cc",
     "headcount": "5\uba85~10\uba85 \ubbf8\ub9cc",
     "funding_need": "10\uc5b5 \uc774\uc0c1",
-    "intro_short": "AI \uc5d0\uc774\uc804\ud2b8 \uac1c\ubc1c"
+    "intro_short": "AI \uc5d0\uc774\uc804\ud2b8 \uac1c\ubc1c",
+    "status": "closed",
+    "close_reason": "\uc778\ud130\ubdf0 \ubd80\uc801\ud569 \ud655\uc778 \uc885\ub8cc"
   },
   {
     "folder_name": "\uc628\uc624\ud504\ubbf9\uc2a4",
@@ -988,7 +990,7 @@ const PASSWORD = "2026";
           <span class="di-num">${String(globalIdx).padStart(2,'0')}</span>
           <div class="di-body">
             <div class="di-name" style="display:flex;align-items:center;gap:7px;">${hlName}${closedBadge}</div>
-            <div class="di-folder">${hlFolder}</div>
+            <div class="di-folder">${hlFolder}${isClosed ? ` · 자료 폐기 ${surveyTsToDeleteDate(c.survey_timestamp)}` : ''}</div>
           </div>
           <div class="di-ts">
             <div class="di-ts-date">${ts.date}</div>
@@ -1065,7 +1067,7 @@ const PASSWORD = "2026";
   function openViewer(company) {
     /* BASE_PATH + folder + "/" + previewFile
        BASE_PATH = "" → "웰로/웰로_피트스탑_프리뷰_20260220.html" */
-    const src = BASE_PATH + company.folder_name + '/' + company.preview_file + '?v=20260311c';
+    const src = BASE_PATH + company.folder_name + '/' + company.preview_file + '?v=20260311d';
 
     $('v-company').textContent = company.company_name;
     $('v-file').textContent    = company.preview_file;
