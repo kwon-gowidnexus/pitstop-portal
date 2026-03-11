@@ -467,50 +467,6 @@
             font-size: 12px;
             line-height: 1.5;
         }
-        .checklist-reason {
-            font-size: 10px;
-            line-height: 1.4;
-            color: var(--text-tertiary);
-            margin-top: 2px;
-            padding-left: 8px;
-            border-left: 2px solid var(--border-light);
-        }
-        .interview-checklist-details {
-            margin: 16px 0;
-            border: 1px solid var(--border);
-            border-radius: 4px;
-        }
-        .interview-checklist-summary {
-            padding: 10px 14px;
-            font-size: 13px;
-            font-weight: 700;
-            cursor: pointer;
-            background: var(--bg-subtle);
-            list-style: none;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-        .interview-checklist-summary::-webkit-details-marker { display: none; }
-        .interview-checklist-summary::before {
-            content: "▸";
-            font-size: 12px;
-            transition: transform 0.15s;
-        }
-        .interview-checklist-details[open] > .interview-checklist-summary::before {
-            transform: rotate(90deg);
-        }
-        .checklist-count {
-            font-size: 11px;
-            font-weight: 600;
-            color: #fff;
-            background: var(--text-tertiary);
-            padding: 1px 7px;
-            border-radius: 10px;
-        }
-        .interview-checklist-body {
-            padding: 4px 14px 10px;
-        }
 
         /* ─── KPI Grid ───────────────────────────── */
         .kpi-grid {
@@ -775,12 +731,6 @@
             .checklist-checkbox { width: 11px; height: 11px; border-width: 1.5px; }
             .checklist-source { font-size: 6pt; }
             .checklist-text { font-size: 7.5pt; line-height: 1.4; }
-            .checklist-reason { font-size: 6pt; line-height: 1.3; margin-top: 1px; padding-left: 5px; }
-            .interview-checklist-details { border-width: 0.5pt; margin: 6px 0; }
-            .interview-checklist-details[open] { display: block; }
-            .interview-checklist-summary { font-size: 8pt; padding: 4px 8px; }
-            .interview-checklist-body { padding: 2px 8px 4px; }
-            .checklist-count { font-size: 6pt; padding: 0 4px; }
 
             /* ── 구분선 ──────────────────────────── */
             .section-divider { margin: 10px 0; }
@@ -893,7 +843,6 @@
     <!-- ═══════════════════════════════════════ -->
     <!-- A. 기업 개요 (정성)                      -->
     <!-- ═══════════════════════════════════════ -->
-    
     <!-- GO-NOGO-ASSESSMENT-START -->
     <hr class="section-divider">
 
@@ -912,8 +861,7 @@
     </div>
 
     <!-- 재무 요약 -->
-    <div style="font-size:11px;color:#999;margin-bottom:4px;">※ FY2025 (2024.01~2024.12) 기준 재무데이터</div>
-    <div style="display:flex;gap:12px;margin:4px 0 16px;flex-wrap:wrap;">
+    <div style="display:flex;gap:12px;margin:16px 0;flex-wrap:wrap;">
         <div style="flex:1;min-width:100px;padding:12px;background:#f5f5f5;border:1px solid #e0e0e0;text-align:center;">
             <div style="font-size:11px;color:#777;">매출</div>
             <div style="font-size:16px;font-weight:700;font-family:'Noto Sans Mono',monospace;">136.9억</div>
@@ -934,12 +882,6 @@
             <div style="font-size:11px;color:#777;">자본</div>
             <div style="font-size:16px;font-weight:700;font-family:'Noto Sans Mono',monospace;color:#8b0000;">-34.8억</div>
         </div>
-    </div>
-
-    <!-- 딜 요약 -->
-    <div style="margin:16px 0;padding:12px 16px;background:#f8f8f8;border-left:3px solid #333;">
-        <div style="font-size:11px;font-weight:600;color:#555;letter-spacing:1px;text-transform:uppercase;margin-bottom:6px;">DEAL SUMMARY</div>
-        <div style="font-size:12px;line-height:1.7;color:#333;">태블릿 무인주문(스마트오더) B2B SaaS, 매출 136.9억, OP +4.1억 흑자. 직원 33명, 주요 고객 SK쉴더스(ADT).<br>금융부채 102억(사채 31억+대출 71억) vs 현금 2억 — IBK 10억 만기 2026.03.20 임박, 만기/현금 비율 22.5x로 3축 전부 Red.<br>절대 No-Go: 캐시 엔진 강력(OP +4.1억)하여 부채 정리 시 최대 반전 후보이나, 사채 31억 성격 미확인 + 만기 도래 부채 즉시 대응 불가 상태.</div>
     </div>
 
     <!-- 부채 3축 판정 -->
@@ -972,7 +914,6 @@
             </tbody>
         </table>
         <div style="font-size:11px;color:#999;margin-top:6px;">Red 3개 — Red 3 = 절대 No-Go</div>
-        <div style="font-size:11px;color:#bbb;margin-top:4px;">* DSC Ratio(Debt Service Coverage) = 영업이익 &divide; 연간 원리금 상환액. 1.0x 이상이면 영업이익으로 부채 상환 가능.</div>
     </div>
 
     <!-- 7조건 체크 -->
@@ -1026,151 +967,6 @@
         <div style="font-size:11px;font-weight:600;color:#555;letter-spacing:1px;text-transform:uppercase;margin-bottom:4px;">NEXT ACTION</div>
         <div style="font-size:13px;font-weight:500;">사채 31억 성격 확인 + IBK 10억 만기 대응 확인</div>
     </div>
-
-    
-    <details class="interview-checklist-details">
-        <summary class="interview-checklist-summary">
-            인터뷰 확인 필수사항 <span class="checklist-count">12건</span>
-        </summary>
-        <div class="interview-checklist-body">
-        
-        <div class="checklist-item">
-            <div class="checklist-checkbox"></div>
-            <div>
-                <div class="checklist-source">이상감지: CRITICAL</div>
-                <div class="checklist-text">퇴직급여 4월, 12월 음수(역전) 원인 확인 — 퇴직자 정산? 전기 오류 수정? 회계 조정?</div>
-                
-                <div class="checklist-reason">이상감지 알고리즘이 퇴직급여에서 음수값 탐지. 통상 양수여야 하는 항목의 역전은 회계 조정·퇴직 정산 등을 시사.</div>
-                
-            </div>
-        </div>
-        
-        <div class="checklist-item">
-            <div class="checklist-checkbox"></div>
-            <div>
-                <div class="checklist-source">이상감지: CRITICAL</div>
-                <div class="checklist-text">차입금 구조, 금리 조건, 만기 스케줄 상세 확인 필요</div>
-                
-                <div class="checklist-reason">[이자비용이 영업이익 초과] CRITICAL 탐지. 영업이익 0.21억 < 영업외비용 5.3억, ICR 0.04x</div>
-                
-            </div>
-        </div>
-        
-        <div class="checklist-item">
-            <div class="checklist-checkbox"></div>
-            <div>
-                <div class="checklist-source">이상감지: WARNING</div>
-                <div class="checklist-text">월간 급변동 항목 일괄 확인: 퇴직급여 7월, 퇴직급여 12월, 소모품비 12월, 운반비 6월 — 일시적 이벤트인지 구조적 변화인지?</div>
-                
-                <div class="checklist-reason">월별 손익에서 전월 대비 ±50% 이상 급변동 탐지. 구조적 변화면 BEP 시나리오에 직접 영향.</div>
-                
-            </div>
-        </div>
-        
-        <div class="checklist-item">
-            <div class="checklist-checkbox"></div>
-            <div>
-                <div class="checklist-source">이상감지: REVIEW</div>
-                <div class="checklist-text">인건비(급여+상여) 12월 결산 조정 상세 확인 — 연말 일괄 처리? 회계 기준 변경?</div>
-                
-                <div class="checklist-reason">[인건비(급여+상여) 12월 편중 (Z=-3.2σ)] REVIEW 탐지. 1~11월 평균 1.8억 vs 12월 0.75억 (Z-score: -3.2σ)</div>
-                
-            </div>
-        </div>
-        
-        <div class="checklist-item">
-            <div class="checklist-checkbox"></div>
-            <div>
-                <div class="checklist-source">이상감지: REVIEW</div>
-                <div class="checklist-text">퇴직급여 12월 결산 조정 상세 확인 — 연말 일괄 처리? 회계 기준 변경?</div>
-                
-                <div class="checklist-reason">[퇴직급여 12월 편중 (Z=-12.0σ)] REVIEW 탐지. 1~11월 평균 0.21억 vs 12월 -2.2억 (Z-score: -12.0σ)</div>
-                
-            </div>
-        </div>
-        
-        <div class="checklist-item">
-            <div class="checklist-checkbox"></div>
-            <div>
-                <div class="checklist-source">P&L 분석</div>
-                <div class="checklist-text">지급수수료+광고선전비 매출 대비 18% — 채널별 ROI 측정 현황과 비효율 채널 존재 여부?</div>
-                
-                <div class="checklist-reason">커미션+광고 24.1억/년, 매출 대비 18%. 효율적 채널 집중 시 7.2억 절감 가능성 점검.</div>
-                
-            </div>
-        </div>
-        
-        <div class="checklist-item">
-            <div class="checklist-checkbox"></div>
-            <div>
-                <div class="checklist-source">부채 분석</div>
-                <div class="checklist-text">이자비용 5.3억/년이 영업이익 0.21억을 초과 — 차입금 구조 상세? 금리 재협상 또는 출자전환 가능성?</div>
-                
-                <div class="checklist-reason">영업이익을 이자비용이 잠식하여 당기순손실 전환. 부채 구조 개편 없이는 흑자 전환 불가.</div>
-                
-            </div>
-        </div>
-        
-        <div class="checklist-item">
-            <div class="checklist-checkbox"></div>
-            <div>
-                <div class="checklist-source">DW 실거래</div>
-                <div class="checklist-text">DW 기준 런웨이 2.3개월 — 경영진 인식과 차이? 런웨이 12개월 이하 시 자금조달 타임라인?</div>
-                
-                <div class="checklist-reason">평균 잔고 3.4억, 월 번레이트 1.5억 기준. 현재 속도면 2개월 후 자금 소진.</div>
-                
-            </div>
-        </div>
-        
-        <div class="checklist-item">
-            <div class="checklist-checkbox"></div>
-            <div>
-                <div class="checklist-source">교차검증</div>
-                <div class="checklist-text">DW 12개월 매출입금 155.4억 vs 신청서 '100억 이상' — 매출 인식 기준 차이?</div>
-                
-                <div class="checklist-reason">DW 실거래 기준 매출입금과 신청서 기재 매출의 55% 괴리. 회계 매출 vs 현금 입금 차이, 계열사 내부 거래 등 확인.</div>
-                
-            </div>
-        </div>
-        
-        <div class="checklist-item">
-            <div class="checklist-checkbox"></div>
-            <div>
-                <div class="checklist-source">신청서 분석</div>
-                <div class="checklist-text">운전자금 부족을 호소 — 현재 월 운전자금 소요액과 주요 항목(원재료, 인건비, 외주비)? 매입-매출 사이클?</div>
-                
-                <div class="checklist-reason">신청서 pain points에서 '운전자금' 키워드 탐지: "안녕하세요, 담당자님.
-메뉴잇 팀 김경훈 입니다.
-
-메뉴잇은 태블릿 기반 무인주문(스마트오더) 솔루션을 B2B로 공급하고, 국내는 SK쉴더스(A..."</div>
-                
-            </div>
-        </div>
-        
-        <div class="checklist-item">
-            <div class="checklist-checkbox"></div>
-            <div>
-                <div class="checklist-source">신청서 우선순위</div>
-                <div class="checklist-text">'운영 효율화'를 높은 우선순위로 표시 — 구체적인 실행 계획과 예상 비용, 기대 효과?</div>
-                
-                <div class="checklist-reason">피트스탑 신청 시 '운영 효율화' 항목에 높은 우선순위 기재. 경영진의 구체적 실행 의지와 계획 확인 필요.</div>
-                
-            </div>
-        </div>
-        
-        <div class="checklist-item">
-            <div class="checklist-checkbox"></div>
-            <div>
-                <div class="checklist-source">자금 계획</div>
-                <div class="checklist-text">자금 소요 '10억 이상' 기재 — 현재 DW 런웨이 2개월 고려 시 자금 조달 구체적 타임라인?</div>
-                
-                <div class="checklist-reason">신청서에 '10억 이상' 자금 니즈 기재 + DW 런웨이 2개월. 런웨이 소진 전 조달 완료 가능 여부 확인.</div>
-                
-            </div>
-        </div>
-        
-        </div>
-    </details>
 
     <!-- GO-NOGO-ASSESSMENT-END -->
 
@@ -1341,54 +1137,6 @@
         <tr>
             <td><strong>자본총계</strong></td>
             <td class="num" style="color: var(--negative); font-weight: 600;">-38.8억</td>
-        </tr>
-        
-    </table>
-    
-
-    
-    <h3>B.1-2 손익계산서 요약 (2025)</h3>
-    <table>
-        <tr><th>항목</th><th class="num">금액</th></tr>
-        
-        <tr>
-            <td><strong>매출</strong></td>
-            <td class="num">136.9억</td>
-        </tr>
-        
-        <tr>
-            <td>매출원가</td>
-            <td class="num">69.5억</td>
-        </tr>
-        
-        <tr>
-            <td><strong>매출총이익</strong></td>
-            <td class="num">67.5억</td>
-        </tr>
-        
-        <tr>
-            <td>판매관리비</td>
-            <td class="num">67.2억</td>
-        </tr>
-        
-        <tr>
-            <td><strong>영업이익</strong></td>
-            <td class="num">0.21억</td>
-        </tr>
-        
-        <tr>
-            <td>영업외비용</td>
-            <td class="num">5.3억</td>
-        </tr>
-        
-        <tr>
-            <td>영업외수익</td>
-            <td class="num">26.5억</td>
-        </tr>
-        
-        <tr>
-            <td><strong>당기순이익</strong></td>
-            <td class="num">21.4억</td>
         </tr>
         
     </table>
@@ -1976,6 +1724,15 @@
     </table>
     
 
+    <!-- CF 외부 링크 -->
+    
+    <div style="text-align: right; margin-top: 8px;">
+        <a href="https://capital-flow-two.vercel.app/company/1278700330" target="_blank"
+           style="font-size: 11px; color: var(--text-secondary); text-decoration: none; border: 1px solid var(--border); padding: 4px 12px; border-radius: 3px;">
+            Capital Flow 상세 →
+        </a>
+    </div>
+    
     
 
     <hr class="section-divider">
@@ -2087,49 +1844,12 @@
     <h2>D. 종합 우려 포인트</h2>
 
     
-    <h3>D-1. 우려 포인트</h3>
     
     <div class="concern-card">
         <div class="concern-rank">#2</div>
         <div class="concern-perspective">BEP 관점</div>
         <div class="concern-title">이자비용 5.3억 — 영업이익 잠식</div>
         <div class="concern-detail">영업이익 0.21억 대비 영업외비용 5.3억으로 영업이익을 초과하여 구조적 적자 발생.</div>
-    </div>
-    
-    
-
-    
-    <h3>D-2. 피트스탑 개선 방향 제안</h3>
-    <div class="assumption-note" style="margin-bottom:8px;">
-        ※ 접수서류 재무데이터 기반 자동 산출. 인터뷰에서 실현 가능성을 확인해야 합니다.
-    </div>
-    
-    <div class="card" style="margin-bottom:8px; border-left:3px solid #d4a017;">
-        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;">
-            <strong>이자비용 5.3억/년 → 금리 인하/출자전환 효과</strong>
-            <span class="badge badge-warning" style="font-size:10px;">P2</span>
-        </div>
-        <table style="font-size:12px;width:100%;margin:4px 0;">
-            <tr><td style="width:60px;color:#999;">현재</td><td>영업외비용(이자 등) 5.3억/년</td></tr>
-            <tr><td style="color:#999;">목표</td><td>금리 인하 10%p 시 4.8억/년</td></tr>
-            <tr><td style="color:#999;">효과</td><td><strong>금리 인하 10%p → 연 0.53억 절감</strong></td></tr>
-            <tr><td style="color:#999;">BEP</td><td>흑자 기업 — 이익률 개선 효과</td></tr>
-            <tr><td style="color:#999;">액션</td><td>차입금 금리 재협상 → 고금리 사채 출자전환 → 은행 대환대출 검토</td></tr>
-        </table>
-    </div>
-    
-    <div class="card" style="margin-bottom:8px; border-left:3px solid #555;">
-        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;">
-            <strong>경상출금 20% 절감 → 런웨이 0개월 → 0개월 연장</strong>
-            <span class="badge badge-info" style="font-size:10px;">P3</span>
-        </div>
-        <table style="font-size:12px;width:100%;margin:4px 0;">
-            <tr><td style="width:60px;color:#999;">현재</td><td>경상출금 0.96억/월, 번레이트 1.5억/월</td></tr>
-            <tr><td style="color:#999;">목표</td><td>경상출금 0.77억/월 (20% 절감)</td></tr>
-            <tr><td style="color:#999;">효과</td><td><strong>런웨이 0개월 → 0개월 (DW 실거래 기준)</strong></td></tr>
-            <tr><td style="color:#999;">BEP</td><td>흑자 기업 — 이익률 개선 효과</td></tr>
-            <tr><td style="color:#999;">액션</td><td>고정비 항목 리뷰 → SaaS/구독 비용 점검 → 협력사 계약 재협상</td></tr>
-        </table>
     </div>
     
     
@@ -2272,9 +1992,9 @@
     <hr class="section-divider">
 
     <!-- ═══════════════════════════════════════ -->
-    <!-- F. 투자 리스크 & BEP 분석                  -->
+    <!-- F. [Appendix] TRA 관점                   -->
     <!-- ═══════════════════════════════════════ -->
-    <h2 class="page-break-before">F. 투자 리스크 & BEP 분석</h2>
+    <h2 class="page-break-before">F. TRA 관점 — 메자닌 투자 비대칭 판단</h2>
 
     
     <!-- F.1 리스크 팩트 -->
@@ -2404,11 +2124,46 @@
     
     
 
+    <!-- F.3 메자닌 시나리오 -->
+    
+    <h3>F.3 메자닌 시나리오</h3>
+    <div class="scenario-grid">
+        
+        <div class="scenario-card sc-info">
+            <div class="scenario-label">하방 (Base)</div>
+            <div class="scenario-title">원금 상환 + 이자 수취</div>
+            <div class="scenario-desc">메자닌 투자 후 BEP 도달 시, 약정에 따라 원금 상환 및 이자 수취. 현재 영업이익 흑자 구조.</div>
+            
+            <div class="scenario-prob">조건: BEP 도달 시</div>
+        </div>
+        
+        <div class="scenario-card sc-success">
+            <div class="scenario-label">상방 (Upside)</div>
+            <div class="scenario-title">주식 전환 → 지분 획득 → Equity 업사이드</div>
+            <div class="scenario-desc">BEP 달성 후 성장 궤도 진입 시 주식 전환을 통한 지분 확보. 하방(이자) 대비 상방(Equity)이 비대칭적으로 높은 구조.</div>
+            
+            <div class="scenario-note">※ 기존 우선주 주주 합의 필수 — 인터뷰 확인 필요</div>
+            
+            <div class="scenario-prob">조건: BEP 도달 + 성장 지속 시</div>
+        </div>
+        
+        <div class="scenario-card sc-danger">
+            <div class="scenario-label">최하방 (Worst)</div>
+            <div class="scenario-title">BEP 미달 → 원금·이자 상환 차질</div>
+            <div class="scenario-desc">6개월 내 BEP 미도달 시 원금-이자 상환에 차질. 담보 설정으로 원금의 일부 확보 구조 필요.</div>
+            
+            <div class="scenario-note">※ 담보 가용: 자산총계 14.9억</div>
+            
+            <div class="scenario-prob">조건: BEP 미달 시</div>
+        </div>
+        
+    </div>
+    
     
 
-    <!-- F.3 주주 구조 리스크 -->
+    <!-- F.4 주주 구조 리스크 -->
     
-    <h3>F.3 주주 구조 리스크</h3>
+    <h3>F.4 주주 구조 리스크</h3>
     <table>
         <tr>
             <th style="width:90px">심각도</th>
@@ -2434,7 +2189,115 @@
     </table>
     
 
-    <!-- F.4 인터뷰 확인 필수사항: 상단(딜 서머리 아래)으로 이동 -->
+    <!-- F.5 인터뷰 확인 필수사항 -->
+    
+    <h3>F.5 인터뷰 확인 필수사항</h3>
+    
+    <div class="checklist-item">
+        <div class="checklist-checkbox"></div>
+        <div>
+            <div class="checklist-source">이상감지: CRITICAL</div>
+            <div class="checklist-text">퇴직급여 4월, 12월 음수(역전) 원인 확인 — 퇴직자 정산? 전기 오류 수정? 회계 조정?</div>
+        </div>
+    </div>
+    
+    <div class="checklist-item">
+        <div class="checklist-checkbox"></div>
+        <div>
+            <div class="checklist-source">이상감지: CRITICAL</div>
+            <div class="checklist-text">차입금 구조, 금리 조건, 만기 스케줄 상세 확인 필요</div>
+        </div>
+    </div>
+    
+    <div class="checklist-item">
+        <div class="checklist-checkbox"></div>
+        <div>
+            <div class="checklist-source">이상감지: WARNING</div>
+            <div class="checklist-text">월간 급변동 항목 일괄 확인: 퇴직급여 7월, 퇴직급여 12월, 소모품비 12월, 운반비 6월 — 일시적 이벤트(보상, 결산 조정)인지 구조적 변화인지?</div>
+        </div>
+    </div>
+    
+    <div class="checklist-item">
+        <div class="checklist-checkbox"></div>
+        <div>
+            <div class="checklist-source">이상감지: REVIEW</div>
+            <div class="checklist-text">인건비(급여+상여) 12월 결산 조정 상세 확인 — 연말 일괄 처리? 회계 기준 변경?</div>
+        </div>
+    </div>
+    
+    <div class="checklist-item">
+        <div class="checklist-checkbox"></div>
+        <div>
+            <div class="checklist-source">이상감지: REVIEW</div>
+            <div class="checklist-text">퇴직급여 12월 결산 조정 상세 확인 — 연말 일괄 처리? 회계 기준 변경?</div>
+        </div>
+    </div>
+    
+    <div class="checklist-item">
+        <div class="checklist-checkbox"></div>
+        <div>
+            <div class="checklist-source">기본 확인사항</div>
+            <div class="checklist-text">주요 고객 집중도 — 매출의 50% 이상이 단일 고객에 의존하는지?</div>
+        </div>
+    </div>
+    
+    <div class="checklist-item">
+        <div class="checklist-checkbox"></div>
+        <div>
+            <div class="checklist-source">기본 확인사항</div>
+            <div class="checklist-text">IP 보유 현황 — 핵심 기술 특허/저작권 보유 여부</div>
+        </div>
+    </div>
+    
+    <div class="checklist-item">
+        <div class="checklist-checkbox"></div>
+        <div>
+            <div class="checklist-source">기본 확인사항</div>
+            <div class="checklist-text">핵심 인력 Key-man 의존도 및 리텐션 계획</div>
+        </div>
+    </div>
+    
+    <div class="checklist-item">
+        <div class="checklist-checkbox"></div>
+        <div>
+            <div class="checklist-source">기본 확인사항</div>
+            <div class="checklist-text">경쟁사 대비 기술적 차별점 (moat)</div>
+        </div>
+    </div>
+    
+    <div class="checklist-item">
+        <div class="checklist-checkbox"></div>
+        <div>
+            <div class="checklist-source">기본 확인사항</div>
+            <div class="checklist-text">향후 12개월 매출 파이프라인 현황</div>
+        </div>
+    </div>
+    
+    <div class="checklist-item">
+        <div class="checklist-checkbox"></div>
+        <div>
+            <div class="checklist-source">기본 확인사항</div>
+            <div class="checklist-text">우선주 주주 현황 — 시리즈별 투자자, 전환 조건(전환가/리픽싱), 잔여 수량</div>
+        </div>
+    </div>
+    
+    <div class="checklist-item">
+        <div class="checklist-checkbox"></div>
+        <div>
+            <div class="checklist-source">기본 확인사항</div>
+            <div class="checklist-text">주주간 계약(SHA) 핵심 조항 — ROFR, Tag/Drag-along, Anti-dilution, 신주발행 동의권</div>
+        </div>
+    </div>
+    
+    <div class="checklist-item">
+        <div class="checklist-checkbox"></div>
+        <div>
+            <div class="checklist-source">기본 확인사항</div>
+            <div class="checklist-text">기존 CB/BW 발행 이력 및 잔여 전환권 — 메자닌 신규 발행 시 희석 영향</div>
+        </div>
+    </div>
+    
+    
 
     <!-- ═══════════════════════════════════════ -->
     <!-- CAPITAL FLOW ANALYZER                   -->
@@ -2466,5 +2329,5 @@
     </div>
 
 </body>
-<!-- DW-UPDATED: 2026-03-11 19:46 KST -->
+<!-- DW-UPDATED: 2026-03-12 06:44 KST -->
 </html>
