@@ -1,0 +1,2673 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pitstop Portal v2 — 6기준 스크리너</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700&family=Noto+Sans+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.2/html2pdf.bundle.min.js"></script>
+<style>
+/* ─── Reset & Base ───────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg:         #ffffff;
+  --surface:    #f8f9fa;
+  --surface2:   #f1f3f5;
+  --border:     #e5e7eb;
+  --border-mid: #d1d5db;
+  --text-pri:   #111827;
+  --text-sec:   #4b5563;
+  --text-dim:   #9ca3af;
+  --mono:       'Noto Sans Mono', monospace;
+  --sans:       'Noto Sans KR', sans-serif;
+  --r:          4px;
+
+  /* grade colors */
+  --c-green:    #16a34a;
+  --bg-green:   #dcfce7;
+  --c-yellow:   #ca8a04;
+  --bg-yellow:  #fef9c3;
+  --c-red:      #dc2626;
+  --bg-red:     #fee2e2;
+  --c-orange:   #ea580c;
+  --bg-orange:  #ffedd5;
+  --c-unknown:  #9ca3af;
+  --bg-unknown: #f3f4f6;
+}
+
+html, body {
+  height: 100%;
+  background: var(--bg);
+  color: var(--text-pri);
+  font-family: var(--sans);
+  font-size: 13px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+::-webkit-scrollbar        { width: 5px; height: 5px; }
+::-webkit-scrollbar-track  { background: var(--surface); }
+::-webkit-scrollbar-thumb  { background: var(--border-mid); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: #9ca3af; }
+
+/* ─── Layout ────────────────────────────────────────────────────── */
+#app {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+/* ─── Topbar ────────────────────────────────────────────────────── */
+.topbar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 0 20px;
+  height: 46px;
+  border-bottom: 1px solid var(--border);
+  background: var(--bg);
+  flex-shrink: 0;
+}
+
+.tb-logo {
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  font-weight: 500;
+}
+
+.tb-sep { color: var(--border-mid); }
+
+.tb-page {
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--text-sec);
+}
+
+.tb-badge {
+  font-family: var(--mono);
+  font-size: 8px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 2px 7px;
+  border: 1px solid var(--border-mid);
+  color: var(--text-dim);
+  border-radius: 3px;
+}
+
+.tb-spacer { flex: 1; }
+
+.tb-sub {
+  font-family: var(--mono);
+  font-size: 10px;
+  color: var(--text-dim);
+  letter-spacing: 0.06em;
+}
+
+/* ─── Body ───────────────────────────────────────────────────────── */
+.body {
+  flex: 1;
+  display: flex;
+  overflow: hidden;
+}
+
+/* ─── Sidebar ────────────────────────────────────────────────────── */
+.sidebar {
+  width: 300px;
+  flex-shrink: 0;
+  border-right: 1px solid var(--border);
+  background: var(--surface);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.sidebar-head {
+  padding: 14px 16px 12px;
+  border-bottom: 1px solid var(--border);
+  flex-shrink: 0;
+}
+
+.sh-label {
+  font-family: var(--mono);
+  font-size: 8px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  margin-bottom: 4px;
+}
+
+.sh-count {
+  font-size: 12px;
+  color: var(--text-sec);
+}
+
+.sh-count strong {
+  color: var(--text-pri);
+  font-weight: 600;
+}
+
+.company-list {
+  flex: 1;
+  overflow-y: auto;
+  padding: 6px 0;
+}
+
+.company-item {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  padding: 10px 16px;
+  cursor: pointer;
+  border-bottom: 1px solid var(--border);
+  transition: background 0.1s;
+  position: relative;
+}
+
+.company-item:last-child { border-bottom: none; }
+.company-item:hover { background: var(--surface2); }
+.company-item.active { background: #fff; }
+.company-item.active::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 0; bottom: 0;
+  width: 3px;
+  background: var(--text-pri);
+}
+
+.ci-idx {
+  font-family: var(--mono);
+  font-size: 9px;
+  color: var(--text-dim);
+  width: 16px;
+  text-align: right;
+  flex-shrink: 0;
+}
+
+.ci-body { flex: 1; min-width: 0; }
+
+.ci-name {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--text-pri);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-bottom: 1px;
+}
+
+.ci-meta {
+  font-size: 10px;
+  color: var(--text-dim);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  line-height: 1.4;
+}
+
+.ci-ts {
+  flex-shrink: 0;
+  text-align: right;
+  font-family: var(--mono);
+  line-height: 1.5;
+}
+
+.ci-ts-date { font-size: 10px; color: var(--text-sec); }
+.ci-ts-time { font-size: 9px; color: var(--text-dim); }
+
+.badge-closed {
+  display: inline-block;
+  font-family: var(--mono);
+  font-size: 7px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 1px 5px;
+  border-radius: 2px;
+  background: var(--surface2);
+  color: var(--text-dim);
+  border: 1px solid var(--border);
+  font-weight: 600;
+  flex-shrink: 0;
+}
+
+.ci-verdict {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  font-family: var(--mono);
+  font-size: 7px;
+  letter-spacing: 0.04em;
+  padding: 1px 5px;
+  border-radius: 2px;
+  font-weight: 600;
+  flex-shrink: 0;
+}
+
+.ci-verdict .dot { width: 5px; height: 5px; border-radius: 50%; flex-shrink: 0; }
+
+.ci-verdict.v-go        { background: var(--bg-green);   color: var(--c-green); }
+.ci-verdict.v-go .dot   { background: var(--c-green); }
+.ci-verdict.v-yellow        { background: var(--bg-yellow);  color: var(--c-yellow); }
+.ci-verdict.v-yellow .dot   { background: var(--c-yellow); }
+.ci-verdict.v-conditional        { background: var(--bg-orange);  color: var(--c-orange); }
+.ci-verdict.v-conditional .dot   { background: var(--c-orange); }
+.ci-verdict.v-nogo        { background: var(--bg-red);     color: var(--c-red); }
+.ci-verdict.v-nogo .dot   { background: var(--c-red); }
+
+.ci-delete { font-size: 9px; color: var(--text-dim); opacity: 0.7; }
+
+.company-item.is-closed .ci-name span:first-child { color: var(--text-dim); }
+.company-item.is-closed .ci-meta,
+.company-item.is-closed .ci-ts-date,
+.company-item.is-closed .ci-ts-time,
+.company-item.is-closed .ci-idx { opacity: 0.5; }
+
+/* grade badge (sidebar) */
+.grade-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-family: var(--mono);
+  font-size: 8px;
+  letter-spacing: 0.04em;
+  padding: 2px 7px 2px 6px;
+  border-radius: 3px;
+  flex-shrink: 0;
+  line-height: 1.4;
+  font-weight: 500;
+}
+
+.grade-badge .dot {
+  width: 5px; height: 5px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.grade-badge.gb-green  { background: var(--bg-green);   color: var(--c-green);  }
+.grade-badge.gb-green .dot  { background: var(--c-green);  }
+.grade-badge.gb-yellow { background: var(--bg-yellow);  color: var(--c-yellow); }
+.grade-badge.gb-yellow .dot { background: var(--c-yellow); }
+.grade-badge.gb-red    { background: var(--bg-red);     color: var(--c-red);    }
+.grade-badge.gb-red .dot    { background: var(--c-red);    }
+.grade-badge.gb-orange { background: var(--bg-orange);  color: var(--c-orange); }
+.grade-badge.gb-orange .dot { background: var(--c-orange); }
+.grade-badge.gb-unknown { background: var(--bg-unknown); color: var(--c-unknown); }
+.grade-badge.gb-unknown .dot { background: var(--c-unknown); }
+
+/* ─── Main area ─────────────────────────────────────────────────── */
+.main {
+  flex: 1;
+  overflow-y: auto;
+  background: var(--bg);
+}
+
+.dashboard {
+  padding: 0 0 48px;
+}
+
+/* ─── Empty / Loading / Error ────────────────────────────────────── */
+.empty-state, .loading-state, .error-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  gap: 10px;
+  color: var(--text-dim);
+}
+
+.spinner {
+  width: 20px; height: 20px;
+  border: 2px solid var(--border);
+  border-top-color: var(--text-dim);
+  border-radius: 50%;
+  animation: spin 0.75s linear infinite;
+}
+
+@keyframes spin { to { transform: rotate(360deg); } }
+
+.loading-text { font-size: 12px; color: var(--text-dim); }
+
+.error-title {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--c-red);
+  letter-spacing: 0.1em;
+}
+
+.error-msg {
+  font-size: 12px;
+  color: var(--text-sec);
+  max-width: 360px;
+  text-align: center;
+}
+
+.error-hint {
+  font-family: var(--mono);
+  font-size: 10px;
+  color: var(--text-dim);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  padding: 8px 14px;
+  border-radius: var(--r);
+  max-width: 420px;
+  word-break: break-all;
+  text-align: left;
+}
+
+/* ─── Company Header ─────────────────────────────────────────────── */
+.co-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 18px 24px 16px;
+  border-bottom: 1px solid var(--border);
+  background: var(--bg);
+}
+
+.co-header-left { display: flex; align-items: center; gap: 14px; flex: 1; min-width: 0; }
+
+.co-name {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--text-pri);
+}
+
+.co-meta {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.co-stat-pill {
+  font-family: var(--mono);
+  font-size: 10px;
+  color: var(--text-sec);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  padding: 3px 9px;
+  border-radius: 3px;
+}
+
+.co-stat-pill strong { color: var(--text-pri); font-weight: 600; }
+.co-stat-pill.interview-pill { color: var(--c-yellow); border-color: #fde68a; background: var(--bg-yellow); }
+
+.btn-rm {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  background: var(--text-pri);
+  border: none;
+  color: #fff;
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 7px 14px;
+  cursor: pointer;
+  border-radius: var(--r);
+  text-decoration: none;
+  transition: opacity 0.1s;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.btn-rm:hover { opacity: 0.8; }
+.btn-rm-disabled { opacity: 0.3; pointer-events: none; background: var(--text-dim); }
+
+/* ─── Section ────────────────────────────────────────────────────── */
+.section {
+  padding: 24px 24px 0;
+}
+
+.section + .section {
+  margin-top: 0;
+  padding-top: 32px;
+}
+
+.section-divider {
+  height: 6px;
+  background: var(--surface2);
+  margin: 0;
+}
+
+.section-header {
+  margin-bottom: 6px;
+}
+
+.section-header-top {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.section-title {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--text-pri);
+  margin-bottom: 4px;
+}
+
+.section-intent {
+  font-size: 12px;
+  color: var(--text-sec);
+  margin-bottom: 16px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--border);
+}
+
+/* ─── Criteria Grid (Section 1) ─────────────────────────────────── */
+.criteria-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.crit-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-top: 3px solid var(--border);
+  border-radius: var(--r);
+  padding: 14px 15px 13px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  position: relative;
+  word-break: keep-all;
+  overflow-wrap: break-word;
+}
+
+.crit-card.grade-green  { border-top-color: var(--c-green);  }
+.crit-card.grade-yellow { border-top-color: var(--c-yellow); }
+.crit-card.grade-red    { border-top-color: var(--c-red);    }
+.crit-card.grade-orange { border-top-color: var(--c-orange); }
+.crit-card.grade-unknown { border-top-color: var(--border-mid); }
+
+.interview-tag {
+  position: absolute;
+  top: 10px; right: 10px;
+  font-family: var(--mono);
+  font-size: 8px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 2px 6px;
+  background: var(--bg-yellow);
+  color: var(--c-yellow);
+  border-radius: 3px;
+  border: 1px solid #fde68a;
+}
+
+.crit-head {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding-right: 52px;
+}
+
+.crit-num {
+  font-family: var(--mono);
+  font-size: 10px;
+  color: var(--text-dim);
+  flex-shrink: 0;
+}
+
+.crit-name {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-pri);
+  flex: 1;
+  min-width: 0;
+}
+
+/* criteria-level grade badge */
+.crit-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-family: var(--mono);
+  font-size: 8px;
+  letter-spacing: 0.04em;
+  padding: 2px 7px 2px 6px;
+  border-radius: 3px;
+  flex-shrink: 0;
+  font-weight: 500;
+}
+
+.crit-badge .dot { width: 5px; height: 5px; border-radius: 50%; flex-shrink: 0; }
+.crit-badge.grade-green  { background: var(--bg-green);   color: var(--c-green);  }
+.crit-badge.grade-green .dot  { background: var(--c-green); }
+.crit-badge.grade-yellow { background: var(--bg-yellow);  color: var(--c-yellow); }
+.crit-badge.grade-yellow .dot { background: var(--c-yellow); }
+.crit-badge.grade-red    { background: var(--bg-red);     color: var(--c-red);    }
+.crit-badge.grade-red .dot    { background: var(--c-red); }
+.crit-badge.grade-orange { background: var(--bg-orange);  color: var(--c-orange); }
+.crit-badge.grade-orange .dot { background: var(--c-orange); }
+.crit-badge.grade-unknown { background: var(--bg-unknown); color: var(--c-unknown); }
+.crit-badge.grade-unknown .dot { background: var(--c-unknown); }
+
+.crit-summary {
+  font-size: 12px;
+  color: var(--text-sec);
+  line-height: 1.5;
+  padding-bottom: 7px;
+  border-bottom: 1px solid var(--border);
+  word-break: keep-all;
+  overflow-wrap: break-word;
+}
+
+.crit-evidence {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.crit-evidence li {
+  font-size: 11px;
+  color: var(--text-sec);
+  padding-left: 12px;
+  position: relative;
+  line-height: 1.45;
+}
+
+.crit-evidence li::before {
+  content: '–';
+  position: absolute;
+  left: 0;
+  color: var(--text-dim);
+}
+
+.crit-conf {
+  margin-top: auto;
+  padding-top: 6px;
+  font-family: var(--mono);
+  font-size: 9px;
+  color: var(--text-dim);
+  letter-spacing: 0.06em;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.crit-conf.conf-interview { color: var(--c-yellow); }
+.crit-conf::before { content: '◎'; font-size: 8px; }
+.crit-conf.conf-interview::before { content: '◉'; }
+
+/* Cash KPI bar */
+.cash-kpi-bar {
+  display: flex;
+  gap: 1px;
+  background: var(--border);
+  border: 1px solid var(--border);
+  border-radius: var(--r);
+  overflow: hidden;
+  margin-bottom: 14px;
+}
+
+.ckpi {
+  flex: 1;
+  background: var(--surface);
+  padding: 12px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.ckpi-label {
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+}
+
+.ckpi-value {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--text-pri);
+  font-family: var(--mono);
+}
+
+.ckpi-sub {
+  font-size: 9px;
+  color: var(--text-dim);
+}
+
+/* Section 1 bottom link */
+.section-link-row {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding-top: 4px;
+  padding-bottom: 8px;
+}
+
+/* ─── Section 2: Expectations banner ─────────────────────────────── */
+.s2-expectations {
+  background: #fafbfc;
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--accent);
+  border-radius: var(--r);
+  padding: 14px 18px;
+  margin-bottom: 12px;
+}
+.s2-expectations-title {
+  font-size: 10px;
+  font-weight: 600;
+  color: var(--accent);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-family: var(--mono);
+  margin-bottom: 8px;
+}
+.s2-expectations-body {
+  font-size: 12px;
+  color: var(--text-sec);
+  line-height: 1.65;
+  white-space: pre-line;
+}
+
+/* ─── Section 2: Next Step (보충요청 / 인터뷰가능) ────────────────── */
+.s2-next {
+  margin-top: 12px;
+  border: 1px solid var(--border);
+  border-radius: var(--r);
+  padding: 16px 18px;
+}
+.s2-next-ready {
+  background: var(--bg-green);
+  border-color: var(--c-green);
+}
+.s2-next-request {
+  background: #fff8f0;
+  border-color: #e8a84c;
+}
+.s2-next-title {
+  font-size: 11px;
+  font-weight: 600;
+  font-family: var(--mono);
+  letter-spacing: 0.08em;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+}
+.s2-next-ready .s2-next-title { color: var(--c-green); }
+.s2-next-request .s2-next-title { color: #b37a1a; }
+.s2-next-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.s2-next-list li {
+  font-size: 12px;
+  color: var(--text-sec);
+  padding-left: 20px;
+  position: relative;
+  line-height: 1.5;
+}
+.s2-next-list li::before {
+  content: '☐';
+  position: absolute;
+  left: 0;
+  color: #b37a1a;
+  font-size: 13px;
+}
+/* ─── Section 2: Quick Check (대표/신청자) ────────────────────────── */
+.s2-qcheck {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  flex-wrap: wrap;
+  padding: 10px 16px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--r);
+  margin-bottom: 12px;
+  font-size: 12px;
+}
+.s2-qcheck-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.s2-qcheck-label {
+  color: var(--text-dim);
+  font-size: 10px;
+  font-family: var(--mono);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+.s2-qcheck-val {
+  color: var(--text-main);
+  font-weight: 600;
+}
+.s2-qcheck-match {
+  margin-left: auto;
+  font-size: 11px;
+  padding: 2px 8px;
+  border-radius: 3px;
+}
+.s2-qcheck-match.match-ok { background: var(--bg-green); color: var(--c-green); }
+.s2-qcheck-match.match-diff { background: var(--bg-yellow); color: #b37a1a; }
+
+.s2-next-ready-msg {
+  font-size: 12px;
+  color: var(--c-green);
+  line-height: 1.5;
+}
+
+/* ─── Section 2: Cards ───────────────────────────────────────────── */
+.s2-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+  margin-bottom: 8px;
+}
+
+.s2-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--r);
+  padding: 16px 18px;
+  min-width: 0;
+}
+
+.s2-card-title {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--text-dim);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-family: var(--mono);
+  margin-bottom: 10px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--border);
+}
+
+.s2-info-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.s2-info-list li {
+  font-size: 12px;
+  color: var(--text-sec);
+  padding-left: 12px;
+  position: relative;
+  line-height: 1.5;
+}
+
+.s2-info-list li::before {
+  content: '·';
+  position: absolute;
+  left: 2px;
+  color: var(--text-dim);
+}
+
+/* Financial table */
+.fin-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 11px;
+  font-family: var(--mono);
+}
+
+.fin-table thead th {
+  text-align: right;
+  padding: 4px 8px;
+  color: var(--text-dim);
+  font-weight: 500;
+  border-bottom: 1px solid var(--border);
+}
+
+.fin-table thead th:first-child { text-align: left; }
+
+.fin-table tbody td {
+  text-align: right;
+  padding: 5px 8px;
+  color: var(--text-sec);
+  border-bottom: 1px solid var(--border);
+  word-break: keep-all;
+  overflow-wrap: break-word;
+}
+
+.fin-table tbody td:first-child { text-align: left; color: var(--text-pri); font-weight: 500; }
+.fin-table tbody tr:last-child td { border-bottom: none; }
+
+.fin-table .val-pos { color: var(--c-green); }
+.fin-table .val-neg { color: var(--c-red); }
+.fin-table .val-highlight { color: var(--text-pri); font-weight: 600; }
+
+/* Pipeline bar */
+.pipeline-row {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.pipeline-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.pipeline-label {
+  font-size: 11px;
+  color: var(--text-sec);
+  width: 80px;
+  flex-shrink: 0;
+}
+
+.pipeline-bar-wrap {
+  flex: 1;
+  height: 6px;
+  background: var(--border);
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.pipeline-bar {
+  height: 100%;
+  border-radius: 3px;
+  background: var(--c-green);
+}
+
+.pipeline-bar.bar-possible { background: var(--c-yellow); }
+.pipeline-bar.bar-target   { background: var(--border-mid); }
+
+.pipeline-val {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--text-pri);
+  width: 36px;
+  text-align: right;
+  flex-shrink: 0;
+}
+
+/* s2 change table */
+.change-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 11px;
+}
+
+.change-table th {
+  text-align: left;
+  padding: 4px 8px;
+  color: var(--text-dim);
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  border-bottom: 1px solid var(--border);
+}
+
+.change-table td {
+  padding: 6px 8px;
+  color: var(--text-sec);
+  border-bottom: 1px solid var(--border);
+  vertical-align: top;
+  line-height: 1.5;
+  word-break: keep-all;
+  overflow-wrap: break-word;
+}
+
+.change-table tr:last-child td { border-bottom: none; }
+.change-table td:first-child { color: var(--text-pri); font-weight: 500; width: 80px; }
+
+.arrow-change {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 10px;
+}
+
+.arrow-change .arrow { color: var(--text-dim); }
+
+/* ─── Section 3 ──────────────────────────────────────────────────── */
+
+/* Final verdict banner */
+.verdict-banner {
+  border-radius: var(--r);
+  padding: 16px 20px;
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  border: 1px solid var(--c-red);
+  background: var(--bg-red);
+}
+
+.verdict-banner.vb-green  { border-color: var(--c-green);  background: var(--bg-green); }
+.verdict-banner.vb-yellow { border-color: var(--c-yellow); background: var(--bg-yellow); }
+.verdict-banner.vb-orange { border-color: var(--c-orange); background: var(--bg-orange); }
+
+.vb-grade {
+  font-family: var(--mono);
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--c-red);
+  flex-shrink: 0;
+  line-height: 1;
+}
+
+.vb-green .vb-grade  { color: var(--c-green); }
+.vb-yellow .vb-grade { color: var(--c-yellow); }
+.vb-orange .vb-grade { color: var(--c-orange); }
+
+.vb-body { flex: 1; }
+
+.vb-label {
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--c-red);
+  margin-bottom: 4px;
+  opacity: 0.8;
+}
+
+.vb-green .vb-label  { color: var(--c-green); }
+.vb-yellow .vb-label { color: var(--c-yellow); }
+.vb-orange .vb-label { color: var(--c-orange); }
+
+.vb-reason {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-pri);
+  line-height: 1.5;
+}
+
+/* Interview 2-column */
+.interview-2col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.interview-block {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--r);
+  padding: 14px 16px;
+}
+
+.ib-title {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--text-dim);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-family: var(--mono);
+  margin-bottom: 10px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--border);
+}
+
+.quote-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.quote-list li {
+  font-size: 12px;
+  color: var(--text-sec);
+  padding: 8px 10px;
+  background: var(--bg);
+  border-left: 3px solid var(--border-mid);
+  border-radius: 0 3px 3px 0;
+  line-height: 1.5;
+}
+
+.quote-list.fm-quotes li {
+  border-left-color: var(--c-red);
+  background: #fff5f5;
+  color: var(--text-pri);
+}
+
+/* Rejection reasons */
+.rejection-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.rejection-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 12px 14px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--r);
+  border-left: 3px solid var(--c-red);
+}
+
+.rej-num {
+  font-family: var(--mono);
+  font-size: 9px;
+  font-weight: 600;
+  color: var(--c-red);
+  flex-shrink: 0;
+  width: 20px;
+  padding-top: 1px;
+}
+
+.rej-text {
+  flex: 1;
+}
+
+.rej-title {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-pri);
+  margin-bottom: 2px;
+}
+
+.rej-detail {
+  font-size: 11px;
+  color: var(--text-sec);
+  font-family: var(--mono);
+}
+
+/* Reopen conditions */
+.reopen-block {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--r);
+  padding: 14px 16px;
+  margin-bottom: 8px;
+}
+
+.reopen-title {
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  margin-bottom: 10px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--border);
+}
+
+.reopen-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 10px;
+}
+
+.reopen-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  font-size: 12px;
+  color: var(--text-sec);
+}
+
+.reopen-num {
+  font-family: var(--mono);
+  font-size: 9px;
+  font-weight: 600;
+  color: var(--text-dim);
+  flex-shrink: 0;
+  width: 18px;
+}
+
+.reopen-when {
+  font-family: var(--mono);
+  font-size: 10px;
+  color: var(--text-dim);
+  padding-top: 8px;
+  border-top: 1px solid var(--border);
+  letter-spacing: 0.04em;
+}
+
+
+/* Placeholder for no s2/s3 data */
+.no-data-block {
+  background: var(--surface);
+  border: 1px dashed var(--border-mid);
+  border-radius: var(--r);
+  padding: 32px;
+  text-align: center;
+  color: var(--text-dim);
+  font-size: 12px;
+}
+
+/* ─── Responsive ────────────────────────────────────────────────── */
+@media (max-width: 1100px) {
+  .criteria-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 900px) {
+  .s2-grid { grid-template-columns: 1fr; }
+  .s2-grid .s2-card[style*="grid-column"] { grid-column: auto; }
+  .interview-2col { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 700px) {
+  .criteria-grid { grid-template-columns: 1fr; }
+  .sidebar { width: 200px; }
+  .section { padding: 18px 16px 0; }
+  .co-header { padding: 14px 16px 12px; flex-wrap: wrap; }
+}
+
+@media (max-width: 520px) {
+  .sidebar { width: 160px; }
+  .co-header { flex-direction: column; align-items: flex-start; gap: 10px; }
+}
+
+@media (max-width: 480px) {
+  .body { flex-direction: column; }
+  .sidebar { width: 100%; max-height: 160px; border-right: none; border-bottom: 1px solid var(--border); }
+}
+</style>
+</head>
+<body>
+
+<div id="app">
+
+  <!-- Topbar -->
+  <div class="topbar">
+    <span class="tb-logo">GOWID NEXUS</span>
+    <span class="tb-sep">/</span>
+    <span class="tb-page">Pit-Stop</span>
+    <span class="tb-badge">v2</span>
+    <span class="tb-sep">/</span>
+    <span class="tb-page" style="color:var(--text-dim);"></span>
+    <div class="tb-spacer"></div>
+    <span class="tb-sub" id="tb-date"></span>
+  </div>
+
+  <!-- Body -->
+  <div class="body">
+
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="sidebar-head">
+        <div class="sh-label">진단 회사</div>
+        <div class="sh-count" id="sh-count">로딩 중...</div>
+      </div>
+      <div class="company-list" id="company-list">
+        <div class="loading-state" style="height:120px;">
+          <div class="spinner"></div>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main -->
+    <main class="main" id="main">
+      <div class="loading-state" id="initial-loading">
+        <div class="spinner"></div>
+        <div class="loading-text">데이터 로딩 중...</div>
+      </div>
+    </main>
+
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════════
+     SCRIPT
+════════════════════════════════════════════════════════════════ -->
+<script>
+(function () {
+
+  /* ── 상태 ──────────────────────────────────────────────────── */
+  let SCREENER_DATA = null;
+  let selectedFolder = null;
+
+  const $ = id => document.getElementById(id);
+
+  /* ── grade 매핑 ─────────────────────────────────────────────── */
+  function gbClass(grade) {
+    const map = { green:'gb-green', yellow:'gb-yellow', red:'gb-red', conditional:'gb-orange', orange:'gb-orange', unknown:'gb-unknown', pending:'gb-unknown' };
+    return map[(grade||'').toLowerCase()] || 'gb-unknown';
+  }
+
+  function gbLabel(grade) {
+    const map = { green:'GREEN', yellow:'YELLOW', red:'RED', conditional:'ORANGE', orange:'ORANGE', unknown:'?', pending:'?' };
+    return map[(grade||'').toLowerCase()] || '?';
+  }
+
+  function critGradeClass(grade) {
+    const g = (grade||'').toLowerCase();
+    if (g==='green') return 'grade-green';
+    if (g==='yellow') return 'grade-yellow';
+    if (g==='red') return 'grade-red';
+    if (g==='conditional'||g==='orange') return 'grade-orange';
+    return 'grade-unknown';
+  }
+
+  function critGradeLabel(grade) {
+    const map = { green:'Green', yellow:'Yellow', red:'Red', conditional:'Orange', orange:'Orange' };
+    return map[(grade||'').toLowerCase()] || '?';
+  }
+
+  function gradeColor(grade) {
+    const map = { green:'#16a34a', yellow:'#ca8a04', red:'#dc2626', conditional:'#ea580c', orange:'#ea580c', unknown:'#9ca3af', pending:'#9ca3af' };
+    return map[(grade||'').toLowerCase()] || '#9ca3af';
+  }
+
+  function confLabel(conf) {
+    const map = { high:'DW 기반 판정', medium:'DW+추정 판정', low:'데이터 부족', interview:'인터뷰 필수' };
+    return map[conf] || conf || '';
+  }
+
+  function sectionBadge(grade, label) {
+    const gc2 = gbClass(grade);
+    const gl2 = gbLabel(grade);
+    return `<span class="grade-badge ${gc2}" style="font-size:9px;padding:3px 9px 3px 7px;margin-left:auto;">
+      <span class="dot" style="width:6px;height:6px;"></span>${label}: ${gl2}
+    </span>`;
+  }
+
+  function esc(s) {
+    return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+  }
+
+  /* ── 날짜 ───────────────────────────────────────────────────── */
+  (function setDate() {
+    const now = new Date();
+    const yy = now.getFullYear();
+    const mm = String(now.getMonth()+1).padStart(2,'0');
+    const dd = String(now.getDate()).padStart(2,'0');
+    $('tb-date').textContent = `${yy}.${mm}.${dd}`;
+  })();
+
+  /* ── 데이터 로드 ───────────────────────────────────────────── */
+  async function loadScreenerData() {
+    try {
+      const res = await fetch('screener_data.json');
+      if (!res.ok) throw new Error(`HTTP ${res.status}`);
+      SCREENER_DATA = await res.json();
+      onDataLoaded();
+    } catch (err) {
+      showError(err);
+    }
+  }
+
+  function showError(err) {
+    $('initial-loading').style.display = 'none';
+    $('company-list').innerHTML = `<div style="padding:14px;font-size:11px;color:var(--text-dim);">데이터 로드 실패</div>`;
+    $('sh-count').textContent = '오류';
+    $('main').innerHTML = `
+      <div class="error-state">
+        <div class="error-title">DATA LOAD FAILED</div>
+        <div class="error-msg"><code>screener_data.json</code> 파일을 로드할 수 없습니다. 로컬 서버를 사용하세요 (python -m http.server).</div>
+        <div class="error-hint">${esc(String(err))}</div>
+      </div>`;
+  }
+
+  function onDataLoaded() {
+    $('initial-loading').style.display = 'none';
+    renderCompanyList();
+    showEmptyState();
+    const genAt = SCREENER_DATA.generated_at;
+    if (genAt) {
+      const dateEl = $('tb-date');
+      dateEl.textContent += '  ·  generated ' + genAt.slice(0,10);
+    }
+  }
+
+  /* ── 사이드바 ───────────────────────────────────────────────── */
+  /* 섹션별 등급 맵 (사이드바 + 대시보드 공용) */
+  const S2_GRADE_MAP = {
+    '마진맥스':'green', '인테이크':'yellow', '웰로':'yellow', '온오프믹스':'yellow',
+    '와이오엘오':'red', '모트에이아이':'red', '메뉴잇':'red'
+  };
+  const S3_GRADE_MAP = {
+    '마진맥스':'pending', '인테이크':'pending', '웰로':'yellow', '온오프믹스':'conditional',
+    '와이오엘오':'pending', '모트에이아이':'red', '메뉴잇':'pending'
+  };
+  function latestGrade(folderName) {
+    const s3 = S3_GRADE_MAP[folderName];
+    if (s3 && s3 !== 'pending') return s3;
+    const s2 = S2_GRADE_MAP[folderName];
+    if (s2) return s2;
+    return 'unknown';
+  }
+
+  function parseTs(raw) {
+    if (!raw) return { date: '-', time: '' };
+    const m = raw.match(/(\d{4})\.\s*(\d{1,2})\.\s*(\d{1,2})\s*(오전|오후)\s*(\d{1,2}):(\d{2}):?(\d{2})?/);
+    if (!m) return { date: raw, time: '' };
+    const [,y,mo,d,ap,h,mi] = m;
+    let hh = parseInt(h);
+    if (ap === '오후' && hh < 12) hh += 12;
+    if (ap === '오전' && hh === 12) hh = 0;
+    return {
+      date: `${y}.${mo.padStart(2,'0')}.${d.padStart(2,'0')}`,
+      time: `${String(hh).padStart(2,'0')}:${mi}`
+    };
+  }
+
+  function tsToSortKey(raw) {
+    if (!raw) return 0;
+    const m = raw.match(/(\d{4})\.\s*(\d{1,2})\.\s*(\d{1,2})\s*(오전|오후)\s*(\d{1,2}):(\d{2})/);
+    if (!m) return 0;
+    const [,y,mo,d,ap,h,mi] = m;
+    let hh = parseInt(h);
+    if (ap === '오후' && hh < 12) hh += 12;
+    if (ap === '오전' && hh === 12) hh = 0;
+    return new Date(+y, +mo-1, +d, hh, +mi).getTime();
+  }
+
+  function renderCompanyList() {
+    const companies = (SCREENER_DATA.companies || []).slice().sort((a, b) =>
+      tsToSortKey(a.survey_timestamp) - tsToSortKey(b.survey_timestamp)
+    );
+    const active = companies.filter(c => c.status !== 'closed');
+    const closed = companies.filter(c => c.status === 'closed');
+    $('sh-count').innerHTML = `<strong>${companies.length}</strong>개사 (진행 ${active.length} · 종료 ${closed.length})`;
+    if (!companies.length) {
+      $('company-list').innerHTML = `<div style="padding:14px;font-size:11px;color:var(--text-dim);">등록된 회사가 없습니다.</div>`;
+      return;
+    }
+    const html = companies.map((co, i) => {
+      const ts = parseTs(co.survey_timestamp);
+      const isClosed = co.status === 'closed';
+      const vClass = co.verdict_class || ({green:'go',yellow:'yellow',conditional:'conditional',red:'nogo'}[latestGrade(co.folder_name)]) || null;
+      const verdictBadge = vClass
+        ? `<span class="ci-verdict v-${vClass}"><span class="dot"></span></span>`
+        : '';
+      let metaParts = [];
+      if (co.interview_date) {
+        metaParts.push(`인터뷰 ${co.interview_date.replace(/-/g, '.')}`);
+      }
+      if (isClosed) {
+        metaParts.push(`<span class="badge-closed">CLOSED</span>`);
+      }
+      const metaLine = metaParts.length ? metaParts.join(' · ') : '';
+      // 신청일로부터 6개월 후 자료 폐기일
+      const delDate = (function() {
+        const sk = tsToSortKey(co.survey_timestamp);
+        if (!sk) return '';
+        const dt = new Date(sk);
+        dt.setMonth(dt.getMonth() + 6);
+        return `${dt.getFullYear()}.${String(dt.getMonth()+1).padStart(2,'0')}.${String(dt.getDate()).padStart(2,'0')}`;
+      })();
+      return `
+        <div class="company-item${isClosed ? ' is-closed' : ''}" data-folder="${esc(co.folder_name)}" onclick="selectCompany('${esc(co.folder_name)}')">
+          <span class="ci-idx">${String(i+1).padStart(2,'0')}</span>
+          <div class="ci-body">
+            <div class="ci-name"><span>${esc(co.company_name)}</span>${verdictBadge}</div>
+            ${metaLine ? `<div class="ci-meta">${metaLine}</div>` : ''}
+            <div class="ci-meta ci-delete">자료 폐기 ${delDate}</div>
+          </div>
+          <div class="ci-ts">
+            <div class="ci-ts-date">${ts.date}</div>
+            <div class="ci-ts-time">${ts.time}</div>
+          </div>
+        </div>`;
+    }).join('');
+    $('company-list').innerHTML = html;
+  }
+
+  function showEmptyState() {
+    $('main').innerHTML = `
+      <div class="empty-state">
+        <div style="font-size:24px;color:var(--border-mid);">←</div>
+        <div style="font-size:13px;color:var(--text-dim);">회사를 선택하세요</div>
+        <div style="font-family:var(--mono);font-size:10px;color:var(--text-dim);letter-spacing:0.08em;">회사를 선택하세요</div>
+      </div>`;
+  }
+
+  /* ── 회사 선택 ─────────────────────────────────────────────── */
+  window.selectCompany = function(folderName) {
+    if (!SCREENER_DATA) return;
+    selectedFolder = folderName;
+    document.querySelectorAll('.company-item').forEach(el => {
+      el.classList.toggle('active', el.dataset.folder === folderName);
+    });
+    const co = (SCREENER_DATA.companies||[]).find(c => c.folder_name === folderName);
+    if (!co) return;
+    window._currentCompany = co;
+    renderDashboard(co);
+  };
+
+  /* ── 대시보드 렌더 ──────────────────────────────────────────── */
+  function renderDashboard(co) {
+    const gc = gbClass(co.overall_grade);
+    const gl = gbLabel(co.overall_grade);
+    const CRITERIA_ORDER = ['debt_control','bep_roadmap','worst_case','financial_3axis'];
+    const CRITERIA_NUMS  = ['①','②','③','④'];
+    const rawCriteria = co.criteria || {};
+    const criteriaEntries = CRITERIA_ORDER.map((key,i) => ({
+      ...(rawCriteria[key]||{}), _key:key, _num:CRITERIA_NUMS[i]
+    })).filter(c => c.name);
+
+    /* 섹션별 등급 계산 */
+    const autoKeys = ['debt_control','bep_roadmap','worst_case','financial_3axis'];
+    const s1Grades = autoKeys.map(k => (rawCriteria[k]||{}).grade||'unknown');
+    const s1Red = s1Grades.filter(g=>g==='red').length;
+    const s1Grade = s1Red >= 2 ? 'red' : s1Red === 1 ? 'conditional' : s1Grades.every(g=>g==='green') ? 'green' : 'yellow';
+    const s2Grade = S2_GRADE_MAP[co.folder_name] || 'unknown';
+    const s3Grade = S3_GRADE_MAP[co.folder_name] || 'unknown';
+
+    const rmHref = co.cf_url || '';
+    const rmBtn = rmHref
+      ? `<a class="btn-rm" href="${esc(rmHref)}" target="_blank" rel="noopener">Capital Flow RM →</a>`
+      : `<span class="btn-rm btn-rm-disabled">Capital Flow RM →</span>`;
+
+    /* ── Section 1 HTML ─────────────────────────────────────── */
+    const cardsHtml = criteriaEntries.map(cr => {
+      const gcls  = critGradeClass(cr.grade);
+      const glbl  = critGradeLabel(cr.grade);
+      const evHtml = (cr.evidence||[]).map(e=>`<li>${esc(e)}</li>`).join('');
+      const itTag  = cr.interview_required ? `<span class="interview-tag">인터뷰</span>` : '';
+      const confCls = cr.confidence==='interview' ? 'conf-interview' : '';
+      return `
+        <div class="crit-card ${gcls}">
+          ${itTag}
+          <div class="crit-head">
+            <span class="crit-num">${cr._num}</span>
+            <span class="crit-name">${esc(cr.name)}</span>
+            <span class="crit-badge ${gcls}"><span class="dot"></span>${glbl}</span>
+          </div>
+          <div class="crit-summary">${esc(cr.summary||'')}</div>
+          <ul class="crit-evidence">${evHtml}</ul>
+          <div class="crit-conf ${confCls}">${esc(confLabel(cr.confidence))}</div>
+        </div>`;
+    }).join('');
+
+    /* Cash KPI bar — CF RM 산식 준용 */
+    const ck = co.cash_kpi || {};
+    const rwColor = (ck.runway_months||0) < 3 ? ((ck.runway_months||0) < 1 ? 'var(--c-red)' : 'var(--c-yellow)') : 'var(--c-green)';
+    const burnSign = ck.burn_positive ? '+' : '-';
+    const burnColor = ck.burn_positive ? 'var(--c-green)' : 'var(--c-red)';
+    const cashKpiHtml = `
+      <div class="cash-kpi-bar">
+        <div class="ckpi">
+          <span class="ckpi-label">현금 잔고 (평균)</span>
+          <span class="ckpi-value">${ck.cash_mtd != null ? ck.cash_mtd + '억' : '-'}</span>
+          <span class="ckpi-sub">${ck.balance_date ? ck.balance_date.slice(0,7) + ' MTD' : ''}</span>
+        </div>
+        <div class="ckpi">
+          <span class="ckpi-label">월 순캐시번</span>
+          <span class="ckpi-value" style="color:${burnColor}">${ck.monthly_burn != null ? burnSign + ck.monthly_burn + '억' : '-'}</span>
+          <span class="ckpi-sub">${ck.burn_positive ? '순유입 (흑자)' : '순유출'}</span>
+        </div>
+        <div class="ckpi">
+          <span class="ckpi-label">런웨이</span>
+          <span class="ckpi-value" style="color:${rwColor}">${ck.runway_months != null ? ck.runway_months + '개월' : '-'}</span>
+          <span class="ckpi-sub">잔고 ÷ |캐시번|</span>
+        </div>
+      </div>`;
+
+    const section1 = `
+      <div class="section">
+        <div class="section-header">
+          <div class="section-header-top">
+            <div class="section-title">Section 1 — DW/Capital Flow 자동 진단</div>
+            ${sectionBadge(s1Grade, 'S1')}
+          </div>
+          <div class="section-intent">고위드 데이터웨어하우스와 Capital Flow 실거래 데이터만으로 기계적 판단</div>
+        </div>
+        ${cashKpiHtml}
+        <div class="criteria-grid">${cardsHtml}</div>
+        <div class="section-link-row">${rmBtn}</div>
+      </div>`;
+
+    /* ── Section 2 & 3: 회사별 라우팅 ─────────────────────── */
+    let section2, section3;
+    const renderMap = {
+      '모트에이아이': [renderSection2_MotAI, renderSection3_MotAI],
+      '마진맥스': [renderSection2_MarginMax, renderSection3_Pending],
+      '인테이크': [renderSection2_Intake, renderSection3_Pending],
+      '웰로': [renderSection2_Wello, renderSection3_Wello],
+      '온오프믹스': [renderSection2_OnOffMix, renderSection3_OnOffMix],
+      '와이오엘오': [renderSection2_YOELO, renderSection3_Pending],
+      '메뉴잇': [renderSection2_Menuit, renderSection3_Pending],
+    };
+    const fns = renderMap[co.folder_name];
+    if (fns) {
+      section2 = fns[0](s2Grade);
+      section3 = fns[1](s3Grade);
+    } else {
+      section2 = sectionPlaceholder('Section 2 — 제출 자료 기반 심화 진단', s2Grade, '해당 기업의 심화 진단 데이터가 준비 중입니다.');
+      section3 = sectionPlaceholder('Section 3 — 인터뷰 종합 판정', s3Grade, '해당 기업의 인터뷰 종합 판정 데이터가 준비 중입니다.');
+    }
+
+    $('main').innerHTML = `
+      <div class="dashboard">
+        <div class="co-header">
+          <div class="co-header-left">
+            <div class="co-name">${esc(co.company_name)}</div>
+          </div>
+        </div>
+        ${section1}
+        <div class="section-divider"></div>
+        ${section2}
+        <div class="section-divider"></div>
+        ${section3}
+      </div>`;
+  }
+
+  /* ── Section 2: 모트에이아이 ────────────────────────────────── */
+  function renderSection2_MotAI() {
+    return `
+      <div class="section">
+        <div class="section-header">
+          <div class="section-header-top">
+            <div class="section-title">Section 2 — 제출 자료 기반 심화 진단</div>
+            <span class="grade-badge gb-red" style="font-size:9px;padding:3px 9px 3px 7px;margin-left:auto;">
+              <span class="dot" style="width:6px;height:6px;"></span>S2: RED
+            </span>
+          </div>
+          <div class="section-intent">기업이 제출한 재무제표, 사업계획서, 보완자료를 반영한 정성 판단</div>
+        </div>
+
+        ${(()=>{const co=window._currentCompany||{};const ceo=co.ceo_name||'';const app=co.applicant_name||'';const email=co.applicant_email||'';const m=nameMatch(ceo,app);const eml=email?'<div class="s2-qcheck-item"><span class="s2-qcheck-label">이메일</span><span class="s2-qcheck-val">'+esc(email)+'</span></div>':'';return(ceo||app)?'<div class="s2-qcheck"><div class="s2-qcheck-item"><span class="s2-qcheck-label">대표자</span><span class="s2-qcheck-val">'+esc(ceo)+'</span></div><div class="s2-qcheck-item"><span class="s2-qcheck-label">신청자</span><span class="s2-qcheck-val">'+esc(app)+'</span></div>'+eml+'<span class="s2-qcheck-match '+(m?'match-ok':'match-diff')+'">'+(m?'본인 신청':'대리 신청')+'</span></div>':'';})()}
+        ${(()=>{const co=window._currentCompany||{};const pp=co.pain_points||'';return pp?'<div class="s2-expectations"><div class="s2-expectations-title">제출 기대 사항</div><div class="s2-expectations-body">'+esc(pp)+'</div></div>':'';})()}
+        <div class="s2-grid">
+
+          <!-- 카드 1: 사업 개요 -->
+          <div class="s2-card">
+            <div class="s2-card-title">사업 개요</div>
+            <ul class="s2-info-list">
+              <li>AI 에이전트 B2B 컨설팅/개발 (전신: 두물머리)</li>
+              <li>금융사 25개 프로젝트 경험 (유진투자증권, 한국투자신탁운용, IBK 등)</li>
+              <li>직원 8명, 설립 2015년 (10년차)</li>
+            </ul>
+          </div>
+
+          <!-- 카드 2: 재무 추이 -->
+          <div class="s2-card">
+            <div class="s2-card-title">재무 추이 (단위: 억원)</div>
+            <table class="fin-table">
+              <thead>
+                <tr>
+                  <th>년도</th>
+                  <th>매출</th>
+                  <th>OP</th>
+                  <th>순이익</th>
+                  <th>자본</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>2022</td>
+                  <td>5.7</td>
+                  <td class="val-neg">-170.5</td>
+                  <td class="val-neg">-177.0</td>
+                  <td class="val-pos">126.3</td>
+                </tr>
+                <tr>
+                  <td>2023</td>
+                  <td>8.2</td>
+                  <td class="val-neg">-85.6</td>
+                  <td class="val-neg">-81.5</td>
+                  <td class="val-pos">44.7</td>
+                </tr>
+                <tr>
+                  <td>2024</td>
+                  <td>11.5</td>
+                  <td class="val-neg">-138.2</td>
+                  <td class="val-neg">-338.7</td>
+                  <td class="val-neg">-291.3</td>
+                </tr>
+                <tr>
+                  <td class="val-highlight">2025</td>
+                  <td class="val-highlight">11.8</td>
+                  <td class="val-pos">+1.2</td>
+                  <td class="val-neg">-2.7</td>
+                  <td class="val-neg">-294.1</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <!-- 카드 3: 부채 상세 구조 -->
+          <div class="s2-card">
+            <div class="s2-card-title">부채 상세 구조</div>
+            <ul class="s2-info-list">
+              <li><strong>CB(전환사채)</strong> 22.1억 — 출자전환 미완료</li>
+              <li><strong>금융권 대출</strong> 20.2억 (기보, RCPS, 단기)</li>
+              <li><strong>이자비용</strong> 연 2.5억 (OP 1.2억 초과)</li>
+              <li><strong>자본잠식</strong> -294.1억</li>
+            </ul>
+          </div>
+
+          <!-- 카드 4: 2026 매출 파이프라인 -->
+          <div class="s2-card">
+            <div class="s2-card-title">2026 매출 파이프라인</div>
+            <div class="pipeline-row" style="margin-bottom:12px;">
+              <div class="pipeline-item">
+                <span class="pipeline-label">목표</span>
+                <div class="pipeline-bar-wrap"><div class="pipeline-bar bar-target" style="width:100%;background:var(--border-mid);"></div></div>
+                <span class="pipeline-val">40억</span>
+              </div>
+              <div class="pipeline-item">
+                <span class="pipeline-label">확정</span>
+                <div class="pipeline-bar-wrap"><div class="pipeline-bar" style="width:12.5%;"></div></div>
+                <span class="pipeline-val">5억</span>
+              </div>
+              <div class="pipeline-item">
+                <span class="pipeline-label">가능성↑</span>
+                <div class="pipeline-bar-wrap"><div class="pipeline-bar bar-possible" style="width:37.5%;"></div></div>
+                <span class="pipeline-val">15억</span>
+              </div>
+            </div>
+            <ul class="s2-info-list">
+              <li>유진투자증권 AI UTS (5억 확정)</li>
+              <li>한투신탁 POC 확대</li>
+              <li>베리타AI 협업</li>
+            </ul>
+          </div>
+
+          <!-- 카드 5: 주주 구성 -->
+          <div class="s2-card">
+            <div class="s2-card-title">주주 구성 (2025.12 기준)</div>
+            <table class="fin-table">
+              <thead>
+                <tr>
+                  <th>주주명</th>
+                  <th>유형</th>
+                  <th style="text-align:right;">지분율</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><td>천영록 (대표)</td><td>보통주</td><td style="text-align:right;">27.85%</td></tr>
+                <tr><td>개인투자자 (와디즈)</td><td>보통주</td><td style="text-align:right;">28.88%</td></tr>
+                <tr><td>한화자산운용</td><td>RCPS</td><td style="text-align:right;">10.31%</td></tr>
+                <tr><td>송락현</td><td>보통주</td><td style="text-align:right;">10.61%</td></tr>
+                <tr><td>박지수</td><td>보통주</td><td style="text-align:right;">9.55%</td></tr>
+                <tr><td>이승규</td><td>보통주</td><td style="text-align:right;">5.30%</td></tr>
+                <tr><td>새한신용정보</td><td>RCPS</td><td style="text-align:right;">4.63%</td></tr>
+                <tr><td>TP-핀테크</td><td>RCPS</td><td style="text-align:right;">1.97%</td></tr>
+                <tr><td>와디즈유니크밸류</td><td>RCPS</td><td style="text-align:right;">0.88%</td></tr>
+              </tbody>
+            </table>
+            <div style="margin-top:8px;font-size:11px;color:var(--text-dim);">
+              RCPS 기관 합계 17.79% · 와디즈 개인 28.88% · 대표+경영진 53.31%
+            </div>
+          </div>
+
+          <!-- 카드 6: 투자 내역 -->
+          <div class="s2-card">
+            <div class="s2-card-title">투자/차입 이력</div>
+            <ul class="s2-info-list">
+              <li><strong>RCPS (상환전환우선주)</strong></li>
+              <li style="padding-left:12px;">한화자산운용 — 10.31%, 전환가 미상</li>
+              <li style="padding-left:12px;">새한신용정보 — 4.63%</li>
+              <li style="padding-left:12px;">TP-핀테크 — 1.97%</li>
+              <li style="padding-left:12px;">와디즈유니크밸류 — 0.88%</li>
+              <li style="margin-top:8px;"><strong>CB (전환사채) 22.1억</strong></li>
+              <li style="padding-left:12px;">개인 투자자 다수 (와디즈 크라우드펀딩)</li>
+              <li style="padding-left:12px;color:var(--c-red);">만기 경과 — 5월 10%·8월 10% 분할 상환 예정</li>
+              <li style="padding-left:12px;color:var(--c-red);">현금 0.1억 vs 상환액 4.4억 (5+8월)</li>
+              <li style="margin-top:8px;"><strong>금융권 대출</strong> 20.2억 (기보 보증 + 단기)</li>
+            </ul>
+          </div>
+
+          <!-- 카드 7: 동의권 분석 -->
+          <div class="s2-card" style="grid-column:1/-1;">
+            <div class="s2-card-title">동의권·의결권 리스크 분석</div>
+            <table class="fin-table">
+              <thead>
+                <tr>
+                  <th>이해관계자</th>
+                  <th>보유 권리</th>
+                  <th>리스크 수준</th>
+                  <th>비고</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>CB 개인투자자 (와디즈)</td>
+                  <td>상환청구권, 전환권</td>
+                  <td><span class="grade-badge gb-red" style="font-size:8px;"><span class="dot"></span>HIGH</span></td>
+                  <td>만기 경과. 일괄 상환 청구 시 즉시 유동성 위기. 개별 설득 어려움 (다수)</td>
+                </tr>
+                <tr>
+                  <td>RCPS 기관 4사</td>
+                  <td>상환권, 전환권, 반희석 조항</td>
+                  <td><span class="grade-badge gb-orange" style="font-size:8px;"><span class="dot"></span>MED</span></td>
+                  <td>출자전환 동의 필요. 한화자산운용(10.31%)이 키플레이어</td>
+                </tr>
+                <tr>
+                  <td>대표 천영록</td>
+                  <td>의결권 27.85%</td>
+                  <td><span class="grade-badge gb-yellow" style="font-size:8px;"><span class="dot"></span>LOW</span></td>
+                  <td>최대주주이나 과반 미달. 와디즈 개인(28.88%)과 합산 시에도 56%로 특별결의 불가</td>
+                </tr>
+              </tbody>
+            </table>
+            <div style="margin-top:10px;padding:8px 12px;background:var(--bg-red);border-radius:var(--r);font-size:11px;color:var(--c-red);">
+              핵심 리스크: CB 출자전환에 와디즈 개인투자자 다수의 동의가 필요하나, 크라우드펀딩 특성상 개별 연락·설득이 사실상 불가능. 만기 경과로 언제든 상환 청구 가능 상태.
+            </div>
+          </div>
+
+          <!-- 카드 8: DW 교차검증 -->
+          <div class="s2-card" style="grid-column:1/-1;">
+            <div class="s2-card-title">DW 교차검증 — 제출 자료 vs 실거래 데이터</div>
+            <table class="fin-table">
+              <thead>
+                <tr>
+                  <th>항목</th>
+                  <th>제출 자료</th>
+                  <th>DW 실거래</th>
+                  <th>괴리율</th>
+                  <th>판정</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>월 매출입금 (최근 3개월 평균)</td>
+                  <td>~1.0억/월</td>
+                  <td>0.8억/월</td>
+                  <td>-20%</td>
+                  <td><span class="grade-badge gb-yellow" style="font-size:8px;"><span class="dot"></span>주의</span></td>
+                </tr>
+                <tr>
+                  <td>법인 카드 사용액 (월 평균)</td>
+                  <td>미기재</td>
+                  <td>0.12억/월</td>
+                  <td>—</td>
+                  <td><span class="grade-badge gb-unknown" style="font-size:8px;"><span class="dot"></span>참고</span></td>
+                </tr>
+                <tr>
+                  <td>잔고 (평균)</td>
+                  <td>0.1억</td>
+                  <td>0.2억</td>
+                  <td>+100%</td>
+                  <td><span class="grade-badge gb-yellow" style="font-size:8px;"><span class="dot"></span>주의</span></td>
+                </tr>
+                <tr>
+                  <td>월 순캐시번</td>
+                  <td>미기재</td>
+                  <td>-0.2억</td>
+                  <td>—</td>
+                  <td><span class="grade-badge gb-red" style="font-size:8px;"><span class="dot"></span>위험</span></td>
+                </tr>
+                <tr>
+                  <td>런웨이</td>
+                  <td>"자금 긴급"</td>
+                  <td>1.5개월</td>
+                  <td>—</td>
+                  <td><span class="grade-badge gb-red" style="font-size:8px;"><span class="dot"></span>위험</span></td>
+                </tr>
+              </tbody>
+            </table>
+            <div style="margin-top:10px;padding:8px 12px;background:var(--surface2);border-radius:var(--r);font-size:11px;color:var(--text-sec);">
+              DW 평균잔고 0.2억, 월 순유출 0.2억 → 런웨이 1.5개월. 제출자료의 "자금 긴급" 표현과 일치. CB 상환(4.4억) 대응 사실상 불가능.
+            </div>
+          </div>
+
+          <!-- 카드 9: 제출 자료 기반 판정 변화 (전체 폭) -->
+          <div class="s2-card" style="grid-column:1/-1;">
+            <div class="s2-card-title">제출 자료 기반 판정 변화</div>
+            <table class="change-table">
+              <thead>
+                <tr>
+                  <th>기준</th>
+                  <th>DW 판정</th>
+                  <th>제출 자료 반영 후</th>
+                  <th>변화 근거</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>② 독점성</td>
+                  <td><span class="grade-badge gb-unknown" style="font-size:8px;"><span class="dot"></span>?</span></td>
+                  <td>
+                    <div class="arrow-change">
+                      <span class="arrow">→</span>
+                      <span class="grade-badge gb-yellow" style="font-size:8px;"><span class="dot"></span>YELLOW</span>
+                    </div>
+                  </td>
+                  <td>금융AI 특화 경험 있으나 경쟁 심화 — 25개 프로젝트 레퍼런스는 차별점이나 대형 SI 진입 가능</td>
+                </tr>
+                <tr>
+                  <td>③ 부채 제어</td>
+                  <td><span class="grade-badge gb-red" style="font-size:8px;"><span class="dot"></span>RED</span></td>
+                  <td>
+                    <div class="arrow-change">
+                      <span class="arrow">→</span>
+                      <span class="grade-badge gb-red" style="font-size:8px;"><span class="dot"></span>RED 유지</span>
+                    </div>
+                  </td>
+                  <td>CB 22.1억 출자전환 투자자 동의 미확보 — 제출 자료로도 해소 확인 불가</td>
+                </tr>
+                <tr>
+                  <td>④ BEP 로드맵</td>
+                  <td><span class="grade-badge gb-green" style="font-size:8px;"><span class="dot"></span>GREEN</span></td>
+                  <td>
+                    <div class="arrow-change">
+                      <span class="arrow">→</span>
+                      <span class="grade-badge gb-yellow" style="font-size:8px;"><span class="dot"></span>YELLOW 하향</span>
+                    </div>
+                  </td>
+                  <td>2026 목표 40억 vs 확정 5억 — 목표 달성 불확실성 큼. 이자비용 2.5억 > OP 1.2억 구조 지속</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+        </div>
+        <div class="s2-next s2-next-ready"><div class="s2-next-title">Next Step</div>
+          <div class="s2-next-ready-msg">인터뷰 완료 — Section 3 종합 판정 확인. CB 출자전환 진행 상황 모니터링 중.</div>
+        </div>
+      </div>`;
+  }
+
+  /* ── Section 3: 모트에이아이 ────────────────────────────────── */
+  function renderSection3_MotAI() {
+    return `
+      <div class="section">
+        <div class="section-header">
+          <div class="section-header-top">
+            <div class="section-title">Section 3 — 인터뷰 종합 판정 (1+2+3 통합)</div>
+            <span class="grade-badge gb-red" style="font-size:9px;padding:3px 9px 3px 7px;margin-left:auto;">
+              <span class="dot" style="width:6px;height:6px;"></span>S3: RED
+            </span>
+          </div>
+          <div class="section-intent">DW 데이터 + 제출 자료 + 대표 인터뷰를 모두 종합한 최종 판정</div>
+        </div>
+
+        <!-- A: 최종 판정 배너 -->
+        <div class="verdict-banner">
+          <div class="vb-grade">RED</div>
+          <div class="vb-body">
+            <div class="vb-label">최종 판정 — No-Go</div>
+            <div class="vb-reason">CB 22.1억 출자전환 미완료. 현 구조로는 피트스탑 자금이 부채 상환에만 소모</div>
+          </div>
+        </div>
+
+        <!-- B: 인터뷰 핵심 발견 -->
+        <div class="interview-2col">
+          <div class="interview-block">
+            <div class="ib-title">대표 (천영록) 핵심 발언</div>
+            <ul class="quote-list">
+              <li>"영업이익 흑자 전환, 올해 25억 매출 목표"</li>
+              <li>"갚아야 할 채무가 많아 심적 스트레스"</li>
+              <li>"5억 융자로 대환 + AI 사업 가속화 희망"</li>
+            </ul>
+          </div>
+          <div class="interview-block">
+            <div class="ib-title">내부 심사역 판정</div>
+            <ul class="quote-list fm-quotes">
+              <li>"이건 핏스탑이랑 안 맞아. 부채 리스트럭처링 먼저"</li>
+              <li>"CB 출자전환 선행 필수. 이걸 못하면 자금 다 빨려나감"</li>
+              <li>"부도 기반으로 생각해서 선순위 채권자 출자전환 시켜와야"</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- C: 탈락 사유 -->
+        <div class="rejection-list">
+          <div class="rejection-item">
+            <div class="rej-num">01</div>
+            <div class="rej-text">
+              <div class="rej-title">DSC 0.48x — 이자도 못 냄</div>
+              <div class="rej-detail">OP 1.2억 &lt; 이자비용 2.5억. 영업이익으로 이자비용 커버 불가</div>
+            </div>
+          </div>
+          <div class="rejection-item">
+            <div class="rej-num">02</div>
+            <div class="rej-text">
+              <div class="rej-title">부채/매출 358% — 재무 구조 부실</div>
+              <div class="rej-detail">금융부채 42.3억 / 매출 11.8억 = 358%. 매출 대비 부채 극과다</div>
+            </div>
+          </div>
+          <div class="rejection-item">
+            <div class="rej-num">03</div>
+            <div class="rej-text">
+              <div class="rej-title">CB 22.1억 출자전환 미완 — 투자자 동의 미확보</div>
+              <div class="rej-detail">피트스탑 자금 투입 시 CB 상환 압박에 전용될 구조적 위험</div>
+            </div>
+          </div>
+          <div class="rejection-item">
+            <div class="rej-num">04</div>
+            <div class="rej-text">
+              <div class="rej-title">현금 0.1억 — 런웨이 1.5개월</div>
+              <div class="rej-detail">CF 기준 런웨이 1.5개월. 즉각적 자금 위기 상태</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- D: 재검토 조건 -->
+        <div class="reopen-block">
+          <div class="reopen-title">재검토 조건 — 언제 다시 볼 수 있는가</div>
+          <ul class="reopen-list">
+            <li><span class="reopen-num">01</span><span>CB 22.1억 출자전환 완료 (투자자 동의 확보)</span></li>
+            <li><span class="reopen-num">02</span><span>금융권 부채 리스트럭처링 완료 (기보, RCPS)</span></li>
+            <li><span class="reopen-num">03</span><span>부채 정리 후 6개월 경과 + 영업이익 흑자 유지</span></li>
+          </ul>
+          <div class="reopen-when">예상 재검토 시점: 2026 하반기</div>
+        </div>
+        <div class="section-link-row">
+          <button class="btn-rm" onclick="downloadImprovementReport(event,'s3')">경영 개선 리포트 (PDF) ↓</button>
+        </div>
+
+      </div>`;
+  }
+
+  /* ── 공통 헬퍼 ─────────────────────────────────────────────── */
+  function sectionPlaceholder(title, grade, msg) {
+    return `<div class="section">
+      <div class="section-header"><div class="section-header-top">
+        <div class="section-title">${title}</div>
+        ${sectionBadge(grade, title.includes('2') ? 'S2' : 'S3')}
+      </div><div class="section-intent"></div></div>
+      <div class="no-data-block">${msg}</div></div>`;
+  }
+  // 영문↔한글 이름 매핑 (대표자 본인이 영문명으로 신청한 경우)
+  const NAME_MAP = {
+    '천영록': 'Jayden', 'Jayden': '천영록',
+    '양준철': 'JoonCheol Yang', 'JoonCheol Yang': '양준철',
+    '황유미': 'Yoomee Hwang', 'Yoomee Hwang': '황유미',
+    '채지훈': 'Been Bin', 'Been Bin': '채지훈',
+  };
+  function nameMatch(ceo, app) {
+    if (!ceo || !app) return false;
+    if (ceo === app) return true;
+    if (app.includes(ceo) || ceo.includes(app)) return true;
+    // 영한 매핑 체크
+    const mapped = NAME_MAP[ceo];
+    if (mapped && (mapped === app || app.includes(mapped) || mapped.includes(app))) return true;
+    const mapped2 = NAME_MAP[app];
+    if (mapped2 && (mapped2 === ceo || ceo.includes(mapped2) || mapped2.includes(ceo))) return true;
+    return false;
+  }
+  function s2Wrap(grade, cards, extra) {
+    const co = window._currentCompany || {};
+    const pp = co.pain_points || '';
+    const expHtml = pp ? `<div class="s2-expectations">
+      <div class="s2-expectations-title">제출 기대 사항</div>
+      <div class="s2-expectations-body">${esc(pp)}</div>
+    </div>` : '';
+    const ceo = co.ceo_name || '';
+    const app = co.applicant_name || '';
+    const email = co.applicant_email || '';
+    const isMatch = nameMatch(ceo, app);
+    const emailHtml = email ? `<div class="s2-qcheck-item"><span class="s2-qcheck-label">이메일</span><span class="s2-qcheck-val">${esc(email)}</span></div>` : '';
+    const qcheckHtml = (ceo || app) ? `<div class="s2-qcheck">
+      <div class="s2-qcheck-item"><span class="s2-qcheck-label">대표자</span><span class="s2-qcheck-val">${esc(ceo)}</span></div>
+      <div class="s2-qcheck-item"><span class="s2-qcheck-label">신청자</span><span class="s2-qcheck-val">${esc(app)}</span></div>
+      ${emailHtml}
+      <span class="s2-qcheck-match ${isMatch ? 'match-ok' : 'match-diff'}">${isMatch ? '본인 신청' : '대리 신청'}</span>
+    </div>` : '';
+    return `<div class="section">
+      <div class="section-header"><div class="section-header-top">
+        <div class="section-title">Section 2 — 제출 자료 기반 심화 진단</div>
+        ${sectionBadge(grade, 'S2')}
+      </div><div class="section-intent">기업이 제출한 재무제표, 사업계획서, 보완자료를 반영한 정성 판단</div></div>
+      ${qcheckHtml}
+      ${expHtml}
+      <div class="s2-grid">${cards}</div>${extra||''}</div>`;
+  }
+  function s3InterviewWrap(grade, content) {
+    return `<div class="section">
+      <div class="section-header"><div class="section-header-top">
+        <div class="section-title">Section 3 — 인터뷰 종합 판정 (1+2+3 통합)</div>
+        ${sectionBadge(grade, 'S3')}
+      </div><div class="section-intent">DW 데이터 + 제출 자료 + 대표 인터뷰를 모두 종합한 최종 판정</div></div>
+      ${content}</div>`;
+  }
+  function renderSection3_Pending(grade) {
+    return `<div class="section">
+      <div class="section-header"><div class="section-header-top">
+        <div class="section-title">Section 3 — 인터뷰 종합 판정 (1+2+3 통합)</div>
+        ${sectionBadge(grade || 'pending', 'S3')}
+      </div><div class="section-intent">DW 데이터 + 제출 자료 + 대표 인터뷰를 모두 종합한 최종 판정</div></div>
+      <div class="no-data-block">인터뷰 미실시 — 인터뷰 완료 후 종합 판정이 생성됩니다.</div></div>`;
+  }
+
+  /* ── 마진맥스 ──────────────────────────────────────────────── */
+  function renderSection2_MarginMax(grade) {
+    return s2Wrap(grade || 'green', `
+      <div class="s2-card"><div class="s2-card-title">사업 개요</div>
+        <ul class="s2-info-list">
+          <li>여행/숙박 예약 B2B SaaS</li>
+          <li>설립 2022.05 (3년차), 직원 5~10명</li>
+          <li>CEO: 채지훈 (지분 18%), 최대주주: 빈태찬 (46%)</li>
+        </ul></div>
+      <div class="s2-card"><div class="s2-card-title">재무 현황 (DW 실거래 기준, 단위: 억원)</div>
+        <table class="fin-table"><thead><tr><th>항목</th><th style="text-align:right">금액</th><th style="text-align:right;font-size:10px;color:#999;">제출 BS</th></tr></thead><tbody>
+          <tr><td>매출</td><td style="text-align:right">17.3</td><td style="text-align:right;font-size:10px;color:#999;">-</td></tr>
+          <tr><td>영업이익</td><td style="text-align:right" class="val-pos">+1.8 (OPM 10.7%)</td><td style="text-align:right;font-size:10px;color:#999;">-</td></tr>
+          <tr><td>금융부채</td><td style="text-align:right" class="val-pos">0</td><td style="text-align:right;font-size:10px;color:#999;">-</td></tr>
+          <tr><td>현금 (평균잔고)</td><td style="text-align:right" class="val-pos">2.1</td><td style="text-align:right;font-size:10px;color:#999;">1.6</td></tr>
+          <tr><td>월 순캐시번</td><td style="text-align:right" class="val-pos">+0.2</td><td style="text-align:right;font-size:10px;color:#999;">-</td></tr>
+          <tr><td>런웨이</td><td style="text-align:right" class="val-pos">20+개월</td><td style="text-align:right;font-size:10px;color:#999;">-</td></tr>
+        </tbody></table></div>
+      <div class="s2-card"><div class="s2-card-title">핵심 강점</div>
+        <ul class="s2-info-list">
+          <li>금융부채 제로 — 부채총계 0.3억은 전액 운영성(매입채무)</li>
+          <li>설립 3년차에 흑자 달성 (OPM 10.7%), DW 기준 순유입 +0.2억/월</li>
+          <li>런웨이 20개월+ — 생존 리스크 없음</li>
+        </ul></div>
+      <div class="s2-card"><div class="s2-card-title">인터뷰 확인 필요 사항</div>
+        <ul class="s2-info-list">
+          <li>대표 이원화 구조 — CEO 채지훈(18%) vs 최대주주 빈태찬(46%) 관계</li>
+          <li>숙박 B2B SaaS 시장에서의 독점 기술/데이터 보유 여부</li>
+          <li>2025~2026 성장 전략 및 자금 활용 계획</li>
+        </ul></div>
+      <div class="s2-card" style="grid-column:1/-1;"><div class="s2-card-title">진단 요약</div>
+        <div style="padding:10px 14px;background:var(--bg-green);border-radius:var(--r);font-size:12px;color:var(--c-green);">
+          부채 3축 전부 Green. 흑자 + 무차입 구조의 최적 타겟. 인터뷰에서 독점자산과 대표 역량 확인 후 본진단 진행 가능.
+        </div></div>
+      <div class="s2-next s2-next-ready" style="grid-column:1/-1;"><div class="s2-next-title">Next Step</div>
+        <div class="s2-next-ready-msg">보충 자료 불필요 — 서류 심사 완료. 인터뷰 진행 후 Section 3 종합 판정으로 이동.</div>
+      </div>`,
+      '<div class="section-link-row"><button class="btn-rm" onclick="downloadImprovementReport(event,\'s2\')">경영 개선 리포트 (PDF) ↓</button></div>');
+  }
+
+  /* ── 인테이크 ──────────────────────────────────────────────── */
+  function renderSection2_Intake(grade) {
+    return s2Wrap(grade || 'yellow', `
+      <div class="s2-card"><div class="s2-card-title">사업 개요</div>
+        <ul class="s2-info-list">
+          <li>대체단백/대체당 소재 B2B + 완제품 B2C (D2C)</li>
+          <li>설립 2013년 (13년차), 직원 55명</li>
+          <li>CEO: 한녹엽, 누적투자 100억+</li>
+        </ul></div>
+      <div class="s2-card"><div class="s2-card-title">재무 현황 (DW 실거래 기준, 단위: 억원)</div>
+        <table class="fin-table"><thead><tr><th>항목</th><th style="text-align:right">금액</th><th style="text-align:right;font-size:10px;color:#999;">제출 BS</th></tr></thead><tbody>
+          <tr><td>매출</td><td style="text-align:right">201</td><td style="text-align:right;font-size:10px;color:#999;">-</td></tr>
+          <tr><td>영업이익</td><td style="text-align:right" class="val-neg">-24.7</td><td style="text-align:right;font-size:10px;color:#999;">-</td></tr>
+          <tr><td>금융부채</td><td style="text-align:right">26.7</td><td style="text-align:right;font-size:10px;color:#999;">-</td></tr>
+          <tr><td>현금 (평균잔고)</td><td style="text-align:right">19.2</td><td style="text-align:right;font-size:10px;color:#999;">101.8</td></tr>
+          <tr><td>월 순캐시번</td><td style="text-align:right" class="val-neg">-2.0</td><td style="text-align:right;font-size:10px;color:#999;">-</td></tr>
+          <tr><td>런웨이</td><td style="text-align:right">9.6개월</td><td style="text-align:right;font-size:10px;color:#999;">-</td></tr>
+        </tbody></table></div>
+      <div class="s2-card"><div class="s2-card-title">핵심 이슈</div>
+        <ul class="s2-info-list">
+          <li>매출 201억 대형사이나 영업적자 -24.7억 (월 약 2억 순유출)</li>
+          <li>제출 BS 현금 101.8억 vs DW 실잔고 19.2억 — 82.6억 괴리 (연결 자회사 분산 추정)</li>
+          <li>DW 기준 런웨이 9.6개월 — 6개월 내 BEP 미달성 시 위험 구간 진입</li>
+        </ul></div>
+      <div class="s2-card"><div class="s2-card-title">인터뷰 확인 필요 사항</div>
+        <ul class="s2-info-list">
+          <li>월 2억 적자 구조에서 BEP 달성 시기와 구체적 비용 감축 플랜</li>
+          <li>건강기능식품 D2C 브랜드/채널 독점성</li>
+          <li>55명 인력 구조 최적화 가능 여부</li>
+        </ul></div>
+      <div class="s2-card" style="grid-column:1/-1;"><div class="s2-card-title">진단 요약</div>
+        <div style="padding:10px 14px;background:var(--bg-yellow);border-radius:var(--r);font-size:12px;color:var(--c-yellow);">
+          DW 실잔고 19.2억, 월 순유출 2.0억 → 런웨이 9.6개월. 제출 BS(101.8억)와 82.6억 괴리는 연결 자회사 현금 분산 가능성. 6개월 BEP 미달성 시 위험 구간 진입.
+        </div></div>
+      <div class="s2-next s2-next-request" style="grid-column:1/-1;"><div class="s2-next-title">인터뷰 시 보충 요청</div>
+        <ul class="s2-next-list">
+          <li>주주명부 (보통주/RCPS/CB 구분, 지분율)</li>
+          <li>M&A 자회사 목록 및 각 자회사 손익 기여도</li>
+        </ul>
+      </div>`,
+      '<div class="section-link-row"><button class="btn-rm" onclick="downloadImprovementReport(event,\'s2\')">경영 개선 리포트 (PDF) ↓</button></div>');
+  }
+
+  /* ── 웰로 ──────────────────────────────────────────────────── */
+  function renderSection2_Wello(grade) {
+    return s2Wrap(grade || 'yellow', `
+      <div class="s2-card"><div class="s2-card-title">사업 개요</div>
+        <ul class="s2-info-list">
+          <li>정부정책 데이터 플랫폼 (B2C + B2G + B2B)</li>
+          <li>설립 2021년, 직원 35명 + 인턴 3명</li>
+          <li>CEO: 김유리안나, 시리즈B 유치 완료</li>
+          <li>고향사랑기부 서비스 매출 ~10억</li>
+        </ul></div>
+      <div class="s2-card"><div class="s2-card-title">재무 현황 (DW 실거래 기준, 단위: 억원)</div>
+        <table class="fin-table"><thead><tr><th>항목</th><th style="text-align:right">금액</th><th style="text-align:right;font-size:10px;color:#999;">제출 BS</th></tr></thead><tbody>
+          <tr><td>매출</td><td style="text-align:right">23.9</td><td style="text-align:right;font-size:10px;color:#999;">-</td></tr>
+          <tr><td>영업이익</td><td style="text-align:right" class="val-neg">-52.7</td><td style="text-align:right;font-size:10px;color:#999;">-</td></tr>
+          <tr><td>금융부채</td><td style="text-align:right">12</td><td style="text-align:right;font-size:10px;color:#999;">-</td></tr>
+          <tr><td>현금 (평균잔고)</td><td style="text-align:right">20.8</td><td style="text-align:right;font-size:10px;color:#999;">75</td></tr>
+          <tr><td>월 순캐시번</td><td style="text-align:right" class="val-neg">-2.0</td><td style="text-align:right;font-size:10px;color:#999;">-</td></tr>
+          <tr><td>런웨이</td><td style="text-align:right">10.5개월</td><td style="text-align:right;font-size:10px;color:#999;">-</td></tr>
+        </tbody></table></div>
+      <div class="s2-card"><div class="s2-card-title">전략 전환 현황</div>
+        <ul class="s2-info-list">
+          <li>커머스 사업 중단 결정 — API 플랫폼 집중</li>
+          <li>신청 API 개발이 BM 핵심</li>
+          <li>인력 50% 감축 구조조정 진행 중</li>
+          <li>투자금 70억 커밋 (카카오뱅크 50억 + 신보 10억 + 나이스 10억, 3~4월 입금)</li>
+        </ul></div>
+      <div class="s2-card"><div class="s2-card-title">핵심 이슈</div>
+        <ul class="s2-info-list">
+          <li>DW 실잔고 20.8억, 월 순유출 2.0억 → 런웨이 10.5개월</li>
+          <li>제출 BS 현금 75억 vs DW 20.8억 — 54억 괴리 (투자금 커밋 미입금분 추정)</li>
+          <li>투자금 70억 입금(3~4월) 시 런웨이 대폭 개선 기대</li>
+        </ul></div>
+      <div class="s2-card" style="grid-column:1/-1;"><div class="s2-card-title">진단 요약</div>
+        <div style="padding:10px 14px;background:var(--bg-yellow);border-radius:var(--r);font-size:12px;color:var(--c-yellow);">
+          DW 실잔고 20.8억, 월 순유출 2.0억 → 런웨이 10.5개월. 투자금 70억 커밋(3~4월 입금) 시 상황 반전 가능하나, 구조조정 실행 속도가 핵심.
+        </div></div>
+      <div class="s2-next s2-next-ready" style="grid-column:1/-1;"><div class="s2-next-title">Next Step</div>
+        <div class="s2-next-ready-msg">인터뷰 완료 — Section 3 종합 판정 확인. 투자금 입금(3~4월) 후 현금 KPI 재확인 예정.</div>
+      </div>`);
+  }
+  function renderSection3_Wello(grade) {
+    return s3InterviewWrap(grade || 'yellow', `
+      <div class="verdict-banner vb-yellow">
+        <div class="vb-grade">YELLOW</div>
+        <div class="vb-body">
+          <div class="vb-label">최종 판정 — 조건부 진행</div>
+          <div class="vb-reason">구조조정 실행 확인 후 3개월 모니터링. API 플랫폼 전환 + 캐시번 축소가 조건</div>
+        </div>
+      </div>
+      <div class="interview-2col">
+        <div class="interview-block"><div class="ib-title">대표 (김유리안나) 핵심 발언</div>
+          <ul class="quote-list">
+            <li>"커머스는 중단하고 API 플랫폼에 올인합니다"</li>
+            <li>"인력 50% 감축 진행 중, 구조조정 의지 확고"</li>
+            <li>"고향사랑기부 매출 10억이 베이스, 여기서 확장"</li>
+          </ul></div>
+        <div class="interview-block"><div class="ib-title">내부 심사역 판정</div>
+          <ul class="quote-list fm-quotes">
+            <li>"구조조정 의지 확인됨. 실행력 모니터링 필요"</li>
+            <li>"현금 여유는 있으나 번레이트 축소가 관건"</li>
+          </ul></div>
+      </div>
+      <div class="reopen-block">
+        <div class="reopen-title">조건부 진행 — 확인 사항</div>
+        <ul class="reopen-list">
+          <li><span class="reopen-num">01</span><span>구조조정 후 월 번레이트 2.5억 이하 달성</span></li>
+          <li><span class="reopen-num">02</span><span>API 플랫폼 첫 유료 고객 확보</span></li>
+          <li><span class="reopen-num">03</span><span>3개월 후 재평가 (2026년 6월)</span></li>
+        </ul>
+      </div>
+      <div class="section-link-row"><button class="btn-rm" onclick="downloadImprovementReport(event,'s3')">경영 개선 리포트 (PDF) ↓</button></div>`);
+  }
+
+  /* ── 온오프믹스 ────────────────────────────────────────────── */
+  function renderSection2_OnOffMix(grade) {
+    return s2Wrap(grade || 'yellow', `
+      <div class="s2-card"><div class="s2-card-title">사업 개요</div>
+        <ul class="s2-info-list">
+          <li>이벤트테크 플랫폼 CEMS — MICE + 문화콘텐츠(공연/레저/전시/페스티벌) 통합 백엔드</li>
+          <li>설립 2010.02 (16년차), 직원 6명 (47→25→9→6명 단계적 구조조정)</li>
+          <li>CEO: 양준철, 선급금 비즈니스 모델 (인터파크 레저 모델 확장)</li>
+          <li>핵심 시스템: 워너피스닷컴, CMS 30개 채널 연동, 현장POS, AI 통역</li>
+        </ul></div>
+      <div class="s2-card"><div class="s2-card-title">재무 현황 (DW 실거래 기준, 단위: 억원)</div>
+        <table class="fin-table"><thead><tr><th>항목</th><th style="text-align:right">금액</th><th style="text-align:right;font-size:10px;color:#999;">제출 BS</th></tr></thead><tbody>
+          <tr><td>매출</td><td style="text-align:right">17.6</td><td style="text-align:right;font-size:10px;color:#999;">-</td></tr>
+          <tr><td>영업이익</td><td style="text-align:right" class="val-neg">-5.8</td><td style="text-align:right;font-size:10px;color:#999;">-</td></tr>
+          <tr><td>부채 총계</td><td style="text-align:right" class="val-neg">32</td><td style="text-align:right;font-size:10px;color:#999;">-</td></tr>
+          <tr><td>현금 (평균잔고)</td><td style="text-align:right">6.1</td><td style="text-align:right;font-size:10px;color:#999;">7</td></tr>
+          <tr><td>월 순캐시번</td><td style="text-align:right" class="val-pos">+1.9</td><td style="text-align:right;font-size:10px;color:#999;">-</td></tr>
+          <tr><td>런웨이</td><td style="text-align:right" class="val-pos">20+개월</td><td style="text-align:right;font-size:10px;color:#999;">-</td></tr>
+          <tr><td>자본</td><td style="text-align:right" class="val-neg">-12.6 (자본잠식)</td><td style="text-align:right;font-size:10px;color:#999;">-</td></tr>
+        </tbody></table></div>
+      <div class="s2-card"><div class="s2-card-title">부채 상세 구조</div>
+        <ul class="s2-info-list">
+          <li><strong>신보 대출</strong> 6억 — 기보 보증</li>
+          <li><strong>중진공 대출</strong> 1억 — 월 400만원대 상환 중</li>
+          <li><strong>대표·가족 사재</strong> 약 4억 — 개인 투입금</li>
+          <li><strong>체불 임금·퇴직금</strong> 약 2억 (10명분, 7월까지 지급유예)</li>
+          <li><strong>풀리지 RCPS</strong> 만기 4월 / <strong>이예스 RCPS</strong> 만기 6월</li>
+          <li>재무제표상 32억이나, 해 넘긴 항목 포함으로 실질과 괴리</li>
+        </ul></div>
+      <div class="s2-card"><div class="s2-card-title">선급금 비즈니스 모델</div>
+        <ul class="s2-info-list">
+          <li>시설에 2~3억 선급금 → 30개 채널 판매대행 + 현장관리 → 12개월 균등 회수</li>
+          <li>수수료: 온라인 10%, 오프라인 3%, 선급금 시 12~14%</li>
+          <li>리스크 관리: 요청액 3배 이상 거래액 시설만 대상 + 대표 연대보증 + 선순위 회수</li>
+          <li>현재 약 50개 시설 (바운스 트램펄린, 옵토피 등), 시설당 월 순매출 700~900만원</li>
+          <li>현 인력 기준 10~20억 운용 가능하나 자금 부족으로 신규 거절 중</li>
+        </ul></div>
+      <div class="s2-card"><div class="s2-card-title">자금난 원인 (인터뷰 확인)</div>
+        <ul class="s2-info-list">
+          <li><strong>컨센서스 투자 미집행</strong> — 보통주60억+구주20억 계약 중 1차만 집행, 본부 폐지로 소멸</li>
+          <li><strong>티메프 사태</strong> — 판매대금 약 3억 미수령 + 지급 의무 동시 발생</li>
+          <li><strong>야놀자 협업 파기</strong> — 30억 집행 제안 → 민사소송 → 티메프 후 소취하 + 자금약속 파기</li>
+          <li><strong>카카오증권 펀드 무산</strong> — 200억 규모 펀드 논의 중 컨센서스 2차 철회로 중단</li>
+          <li><strong>피플펀드·토스페이</strong> — 보증보험 조건 오류 / 방침 변경으로 각각 결렬</li>
+          <li>대표 본인 인정: "장미빛으로 보며 인원 조정이 후행적"</li>
+        </ul></div>
+      <div class="s2-card" style="grid-column:1/-1;"><div class="s2-card-title">진단 요약</div>
+        <div style="padding:10px 14px;background:var(--bg-yellow);border-radius:var(--r);font-size:12px;color:var(--c-yellow);">
+          DW 기준 순유입 +1.9억/월, 런웨이 20+개월로 단기 유동성은 안정적. 선급금 모델 구조 견고(선순위 회수, 연대보증). 다만 부채 32억 + 자본잠식 상태에서 RCPS 만기(4~6월) 처리와 체불 임금 해소가 핵심 과제.
+        </div></div>
+      <div class="s2-next s2-next-ready" style="grid-column:1/-1;"><div class="s2-next-title">Next Step</div>
+        <div class="s2-next-ready-msg">인터뷰 완료 — Section 3 종합 판정 확인. RCPS 만기(4~6월) 처리 및 크라우드펀딩(4/6) 결과 모니터링 진행.</div>
+      </div>`);
+  }
+  function renderSection3_OnOffMix(grade) {
+    return s3InterviewWrap(grade || 'conditional', `
+      <div class="verdict-banner vb-orange">
+        <div class="vb-grade">CONDITIONAL</div>
+        <div class="vb-body">
+          <div class="vb-label">최종 판정 — 조건부 (BEP 선결)</div>
+          <div class="vb-reason">선급금 모델 구조는 견고하나, BEP 달성이 신규 투자 유치보다 선결 과제. 경기도 크라우드펀딩 + KIMST R&D 수주 확정 시 재평가</div>
+        </div>
+      </div>
+      <div class="interview-2col">
+        <div class="interview-block"><div class="ib-title">대표 (양준철) 핵심 발언 — 2026.03.12 인터뷰</div>
+          <ul class="quote-list">
+            <li>"세상을 너무 장미빛으로 바라보며 보수적 판단과 신속한 인원 조정을 하지 못한 것이 핵심 실책"</li>
+            <li>"컨센서스 80억 투자 계약 중 1차만 집행, 본부 폐지로 소멸. 야놀자 30억도 파기"</li>
+            <li>"선급금 모델은 자금 제공자가 판매대금 선순위 회수 구조라 운영 리스크 제한적"</li>
+            <li>"현 인력 6명 기준 10~20억 운용 가능, 인원 충원 시 볼베어파크 등 10~20억 일괄 집행 가능"</li>
+            <li>"경기도 크라우드펀딩 4월 6일 오픈, 경기도 광고 매체 통한 트래픽 회복 기대"</li>
+          </ul></div>
+        <div class="interview-block"><div class="ib-title">내부 심사역 판정</div>
+          <ul class="quote-list fm-quotes">
+            <li>"시스템 완성도와 선급금 구조의 논리적 견고함은 긍정적"</li>
+            <li>"반복적 외부 변수 대응 실패와 후행적 의사결정 패턴에 대한 우려"</li>
+            <li>"신규 외부 투자 유치는 현 구조상 사실상 어려움 — BEP 달성이 선결 과제"</li>
+            <li>"R&D 사업 불발 시 크라우드펀딩만으로 회복 가능성 검증 필요"</li>
+          </ul></div>
+      </div>
+      <div class="interview-2col">
+        <div class="interview-block"><div class="ib-title">단기 회복 변수 (확인됨)</div>
+          <ul class="quote-list">
+            <li>경기도 크라우드펀딩 — 4월 6일 오픈, 2년 운영 (경기콘텐츠진흥원 수주)</li>
+            <li>해수부 KIMST R&D 사업 — 예상 5월 수주 (해수부 직접 노미네이트)</li>
+            <li>필요 자금 약 5억 (인력 2명 충원 + 운영 정상화)</li>
+          </ul></div>
+        <div class="interview-block"><div class="ib-title">미결 이슈</div>
+          <ul class="quote-list">
+            <li>풀리지 RCPS 만기 4월 / 이예스 RCPS 만기 6월 처리</li>
+            <li>체불 임금 2억 (7월까지 유예) — R&D 수주 시 해소 가능</li>
+            <li>1~2월 매출 2~3천만원 (비수기) — BEP 미달 상태 지속</li>
+          </ul></div>
+      </div>
+      <div class="reopen-block">
+        <div class="reopen-title">조건부 진행 — 확인 사항</div>
+        <ul class="reopen-list">
+          <li><span class="reopen-num">01</span><span>경기도 크라우드펀딩 오픈(4/6) 후 1개월 트래픽·매출 지표 확인</span></li>
+          <li><span class="reopen-num">02</span><span>KIMST R&D 사업 수주 확정 (5월 예상)</span></li>
+          <li><span class="reopen-num">03</span><span>BEP 달성 — 월 고정지출 1억 커버하는 매출 구조 확보</span></li>
+          <li><span class="reopen-num">04</span><span>풀리지(4월)·이예스(6월) RCPS 만기 처리 완료</span></li>
+        </ul>
+      </div>
+      <div class="section-link-row"><button class="btn-rm" onclick="downloadImprovementReport(event,'s3')">경영 개선 리포트 (PDF) ↓</button></div>`);
+  }
+
+  /* ── 와이오엘오 ────────────────────────────────────────────── */
+  function renderSection2_YOELO(grade) {
+    return s2Wrap(grade || 'red', `
+      <div class="s2-card"><div class="s2-card-title">사업 개요</div>
+        <ul class="s2-info-list">
+          <li>크로스보더 이커머스 플랫폼 '크로켓'</li>
+          <li>설립 2017.03 (8년차), 직원 25명</li>
+          <li>CEO: 황유미, 일본/미국 글로벌 확장 중</li>
+        </ul></div>
+      <div class="s2-card"><div class="s2-card-title">재무 현황 (DW 실거래 기준, 단위: 억원)</div>
+        <table class="fin-table"><thead><tr><th>항목</th><th style="text-align:right">금액</th><th style="text-align:right;font-size:10px;color:#999;">제출 BS</th></tr></thead><tbody>
+          <tr><td>매출</td><td style="text-align:right">33.6 (성장세)</td><td style="text-align:right;font-size:10px;color:#999;">-</td></tr>
+          <tr><td>영업이익</td><td style="text-align:right" class="val-neg">-7.9</td><td style="text-align:right;font-size:10px;color:#999;">-</td></tr>
+          <tr><td>금융부채</td><td style="text-align:right">17.6</td><td style="text-align:right;font-size:10px;color:#999;">-</td></tr>
+          <tr><td>현금 (평균잔고)</td><td style="text-align:right" class="val-neg">0.3</td><td style="text-align:right;font-size:10px;color:#999;">5.5</td></tr>
+          <tr><td>월 순캐시번</td><td style="text-align:right" class="val-pos">+1.1</td><td style="text-align:right;font-size:10px;color:#999;">-</td></tr>
+          <tr><td>런웨이</td><td style="text-align:right" class="val-pos">20+개월</td><td style="text-align:right;font-size:10px;color:#999;">-</td></tr>
+          <tr><td>자본</td><td style="text-align:right" class="val-neg">0.1 (극도로 취약)</td><td style="text-align:right;font-size:10px;color:#999;">-</td></tr>
+        </tbody></table></div>
+      <div class="s2-card"><div class="s2-card-title">부채 구조</div>
+        <ul class="s2-info-list">
+          <li>금융부채 17.6억 vs 자본 0.1억 — 부채비율 극과다</li>
+          <li>만기 2029~2033년 장기 구조 — 단기 상환 압박 없음</li>
+          <li>DW 잔고 0.3억이나 순유입 +1.1억/월 → 현금 회복 추세</li>
+        </ul></div>
+      <div class="s2-card"><div class="s2-card-title">인터뷰 확인 필요 사항</div>
+        <ul class="s2-info-list">
+          <li>매출 성장에도 적자 지속 — OP 전환 구체적 타임라인</li>
+          <li>글로벌 확장(일본/미국) ROI 실적</li>
+          <li>비용 구조조정 의지 및 실행 플랜</li>
+        </ul></div>
+      <div class="s2-card" style="grid-column:1/-1;"><div class="s2-card-title">진단 요약</div>
+        <div style="padding:10px 14px;background:var(--bg-orange);border-radius:var(--r);font-size:12px;color:var(--c-orange);">
+          DW 잔고 0.3억으로 현금 취약하나, 순유입 +1.1억/월로 회복 추세. 만기 장기(2029~2033)로 단기 압박 없음. 인터뷰에서 OP 전환 플랜과 구조조정 의지 확인 필수.
+        </div></div>
+      <div class="s2-next s2-next-request" style="grid-column:1/-1;"><div class="s2-next-title">인터뷰 시 보충 요청</div>
+        <ul class="s2-next-list">
+          <li>주주명부 (보통주/RCPS/CB 구분, 지분율, 투자 라운드별)</li>
+          <li>금융부채 17.6억 상세 내역 (차입처, 금리, 만기, 상환 조건)</li>
+          <li>글로벌 확장(일본/미국) 투입 비용 vs 매출 기여 내역</li>
+        </ul>
+      </div>`,
+      '<div class="section-link-row"><button class="btn-rm" onclick="downloadImprovementReport(event,\'s2\')">경영 개선 리포트 (PDF) ↓</button></div>');
+  }
+
+  /* ── 메뉴잇 ────────────────────────────────────────────────── */
+  function renderSection2_Menuit(grade) {
+    return s2Wrap(grade || 'red', `
+      <div class="s2-card"><div class="s2-card-title">사업 개요</div>
+        <ul class="s2-info-list">
+          <li>태블릿 무인주문(스마트오더) B2B SaaS</li>
+          <li>설립 2016.02, 직원 33명 (150→33명 구조조정)</li>
+          <li>대표: 박주영·김동훈, 주요 고객: SK쉴더스(ADT)</li>
+        </ul></div>
+      <div class="s2-card"><div class="s2-card-title">재무 현황 (DW 실거래 기준, 단위: 억원)</div>
+        <table class="fin-table"><thead><tr><th>항목</th><th style="text-align:right">금액</th><th style="text-align:right;font-size:10px;color:#999;">제출 BS</th></tr></thead><tbody>
+          <tr><td>매출</td><td style="text-align:right" class="val-pos">136.9 (대규모)</td><td style="text-align:right;font-size:10px;color:#999;">-</td></tr>
+          <tr><td>영업이익</td><td style="text-align:right" class="val-pos">+4.1 (흑자)</td><td style="text-align:right;font-size:10px;color:#999;">-</td></tr>
+          <tr><td>금융부채</td><td style="text-align:right" class="val-neg">102 (사채 31 + 대출 71)</td><td style="text-align:right;font-size:10px;color:#999;">-</td></tr>
+          <tr><td>현금 (평균잔고)</td><td style="text-align:right" class="val-neg">3.4</td><td style="text-align:right;font-size:10px;color:#999;">2</td></tr>
+          <tr><td>월 순캐시번</td><td style="text-align:right" class="val-neg">-1.5</td><td style="text-align:right;font-size:10px;color:#999;">-</td></tr>
+          <tr><td>런웨이</td><td style="text-align:right" class="val-neg">2.3개월</td><td style="text-align:right;font-size:10px;color:#999;">-</td></tr>
+          <tr><td>자본</td><td style="text-align:right" class="val-neg">-34.8 (자본잠식)</td><td style="text-align:right;font-size:10px;color:#999;">-</td></tr>
+        </tbody></table></div>
+      <div class="s2-card"><div class="s2-card-title">부채 상세</div>
+        <ul class="s2-info-list">
+          <li><strong>사채 31억</strong> — 성격 미확인 (DW 사각지대)</li>
+          <li><strong>IBK 대출 10억</strong> — 만기 2026.03.20 임박</li>
+          <li><strong>하나은행 매출채권담보 24.9억</strong></li>
+          <li>연 원리금 추정 13.6억 vs OP 4.1억 → 커버 불가</li>
+          <li>만기/현금 비율 22.5x (만기 45억 / 현금 2억)</li>
+        </ul></div>
+      <div class="s2-card"><div class="s2-card-title">핵심 강점 vs 리스크</div>
+        <ul class="s2-info-list">
+          <li>강점: 매출 136.9억 + OP 흑자 4.1억 — 캐시 엔진 강력</li>
+          <li>강점: 150→33명 구조조정 이미 실행 완료</li>
+          <li>리스크: 사채 31억 성격·조건 미확인</li>
+          <li>리스크: IBK 10억 만기 2026.03.20 즉시 대응 필요</li>
+        </ul></div>
+      <div class="s2-card" style="grid-column:1/-1;"><div class="s2-card-title">진단 요약</div>
+        <div style="padding:10px 14px;background:var(--bg-red);border-radius:var(--r);font-size:12px;color:var(--c-red);">
+          캐시 엔진 강력(OP +4.1억)하나, DW 런웨이 2.3개월로 즉시 유동성 위기. 월 순유출 1.5억 + 사채 31억 성격 미확인 + 만기 도래 부채. 부채 리스트럭처링 + 현금흐름 개선 동시 선행 필수.
+        </div></div>
+      <div class="s2-next s2-next-request" style="grid-column:1/-1;"><div class="s2-next-title">인터뷰 시 보충 요청</div>
+        <ul class="s2-next-list">
+          <li>사채 31억 상세 — 차입처, 금리, 만기, 전환 조건, 담보 여부 (DW 사각지대)</li>
+          <li>IBK 대출 10억 만기(2026.03.20) 처리 현황 — 연장/상환/대환 여부</li>
+          <li>주주명부 (보통주/RCPS/CB 구분, 지분율)</li>
+          <li>CB 22.1억 출자전환 관련 투자자 동의 진행 상황</li>
+        </ul>
+      </div>`,
+      '<div class="section-link-row"><button class="btn-rm" onclick="downloadImprovementReport(event,\'s2\')">경영 개선 리포트 (PDF) ↓</button></div>');
+  }
+
+  /* ── 경영 개선 리포트 PDF 다운로드 (동적 — 현재 선택 회사 기반) ── */
+  window.downloadImprovementReport = function(event, source) {
+    const btn = event.currentTarget;
+    const origText = btn.textContent;
+    btn.textContent = '생성 중...';
+    btn.disabled = true;
+
+    const today = new Date();
+    const yy = today.getFullYear();
+    const mm = String(today.getMonth()+1).padStart(2,'0');
+    const dd = String(today.getDate()).padStart(2,'0');
+    const dateStr = yy+'-'+mm+'-'+dd;
+    const co = window._currentCompany;
+    const companyName = co ? co.folder_name : '회사';
+    const fullName = co ? co.company_name : companyName;
+    const fileName = '피트스탑_경영개선_리포트_'+companyName+'_'+dateStr+'.pdf';
+
+    /* DOM에서 현재 렌더된 진단 내용 추출 */
+    const mainEl = document.querySelector('main');
+
+    /* S2 카드 내용 추출 */
+    const s2Cards = mainEl.querySelectorAll('.s2-card');
+    let diagnosisRows = '';
+    s2Cards.forEach(card => {
+      const title = (card.querySelector('.s2-card-title')||{}).textContent||'';
+      if (title.includes('진단 요약')) return; /* 요약은 별도 처리 */
+      const items = card.querySelectorAll('.s2-info-list li');
+      const tableRows = card.querySelectorAll('.fin-table tbody tr');
+      let content = '';
+      if (items.length) {
+        content = Array.from(items).map(li => li.textContent.trim()).join('; ');
+      } else if (tableRows.length) {
+        content = Array.from(tableRows).map(tr => {
+          const cells = tr.querySelectorAll('td');
+          return Array.from(cells).map(c => c.textContent.trim()).join(' ');
+        }).join(' / ');
+      }
+      if (content && title) {
+        diagnosisRows += '<tr><td style="padding:8px 12px;border:1px solid #e5e7eb;font-weight:500;vertical-align:top;width:25%;">'+esc(title)+'</td><td style="padding:8px 12px;border:1px solid #e5e7eb;">'+esc(content)+'</td></tr>';
+      }
+    });
+
+    /* S2 진단 요약 추출 */
+    let diagSummary = '';
+    s2Cards.forEach(card => {
+      const title = (card.querySelector('.s2-card-title')||{}).textContent||'';
+      if (title.includes('진단 요약')) {
+        const div = card.querySelector('div[style]');
+        if (div) diagSummary = div.textContent.trim();
+      }
+    });
+
+    const hasInterview = source === 's3';
+
+    /* S3 재검토/조건부 항목 추출 (인터뷰 완료 시) */
+    let reopenRows = '';
+    if (hasInterview) {
+      const reopenItems = mainEl.querySelectorAll('.reopen-list li');
+      reopenItems.forEach((li, i) => {
+        const text = li.querySelector('span:last-child');
+        const val = text ? text.textContent.trim() : li.textContent.trim();
+        reopenRows += '<tr><td style="padding:8px 12px;border:1px solid #e5e7eb;text-align:center;">'+(i+1)+'</td><td style="padding:8px 12px;border:1px solid #e5e7eb;">'+esc(val)+'</td><td style="padding:8px 12px;border:1px solid #e5e7eb;">관련 증빙 서류</td></tr>';
+      });
+    }
+
+    /* S3 판정 배너 추출 (인터뷰 완료 시) */
+    let verdictLabel = '', verdictReason = '';
+    if (hasInterview) {
+      const verdictBanner = mainEl.querySelector('.verdict-banner');
+      if (verdictBanner) {
+        verdictLabel = (verdictBanner.querySelector('.vb-label')||{}).textContent||'';
+        verdictReason = (verdictBanner.querySelector('.vb-reason')||{}).textContent||'';
+      }
+    }
+
+    /* S3 인터뷰 발견 추출 (인터뷰 완료 시) */
+    let interviewFindings = '';
+    if (hasInterview) {
+      const blocks = mainEl.querySelectorAll('.interview-block');
+      blocks.forEach(block => {
+        const title = (block.querySelector('.ib-title')||{}).textContent||'';
+        const quotes = block.querySelectorAll('.quote-list li');
+        if (quotes.length) {
+          interviewFindings += '<div style="margin-bottom:14px;"><div style="font-size:12px;font-weight:600;margin-bottom:6px;">'+esc(title)+'</div><ul style="padding-left:18px;">';
+          quotes.forEach(q => { interviewFindings += '<li style="margin-bottom:4px;">'+esc(q.textContent.trim())+'</li>'; });
+          interviewFindings += '</ul></div>';
+        }
+      });
+    }
+
+    /* S1 기준별 요약 추출 + 개선 과제 생성 */
+    const critCards = mainEl.querySelectorAll('.crit-card');
+    let criteriaRows = '';
+    const improvementTasks = []; /* S2 PDF용: RED/CONDITIONAL 기준에서 개선 과제 도출 */
+    critCards.forEach(card => {
+      const num = (card.querySelector('.crit-num')||{}).textContent||'';
+      const name = (card.querySelector('.crit-name')||{}).textContent||'';
+      const summary = (card.querySelector('.crit-summary')||{}).textContent||'';
+      const badgeEl = card.querySelector('.crit-badge')||{};
+      const badgeText = badgeEl.textContent||'';
+      const badgeClass = badgeEl.className||'';
+      const isRed = badgeClass.includes('grade-red') || badgeText.includes('Red');
+      const isOrange = badgeClass.includes('grade-orange') || badgeText.includes('Orange');
+      const isUnknown = badgeClass.includes('grade-unknown') || badgeText.includes('?');
+      const isYellow = badgeClass.includes('grade-yellow') || badgeText.includes('Yellow');
+      const isGreen = badgeClass.includes('grade-green') || badgeText.includes('Green');
+      const needsFix = isRed || isOrange;
+      const evidenceItems = Array.from(card.querySelectorAll('.crit-evidence li')).map(li => li.textContent.trim());
+      const statusLabel = isRed ? '개선 필요' : isOrange ? '조건부' : isYellow ? '주의' : isUnknown ? '인터뷰 확인' : '양호';
+      const statusColor = isGreen ? 'color:#16a34a;' : isYellow ? 'color:#ca8a04;' : isUnknown ? 'color:#9ca3af;' : '';
+      criteriaRows += '<tr><td style="padding:8px 12px;border:1px solid #e5e7eb;font-weight:500;">'+esc(num+' '+name)+'</td><td style="padding:8px 12px;border:1px solid #e5e7eb;">'+esc(summary)+'</td><td style="padding:8px 12px;border:1px solid #e5e7eb;font-weight:600;'+statusColor+'">'+statusLabel+'</td></tr>';
+      if (needsFix) {
+        improvementTasks.push({ num, name: name.trim(), summary: summary.trim(), evidence: evidenceItems });
+      }
+    });
+
+    /* S2 카드에서 핵심 이슈/부채/인터뷰 확인사항 추출 (개선 과제 보강용) */
+    let s2Issues = [], s2Strengths = [], s2InterviewNeeds = [];
+    s2Cards.forEach(card => {
+      const title = (card.querySelector('.s2-card-title')||{}).textContent||'';
+      const items = Array.from(card.querySelectorAll('.s2-info-list li')).map(li => li.textContent.trim());
+      if (title.includes('핵심 이슈') || title.includes('부채') || title.includes('자금난')) {
+        s2Issues = s2Issues.concat(items);
+      } else if (title.includes('강점')) {
+        s2Strengths = s2Strengths.concat(items);
+      } else if (title.includes('인터뷰 확인') || title.includes('확인 필요')) {
+        s2InterviewNeeds = s2InterviewNeeds.concat(items);
+      }
+    });
+
+    /* S2 PDF용 경영 개선 과제 HTML 생성 */
+    let improvementHtml = '';
+    if (!hasInterview && improvementTasks.length) {
+      improvementTasks.forEach((task, idx) => {
+        const evidenceStr = task.evidence.length
+          ? task.evidence.map(e => '<li style="margin-bottom:4px;">'+esc(e)+'</li>').join('')
+          : '<li>'+esc(task.summary)+'</li>';
+        /* S2 이슈에서 해당 기준과 관련된 항목 추출 */
+        const relatedIssues = s2Issues.filter(iss => {
+          const lc = iss.toLowerCase();
+          if (task.name.includes('부채')) return lc.includes('부채') || lc.includes('대출') || lc.includes('사채') || lc.includes('만기') || lc.includes('cb') || lc.includes('잠식');
+          if (task.name.includes('BEP')) return lc.includes('적자') || lc.includes('bep') || lc.includes('흑자') || lc.includes('매출') || lc.includes('번레이트');
+          if (task.name.includes('최악') || task.name.includes('시나리오')) return lc.includes('런웨이') || lc.includes('현금') || lc.includes('잔고') || lc.includes('생존');
+          if (task.name.includes('3축') || task.name.includes('재무')) return lc.includes('dsc') || lc.includes('만기') || lc.includes('현금') || lc.includes('부채');
+          return false;
+        });
+        improvementHtml += `
+        <div style="background:#fff; border:1px solid #e0e0e0; border-radius:8px; padding:18px 20px; margin-bottom:16px;">
+          <div style="font-size:13px; font-weight:700; margin-bottom:4px;">과제 ${idx+1}. ${esc(task.num)} ${esc(task.name)} 개선</div>
+          <div style="font-size:11px; color:#333; margin-bottom:8px;">
+            <strong>현재 상태:</strong> ${esc(task.summary)}
+          </div>
+          <div style="font-size:11px; color:#333; margin-bottom:6px;"><strong>데이터 근거:</strong></div>
+          <ul style="padding-left:18px; margin-bottom:8px; font-size:10.5px;">${evidenceStr}</ul>
+          ${relatedIssues.length ? '<div style="font-size:11px; color:#333; margin-bottom:6px;"><strong>제출 자료에서 확인된 관련 사항:</strong></div><ul style="padding-left:18px; margin-bottom:8px; font-size:10.5px;">'+relatedIssues.map(i=>'<li style="margin-bottom:4px;">'+esc(i)+'</li>').join('')+'</ul>' : ''}
+          <div style="font-size:10px; color:#555; background:#f7f8fa; padding:8px 12px; border-radius:4px;">
+            개선 확인 방법: 해당 지표가 양호 수준으로 전환된 시점에 관련 증빙과 함께 재신청
+          </div>
+        </div>`;
+      });
+    }
+
+    /* S2 PDF용 강점 HTML */
+    let strengthsHtml = '';
+    if (!hasInterview && s2Strengths.length) {
+      strengthsHtml = '<div style="background:#dcfce7; border-radius:8px; padding:14px 18px; margin-bottom:20px;"><div style="font-size:12px; font-weight:600; color:#16a34a; margin-bottom:6px;">확인된 강점</div><ul style="padding-left:18px; font-size:10.5px; color:#333;">' +
+        s2Strengths.map(s => '<li style="margin-bottom:4px;">'+esc(s)+'</li>').join('') + '</ul></div>';
+    }
+
+    /* S2 PDF용 인터뷰 필요 사항 HTML */
+    let interviewNeedsHtml = '';
+    if (!hasInterview && s2InterviewNeeds.length) {
+      interviewNeedsHtml = '<div style="margin-top:20px;"><div style="font-size:12px; font-weight:600; margin-bottom:8px;">인터뷰 시 추가 확인이 필요한 사항</div><ul style="padding-left:18px; font-size:10.5px; color:#333;">' +
+        s2InterviewNeeds.map(s => '<li style="margin-bottom:4px;">'+esc(s)+'</li>').join('') + '</ul></div>';
+    }
+
+    const container = document.createElement('div');
+    container.innerHTML = `
+<div id="pdf-report" style="width:210mm; padding:20mm 18mm; font-family:'Noto Sans KR',sans-serif; color:#1a1a1a; font-size:11px; line-height:1.8; background:#fff;">
+
+  <div style="text-align:center; padding:60px 0 36px; border-bottom:2px solid #1a1a1a; margin-bottom:28px;">
+    <div style="font-size:10px; color:#888; letter-spacing:0.15em; margin-bottom:10px;">GOWID NEXUS &middot; PIT-STOP</div>
+    <div style="font-size:24px; font-weight:700; margin-bottom:8px;">경영 개선 리포트</div>
+    <div style="font-size:15px; color:#555; margin-bottom:20px;">${esc(fullName)}</div>
+    <div style="font-size:10px; color:#999;">${yy}년 ${parseInt(mm)}월 ${parseInt(dd)}일</div>
+  </div>
+
+  <div style="background:#f7f8fa; border-radius:8px; padding:20px 24px; margin-bottom:28px;">
+    <div style="font-size:13px; font-weight:600; margin-bottom:10px;">대표님께</div>
+    <p style="font-size:11px; color:#333; line-height:1.8;">
+      피트스탑 프로그램에 관심을 가져주셔서 감사합니다.<br><br>
+      ${hasInterview
+        ? '심사 과정(서류 검토 및 대표 인터뷰)에서 귀사의 사업 역량과 성장 잠재력을 확인할 수 있었습니다. 본 리포트는 피트스탑 심사 결과를 바탕으로, 향후 어떤 부분을 개선하시면 좋을지 구체적으로 정리한 것입니다.'
+        : '제출해 주신 자료를 바탕으로 서류 심사를 진행하였습니다. 본 리포트는 현재까지 확인된 재무 현황과 개선 방향을 정리한 것입니다.'}<br><br>
+      개선이 진행되는 과정에서도 언제든 연락 주시면 함께 논의하겠습니다.
+    </p>
+  </div>
+
+  <div style="font-size:16px; font-weight:700; margin:32px 0 16px; padding-bottom:8px; border-bottom:2px solid #e0e0e0;">1. 진단 요약</div>
+
+  ${diagSummary ? '<div style="background:#f7f8fa; border-radius:8px; padding:14px 18px; margin-bottom:20px; font-size:11px; color:#333;">'+esc(diagSummary)+'</div>' : ''}
+
+  <table style="width:100%; border-collapse:collapse; margin:12px 0 20px; font-size:10.5px;">
+    <tr style="background:#f3f4f6;">
+      <th style="text-align:left; padding:8px 12px; border:1px solid #e5e7eb; font-weight:600;">기준</th>
+      <th style="text-align:left; padding:8px 12px; border:1px solid #e5e7eb; font-weight:600;">현재 상태</th>
+      <th style="text-align:left; padding:8px 12px; border:1px solid #e5e7eb; font-weight:600;">판정</th>
+    </tr>
+    ${criteriaRows}
+  </table>
+
+  <div style="font-size:16px; font-weight:700; margin:36px 0 16px; padding-bottom:8px; border-bottom:2px solid #e0e0e0;">2. 상세 진단 내역</div>
+
+  <table style="width:100%; border-collapse:collapse; margin:12px 0 20px; font-size:10.5px;">
+    <tr style="background:#f3f4f6;">
+      <th style="text-align:left; padding:8px 12px; border:1px solid #e5e7eb; font-weight:600;">항목</th>
+      <th style="text-align:left; padding:8px 12px; border:1px solid #e5e7eb; font-weight:600;">내용</th>
+    </tr>
+    ${diagnosisRows}
+  </table>
+
+  ${hasInterview ? `
+  <div style="font-size:16px; font-weight:700; margin:36px 0 16px; padding-bottom:8px; border-bottom:2px solid #e0e0e0;">3. 인터뷰 종합 소견</div>
+  ${verdictLabel ? '<div style="background:#f7f8fa; border-radius:8px; padding:14px 18px; margin-bottom:16px; font-size:12px;"><strong>'+esc(verdictLabel)+'</strong><br><span style="color:#555;">'+esc(verdictReason)+'</span></div>' : ''}
+  ${interviewFindings}
+  <div style="font-size:16px; font-weight:700; margin:36px 0 16px; padding-bottom:8px; border-bottom:2px solid #e0e0e0;">4. 재신청 가이드</div>
+  <p style="margin-bottom:14px;">아래 조건이 충족되면 피트스탑에 재신청하실 수 있습니다.</p>
+  <table style="width:100%; border-collapse:collapse; margin:12px 0 20px; font-size:10.5px;">
+    <tr style="background:#f3f4f6;">
+      <th style="padding:8px 12px; border:1px solid #e5e7eb; font-weight:600; width:30px;">#</th>
+      <th style="padding:8px 12px; border:1px solid #e5e7eb; font-weight:600;">재신청 조건</th>
+      <th style="padding:8px 12px; border:1px solid #e5e7eb; font-weight:600;">제출 서류</th>
+    </tr>
+    ${reopenRows}
+  </table>
+  ` : `
+  ${strengthsHtml}
+  <div style="font-size:16px; font-weight:700; margin:36px 0 16px; padding-bottom:8px; border-bottom:2px solid #e0e0e0;">3. 경영 개선 과제</div>
+  <p style="margin-bottom:18px;">서류 심사에서 확인된 개선 필요 항목입니다. 각 과제별 데이터 근거와 제출 자료에서 확인된 관련 사항을 함께 정리하였습니다.</p>
+  ${improvementHtml || '<div style="padding:14px 18px;background:#f7f8fa;border-radius:8px;font-size:11px;color:#555;">현재 서류 심사 기준으로 주요 개선 필요 항목이 없습니다. 인터뷰를 통해 추가 확인 후 안내드리겠습니다.</div>'}
+  ${interviewNeedsHtml}
+  <div style="font-size:16px; font-weight:700; margin:36px 0 16px; padding-bottom:8px; border-bottom:2px solid #e0e0e0;">4. 향후 절차</div>
+  <p style="margin-bottom:14px;">상기 개선 과제에 대한 진행 상황을 확인한 후 대표 인터뷰를 진행하며, 인터뷰 결과에 따라 최종 참여 여부가 결정됩니다.</p>
+  `}
+
+  <div style="margin-top:48px; padding-top:14px; border-top:1px solid #e0e0e0; font-size:9px; color:#999; text-align:center;">
+    GOWID NEXUS &middot; Pit-Stop 경영 개선 리포트 &middot; ${dateStr}<br>
+    본 리포트는 피트스탑 심사 결과를 바탕으로 작성되었으며, 투자 권유 문서가 아닙니다.<br>
+    문의: 고위드넥서스 피트스탑팀
+  </div>
+
+</div>`;
+
+    document.body.appendChild(container);
+    const el = document.getElementById('pdf-report');
+
+    const opt = {
+      margin: 0,
+      filename: fileName,
+      image: { type:'jpeg', quality:0.98 },
+      html2canvas: { scale:2, useCORS:true, letterRendering:true },
+      jsPDF: { unit:'mm', format:'a4', orientation:'portrait' },
+      pagebreak: { mode:['avoid-all','css','legacy'] }
+    };
+
+    html2pdf().set(opt).from(el).save().then(() => {
+      document.body.removeChild(container);
+      btn.textContent = origText;
+      btn.disabled = false;
+    }).catch(() => {
+      document.body.removeChild(container);
+      btn.textContent = origText;
+      btn.disabled = false;
+    });
+  };
+
+  /* ── 초기 실행 ─────────────────────────────────────────────── */
+  loadScreenerData();
+
+})();
+</script>
+</body>
+</html>
