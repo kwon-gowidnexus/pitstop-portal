@@ -911,6 +911,81 @@
         <div style="font-size:12px;color:#555;margin-top:10px;">부채 낮음, 매출 대형, 6개월 BEP 미션</div>
     </div>
 
+    <h3 style="margin-top:20px;">Capital Flow 실시간 진단</h3>
+    <div style="font-size: 10px; color: var(--text-tertiary); margin-bottom: 12px;">
+        ※ 고위드 DW 실거래 데이터 기준 (2026-03)
+    </div>
+
+    <!-- 런웨이 KPI 카드 -->
+    <div class="kpi-grid">
+        <div class="kpi-card warning">
+            <div class="kpi-value">9.6개월</div>
+            <div class="kpi-label">DW 런웨이</div>
+        </div>
+        <div class="kpi-card">
+            <div class="kpi-value">19.2억</div>
+            <div class="kpi-label">평균 잔고</div>
+        </div>
+        <div class="kpi-card">
+            <div class="kpi-value">2.0억/월</div>
+            <div class="kpi-label">Burn Rate (DW)</div>
+        </div>
+    </div>
+
+    <!-- 교차검증 비교표 -->
+    
+    <h4 style="margin-top: 20px; margin-bottom: 8px;">접수서류 vs DW 교차검증</h4>
+    
+    <table style="width: 100%; border-collapse: collapse; font-size: 12px; margin-bottom: 16px;">
+        <thead>
+            <tr style="border-bottom: 2px solid var(--rule);">
+                <th style="padding: 6px 8px; text-align: left; font-weight: 600;">검증 축</th>
+                <th style="padding: 6px 8px; text-align: left; font-weight: 600;">접수서류</th>
+                <th style="padding: 6px 8px; text-align: left; font-weight: 600;">DW (실거래)</th>
+                <th style="padding: 6px 8px; text-align: center; font-weight: 600;">괴리율</th>
+            </tr>
+        </thead>
+        <tbody>
+            
+            <tr style="border-bottom: 1px solid var(--border-light);">
+                <td style="padding: 6px 8px; font-weight: 500;">매출</td>
+                <td style="padding: 6px 8px;">100억 이상</td>
+                <td style="padding: 6px 8px;">
+                    198.1억
+                    <span style="font-size: 10px; color: var(--text-tertiary);">12개월 매출입금 (현금주의)</span>
+                </td>
+                <td style="padding: 6px 8px; text-align: center; font-weight: 600;">
+                    98%
+                </td>
+            </tr>
+            
+            <tr style="border-bottom: 1px solid var(--border-light);">
+                <td style="padding: 6px 8px; font-weight: 500;">임직원</td>
+                <td style="padding: 6px 8px;">55</td>
+                <td style="padding: 6px 8px;">
+                    56명
+                    <span style="font-size: 10px; color: var(--text-tertiary);">4대보험 가입자 수</span>
+                </td>
+                <td style="padding: 6px 8px; text-align: center; font-weight: 600;">
+                    2%
+                </td>
+            </tr>
+            
+            <tr style="border-bottom: 1px solid var(--border-light);">
+                <td style="padding: 6px 8px; font-weight: 500;">누적 투자</td>
+                <td style="padding: 6px 8px;">100억 이상</td>
+                <td style="padding: 6px 8px;">
+                    65.7억
+                    <span style="font-size: 10px; color: var(--text-tertiary);">은행 유상증자 입금 누적</span>
+                </td>
+                <td style="padding: 6px 8px; text-align: center; font-weight: 600;">
+                    —
+                </td>
+            </tr>
+            
+        </tbody>
+    </table>
+
     <!-- 딜 요약 -->
     <div style="margin:16px 0;padding:12px 16px;background:#f8f8f8;border-left:3px solid #333;">
         <div style="font-size:11px;font-weight:600;color:#555;letter-spacing:1px;text-transform:uppercase;margin-bottom:6px;">DEAL SUMMARY</div>
@@ -1267,86 +1342,6 @@
         </div>
     </div>
     <!-- FY-SUMMARY-END -->
-
-    <!-- ═══════════════════════════════════════ -->
-    <!-- Capital Flow 실시간 진단 (DW 기반)        -->
-    <!-- ═══════════════════════════════════════ -->
-    
-    <h3>Capital Flow 실시간 진단</h3>
-    <div style="font-size: 10px; color: var(--text-tertiary); margin-bottom: 12px;">
-        ※ 고위드 DW 실거래 데이터 기준 (2026-03)
-    </div>
-
-    <!-- 런웨이 KPI 카드 -->
-    <div class="kpi-grid">
-        <div class="kpi-card warning">
-            <div class="kpi-value">9.6개월</div>
-            <div class="kpi-label">DW 런웨이</div>
-        </div>
-        <div class="kpi-card">
-            <div class="kpi-value">19.2억</div>
-            <div class="kpi-label">평균 잔고</div>
-        </div>
-        <div class="kpi-card">
-            <div class="kpi-value">2.0억/월</div>
-            <div class="kpi-label">Burn Rate (DW)</div>
-        </div>
-    </div>
-
-    <!-- 교차검증 비교표 -->
-    
-    <h4 style="margin-top: 20px; margin-bottom: 8px;">접수서류 vs DW 교차검증</h4>
-    
-    <table style="width: 100%; border-collapse: collapse; font-size: 12px; margin-bottom: 16px;">
-        <thead>
-            <tr style="border-bottom: 2px solid var(--rule);">
-                <th style="padding: 6px 8px; text-align: left; font-weight: 600;">검증 축</th>
-                <th style="padding: 6px 8px; text-align: left; font-weight: 600;">접수서류</th>
-                <th style="padding: 6px 8px; text-align: left; font-weight: 600;">DW (실거래)</th>
-                <th style="padding: 6px 8px; text-align: center; font-weight: 600;">괴리율</th>
-            </tr>
-        </thead>
-        <tbody>
-            
-            <tr style="border-bottom: 1px solid var(--border-light);">
-                <td style="padding: 6px 8px; font-weight: 500;">매출</td>
-                <td style="padding: 6px 8px;">100억 이상</td>
-                <td style="padding: 6px 8px;">
-                    198.1억
-                    <span style="font-size: 10px; color: var(--text-tertiary);">12개월 매출입금 (현금주의)</span>
-                </td>
-                <td style="padding: 6px 8px; text-align: center; font-weight: 600;">
-                    98%
-                </td>
-            </tr>
-            
-            <tr style="border-bottom: 1px solid var(--border-light);">
-                <td style="padding: 6px 8px; font-weight: 500;">임직원</td>
-                <td style="padding: 6px 8px;">55</td>
-                <td style="padding: 6px 8px;">
-                    56명
-                    <span style="font-size: 10px; color: var(--text-tertiary);">4대보험 가입자 수</span>
-                </td>
-                <td style="padding: 6px 8px; text-align: center; font-weight: 600;">
-                    2%
-                </td>
-            </tr>
-            
-            <tr style="border-bottom: 1px solid var(--border-light);">
-                <td style="padding: 6px 8px; font-weight: 500;">누적 투자</td>
-                <td style="padding: 6px 8px;">100억 이상</td>
-                <td style="padding: 6px 8px;">
-                    65.7억
-                    <span style="font-size: 10px; color: var(--text-tertiary);">은행 유상증자 입금 누적</span>
-                </td>
-                <td style="padding: 6px 8px; text-align: center; font-weight: 600;">
-                    —
-                </td>
-            </tr>
-            
-        </tbody>
-    </table>
-    
 
     
 
@@ -1904,5 +1899,5 @@
     </div>
 
 </body>
-<!-- DW-UPDATED: 2026-03-12 13:22 KST -->
+<!-- DW-UPDATED: 2026-03-12 13:31 KST -->
 </html>
