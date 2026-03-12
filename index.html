@@ -566,6 +566,35 @@ mark {
   color: var(--border);
 }
 
+/* ─── Verdict signal dot ──────────────────────────────────────── */
+.di-verdict {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: 0.06em;
+  padding: 2px 7px 2px 5px;
+  border-radius: 2px;
+  flex-shrink: 0;
+  line-height: 1.4;
+  vertical-align: middle;
+}
+.di-verdict .dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.di-verdict.v-go        { background: #0d2818; color: #4caf50; }
+.di-verdict.v-go .dot   { background: #4caf50; box-shadow: 0 0 4px #4caf5088; }
+.di-verdict.v-yellow        { background: #2a2000; color: #ffc107; }
+.di-verdict.v-yellow .dot   { background: #ffc107; box-shadow: 0 0 4px #ffc10788; }
+.di-verdict.v-conditional        { background: #2a1500; color: #ff9800; }
+.di-verdict.v-conditional .dot   { background: #ff9800; box-shadow: 0 0 4px #ff980088; }
+.di-verdict.v-nogo        { background: #2a0a0a; color: #f44336; }
+.di-verdict.v-nogo .dot   { background: #f44336; box-shadow: 0 0 4px #f4433688; }
+
 /* Closed info banner (viewer 상단) */
 .closed-banner {
   display: flex;
@@ -651,7 +680,9 @@ const COMPANIES = [
     "funding_need": "5\uc5b5~10\uc5b5 \ubbf8\ub9cc",
     "intro_short": "(\uc8fc)\uc6f0\ub85c\ub294 \uc804\uad6d\uc758 \uc815\ubd80 \uc815\ucc45/\uaddc\uc81c/\uc608\uc0b0/\uc0ac\uc5c5 \ub370\uc774\ud130\ub97c \uc218\uc9d1-\uac00\uacf5\ud558\uc5ec, \n\uac1c\uc778-\uae30\uc5c5-\uc815\ubd80\uc5d0\uac8c \ub9de\ucda4\ud615 \uc11c\ube44\uc2a4\ub97c \uc81c\uacf5\ud558\uace0, \uc815\ubd80\uc815\ucc45 \ubc0f \uc608\uc0b0\uc774 \uc798",
     "status": "closed",
-    "close_reason": "\uc778\ud130\ube70 \ud6c4 \ubd80\uc801\ud569 \ud310\uc815 \uc804\ub2ec\ub85c \uc885\ub8cc"
+    "close_reason": "\uc778\ud130\ube70 \ud6c4 \ubd80\uc801\ud569 \ud310\uc815 \uc804\ub2ec\ub85c \uc885\ub8cc",
+    "verdict": "Yellow Zone",
+    "verdict_class": "yellow"
   },
   {
     "folder_name": "\ubaa8\ud2b8\uc5d0\uc774\uc544\uc774",
@@ -666,7 +697,9 @@ const COMPANIES = [
     "funding_need": "10\uc5b5 \uc774\uc0c1",
     "intro_short": "AI \uc5d0\uc774\uc804\ud2b8 \uac1c\ubc1c",
     "status": "closed",
-    "close_reason": "\uc778\ud130\ubdf0 \ubd80\uc801\ud569 \ud655\uc778 \uc885\ub8cc"
+    "close_reason": "\uc778\ud130\ubdf0 \ubd80\uc801\ud569 \ud655\uc778 \uc885\ub8cc",
+    "verdict": "Orange Zone",
+    "verdict_class": "conditional"
   },
   {
     "folder_name": "\uc628\uc624\ud504\ubbf9\uc2a4",
@@ -679,7 +712,9 @@ const COMPANIES = [
     "revenue": "10\uc5b5~20\uc5b5 \ubbf8\ub9cc",
     "headcount": "5\uba85~10\uba85 \ubbf8\ub9cc",
     "funding_need": "2\uc5b5~5\uc5b5 \ubbf8\ub9cc",
-    "intro_short": "\ud68c\uc0ac \uc5c5\uc885\n\n- \uc774\ubca4\ud2b8\ud14c\ud06c \ud50c\ub7ab\ud3fc(\uc628\u00b7\uc624\ud504\ub77c\uc778 \ud1b5\ud569 Event Management System / CEMS) \ubc0f \ubaa8\uc784\u00b7\uc774\ubca4\ud2b8 \ub9c8\ucf13\ud50c\ub808\uc774\uc2a4\n\n\uc8fc\uc694"
+    "intro_short": "\ud68c\uc0ac \uc5c5\uc885\n\n- \uc774\ubca4\ud2b8\ud14c\ud06c \ud50c\ub7ab\ud3fc(\uc628\u00b7\uc624\ud504\ub77c\uc778 \ud1b5\ud569 Event Management System / CEMS) \ubc0f \ubaa8\uc784\u00b7\uc774\ubca4\ud2b8 \ub9c8\ucf13\ud50c\ub808\uc774\uc2a4\n\n\uc8fc\uc694",
+    "verdict": "Yellow Zone",
+    "verdict_class": "yellow"
   },
   {
     "folder_name": "\ub9c8\uc9c4\ub9e5\uc2a4",
@@ -694,7 +729,9 @@ const COMPANIES = [
     "funding_need": "2\uc5b5~5\uc5b5 \ubbf8\ub9cc",
     "intro_short": "\uc5ec\ud589/\uc219\ubc15 \uc608\uc57d \uc2dc\uc2a4\ud15c B2B \uc11c\ube44\uc2a4(Sass)",
     "status": "closed",
-    "close_reason": "\uc601\uc5c5\uc774\uc775 \uc591\ud638, \ud22c\uc790 \uc694\uccad \uac74\uc73c\ub85c \uace0\uc704\ub4dc Fuel \uc5f0\uacb0\ub85c \uc885\ub8cc"
+    "close_reason": "\uc601\uc5c5\uc774\uc775 \uc591\ud638, \ud22c\uc790 \uc694\uccad \uac74\uc73c\ub85c \uace0\uc704\ub4dc Fuel \uc5f0\uacb0\ub85c \uc885\ub8cc",
+    "verdict": "Green Zone",
+    "verdict_class": "go"
   },
   {
     "folder_name": "\uba54\ub274\uc787",
@@ -707,7 +744,9 @@ const COMPANIES = [
     "revenue": "100\uc5b5 \uc774\uc0c1",
     "headcount": "33",
     "funding_need": "10\uc5b5 \uc774\uc0c1",
-    "intro_short": "\uba54\ub274\uc787\uc740 \ud0dc\ube14\ub9bf \uae30\ubc18 \ubb34\uc778\uc8fc\ubb3c(\uc2a4\ub9c8\ud2b8\uc624\ub354) \uc194\ub8e8\uc158\uc744 \uc790\uccb4 \uac1c\ubc1c \ubc0f \uacf5\uae09\ud558\ub294 B2B \uae30\uc5c5\uc785\ub2c8\ub2e4.\n\n\uc8fc\uc694 \uace0\uac1d\uc740 SK\uc274\ub354\uc2a4(ADT)\uc774\uace0 \uc624\ub354\ud328\ub4dc(\ud0dc"
+    "intro_short": "\uba54\ub274\uc787\uc740 \ud0dc\ube14\ub9bf \uae30\ubc18 \ubb34\uc778\uc8fc\ubb3c(\uc2a4\ub9c8\ud2b8\uc624\ub354) \uc194\ub8e8\uc158\uc744 \uc790\uccb4 \uac1c\ubc1c \ubc0f \uacf5\uae09\ud558\ub294 B2B \uae30\uc5c5\uc785\ub2c8\ub2e4.\n\n\uc8fc\uc694 \uace0\uac1d\uc740 SK\uc274\ub354\uc2a4(ADT)\uc774\uace0 \uc624\ub354\ud328\ub4dc(\ud0dc",
+    "verdict": "Red Zone",
+    "verdict_class": "nogo"
   },
   {
     "folder_name": "\uc778\ud14c\uc774\ud06c",
@@ -720,7 +759,9 @@ const COMPANIES = [
     "revenue": "100\uc5b5 \uc774\uc0c1",
     "headcount": "55",
     "funding_need": "10\uc5b5 \uc774\uc0c1",
-    "intro_short": "\ub300\uccb4\ub2e8\ubc31 \ubc0f \ub300\uccb4\ub2f9 \uc911\uc2ec \uc18c\uc7ac B2B & \uc644\uc81c\ud488 B2C \ube44\uc988\ub2c8\uc2a4"
+    "intro_short": "\ub300\uccb4\ub2e8\ubc31 \ubc0f \ub300\uccb4\ub2f9 \uc911\uc2ec \uc18c\uc7ac B2B & \uc644\uc81c\ud488 B2C \ube44\uc988\ub2c8\uc2a4",
+    "verdict": "Yellow Zone",
+    "verdict_class": "yellow"
   },
   {
     "folder_name": "\uc640\uc774\uc624\uc5d8\uc624",
@@ -733,7 +774,9 @@ const COMPANIES = [
     "revenue": "30\uc5b5~50\uc5b5 \ubbf8\ub9cc",
     "headcount": "25",
     "funding_need": "2\uc5b5~5\uc5b5 \ubbf8\ub9cc",
-    "intro_short": "\uc804\uc138\uacc4 \ud2b8\ub80c\ub4dc\ub97c \uac00\uc7a5 \ube60\ub974\uac8c \ub9cc\ub098\ubcfc \uc218 \uc788\ub294 \ud06c\ub85c\uc2a4\ubcf4\ub354 \uc774\ucee4\uba38\uc2a4 \ud50c\ub7ab\ud3fc \ud06c\ub85c\ucf13\uc744 \uc6b4\uc601\ud558\uace0 \uc788\uc2b5\ub2c8\ub2e4. \ucd5c\uadfc \uc77c\ubcf8,\ubbf8\uad6d \ub4f1\uc758 \uae00\ub85c\ubc8c \uc11c\ube44\uc2a4 \ub7f0\uce6d \ud6c4"
+    "intro_short": "\uc804\uc138\uacc4 \ud2b8\ub80c\ub4dc\ub97c \uac00\uc7a5 \ube60\ub974\uac8c \ub9cc\ub098\ubcfc \uc218 \uc788\ub294 \ud06c\ub85c\uc2a4\ubcf4\ub354 \uc774\ucee4\uba38\uc2a4 \ud50c\ub7ab\ud3fc \ud06c\ub85c\ucf13\uc744 \uc6b4\uc601\ud558\uace0 \uc788\uc2b5\ub2c8\ub2e4. \ucd5c\uadfc \uc77c\ubcf8,\ubbf8\uad6d \ub4f1\uc758 \uae00\ub85c\ubc8c \uc11c\ube44\uc2a4 \ub7f0\uce6d \ud6c4",
+    "verdict": "Orange Zone",
+    "verdict_class": "conditional"
   }
 ];
 const PASSWORD = "2026";
@@ -985,11 +1028,15 @@ const PASSWORD = "2026";
       const closedBadge = isClosed
         ? `<span class="badge-closed">CLOSED</span>`
         : '';
+      const verdictLabels = { go: 'GREEN', yellow: 'YELLOW', conditional: 'ORANGE', nogo: 'RED' };
+      const verdictBadge = c.verdict_class
+        ? `<span class="di-verdict v-${c.verdict_class}"><span class="dot"></span>${verdictLabels[c.verdict_class] || ''}</span>`
+        : '';
       return `
         <div class="drop-item${isClosed ? ' is-closed' : ''}" data-folder="${c.folder_name}">
           <span class="di-num">${String(globalIdx).padStart(2,'0')}</span>
           <div class="di-body">
-            <div class="di-name" style="display:flex;align-items:center;gap:7px;">${hlName}${closedBadge}</div>
+            <div class="di-name" style="display:flex;align-items:center;gap:7px;">${hlName}${closedBadge}${verdictBadge}</div>
             <div class="di-folder">${hlFolder}${isClosed ? ` · 자료 폐기 ${surveyTsToDeleteDate(c.survey_timestamp)}` : ''}</div>
           </div>
           <div class="di-ts">
@@ -1067,7 +1114,7 @@ const PASSWORD = "2026";
   function openViewer(company) {
     /* BASE_PATH + folder + "/" + previewFile
        BASE_PATH = "" → "웰로/웰로_피트스탑_프리뷰_20260220.html" */
-    const src = BASE_PATH + company.folder_name + '/' + company.preview_file + '?v=20260312c';
+    const src = BASE_PATH + company.folder_name + '/' + company.preview_file + '?v=20260312d';
 
     $('v-company').textContent = company.company_name;
     $('v-file').textContent    = company.preview_file;
