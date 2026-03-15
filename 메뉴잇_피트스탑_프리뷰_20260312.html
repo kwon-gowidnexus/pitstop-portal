@@ -937,6 +937,20 @@
     </style>
 </head>
 <body>
+<!-- DW-VALIDATION-START -->
+<div id="dw-validation-badge" style="position:fixed;top:10px;right:10px;z-index:9999;background:#fff;border:1px solid #ddd;border-radius:6px;padding:8px 12px;font-size:11px;box-shadow:0 2px 8px rgba(0,0,0,0.08);max-width:300px;line-height:1.4;">
+  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:4px;">
+    <span style="font-weight:600;font-size:11px;">DW 검증</span>
+    <span style="color:#999;font-size:10px;">2026-03-16 06:37</span>
+  </div>
+  <div style="color:#e65100;font-weight:600;font-size:11px;">◆ 참고 3건</div>
+  <div style="color:#795548;font-size:10px;margin-top:2px;">· 금융부채: go_nogo 51.8억(FY2025(가결산, 2차 자료)) vs DW 105.0억(FY2024) — FY 차이</div>
+<div style="color:#795548;font-size:10px;margin-top:2px;">· OP 부호 반전: go_nogo +4.1억 vs DW -48.0억(FY2024) — FY 차이</div>
+<div style="color:#795548;font-size:10px;margin-top:2px;">· DW FY2024 — go_nogo FY2025(가결산, 2차 자료) 사용 중 (DW FY2025 미적재)</div>
+</div>
+<style>@media print { #dw-validation-badge { position:absolute;top:10px;right:10px;font-size:9px;padding:4px 8px;box-shadow:none;border:1px solid #ccc;max-width:240px; } }</style>
+<!-- DW-VALIDATION-END -->
+
 
     <!-- ═══════════════════════════════════════ -->
     <!-- HEADER                                  -->
@@ -984,14 +998,14 @@
     <!-- 판정 결과 -->
     <div style="text-align:center;padding:20px;margin:16px 0;border:2px solid #e0e0e0;background:#fafafa;">
         <div style="font-size:11px;color:#777;letter-spacing:2px;text-transform:uppercase;margin-bottom:8px;">VERDICT</div>
-        <span style="display:inline-block;padding:4px 14px;border-radius:3px;font-weight:700;font-size:14px;letter-spacing:0.5px;background:#fce4ec;color:#8b0000;border:1px solid #8b0000;">Red Zone</span>
-        <div style="font-size:12px;color:#555;margin-top:10px;">캐시 엔진 강력. 부채 정리 시 최대 반전 가능.</div>
+        <span style="display:inline-block;padding:4px 14px;border-radius:3px;font-weight:700;font-size:14px;letter-spacing:0.5px;background:#fff3e0;color:#e65100;border:1px solid #e65100;">Orange Zone</span>
+        <div style="font-size:12px;color:#555;margin-top:10px;">캐시 엔진 강력. 구조조정 실행력 확인. IBK043 차환이 단일 게이트.</div>
     </div>
 
     <!-- 딜 요약 -->
     <div style="margin:16px 0;padding:12px 16px;background:#f8f8f8;border-left:3px solid #333;">
         <div style="font-size:11px;font-weight:600;color:#555;letter-spacing:1px;text-transform:uppercase;margin-bottom:6px;">DEAL SUMMARY</div>
-        <div style="font-size:12px;line-height:1.7;color:#333;">태블릿 무인주문(스마트오더) B2B SaaS, 매출 136.9억, OP +4.1억 흑자. 직원 33명, 주요 고객 SK쉴더스(ADT).<br>금융부채 102억(사채 31억+대출 71억) vs 현금 2억 — IBK 10억 만기 2026.03.20 임박, 만기/현금 비율 22.5x로 3축 전부 Red.<br>Red Zone: 캐시 엔진 강력(OP +4.1억)하여 부채 정리 시 최대 반전 후보이나, 사채 31억 성격 미확인 + 만기 도래 부채 즉시 대응 불가 상태.</div>
+        <div style="font-size:12px;line-height:1.7;color:#333;">태블릿 무인주문(스마트오더) B2B SaaS, 매출 136.9억, OP +4.1억 흑자. 직원 32명(DW), 주요 고객 SK쉴더스(ADT).<br>금융부채 51.8억(사채 31억+은행 19.5억+개인/VC 1.3억) vs 현금 2.65억 — IBK043 8억 차환 협의 중(2026.05.28). 사채 31억 CB 아님 확인.<br>Orange Zone: 캐시 엔진 강력(OP +4.1억), 구조조정 실행력 확인(판관비 45%↓). IBK043 차환이 단일 게이트 — 성공 시 Yellow 상향.</div>
     </div>
 
     <!-- 부채 3축 판정 -->
@@ -1008,22 +1022,22 @@
             <tbody>
                 <tr>
             <td style="padding:6px 10px;font-weight:500;">(1) DSC Ratio — OP/원리금</td>
-            <td style="padding:6px 10px;text-align:center;background:#fce4ec;color:#8b0000;font-weight:600;">0.3x</td>
-            <td style="padding:6px 10px;color:#777;font-size:12px;">OP 4.1억 vs 원리금 추정 13.6억/년. 원리금 커버 불가</td>
+            <td style="padding:6px 10px;text-align:center;background:#fce4ec;color:#8b0000;font-weight:600;">0.76x</td>
+            <td style="padding:6px 10px;color:#777;font-size:12px;">OP 4.1억 vs 원리금 추정 5.4억/년(이자 2.9억+원금상환 2.5억). 커버 부족</td>
         </tr>
                 <tr>
             <td style="padding:6px 10px;font-weight:500;">(2) 부채/매출 비율</td>
-            <td style="padding:6px 10px;text-align:center;background:#fce4ec;color:#8b0000;font-weight:600;">52%</td>
-            <td style="padding:6px 10px;color:#777;font-size:12px;">금융부채 102억(사채 31억+대출 71억) / 매출 136.9억 = 52%</td>
+            <td style="padding:6px 10px;text-align:center;background:#fce4ec;color:#8b0000;font-weight:600;">38%</td>
+            <td style="padding:6px 10px;color:#777;font-size:12px;">금융부채 51.8억(사채 31억+은행 19.5억+개인/VC 1.3억) / 매출 136.9억 = 38%</td>
         </tr>
                 <tr>
             <td style="padding:6px 10px;font-weight:500;">(3) 만기도래/현금 비율</td>
-            <td style="padding:6px 10px;text-align:center;background:#fce4ec;color:#8b0000;font-weight:600;">22.5x</td>
-            <td style="padding:6px 10px;color:#777;font-size:12px;">만기도래 45억(IBK 10억 2026.03 + 하나 24.9억 등) / 현금 2억</td>
+            <td style="padding:6px 10px;text-align:center;background:#fce4ec;color:#8b0000;font-weight:600;">3.3x</td>
+            <td style="padding:6px 10px;color:#777;font-size:12px;">3개월 내 만기 8.6억(IBK043 8억 2026.05.28 + IBK035 0.6억 2026.05.17) / 현금 2.65억</td>
         </tr>
             </tbody>
         </table>
-        <div style="font-size:11px;color:#999;margin-top:6px;">Red 3개 — Red 3 = Red Zone</div>
+        <div style="font-size:11px;color:#999;margin-top:6px;">Red 3개 — 3축 전부 Red이나 수치 대폭 개선(금융부채 102→51.8억, 만기/현금 22.5→3.3x). Orange Zone.</div>
         <div style="font-size:11px;color:#bbb;margin-top:4px;">* DSC Ratio(Debt Service Coverage) = 영업이익 &divide; 연간 원리금 상환액. 1.0x 이상이면 영업이익으로 부채 상환 가능.</div>
     </div>
 
@@ -1041,16 +1055,16 @@
             <tbody>
                 <tr>
             <td style="padding:4px 10px;">금융권 부채 정리</td>
-            <td style="padding:4px 10px;text-align:center;"><span style="color:#8b0000;font-weight:700;">XX</span></td>
-            <td style="padding:4px 10px;color:#555;font-size:12px;">금융부채 102억. 사채 31억 성격 미확인, IBK 10억 만기 2026.03.20 임박</td>
+            <td style="padding:4px 10px;text-align:center;"><span style="color:#8b0000;font-weight:700;">X</span></td>
+            <td style="padding:4px 10px;color:#555;font-size:12px;">금융부채 51.8억(2차 자료 확인). IBK033 10억 만기 2027.03(기보 연장 완료). IBK043 8억 2026.05 차환 협의 중</td>
         </tr><tr>
             <td style="padding:4px 10px;">출자전환 완료</td>
-            <td style="padding:4px 10px;text-align:center;"><span style="color:#8b0000;font-weight:700;">X</span></td>
-            <td style="padding:4px 10px;color:#555;font-size:12px;">사채 31억 전환 조건 미확인. DW 사각지대</td>
+            <td style="padding:4px 10px;text-align:center;"><span style="color:#1a4d2e;font-weight:700;">O</span></td>
+            <td style="padding:4px 10px;color:#555;font-size:12px;">사채 31억 CB 아님 확인(2차 자료). 기보 유동화 SPC 순수 채권, 표면이율=만기보장수익률</td>
         </tr><tr>
             <td style="padding:4px 10px;">캐시 엔진</td>
             <td style="padding:4px 10px;text-align:center;"><span style="color:#1a4d2e;font-weight:700;">O</span></td>
-            <td style="padding:4px 10px;color:#555;font-size:12px;">OP +4.1억 흑자, 매출 136.9억. 캐시 엔진 강력</td>
+            <td style="padding:4px 10px;color:#555;font-size:12px;">OP +4.1억 흑자, 매출 136.9억. 공급구조 전환(태블릿 27%+배터리 45% 단가절감) 시 OP 15~20억 가능</td>
         </tr><tr>
             <td style="padding:4px 10px;">독점 자산</td>
             <td style="padding:4px 10px;text-align:center;"><span style="color:#7a5c00;font-weight:700;">&ndash;</span></td>
@@ -1062,11 +1076,11 @@
         </tr><tr>
             <td style="padding:4px 10px;">대표 역량</td>
             <td style="padding:4px 10px;text-align:center;"><span style="color:#7a5c00;font-weight:700;">&ndash;</span></td>
-            <td style="padding:4px 10px;color:#555;font-size:12px;">매출 성장 실적은 있으나 부채 관리 이력 확인 필요</td>
+            <td style="padding:4px 10px;color:#555;font-size:12px;">연대보증 감수, 금융기관 직접 협상, 공급구조 전환 실행. 실행력 긍정적</td>
         </tr><tr>
             <td style="padding:4px 10px;">구조조정 의지</td>
             <td style="padding:4px 10px;text-align:center;"><span style="color:#1a4d2e;font-weight:700;">O</span></td>
-            <td style="padding:4px 10px;color:#555;font-size:12px;">부채 정리 의지 있음 (피트스탑 신청 자체가 시그널)</td>
+            <td style="padding:4px 10px;color:#555;font-size:12px;">판관비 45% 삭감(127.9→69.8억), 식스티페이 36.2% 고금리 탈출, 국민/기업은행 재약정 완료</td>
         </tr>
             </tbody>
         </table>
@@ -1076,7 +1090,7 @@
     <!-- 다음 액션 -->
     <div style="margin:16px 0;padding:12px 16px;background:#f0f4ff;border-left:3px solid #333;">
         <div style="font-size:11px;font-weight:600;color:#555;letter-spacing:1px;text-transform:uppercase;margin-bottom:4px;">NEXT ACTION</div>
-        <div style="font-size:13px;font-weight:500;">사채 31억 성격 확인 + IBK 10억 만기 대응 확인</div>
+        <div style="font-size:13px;font-weight:500;">IBK043 8억 차환 결과 확인(2026.05) + 영업외수익 26.5억 세부 내역 확인</div>
     </div>
 
     <!-- GO-NOGO-ASSESSMENT-END -->
@@ -1173,11 +1187,11 @@
         </div>
         <div style="flex:1;min-width:100px;padding:12px;background:#f5f5f5;border:1px solid #e0e0e0;text-align:center;">
             <div style="font-size:11px;color:#777;">금융부채</div>
-            <div style="font-size:16px;font-weight:700;font-family:'Noto Sans Mono',monospace;">102억</div>
+            <div style="font-size:16px;font-weight:700;font-family:'Noto Sans Mono',monospace;">51.8억</div>
         </div>
         <div style="flex:1;min-width:100px;padding:12px;background:#f5f5f5;border:1px solid #e0e0e0;text-align:center;">
             <div style="font-size:11px;color:#777;">현금</div>
-            <div style="font-size:16px;font-weight:700;font-family:'Noto Sans Mono',monospace;">2억</div>
+            <div style="font-size:16px;font-weight:700;font-family:'Noto Sans Mono',monospace;">2.65억</div>
         </div>
         <div style="flex:1;min-width:100px;padding:12px;background:#f5f5f5;border:1px solid #e0e0e0;text-align:center;">
             <div style="font-size:11px;color:#777;">자본</div>
@@ -1189,259 +1203,214 @@
     <hr class="section-divider">
 
     <!-- ═══════════════════════════════════════ -->
-    <!-- SECTION 2: 인터뷰 핵심 확인            -->
+    <!-- SECTION 2: 제출 자료 기반 심화 진단     -->
     <!-- ═══════════════════════════════════════ -->
-    <h2>2. 인터뷰 핵심 확인</h2>
-    <div class="section-intent">스크리닝에서 미확인된 항목 중 인터뷰에서 반드시 확인해야 할 것은 무엇인가?</div>
+    <h2>2. 제출 자료 기반 심화 진단</h2>
+    <div class="section-intent">2차 자료(대출계약서·차입금현황·BS/PL·예상매출) 수령 후 미확인 항목을 교차검증한다.</div>
 
     <div class="section-result">
-        <span class="result-label">확인 필요</span>
-        <span>12건</span>
-        
-        <span class="badge badge-danger">CRITICAL 3</span>
-        <span class="badge badge-warning">WARNING 3</span>
-        
+        <span class="result-label">2차 자료 수령</span>
+        <span>2026-03-12</span>
+        <span class="badge badge-success">확인완료 7</span>
+        <span class="badge badge-danger">미확인 5</span>
     </div>
 
-    
-    <details class="interview-checklist-details">
+    <!-- 2차 자료로 확인 완료된 항목 -->
+    <h3 style="margin-top:16px;">2차 자료 확인 완료 <span style="font-size:11px;color:var(--positive);font-weight:400;">(7건)</span></h3>
+
+    <table>
+        <tr><th style="width:50px">상태</th><th style="width:200px">항목</th><th>2차 자료 확인 결과</th></tr>
+        <tr>
+            <td style="text-align:center;color:var(--positive);font-weight:700;">&#10003;</td>
+            <td><strong>차입금 구조 · 금리 · 만기</strong></td>
+            <td style="font-size:12px;">금융부채 51.8억 확정 — <strong>사채 31억</strong>(기보 유동화 SPC, 표면이율=만기보장수익률, CB 아님) + <strong>은행 19.5억</strong>(IBK 18.6억 3건 + KB 0.9억) + 개인/VC 1.3억. 기존 102억은 FY2024 장부 기준 오류(식스티페이 36.2% 고금리 채권 탈출 반영).</td>
+        </tr>
+        <tr>
+            <td style="text-align:center;color:var(--positive);font-weight:700;">&#10003;</td>
+            <td><strong>사채 성격 확인 (CB 여부)</strong></td>
+            <td style="font-size:12px;">사채 31억은 기보 유동화 SPC 순수 채권. 전환사채(CB) 아님 확인. 출자전환 불가, 만기 상환 구조.</td>
+        </tr>
+        <tr>
+            <td style="text-align:center;color:var(--positive);font-weight:700;">&#10003;</td>
+            <td><strong>ICR / DSC 재산정 (FY2025)</strong></td>
+            <td style="font-size:12px;">FY24 OP 0.21억(ICR 0.04x) → <strong>FY25 OP 4.1억</strong>. 이자 2.9억 기준 ICR 1.4x로 개선. 원리금 포함 DSC 0.76x(=4.1/5.4)는 커버 부족이나 방향 양호.</td>
+        </tr>
+        <tr>
+            <td style="text-align:center;color:var(--positive);font-weight:700;">&#10003;</td>
+            <td><strong>식스티페이 탈출 확인</strong></td>
+            <td style="font-size:12px;">FY2024 식스티페이 고금리(36.2%) 채권 전액 정리 완료. FY25 이자비용 구조 개선의 핵심 요인.</td>
+        </tr>
+        <tr>
+            <td style="text-align:center;color:var(--positive);font-weight:700;">&#10003;</td>
+            <td><strong>판관비 구조조정 실행</strong></td>
+            <td style="font-size:12px;">판관비 127.9억(FY24) → 69.8억(FY25), <strong>45% 삭감</strong>. 인원 150명→33명, 마케팅/SaaS/외주 최소화. 변동비 중심 구조 전환.</td>
+        </tr>
+        <tr>
+            <td style="text-align:center;color:var(--positive);font-weight:700;">&#10003;</td>
+            <td><strong>매출 규모 교차검증</strong></td>
+            <td style="font-size:12px;">DW 매출입금 155.4억(현금주의) vs 2차 자료 매출 136.9억(발생주의). 차이 13% — 현금 입금 시점 차이로 합리적 범위.</td>
+        </tr>
+        <tr>
+            <td style="text-align:center;color:var(--positive);font-weight:700;">&#10003;</td>
+            <td><strong>IBK 10억 만기 연장</strong></td>
+            <td style="font-size:12px;">IBK033 10억(기존 만기 2025.11.28) → 기보 연장 완료, 신만기 2027.03.19. 단기 상환 압력 해소.</td>
+        </tr>
+    </table>
+
+    <!-- 인터뷰에서 확인 필요한 항목 -->
+    <h3 style="margin-top:20px;">인터뷰 확인 필요 <span style="font-size:11px;color:var(--negative);font-weight:400;">(5건)</span></h3>
+
+    <details class="interview-checklist-details" open>
         <summary class="interview-checklist-summary">
-            인터뷰 확인 필수사항 <span class="checklist-count">12건</span>
+            미확인 항목 <span class="checklist-count">5건</span>
         </summary>
         <div class="interview-checklist-body">
-        
-        <div class="checklist-item">
-            <div class="checklist-checkbox"></div>
-            <div>
-                <div class="checklist-source">이상감지: CRITICAL</div>
-                <div class="checklist-text">퇴직급여 4월, 12월 음수(역전) 원인 확인 — 퇴직자 정산? 전기 오류 수정? 회계 조정?</div>
-                
-                <div class="checklist-reason">이상감지 알고리즘이 퇴직급여에서 음수값 탐지. 통상 양수여야 하는 항목의 역전은 회계 조정·퇴직 정산 등을 시사.</div>
-                
-            </div>
-        </div>
-        
-        <div class="checklist-item">
-            <div class="checklist-checkbox"></div>
-            <div>
-                <div class="checklist-source">이상감지: CRITICAL</div>
-                <div class="checklist-text">차입금 구조, 금리 조건, 만기 스케줄 상세 확인 필요</div>
-                
-                <div class="checklist-reason">[이자비용이 영업이익 초과] CRITICAL 탐지. 영업이익 0.21억 < 영업외비용 5.3억, ICR 0.04x</div>
-                
-            </div>
-        </div>
-        
-        <div class="checklist-item">
-            <div class="checklist-checkbox"></div>
-            <div>
-                <div class="checklist-source">이상감지: WARNING</div>
-                <div class="checklist-text">월간 급변동 항목 일괄 확인: 퇴직급여 7월, 퇴직급여 12월, 소모품비 12월, 운반비 6월 — 일시적 이벤트인지 구조적 변화인지?</div>
-                
-                <div class="checklist-reason">월별 손익에서 전월 대비 ±50% 이상 급변동 탐지. 구조적 변화면 BEP 시나리오에 직접 영향.</div>
-                
-            </div>
-        </div>
-        
-        <div class="checklist-item">
-            <div class="checklist-checkbox"></div>
-            <div>
-                <div class="checklist-source">이상감지: REVIEW</div>
-                <div class="checklist-text">인건비(급여+상여) 12월 결산 조정 상세 확인 — 연말 일괄 처리? 회계 기준 변경?</div>
-                
-                <div class="checklist-reason">[인건비(급여+상여) 12월 편중 (Z=-3.2σ)] REVIEW 탐지. 1~11월 평균 1.8억 vs 12월 0.75억 (Z-score: -3.2σ)</div>
-                
-            </div>
-        </div>
-        
-        <div class="checklist-item">
-            <div class="checklist-checkbox"></div>
-            <div>
-                <div class="checklist-source">이상감지: REVIEW</div>
-                <div class="checklist-text">퇴직급여 12월 결산 조정 상세 확인 — 연말 일괄 처리? 회계 기준 변경?</div>
-                
-                <div class="checklist-reason">[퇴직급여 12월 편중 (Z=-12.0σ)] REVIEW 탐지. 1~11월 평균 0.21억 vs 12월 -2.2억 (Z-score: -12.0σ)</div>
-                
-            </div>
-        </div>
-        
-        <div class="checklist-item">
-            <div class="checklist-checkbox"></div>
-            <div>
-                <div class="checklist-source">P&L 분석</div>
-                <div class="checklist-text">지급수수료+광고선전비 매출 대비 18% — 채널별 ROI 측정 현황과 비효율 채널 존재 여부?</div>
-                
-                <div class="checklist-reason">커미션+광고 24.1억/년, 매출 대비 18%. 효율적 채널 집중 시 7.2억 절감 가능성 점검.</div>
-                
-            </div>
-        </div>
-        
-        <div class="checklist-item">
-            <div class="checklist-checkbox"></div>
-            <div>
-                <div class="checklist-source">부채 분석</div>
-                <div class="checklist-text">이자비용 5.3억/년이 영업이익 0.21억을 초과 — 차입금 구조 상세? 금리 재협상 또는 출자전환 가능성?</div>
-                
-                <div class="checklist-reason">영업이익을 이자비용이 잠식하여 당기순손실 전환. 부채 구조 개편 없이는 흑자 전환 불가.</div>
-                
-            </div>
-        </div>
-        
-        <div class="checklist-item">
-            <div class="checklist-checkbox"></div>
-            <div>
-                <div class="checklist-source">DW 실거래</div>
-                <div class="checklist-text">CF RM 기준 런웨이 2.3개월 — 경영진 인식과 차이? 런웨이 12개월 이하 시 자금조달 타임라인?</div>
-                
-                <div class="checklist-reason">평균 잔고 3.4억, 월 번레이트 1.5억 기준. 현재 속도면 2개월 후 자금 소진.</div>
-                
-            </div>
-        </div>
-        
-        <div class="checklist-item">
-            <div class="checklist-checkbox"></div>
-            <div>
-                <div class="checklist-source">교차검증</div>
-                <div class="checklist-text">DW 12개월 매출입금 155.4억 vs 신청서 '100억 이상' — 매출 인식 기준 차이?</div>
-                
-                <div class="checklist-reason">DW 실거래 기준 매출입금과 신청서 기재 매출의 55% 괴리. 회계 매출 vs 현금 입금 차이, 계열사 내부 거래 등 확인.</div>
-                
-            </div>
-        </div>
-        
-        <div class="checklist-item">
-            <div class="checklist-checkbox"></div>
-            <div>
-                <div class="checklist-source">신청서 분석</div>
-                <div class="checklist-text">운전자금 부족을 호소 — 현재 월 운전자금 소요액과 주요 항목(원재료, 인건비, 외주비)? 매입-매출 사이클?</div>
-                
-                <div class="checklist-reason">신청서 pain points에서 '운전자금' 키워드 탐지: "안녕하세요, 담당자님.
-메뉴잇 팀 김경훈 입니다.
 
-메뉴잇은 태블릿 기반 무인주문(스마트오더) 솔루션을 B2B로 공급하고, 국내는 SK쉴더스(A..."</div>
-                
-            </div>
-        </div>
-        
         <div class="checklist-item">
             <div class="checklist-checkbox"></div>
             <div>
-                <div class="checklist-source">신청서 우선순위</div>
-                <div class="checklist-text">'운영 효율화'를 높은 우선순위로 표시 — 구체적인 실행 계획과 예상 비용, 기대 효과?</div>
-                
-                <div class="checklist-reason">피트스탑 신청 시 '운영 효율화' 항목에 높은 우선순위 기재. 경영진의 구체적 실행 의지와 계획 확인 필요.</div>
-                
+                <div class="checklist-source">CRITICAL — 차환 리스크</div>
+                <div class="checklist-text">IBK043 8억 만기 2026.05.28 차환 결과 — 기보 보증 연장 협의 진행 상황?</div>
+                <div class="checklist-reason">3개월 내 만기 8.6억(IBK043 8억 + IBK035 0.6억). 현금 2.65억으로 커버 불가. 차환 실패 시 즉시 유동성 위기. <strong>단일 게이트</strong> — 차환 성공 여부가 verdict 상향의 전제조건.</div>
             </div>
         </div>
-        
+
         <div class="checklist-item">
             <div class="checklist-checkbox"></div>
             <div>
-                <div class="checklist-source">자금 계획</div>
-                <div class="checklist-text">자금 소요 '10억 이상' 기재 — 현재 DW 런웨이 2개월 고려 시 자금 조달 구체적 타임라인?</div>
-                
-                <div class="checklist-reason">신청서에 '10억 이상' 자금 니즈 기재 + DW 런웨이 2개월. 런웨이 소진 전 조달 완료 가능 여부 확인.</div>
-                
+                <div class="checklist-source">CRITICAL — 영업외수익</div>
+                <div class="checklist-text">FY2025 영업외수익 26.5억의 세부 내역 — 일회성인가, 반복 가능한가?</div>
+                <div class="checklist-reason">당기순이익 25.3억 중 영업외수익 26.5억이 결정적 기여. OP 4.1억만으로는 이자 커버 부족(DSC 0.76x). 일회성이면 FY26 순손실 전환 가능.</div>
             </div>
         </div>
-        
+
+        <div class="checklist-item">
+            <div class="checklist-checkbox"></div>
+            <div>
+                <div class="checklist-source">WARNING — 런웨이</div>
+                <div class="checklist-text">DW 런웨이 2.2개월 — 경영진의 단기 자금조달 타임라인과 구체적 소스?</div>
+                <div class="checklist-reason">평균 잔고 3.4억, 월 번레이트 1.5억. 피트스탑 자금 10억 이상 기재. 런웨이 소진(~5월) 전 조달 완료 가능 여부 확인.</div>
+            </div>
+        </div>
+
+        <div class="checklist-item">
+            <div class="checklist-checkbox"></div>
+            <div>
+                <div class="checklist-source">REVIEW — 공급구조 전환</div>
+                <div class="checklist-text">태블릿 27% + 배터리 45% 단가절감 시 OP 15~20억 가능 — 실현 가능성과 타임라인?</div>
+                <div class="checklist-reason">2차 자료 '공급구조 전환 기반 예상매출' 대시보드 기재. 현재 OP 4.1억 → 15~20억은 3.5~5배 도약. 단가 협상/납품처 확보 상태 확인.</div>
+            </div>
+        </div>
+
+        <div class="checklist-item">
+            <div class="checklist-checkbox"></div>
+            <div>
+                <div class="checklist-source">REVIEW — 운전자금</div>
+                <div class="checklist-text">해외 생산 리드타임 vs 정산 시점 갭 — Fuel(카드 결제 전환) 이연 효과 정량화?</div>
+                <div class="checklist-reason">신청서: "선투입 후회수 구조로 현금이 마르는 구간 발생". 태블릿 해외 생산→납품→정산 사이클의 현금 갭 기간과 금액 확인.</div>
+            </div>
+        </div>
+
         </div>
     </details>
     
 
-    
-    <h3 style="margin-top:20px;">이상 항목</h3>
+    <!-- 차입금 상세 (2차 자료: 대출계약서 기반) -->
+    <h3 style="margin-top:20px;">차입금 상세 <span style="font-size:11px;color:var(--text-tertiary);font-weight:400;">— 2차 자료 대출계약서 기반</span></h3>
     <table>
         <tr>
-            <th style="width: 90px;">심각도</th>
-            <th style="width: 200px;">항목</th>
-            <th>상세</th>
-            <th style="width: 250px;">확인 필요 사항</th>
+            <th style="width:40px">#</th>
+            <th>대출처</th>
+            <th class="num">잔액</th>
+            <th>금리</th>
+            <th>만기</th>
+            <th style="width:100px">비고</th>
         </tr>
-        
         <tr>
-            <td><span class="badge badge-danger">CRITICAL</span></td>
-            <td><strong>퇴직급여 음수 발생</strong><br><span style="font-size: 10px; color: var(--text-tertiary);">퇴직급여 4월: -0.04억</span></td>
-            <td>2025년 4월 퇴직급여 -3,974,192원 (연간 합계 대비 -29%)</td>
-            <td style="font-size: 11px;">4월 퇴직급여 역전 원인 확인 필요 (퇴직자 정산? 전기 오류 수정? 회계 조정?)</td>
+            <td>1</td>
+            <td>IBK033 (기보 보증)</td>
+            <td class="num">10.0억</td>
+            <td>변동</td>
+            <td>2027.03.19</td>
+            <td style="font-size:11px;color:var(--positive);">연장 완료</td>
         </tr>
-        
         <tr>
-            <td><span class="badge badge-danger">CRITICAL</span></td>
-            <td><strong>퇴직급여 음수 발생</strong><br><span style="font-size: 10px; color: var(--text-tertiary);">퇴직급여 12월: -2.2억</span></td>
-            <td>2025년 12월 퇴직급여 -217,815,273원 (연간 합계 대비 -1570%)</td>
-            <td style="font-size: 11px;">12월 퇴직급여 역전 원인 확인 필요 (퇴직자 정산? 전기 오류 수정? 회계 조정?)</td>
+            <td>2</td>
+            <td>IBK035 (기보 보증)</td>
+            <td class="num">0.6억</td>
+            <td>변동</td>
+            <td style="color:var(--negative);font-weight:600;">2026.05.17</td>
+            <td style="font-size:11px;color:var(--negative);">3개월 내</td>
         </tr>
-        
         <tr>
-            <td><span class="badge badge-danger">CRITICAL</span></td>
-            <td><strong>이자비용이 영업이익 초과</strong><br><span style="font-size: 10px; color: var(--text-tertiary);">ICR: 0.04x (1.0x 미만)</span></td>
-            <td>영업이익 0.21억 < 영업외비용 5.3억, ICR 0.04x</td>
-            <td style="font-size: 11px;">차입금 구조, 금리 조건, 만기 스케줄 상세 확인 필요</td>
+            <td>3</td>
+            <td>IBK043 (기보 보증)</td>
+            <td class="num" style="font-weight:700;">8.0억</td>
+            <td>변동</td>
+            <td style="color:var(--negative);font-weight:600;">2026.05.28</td>
+            <td style="font-size:11px;color:var(--negative);">차환 협의중</td>
         </tr>
-        
         <tr>
-            <td><span class="badge badge-warning">WARNING</span></td>
-            <td><strong>퇴직급여 7월 급증 (99.0배)</strong><br><span style="font-size: 10px; color: var(--text-tertiary);">퇴직급여: 6월 → 7월 99.0배</span></td>
-            <td>6월 0.00억 → 7월 0.40억 (99.0배 변동)</td>
-            <td style="font-size: 11px;">퇴직급여 7월 급변동 원인 확인 (일시적 이벤트? 구조적 변화?)</td>
+            <td>4</td>
+            <td>KB (매출채권담보)</td>
+            <td class="num">0.9억</td>
+            <td>변동</td>
+            <td>2026.08.28</td>
+            <td style="font-size:11px;"></td>
         </tr>
-        
+        <tr style="background:var(--bg-alt);">
+            <td>5</td>
+            <td>기보 유동화 SPC (사채)</td>
+            <td class="num" style="font-weight:700;">31.0억</td>
+            <td>표면이율</td>
+            <td>분할 상환</td>
+            <td style="font-size:11px;">CB 아님 확인</td>
+        </tr>
         <tr>
-            <td><span class="badge badge-warning">WARNING</span></td>
-            <td><strong>퇴직급여 12월 급감/반전 (52.9배)</strong><br><span style="font-size: 10px; color: var(--text-tertiary);">퇴직급여: 11월 → 12월 52.9배</span></td>
-            <td>11월 0.04억 → 12월 -2.2억 (52.9배 변동)</td>
-            <td style="font-size: 11px;">퇴직급여 12월 급변동 원인 확인 (일시적 이벤트? 구조적 변화?)</td>
+            <td>6</td>
+            <td>개인/VC</td>
+            <td class="num">1.3억</td>
+            <td>—</td>
+            <td>—</td>
+            <td style="font-size:11px;"></td>
         </tr>
-        
-        <tr>
-            <td><span class="badge badge-warning">WARNING</span></td>
-            <td><strong>소모품비 12월 급증 (15.5배)</strong><br><span style="font-size: 10px; color: var(--text-tertiary);">소모품비: 11월 → 12월 15.5배</span></td>
-            <td>11월 0.00억 → 12월 0.04억 (15.5배 변동)</td>
-            <td style="font-size: 11px;">소모품비 12월 급변동 원인 확인 (일시적 이벤트? 구조적 변화?)</td>
+        <tr style="border-top:2px solid var(--black);">
+            <td></td>
+            <td><strong>합계</strong></td>
+            <td class="num"><strong>51.8억</strong></td>
+            <td colspan="3" style="font-size:11px;color:var(--text-secondary);">이자비용 추정 2.9억/년 (FY25 가결산 기준)</td>
         </tr>
-        
-        <tr>
-            <td><span class="badge badge-review">REVIEW</span></td>
-            <td><strong>운반비 6월 급증 (3.0배)</strong><br><span style="font-size: 10px; color: var(--text-tertiary);">운반비: 5월 → 6월 3.0배</span></td>
-            <td>5월 0.05억 → 6월 0.14억 (3.0배 변동)</td>
-            <td style="font-size: 11px;">운반비 6월 급변동 원인 확인 (일시적 이벤트? 구조적 변화?)</td>
-        </tr>
-        
-        <tr>
-            <td><span class="badge badge-review">REVIEW</span></td>
-            <td><strong>인건비(급여+상여) 12월 편중 (Z=-3.2σ)</strong><br><span style="font-size: 10px; color: var(--text-tertiary);">인건비(급여+상여) 12월: 0.75억 (1~11월 평균의 0.4배)</span></td>
-            <td>1~11월 평균 1.8억 vs 12월 0.75억 (Z-score: -3.2σ)</td>
-            <td style="font-size: 11px;">인건비(급여+상여) 12월 결산 조정 상세 확인 — 연말 일괄 처리? 회계 기준 변경?</td>
-        </tr>
-        
-        <tr>
-            <td><span class="badge badge-review">REVIEW</span></td>
-            <td><strong>퇴직급여 12월 편중 (Z=-12.0σ)</strong><br><span style="font-size: 10px; color: var(--text-tertiary);">퇴직급여 12월: -2.2억 (1~11월 평균의 10.3배)</span></td>
-            <td>1~11월 평균 0.21억 vs 12월 -2.2억 (Z-score: -12.0σ)</td>
-            <td style="font-size: 11px;">퇴직급여 12월 결산 조정 상세 확인 — 연말 일괄 처리? 회계 기준 변경?</td>
-        </tr>
-        
     </table>
-    
 
-    
-    <h3 style="margin-top:20px;">리스크 팩트</h3>
+    <!-- 리스크 팩트 (2차 자료 업데이트) -->
+    <h3 style="margin-top:20px;">리스크 팩트 <span style="font-size:11px;color:var(--text-tertiary);font-weight:400;">— 2차 자료 반영</span></h3>
     <table>
-        <tr><th style="width:90px">심각도</th><th>팩트</th><th>인터뷰 확인</th></tr>
-        
+        <tr><th style="width:90px">심각도</th><th>팩트</th><th>2차 자료 업데이트</th></tr>
         <tr>
             <td><span class="badge badge-danger">CRITICAL</span></td>
-            <td><strong>부채비율 647%</strong></td>
-            <td>차입금 만기 구조 및 상환 계획</td>
+            <td><strong>3개월 내 만기 8.6억 vs 현금 2.65억</strong></td>
+            <td style="font-size:12px;">IBK043 8억 + IBK035 0.6억 만기 2026.05. 차환 미확정 시 유동성 위기. <strong>단일 게이트.</strong></td>
         </tr>
-        
+        <tr>
+            <td><span class="badge badge-danger">CRITICAL</span></td>
+            <td><strong>영업외수익 26.5억 — 일회성 여부 미확인</strong></td>
+            <td style="font-size:12px;">당기순이익 25.3억의 대부분. OP 4.1억만으로는 DSC 0.76x. 반복 불가 시 FY26 순손실 전환.</td>
+        </tr>
         <tr>
             <td><span class="badge badge-warning">WARNING</span></td>
-            <td><strong>ICR 0.04x — 이자보상배율 1.0x 미만</strong></td>
-            <td>차입금 조건 및 이자율 구조</td>
+            <td><strong>자본잠식 -34.8억 (FY2025)</strong></td>
+            <td style="font-size:12px;">FY24 -60.2억 → FY25 -34.8억 (25.3억 개선). 추세 양호하나 잠식 해소까지 2~3년 소요 추정.</td>
         </tr>
-        
+        <tr>
+            <td><span class="badge badge-warning">WARNING</span></td>
+            <td><del style="color:var(--text-tertiary);">ICR 0.04x</del> → <strong>ICR 1.4x (FY25)</strong></td>
+            <td style="font-size:12px;">FY24 OP 0.21억/이자 5.3억 = 0.04x → FY25 OP 4.1억/이자 2.9억 = <strong>1.4x</strong>. 커버 가능선 진입. 다만 원리금 포함 DSC는 0.76x.</td>
+        </tr>
+        <tr>
+            <td><span class="badge badge-review">REVIEW</span></td>
+            <td><strong>퇴직급여 12월 -2.2억 역전</strong></td>
+            <td style="font-size:12px;">150명→33명 구조조정 과정의 퇴직 정산으로 추정. 비반복적 항목이면 BEP에 영향 없음. 인터뷰 확인.</td>
+        </tr>
     </table>
     
 
@@ -1456,7 +1425,7 @@
     
     <div class="section-result">
         <span class="result-label">기본 시나리오</span>
-        <span>CB (전환사채) 10억</span>
+        <span>BW (신주인수권부사채) 또는 SAFE 10억</span>
         <span style="font-weight:700;">기대 배수 1.5x</span>
     </div>
 
@@ -1473,7 +1442,7 @@
             <div class="scenario-name">중립</div>
             <div style="font-size:11px;color:var(--text-secondary);">BEP 12개월 내 달성</div>
             <div class="scenario-multiple" style="color:var(--caution);">1.5x</div>
-            <div style="font-size:11px;color:var(--text-tertiary);">CB 원금+이자 15.0억</div>
+            <div style="font-size:11px;color:var(--text-tertiary);">원금+이자 15.0억</div>
         </div>
         
         <div class="deal-scenario-card" style="border-top: 3px solid var(--positive);">
@@ -1486,7 +1455,7 @@
     </div>
 
     <div style="font-size:11px;color:var(--text-tertiary);margin-bottom:16px;">
-        ※ 투자금 10억 CB 2년 만기 가정. 실제 조건은 인터뷰 후 협의. BEP 필요매출 기준 산출.
+        ※ 투자금 10억 BW/SAFE 2년 만기 가정. 실제 조건은 인터뷰 후 협의. BEP 필요매출 기준 산출.
     </div>
     
 
@@ -1650,7 +1619,7 @@
     
     <div class="card" style="margin-bottom:8px; border-left:3px solid #d4a017;">
         <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;">
-            <strong>이자비용 5.3억/년 → 금리 인하/출자전환 효과</strong>
+            <strong>이자비용 5.3억/년 → 금리 인하/차환대출 효과</strong>
             <span class="badge badge-warning" style="font-size:10px;">P2</span>
         </div>
         <table style="font-size:12px;width:100%;margin:4px 0;">
@@ -1658,7 +1627,7 @@
             <tr><td style="color:#999;">목표</td><td>금리 인하 10%p 시 4.8억/년</td></tr>
             <tr><td style="color:#999;">효과</td><td><strong>금리 인하 10%p → 연 0.53억 절감</strong></td></tr>
             <tr><td style="color:#999;">BEP</td><td>흑자 기업 — 이익률 개선 효과</td></tr>
-            <tr><td style="color:#999;">액션</td><td>차입금 금리 재협상 → 고금리 사채 출자전환 → 은행 대환대출 검토</td></tr>
+            <tr><td style="color:#999;">액션</td><td>차입금 금리 재협상 → 기보 사채 만기 차환 → 은행 대환대출 검토</td></tr>
         </table>
     </div>
     
@@ -1684,8 +1653,8 @@
     <div class="concern-card">
         <div class="concern-rank">#2</div>
         <div class="concern-perspective">BEP 관점</div>
-        <div class="concern-title">이자비용 5.3억 — 영업이익 잠식</div>
-        <div class="concern-detail">영업이익 0.21억 대비 영업외비용 5.3억으로 영업이익을 초과하여 구조적 적자 발생.</div>
+        <div class="concern-title">이자비용 5.3억 — 영업이익 대비 부담</div>
+        <div class="concern-detail">FY24 OP 0.21억 → FY25 가결산 OP 4.1억으로 개선. DSC 0.76x로 아직 1x 미만이나 구조 개선 중.</div>
     </div>
     
     
@@ -1698,7 +1667,7 @@
         <div class="milestone-targets">
             <div style="font-weight:600;margin-bottom:4px;">BEP 도달 + 구조 안정화</div>
             
-            <div>· 이자비용 5.3억/년 → 금리 인하/출자전환 효과</div>
+            <div>· 이자비용 5.3억/년 → 금리 인하/차환대출 효과</div>
             
             
             <div style="color:var(--text-tertiary);margin-top:4px;font-size:11px;">KPI: OP 마진 0% 유지</div>
@@ -1734,7 +1703,8 @@
     <div class="appendix-label">APPENDIX — RAW DATA</div>
 
     <!-- ─── 부록 A. 기업 개요 ─────────────────── -->
-    <h3>부록 A. 기업 개요</h3>
+    <details>
+    <summary style="cursor:pointer;font-size:16px;font-weight:700;margin:16px 0 12px;"><h3 style="display:inline;">부록 A. 기업 개요</h3></summary>
 
     <h4>A.1 기본정보</h4>
     <table>
@@ -1851,8 +1821,11 @@
     </div>
     
 
+    </details>
+
     <!-- ─── 부록 B. 재무 데이터 ──────────────── -->
-    <h3 class="page-break-before">부록 B. 재무 데이터</h3>
+    <details>
+    <summary style="cursor:pointer;font-size:16px;font-weight:700;margin:16px 0 12px;"><h3 style="display:inline;">부록 B. 재무 데이터</h3></summary>
 
     <h4>B.1 가결산/추정 재무상태표 (2025)</h4>
     
@@ -2447,8 +2420,11 @@
     </div>
     
 
+    </details>
+
     <!-- ─── 부록 C. 업종 분석 ─────────────────── -->
-    <h3 class="page-break-before">부록 C. 업종 분석</h3>
+    <details>
+    <summary style="cursor:pointer;font-size:16px;font-weight:700;margin:16px 0 12px;"><h3 style="display:inline;">부록 C. 업종 분석</h3></summary>
 
     
     <h4>C.1 섹터 식별 + 시장 현황</h4>
@@ -2577,6 +2553,7 @@
         
     </table>
     
+    </details>
 
     <!-- ═══════════════════════════════════════ -->
     <!-- CAPITAL FLOW ANALYZER                   -->
@@ -2608,5 +2585,5 @@
     </div>
 
 </body>
-<!-- DW-UPDATED: 2026-03-13 06:45 KST -->
+<!-- DW-UPDATED: 2026-03-16 06:37 KST -->
 </html>

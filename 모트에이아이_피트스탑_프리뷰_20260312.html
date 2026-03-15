@@ -937,6 +937,20 @@
     </style>
 </head>
 <body>
+<!-- DW-VALIDATION-START -->
+<div id="dw-validation-badge" style="position:fixed;top:10px;right:10px;z-index:9999;background:#fff;border:1px solid #ddd;border-radius:6px;padding:8px 12px;font-size:11px;box-shadow:0 2px 8px rgba(0,0,0,0.08);max-width:300px;line-height:1.4;">
+  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:4px;">
+    <span style="font-weight:600;font-size:11px;">DW 검증</span>
+    <span style="color:#999;font-size:10px;">2026-03-16 06:37</span>
+  </div>
+  <div style="color:#e65100;font-weight:600;font-size:11px;">◆ 참고 3건</div>
+  <div style="color:#795548;font-size:10px;margin-top:2px;">· 금융부채: go_nogo 42.3억(FY2025(가결산)) vs DW 25.6억(FY2024) — FY 차이</div>
+<div style="color:#795548;font-size:10px;margin-top:2px;">· OP 부호 반전: go_nogo +1.2억 vs DW -13.8억(FY2024) — FY 차이</div>
+<div style="color:#795548;font-size:10px;margin-top:2px;">· DW FY2024 — go_nogo FY2025(가결산) 사용 중 (DW FY2025 미적재)</div>
+</div>
+<style>@media print { #dw-validation-badge { position:absolute;top:10px;right:10px;font-size:9px;padding:4px 8px;box-shadow:none;border:1px solid #ccc;max-width:240px; } }</style>
+<!-- DW-VALIDATION-END -->
+
 
     <!-- ═══════════════════════════════════════ -->
     <!-- HEADER                                  -->
@@ -1788,7 +1802,8 @@
     <div class="appendix-label">APPENDIX — RAW DATA</div>
 
     <!-- ─── 부록 A. 기업 개요 ─────────────────── -->
-    <h3>부록 A. 기업 개요</h3>
+    <details>
+    <summary style="cursor:pointer;font-size:16px;font-weight:700;margin:16px 0 12px;"><h3 style="display:inline;">부록 A. 기업 개요</h3></summary>
 
     <h4>A.1 기본정보</h4>
     <table>
@@ -1899,8 +1914,11 @@
     </div>
     
 
+    </details>
+
     <!-- ─── 부록 B. 재무 데이터 ──────────────── -->
-    <h3 class="page-break-before">부록 B. 재무 데이터</h3>
+    <details>
+    <summary style="cursor:pointer;font-size:16px;font-weight:700;margin:16px 0 12px;"><h3 style="display:inline;">부록 B. 재무 데이터</h3></summary>
 
     <h4>B.1 가결산/추정 재무상태표 (2025(가))</h4>
     
@@ -2426,8 +2444,11 @@
 
     
 
+    </details>
+
     <!-- ─── 부록 C. 업종 분석 ─────────────────── -->
-    <h3 class="page-break-before">부록 C. 업종 분석</h3>
+    <details>
+    <summary style="cursor:pointer;font-size:16px;font-weight:700;margin:16px 0 12px;"><h3 style="display:inline;">부록 C. 업종 분석</h3></summary>
 
     
     <h4>C.1 섹터 식별 + 시장 현황</h4>
@@ -2556,6 +2577,7 @@
         
     </table>
     
+    </details>
 
     <!-- ═══════════════════════════════════════ -->
     <!-- CAPITAL FLOW ANALYZER                   -->
@@ -2587,5 +2609,5 @@
     </div>
 
 </body>
-<!-- DW-UPDATED: 2026-03-13 06:45 KST -->
+<!-- DW-UPDATED: 2026-03-16 06:37 KST -->
 </html>
