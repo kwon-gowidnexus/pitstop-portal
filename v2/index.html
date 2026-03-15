@@ -1297,7 +1297,7 @@ html, body {
   /* ── 데이터 로드 ───────────────────────────────────────────── */
   async function loadScreenerData() {
     try {
-      const res = await fetch('screener_data.json');
+      const res = await fetch('screener_data.json?v=' + Date.now());
       if (!res.ok) throw new Error(`HTTP ${res.status}`);
       SCREENER_DATA = await res.json();
       onDataLoaded();
