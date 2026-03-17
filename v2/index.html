@@ -117,7 +117,7 @@ html, body {
 
 /* ─── Sidebar ────────────────────────────────────────────────────── */
 .sidebar {
-  width: 340px;
+  width: 300px;
   flex-shrink: 0;
   border-right: 1px solid var(--border);
   background: var(--surface);
@@ -1414,9 +1414,7 @@ html, body {
       if (co.interview_date) {
         metaParts.push(`인터뷰 ${co.interview_date.replace(/-/g, '.')}`);
       }
-      if (isClosed) {
-        metaParts.push(`<span class="badge-closed">CLOSED</span>`);
-      }
+      const closedBadge = isClosed ? `<span class="badge-closed">CLOSED</span>` : '';
       const metaLine = metaParts.length ? metaParts.join(' · ') : '';
       // 신청일로부터 6개월 후 자료 폐기일
       const delDate = (function() {
@@ -1430,7 +1428,7 @@ html, body {
         <div class="company-item${isClosed ? ' is-closed' : ''}" data-folder="${esc(co.folder_name)}" onclick="selectCompany('${esc(co.folder_name)}')">
           <span class="ci-idx">${String(i+1).padStart(2,'0')}</span>
           <div class="ci-body">
-            <div class="ci-name"><span>${esc(co.company_name)}</span>${verdictBadge}</div>
+            <div class="ci-name"><span>${esc(co.company_name)}</span>${verdictBadge}${closedBadge}</div>
             ${metaLine ? `<div class="ci-meta">${metaLine}</div>` : ''}
             <div class="ci-meta ci-delete">자료 폐기 ${delDate}</div>
           </div>
