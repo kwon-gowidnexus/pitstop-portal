@@ -2867,7 +2867,16 @@ html, body {
       pagebreak: { mode:['avoid-all','css','legacy'] }
     };
 
-    html2pdf().set(opt).from(el).save().then(() => {
+    html2pdf().set(opt).from(el).outputPdf('blob').then(blob => {
+      /* 수동 다운로드 링크 — 브라우저가 blob UUID를 파일명으로 쓰는 문제 방지 */
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = fileName;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      setTimeout(() => URL.revokeObjectURL(url), 1000);
       document.body.removeChild(container);
       btn.textContent = origText;
       btn.disabled = false;
