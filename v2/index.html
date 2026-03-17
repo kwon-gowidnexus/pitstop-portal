@@ -2598,6 +2598,121 @@ html, body {
       '<div class="section-link-row"><button class="btn-rm" onclick="downloadImprovementReport(event,\'s2\')">경영 개선 리포트 (PDF) ↓</button></div>');
   }
 
+  /* ── 회사별 커스텀 경영 개선 리포트 (DW 검증 기반 내러티브) ── */
+  const CUSTOM_REPORTS = {
+    '인테이크': function(dateStr) {
+      const tbl = 'style="width:100%;border-collapse:collapse;margin:12px 0 20px;font-size:10.5px;"';
+      const thBg = 'style="background:#f3f4f6;"';
+      const th = 'style="text-align:left;padding:8px 12px;border:1px solid #e5e7eb;font-weight:600;"';
+      const td = 'style="padding:8px 12px;border:1px solid #e5e7eb;"';
+      const tdb = 'style="padding:8px 12px;border:1px solid #e5e7eb;font-weight:600;"';
+      const h2 = 'style="font-size:16px;font-weight:700;margin:36px 0 16px;padding-bottom:8px;border-bottom:2px solid #e0e0e0;"';
+      const note = 'style="font-size:10px;color:#555;background:#f7f8fa;padding:10px 14px;border-radius:6px;margin:12px 0 20px;line-height:1.7;"';
+      return `
+<div style="background:#f7f8fa;border-radius:8px;padding:20px 24px;margin-bottom:28px;">
+  <div style="font-size:13px;font-weight:600;margin-bottom:10px;">대표님께</div>
+  <p style="font-size:11px;color:#333;line-height:1.8;">
+    피트스탑 프로그램에 관심을 가져주셔서 감사합니다.<br><br>
+    제출해 주신 자료와 고위드 데이터웨어하우스 실거래 데이터를 종합 분석하였습니다.
+    본 리포트는 현재 재무 현황에 대한 정밀 진단과 함께, 구체적인 경영 개선 방향을 정리한 것입니다.<br><br>
+    개선이 진행되는 과정에서도 언제든 연락 주시면 함께 논의하겠습니다.
+  </p>
+</div>
+
+<div ${h2}>1. 현황 진단: 투자 유치 → M&amp;A 확장 → 흑자 전환 미달</div>
+<p style="margin-bottom:14px;">인테이크는 C라운드까지 누적 약 280억원을 유치하고, 2025년 한 해 동안 JSG(5월)&middot;INT(8월)&middot;앳홈스퀘어(11월) 3건의 M&amp;A를 실행하여 연결 매출 398억 규모까지 외형을 키웠습니다. 그러나 <strong>연결 영업이익은 -22.8억으로 흑자 전환에는 실패</strong>한 상태입니다.</p>
+<table ${tbl}>
+  <tr ${thBg}><th ${th}>구분</th><th ${th}>별도(본사)</th><th ${th}>연결</th></tr>
+  <tr><td ${td}>매출</td><td ${td}>224.4억</td><td ${td}>398.0억</td></tr>
+  <tr><td ${td}>영업이익</td><td ${tdb}>-26.7억</td><td ${tdb}>-22.8억</td></tr>
+  <tr><td ${td}>영업이익률</td><td ${td}>-11.9%</td><td ${td}>-5.7%</td></tr>
+</table>
+<p style="margin-bottom:14px;">자회사 중 JSG(+5.4억)와 코스모코퍼레이션(+0.8억)이 연 6.2억 흑자를 기여하여 연결 적자를 일부 상쇄하고 있으나, <strong>본사 -26.7억 적자가 그룹 전체를 끌어내리는 구조</strong>입니다.</p>
+<div ${note}>핵심 문제: M&amp;A를 통한 매출 확장 전략 자체는 유효하나(JSG&middot;코스모 흑자 입증), 본사의 비용 구조 개선 없이는 연결 기준으로도 BEP 달성이 불가능합니다.</div>
+
+<div ${h2}>2. 현금 소진 경고: C라운드 93억 → 현재 16.8억</div>
+<p style="margin-bottom:14px;">고위드 DW 실거래 데이터 기준, 본사 계좌 잔고 추이입니다.</p>
+<table ${tbl}>
+  <tr ${thBg}><th ${th}>시점</th><th ${th}>잔고</th><th ${th}>이벤트</th></tr>
+  <tr><td ${td}>2024.09</td><td ${td}>0.2억</td><td ${td}>C라운드 직전 — 사실상 바닥</td></tr>
+  <tr><td ${td}>2024.12</td><td ${td}>61.8억</td><td ${td}>C라운드 1차 입금</td></tr>
+  <tr><td ${td}>2025.01</td><td ${tdb}>93.8억</td><td ${td}>C라운드 유상증자 40억 → 피크</td></tr>
+  <tr><td ${td}>2025.04</td><td ${td}>50.2억</td><td ${td}>▼48억 급감 (JSG 인수 추정)</td></tr>
+  <tr><td ${td}>2025.08</td><td ${td}>30.0억</td><td ${td}>INT 인수</td></tr>
+  <tr><td ${td}>2025.11</td><td ${td}>23.9억</td><td ${td}>앳홈스퀘어 인수</td></tr>
+  <tr style="background:#fef2f2;"><td ${tdb}>2026.03</td><td ${tdb}>16.8억</td><td ${tdb}>현재 실잔고</td></tr>
+</table>
+<div ${note}>
+  <strong>연결 BS 현금 101.8억은 FY2024 말(C라운드 입금 직후) 시점의 스냅샷</strong>이며, 현재 실잔고와 85억의 괴리가 있습니다.<br>
+  C라운드 증자&middot;차입으로 약 106억 유입 후, M&amp;A 3건 + 영업적자로 <strong>1년간 약 81억 소진</strong>.<br>
+  월 영업 캐시번 약 -2억 기준 런웨이 <strong>약 8개월(2026년 11월경 소진 추정)</strong>.
+</div>
+
+<div ${h2}>3. 판관비 구조 개선: 채널 리셋 + 인건비 효율화</div>
+<p style="margin-bottom:14px;">본사 별도 기준 판관비 112.2억(매출 대비 49.7%)의 구성입니다.</p>
+<table ${tbl}>
+  <tr ${thBg}><th ${th}>비용 항목</th><th ${th}>FY2025</th><th ${th}>FY2024</th><th ${th}>YoY</th><th ${th}>매출 대비</th></tr>
+  <tr><td ${td}>광고선전비</td><td ${td}>22.1억</td><td ${td}>27.6억</td><td style="padding:8px 12px;border:1px solid #e5e7eb;color:#16a34a;font-weight:600;">-20%</td><td ${td}>9.8%</td></tr>
+  <tr style="background:#fef2f2;"><td ${tdb}>판매수수료</td><td ${tdb}>20.4억</td><td ${td}>12.9억</td><td style="padding:8px 12px;border:1px solid #e5e7eb;color:#dc2626;font-weight:600;">+58%</td><td ${tdb}>9.0%</td></tr>
+  <tr><td ${td}>급여+퇴직</td><td ${td}>22.7억</td><td ${td}>21.2억</td><td ${td}>+7%</td><td ${td}>10.1%</td></tr>
+  <tr><td ${td}>운반비</td><td ${td}>19.9억</td><td ${td}>19.3억</td><td ${td}>+3%</td><td ${td}>8.8%</td></tr>
+  <tr><td ${td}>지급수수료</td><td ${td}>6.7억</td><td ${td}>4.1억</td><td ${td}>+63%</td><td ${td}>3.0%</td></tr>
+</table>
+<p style="margin-bottom:10px;"><strong>① 판매수수료 +58%(+7.5억)가 적자 확대의 단일 최대 요인.</strong> 광고비를 5.5억 줄였으나 판매수수료가 7.5억 늘어 오히려 역효과. 외부 플랫폼 수수료 의존도 심화.</p>
+<p style="margin-bottom:10px;"><strong>개선 방향:</strong> 판매 채널별 수익성(채널 매출 - 수수료 - 물류비) 분석 → 수익 기여 낮은 채널 순차 정리 → D2C&middot;자사몰 비중 확대. 앳홈스퀘어 인수 목적(온라인 유통 내재화)과 연계하여 플랫폼 수수료 절감 가속.</p>
+<p style="margin-bottom:14px;"><strong>② 인건비(22.7억, 55명 인당 약 4,000만원)는 업계 대비 과다하지 않으나</strong>, 월 -2억 캐시번 상황에서 고정비 부담이 큼. 자회사 통합 과정에서 중복 기능 구조조정 검토 필요.</p>
+
+<div ${h2}>4. 부채: 규모 감당 가능, 잔고 여유 없음</div>
+<table ${tbl}>
+  <tr ${thBg}><th ${th}>항목</th><th ${th}>수치</th><th ${th}>평가</th></tr>
+  <tr><td ${td}>금융부채 (BS)</td><td ${td}>17.5억</td><td ${td}>단기 16.7 + 장기 0.8</td></tr>
+  <tr><td ${td}>부채총계</td><td ${td}>35.3억</td><td ${td}>비금융 17.8억 포함</td></tr>
+  <tr><td ${td}>부채비율</td><td ${td}>34%</td><td ${td}>FY22 340% → FY24 34% 급개선</td></tr>
+  <tr style="background:#fef2f2;"><td ${tdb}>현재 실잔고</td><td ${tdb}>16.8억</td><td ${tdb}>≒ 금융부채와 동일 수준</td></tr>
+</table>
+<p style="margin-bottom:14px;">금융부채 17.5억은 연결 매출 398억 대비 4.4%로 과대하지 않습니다. 그러나 <strong>현재 본사 실잔고 16.8억은 금융부채와 거의 동일 수준</strong>이어서 상환 시 운전자금이 소진됩니다.</p>
+<div ${note}>매입채무 6.9억→9.8억(+42%)으로 매출 성장률(+15%) 대비 과도하게 증가. 결제 조건 악화 또는 원재료 선구매 패턴이 운전자금을 압박하고 있습니다.</div>
+
+<div ${h2}>5. RCPS 구조와 자금 전략</div>
+<table ${tbl}>
+  <tr ${thBg}><th ${th}>라운드</th><th ${th}>투자액</th><th ${th}>유형</th><th ${th}>주요 투자자</th></tr>
+  <tr><td ${td}>Seed~A</td><td ${td}>45억</td><td ${td}>보통주</td><td ${td}>동아쏘시오, SB글로벌</td></tr>
+  <tr><td ${td}>Pre-B</td><td ${td}>19.3억</td><td ${td}>RCPS</td><td ${td}>신한CBIL</td></tr>
+  <tr><td ${td}>B</td><td ${td}>90억</td><td ${td}>RCPS</td><td ${td}>ATU, BNH</td></tr>
+  <tr><td ${td}>C</td><td ${td}>80억</td><td ${td}>RCPS</td><td ${td}>HB투자, CJ, KDB</td></tr>
+  <tr style="background:#f3f4f6;"><td ${tdb}>합계</td><td ${tdb}>~280억</td><td ${tdb} colspan="2">RCPS 189억 = 전체의 68%</td></tr>
+</table>
+<p style="margin-bottom:14px;">RCPS 189억(68%) + 대표 지분 15.4%로 경영권 취약. 추가 메자닌(CB/BW) 발행 시 캡테이블 복잡도 한계 초과, 기존 VC anti-dilution 조항 발동 리스크, 전환/상환 의무 중첩으로 <strong>현 시점 추가 메자닌 집행은 부적합</strong>합니다.</p>
+
+<div ${h2}>6. 경영 개선 제안: 고위드 운전자금 최적화</div>
+<p style="margin-bottom:14px;">현재 인테이크 그룹 5개 법인 중 고위드 사용 현황:</p>
+<table ${tbl}>
+  <tr ${thBg}><th ${th}>법인</th><th ${th}>연매출</th><th ${th}>고위드</th><th ${th}>월 카드 사용</th></tr>
+  <tr><td ${td}>인테이크 (본사)</td><td ${td}>224억</td><td style="padding:8px 12px;border:1px solid #e5e7eb;color:#16a34a;font-weight:600;">사용 중</td><td ${td}>월 4,700만</td></tr>
+  <tr><td ${td}>앳홈스퀘어</td><td ${td}>15억</td><td style="padding:8px 12px;border:1px solid #e5e7eb;color:#16a34a;font-weight:600;">사용 중</td><td ${td}>월 4,600만</td></tr>
+  <tr style="background:#fef2f2;"><td ${td}>JSG</td><td ${tdb}>112억</td><td style="padding:8px 12px;border:1px solid #e5e7eb;color:#dc2626;">미가입</td><td ${td}>—</td></tr>
+  <tr style="background:#fef2f2;"><td ${td}>코스모코퍼레이션</td><td ${td}>44억</td><td style="padding:8px 12px;border:1px solid #e5e7eb;color:#dc2626;">미가입</td><td ${td}>—</td></tr>
+  <tr style="background:#fef2f2;"><td ${td}>INT</td><td ${td}>3.2억</td><td style="padding:8px 12px;border:1px solid #e5e7eb;color:#dc2626;">미가입</td><td ${td}>—</td></tr>
+</table>
+<div style="margin-bottom:16px;">
+  <p style="margin-bottom:8px;"><strong>① 전 자회사 고위드 온보딩</strong> — JSG&middot;코스모&middot;INT 가입으로 그룹 전체 자금 흐름 실시간 모니터링. 특히 JSG(112억 매출, 185명)의 법인카드 전환 임팩트 큼.</p>
+  <p style="margin-bottom:8px;"><strong>② 그룹 통합 운전자본 관리</strong> — 본사 접근 가능 현금(16.8억)과 자회사 분산 현금의 가시성 확보. 매입&middot;매출 채권 회전일수, 월별 캐시번 일원화.</p>
+  <p style="margin-bottom:8px;"><strong>③ BEP 모니터링</strong> — 판매수수료, 채널별 수익성, 인건비를 월단위 추적. 목표: 6개월 내 월 캐시번 -2억 → -1억 이하, 런웨이 16개월 이상 확보.</p>
+</div>
+
+<div ${h2}>7. 향후 절차</div>
+<p style="margin-bottom:14px;">상기 개선 과제에 대한 대표 인터뷰를 통해 아래 사항을 확인합니다.</p>
+<table ${tbl}>
+  <tr ${thBg}><th ${th}>#</th><th ${th}>확인 사항</th><th ${th}>중요도</th></tr>
+  <tr><td ${td}>1</td><td ${td}>판매수수료 20.4억의 채널별 내역 — 채널별 순이익률</td><td style="padding:8px 12px;border:1px solid #e5e7eb;color:#dc2626;font-weight:600;">CRITICAL</td></tr>
+  <tr><td ${td}>2</td><td ${td}>자회사별 실제 현금 보유 현황 — 본사 접근 가능 그룹 현금 규모</td><td style="padding:8px 12px;border:1px solid #e5e7eb;color:#dc2626;font-weight:600;">CRITICAL</td></tr>
+  <tr><td ${td}>3</td><td ${td}>RCPS 45% 전환/상환 조건 — 풋옵션 트리거, 상환 청구 시점</td><td style="padding:8px 12px;border:1px solid #e5e7eb;color:#dc2626;font-weight:600;">CRITICAL</td></tr>
+  <tr><td ${td}>4</td><td ${td}>6개월 BEP 달성 구체 시나리오 — 비용 절감 항목별 금액&middot;타임라인</td><td style="padding:8px 12px;border:1px solid #e5e7eb;color:#ea580c;font-weight:600;">WARNING</td></tr>
+  <tr><td ${td}>5</td><td ${td}>JSG&middot;코스모 고위드 온보딩 의향 — 그룹 통합 자금관리 도입 가능 여부</td><td style="padding:8px 12px;border:1px solid #e5e7eb;color:#ea580c;font-weight:600;">WARNING</td></tr>
+</table>`;
+    }
+  };
+
   /* ── 경영 개선 리포트 PDF 다운로드 (동적 — 현재 선택 회사 기반) ── */
   window.downloadImprovementReport = function(event, source) {
     if (typeof html2pdf === 'undefined') {
@@ -2778,8 +2893,31 @@ html, body {
         s2InterviewNeeds.map(s => '<li style="margin-bottom:4px;">'+esc(s)+'</li>').join('') + '</ul></div>';
     }
 
+    /* 커스텀 리포트가 있으면 사용, 없으면 기존 자동생성 */
+    const customReportFn = CUSTOM_REPORTS[companyName];
     const container = document.createElement('div');
-    container.innerHTML = `
+
+    if (customReportFn) {
+      /* ── 커스텀 내러티브 리포트 ── */
+      const customBody = customReportFn(dateStr);
+      container.innerHTML = `
+<div id="pdf-report" style="width:210mm; padding:20mm 18mm; font-family:'Noto Sans KR',sans-serif; color:#1a1a1a; font-size:11px; line-height:1.8; background:#fff;">
+  <div style="text-align:center; padding:60px 0 36px; border-bottom:2px solid #1a1a1a; margin-bottom:28px;">
+    <div style="font-size:10px; color:#888; letter-spacing:0.15em; margin-bottom:10px;">GOWID NEXUS &middot; PIT-STOP</div>
+    <div style="font-size:24px; font-weight:700; margin-bottom:8px;">경영 개선 리포트</div>
+    <div style="font-size:15px; color:#555; margin-bottom:20px;">${esc(fullName)}</div>
+    <div style="font-size:10px; color:#999;">${yy}년 ${parseInt(mm)}월 ${parseInt(dd)}일</div>
+  </div>
+  ${customBody}
+  <div style="margin-top:48px; padding-top:14px; border-top:1px solid #e0e0e0; font-size:9px; color:#999; text-align:center;">
+    GOWID NEXUS &middot; Pit-Stop 경영 개선 리포트 &middot; ${dateStr}<br>
+    본 리포트는 피트스탑 심사 결과를 바탕으로 작성되었으며, 투자 권유 문서가 아닙니다.<br>
+    문의: 고위드넥서스 피트스탑팀
+  </div>
+</div>`;
+    } else {
+      /* ── 기존 자동생성 리포트 (폴백) ── */
+      container.innerHTML = `
 <div id="pdf-report" style="width:210mm; padding:20mm 18mm; font-family:'Noto Sans KR',sans-serif; color:#1a1a1a; font-size:11px; line-height:1.8; background:#fff;">
 
   <div style="text-align:center; padding:60px 0 36px; border-bottom:2px solid #1a1a1a; margin-bottom:28px;">
@@ -2854,6 +2992,7 @@ html, body {
   </div>
 
 </div>`;
+    }
 
     document.body.appendChild(container);
     const el = document.getElementById('pdf-report');
