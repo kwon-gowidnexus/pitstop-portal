@@ -2710,6 +2710,111 @@ html, body {
   <tr><td ${td}>4</td><td ${td}>6개월 BEP 달성 구체 시나리오 — 비용 절감 항목별 금액&middot;타임라인</td><td style="padding:8px 12px;border:1px solid #e5e7eb;color:#ea580c;font-weight:600;">WARNING</td></tr>
   <tr><td ${td}>5</td><td ${td}>JSG&middot;코스모 고위드 온보딩 의향 — 그룹 통합 자금관리 도입 가능 여부</td><td style="padding:8px 12px;border:1px solid #e5e7eb;color:#ea580c;font-weight:600;">WARNING</td></tr>
 </table>`;
+    },
+
+    '메뉴잇': function(dateStr) {
+      const tbl = 'style="width:100%;border-collapse:collapse;margin:12px 0 20px;font-size:10.5px;"';
+      const thBg = 'style="background:#f3f4f6;"';
+      const th = 'style="text-align:left;padding:8px 12px;border:1px solid #e5e7eb;font-weight:600;"';
+      const td = 'style="padding:8px 12px;border:1px solid #e5e7eb;"';
+      const tdb = 'style="padding:8px 12px;border:1px solid #e5e7eb;font-weight:600;"';
+      const h2 = 'style="font-size:16px;font-weight:700;margin:36px 0 16px;padding-bottom:8px;border-bottom:2px solid #e0e0e0;"';
+      const note = 'style="font-size:10px;color:#555;background:#f7f8fa;padding:10px 14px;border-radius:6px;margin:12px 0 20px;line-height:1.7;"';
+      return `
+<div style="margin-bottom:24px;">
+  <div style="font-size:13px;color:#555;">고위드넥서스 &middot; 피트스탑 경영개선 리포트</div>
+  <div style="font-size:22px;font-weight:700;margin:6px 0 2px;">주식회사 메뉴잇</div>
+  <div style="font-size:11px;color:#888;">대표: 박주영 | 태블릿 스마트오더 B2B SaaS | ${dateStr} 기준</div>
+</div>
+
+<div ${h2}>1. 현황 진단</div>
+<p>메뉴잇은 태블릿 기반 스마트오더 B2B SaaS 기업으로, SK쉴더스 단독납품(2024.10~)을 통해 매출이 안정 궤도에 올랐습니다. FY2025 가결산 기준 매출 136.9억, 영업이익 +4.1억으로 영업 흑자 전환에 성공했으며, 이는 FY2024 영업손실 △46.2억에서 극적 턴어라운드입니다.</p>
+<p>그러나 <strong>금융부채 51.8억</strong>(사채 31억 + 은행차입 19.5억 + 개인차입 1.3억)이 OP 대비 과중하고, 자본잠식 상태(자본 △34.8억)가 지속되고 있어 재무 안정화가 핵심 과제입니다.</p>
+<table ${tbl}>
+  <tr ${thBg}><th ${th}>구분</th><th ${th}>FY2024</th><th ${th}>FY2025(가결산)</th><th ${th}>증감</th></tr>
+  <tr><td ${tdb}>매출</td><td ${td}>107.4억</td><td ${td}>136.9억</td><td style="padding:8px 12px;border:1px solid #e5e7eb;color:#2563eb;font-weight:600;">+27.5%</td></tr>
+  <tr><td ${tdb}>영업이익</td><td ${td}>△46.2억</td><td ${td}>+4.1억</td><td style="padding:8px 12px;border:1px solid #e5e7eb;color:#16a34a;font-weight:600;">흑자전환</td></tr>
+  <tr><td ${tdb}>당기순이익</td><td ${td}>△54.0억</td><td ${td}>△3.1억</td><td style="padding:8px 12px;border:1px solid #e5e7eb;color:#2563eb;font-weight:600;">개선</td></tr>
+  <tr><td ${tdb}>부채총계</td><td ${td}>71.2억</td><td ${td}>80.4억</td><td ${td}>+12.9%</td></tr>
+  <tr><td ${tdb}>자본총계</td><td ${td}>△31.8억</td><td ${td}>△34.8억</td><td style="padding:8px 12px;border:1px solid #e5e7eb;color:#dc2626;">잠식 지속</td></tr>
+</table>
+<div ${note}>주: FY2025는 가결산 기준이며 감사조정에 따라 변동 가능</div>
+
+<div ${h2}>2. 현금 소진 추이 — DW 실잔고 기반</div>
+<p>DW Capital Flow 기준, 메뉴잇의 현금흐름은 <strong>영업 CF +47.1억</strong>(12개월)으로 현금창출력은 확보된 상태이나, 잔고 자체는 매우 타이트합니다. 현재 잔고 2.2억, 12개월간 변동폭 0~13.7억으로 <strong>운전자금 버퍼가 극히 얇습니다</strong>.</p>
+<table ${tbl}>
+  <tr ${thBg}><th ${th}>DW 지표</th><th ${th}>수치</th><th ${th}>비고</th></tr>
+  <tr><td ${tdb}>CF 매출 (12M)</td><td ${td}>155.4억</td><td ${td}>입금 기준, BS 매출 136.9억과 차이는 매출채권 회수 시차</td></tr>
+  <tr><td ${tdb}>영업 CF (12M)</td><td ${td}>+47.1억</td><td ${td}>현금 기반 영업수지 흑자</td></tr>
+  <tr><td ${tdb}>현재 잔고</td><td ${td}>2.2억</td><td style="padding:8px 12px;border:1px solid #e5e7eb;color:#dc2626;font-weight:600;">버퍼 극히 부족</td></tr>
+  <tr><td ${tdb}>12M 잔고 변동</td><td ${td}>0 ~ 13.7억</td><td ${td}>월말 기준, 큰 변동폭 → 결제 사이클 의존</td></tr>
+  <tr><td ${tdb}>Burn Rate</td><td ${td}>N/A (흑자)</td><td ${td}>영업흑자이나 부채 원리금 상환 부담으로 실질 여유 없음</td></tr>
+</table>
+<div ${note}>DW 잔고는 매일 업데이트되는 실시간 데이터이며, BS 현금(FY2025: 10.2억)과는 시점 차이가 있습니다. 잔고가 0원까지 떨어진 이력이 있어 결제일/입금일 미스매치에 따른 일시적 유동성 위기 가능성이 존재합니다.</div>
+
+<div ${h2}>3. 비용 구조 개선 — 판관비 45% 삭감의 명암</div>
+<p>메뉴잇은 FY2024→FY2025 판관비를 <strong>76.3억 → 42.2억(-44.6%)</strong>으로 대폭 줄였습니다. 이는 인원 구조조정(43→33명, △23%)과 마케팅 축소가 주요 동인입니다. 그러나 추가 삭감 여력은 제한적이며, 매출 확대를 통한 수익성 개선이 핵심입니다.</p>
+<table ${tbl}>
+  <tr ${thBg}><th ${th}>비용 항목</th><th ${th}>FY2024</th><th ${th}>FY2025</th><th ${th}>매출 대비</th><th ${th}>평가</th></tr>
+  <tr><td ${tdb}>상품매입</td><td ${td}>73.1억</td><td ${td}>72.1억</td><td ${td}>52.7%</td><td ${td}>하드웨어 원가, 개선 여지 제한</td></tr>
+  <tr><td ${tdb}>급여</td><td ${td}>23.6억</td><td ${td}>17.3억</td><td ${td}>12.6%</td><td style="padding:8px 12px;border:1px solid #e5e7eb;color:#16a34a;">△27% 구조조정 반영</td></tr>
+  <tr><td ${tdb}>감가상각</td><td ${td}>5.6억</td><td ${td}>4.1억</td><td ${td}>3.0%</td><td ${td}>리스 자산 감소</td></tr>
+  <tr><td ${tdb}>광고선전비</td><td ${td}>4.1억</td><td ${td}>1.3억</td><td ${td}>0.9%</td><td style="padding:8px 12px;border:1px solid #e5e7eb;color:#16a34a;">△69% 축소</td></tr>
+  <tr><td ${tdb}>고정비 합계</td><td ${td}>-</td><td ${td}>29.8억</td><td ${td}>21.8%</td><td ${td}>급여+감가+임차+보험 등</td></tr>
+</table>
+<p><strong>핵심 과제:</strong> 상품매입비 72.1억(매출 대비 52.7%)이 마진을 압박하는 최대 요인입니다. 하드웨어 조달 다변화, SK쉴더스 외 추가 B2B 채널 확보를 통한 볼륨 디스카운트 확보가 중장기 마진 개선의 열쇠입니다.</p>
+<div ${note}>판관비 삭감은 한계에 도달한 상태입니다. FY2024 대비 급여 △6.3억, 광고선전비 △2.8억 등 총 △34.1억 절감은 이미 실현되었으며, 추가 절감은 사업역량 훼손 리스크가 있습니다. 향후 OP 확대는 매출 레버리지에 의존해야 합니다.</div>
+
+<div ${h2}>4. 부채 상세 — DSC 0.76x, 원리금 상환 부담</div>
+<p>금융부채 51.8억은 <strong>영업이익 4.1억 대비 과중</strong>합니다. 부채상환비율(DSC) 0.76x로, 영업이익만으로는 원리금 상환이 불가능한 구조입니다. 다만 CF 영업수지 +47.1억은 현금 기준으로는 상환 여력이 있음을 보여주며, 이는 매출채권 회수가 정상적으로 이루어지는 한 유지 가능합니다.</p>
+<table ${tbl}>
+  <tr ${thBg}><th ${th}>구분</th><th ${th}>금액</th><th ${th}>금리</th><th ${th}>만기</th><th ${th}>비고</th></tr>
+  <tr><td ${tdb}>사채</td><td ${td}>31.0억</td><td ${td}>미확인</td><td ${td}>미확인</td><td style="padding:8px 12px;border:1px solid #e5e7eb;color:#dc2626;font-weight:600;">CB 아님 확인, 성격 미상</td></tr>
+  <tr><td ${tdb}>IBK 시설대출 (IBK043)</td><td ${td}>8.0억</td><td ${td}>-</td><td ${td}>2026.05.28</td><td style="padding:8px 12px;border:1px solid #e5e7eb;color:#ea580c;font-weight:600;">차환 임박 (2개월 내)</td></tr>
+  <tr><td ${tdb}>하나은행 매출채권담보</td><td ${td}>9.5억</td><td ${td}>-</td><td ${td}>-</td><td ${td}>매출채권 회전 연동</td></tr>
+  <tr><td ${tdb}>하나은행 대출</td><td ${td}>2.0억</td><td ${td}>-</td><td ${td}>-</td><td ${td}>일반 차입</td></tr>
+  <tr><td ${tdb}>개인차입금</td><td ${td}>1.3억</td><td ${td}>-</td><td ${td}>-</td><td ${td}>대표 또는 관계인 추정</td></tr>
+  <tr><td ${tdb}><strong>합계</strong></td><td ${tdb}>51.8억</td><td ${td}>-</td><td ${td}>-</td><td ${td}>OP 4.1억 대비 과중</td></tr>
+</table>
+<div ${note}><strong>IBK043 8억 차환(2026.05.28):</strong> 향후 2개월 내 차환이 필요한 단일 최대 리스크 이벤트입니다. 차환 실패 시 즉시 유동성 위기로 전이될 수 있으며, 선제적 차환 준비가 필요합니다. 사채 31억은 CB(전환사채)가 아님이 확인되었으나, 상환 조건/만기가 미확인 상태로 추가 확인이 필요합니다.</div>
+
+<div ${h2}>5. 투자 구조 — 자본잠식 속 잔여 투자자산</div>
+<p>메뉴잇은 <strong>자본잠식(△34.8억)</strong> 상태입니다. 자본금 0.4억 + 자본잉여금 46.0억 대비 결손금 △81.2억으로, 누적 결손이 자본을 완전 초과했습니다. 추가 메자닌(전환사채/BW 등) 집행은 현 단계에서 비현실적입니다.</p>
+<table ${tbl}>
+  <tr ${thBg}><th ${th}>항목</th><th ${th}>FY2024</th><th ${th}>FY2025</th><th ${th}>비고</th></tr>
+  <tr><td ${tdb}>자본금</td><td ${td}>0.4억</td><td ${td}>0.4억</td><td ${td}>변동 없음</td></tr>
+  <tr><td ${tdb}>자본잉여금</td><td ${td}>46.0억</td><td ${td}>46.0억</td><td ${td}>-</td></tr>
+  <tr><td ${tdb}>결손금</td><td ${td}>△78.2억</td><td ${td}>△81.2억</td><td style="padding:8px 12px;border:1px solid #e5e7eb;color:#dc2626;">잠식 심화</td></tr>
+  <tr><td ${tdb}>자본총계</td><td ${td}>△31.8억</td><td ${td}>△34.8억</td><td style="padding:8px 12px;border:1px solid #e5e7eb;color:#dc2626;">완전잠식</td></tr>
+</table>
+<div ${note}><strong>메자닌 적합성:</strong> 자본잠식 상태에서 추가 메자닌 투자는 기존 투자자와의 이해 충돌, 전환가 산정 난항 등으로 실행이 어렵습니다. 피트스탑 딜(메자닌) 집행의 전제는 DSC &gt; 1.0x 이상, 즉 OP가 15~20억 수준으로 안정화된 이후입니다. 현재는 경영 최적화를 통해 OP를 끌어올리는 단계에 집중해야 합니다.</div>
+
+<div ${h2}>6. 고위드 운전자금 최적화 — Fuel 연결</div>
+<p>메뉴잇은 이미 고위드 법인카드를 12개월간 16.9억 사용 중이며, <strong>피트스탑 신청서에서 Fuel 검토 의향을 명시</strong>했습니다. SK쉴더스 대규모 B2B 납품 구조상 매출채권 회수 사이클이 길어, 운전자금 타이밍 최적화가 핵심입니다.</p>
+<table ${tbl}>
+  <tr ${thBg}><th ${th}>항목</th><th ${th}>현황</th><th ${th}>비고</th></tr>
+  <tr><td ${tdb}>고위드 카드 사용</td><td ${td}>12개월 16.9억</td><td ${td}>이미 활발 사용 중</td></tr>
+  <tr><td ${tdb}>타사 법인카드</td><td ${td}>없음</td><td ${td}>고위드 단독</td></tr>
+  <tr><td ${tdb}>Fuel 의향</td><td style="padding:8px 12px;border:1px solid #e5e7eb;color:#16a34a;font-weight:600;">명시적 검토 의향</td><td ${td}>피트스탑 신청서 기재</td></tr>
+  <tr><td ${tdb}>현재 잔고</td><td ${td}>2.2억</td><td style="padding:8px 12px;border:1px solid #e5e7eb;color:#dc2626;">극히 부족</td></tr>
+</table>
+<p><strong>최적화 방향:</strong></p>
+<ul style="padding-left:20px;font-size:11px;line-height:1.8;">
+  <li><strong>Fuel 도입:</strong> SK쉴더스 매출채권 회수 전 운전자금 갭을 Fuel로 브릿지 → 결제일/입금일 미스매치 해소</li>
+  <li><strong>카드 한도 최적화:</strong> 현재 사용 패턴(월 1.4억) 기반으로 한도 재산정, 비용 집행 효율화</li>
+  <li><strong>IBK 차환 지원:</strong> 2026.05.28 만기 8억 차환 성공 여부가 단기 생존의 관건 → Fuel+카드로 유동성 보완</li>
+</ul>
+
+<div ${h2}>7. 향후 절차 — 인터뷰 시 확인 사항</div>
+<table ${tbl}>
+  <tr ${thBg}><th ${th}>#</th><th ${th}>확인 사항</th><th ${th}>등급</th></tr>
+  <tr><td ${td}>1</td><td ${td}>사채 31억 상세 — 발행자, 금리, 만기, 상환 조건, CB 아님 재확인</td><td style="padding:8px 12px;border:1px solid #e5e7eb;color:#dc2626;font-weight:600;">CRITICAL</td></tr>
+  <tr><td ${td}>2</td><td ${td}>IBK043 8억 차환 계획 — 은행 접촉 현황, 차환 조건, 대안 시나리오</td><td style="padding:8px 12px;border:1px solid #e5e7eb;color:#dc2626;font-weight:600;">CRITICAL</td></tr>
+  <tr><td ${td}>3</td><td ${td}>SK쉴더스 계약 조건 — 납품 규모, 결제 사이클, 계약 갱신 시기</td><td style="padding:8px 12px;border:1px solid #e5e7eb;color:#ea580c;font-weight:600;">WARNING</td></tr>
+  <tr><td ${td}>4</td><td ${td}>Fuel 도입 구체 니즈 — 필요 규모, 희망 시기, 매출채권 회수 주기</td><td style="padding:8px 12px;border:1px solid #e5e7eb;color:#ea580c;font-weight:600;">WARNING</td></tr>
+  <tr><td ${td}>5</td><td ${td}>자본잠식 해소 계획 — 유상증자, 이익잉여금 축적, 또는 기타 방안</td><td style="padding:8px 12px;border:1px solid #e5e7eb;color:#ea580c;font-weight:600;">WARNING</td></tr>
+  <tr><td ${td}>6</td><td ${td}>FY2026 매출 파이프라인 — SK쉴더스 외 추가 B2B 채널 확보 현황</td><td ${td}>REVIEW</td></tr>
+</table>`;
     }
   };
 
