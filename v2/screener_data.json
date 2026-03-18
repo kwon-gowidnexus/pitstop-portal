@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-03-18T01:43:45.509230",
+  "generated_at": "2026-03-18T01:47:25.618682",
   "data_source": "고위드 DW (BigQuery) + Metabase RM",
   "criteria_definitions": {
     "ceo_awareness": "대표의 객관적 인식 + 변화 의지 (인터뷰 필수)",
@@ -23,6 +23,7 @@
       "folder_name": "마진맥스",
       "corp_id": 8268602651,
       "cf_url": "https://capital-flow-rm.vercel.app/company/8268602651",
+      "status": "closed",
       "verdict_class": "go",
       "ceo_name": "채지훈",
       "applicant_name": "Been Bin",
@@ -100,14 +101,14 @@
           "summary": "Red 0개. 부채 0, 흑자, 최적 타겟. 설립 3년차.",
           "interview_required": false
         }
-      },
-      "status": "closed"
+      }
     },
     {
       "company_name": "인테이크 주식회사",
       "folder_name": "인테이크",
       "corp_id": 1198668123,
       "cf_url": "https://capital-flow-rm.vercel.app/company/1198668123",
+      "status": "closed",
       "verdict_class": "yellow",
       "ceo_name": "한녹엽",
       "applicant_name": "한녹엽",
@@ -184,14 +185,14 @@
           "summary": "Red 1개. 부채 낮음, 매출 대형, 6개월 BEP 미션",
           "interview_required": false
         }
-      },
-      "status": "closed"
+      }
     },
     {
       "company_name": "주식회사 웰로",
       "folder_name": "웰로",
       "corp_id": 7058602126,
       "cf_url": "https://capital-flow-rm.vercel.app/company/7058602126",
+      "status": "closed",
       "verdict_class": "yellow",
       "ceo_name": "김유리안나",
       "applicant_name": "김유리안나Anna",
@@ -268,14 +269,14 @@
           "summary": "Red 1개. 조건부 진행 가능. 현금 75억으로 부채 커버 가능. 캐시번이 핵심 리스크.",
           "interview_required": false
         }
-      },
-      "status": "closed"
+      }
     },
     {
       "company_name": "주식회사 온오프믹스",
       "folder_name": "온오프믹스",
       "corp_id": 2218134988,
       "cf_url": "https://capital-flow-rm.vercel.app/company/2218134988",
+      "status": "closed",
       "verdict_class": "conditional",
       "ceo_name": "양준철",
       "applicant_name": "JoonCheol Yang",
@@ -355,8 +356,7 @@
           "summary": "Red 2개. 금융부채 12.0억(DW 장기차입금 5.0억 반영). 부채/매출 68%(Red). KIMST 수주 확정 시 재평가.",
           "interview_required": false
         }
-      },
-      "status": "closed"
+      }
     },
     {
       "company_name": "(주)와이오엘오",
@@ -448,6 +448,7 @@
       "folder_name": "모트에이아이",
       "corp_id": 1838600202,
       "cf_url": "https://capital-flow-rm.vercel.app/company/1838600202",
+      "status": "closed",
       "verdict_class": "conditional",
       "ceo_name": "천영록",
       "applicant_name": "Jayden",
@@ -527,8 +528,7 @@
           "summary": "Red 3개. 진행 불가 판정. CB 22.1억 출자전환 선행 필수.",
           "interview_required": false
         }
-      },
-      "status": "closed"
+      }
     },
     {
       "company_name": "주식회사 메뉴잇",
