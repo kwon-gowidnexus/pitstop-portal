@@ -117,7 +117,7 @@ html, body {
 
 /* ─── Sidebar ────────────────────────────────────────────────────── */
 .sidebar {
-  width: 300px;
+  width: 340px;
   flex-shrink: 0;
   border-right: 1px solid var(--border);
   background: var(--surface);
@@ -193,15 +193,15 @@ html, body {
 .ci-name {
   display: flex;
   align-items: center;
-  gap: 5px;
+  gap: 4px;
   font-size: 12px;
   font-weight: 500;
   color: var(--text-pri);
   margin-bottom: 1px;
-  flex-wrap: wrap;
+  white-space: nowrap;
 }
 .ci-name > span:first-child {
-  min-width: 0;
+  flex-shrink: 0;
 }
 
 .ci-meta {
@@ -1440,7 +1440,7 @@ html, body {
         <div class="company-item${isClosed ? ' is-closed' : ''}" data-folder="${esc(co.folder_name)}" onclick="selectCompany('${esc(co.folder_name)}')">
           <span class="ci-idx">${String(i+1).padStart(2,'0')}</span>
           <div class="ci-body">
-            <div class="ci-name"><span>${esc(co.company_name)}</span>${verdictBadge}${closedBadge}</div>
+            <div class="ci-name"><span>${esc(co.company_name.replace(/^(주식회사\s*|\(주\))/, ''))}</span>${verdictBadge}${closedBadge}</div>
             ${metaLine ? `<div class="ci-meta">${metaLine}</div>` : ''}
             <div class="ci-meta ci-delete">자료 폐기 ${delDate}</div>
           </div>
