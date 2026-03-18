@@ -198,9 +198,12 @@ html, body {
   font-weight: 500;
   color: var(--text-pri);
   white-space: nowrap;
+  margin-bottom: 1px;
+}
+.ci-name > span:first-child {
   overflow: hidden;
   text-overflow: ellipsis;
-  margin-bottom: 1px;
+  min-width: 0;
 }
 
 .ci-meta {
@@ -1339,8 +1342,8 @@ html, body {
 
       if (isToday) {
         statusEl.innerHTML = '<span style="color:#2e7d32;">●</span> DW 최신화 완료';
-      } else if (daysDiff <= 1) {
-        statusEl.innerHTML = '<span style="color:#e65100;">◆</span> generated ' + genDate;
+      } else if (daysDiff === 1) {
+        statusEl.innerHTML = '<span style="color:#e65100;">◆</span> 어제 갱신 (' + genDate + ')';
       } else {
         statusEl.innerHTML = '<span style="color:#d32f2f;">▲</span> ' + daysDiff + '일 전 갱신 (' + genDate + ')';
       }
