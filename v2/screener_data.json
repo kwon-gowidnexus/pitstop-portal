@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-03-18T12:00:59.526963",
+  "generated_at": "2026-03-19T06:01:05.011605",
   "data_source": "고위드 DW (BigQuery) + Metabase RM",
   "criteria_definitions": {
     "ceo_awareness": "대표의 객관적 인식 + 변화 의지 (인터뷰 필수)",
@@ -207,6 +207,7 @@
       "corp_id": 7058602126,
       "cf_url": "https://capital-flow-rm.vercel.app/company/7058602126",
       "survey_timestamp": "2026-02-09T21:42:20",
+      "status": "closed",
       "verdict_class": "yellow",
       "ceo_name": "김유리안나",
       "applicant_name": "김유리안나Anna",
@@ -289,8 +290,7 @@
           "summary": "Red 1개. 조건부 진행 가능. 현금 75억으로 부채 커버 가능. 캐시번이 핵심 리스크.",
           "interview_required": false
         }
-      },
-      "status": "closed"
+      }
     },
     {
       "company_name": "주식회사 온오프믹스",
@@ -298,6 +298,7 @@
       "corp_id": 2218134988,
       "cf_url": "https://capital-flow-rm.vercel.app/company/2218134988",
       "survey_timestamp": "2026-02-12T13:39:44",
+      "status": "closed",
       "verdict_class": "conditional",
       "ceo_name": "양준철",
       "applicant_name": "JoonCheol Yang",
@@ -383,8 +384,7 @@
           "summary": "Red 2개. 금융부채 12.0억(DW 장기차입금 5.0억 반영). 부채/매출 68%(Red). KIMST 수주 확정 시 재평가.",
           "interview_required": false
         }
-      },
-      "status": "closed"
+      }
     },
     {
       "company_name": "(주)와이오엘오",
@@ -485,6 +485,7 @@
       "corp_id": 1838600202,
       "cf_url": "https://capital-flow-rm.vercel.app/company/1838600202",
       "survey_timestamp": "2026-02-10T12:48:17",
+      "status": "closed",
       "verdict_class": "conditional",
       "ceo_name": "천영록",
       "applicant_name": "Jayden",
@@ -570,8 +571,7 @@
           "summary": "Red 3개. 진행 불가 판정. CB 22.1억 출자전환 선행 필수.",
           "interview_required": false
         }
-      },
-      "status": "closed"
+      }
     },
     {
       "company_name": "주식회사 메뉴잇",
