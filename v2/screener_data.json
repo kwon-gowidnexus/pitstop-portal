@@ -289,7 +289,8 @@
           "summary": "Red 1개. 조건부 진행 가능. 현금 75억으로 부채 커버 가능. 캐시번이 핵심 리스크.",
           "interview_required": false
         }
-      }
+      },
+      "status": "closed"
     },
     {
       "company_name": "주식회사 온오프믹스",
@@ -382,7 +383,8 @@
           "summary": "Red 2개. 금융부채 12.0억(DW 장기차입금 5.0억 반영). 부채/매출 68%(Red). KIMST 수주 확정 시 재평가.",
           "interview_required": false
         }
-      }
+      },
+      "status": "closed"
     },
     {
       "company_name": "(주)와이오엘오",
@@ -568,7 +570,8 @@
           "summary": "Red 3개. 진행 불가 판정. CB 22.1억 출자전환 선행 필수.",
           "interview_required": false
         }
-      }
+      },
+      "status": "closed"
     },
     {
       "company_name": "주식회사 메뉴잇",
