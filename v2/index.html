@@ -117,7 +117,7 @@ html, body {
 
 /* ─── Sidebar ────────────────────────────────────────────────────── */
 .sidebar {
-  width: 340px;
+  width: 240px;
   flex-shrink: 0;
   border-right: 1px solid var(--border);
   background: var(--surface);
@@ -191,84 +191,14 @@ html, body {
 .ci-body { flex: 1; min-width: 0; }
 
 .ci-name {
-  display: flex;
-  align-items: center;
-  gap: 4px;
   font-size: 12px;
   font-weight: 500;
   color: var(--text-pri);
-  margin-bottom: 1px;
-  white-space: nowrap;
-}
-.ci-name > span:first-child {
-  flex-shrink: 0;
-}
-
-.ci-meta {
-  font-size: 10px;
-  color: var(--text-dim);
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  line-height: 1.4;
+  margin-bottom: 2px;
 }
-
-.ci-ts {
-  flex-shrink: 0;
-  text-align: right;
-  font-family: var(--mono);
-  line-height: 1.5;
-}
-
-.ci-ts-date { font-size: 10px; color: var(--text-sec); }
-.ci-ts-time { font-size: 9px; color: var(--text-dim); }
-
-.badge-closed {
-  display: inline-block;
-  font-family: var(--mono);
-  font-size: 7px;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  padding: 1px 5px;
-  border-radius: 2px;
-  background: #dc2626;
-  color: #fff;
-  border: 1px solid #b91c1c;
-  font-weight: 700;
-  flex-shrink: 0;
-}
-
-.ci-verdict {
-  display: inline-flex;
-  align-items: center;
-  gap: 3px;
-  font-family: var(--mono);
-  font-size: 7px;
-  letter-spacing: 0.04em;
-  padding: 1px 5px;
-  border-radius: 2px;
-  font-weight: 600;
-  flex-shrink: 0;
-}
-
-.ci-verdict .dot { width: 5px; height: 5px; border-radius: 50%; flex-shrink: 0; }
-
-.ci-verdict.v-go        { background: var(--bg-green);   color: var(--c-green); }
-.ci-verdict.v-go .dot   { background: var(--c-green); }
-.ci-verdict.v-yellow        { background: var(--bg-yellow);  color: var(--c-yellow); }
-.ci-verdict.v-yellow .dot   { background: var(--c-yellow); }
-.ci-verdict.v-conditional        { background: var(--bg-orange);  color: var(--c-orange); }
-.ci-verdict.v-conditional .dot   { background: var(--c-orange); }
-.ci-verdict.v-nogo        { background: var(--bg-red);     color: var(--c-red); }
-.ci-verdict.v-nogo .dot   { background: var(--c-red); }
-
-.ci-delete { font-size: 9px; color: var(--text-dim); opacity: 0.7; }
-
-.company-item.is-closed .ci-name span:first-child { color: var(--text-dim); }
-.company-item.is-closed .ci-meta,
-.company-item.is-closed .ci-ts-date,
-.company-item.is-closed .ci-ts-time,
-.company-item.is-closed .ci-idx { opacity: 0.5; }
 
 /* grade badge (sidebar) */
 .grade-badge {
@@ -604,46 +534,6 @@ html, body {
 .crit-conf::before { content: '◎'; font-size: 8px; }
 .crit-conf.conf-interview::before { content: '◉'; }
 
-/* Cash KPI bar */
-.cash-kpi-bar {
-  display: flex;
-  gap: 1px;
-  background: var(--border);
-  border: 1px solid var(--border);
-  border-radius: var(--r);
-  overflow: hidden;
-  margin-bottom: 14px;
-}
-
-.ckpi {
-  flex: 1;
-  background: var(--surface);
-  padding: 12px 16px;
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
-}
-
-.ckpi-label {
-  font-family: var(--mono);
-  font-size: 9px;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--text-dim);
-}
-
-.ckpi-value {
-  font-size: 18px;
-  font-weight: 600;
-  color: var(--text-pri);
-  font-family: var(--mono);
-}
-
-.ckpi-sub {
-  font-size: 9px;
-  color: var(--text-dim);
-}
-
 /* Section 1 bottom link */
 .section-link-row {
   display: flex;
@@ -651,120 +541,6 @@ html, body {
   justify-content: flex-end;
   padding-top: 4px;
   padding-bottom: 8px;
-}
-
-/* ─── Section 2: Expectations banner ─────────────────────────────── */
-.s2-expectations {
-  background: #fafbfc;
-  border: 1px solid var(--border);
-  border-left: 3px solid var(--accent);
-  border-radius: var(--r);
-  padding: 14px 18px;
-  margin-bottom: 12px;
-}
-.s2-expectations-title {
-  font-size: 10px;
-  font-weight: 600;
-  color: var(--accent);
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  font-family: var(--mono);
-  margin-bottom: 8px;
-}
-.s2-expectations-body {
-  font-size: 12px;
-  color: var(--text-sec);
-  line-height: 1.65;
-  white-space: pre-line;
-}
-
-/* ─── Section 2: Next Step (보충요청 / 인터뷰가능) ────────────────── */
-.s2-next {
-  margin-top: 12px;
-  border: 1px solid var(--border);
-  border-radius: var(--r);
-  padding: 16px 18px;
-}
-.s2-next-ready {
-  background: var(--bg-green);
-  border-color: var(--c-green);
-}
-.s2-next-request {
-  background: #fff8f0;
-  border-color: #e8a84c;
-}
-.s2-next-title {
-  font-size: 11px;
-  font-weight: 600;
-  font-family: var(--mono);
-  letter-spacing: 0.08em;
-  margin-bottom: 10px;
-  text-transform: uppercase;
-}
-.s2-next-ready .s2-next-title { color: var(--c-green); }
-.s2-next-request .s2-next-title { color: #b37a1a; }
-.s2-next-list {
-  list-style: none;
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-}
-.s2-next-list li {
-  font-size: 12px;
-  color: var(--text-sec);
-  padding-left: 20px;
-  position: relative;
-  line-height: 1.5;
-}
-.s2-next-list li::before {
-  content: '☐';
-  position: absolute;
-  left: 0;
-  color: #b37a1a;
-  font-size: 13px;
-}
-/* ─── Section 2: Quick Check (대표/신청자) ────────────────────────── */
-.s2-qcheck {
-  display: flex;
-  gap: 16px;
-  align-items: center;
-  flex-wrap: wrap;
-  padding: 10px 16px;
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: var(--r);
-  margin-bottom: 12px;
-  font-size: 12px;
-}
-.s2-qcheck-item {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-}
-.s2-qcheck-label {
-  color: var(--text-dim);
-  font-size: 10px;
-  font-family: var(--mono);
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-}
-.s2-qcheck-val {
-  color: var(--text-main);
-  font-weight: 600;
-}
-.s2-qcheck-match {
-  margin-left: auto;
-  font-size: 11px;
-  padding: 2px 8px;
-  border-radius: 3px;
-}
-.s2-qcheck-match.match-ok { background: var(--bg-green); color: var(--c-green); }
-.s2-qcheck-match.match-diff { background: var(--bg-yellow); color: #b37a1a; }
-
-.s2-next-ready-msg {
-  font-size: 12px;
-  color: var(--c-green);
-  line-height: 1.5;
 }
 
 /* ─── Section 2: Cards ───────────────────────────────────────────── */
@@ -1195,8 +971,6 @@ html, body {
     <span class="tb-sep">/</span>
     <span class="tb-page" style="color:var(--text-dim);"></span>
     <div class="tb-spacer"></div>
-    <span class="tb-sub" id="tb-status"></span>
-    <span class="tb-sep">|</span>
     <span class="tb-sub" id="tb-date"></span>
   </div>
 
@@ -1274,14 +1048,6 @@ html, body {
     return map[conf] || conf || '';
   }
 
-  function sectionBadge(grade, label) {
-    const gc2 = gbClass(grade);
-    const gl2 = gbLabel(grade);
-    return `<span class="grade-badge ${gc2}" style="font-size:9px;padding:3px 9px 3px 7px;margin-left:auto;">
-      <span class="dot" style="width:6px;height:6px;"></span>${label}: ${gl2}
-    </span>`;
-  }
-
   function esc(s) {
     return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
   }
@@ -1298,7 +1064,7 @@ html, body {
   /* ── 데이터 로드 ───────────────────────────────────────────── */
   async function loadScreenerData() {
     try {
-      const res = await fetch('screener_data.json?v=' + Date.now());
+      const res = await fetch('screener_data.json');
       if (!res.ok) throw new Error(`HTTP ${res.status}`);
       SCREENER_DATA = await res.json();
       onDataLoaded();
@@ -1323,131 +1089,31 @@ html, body {
     $('initial-loading').style.display = 'none';
     renderCompanyList();
     showEmptyState();
-
     const genAt = SCREENER_DATA.generated_at;
-    const dataSource = SCREENER_DATA.data_source || '';
-    const statusEl = $('tb-status');
-
     if (genAt) {
-      const genDate = genAt.slice(0,10);
-      const today = new Date().toISOString().slice(0,10);
-      const isToday = genDate === today;
-
-      // 날짜 차이 계산
-      const genTime = new Date(genDate).getTime();
-      const nowTime = new Date(today).getTime();
-      const daysDiff = Math.floor((nowTime - genTime) / 86400000);
-
-      if (isToday) {
-        statusEl.innerHTML = '<span style="color:#2e7d32;">●</span> DW 최신화 완료';
-      } else if (daysDiff === 1) {
-        statusEl.innerHTML = '<span style="color:#e65100;">◆</span> 어제 갱신 (' + genDate + ')';
-      } else {
-        statusEl.innerHTML = '<span style="color:#d32f2f;">▲</span> ' + daysDiff + '일 전 갱신 (' + genDate + ')';
-      }
-
-      statusEl.title = dataSource + ' · generated ' + genAt.slice(0,16).replace('T',' ');
+      const dateEl = $('tb-date');
+      dateEl.textContent += '  ·  generated ' + genAt.slice(0,10);
     }
   }
 
   /* ── 사이드바 ───────────────────────────────────────────────── */
-  /* 섹션별 등급 맵 (사이드바 + 대시보드 공용) */
-  const S2_GRADE_MAP = {
-    '마진맥스':'green', '인테이크':'yellow', '웰로':'yellow', '온오프믹스':'yellow',
-    '와이오엘오':'red', '모트에이아이':'red', '메뉴잇':'red'
-  };
-  const S3_GRADE_MAP = {
-    '마진맥스':'pending', '인테이크':'pending', '웰로':'yellow', '온오프믹스':'conditional',
-    '와이오엘오':'pending', '모트에이아이':'red', '메뉴잇':'pending'
-  };
-  function latestGrade(folderName) {
-    const s3 = S3_GRADE_MAP[folderName];
-    if (s3 && s3 !== 'pending') return s3;
-    const s2 = S2_GRADE_MAP[folderName];
-    if (s2) return s2;
-    return 'unknown';
-  }
-
-  function parseTs(raw) {
-    if (!raw) return { date: '-', time: '' };
-    // ISO 형식: "2026-02-16T22:08:10"
-    const iso = raw.match(/^(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2})/);
-    if (iso) {
-      const [,y,mo,d,h,mi] = iso;
-      return { date: `${y}.${mo}.${d}`, time: `${h}:${mi}` };
-    }
-    // 한국어 형식: "2026. 2. 16 오후 10:08:10"
-    const m = raw.match(/(\d{4})\.\s*(\d{1,2})\.\s*(\d{1,2})\s*(오전|오후)\s*(\d{1,2}):(\d{2}):?(\d{2})?/);
-    if (!m) return { date: raw, time: '' };
-    const [,y,mo,d,ap,h,mi] = m;
-    let hh = parseInt(h);
-    if (ap === '오후' && hh < 12) hh += 12;
-    if (ap === '오전' && hh === 12) hh = 0;
-    return {
-      date: `${y}.${mo.padStart(2,'0')}.${d.padStart(2,'0')}`,
-      time: `${String(hh).padStart(2,'0')}:${mi}`
-    };
-  }
-
-  function tsToSortKey(raw) {
-    if (!raw) return 0;
-    // ISO 형식
-    const iso = raw.match(/^(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2})/);
-    if (iso) return new Date(raw).getTime();
-    // 한국어 형식
-    const m = raw.match(/(\d{4})\.\s*(\d{1,2})\.\s*(\d{1,2})\s*(오전|오후)\s*(\d{1,2}):(\d{2})/);
-    if (!m) return 0;
-    const [,y,mo,d,ap,h,mi] = m;
-    let hh = parseInt(h);
-    if (ap === '오후' && hh < 12) hh += 12;
-    if (ap === '오전' && hh === 12) hh = 0;
-    return new Date(+y, +mo-1, +d, hh, +mi).getTime();
-  }
-
   function renderCompanyList() {
-    const companies = (SCREENER_DATA.companies || []).slice().sort((a, b) =>
-      tsToSortKey(a.survey_timestamp) - tsToSortKey(b.survey_timestamp)
-    );
-    const active = companies.filter(c => c.status !== 'closed');
-    const closed = companies.filter(c => c.status === 'closed');
-    $('sh-count').innerHTML = `<strong>${companies.length}</strong>개사 (진행 ${active.length} · 종료 ${closed.length})`;
+    const companies = SCREENER_DATA.companies || [];
+    $('sh-count').innerHTML = `<strong>${companies.length}</strong>개사 등록`;
     if (!companies.length) {
       $('company-list').innerHTML = `<div style="padding:14px;font-size:11px;color:var(--text-dim);">등록된 회사가 없습니다.</div>`;
       return;
     }
     const html = companies.map((co, i) => {
-      const ts = parseTs(co.survey_timestamp);
-      const isClosed = co.status === 'closed';
-      const vClass = co.verdict_class || ({green:'go',yellow:'yellow',conditional:'conditional',red:'nogo'}[latestGrade(co.folder_name)]) || null;
-      const verdictBadge = vClass
-        ? `<span class="ci-verdict v-${vClass}"><span class="dot"></span></span>`
-        : '';
-      let metaParts = [];
-      if (co.interview_date) {
-        metaParts.push(`인터뷰 ${co.interview_date.replace(/-/g, '.')}`);
-      }
-      const closedBadge = isClosed ? `<span class="badge-closed">CLOSED</span>` : '';
-      const metaLine = metaParts.length ? metaParts.join(' · ') : '';
-      // 신청일로부터 6개월 후 자료 폐기일
-      const delDate = (function() {
-        const sk = tsToSortKey(co.survey_timestamp);
-        if (!sk) return '';
-        const dt = new Date(sk);
-        dt.setMonth(dt.getMonth() + 6);
-        return `${dt.getFullYear()}.${String(dt.getMonth()+1).padStart(2,'0')}.${String(dt.getDate()).padStart(2,'0')}`;
-      })();
+      const gc = gbClass(co.overall_grade);
+      const gl = gbLabel(co.overall_grade);
       return `
-        <div class="company-item${isClosed ? ' is-closed' : ''}" data-folder="${esc(co.folder_name)}" onclick="selectCompany('${esc(co.folder_name)}')">
+        <div class="company-item" data-folder="${esc(co.folder_name)}" onclick="selectCompany('${esc(co.folder_name)}')">
           <span class="ci-idx">${String(i+1).padStart(2,'0')}</span>
           <div class="ci-body">
-            <div class="ci-name"><span>${esc(co.company_name.replace(/^(주식회사\s*|\(주\))/, ''))}</span>${verdictBadge}${closedBadge}</div>
-            ${metaLine ? `<div class="ci-meta">${metaLine}</div>` : ''}
-            <div class="ci-meta ci-delete">자료 폐기 ${delDate}</div>
+            <div class="ci-name">${esc(co.company_name)}</div>
           </div>
-          <div class="ci-ts">
-            <div class="ci-ts-date">${ts.date}</div>
-            <div class="ci-ts-time">${ts.time}</div>
-          </div>
+          <span class="grade-badge ${gc}"><span class="dot"></span>${gl}</span>
         </div>`;
     }).join('');
     $('company-list').innerHTML = html;
@@ -1458,7 +1124,7 @@ html, body {
       <div class="empty-state">
         <div style="font-size:24px;color:var(--border-mid);">←</div>
         <div style="font-size:13px;color:var(--text-dim);">회사를 선택하세요</div>
-        <div style="font-family:var(--mono);font-size:10px;color:var(--text-dim);letter-spacing:0.08em;">SELECT A COMPANY</div>
+        <div style="font-family:var(--mono);font-size:10px;color:var(--text-dim);letter-spacing:0.08em;">회사를 선택하세요</div>
       </div>`;
   }
 
@@ -1471,7 +1137,6 @@ html, body {
     });
     const co = (SCREENER_DATA.companies||[]).find(c => c.folder_name === folderName);
     if (!co) return;
-    window._currentCompany = co;
     renderDashboard(co);
   };
 
@@ -1479,8 +1144,8 @@ html, body {
   function renderDashboard(co) {
     const gc = gbClass(co.overall_grade);
     const gl = gbLabel(co.overall_grade);
-    const CRITERIA_ORDER = ['debt_control','bep_roadmap','worst_case','financial_3axis'];
-    const CRITERIA_NUMS  = ['①','②','③','④'];
+    const CRITERIA_ORDER = ['ceo_awareness','business_moat','debt_control','bep_roadmap','worst_case','financial_3axis'];
+    const CRITERIA_NUMS  = ['①','②','③','④','⑤','⑥'];
     const rawCriteria = co.criteria || {};
     const criteriaEntries = CRITERIA_ORDER.map((key,i) => ({
       ...(rawCriteria[key]||{}), _key:key, _num:CRITERIA_NUMS[i]
@@ -1491,8 +1156,24 @@ html, body {
     const s1Grades = autoKeys.map(k => (rawCriteria[k]||{}).grade||'unknown');
     const s1Red = s1Grades.filter(g=>g==='red').length;
     const s1Grade = s1Red >= 2 ? 'red' : s1Red === 1 ? 'conditional' : s1Grades.every(g=>g==='green') ? 'green' : 'yellow';
-    const s2Grade = S2_GRADE_MAP[co.folder_name] || 'unknown';
-    const s3Grade = S3_GRADE_MAP[co.folder_name] || 'unknown';
+    const s2GradeMap = {
+      '마진맥스':'green', '인테이크':'yellow', '웰로':'yellow', '온오프믹스':'yellow',
+      '와이오엘오':'red', '모트에이아이':'red', '메뉴잇':'red', '젠테':'red'
+    };
+    const s3GradeMap = {
+      '마진맥스':'pending', '인테이크':'pending', '웰로':'yellow', '온오프믹스':'conditional',
+      '와이오엘오':'pending', '모트에이아이':'red', '메뉴잇':'pending', '젠테':'red'
+    };
+    const s2Grade = s2GradeMap[co.folder_name] || 'unknown';
+    const s3Grade = s3GradeMap[co.folder_name] || 'unknown';
+
+    function sectionBadge(grade, label) {
+      const gc2 = gbClass(grade);
+      const gl2 = gbLabel(grade);
+      return `<span class="grade-badge ${gc2}" style="font-size:9px;padding:3px 9px 3px 7px;margin-left:auto;">
+        <span class="dot" style="width:6px;height:6px;"></span>${label}: ${gl2}
+      </span>`;
+    }
 
     const rmHref = co.cf_url || '';
     const rmBtn = rmHref
@@ -1520,30 +1201,6 @@ html, body {
         </div>`;
     }).join('');
 
-    /* Cash KPI bar — CF RM 산식 준용 */
-    const ck = co.cash_kpi || {};
-    const rwColor = (ck.runway_months||0) < 3 ? ((ck.runway_months||0) < 1 ? 'var(--c-red)' : 'var(--c-yellow)') : 'var(--c-green)';
-    const burnSign = ck.burn_positive ? '+' : '-';
-    const burnColor = ck.burn_positive ? 'var(--c-green)' : 'var(--c-red)';
-    const cashKpiHtml = `
-      <div class="cash-kpi-bar">
-        <div class="ckpi">
-          <span class="ckpi-label">현금 잔고 (평균)</span>
-          <span class="ckpi-value">${ck.cash_mtd != null ? ck.cash_mtd + '억' : '-'}</span>
-          <span class="ckpi-sub">${ck.balance_date ? ck.balance_date.slice(0,7) + ' MTD' : ''}</span>
-        </div>
-        <div class="ckpi">
-          <span class="ckpi-label">월 순캐시번</span>
-          <span class="ckpi-value" style="color:${burnColor}">${ck.monthly_burn != null ? burnSign + ck.monthly_burn + '억' : '-'}</span>
-          <span class="ckpi-sub">${ck.burn_positive ? '순유입 (흑자)' : '순유출'}</span>
-        </div>
-        <div class="ckpi">
-          <span class="ckpi-label">런웨이</span>
-          <span class="ckpi-value" style="color:${rwColor}">${ck.runway_months != null ? ck.runway_months + '개월' : '-'}</span>
-          <span class="ckpi-sub">잔고 ÷ |캐시번|</span>
-        </div>
-      </div>`;
-
     const section1 = `
       <div class="section">
         <div class="section-header">
@@ -1553,7 +1210,6 @@ html, body {
           </div>
           <div class="section-intent">고위드 데이터웨어하우스와 Capital Flow 실거래 데이터만으로 기계적 판단</div>
         </div>
-        ${cashKpiHtml}
         <div class="criteria-grid">${cardsHtml}</div>
         <div class="section-link-row">${rmBtn}</div>
       </div>`;
@@ -1568,6 +1224,7 @@ html, body {
       '온오프믹스': [renderSection2_OnOffMix, renderSection3_OnOffMix],
       '와이오엘오': [renderSection2_YOELO, renderSection3_Pending],
       '메뉴잇': [renderSection2_Menuit, renderSection3_Pending],
+      '젠테': [renderSection2_Jente, renderSection3_Jente],
     };
     const fns = renderMap[co.folder_name];
     if (fns) {
@@ -1607,8 +1264,6 @@ html, body {
           <div class="section-intent">기업이 제출한 재무제표, 사업계획서, 보완자료를 반영한 정성 판단</div>
         </div>
 
-        ${(()=>{const co=window._currentCompany||{};const ceo=co.ceo_name||'';const app=co.applicant_name||'';const email=co.applicant_email||'';const m=nameMatch(ceo,app);const eml=email?'<div class="s2-qcheck-item"><span class="s2-qcheck-label">이메일</span><span class="s2-qcheck-val">'+esc(email)+'</span></div>':'';return(ceo||app)?'<div class="s2-qcheck"><div class="s2-qcheck-item"><span class="s2-qcheck-label">대표자</span><span class="s2-qcheck-val">'+esc(ceo)+'</span></div><div class="s2-qcheck-item"><span class="s2-qcheck-label">신청자</span><span class="s2-qcheck-val">'+esc(app)+'</span></div>'+eml+'<span class="s2-qcheck-match '+(m?'match-ok':'match-diff')+'">'+(m?'본인 신청':'대리 신청')+'</span></div>':'';})()}
-        ${(()=>{const co=window._currentCompany||{};const pp=co.pain_points||'';return pp?'<div class="s2-expectations"><div class="s2-expectations-title">제출 기대 사항</div><div class="s2-expectations-body">'+esc(pp)+'</div></div>':'';})()}
         <div class="s2-grid">
 
           <!-- 카드 1: 사업 개요 -->
@@ -1667,9 +1322,9 @@ html, body {
             </table>
           </div>
 
-          <!-- 카드 3: 금융권 부채 상세 -->
+          <!-- 카드 3: 부채 상세 구조 -->
           <div class="s2-card">
-            <div class="s2-card-title">금융권 부채 상세</div>
+            <div class="s2-card-title">부채 상세 구조</div>
             <ul class="s2-info-list">
               <li><strong>CB(전환사채)</strong> 22.1억 — 출자전환 미완료</li>
               <li><strong>금융권 대출</strong> 20.2억 (기보, RCPS, 단기)</li>
@@ -1817,30 +1472,23 @@ html, body {
                   <td><span class="grade-badge gb-unknown" style="font-size:8px;"><span class="dot"></span>참고</span></td>
                 </tr>
                 <tr>
-                  <td>잔고 (평균)</td>
+                  <td>잔고 (최근)</td>
                   <td>0.1억</td>
-                  <td>0.2억</td>
-                  <td>+100%</td>
+                  <td>0.08억</td>
+                  <td>-20%</td>
                   <td><span class="grade-badge gb-yellow" style="font-size:8px;"><span class="dot"></span>주의</span></td>
-                </tr>
-                <tr>
-                  <td>월 순캐시번</td>
-                  <td>미기재</td>
-                  <td>-0.2억</td>
-                  <td>—</td>
-                  <td><span class="grade-badge gb-red" style="font-size:8px;"><span class="dot"></span>위험</span></td>
                 </tr>
                 <tr>
                   <td>런웨이</td>
                   <td>"자금 긴급"</td>
-                  <td>1.5개월</td>
+                  <td>0.7개월</td>
                   <td>—</td>
                   <td><span class="grade-badge gb-red" style="font-size:8px;"><span class="dot"></span>위험</span></td>
                 </tr>
               </tbody>
             </table>
             <div style="margin-top:10px;padding:8px 12px;background:var(--surface2);border-radius:var(--r);font-size:11px;color:var(--text-sec);">
-              DW 평균잔고 0.2억, 월 순유출 0.2억 → 런웨이 1.5개월. 제출자료의 "자금 긴급" 표현과 일치. CB 상환(4.4억) 대응 사실상 불가능.
+              DW 기준 매출입금이 제출자료 대비 소폭 하회. 런웨이 0.7개월은 제출자료의 "자금 긴급" 표현과 일치. 잔고 0.08억으로 CB 상환(4.4억) 대응 사실상 불가능.
             </div>
           </div>
 
@@ -1894,9 +1542,6 @@ html, body {
             </table>
           </div>
 
-        </div>
-        <div class="s2-next s2-next-ready"><div class="s2-next-title">Next Step</div>
-          <div class="s2-next-ready-msg">인터뷰 완료 — Section 3 종합 판정 확인. CB 출자전환 진행 상황 모니터링 중.</div>
         </div>
       </div>`;
   }
@@ -1987,7 +1632,7 @@ html, body {
           <div class="reopen-when">예상 재검토 시점: 2026 하반기</div>
         </div>
         <div class="section-link-row">
-          <button class="btn-rm" onclick="downloadImprovementReport(event,'s3')">경영 개선 리포트 (PDF) ↓</button>
+          <button class="btn-rm" onclick="downloadImprovementReport(event)">경영 개선 리포트 (PDF) ↓</button>
         </div>
 
       </div>`;
@@ -2002,57 +1647,13 @@ html, body {
       </div><div class="section-intent"></div></div>
       <div class="no-data-block">${msg}</div></div>`;
   }
-  // 영문↔한글 이름 매핑 (대표자 본인이 영문명으로 신청한 경우)
-  const NAME_MAP = {
-    '천영록': 'Jayden', 'Jayden': '천영록',
-    '양준철': 'JoonCheol Yang', 'JoonCheol Yang': '양준철',
-    '황유미': 'Yoomee Hwang', 'Yoomee Hwang': '황유미',
-    '채지훈': 'Been Bin', 'Been Bin': '채지훈',
-  };
-  function nameMatch(ceo, app) {
-    if (!ceo || !app) return false;
-    if (ceo === app) return true;
-    if (app.includes(ceo) || ceo.includes(app)) return true;
-    // 영한 매핑 체크
-    const mapped = NAME_MAP[ceo];
-    if (mapped && (mapped === app || app.includes(mapped) || mapped.includes(app))) return true;
-    const mapped2 = NAME_MAP[app];
-    if (mapped2 && (mapped2 === ceo || ceo.includes(mapped2) || mapped2.includes(ceo))) return true;
-    return false;
-  }
-  function s2Empty(title, docs) {
-    return `<div class="s2-card" style="grid-column:1/-1;"><div class="s2-card-title">${title}</div>
-      <div style="padding:16px;background:#f9f9f9;border-radius:var(--r);color:#999;font-size:12px;text-align:center;">
-        자료 미확보 — 아래 서류 제출 요청 필요<br>
-        <span style="color:#b37a1a;font-weight:600;">필요 서류: ${docs}</span>
-      </div></div>`;
-  }
-  function s2Wrap(grade, cards, extra) {
-    const co = window._currentCompany || {};
-    const pp = co.pain_points || '';
-    const expHtml = pp ? `<div class="s2-expectations">
-      <div class="s2-expectations-title">제출 기대 사항</div>
-      <div class="s2-expectations-body">${esc(pp)}</div>
-    </div>` : '';
-    const ceo = co.ceo_name || '';
-    const app = co.applicant_name || '';
-    const email = co.applicant_email || '';
-    const isMatch = nameMatch(ceo, app);
-    const emailHtml = email ? `<div class="s2-qcheck-item"><span class="s2-qcheck-label">이메일</span><span class="s2-qcheck-val">${esc(email)}</span></div>` : '';
-    const qcheckHtml = (ceo || app) ? `<div class="s2-qcheck">
-      <div class="s2-qcheck-item"><span class="s2-qcheck-label">대표자</span><span class="s2-qcheck-val">${esc(ceo)}</span></div>
-      <div class="s2-qcheck-item"><span class="s2-qcheck-label">신청자</span><span class="s2-qcheck-val">${esc(app)}</span></div>
-      ${emailHtml}
-      <span class="s2-qcheck-match ${isMatch ? 'match-ok' : 'match-diff'}">${isMatch ? '본인 신청' : '대리 신청'}</span>
-    </div>` : '';
+  function s2Wrap(grade, cards) {
     return `<div class="section">
       <div class="section-header"><div class="section-header-top">
         <div class="section-title">Section 2 — 제출 자료 기반 심화 진단</div>
         ${sectionBadge(grade, 'S2')}
       </div><div class="section-intent">기업이 제출한 재무제표, 사업계획서, 보완자료를 반영한 정성 판단</div></div>
-      ${qcheckHtml}
-      ${expHtml}
-      <div class="s2-grid">${cards}</div>${extra||''}</div>`;
+      <div class="s2-grid">${cards}</div></div>`;
   }
   function s3InterviewWrap(grade, content) {
     return `<div class="section">
@@ -2080,20 +1681,19 @@ html, body {
           <li>설립 2022.05 (3년차), 직원 5~10명</li>
           <li>CEO: 채지훈 (지분 18%), 최대주주: 빈태찬 (46%)</li>
         </ul></div>
-      <div class="s2-card"><div class="s2-card-title">재무 현황 (DW 실거래 기준, 단위: 억원)</div>
-        <table class="fin-table"><thead><tr><th>항목</th><th style="text-align:right">금액</th><th style="text-align:right;font-size:10px;color:#999;">제출 BS</th></tr></thead><tbody>
-          <tr><td>매출</td><td style="text-align:right">17.3</td><td style="text-align:right;font-size:10px;color:#999;">-</td></tr>
-          <tr><td>영업이익</td><td style="text-align:right" class="val-pos">+1.8 (OPM 10.7%)</td><td style="text-align:right;font-size:10px;color:#999;">-</td></tr>
-          <tr><td>금융부채</td><td style="text-align:right" class="val-pos">0</td><td style="text-align:right;font-size:10px;color:#999;">-</td></tr>
-          <tr><td>현금 (평균잔고)</td><td style="text-align:right" class="val-pos">2.1</td><td style="text-align:right;font-size:10px;color:#999;">1.6</td></tr>
-          <tr><td>월 순캐시번</td><td style="text-align:right" class="val-pos">+0.2</td><td style="text-align:right;font-size:10px;color:#999;">-</td></tr>
-          <tr><td>런웨이</td><td style="text-align:right" class="val-pos">20+개월</td><td style="text-align:right;font-size:10px;color:#999;">-</td></tr>
+      <div class="s2-card"><div class="s2-card-title">재무 현황 (2024, 단위: 억원)</div>
+        <table class="fin-table"><thead><tr><th>항목</th><th style="text-align:right">금액</th></tr></thead><tbody>
+          <tr><td>매출</td><td style="text-align:right">17.3</td></tr>
+          <tr><td>영업이익</td><td style="text-align:right" class="val-pos">+1.8 (OPM 10.7%)</td></tr>
+          <tr><td>금융부채</td><td style="text-align:right" class="val-pos">0</td></tr>
+          <tr><td>현금</td><td style="text-align:right">1.6</td></tr>
+          <tr><td>자본</td><td style="text-align:right" class="val-pos">2.8</td></tr>
         </tbody></table></div>
       <div class="s2-card"><div class="s2-card-title">핵심 강점</div>
         <ul class="s2-info-list">
           <li>금융부채 제로 — 부채총계 0.3억은 전액 운영성(매입채무)</li>
-          <li>설립 3년차에 흑자 달성 (OPM 10.7%), DW 기준 순유입 +0.2억/월</li>
-          <li>런웨이 20개월+ — 생존 리스크 없음</li>
+          <li>설립 3년차에 흑자 달성 (OPM 10.7%)</li>
+          <li>런웨이 20개월+ (CF 기준)</li>
         </ul></div>
       <div class="s2-card"><div class="s2-card-title">인터뷰 확인 필요 사항</div>
         <ul class="s2-info-list">
@@ -2104,11 +1704,7 @@ html, body {
       <div class="s2-card" style="grid-column:1/-1;"><div class="s2-card-title">진단 요약</div>
         <div style="padding:10px 14px;background:var(--bg-green);border-radius:var(--r);font-size:12px;color:var(--c-green);">
           부채 3축 전부 Green. 흑자 + 무차입 구조의 최적 타겟. 인터뷰에서 독점자산과 대표 역량 확인 후 본진단 진행 가능.
-        </div></div>
-      <div class="s2-next s2-next-ready" style="grid-column:1/-1;"><div class="s2-next-title">Next Step</div>
-        <div class="s2-next-ready-msg">보충 자료 불필요 — 서류 심사 완료. 인터뷰 진행 후 Section 3 종합 판정으로 이동.</div>
-      </div>`,
-      '<div class="section-link-row"><button class="btn-rm" onclick="downloadImprovementReport(event,\'s2\')">경영 개선 리포트 (PDF) ↓</button></div>');
+        </div></div>`);
   }
 
   /* ── 인테이크 ──────────────────────────────────────────────── */
@@ -2118,174 +1714,32 @@ html, body {
         <ul class="s2-info-list">
           <li>대체단백/대체당 소재 B2B + 완제품 B2C (D2C)</li>
           <li>설립 2013년 (13년차), 직원 55명</li>
-          <li>CEO: 한녹엽, 누적투자 약 280억 (Seed~C)</li>
-          <li>연결 자회사: 코스모코퍼레이션, JSG(5월~), 앳홈스퀘어(11월~), INT(8월~)</li>
-          <li>주요 제품: 슈가로로(음료/비음료), 닥터넛츠, 이노센트, 기타HMR</li>
+          <li>CEO: 한녹엽, 누적투자 100억+</li>
         </ul></div>
-      <div class="s2-card"><div class="s2-card-title">재무 현황 (FY2025 2차 자료 + DW, 단위: 억원)</div>
-        <table class="fin-table"><thead><tr><th>항목</th><th style="text-align:right">별도(2차)</th><th style="text-align:right">연결(2차)</th><th style="text-align:right;font-size:10px;color:#999;">DW(FY24)</th></tr></thead><tbody>
-          <tr><td>매출</td><td style="text-align:right" class="val-pos">226.0</td><td style="text-align:right" class="val-pos">398.0</td><td style="text-align:right;font-size:10px;color:#999;">201(별도)</td></tr>
-          <tr><td>영업이익</td><td style="text-align:right" class="val-neg">-28.8</td><td style="text-align:right" class="val-neg">-22.8</td><td style="text-align:right;font-size:10px;color:#999;">-24.7</td></tr>
-          <tr><td>매출총이익률</td><td style="text-align:right">36.9%</td><td style="text-align:right">28.2%</td><td style="text-align:right;font-size:10px;color:#999;">38.5%</td></tr>
-          <tr><td>금융부채</td><td style="text-align:right">26.7</td><td style="text-align:right">—</td><td style="text-align:right;font-size:10px;color:#999;">26.7</td></tr>
-          <tr><td>DW 실잔고(2026.03)</td><td style="text-align:right;color:#d32f2f;">16.8</td><td style="text-align:right">—</td><td style="text-align:right;font-size:10px;color:#999;">CF 평균 19.2</td></tr>
-          <tr><td>BS 현금(FY24 시점)</td><td style="text-align:right;color:#999;">101.8</td><td style="text-align:right">—</td><td style="text-align:right;font-size:10px;color:#999;">M&A 후 소진</td></tr>
-          <tr><td>런웨이</td><td style="text-align:right">9.6개월</td><td style="text-align:right">—</td><td style="text-align:right;font-size:10px;color:#999;">9.6</td></tr>
-        </tbody></table>
-        <div style="font-size:10px;color:#999;margin-top:4px;">※ 연결 매출 398억 중 인테이크 별도 224억(56%), JSG 112억(28%), 코스모 44억(11%). 연결 OP 적자 -22.8억은 JSG +5.4억, 코스모 +0.8억이 인테이크 -26.7억 일부 상쇄.</div>
-      </div>
-      <div class="s2-card" style="grid-column:1/-1;"><div class="s2-card-title">금융권 부채 상세 (FY2024 연결 BS + DW)</div>
-        <table class="fin-table"><thead><tr>
-          <th>항목</th><th style="text-align:right">FY2024</th><th style="text-align:right;font-size:10px;color:#999;">FY2023</th><th style="text-align:right">변동</th><th>비고</th>
-        </tr></thead><tbody>
-          <tr><td>단기차입금</td><td style="text-align:right" class="val-neg">16.7억</td><td style="text-align:right;font-size:10px;color:#999;">10.0억</td><td style="text-align:right;color:#d32f2f;">+6.7억</td><td>기타단기차입금 — 대주 미확인</td></tr>
-          <tr><td>유동성장기차입금</td><td style="text-align:right">0.5억</td><td style="text-align:right;font-size:10px;color:#999;">0.5억</td><td style="text-align:right">—</td><td>1년 내 만기 도래분</td></tr>
-          <tr><td>장기차입금</td><td style="text-align:right">0.3억</td><td style="text-align:right;font-size:10px;color:#999;">0.8억</td><td style="text-align:right;color:#2e7d32;">-0.5억</td><td>상환 진행</td></tr>
-          <tr style="font-weight:700;border-top:2px solid var(--border-mid);"><td>금융부채 소계</td><td style="text-align:right" class="val-neg">17.5억</td><td style="text-align:right;font-size:10px;color:#999;">11.3억</td><td style="text-align:right;color:#d32f2f;">+6.2억</td><td></td></tr>
-        </tbody></table>
-        <div style="font-size:10px;color:#d32f2f;margin-top:6px;font-weight:600;">⚠ BS 금융부채 17.5억 vs go_nogo 입력값 26.7억 — 9.2억 차이. 2025년 추가 차입, CB 전환, 또는 자회사 연결 조정 가능성. 대출 약정서 원본으로 건별 확인 필수.</div>
-        <div style="font-size:10px;color:#666;margin-top:4px;">※ 단기차입금 16.7억 전액 "기타단기차입금"으로 분류 — 금융권 정형대출이 아닐 가능성(관계사 대여, VC bridge loan 등). 대주 성격 확인 필요.</div>
-      </div>
-      <div class="s2-card" style="grid-column:1/-1;"><div class="s2-card-title">비금융 부채 (FY2024 연결 BS vs 전년)</div>
-        <table class="fin-table"><thead><tr>
-          <th>항목</th><th style="text-align:right">FY2024</th><th style="text-align:right;font-size:10px;color:#999;">FY2023</th><th style="text-align:right">변동</th><th>비고</th>
-        </tr></thead><tbody>
-          <tr><td>매입채무(외상매입금)</td><td style="text-align:right" class="val-neg">9.8억</td><td style="text-align:right;font-size:10px;color:#999;">6.9억</td><td style="text-align:right;color:#d32f2f;">+42%</td><td style="color:#d32f2f;">매출 +15% 대비 과도한 증가</td></tr>
-          <tr><td>미지급금</td><td style="text-align:right">3.0억</td><td style="text-align:right;font-size:10px;color:#999;">2.6억</td><td style="text-align:right">+15%</td><td></td></tr>
-          <tr><td>미지급비용</td><td style="text-align:right">0.5억</td><td style="text-align:right;font-size:10px;color:#999;">0.3억</td><td style="text-align:right">+67%</td><td></td></tr>
-          <tr><td>선수금</td><td style="text-align:right">0.5억</td><td style="text-align:right;font-size:10px;color:#999;">0.3억</td><td style="text-align:right">+67%</td><td></td></tr>
-          <tr><td>예수금</td><td style="text-align:right">0.2억</td><td style="text-align:right;font-size:10px;color:#999;">0.1억</td><td style="text-align:right">—</td><td></td></tr>
-          <tr><td>기타유동부채</td><td style="text-align:right">2.1억</td><td style="text-align:right;font-size:10px;color:#999;">1.3억</td><td style="text-align:right;color:#d32f2f;">+62%</td><td>성격 확인 필요</td></tr>
-          <tr><td>장기미지급금</td><td style="text-align:right">1.8억</td><td style="text-align:right;font-size:10px;color:#999;">1.2억</td><td style="text-align:right">+50%</td><td>리스부채 추정</td></tr>
-          <tr style="font-weight:700;border-top:2px solid var(--border-mid);"><td>비금융부채 소계</td><td style="text-align:right">17.8억</td><td style="text-align:right;font-size:10px;color:#999;">12.8억</td><td style="text-align:right;color:#d32f2f;">+39%</td><td></td></tr>
-          <tr style="font-weight:700;background:#f8f9fa;"><td>부채총계</td><td style="text-align:right" class="val-neg">35.3억</td><td style="text-align:right;font-size:10px;color:#999;">24.0억</td><td style="text-align:right;color:#d32f2f;">+47%</td><td>자본 104.4억 대비 부채비율 33.9%</td></tr>
-        </tbody></table>
-        <div style="font-size:10px;color:#666;margin-top:4px;">※ 매입채무 +42% 증가는 매출 성장(+15%) 대비 과도 — 결제 조건 악화 또는 원재료 선구매 가능성. 운전자본 관리 주시 필요. 부채비율은 FY22 340%→FY23 80%→FY24 34%로 급격 개선(증자 효과).</div>
-      </div>
-      <div class="s2-card" style="grid-column:1/-1;"><div class="s2-card-title">주주 구성 (2025.12.31 주주명부 기준)</div>
-        <table class="fin-table"><thead><tr>
-          <th>주주</th><th>주식종류</th><th style="text-align:right">주식수</th><th style="text-align:right">지분율</th><th>비고</th>
-        </tr></thead><tbody>
-          <tr><td><strong>한녹엽</strong> (대표이사)</td><td>보통주</td><td style="text-align:right">21,580</td><td style="text-align:right"><strong>15.42%</strong></td><td></td></tr>
-          <tr><td>용마로지스 (동아쏘시오 100%)</td><td>보통주</td><td style="text-align:right">15,057</td><td style="text-align:right"><strong>10.75%</strong></td><td>Seed+PreA+A 보통주 전환</td></tr>
-          <tr><td>SB글로벌 (소프트뱅크)</td><td>보통주</td><td style="text-align:right">15,596</td><td style="text-align:right">11.14%</td><td>A라운드, 보통주 전환</td></tr>
-          <tr><td>스마트바이오BNH 5호</td><td style="color:#1565c0;">우선주</td><td style="text-align:right">11,648</td><td style="text-align:right">8.32%</td><td>B + C라운드</td></tr>
-          <tr><td>HB딥테크상생투자조합</td><td style="color:#1565c0;">우선주</td><td style="text-align:right">8,968</td><td style="text-align:right">6.40%</td><td>C라운드 @445,988원</td></tr>
-          <tr><td>아이디어브릿지 지식재산1호</td><td style="color:#1565c0;">우선주</td><td style="text-align:right">8,773</td><td style="text-align:right">6.26%</td><td>Pre-B @220,000원</td></tr>
-          <tr><td>에이티유-에이스 그린테크1호</td><td style="color:#1565c0;">우선주</td><td style="text-align:right">8,284</td><td style="text-align:right">5.91%</td><td>B라운드 @362,150원</td></tr>
-          <tr><td>에스비글로벌챔프펀드 외</td><td>보통주</td><td style="text-align:right">7,798</td><td style="text-align:right">5.57%</td><td></td></tr>
-          <tr><td>에스비글로벌스타펀드 외</td><td>보통주</td><td style="text-align:right">7,798</td><td style="text-align:right">5.57%</td><td></td></tr>
-          <tr><td>조영일</td><td>보통주</td><td style="text-align:right">7,500</td><td style="text-align:right">5.36%</td><td></td></tr>
-          <tr><td>김정훈</td><td>보통주</td><td style="text-align:right">6,500</td><td style="text-align:right">4.64%</td><td></td></tr>
-          <tr><td>기타 12인/조합</td><td>보통+우선</td><td style="text-align:right">20,551</td><td style="text-align:right">14.67%</td><td>얼머스·CJ·우리·KDB·기보 등</td></tr>
-          <tr style="font-weight:700;border-top:2px solid var(--border-mid);"><td>합계</td><td>보통 76,520 + 우선 63,533</td><td style="text-align:right">140,053</td><td style="text-align:right">100%</td><td style="font-size:10px;font-weight:400;">액면 5,000원</td></tr>
-        </tbody></table>
-        <div style="font-size:10px;color:#999;margin-top:6px;">대표(한녹엽) 15.4% — 경영권 취약. 보통주 55% vs 우선주(RCPS) 45%. C라운드 Post 625억. 누적 투자유치 약 280억. 우선주 전환/상환 조건, 희석방지 조항 확인 필요.</div>
-      </div>
-      <div class="s2-card" style="grid-column:1/-1;"><div class="s2-card-title">손익 구조 분석 (별도 FY2025, 2차 자료)</div>
-        <table class="fin-table"><thead><tr>
-          <th>비용 항목</th><th style="text-align:right">FY2025</th><th style="text-align:right;font-size:10px;color:#999;">FY2024</th><th style="text-align:right">매출 대비</th><th>비고</th>
-        </tr></thead><tbody>
-          <tr><td>광고선전비</td><td style="text-align:right" class="val-neg">22.1억</td><td style="text-align:right;font-size:10px;color:#999;">27.6억</td><td style="text-align:right">9.8%</td><td style="color:#2e7d32;">YoY -20% 감축</td></tr>
-          <tr><td>판매수수료</td><td style="text-align:right" class="val-neg">20.4억</td><td style="text-align:right;font-size:10px;color:#999;">12.9억</td><td style="text-align:right">9.0%</td><td style="color:#d32f2f;">YoY +58% 급증</td></tr>
-          <tr><td>운반비</td><td style="text-align:right">19.9억</td><td style="text-align:right;font-size:10px;color:#999;">19.3억</td><td style="text-align:right">8.8%</td><td>물류비 안정</td></tr>
-          <tr><td>급여+퇴직급여</td><td style="text-align:right">22.7억</td><td style="text-align:right;font-size:10px;color:#999;">21.2억</td><td style="text-align:right">10.1%</td><td>인건비 소폭 증가</td></tr>
-          <tr><td>경상R&D (자체+과제)</td><td style="text-align:right">5.2억</td><td style="text-align:right;font-size:10px;color:#999;">2.8억</td><td style="text-align:right">2.3%</td><td>R&D 과제 수주 증가</td></tr>
-          <tr><td>지급수수료</td><td style="text-align:right">6.7억</td><td style="text-align:right;font-size:10px;color:#999;">4.1억</td><td style="text-align:right">3.0%</td><td>플랫폼 수수료 증가</td></tr>
-          <tr style="font-weight:700;border-top:2px solid var(--border-mid);"><td>판관비 합계</td><td style="text-align:right" class="val-neg">112.2억</td><td style="text-align:right;font-size:10px;color:#999;">102.1억</td><td style="text-align:right">49.7%</td><td style="font-size:10px;font-weight:400;">매출 226억 대비</td></tr>
-        </tbody></table>
-        <div style="font-size:10px;color:#999;margin-top:4px;">※ 판매수수료 +58%(12.9→20.4억)가 적자 확대의 주원인. 광고비는 -20% 감축했으나 판매수수료(채널 수수료)가 상쇄. 4Q 영업이익 -7.8억으로 개선 추세 미약.</div>
-      </div>
-      <div class="s2-card" style="grid-column:1/-1;"><div class="s2-card-title">자회사 손익 분석 (FY2025 2차 자료, 연결 기준)</div>
-        <table class="fin-table"><thead><tr>
-          <th>법인</th><th style="text-align:right">매출</th><th style="text-align:right">영업이익</th><th style="text-align:right">OP율</th><th>투자자 관점 평가</th>
-        </tr></thead><tbody>
-          <tr><td><strong>인테이크 (본사)</strong></td><td style="text-align:right">224.4억</td><td style="text-align:right" class="val-neg">-26.7억</td><td style="text-align:right" class="val-neg">-11.9%</td><td style="color:#d32f2f;font-weight:600;">핵심 — 매출 성장하나 판매수수료 급증으로 적자 확대</td></tr>
-          <tr><td>JSG (해외수출)</td><td style="text-align:right">111.8억</td><td style="text-align:right" class="val-pos">+5.4억</td><td style="text-align:right" class="val-pos">+4.8%</td><td style="color:#2e7d32;">가치 창출 — 2025.5 인수, 즉시 흑자 기여</td></tr>
-          <tr><td>코스모코퍼레이션 (OEM)</td><td style="text-align:right">43.8억</td><td style="text-align:right" class="val-pos">+0.8억</td><td style="text-align:right" class="val-pos">+1.8%</td><td style="color:#2e7d32;">가치 창출 — 제조 내재화, 안정 수익</td></tr>
-          <tr><td style="color:#e65100;">앳홈스퀘어</td><td style="text-align:right">14.7억</td><td style="text-align:right" class="val-neg">-1.6억</td><td style="text-align:right" class="val-neg">-10.9%</td><td style="color:#e65100;">소폭 적자 — 통합 초기, 개선 가능</td></tr>
-          <tr><td style="color:#e65100;">INT</td><td style="text-align:right">3.2억</td><td style="text-align:right" class="val-neg">-0.6억</td><td style="text-align:right" class="val-neg">-18.8%</td><td style="color:#e65100;">소규모 — 적자 규모 경미, 모니터링</td></tr>
-          <tr style="font-weight:700;border-top:2px solid var(--border-mid);background:#f8f9fa;"><td>연결 합계</td><td style="text-align:right">398.0억</td><td style="text-align:right" class="val-neg">-22.8억</td><td style="text-align:right">-5.7%</td><td></td></tr>
-        </tbody></table>
-        <div style="margin-top:10px;font-size:11px;color:#555;">
-          <table class="fin-table" style="font-size:11px;">
-            <thead><tr><th>법인</th><th>역할</th><th>인수</th><th>사업 내용 (추정 포함)</th></tr></thead>
-            <tbody>
-              <tr><td style="font-weight:600;">JSG</td><td>B2B 유통</td><td>2025.05</td><td>단체급식·식자재 도소매. 천안 본사, 직원 185명, 전국 100+지점, 연 300만끼. 대표 송홍구. 자체 브랜드 "이플담". 3년 내 1,000억+IPO 목표</td></tr>
-              <tr><td style="font-weight:600;">코스모코퍼레이션</td><td>제조</td><td>미확인</td><td>식품 OEM 위탁생산. 슈가로로·곤약젤리 등 인테이크 제품 전용 생산. 기존 80여곳 외주→내재화로 원가 통제·QC 직접 관리</td></tr>
-              <tr><td style="font-weight:600;">앳홈스퀘어</td><td>B2C 유통</td><td>2025.11</td><td>전자상거래 소매업(식품). 대표 김태성, 2018년 설립. 쿠팡·이랜드몰 등 외부 플랫폼 의존 탈피, 온라인 유통 채널 내재화 목적 추정</td></tr>
-              <tr><td style="font-weight:600;">INT</td><td>글로벌 수출</td><td>2025.08</td><td>해외 수출 전담 법인 추정. 슈가로로 '25.1~5월 수출 $100만 돌파(YoY 3배), 30개국 50+거래처. 수출 업무 분리·세무 최적화 목적</td></tr>
-            </tbody>
-          </table>
-          <div style="margin-top:4px;color:#999;font-size:10px;">※ 코스모·앳홈·INT는 공개 보도 부족 — 인수 배경은 인테이크 전략 방향에서 역추론. 인터뷰 시 확인 필요.</div>
-        </div>
-        <div style="margin-top:8px;padding:8px 12px;background:#e3f2fd;border-radius:var(--r);font-size:11px;color:#1565c0;">
-          <strong>볼트온 밸류체인:</strong> 소재 R&D(본사) → 제조(코스모) → B2C 온라인(앳홈) → B2B 급식(JSG) → 글로벌 수출(INT). 수직·수평 통합형 M&A 전략으로 IPO 외형 확장 추진 중.
-        </div>
-        <div style="margin-top:4px;padding:8px 12px;background:#fff3e0;border-radius:var(--r);font-size:11px;color:#e65100;">
-          <strong>투자 의사결정 시사점:</strong> JSG(+5.4억)+코스모(+0.8억) = 연 6.2억 흑자 기여로 M&A 시너지 입증. 앳홈스퀘어(-1.6억)+INT(-0.6억)는 소폭 적자이나 규모 경미(합산 -2.2억). 연결 OP -22.8억의 핵심 원인은 본사 적자 -26.7억 — BEP 달성의 관건은 판매수수료(20.4억) 억제와 본사 수익성 개선.
-        </div>
-      </div>
-      <div class="s2-card" style="grid-column:1/-1;"><div class="s2-card-title">투자 구조 & RCPS 리스크 (Captable 기준)</div>
-        <table class="fin-table"><thead><tr>
-          <th>라운드</th><th>시기</th><th style="text-align:right">투자액</th><th style="text-align:right">Post-money</th><th>주요 투자자</th><th>유형</th>
-        </tr></thead><tbody>
-          <tr><td>Seed~A</td><td>2015~2018</td><td style="text-align:right">45.0억</td><td style="text-align:right">134억</td><td>농촌융자(동아쏘시오), SB글로벌</td><td>보통주</td></tr>
-          <tr><td>Pre-B</td><td>2021.11</td><td style="text-align:right">19.3억</td><td style="text-align:right">182억</td><td>신한CBIL</td><td style="color:#1565c0;font-weight:600;">RCPS</td></tr>
-          <tr><td>B</td><td>2022~2023</td><td style="text-align:right">90.0억</td><td style="text-align:right">380억</td><td>ATU(소프트뱅크), BNH, 교보증권</td><td style="color:#1565c0;font-weight:600;">RCPS</td></tr>
-          <tr><td>C</td><td>2024.12~2025.7</td><td style="text-align:right">80.0억</td><td style="text-align:right;font-weight:700;">625억</td><td>HB투자, CJ투자, 우리은행, KDB</td><td style="color:#1565c0;font-weight:600;">RCPS</td></tr>
-          <tr style="font-weight:700;border-top:2px solid var(--border-mid);"><td colspan="2">누적 투자</td><td style="text-align:right">~280억</td><td style="text-align:right"></td><td colspan="2">RCPS 누적 ~189억 (전체의 68%)</td></tr>
-        </tbody></table>
-        <div style="margin-top:8px;padding:8px 12px;background:#fce4ec;border-radius:var(--r);font-size:11px;color:#c62828;">
-          <strong>RCPS 희석 리스크:</strong> 우선주 63,533주(45%) 전환 시 대표 지분 15.4% → 추가 희석 불가피. RCPS 누적 189억(전체 투자의 68%) — 캡테이블 과도 복잡. C라운드 발행가 445,988원 vs 현 실적 기준 적정가치 괴리 → 다운라운드 압력 시 anti-dilution 조항 발동 가능. 풋옵션/드래그얼롱 조건에 따라 상환 청구 리스크 존재. 메자닌 추가 집행 비현실적 — RCPS 구조가 너무 복잡하여 후순위 투자자 유치 난항.
-        </div>
-      </div>
-      <div class="s2-card" style="grid-column:1/-1;"><div class="s2-card-title">핵심 강점 vs 리스크</div>
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
-          <div style="padding:10px;background:#e8f5e9;border-radius:var(--r);">
-            <div style="font-weight:700;color:#2e7d32;margin-bottom:6px;">강점</div>
-            <ul class="s2-info-list" style="font-size:11px;">
-              <li>별도 매출 224억(+12.5%), 연결 398억 — M&A 4건으로 사업 다각화 성공</li>
-              <li>해외 매출 YoY +150% (캐나다·호주·대만), 곤약젤리 글로벌 수요</li>
-              <li>JSG+코스모 연 6.2억 흑자 — M&A로 수익원 다변화 성공</li>
-              <li>FY2024 BS 현금 101.8억 → DW 실잔고 16.8억(2026.03) — M&A·운영손실로 85억 소진. 현재 기준 부채 즉시 상환 불가</li>
-              <li>부채비율 340%(FY22)→34%(FY24) 급격 개선 — 재무구조 안정화</li>
-              <li>C라운드 Post 625억, HB·CJ·KDB 등 기관투자자 참여</li>
-            </ul>
-          </div>
-          <div style="padding:10px;background:#ffebee;border-radius:var(--r);">
-            <div style="font-weight:700;color:#d32f2f;margin-bottom:6px;">리스크</div>
-            <ul class="s2-info-list" style="font-size:11px;">
-              <li>본사 OP -26.7억 — 판매수수료 20.4억(+58% YoY) 급증이 적자 주범</li>
-              <li>대표 지분 15.4% — 경영권 취약, RCPS 45% 전환 시 희석 가속</li>
-              <li>DW 실잔고 16.8억(2026.03) — BS 현금 101.8억은 FY2024 시점값. M&A 3건+운영손실로 85억 소진</li>
-              <li>BS 금융부채 17.5억 vs go_nogo 26.7억 — 9.2억 미확인 부채</li>
-              <li>누적결손금 △152.4억 — 매년 25~40억 순손실 누적</li>
-              <li>매입채무 +42% 증가 — 운전자본 관리 악화 신호</li>
-              <li>런웨이 9.6개월, C라운드 입금 완료 전 추가 자금 소요 리스크</li>
-            </ul>
-          </div>
-        </div></div>
+      <div class="s2-card"><div class="s2-card-title">재무 현황 (2025, 단위: 억원)</div>
+        <table class="fin-table"><thead><tr><th>항목</th><th style="text-align:right">금액</th></tr></thead><tbody>
+          <tr><td>매출</td><td style="text-align:right">201</td></tr>
+          <tr><td>영업이익</td><td style="text-align:right" class="val-neg">-24.7</td></tr>
+          <tr><td>금융부채</td><td style="text-align:right">26.7</td></tr>
+          <tr><td>현금</td><td style="text-align:right" class="val-pos">101.8</td></tr>
+          <tr><td>자본</td><td style="text-align:right" class="val-pos">104.8</td></tr>
+        </tbody></table></div>
+      <div class="s2-card"><div class="s2-card-title">핵심 이슈</div>
+        <ul class="s2-info-list">
+          <li>매출 201억 대형사이나 영업적자 -24.7억 (월 약 2억 적자)</li>
+          <li>현금 101.8억으로 부채(26.7억) 즉시 상환 가능</li>
+          <li>만기/현금 비율 0.16x — 재무 안정성 양호</li>
+        </ul></div>
+      <div class="s2-card"><div class="s2-card-title">인터뷰 확인 필요 사항</div>
+        <ul class="s2-info-list">
+          <li>월 2억 적자 구조에서 BEP 달성 시기와 구체적 비용 감축 플랜</li>
+          <li>건강기능식품 D2C 브랜드/채널 독점성</li>
+          <li>55명 인력 구조 최적화 가능 여부</li>
+        </ul></div>
       <div class="s2-card" style="grid-column:1/-1;"><div class="s2-card-title">진단 요약</div>
-        <div style="padding:10px 14px;background:var(--bg-orange);border-radius:var(--r);font-size:12px;color:var(--c-orange);">
-          150억 투자 유치 후 M&A 3건으로 연결 매출 398억 달성했으나 흑자 전환 실패(연결 OP -22.8억). 핵심 원인은 본사 판매수수료 급증(+58%). DW 실잔고 16.8억(BS 101.8억은 FY24 시점값, M&A+운영손실로 85억 소진). RCPS 189억(투자의 68%)으로 캡테이블 과도 복잡 → 메자닌 추가 집행 비현실적. 부채 26.7억은 잔고 대비 감당 가능 수준이나, 채널 비용 구조 리셋과 자회사 운전자금 최적화가 BEP 달성의 관건.
-        </div></div>
-      <div class="s2-next s2-next-request" style="grid-column:1/-1;"><div class="s2-next-title">인터뷰 확인 필요</div>
-        <ul class="s2-next-list">
-          <li><strong>CRITICAL</strong> — BEP 타임라인: 본사 -26.7억→흑자 시나리오? 판매수수료(20.4억) 억제 구체 플랜?</li>
-          <li><strong>CRITICAL</strong> — RCPS 45%(63,533주) 전환/상환 조건: 풋옵션 트리거, 드래그얼롱, anti-dilution 조항 구체 내용?</li>
-          <li><strong>CRITICAL</strong> — 앳홈스퀘어(-1.6억)+INT(-0.6억) 적자 자회사 턴어라운드 계획? 본사 -26.7억 개선 타임라인?</li>
-          <li><strong>WARNING</strong> — BS 금융부채 17.5억 vs go_nogo 26.7억 차이 9.2억 — 단기차입금 16.7억 대주 성격(은행/관계사/bridge)?</li>
-          <li><strong>WARNING</strong> — DW 실잔고 16.8억(BS 101.8억에서 85억 소진) — 자회사별 현금 분포? 잔여 현금 소진 속도?</li>
-          <li><strong>WARNING</strong> — 자본조정 40.0억 성격 확인 (주식매수선택권? 자기주식? 기타?)</li>
-          <li><strong>REVIEW</strong> — JSG(112억/+5.4억) 인수 시너지 — 해외 곤약젤리 수출 채널 확장 ROI, 경영 독립성</li>
-          <li><strong>REVIEW</strong> — C라운드 80억 중 미입금분 규모? 삼성여신/KDB 등 후속 투자자 입금 일정?</li>
-          <li><strong>REVIEW</strong> — 매입채무 +42% 증가 원인: 결제조건 변경? 원재료 선구매? 자회사 연결 효과?</li>
-          <li><strong>WARNING</strong> — 자회사(JSG·코스모·앳홈·INT) 고위드 온보딩 의향 — 그룹 통합 자금관리 도입 가능 여부?</li>
-          <li><strong>WARNING</strong> — 6개월 BEP 달성 구체 시나리오 — 판매수수료(20.4억) 억제 방안, 비용 절감 항목별 금액·타임라인</li>
-        </ul>
-      </div>`,
-      '<div class="section-link-row"><button class="btn-rm" onclick="downloadImprovementReport(event,\'s2\')">경영 개선 리포트 (PDF) ↓</button></div>');
+        <div style="padding:10px 14px;background:var(--bg-yellow);border-radius:var(--r);font-size:12px;color:var(--c-yellow);">
+          현금 101.8억으로 부채 즉시 커버 가능하나, 월 2억 적자 지속 시 현금 소진 불가피. 6개월 BEP 달성을 위한 구조적 비용 감축이 핵심.
+        </div></div>`);
   }
 
   /* ── 웰로 ──────────────────────────────────────────────────── */
@@ -2298,14 +1752,13 @@ html, body {
           <li>CEO: 김유리안나, 시리즈B 유치 완료</li>
           <li>고향사랑기부 서비스 매출 ~10억</li>
         </ul></div>
-      <div class="s2-card"><div class="s2-card-title">재무 현황 (DW 실거래 기준, 단위: 억원)</div>
-        <table class="fin-table"><thead><tr><th>항목</th><th style="text-align:right">금액</th><th style="text-align:right;font-size:10px;color:#999;">제출 BS</th></tr></thead><tbody>
-          <tr><td>매출</td><td style="text-align:right">23.9</td><td style="text-align:right;font-size:10px;color:#999;">-</td></tr>
-          <tr><td>영업이익</td><td style="text-align:right" class="val-neg">-52.7</td><td style="text-align:right;font-size:10px;color:#999;">-</td></tr>
-          <tr><td>금융부채</td><td style="text-align:right">12</td><td style="text-align:right;font-size:10px;color:#999;">-</td></tr>
-          <tr><td>현금 (평균잔고)</td><td style="text-align:right">20.8</td><td style="text-align:right;font-size:10px;color:#999;">75</td></tr>
-          <tr><td>월 순캐시번</td><td style="text-align:right" class="val-neg">-2.0</td><td style="text-align:right;font-size:10px;color:#999;">-</td></tr>
-          <tr><td>런웨이</td><td style="text-align:right">10.5개월</td><td style="text-align:right;font-size:10px;color:#999;">-</td></tr>
+      <div class="s2-card"><div class="s2-card-title">재무 현황 (2025, 단위: 억원)</div>
+        <table class="fin-table"><thead><tr><th>항목</th><th style="text-align:right">금액</th></tr></thead><tbody>
+          <tr><td>매출</td><td style="text-align:right">23.9</td></tr>
+          <tr><td>영업이익</td><td style="text-align:right" class="val-neg">-52.7</td></tr>
+          <tr><td>금융부채</td><td style="text-align:right">12</td></tr>
+          <tr><td>현금</td><td style="text-align:right" class="val-pos">75 (실질 21 + 투자금 커밋)</td></tr>
+          <tr><td>자본</td><td style="text-align:right" class="val-pos">60.1</td></tr>
         </tbody></table></div>
       <div class="s2-card"><div class="s2-card-title">전략 전환 현황</div>
         <ul class="s2-info-list">
@@ -2316,17 +1769,14 @@ html, body {
         </ul></div>
       <div class="s2-card"><div class="s2-card-title">핵심 이슈</div>
         <ul class="s2-info-list">
-          <li>DW 실잔고 20.8억, 월 순유출 2.0억 → 런웨이 10.5개월</li>
-          <li>제출 BS 현금 75억 vs DW 20.8억 — 54억 괴리 (투자금 커밋 미입금분 추정)</li>
-          <li>투자금 70억 입금(3~4월) 시 런웨이 대폭 개선 기대</li>
+          <li>월 번레이트 약 4.4억 — 구조조정 후 축소 필요</li>
+          <li>현금 75억으로 부채 12억 즉시 커버 가능</li>
+          <li>캐시번 속도가 생존의 핵심 변수</li>
         </ul></div>
       <div class="s2-card" style="grid-column:1/-1;"><div class="s2-card-title">진단 요약</div>
         <div style="padding:10px 14px;background:var(--bg-yellow);border-radius:var(--r);font-size:12px;color:var(--c-yellow);">
-          DW 실잔고 20.8억, 월 순유출 2.0억 → 런웨이 10.5개월. 투자금 70억 커밋(3~4월 입금) 시 상황 반전 가능하나, 구조조정 실행 속도가 핵심.
-        </div></div>
-      <div class="s2-next s2-next-ready" style="grid-column:1/-1;"><div class="s2-next-title">Next Step</div>
-        <div class="s2-next-ready-msg">인터뷰 완료 — Section 3 종합 판정 확인. 투자금 입금(3~4월) 후 현금 KPI 재확인 예정.</div>
-      </div>`);
+          현금 75억 + 투자금 70억 커밋으로 단기 생존 여유 있으나, 월 4.4억 번레이트가 핵심 리스크. 구조조정 실행 모니터링 3개월 후 재평가.
+        </div></div>`);
   }
   function renderSection3_Wello(grade) {
     return s3InterviewWrap(grade || 'yellow', `
@@ -2357,8 +1807,7 @@ html, body {
           <li><span class="reopen-num">02</span><span>API 플랫폼 첫 유료 고객 확보</span></li>
           <li><span class="reopen-num">03</span><span>3개월 후 재평가 (2026년 6월)</span></li>
         </ul>
-      </div>
-      <div class="section-link-row"><button class="btn-rm" onclick="downloadImprovementReport(event,'s3')">경영 개선 리포트 (PDF) ↓</button></div>`);
+      </div>`);
   }
 
   /* ── 온오프믹스 ────────────────────────────────────────────── */
@@ -2366,119 +1815,68 @@ html, body {
     return s2Wrap(grade || 'yellow', `
       <div class="s2-card"><div class="s2-card-title">사업 개요</div>
         <ul class="s2-info-list">
-          <li>이벤트테크 플랫폼 CEMS — MICE + 문화콘텐츠(공연/레저/전시/페스티벌) 통합 백엔드</li>
-          <li>설립 2010.02 (16년차), 직원 6명 (47→25→9→6명 단계적 구조조정)</li>
-          <li>CEO: 양준철, 선급금 비즈니스 모델 (인터파크 레저 모델 확장)</li>
-          <li>핵심 시스템: 워너피스닷컴, CMS 30개 채널 연동, 현장POS, AI 통역</li>
+          <li>이벤트테크 플랫폼 CEMS (13년 운영)</li>
+          <li>설립 2010.02, 직원 6명 (47→25→6명 구조조정)</li>
+          <li>CEO: 양준철, 선급금 비즈니스 모델</li>
+          <li>방산(KIMST) 신사업 피벗 진행 중</li>
         </ul></div>
-      <div class="s2-card"><div class="s2-card-title">재무 현황 (DW 실거래 기준, 단위: 억원)</div>
-        <table class="fin-table"><thead><tr><th>항목</th><th style="text-align:right">금액</th><th style="text-align:right;font-size:10px;color:#999;">제출 BS</th></tr></thead><tbody>
-          <tr><td>매출</td><td style="text-align:right">17.6</td><td style="text-align:right;font-size:10px;color:#999;">-</td></tr>
-          <tr><td>영업이익</td><td style="text-align:right" class="val-neg">-5.8</td><td style="text-align:right;font-size:10px;color:#999;">-</td></tr>
-          <tr><td>부채 총계</td><td style="text-align:right" class="val-neg">32</td><td style="text-align:right;font-size:10px;color:#999;">-</td></tr>
-          <tr><td>현금 (평균잔고)</td><td style="text-align:right">6.1</td><td style="text-align:right;font-size:10px;color:#999;">7</td></tr>
-          <tr><td>월 순캐시번</td><td style="text-align:right" class="val-pos">+1.9</td><td style="text-align:right;font-size:10px;color:#999;">-</td></tr>
-          <tr><td>런웨이</td><td style="text-align:right" class="val-pos">20+개월</td><td style="text-align:right;font-size:10px;color:#999;">-</td></tr>
-          <tr><td>자본</td><td style="text-align:right" class="val-neg">-12.6 (자본잠식)</td><td style="text-align:right;font-size:10px;color:#999;">-</td></tr>
+      <div class="s2-card"><div class="s2-card-title">재무 현황 (2025, 단위: 억원)</div>
+        <table class="fin-table"><thead><tr><th>항목</th><th style="text-align:right">금액</th></tr></thead><tbody>
+          <tr><td>매출</td><td style="text-align:right">17.6</td></tr>
+          <tr><td>영업이익</td><td style="text-align:right" class="val-neg">-5.8</td></tr>
+          <tr><td>금융부채</td><td style="text-align:right">7.2 (IBK 5억 + 기타 2.2억)</td></tr>
+          <tr><td>현금</td><td style="text-align:right">7</td></tr>
+          <tr><td>자본</td><td style="text-align:right" class="val-neg">-12.6 (자본잠식)</td></tr>
         </tbody></table></div>
-      <div class="s2-card" style="grid-column:1/-1;"><div class="s2-card-title">금융권 부채 상세 (인터뷰 확인) — 부채총계 32억</div>
-        <table class="fin-table"><thead><tr>
-          <th>#</th><th>항목</th><th style="text-align:right">잔액</th><th>비고</th>
-        </tr></thead><tbody>
-          <tr><td>1</td><td>신보 대출 (기보 보증)</td><td style="text-align:right" class="val-neg">6.0억</td><td></td></tr>
-          <tr><td>2</td><td>중진공 대출</td><td style="text-align:right" class="val-neg">1.0억</td><td>월 400만원대 상환 중</td></tr>
-          <tr><td>3</td><td>대표·가족 사재</td><td style="text-align:right" class="val-neg">~4.0억</td><td>개인 투입금</td></tr>
-          <tr><td>4</td><td>체불 임금·퇴직금</td><td style="text-align:right" class="val-neg">~2.0억</td><td>10명분, 7월까지 지급유예</td></tr>
-          <tr><td>5</td><td>풀리지 RCPS</td><td style="text-align:right" class="val-neg">—</td><td style="color:#d32f2f;font-weight:600;">만기 4월</td></tr>
-          <tr><td>6</td><td>이예스 RCPS</td><td style="text-align:right" class="val-neg">—</td><td style="color:#e65100;">만기 6월</td></tr>
-          <tr style="font-weight:700;border-top:2px solid var(--border-mid);"><td></td><td>부채총계</td><td style="text-align:right" class="val-neg">32억</td><td style="font-size:10px;font-weight:400;color:#666;">해 넘긴 항목 포함, 실질과 괴리</td></tr>
-        </tbody></table></div>
-      ${s2Empty('비금융 부채 (BS 기준)', '재무상태표 (가결산 또는 최근 FY)')}
-      ${s2Empty('주주 구성', '주주명부, 정관, 투자계약서 (RCPS 조건)')}
       <div class="s2-card"><div class="s2-card-title">선급금 비즈니스 모델</div>
         <ul class="s2-info-list">
-          <li>시설에 2~3억 선급금 → 30개 채널 판매대행 + 현장관리 → 12개월 균등 회수</li>
-          <li>수수료: 온라인 10%, 오프라인 3%, 선급금 시 12~14%</li>
-          <li>리스크 관리: 요청액 3배 이상 거래액 시설만 대상 + 대표 연대보증 + 선순위 회수</li>
-          <li>현재 약 50개 시설 (바운스 트램펄린, 옵토피 등), 시설당 월 순매출 700~900만원</li>
-          <li>현 인력 기준 10~20억 운용 가능하나 자금 부족으로 신규 거절 중</li>
+          <li>시설에 2~3억 투입 → 판매대행 → 원금 회수</li>
+          <li>현재 약 50개 시설 운영 중</li>
+          <li>신규 요청은 자금 부족으로 거절 중</li>
+          <li>선급금 회수 지연이 현금흐름 압박 원인</li>
         </ul></div>
-      <div class="s2-card"><div class="s2-card-title">자금난 원인 (인터뷰 확인)</div>
+      <div class="s2-card"><div class="s2-card-title">핵심 이슈</div>
         <ul class="s2-info-list">
-          <li><strong>컨센서스 투자 미집행</strong> — 보통주60억+구주20억 계약 중 1차만 집행, 본부 폐지로 소멸</li>
-          <li><strong>티메프 사태</strong> — 판매대금 약 3억 미수령 + 지급 의무 동시 발생</li>
-          <li><strong>야놀자 협업 파기</strong> — 30억 집행 제안 → 민사소송 → 티메프 후 소취하 + 자금약속 파기</li>
-          <li><strong>카카오증권 펀드 무산</strong> — 200억 규모 펀드 논의 중 컨센서스 2차 철회로 중단</li>
-          <li><strong>피플펀드·토스페이</strong> — 보증보험 조건 오류 / 방침 변경으로 각각 결렬</li>
-          <li>대표 본인 인정: "장미빛으로 보며 인원 조정이 후행적"</li>
-        </ul></div>
-      <div class="s2-card" style="grid-column:1/-1;"><div class="s2-card-title">핵심 강점 vs 리스크</div>
-        <ul class="s2-info-list">
-          <li>강점: 순유입 +1.9억/월, 런웨이 20+개월 — 단기 유동성 안정</li>
-          <li>강점: 선급금 모델 구조 견고 (선순위 회수, 연대보증, 3배 거래액 기준)</li>
-          <li>강점: 47→6명 구조조정 실행, 고정비 최소화</li>
-          <li>리스크: 부채 32억 + 자본잠식 -12.6억</li>
-          <li>리스크: RCPS 만기 4~6월, 체불 임금 ~2억</li>
-          <li>리스크: 외부 투자 5건 연속 결렬 이력</li>
+          <li>자본잠식 -12.6억 상태</li>
+          <li>KIMST 방산 수주 확정 여부가 턴어라운드 핵심</li>
+          <li>IBK 5억 만기 관리 필요</li>
+          <li>이벤트 플랫폼 단독으로는 BEP 달성 불투명</li>
         </ul></div>
       <div class="s2-card" style="grid-column:1/-1;"><div class="s2-card-title">진단 요약</div>
         <div style="padding:10px 14px;background:var(--bg-yellow);border-radius:var(--r);font-size:12px;color:var(--c-yellow);">
-          DW 기준 순유입 +1.9억/월, 런웨이 20+개월로 단기 유동성은 안정적. 선급금 모델 구조 견고(선순위 회수, 연대보증). 다만 부채 32억 + 자본잠식 상태에서 RCPS 만기(4~6월) 처리와 체불 임금 해소가 핵심 과제.
-        </div></div>
-      <div class="s2-next s2-next-ready" style="grid-column:1/-1;"><div class="s2-next-title">Next Step</div>
-        <div class="s2-next-ready-msg">인터뷰 완료 — Section 3 종합 판정 확인. RCPS 만기(4~6월) 처리 및 크라우드펀딩(4/6) 결과 모니터링 진행.</div>
-      </div>`);
+          부채 절대금액 소(7.2억)로 DW 잔고 대비 커버 가능. KIMST 방산 수주 확정 시 재평가 대상. 선급금 회복 + 방산 수주가 동시 달성되어야 턴어라운드.
+        </div></div>`);
   }
   function renderSection3_OnOffMix(grade) {
     return s3InterviewWrap(grade || 'conditional', `
       <div class="verdict-banner vb-orange">
         <div class="vb-grade">CONDITIONAL</div>
         <div class="vb-body">
-          <div class="vb-label">최종 판정 — 조건부 (BEP 선결)</div>
-          <div class="vb-reason">선급금 모델 구조는 견고하나, BEP 달성이 신규 투자 유치보다 선결 과제. 경기도 크라우드펀딩 + KIMST R&D 수주 확정 시 재평가</div>
+          <div class="vb-label">최종 판정 — 조건부</div>
+          <div class="vb-reason">KIMST 방산 수주 확정 + 선급금 회수 구조 개선이 선행 조건</div>
         </div>
       </div>
       <div class="interview-2col">
-        <div class="interview-block"><div class="ib-title">대표 (양준철) 핵심 발언 — 2026.03.12 인터뷰</div>
+        <div class="interview-block"><div class="ib-title">대표 (양준철) 핵심 발언</div>
           <ul class="quote-list">
-            <li>"세상을 너무 장미빛으로 바라보며 보수적 판단과 신속한 인원 조정을 하지 못한 것이 핵심 실책"</li>
-            <li>"컨센서스 80억 투자 계약 중 1차만 집행, 본부 폐지로 소멸. 야놀자 30억도 파기"</li>
-            <li>"선급금 모델은 자금 제공자가 판매대금 선순위 회수 구조라 운영 리스크 제한적"</li>
-            <li>"현 인력 6명 기준 10~20억 운용 가능, 인원 충원 시 볼베어파크 등 10~20억 일괄 집행 가능"</li>
-            <li>"경기도 크라우드펀딩 4월 6일 오픈, 경기도 광고 매체 통한 트래픽 회복 기대"</li>
+            <li>"13년간 이벤트 플랫폼 운영, 방산으로 피벗 진행 중"</li>
+            <li>"선급금 회수 지연이 가장 큰 캐시 압박"</li>
+            <li>"KIMST 수주 확정되면 매출 구조 전환 가능"</li>
           </ul></div>
         <div class="interview-block"><div class="ib-title">내부 심사역 판정</div>
           <ul class="quote-list fm-quotes">
-            <li>"시스템 완성도와 선급금 구조의 논리적 견고함은 긍정적"</li>
-            <li>"반복적 외부 변수 대응 실패와 후행적 의사결정 패턴에 대한 우려"</li>
-            <li>"신규 외부 투자 유치는 현 구조상 사실상 어려움 — BEP 달성이 선결 과제"</li>
-            <li>"R&D 사업 불발 시 크라우드펀딩만으로 회복 가능성 검증 필요"</li>
-          </ul></div>
-      </div>
-      <div class="interview-2col">
-        <div class="interview-block"><div class="ib-title">단기 회복 변수 (확인됨)</div>
-          <ul class="quote-list">
-            <li>경기도 크라우드펀딩 — 4월 6일 오픈, 2년 운영 (경기콘텐츠진흥원 수주)</li>
-            <li>해수부 KIMST R&D 사업 — 예상 5월 수주 (해수부 직접 노미네이트)</li>
-            <li>필요 자금 약 5억 (인력 2명 충원 + 운영 정상화)</li>
-          </ul></div>
-        <div class="interview-block"><div class="ib-title">미결 이슈</div>
-          <ul class="quote-list">
-            <li>풀리지 RCPS 만기 4월 / 이예스 RCPS 만기 6월 처리</li>
-            <li>체불 임금 2억 (7월까지 유예) — R&D 수주 시 해소 가능</li>
-            <li>1~2월 매출 2~3천만원 (비수기) — BEP 미달 상태 지속</li>
+            <li>"선급금 모델 자체는 흥미로우나, 자본잠식 상태에서 리스크"</li>
+            <li>"방산 수주 확정 없이는 진행 어려움"</li>
           </ul></div>
       </div>
       <div class="reopen-block">
         <div class="reopen-title">조건부 진행 — 확인 사항</div>
         <ul class="reopen-list">
-          <li><span class="reopen-num">01</span><span>경기도 크라우드펀딩 오픈(4/6) 후 1개월 트래픽·매출 지표 확인</span></li>
-          <li><span class="reopen-num">02</span><span>KIMST R&D 사업 수주 확정 (5월 예상)</span></li>
-          <li><span class="reopen-num">03</span><span>BEP 달성 — 월 고정지출 1억 커버하는 매출 구조 확보</span></li>
-          <li><span class="reopen-num">04</span><span>풀리지(4월)·이예스(6월) RCPS 만기 처리 완료</span></li>
+          <li><span class="reopen-num">01</span><span>KIMST 방산 수주 계약 확정</span></li>
+          <li><span class="reopen-num">02</span><span>선급금 회수율 개선 (현재 지연분 정리)</span></li>
+          <li><span class="reopen-num">03</span><span>IBK 5억 만기 대응 플랜 수립</span></li>
         </ul>
-      </div>
-      <div class="section-link-row"><button class="btn-rm" onclick="downloadImprovementReport(event,'s3')">경영 개선 리포트 (PDF) ↓</button></div>`);
+      </div>`);
   }
 
   /* ── 와이오엘오 ────────────────────────────────────────────── */
@@ -2490,40 +1888,30 @@ html, body {
           <li>설립 2017.03 (8년차), 직원 25명</li>
           <li>CEO: 황유미, 일본/미국 글로벌 확장 중</li>
         </ul></div>
-      <div class="s2-card"><div class="s2-card-title">재무 현황 (DW 실거래 기준, 단위: 억원)</div>
-        <table class="fin-table"><thead><tr><th>항목</th><th style="text-align:right">금액</th><th style="text-align:right;font-size:10px;color:#999;">제출 BS</th></tr></thead><tbody>
-          <tr><td>매출</td><td style="text-align:right">33.6 (성장세)</td><td style="text-align:right;font-size:10px;color:#999;">-</td></tr>
-          <tr><td>영업이익</td><td style="text-align:right" class="val-neg">-7.9</td><td style="text-align:right;font-size:10px;color:#999;">-</td></tr>
-          <tr><td>금융부채</td><td style="text-align:right">17.6</td><td style="text-align:right;font-size:10px;color:#999;">-</td></tr>
-          <tr><td>현금 (평균잔고)</td><td style="text-align:right" class="val-neg">0.3</td><td style="text-align:right;font-size:10px;color:#999;">5.5</td></tr>
-          <tr><td>월 순캐시번</td><td style="text-align:right" class="val-pos">+1.1</td><td style="text-align:right;font-size:10px;color:#999;">-</td></tr>
-          <tr><td>런웨이</td><td style="text-align:right" class="val-pos">20+개월</td><td style="text-align:right;font-size:10px;color:#999;">-</td></tr>
-          <tr><td>자본</td><td style="text-align:right" class="val-neg">0.1 (극도로 취약)</td><td style="text-align:right;font-size:10px;color:#999;">-</td></tr>
+      <div class="s2-card"><div class="s2-card-title">재무 현황 (2024, 단위: 억원)</div>
+        <table class="fin-table"><thead><tr><th>항목</th><th style="text-align:right">금액</th></tr></thead><tbody>
+          <tr><td>매출</td><td style="text-align:right">33.6 (성장세)</td></tr>
+          <tr><td>영업이익</td><td style="text-align:right" class="val-neg">-7.9</td></tr>
+          <tr><td>금융부채</td><td style="text-align:right">17.6</td></tr>
+          <tr><td>현금</td><td style="text-align:right">5.5</td></tr>
+          <tr><td>자본</td><td style="text-align:right" class="val-neg">0.1 (극도로 취약)</td></tr>
         </tbody></table></div>
-      ${s2Empty('금융권 부채 상세', '금융기관 대출 잔액 증명원, 사채/CB 계약서')}
-      ${s2Empty('비금융 부채 (BS 기준)', '재무상태표 (가결산 또는 최근 FY)')}
-      ${s2Empty('주주 구성', '주주명부, 정관, 투자계약서 (우선주 조건)')}
-      <div class="s2-card" style="grid-column:1/-1;"><div class="s2-card-title">핵심 강점 vs 리스크</div>
+      <div class="s2-card"><div class="s2-card-title">부채 구조</div>
         <ul class="s2-info-list">
-          <li>강점: 매출 33.6억 성장세 + 순유입 +1.1억/월</li>
-          <li>강점: 만기 2029~2033년 장기 구조 — 단기 상환 압박 없음</li>
-          <li>리스크: 금융부채 17.6억 vs 자본 0.1억 — 부채비율 극과다</li>
-          <li>리스크: DW 잔고 0.3억 — 현금 극히 취약</li>
-          <li>리스크: 영업적자 -7.9억, OP 전환 미확인</li>
+          <li>금융부채 17.6억 vs 자본 0.1억 — 부채비율 극과다</li>
+          <li>만기 2029~2033년 장기 구조 — 단기 상환 압박 없음</li>
+          <li>부채/매출 비율 52%</li>
+        </ul></div>
+      <div class="s2-card"><div class="s2-card-title">인터뷰 확인 필요 사항</div>
+        <ul class="s2-info-list">
+          <li>매출 성장에도 적자 지속 — OP 전환 구체적 타임라인</li>
+          <li>글로벌 확장(일본/미국) ROI 실적</li>
+          <li>비용 구조조정 의지 및 실행 플랜</li>
         </ul></div>
       <div class="s2-card" style="grid-column:1/-1;"><div class="s2-card-title">진단 요약</div>
         <div style="padding:10px 14px;background:var(--bg-orange);border-radius:var(--r);font-size:12px;color:var(--c-orange);">
-          DW 잔고 0.3억으로 현금 취약하나, 순유입 +1.1억/월로 회복 추세. 만기 장기(2029~2033)로 단기 압박 없음. 인터뷰에서 OP 전환 플랜과 구조조정 의지 확인 필수.
-        </div></div>
-      <div class="s2-next s2-next-request" style="grid-column:1/-1;"><div class="s2-next-title">인터뷰 확인 필요</div>
-        <ul class="s2-next-list">
-          <li><strong>CRITICAL</strong> — 매출 성장에도 적자 지속, OP 전환 구체적 타임라인?</li>
-          <li><strong>CRITICAL</strong> — 금융부채 17.6억 상세 내역 (차입처, 금리, 만기, 상환 조건)</li>
-          <li><strong>WARNING</strong> — 글로벌 확장(일본/미국) 투입 비용 vs 매출 기여 ROI</li>
-          <li><strong>REVIEW</strong> — 비용 구조조정 의지 및 실행 플랜</li>
-        </ul>
-      </div>`,
-      '<div class="section-link-row"><button class="btn-rm" onclick="downloadImprovementReport(event,\'s2\')">경영 개선 리포트 (PDF) ↓</button></div>');
+          만기 장기(2029~2033)로 시간 여유는 있으나, 매출 성장에도 적자 지속. 인터뷰에서 OP 전환 플랜과 구조조정 의지 확인 필수.
+        </div></div>`);
   }
 
   /* ── 메뉴잇 ────────────────────────────────────────────────── */
@@ -2533,310 +1921,115 @@ html, body {
         <ul class="s2-info-list">
           <li>태블릿 무인주문(스마트오더) B2B SaaS</li>
           <li>설립 2016.02, 직원 33명 (150→33명 구조조정)</li>
-          <li>대표: 박주영·김동훈, 주요 고객: SK쉴더스(ADT)</li>
+          <li>대표: 박주영 (전 대표: 김동훈), 주요 고객: SK쉴더스(ADT)</li>
         </ul></div>
-      <div class="s2-card"><div class="s2-card-title">재무 현황 (FY2025 가결산 + 2차 자료, 단위: 억원)</div>
-        <table class="fin-table"><thead><tr><th>항목</th><th style="text-align:right">금액</th><th style="text-align:right;font-size:10px;color:#999;">DW(FY24)</th></tr></thead><tbody>
-          <tr><td>매출</td><td style="text-align:right" class="val-pos">136.9</td><td style="text-align:right;font-size:10px;color:#999;">155.4(현금)</td></tr>
-          <tr><td>영업이익</td><td style="text-align:right" class="val-pos">+4.1 (흑자)</td><td style="text-align:right;font-size:10px;color:#999;">-48.0</td></tr>
-          <tr><td>금융부채</td><td style="text-align:right" class="val-neg">51.8 (사채 31 + 은행 19.5 + 개인/VC 1.3)</td><td style="text-align:right;font-size:10px;color:#999;">105.0</td></tr>
-          <tr><td>현금</td><td style="text-align:right" class="val-neg">2.65</td><td style="text-align:right;font-size:10px;color:#999;">3.4(평균)</td></tr>
-          <tr><td>자본</td><td style="text-align:right" class="val-neg">-34.8 (자본잠식)</td><td style="text-align:right;font-size:10px;color:#999;">-60.2</td></tr>
+      <div class="s2-card"><div class="s2-card-title">재무 현황 (FY2025 가결산, 단위: 억원)</div>
+        <table class="fin-table"><thead><tr><th>항목</th><th style="text-align:right">FY2025</th><th style="text-align:right;color:var(--text-dim)">FY2024</th></tr></thead><tbody>
+          <tr><td>매출</td><td style="text-align:right" class="val-pos">136.9</td><td style="text-align:right;color:var(--text-dim)">149.7</td></tr>
+          <tr><td>영업이익</td><td style="text-align:right" class="val-pos">+4.14 (흑자전환)</td><td style="text-align:right;color:var(--text-dim)">-48.0</td></tr>
+          <tr><td>금융부채 (BS)</td><td style="text-align:right" class="val-neg">56.8</td><td style="text-align:right;color:var(--text-dim)">105.0</td></tr>
+          <tr><td>현금 (CF)</td><td style="text-align:right" class="val-neg">2.65</td><td style="text-align:right;color:var(--text-dim)">—</td></tr>
+          <tr><td>자본총계</td><td style="text-align:right" class="val-neg">-34.84 (자본잠식)</td><td style="text-align:right;color:var(--text-dim)">-60.2</td></tr>
+          <tr><td>자산총계</td><td style="text-align:right">45.56</td><td style="text-align:right;color:var(--text-dim)">168.8</td></tr>
+          <tr><td>당기순이익</td><td style="text-align:right" class="val-pos">+25.32 <span style="color:var(--c-orange);font-size:10px">(일회성 23.0억 포함)</span></td><td style="text-align:right;color:var(--text-dim)">-45.2</td></tr>
+          <tr><td>판관비</td><td style="text-align:right" class="val-pos">69.8 (-45%)</td><td style="text-align:right;color:var(--text-dim)">127.9</td></tr>
         </tbody></table></div>
-      <div class="s2-card" style="grid-column:1/-1;"><div class="s2-card-title">금융권 부채 상세 (2차 자료 확인) — 합계 51.8억</div>
-        <table class="fin-table"><thead><tr>
-          <th>#</th><th>대출처</th><th style="text-align:right">잔액</th><th>금리</th><th>만기</th><th>비고</th>
-        </tr></thead><tbody>
-          <tr><td>1</td><td>IBK033 (기보 보증)</td><td style="text-align:right" class="val-neg">10.0억</td><td>변동</td><td>2027.03.19</td><td style="color:#2e7d32;">연장 완료</td></tr>
-          <tr><td>2</td><td>IBK035 (기보 보증)</td><td style="text-align:right" class="val-neg">0.6억</td><td>변동</td><td>2026.05.17</td><td style="color:#e65100;">3개월 내</td></tr>
-          <tr><td>3</td><td>IBK043 (기보 보증)</td><td style="text-align:right" class="val-neg">8.0억</td><td>변동</td><td>2026.05.28</td><td style="color:#d32f2f;font-weight:600;">차환 협의중</td></tr>
-          <tr><td>4</td><td>KB (매출채권담보)</td><td style="text-align:right" class="val-neg">0.9억</td><td>변동</td><td>2026.08.28</td><td></td></tr>
-          <tr><td>5</td><td>기보 유동화 SPC (사채)</td><td style="text-align:right" class="val-neg">31.0억</td><td>표면이율</td><td>분할 상환</td><td>CB 아님 확인</td></tr>
-          <tr><td>6</td><td>개인/VC</td><td style="text-align:right" class="val-neg">1.3억</td><td>—</td><td>—</td><td></td></tr>
-          <tr style="font-weight:700;border-top:2px solid var(--border-mid);"><td></td><td>합계</td><td style="text-align:right" class="val-neg">51.8억</td><td colspan="3" style="font-size:10px;font-weight:400;color:#666;">이자비용 추정 2.9억/년 · DSC 0.76x · 만기/현금 3.3x</td></tr>
-        </tbody></table></div>
-      <div class="s2-card" style="grid-column:1/-1;"><div class="s2-card-title">비금융 부채 (BS FY2025 가결산)</div>
-        <table class="fin-table"><thead><tr>
-          <th>항목</th><th style="text-align:right">FY2025</th><th style="text-align:right;font-size:10px;color:#999;">FY2024</th><th>비고</th>
-        </tr></thead><tbody>
-          <tr><td>미지급금</td><td style="text-align:right">9.4억</td><td style="text-align:right;font-size:10px;color:#999;">17.8억</td><td>거래처 미결제 — 47% 감소</td></tr>
-          <tr><td>선수금</td><td style="text-align:right">4.6억</td><td style="text-align:right;font-size:10px;color:#999;">59.4억</td><td>선납 받은 매출 — 92% 감소</td></tr>
-          <tr><td>미지급비용</td><td style="text-align:right">2.3억</td><td style="text-align:right;font-size:10px;color:#999;">8.4억</td><td>미지급 급여/경비 등</td></tr>
-          <tr><td>퇴직급여충당부채</td><td style="text-align:right">4.1억</td><td style="text-align:right;font-size:10px;color:#999;">6.5억</td><td>32명 기준, 150→33 구조조정 반영</td></tr>
-          <tr><td>수선충당부채</td><td style="text-align:right">1.4억</td><td style="text-align:right;font-size:10px;color:#999;">—</td><td>하드웨어 A/S 충당</td></tr>
-          <tr><td>부가세예수금</td><td style="text-align:right">1.3억</td><td style="text-align:right;font-size:10px;color:#999;">—</td><td></td></tr>
-          <tr><td>예수금·예수보증금</td><td style="text-align:right">0.5억</td><td style="text-align:right;font-size:10px;color:#999;">0.9억</td><td></td></tr>
-          <tr><td>미지급세금</td><td style="text-align:right">—</td><td style="text-align:right;font-size:10px;color:#999;">—</td><td>법인세 부채 없음 (결손 이월)</td></tr>
-          <tr style="font-weight:700;border-top:2px solid var(--border-mid);"><td>비금융 부채 소계</td><td style="text-align:right">23.6억</td><td style="text-align:right;font-size:10px;color:#999;">93.0억</td><td style="font-size:10px;font-weight:400;color:#2e7d32;">전년 대비 75% 감소</td></tr>
-          <tr style="font-weight:700;"><td>금융부채</td><td style="text-align:right" class="val-neg">56.8억</td><td style="text-align:right;font-size:10px;color:#999;">135.9억</td><td style="font-size:10px;font-weight:400;">단기 23.4 + 장기 2.4 + 사채 31</td></tr>
-          <tr style="font-weight:700;background:#f5f5f5;"><td>부채총계</td><td style="text-align:right" class="val-neg">80.4억</td><td style="text-align:right;font-size:10px;color:#999;">228.9억</td><td style="font-size:10px;font-weight:400;color:#2e7d32;">전년 대비 65% 감소 (228.9→80.4억)</td></tr>
+      <div class="s2-card" style="grid-column:1/-1;"><div class="s2-card-title">금융권 부채 상세 (인수계약서 원본 확인)</div>
+        <table class="fin-table"><thead><tr><th>구분</th><th style="text-align:right">잔액</th><th>금리</th><th>만기</th><th>비고</th></tr></thead><tbody>
+          <tr><td>IBK033 (기보)</td><td style="text-align:right">10.0억</td><td>변동</td><td>2027.03.19</td><td style="color:var(--c-green)">연장 완료</td></tr>
+          <tr><td>IBK035 (기보)</td><td style="text-align:right">0.6억</td><td>변동</td><td style="color:var(--c-red)">2026.05.17</td><td style="color:var(--c-red)">3개월 내</td></tr>
+          <tr><td>IBK043 (기보)</td><td style="text-align:right;font-weight:700">8.0억</td><td>변동</td><td style="color:var(--c-red)">2026.05.28</td><td style="color:var(--c-red)">차환 협의중</td></tr>
+          <tr><td>KB (매출채권담보)</td><td style="text-align:right">0.9억</td><td>변동</td><td>2026.08.28</td><td></td></tr>
+          <tr style="background:var(--bg-orange)"><td><strong>기보 SPC 제1회</strong></td><td style="text-align:right;font-weight:700">10.0억</td><td style="font-weight:600">5.992%</td><td style="font-weight:600">2026.11.06</td><td style="color:var(--c-red);font-weight:700;font-size:10px">⚠ 기한이익 상실 해당</td></tr>
+          <tr style="background:var(--bg-orange)"><td><strong>기보 SPC 제2회</strong></td><td style="text-align:right;font-weight:700">21.0억</td><td style="font-weight:600">4.767%</td><td style="font-weight:600">2027.11.13</td><td style="color:var(--c-red);font-weight:700;font-size:10px">⚠ 기한이익 상실 해당</td></tr>
+          <tr><td>개인/VC</td><td style="text-align:right">1.3억</td><td>—</td><td>—</td><td></td></tr>
+          <tr style="border-top:2px solid var(--text-pri)"><td><strong>건별 합계</strong></td><td style="text-align:right;font-weight:700">51.8억</td><td colspan="3" style="font-size:11px;color:var(--text-dim)">BS 기준 금융부채 56.8억 (단기차입금 23.4 + 장기차입금 2.4 + 사채 31.0)</td></tr>
         </tbody></table>
-        <div style="font-size:10px;color:#999;margin-top:6px;">※ 선수금 59.4→4.6억 대폭 감소는 식스티페이 고금리 채권 정리 영향 추정. 미지급세금 0원은 누적결손금(△42.9억) 이월로 법인세 없음.</div>
-      </div>
-      <div class="s2-card" style="grid-column:1/-1;"><div class="s2-card-title">주주 구성 (2026.01.16 주주명부 기준)</div>
-        <table class="fin-table"><thead><tr>
-          <th>주주</th><th>주식종류</th><th style="text-align:right">주식수</th><th style="text-align:right">지분율</th>
-        </tr></thead><tbody>
-          <tr><td><strong>김동훈</strong> (공동대표)</td><td>보통주</td><td style="text-align:right">60,000</td><td style="text-align:right"><strong>47.69%</strong></td></tr>
-          <tr><td><strong>권태규</strong></td><td>보통주</td><td style="text-align:right">30,000</td><td style="text-align:right"><strong>23.85%</strong></td></tr>
-          <tr><td>Strong Ventures IV, L.P.</td><td style="color:#1565c0;">우선주</td><td style="text-align:right">15,800</td><td style="text-align:right">12.56%</td></tr>
-          <tr><td>프라이머 시즈 투자조합 1호</td><td style="color:#1565c0;">우선주</td><td style="text-align:right">10,000</td><td style="text-align:right">7.95%</td></tr>
-          <tr><td>박중영</td><td>보통주</td><td style="text-align:right">6,000</td><td style="text-align:right">4.77%</td></tr>
-          <tr><td>김강훈</td><td>보통주</td><td style="text-align:right">2,000</td><td style="text-align:right">1.59%</td></tr>
-          <tr><td>김다은</td><td>보통주</td><td style="text-align:right">2,000</td><td style="text-align:right">1.59%</td></tr>
-          <tr style="font-weight:700;border-top:2px solid var(--border-mid);"><td>합계</td><td>보통 100,000 + 우선 25,800</td><td style="text-align:right">125,800</td><td style="text-align:right">100%</td></tr>
-        </tbody></table>
-        <div style="font-size:10px;color:#999;margin-top:6px;">창업자 2인(김동훈+권태규) 71.5% 지배. VC(Strong+프라이머) 20.5% 우선주. 자본잉여금 8.0억(주식발행초과금). 자본잠식 △34.8억 — 우선주 동의권·희석방지 조항 확인 필요.</div>
-      </div>
-      <div class="s2-card" style="grid-column:1/-1;"><div class="s2-card-title">핵심 강점 vs 리스크</div>
+        <div style="margin-top:8px;padding:8px 12px;background:var(--bg-red);border-radius:var(--r);font-size:11px;color:var(--c-red);line-height:1.6">
+          <strong>⚠ 기한이익 상실 (Acceleration Clause)</strong> — 제1회·제2회 인수계약서 기한이익 상실 사유(가): "자기자본 전액 잠식" → 현재 자본 -34.84억으로 <strong>해당</strong>. 채권자 재량 31억 즉시 상환 청구 가능. 미행사 서면 확인(waiver) 필수.<br>
+          <strong>연대보증인: 김동훈(전 대표)</strong> — 현 대표 박주영 승계 미확인. SPC 이자 부담 1.6억/년 (제1회 0.6 + 제2회 1.0).
+        </div></div>
+      <div class="s2-card"><div class="s2-card-title">핵심 강점 vs 리스크</div>
         <ul class="s2-info-list">
-          <li>강점: 매출 136.9억 + OP 흑자 4.1억 — 캐시 엔진 강력</li>
-          <li>강점: 150→33명 구조조정 실행 완료, 판관비 45%↓</li>
-          <li>리스크: IBK043 8억 차환 미확정 (2026.05.28 만기) — 단일 게이트</li>
-          <li>리스크: 영업외수익 26.5억 일회성 여부 미확인</li>
+          <li>강점: 매출 136.9억 + OP +4.14억 — 캐시 엔진 강력</li>
+          <li>강점: 판관비 45% 삭감(127.9→69.8억), 150→33명 구조조정 실행 완료</li>
+          <li>강점: 금융부채 105→56.8억 대폭 감소 (-46%)</li>
+          <li>리스크: 기보 SPC 31억 기한이익 상실 사유 해당 — waiver 미확보</li>
+          <li>리스크: IBK043 8억 차환 미확정 (2026.05.28 만기)</li>
+          <li>리스크: 영업외수익 26.5억 중 자산양수도 23.0억 일회성 확정</li>
         </ul></div>
       <div class="s2-card" style="grid-column:1/-1;"><div class="s2-card-title">진단 요약</div>
         <div style="padding:10px 14px;background:var(--bg-orange);border-radius:var(--r);font-size:12px;color:var(--c-orange);">
-          캐시 엔진 강력(OP +4.1억), 구조조정 실행력 확인(판관비 45%↓). 금융부채 102→51.8억 대폭 개선. 사채 31억 CB 아님 확인. IBK043 8억 차환이 단일 게이트 — 성공 시 Yellow 상향.
+          캐시 엔진 강력(OP +4.14억), 구조조정 실행력 확인(판관비 -45%). 금융부채 105→56.8억 대폭 개선. 2대 게이트: ① 기보 SPC 기한이익 상실 미행사 확인 ② IBK043 8억 차환. Orange Zone.
         </div></div>
-      <div class="s2-next s2-next-request" style="grid-column:1/-1;"><div class="s2-next-title">인터뷰 확인 필요</div>
-        <ul class="s2-next-list">
-          <li><strong>CRITICAL</strong> — IBK043 8억 만기 2026.05.28 차환 결과, 기보 보증 연장 협의 진행 상황?</li>
-          <li><strong>CRITICAL</strong> — FY2025 영업외수익 26.5억의 세부 내역, 일회성인가 반복 가능한가?</li>
-          <li><strong>WARNING</strong> — DW 런웨이 2.2개월, 단기 자금조달 타임라인과 소스?</li>
-          <li><strong>REVIEW</strong> — 태블릿 27% + 배터리 45% 단가절감 시 OP 15~20억 실현 가능성?</li>
-          <li><strong>REVIEW</strong> — 해외 생산 리드타임 vs 정산 시점 갭, Fuel 이연 효과?</li>
-        </ul>
-      </div>`,
-      '<div class="section-link-row"><button class="btn-rm" onclick="downloadImprovementReport(event,\'s2\')">경영 개선 리포트 (PDF) ↓</button></div>');
+      <div class="s2-card" style="grid-column:1/-1;"><div class="s2-card-title">인터뷰 확인 필요 사항</div>
+        <ul class="s2-info-list">
+          <li style="color:var(--c-red);font-weight:600">기보 SPC 사채 31억 — 기한이익 상실 사유(자본잠식) 해당. 채권자 미행사 서면 확인(waiver letter) 확보 여부?</li>
+          <li style="color:var(--c-red);font-weight:600">연대보증인 김동훈(전 대표) → 현 대표 박주영으로 보증 승계 완료 여부?</li>
+          <li style="color:var(--c-red);font-weight:600">IBK043 8억 만기 2026.05.28 차환 — 기보 보증 연장 협의 상황?</li>
+          <li style="color:var(--c-red);font-weight:600">자산양수도 처분이익 23.0억 — 매각 대상 자산, 매수자, 거래 조건 상세?</li>
+          <li>DW 런웨이 2.3개월 — 단기 자금조달 타임라인과 구체적 소스?</li>
+          <li>태블릿 27% + 배터리 45% 단가절감 시 OP 15~20억 가능 — 실현 가능성과 타임라인?</li>
+          <li>해외 생산 리드타임 vs 정산 시점 갭 — Fuel(카드 결제 전환) 이연 효과 정량화?</li>
+          <li>매출채권 FY24 38.9억 → FY25 3.72억 (90% 급감) — 자산양수도 연동 여부, SK쉴더스 정산 조건 변경?</li>
+        </ul></div>`);
   }
 
-  /* ── 회사별 커스텀 경영 개선 리포트 (DW 검증 기반 내러티브) ── */
-  const CUSTOM_REPORTS = {
-    '인테이크': function(dateStr) {
-      const tbl = 'style="width:100%;border-collapse:collapse;margin:12px 0 20px;font-size:10.5px;"';
-      const thBg = 'style="background:#f3f4f6;"';
-      const th = 'style="text-align:left;padding:8px 12px;border:1px solid #e5e7eb;font-weight:600;"';
-      const td = 'style="padding:8px 12px;border:1px solid #e5e7eb;"';
-      const tdb = 'style="padding:8px 12px;border:1px solid #e5e7eb;font-weight:600;"';
-      const h2 = 'style="font-size:16px;font-weight:700;margin:36px 0 16px;padding-bottom:8px;border-bottom:2px solid #e0e0e0;"';
-      const note = 'style="font-size:10px;color:#555;background:#f7f8fa;padding:10px 14px;border-radius:6px;margin:12px 0 20px;line-height:1.7;"';
-      return `
-<div style="background:#f7f8fa;border-radius:8px;padding:20px 24px;margin-bottom:28px;">
-  <div style="font-size:13px;font-weight:600;margin-bottom:10px;">대표님께</div>
-  <p style="font-size:11px;color:#333;line-height:1.8;">
-    피트스탑 프로그램에 관심을 가져주셔서 감사합니다.<br><br>
-    제출해 주신 자료와 고위드 데이터웨어하우스 실거래 데이터를 종합 분석하였습니다.
-    본 리포트는 현재 재무 현황에 대한 정밀 진단과 함께, 구체적인 경영 개선 방향을 정리한 것입니다.<br><br>
-    개선이 진행되는 과정에서도 언제든 연락 주시면 함께 논의하겠습니다.
-  </p>
-</div>
+  /* ── 젠테 ──────────────────────────────────────────────────── */
+  function renderSection2_Jente(grade) {
+    return s2Wrap(grade || 'red', `
+      <div class="s2-card"><div class="s2-card-title">사업 개요</div>
+        <ul class="s2-info-list">
+          <li>럭셔리 패션 이커머스 플랫폼</li>
+          <li>기존 포트폴리오 — 별도 관리 대상</li>
+          <li>매출 537.7억 초대형, 수익성 미달</li>
+        </ul></div>
+      <div class="s2-card"><div class="s2-card-title">재무 현황 (2025, 단위: 억원)</div>
+        <table class="fin-table"><thead><tr><th>항목</th><th style="text-align:right">금액</th></tr></thead><tbody>
+          <tr><td>매출</td><td style="text-align:right">537.7</td></tr>
+          <tr><td>영업이익</td><td style="text-align:right" class="val-neg">-52.5</td></tr>
+          <tr><td>금융부채</td><td style="text-align:right" class="val-neg">209</td></tr>
+          <tr><td>현금</td><td style="text-align:right" class="val-neg">7.3</td></tr>
+          <tr><td>자본</td><td style="text-align:right" class="val-neg">1.9 (극도로 취약)</td></tr>
+        </tbody></table></div>
+      <div class="s2-card"><div class="s2-card-title">부채 핵심</div>
+        <ul class="s2-info-list">
+          <li><strong>KB ESG 130억</strong> — 만기 2026.07 차환 필수</li>
+          <li>만기/현금 비율 23.8x — 현금 커버 불가</li>
+          <li>부채/매출 39% (절대금액 과다)</li>
+        </ul></div>
+      <div class="s2-card"><div class="s2-card-title">관리 현황</div>
+        <ul class="s2-info-list">
+          <li>기존 포트폴리오 — 부채 리스트럭처링 진행 중</li>
+          <li>투자자 협의 진행 중</li>
+          <li>Mytheresa 벤치마크 기반 구조조정 전략 수립</li>
+        </ul></div>
+      <div class="s2-card" style="grid-column:1/-1;"><div class="s2-card-title">진단 요약</div>
+        <div style="padding:10px 14px;background:var(--bg-red);border-radius:var(--r);font-size:12px;color:var(--c-red);">
+          기존 포트폴리오 관리 대상. KB ESG 130억 만기 2026.07 차환이 최우선 과제. 부채 리스트럭처링 + 수익성 개선 병행 필요.
+        </div></div>`);
+  }
+  function renderSection3_Jente(grade) {
+    return s3InterviewWrap(grade || 'red', `
+      <div class="verdict-banner">
+        <div class="vb-grade">RED</div>
+        <div class="vb-body">
+          <div class="vb-label">기존 포트폴리오 — 별도 관리</div>
+          <div class="vb-reason">신규 피트스탑 대상 아님. KB ESG 130억 차환 + 부채 리스트럭처링 별도 진행 중</div>
+        </div>
+      </div>
+      <div class="reopen-block">
+        <div class="reopen-title">관리 과제</div>
+        <ul class="reopen-list">
+          <li><span class="reopen-num">01</span><span>KB ESG 130억 만기 2026.07 차환 확보</span></li>
+          <li><span class="reopen-num">02</span><span>영업적자 -52.5억 → 수익성 구조 개선</span></li>
+          <li><span class="reopen-num">03</span><span>투자자 협의 통한 부채 재조정</span></li>
+        </ul>
+      </div>`);
+  }
 
-<div ${h2}>1. 현황 진단: 투자 유치 → M&amp;A 확장 → 흑자 전환 미달</div>
-<p style="margin-bottom:14px;">인테이크는 C라운드까지 누적 약 280억원을 유치하고, 2025년 한 해 동안 JSG(5월)&middot;INT(8월)&middot;앳홈스퀘어(11월) 3건의 M&amp;A를 실행하여 연결 매출 398억 규모까지 외형을 키웠습니다. 그러나 <strong>연결 영업이익은 -22.8억으로 흑자 전환에는 실패</strong>한 상태입니다.</p>
-<table ${tbl}>
-  <tr ${thBg}><th ${th}>구분</th><th ${th}>별도(본사)</th><th ${th}>연결</th></tr>
-  <tr><td ${td}>매출</td><td ${td}>224.4억</td><td ${td}>398.0억</td></tr>
-  <tr><td ${td}>영업이익</td><td ${tdb}>-26.7억</td><td ${tdb}>-22.8억</td></tr>
-  <tr><td ${td}>영업이익률</td><td ${td}>-11.9%</td><td ${td}>-5.7%</td></tr>
-</table>
-<p style="margin-bottom:14px;">자회사 중 JSG(+5.4억)와 코스모코퍼레이션(+0.8억)이 연 6.2억 흑자를 기여하여 연결 적자를 일부 상쇄하고 있으나, <strong>본사 -26.7억 적자가 그룹 전체를 끌어내리는 구조</strong>입니다.</p>
-<div ${note}>핵심 문제: M&amp;A를 통한 매출 확장 전략 자체는 유효하나(JSG&middot;코스모 흑자 입증), 본사의 비용 구조 개선 없이는 연결 기준으로도 BEP 달성이 불가능합니다.</div>
-
-<div ${h2}>2. 현금 소진 경고: C라운드 93억 → 현재 16.8억</div>
-<p style="margin-bottom:14px;">고위드 DW 실거래 데이터 기준, 본사 계좌 잔고 추이입니다.</p>
-<table ${tbl}>
-  <tr ${thBg}><th ${th}>시점</th><th ${th}>잔고</th><th ${th}>이벤트</th></tr>
-  <tr><td ${td}>2024.09</td><td ${td}>0.2억</td><td ${td}>C라운드 직전 — 사실상 바닥</td></tr>
-  <tr><td ${td}>2024.12</td><td ${td}>61.8억</td><td ${td}>C라운드 1차 입금</td></tr>
-  <tr><td ${td}>2025.01</td><td ${tdb}>93.8억</td><td ${td}>C라운드 유상증자 40억 → 피크</td></tr>
-  <tr><td ${td}>2025.04</td><td ${td}>50.2억</td><td ${td}>▼48억 급감 (JSG 인수 추정)</td></tr>
-  <tr><td ${td}>2025.08</td><td ${td}>30.0억</td><td ${td}>INT 인수</td></tr>
-  <tr><td ${td}>2025.11</td><td ${td}>23.9억</td><td ${td}>앳홈스퀘어 인수</td></tr>
-  <tr style="background:#fef2f2;"><td ${tdb}>2026.03</td><td ${tdb}>16.8억</td><td ${tdb}>현재 실잔고</td></tr>
-</table>
-<div ${note}>
-  <strong>연결 BS 현금 101.8억은 FY2024 말(C라운드 입금 직후) 시점의 스냅샷</strong>이며, 현재 실잔고와 85억의 괴리가 있습니다.<br>
-  C라운드 증자&middot;차입으로 약 106억 유입 후, M&amp;A 3건 + 영업적자로 <strong>1년간 약 81억 소진</strong>.<br>
-  월 영업 캐시번 약 -2억 기준 런웨이 <strong>약 8개월(2026년 11월경 소진 추정)</strong>.
-</div>
-
-<div ${h2}>3. 판관비 구조 개선: 채널 리셋 + 인건비 효율화</div>
-<p style="margin-bottom:14px;">본사 별도 기준 판관비 112.2억(매출 대비 49.7%)의 구성입니다.</p>
-<table ${tbl}>
-  <tr ${thBg}><th ${th}>비용 항목</th><th ${th}>FY2025</th><th ${th}>FY2024</th><th ${th}>YoY</th><th ${th}>매출 대비</th></tr>
-  <tr><td ${td}>광고선전비</td><td ${td}>22.1억</td><td ${td}>27.6억</td><td style="padding:8px 12px;border:1px solid #e5e7eb;color:#16a34a;font-weight:600;">-20%</td><td ${td}>9.8%</td></tr>
-  <tr style="background:#fef2f2;"><td ${tdb}>판매수수료</td><td ${tdb}>20.4억</td><td ${td}>12.9억</td><td style="padding:8px 12px;border:1px solid #e5e7eb;color:#dc2626;font-weight:600;">+58%</td><td ${tdb}>9.0%</td></tr>
-  <tr><td ${td}>급여+퇴직</td><td ${td}>22.7억</td><td ${td}>21.2억</td><td ${td}>+7%</td><td ${td}>10.1%</td></tr>
-  <tr><td ${td}>운반비</td><td ${td}>19.9억</td><td ${td}>19.3억</td><td ${td}>+3%</td><td ${td}>8.8%</td></tr>
-  <tr><td ${td}>지급수수료</td><td ${td}>6.7억</td><td ${td}>4.1억</td><td ${td}>+63%</td><td ${td}>3.0%</td></tr>
-</table>
-<p style="margin-bottom:10px;"><strong>① 판매수수료 +58%(+7.5억)가 적자 확대의 단일 최대 요인.</strong> 광고비를 5.5억 줄였으나 판매수수료가 7.5억 늘어 오히려 역효과. 외부 플랫폼 수수료 의존도 심화.</p>
-<p style="margin-bottom:10px;"><strong>개선 방향:</strong> 판매 채널별 수익성(채널 매출 - 수수료 - 물류비) 분석 → 수익 기여 낮은 채널 순차 정리 → D2C&middot;자사몰 비중 확대. 앳홈스퀘어 인수 목적(온라인 유통 내재화)과 연계하여 플랫폼 수수료 절감 가속.</p>
-<p style="margin-bottom:14px;"><strong>② 인건비(22.7억, 55명 인당 약 4,000만원)는 업계 대비 과다하지 않으나</strong>, 월 -2억 캐시번 상황에서 고정비 부담이 큼. 자회사 통합 과정에서 중복 기능 구조조정 검토 필요.</p>
-
-<div ${h2}>4. 부채: 규모 감당 가능, 잔고 여유 없음</div>
-<table ${tbl}>
-  <tr ${thBg}><th ${th}>항목</th><th ${th}>수치</th><th ${th}>평가</th></tr>
-  <tr><td ${td}>금융부채 (BS)</td><td ${td}>17.5억</td><td ${td}>단기 16.7 + 장기 0.8</td></tr>
-  <tr><td ${td}>부채총계</td><td ${td}>35.3억</td><td ${td}>비금융 17.8억 포함</td></tr>
-  <tr><td ${td}>부채비율</td><td ${td}>34%</td><td ${td}>FY22 340% → FY24 34% 급개선</td></tr>
-  <tr style="background:#fef2f2;"><td ${tdb}>현재 실잔고</td><td ${tdb}>16.8억</td><td ${tdb}>≒ 금융부채와 동일 수준</td></tr>
-</table>
-<p style="margin-bottom:14px;">금융부채 17.5억은 연결 매출 398억 대비 4.4%로 과대하지 않습니다. 그러나 <strong>현재 본사 실잔고 16.8억은 금융부채와 거의 동일 수준</strong>이어서 상환 시 운전자금이 소진됩니다.</p>
-<div ${note}>매입채무 6.9억→9.8억(+42%)으로 매출 성장률(+15%) 대비 과도하게 증가. 결제 조건 악화 또는 원재료 선구매 패턴이 운전자금을 압박하고 있습니다.</div>
-
-<div ${h2}>5. RCPS 구조와 자금 전략</div>
-<table ${tbl}>
-  <tr ${thBg}><th ${th}>라운드</th><th ${th}>투자액</th><th ${th}>유형</th><th ${th}>주요 투자자</th></tr>
-  <tr><td ${td}>Seed~A</td><td ${td}>45억</td><td ${td}>보통주</td><td ${td}>동아쏘시오, SB글로벌</td></tr>
-  <tr><td ${td}>Pre-B</td><td ${td}>19.3억</td><td ${td}>RCPS</td><td ${td}>신한CBIL</td></tr>
-  <tr><td ${td}>B</td><td ${td}>90억</td><td ${td}>RCPS</td><td ${td}>ATU, BNH</td></tr>
-  <tr><td ${td}>C</td><td ${td}>80억</td><td ${td}>RCPS</td><td ${td}>HB투자, CJ, KDB</td></tr>
-  <tr style="background:#f3f4f6;"><td ${tdb}>합계</td><td ${tdb}>~280억</td><td ${tdb} colspan="2">RCPS 189억 = 전체의 68%</td></tr>
-</table>
-<p style="margin-bottom:14px;">RCPS 189억(68%) + 대표 지분 15.4%로 경영권 취약. 추가 메자닌(CB/BW) 발행 시 캡테이블 복잡도 한계 초과, 기존 VC anti-dilution 조항 발동 리스크, 전환/상환 의무 중첩으로 <strong>현 시점 추가 메자닌 집행은 부적합</strong>합니다.</p>
-
-<div ${h2}>6. 경영 개선 제안: 고위드 운전자금 최적화</div>
-<p style="margin-bottom:14px;">현재 인테이크 그룹 5개 법인 중 고위드 사용 현황:</p>
-<table ${tbl}>
-  <tr ${thBg}><th ${th}>법인</th><th ${th}>연매출</th><th ${th}>고위드</th><th ${th}>월 카드 사용</th></tr>
-  <tr><td ${td}>인테이크 (본사)</td><td ${td}>224억</td><td style="padding:8px 12px;border:1px solid #e5e7eb;color:#16a34a;font-weight:600;">사용 중</td><td ${td}>월 4,700만</td></tr>
-  <tr><td ${td}>앳홈스퀘어</td><td ${td}>15억</td><td style="padding:8px 12px;border:1px solid #e5e7eb;color:#16a34a;font-weight:600;">사용 중</td><td ${td}>월 4,600만</td></tr>
-  <tr style="background:#fef2f2;"><td ${td}>JSG</td><td ${tdb}>112억</td><td style="padding:8px 12px;border:1px solid #e5e7eb;color:#dc2626;">미가입</td><td ${td}>—</td></tr>
-  <tr style="background:#fef2f2;"><td ${td}>코스모코퍼레이션</td><td ${td}>44억</td><td style="padding:8px 12px;border:1px solid #e5e7eb;color:#dc2626;">미가입</td><td ${td}>—</td></tr>
-  <tr style="background:#fef2f2;"><td ${td}>INT</td><td ${td}>3.2억</td><td style="padding:8px 12px;border:1px solid #e5e7eb;color:#dc2626;">미가입</td><td ${td}>—</td></tr>
-</table>
-<div style="margin-bottom:16px;">
-  <p style="margin-bottom:8px;"><strong>① 전 자회사 고위드 온보딩</strong> — JSG&middot;코스모&middot;INT 가입으로 그룹 전체 자금 흐름 실시간 모니터링. 특히 JSG(112억 매출, 185명)의 법인카드 전환 임팩트 큼.</p>
-  <p style="margin-bottom:8px;"><strong>② 그룹 통합 운전자본 관리</strong> — 본사 접근 가능 현금(16.8억)과 자회사 분산 현금의 가시성 확보. 매입&middot;매출 채권 회전일수, 월별 캐시번 일원화.</p>
-  <p style="margin-bottom:8px;"><strong>③ BEP 모니터링</strong> — 판매수수료, 채널별 수익성, 인건비를 월단위 추적. 목표: 6개월 내 월 캐시번 -2억 → -1억 이하, 런웨이 16개월 이상 확보.</p>
-</div>
-
-<div ${h2}>7. 향후 절차</div>
-<p style="margin-bottom:14px;">상기 개선 과제에 대한 대표 인터뷰를 통해 아래 사항을 확인합니다.</p>
-<table ${tbl}>
-  <tr ${thBg}><th ${th}>#</th><th ${th}>확인 사항</th><th ${th}>중요도</th></tr>
-  <tr><td ${td}>1</td><td ${td}>판매수수료 20.4억의 채널별 내역 — 채널별 순이익률</td><td style="padding:8px 12px;border:1px solid #e5e7eb;color:#dc2626;font-weight:600;">CRITICAL</td></tr>
-  <tr><td ${td}>2</td><td ${td}>자회사별 실제 현금 보유 현황 — 본사 접근 가능 그룹 현금 규모</td><td style="padding:8px 12px;border:1px solid #e5e7eb;color:#dc2626;font-weight:600;">CRITICAL</td></tr>
-  <tr><td ${td}>3</td><td ${td}>RCPS 45% 전환/상환 조건 — 풋옵션 트리거, 상환 청구 시점</td><td style="padding:8px 12px;border:1px solid #e5e7eb;color:#dc2626;font-weight:600;">CRITICAL</td></tr>
-  <tr><td ${td}>4</td><td ${td}>6개월 BEP 달성 구체 시나리오 — 비용 절감 항목별 금액&middot;타임라인</td><td style="padding:8px 12px;border:1px solid #e5e7eb;color:#ea580c;font-weight:600;">WARNING</td></tr>
-  <tr><td ${td}>5</td><td ${td}>JSG&middot;코스모 고위드 온보딩 의향 — 그룹 통합 자금관리 도입 가능 여부</td><td style="padding:8px 12px;border:1px solid #e5e7eb;color:#ea580c;font-weight:600;">WARNING</td></tr>
-</table>`;
-    },
-
-    '메뉴잇': function(dateStr) {
-      const tbl = 'style="width:100%;border-collapse:collapse;margin:12px 0 20px;font-size:10.5px;"';
-      const thBg = 'style="background:#f3f4f6;"';
-      const th = 'style="text-align:left;padding:8px 12px;border:1px solid #e5e7eb;font-weight:600;"';
-      const td = 'style="padding:8px 12px;border:1px solid #e5e7eb;"';
-      const tdb = 'style="padding:8px 12px;border:1px solid #e5e7eb;font-weight:600;"';
-      const h2 = 'style="font-size:16px;font-weight:700;margin:36px 0 16px;padding-bottom:8px;border-bottom:2px solid #e0e0e0;"';
-      const note = 'style="font-size:10px;color:#555;background:#f7f8fa;padding:10px 14px;border-radius:6px;margin:12px 0 20px;line-height:1.7;"';
-      return `
-<div style="margin-bottom:24px;">
-  <div style="font-size:13px;color:#555;">고위드넥서스 &middot; 피트스탑 경영개선 리포트</div>
-  <div style="font-size:22px;font-weight:700;margin:6px 0 2px;">주식회사 메뉴잇</div>
-  <div style="font-size:11px;color:#888;">대표: 박주영 | 태블릿 스마트오더 B2B SaaS | ${dateStr} 기준</div>
-</div>
-
-<div ${h2}>1. 현황 진단</div>
-<p>메뉴잇은 태블릿 기반 스마트오더 B2B SaaS 기업으로, SK쉴더스 단독납품(2024.10~)을 통해 매출이 안정 궤도에 올랐습니다. FY2025 가결산 기준 매출 136.9억, 영업이익 +4.1억으로 영업 흑자 전환에 성공했으며, 이는 FY2024 영업손실 △46.2억에서 극적 턴어라운드입니다.</p>
-<p>그러나 <strong>금융부채 51.8억</strong>(사채 31억 + 은행차입 19.5억 + 개인차입 1.3억)이 OP 대비 과중하고, 자본잠식 상태(자본 △34.8억)가 지속되고 있어 재무 안정화가 핵심 과제입니다.</p>
-<table ${tbl}>
-  <tr ${thBg}><th ${th}>구분</th><th ${th}>FY2024</th><th ${th}>FY2025(가결산)</th><th ${th}>증감</th></tr>
-  <tr><td ${tdb}>매출</td><td ${td}>107.4억</td><td ${td}>136.9억</td><td style="padding:8px 12px;border:1px solid #e5e7eb;color:#2563eb;font-weight:600;">+27.5%</td></tr>
-  <tr><td ${tdb}>영업이익</td><td ${td}>△46.2억</td><td ${td}>+4.1억</td><td style="padding:8px 12px;border:1px solid #e5e7eb;color:#16a34a;font-weight:600;">흑자전환</td></tr>
-  <tr><td ${tdb}>당기순이익</td><td ${td}>△54.0억</td><td ${td}>△3.1억</td><td style="padding:8px 12px;border:1px solid #e5e7eb;color:#2563eb;font-weight:600;">개선</td></tr>
-  <tr><td ${tdb}>부채총계</td><td ${td}>71.2억</td><td ${td}>80.4억</td><td ${td}>+12.9%</td></tr>
-  <tr><td ${tdb}>자본총계</td><td ${td}>△31.8억</td><td ${td}>△34.8억</td><td style="padding:8px 12px;border:1px solid #e5e7eb;color:#dc2626;">잠식 지속</td></tr>
-</table>
-<div ${note}>주: FY2025는 가결산 기준이며 감사조정에 따라 변동 가능</div>
-
-<div ${h2}>2. 현금 소진 추이 — DW 실잔고 기반</div>
-<p>DW Capital Flow 기준, 메뉴잇의 현금흐름은 <strong>영업 CF +47.1억</strong>(12개월)으로 현금창출력은 확보된 상태이나, 잔고 자체는 매우 타이트합니다. 현재 잔고 2.2억, 12개월간 변동폭 0~13.7억으로 <strong>운전자금 버퍼가 극히 얇습니다</strong>.</p>
-<table ${tbl}>
-  <tr ${thBg}><th ${th}>DW 지표</th><th ${th}>수치</th><th ${th}>비고</th></tr>
-  <tr><td ${tdb}>CF 매출 (12M)</td><td ${td}>155.4억</td><td ${td}>입금 기준, BS 매출 136.9억과 차이는 매출채권 회수 시차</td></tr>
-  <tr><td ${tdb}>영업 CF (12M)</td><td ${td}>+47.1억</td><td ${td}>현금 기반 영업수지 흑자</td></tr>
-  <tr><td ${tdb}>현재 잔고</td><td ${td}>2.2억</td><td style="padding:8px 12px;border:1px solid #e5e7eb;color:#dc2626;font-weight:600;">버퍼 극히 부족</td></tr>
-  <tr><td ${tdb}>12M 잔고 변동</td><td ${td}>0 ~ 13.7억</td><td ${td}>월말 기준, 큰 변동폭 → 결제 사이클 의존</td></tr>
-  <tr><td ${tdb}>Burn Rate</td><td ${td}>N/A (흑자)</td><td ${td}>영업흑자이나 부채 원리금 상환 부담으로 실질 여유 없음</td></tr>
-</table>
-<div ${note}>DW 잔고는 매일 업데이트되는 실시간 데이터이며, BS 현금(FY2025: 10.2억)과는 시점 차이가 있습니다. 잔고가 0원까지 떨어진 이력이 있어 결제일/입금일 미스매치에 따른 일시적 유동성 위기 가능성이 존재합니다.</div>
-
-<div ${h2}>3. 비용 구조 개선 — 판관비 45% 삭감의 명암</div>
-<p>메뉴잇은 FY2024→FY2025 판관비를 <strong>76.3억 → 42.2억(-44.6%)</strong>으로 대폭 줄였습니다. 이는 인원 구조조정(43→33명, △23%)과 마케팅 축소가 주요 동인입니다. 그러나 추가 삭감 여력은 제한적이며, 매출 확대를 통한 수익성 개선이 핵심입니다.</p>
-<table ${tbl}>
-  <tr ${thBg}><th ${th}>비용 항목</th><th ${th}>FY2024</th><th ${th}>FY2025</th><th ${th}>매출 대비</th><th ${th}>평가</th></tr>
-  <tr><td ${tdb}>상품매입</td><td ${td}>73.1억</td><td ${td}>72.1억</td><td ${td}>52.7%</td><td ${td}>하드웨어 원가, 개선 여지 제한</td></tr>
-  <tr><td ${tdb}>급여</td><td ${td}>23.6억</td><td ${td}>17.3억</td><td ${td}>12.6%</td><td style="padding:8px 12px;border:1px solid #e5e7eb;color:#16a34a;">△27% 구조조정 반영</td></tr>
-  <tr><td ${tdb}>감가상각</td><td ${td}>5.6억</td><td ${td}>4.1억</td><td ${td}>3.0%</td><td ${td}>리스 자산 감소</td></tr>
-  <tr><td ${tdb}>광고선전비</td><td ${td}>4.1억</td><td ${td}>1.3억</td><td ${td}>0.9%</td><td style="padding:8px 12px;border:1px solid #e5e7eb;color:#16a34a;">△69% 축소</td></tr>
-  <tr><td ${tdb}>고정비 합계</td><td ${td}>-</td><td ${td}>29.8억</td><td ${td}>21.8%</td><td ${td}>급여+감가+임차+보험 등</td></tr>
-</table>
-<p><strong>핵심 과제:</strong> 상품매입비 72.1억(매출 대비 52.7%)이 마진을 압박하는 최대 요인입니다. 하드웨어 조달 다변화, SK쉴더스 외 추가 B2B 채널 확보를 통한 볼륨 디스카운트 확보가 중장기 마진 개선의 열쇠입니다.</p>
-<div ${note}>판관비 삭감은 한계에 도달한 상태입니다. FY2024 대비 급여 △6.3억, 광고선전비 △2.8억 등 총 △34.1억 절감은 이미 실현되었으며, 추가 절감은 사업역량 훼손 리스크가 있습니다. 향후 OP 확대는 매출 레버리지에 의존해야 합니다.</div>
-
-<div ${h2}>4. 부채 상세 — DSC 0.76x, 원리금 상환 부담</div>
-<p>금융부채 51.8억은 <strong>영업이익 4.1억 대비 과중</strong>합니다. 부채상환비율(DSC) 0.76x로, 영업이익만으로는 원리금 상환이 불가능한 구조입니다. 다만 CF 영업수지 +47.1억은 현금 기준으로는 상환 여력이 있음을 보여주며, 이는 매출채권 회수가 정상적으로 이루어지는 한 유지 가능합니다.</p>
-<table ${tbl}>
-  <tr ${thBg}><th ${th}>구분</th><th ${th}>금액</th><th ${th}>금리</th><th ${th}>만기</th><th ${th}>비고</th></tr>
-  <tr><td ${tdb}>사채</td><td ${td}>31.0억</td><td ${td}>미확인</td><td ${td}>미확인</td><td style="padding:8px 12px;border:1px solid #e5e7eb;color:#dc2626;font-weight:600;">CB 아님 확인, 성격 미상</td></tr>
-  <tr><td ${tdb}>IBK 시설대출 (IBK043)</td><td ${td}>8.0억</td><td ${td}>-</td><td ${td}>2026.05.28</td><td style="padding:8px 12px;border:1px solid #e5e7eb;color:#ea580c;font-weight:600;">차환 임박 (2개월 내)</td></tr>
-  <tr><td ${tdb}>하나은행 매출채권담보</td><td ${td}>9.5억</td><td ${td}>-</td><td ${td}>-</td><td ${td}>매출채권 회전 연동</td></tr>
-  <tr><td ${tdb}>하나은행 대출</td><td ${td}>2.0억</td><td ${td}>-</td><td ${td}>-</td><td ${td}>일반 차입</td></tr>
-  <tr><td ${tdb}>개인차입금</td><td ${td}>1.3억</td><td ${td}>-</td><td ${td}>-</td><td ${td}>대표 또는 관계인 추정</td></tr>
-  <tr><td ${tdb}><strong>합계</strong></td><td ${tdb}>51.8억</td><td ${td}>-</td><td ${td}>-</td><td ${td}>OP 4.1억 대비 과중</td></tr>
-</table>
-<div ${note}><strong>IBK043 8억 차환(2026.05.28):</strong> 향후 2개월 내 차환이 필요한 단일 최대 리스크 이벤트입니다. 차환 실패 시 즉시 유동성 위기로 전이될 수 있으며, 선제적 차환 준비가 필요합니다. 사채 31억은 CB(전환사채)가 아님이 확인되었으나, 상환 조건/만기가 미확인 상태로 추가 확인이 필요합니다.</div>
-
-<div ${h2}>5. 투자 구조 — 자본잠식 속 잔여 투자자산</div>
-<p>메뉴잇은 <strong>자본잠식(△34.8억)</strong> 상태입니다. 자본금 0.4억 + 자본잉여금 46.0억 대비 결손금 △81.2억으로, 누적 결손이 자본을 완전 초과했습니다. 추가 메자닌(전환사채/BW 등) 집행은 현 단계에서 비현실적입니다.</p>
-<table ${tbl}>
-  <tr ${thBg}><th ${th}>항목</th><th ${th}>FY2024</th><th ${th}>FY2025</th><th ${th}>비고</th></tr>
-  <tr><td ${tdb}>자본금</td><td ${td}>0.4억</td><td ${td}>0.4억</td><td ${td}>변동 없음</td></tr>
-  <tr><td ${tdb}>자본잉여금</td><td ${td}>46.0억</td><td ${td}>46.0억</td><td ${td}>-</td></tr>
-  <tr><td ${tdb}>결손금</td><td ${td}>△78.2억</td><td ${td}>△81.2억</td><td style="padding:8px 12px;border:1px solid #e5e7eb;color:#dc2626;">잠식 심화</td></tr>
-  <tr><td ${tdb}>자본총계</td><td ${td}>△31.8억</td><td ${td}>△34.8억</td><td style="padding:8px 12px;border:1px solid #e5e7eb;color:#dc2626;">완전잠식</td></tr>
-</table>
-<div ${note}><strong>메자닌 적합성:</strong> 자본잠식 상태에서 추가 메자닌 투자는 기존 투자자와의 이해 충돌, 전환가 산정 난항 등으로 실행이 어렵습니다. 피트스탑 딜(메자닌) 집행의 전제는 DSC &gt; 1.0x 이상, 즉 OP가 15~20억 수준으로 안정화된 이후입니다. 현재는 경영 최적화를 통해 OP를 끌어올리는 단계에 집중해야 합니다.</div>
-
-<div ${h2}>6. 고위드 운전자금 최적화 — Fuel 연결</div>
-<p>메뉴잇은 이미 고위드 법인카드를 12개월간 16.9억 사용 중이며, <strong>피트스탑 신청서에서 Fuel 검토 의향을 명시</strong>했습니다. SK쉴더스 대규모 B2B 납품 구조상 매출채권 회수 사이클이 길어, 운전자금 타이밍 최적화가 핵심입니다.</p>
-<table ${tbl}>
-  <tr ${thBg}><th ${th}>항목</th><th ${th}>현황</th><th ${th}>비고</th></tr>
-  <tr><td ${tdb}>고위드 카드 사용</td><td ${td}>12개월 16.9억</td><td ${td}>이미 활발 사용 중</td></tr>
-  <tr><td ${tdb}>타사 법인카드</td><td ${td}>없음</td><td ${td}>고위드 단독</td></tr>
-  <tr><td ${tdb}>Fuel 의향</td><td style="padding:8px 12px;border:1px solid #e5e7eb;color:#16a34a;font-weight:600;">명시적 검토 의향</td><td ${td}>피트스탑 신청서 기재</td></tr>
-  <tr><td ${tdb}>현재 잔고</td><td ${td}>2.2억</td><td style="padding:8px 12px;border:1px solid #e5e7eb;color:#dc2626;">극히 부족</td></tr>
-</table>
-<p><strong>최적화 방향:</strong></p>
-<ul style="padding-left:20px;font-size:11px;line-height:1.8;">
-  <li><strong>Fuel 도입:</strong> SK쉴더스 매출채권 회수 전 운전자금 갭을 Fuel로 브릿지 → 결제일/입금일 미스매치 해소</li>
-  <li><strong>카드 한도 최적화:</strong> 현재 사용 패턴(월 1.4억) 기반으로 한도 재산정, 비용 집행 효율화</li>
-  <li><strong>IBK 차환 지원:</strong> 2026.05.28 만기 8억 차환 성공 여부가 단기 생존의 관건 → Fuel+카드로 유동성 보완</li>
-</ul>
-
-<div ${h2}>7. 향후 절차 — 인터뷰 시 확인 사항</div>
-<table ${tbl}>
-  <tr ${thBg}><th ${th}>#</th><th ${th}>확인 사항</th><th ${th}>등급</th></tr>
-  <tr><td ${td}>1</td><td ${td}>사채 31억 상세 — 발행자, 금리, 만기, 상환 조건, CB 아님 재확인</td><td style="padding:8px 12px;border:1px solid #e5e7eb;color:#dc2626;font-weight:600;">CRITICAL</td></tr>
-  <tr><td ${td}>2</td><td ${td}>IBK043 8억 차환 계획 — 은행 접촉 현황, 차환 조건, 대안 시나리오</td><td style="padding:8px 12px;border:1px solid #e5e7eb;color:#dc2626;font-weight:600;">CRITICAL</td></tr>
-  <tr><td ${td}>3</td><td ${td}>SK쉴더스 계약 조건 — 납품 규모, 결제 사이클, 계약 갱신 시기</td><td style="padding:8px 12px;border:1px solid #e5e7eb;color:#ea580c;font-weight:600;">WARNING</td></tr>
-  <tr><td ${td}>4</td><td ${td}>Fuel 도입 구체 니즈 — 필요 규모, 희망 시기, 매출채권 회수 주기</td><td style="padding:8px 12px;border:1px solid #e5e7eb;color:#ea580c;font-weight:600;">WARNING</td></tr>
-  <tr><td ${td}>5</td><td ${td}>자본잠식 해소 계획 — 유상증자, 이익잉여금 축적, 또는 기타 방안</td><td style="padding:8px 12px;border:1px solid #e5e7eb;color:#ea580c;font-weight:600;">WARNING</td></tr>
-  <tr><td ${td}>6</td><td ${td}>FY2026 매출 파이프라인 — SK쉴더스 외 추가 B2B 채널 확보 현황</td><td ${td}>REVIEW</td></tr>
-</table>`;
-    }
-  };
-
-  /* ── 경영 개선 리포트 PDF 다운로드 (동적 — 현재 선택 회사 기반) ── */
-  window.downloadImprovementReport = function(event, source) {
-    if (typeof html2pdf === 'undefined') {
-      alert('PDF 라이브러리 로딩 실패 — 네트워크 연결을 확인하거나 브라우저 새로고침 후 재시도해주세요.\n\n(Ctrl+P로 인쇄→PDF 저장도 가능합니다)');
-      return;
-    }
+  /* ── 경영 개선 리포트 PDF 다운로드 ─────────────────────────── */
+  window.downloadImprovementReport = function(event) {
     const btn = event.currentTarget;
     const origText = btn.textContent;
     btn.textContent = '생성 중...';
@@ -2847,270 +2040,174 @@ html, body {
     const mm = String(today.getMonth()+1).padStart(2,'0');
     const dd = String(today.getDate()).padStart(2,'0');
     const dateStr = yy+'-'+mm+'-'+dd;
-    const co = window._currentCompany;
-    const companyName = co ? co.folder_name : '회사';
-    const fullName = co ? co.company_name : companyName;
+    const companyName = '모트에이아이';
     const fileName = '피트스탑_경영개선_리포트_'+companyName+'_'+dateStr+'.pdf';
 
-    /* DOM에서 현재 렌더된 진단 내용 추출 */
-    const mainEl = document.querySelector('main');
-
-    /* S2 카드 내용 추출 */
-    const s2Cards = mainEl.querySelectorAll('.s2-card');
-    let diagnosisRows = '';
-    s2Cards.forEach(card => {
-      const title = (card.querySelector('.s2-card-title')||{}).textContent||'';
-      if (title.includes('진단 요약')) return; /* 요약은 별도 처리 */
-      const items = card.querySelectorAll('.s2-info-list li');
-      const tableRows = card.querySelectorAll('.fin-table tbody tr');
-      let content = '';
-      if (items.length) {
-        content = Array.from(items).map(li => li.textContent.trim()).join('; ');
-      } else if (tableRows.length) {
-        content = Array.from(tableRows).map(tr => {
-          const cells = tr.querySelectorAll('td');
-          return Array.from(cells).map(c => c.textContent.trim()).join(' ');
-        }).join(' / ');
-      }
-      if (content && title) {
-        diagnosisRows += '<tr><td style="padding:8px 12px;border:1px solid #e5e7eb;font-weight:500;vertical-align:top;width:25%;">'+esc(title)+'</td><td style="padding:8px 12px;border:1px solid #e5e7eb;">'+esc(content)+'</td></tr>';
-      }
-    });
-
-    /* S2 진단 요약 추출 */
-    let diagSummary = '';
-    s2Cards.forEach(card => {
-      const title = (card.querySelector('.s2-card-title')||{}).textContent||'';
-      if (title.includes('진단 요약')) {
-        const div = card.querySelector('div[style]');
-        if (div) diagSummary = div.textContent.trim();
-      }
-    });
-
-    const hasInterview = source === 's3';
-
-    /* S3 재검토/조건부 항목 추출 (인터뷰 완료 시) */
-    let reopenRows = '';
-    if (hasInterview) {
-      const reopenItems = mainEl.querySelectorAll('.reopen-list li');
-      reopenItems.forEach((li, i) => {
-        const text = li.querySelector('span:last-child');
-        const val = text ? text.textContent.trim() : li.textContent.trim();
-        reopenRows += '<tr><td style="padding:8px 12px;border:1px solid #e5e7eb;text-align:center;">'+(i+1)+'</td><td style="padding:8px 12px;border:1px solid #e5e7eb;">'+esc(val)+'</td><td style="padding:8px 12px;border:1px solid #e5e7eb;">관련 증빙 서류</td></tr>';
-      });
-    }
-
-    /* S3 판정 배너 추출 (인터뷰 완료 시) */
-    let verdictLabel = '', verdictReason = '';
-    if (hasInterview) {
-      const verdictBanner = mainEl.querySelector('.verdict-banner');
-      if (verdictBanner) {
-        verdictLabel = (verdictBanner.querySelector('.vb-label')||{}).textContent||'';
-        verdictReason = (verdictBanner.querySelector('.vb-reason')||{}).textContent||'';
-      }
-    }
-
-    /* S3 인터뷰 발견 추출 (인터뷰 완료 시) */
-    let interviewFindings = '';
-    if (hasInterview) {
-      const blocks = mainEl.querySelectorAll('.interview-block');
-      blocks.forEach(block => {
-        const title = (block.querySelector('.ib-title')||{}).textContent||'';
-        const quotes = block.querySelectorAll('.quote-list li');
-        if (quotes.length) {
-          interviewFindings += '<div style="margin-bottom:14px;"><div style="font-size:12px;font-weight:600;margin-bottom:6px;">'+esc(title)+'</div><ul style="padding-left:18px;">';
-          quotes.forEach(q => { interviewFindings += '<li style="margin-bottom:4px;">'+esc(q.textContent.trim())+'</li>'; });
-          interviewFindings += '</ul></div>';
-        }
-      });
-    }
-
-    /* S1 기준별 요약 추출 + 개선 과제 생성 */
-    const critCards = mainEl.querySelectorAll('.crit-card');
-    let criteriaRows = '';
-    const improvementTasks = []; /* S2 PDF용: RED/CONDITIONAL 기준에서 개선 과제 도출 */
-    critCards.forEach(card => {
-      const num = (card.querySelector('.crit-num')||{}).textContent||'';
-      const name = (card.querySelector('.crit-name')||{}).textContent||'';
-      const summary = (card.querySelector('.crit-summary')||{}).textContent||'';
-      const badgeEl = card.querySelector('.crit-badge')||{};
-      const badgeText = badgeEl.textContent||'';
-      const badgeClass = badgeEl.className||'';
-      const isRed = badgeClass.includes('grade-red') || badgeText.includes('Red');
-      const isOrange = badgeClass.includes('grade-orange') || badgeText.includes('Orange');
-      const isUnknown = badgeClass.includes('grade-unknown') || badgeText.includes('?');
-      const isYellow = badgeClass.includes('grade-yellow') || badgeText.includes('Yellow');
-      const isGreen = badgeClass.includes('grade-green') || badgeText.includes('Green');
-      const needsFix = isRed || isOrange;
-      const evidenceItems = Array.from(card.querySelectorAll('.crit-evidence li')).map(li => li.textContent.trim());
-      const statusLabel = isRed ? '개선 필요' : isOrange ? '조건부' : isYellow ? '주의' : isUnknown ? '인터뷰 확인' : '양호';
-      const statusColor = isGreen ? 'color:#16a34a;' : isYellow ? 'color:#ca8a04;' : isUnknown ? 'color:#9ca3af;' : '';
-      criteriaRows += '<tr><td style="padding:8px 12px;border:1px solid #e5e7eb;font-weight:500;">'+esc(num+' '+name)+'</td><td style="padding:8px 12px;border:1px solid #e5e7eb;">'+esc(summary)+'</td><td style="padding:8px 12px;border:1px solid #e5e7eb;font-weight:600;'+statusColor+'">'+statusLabel+'</td></tr>';
-      if (needsFix) {
-        improvementTasks.push({ num, name: name.trim(), summary: summary.trim(), evidence: evidenceItems });
-      }
-    });
-
-    /* S2 카드에서 핵심 이슈/부채/인터뷰 확인사항 추출 (개선 과제 보강용) */
-    let s2Issues = [], s2Strengths = [], s2InterviewNeeds = [];
-    s2Cards.forEach(card => {
-      const title = (card.querySelector('.s2-card-title')||{}).textContent||'';
-      const items = Array.from(card.querySelectorAll('.s2-info-list li')).map(li => li.textContent.trim());
-      if (title.includes('핵심 이슈') || title.includes('부채') || title.includes('자금난')) {
-        s2Issues = s2Issues.concat(items);
-      } else if (title.includes('강점')) {
-        s2Strengths = s2Strengths.concat(items);
-      } else if (title.includes('인터뷰 확인') || title.includes('확인 필요')) {
-        s2InterviewNeeds = s2InterviewNeeds.concat(items);
-      }
-    });
-
-    /* S2 PDF용 경영 개선 과제 HTML 생성 */
-    let improvementHtml = '';
-    if (!hasInterview && improvementTasks.length) {
-      improvementTasks.forEach((task, idx) => {
-        const evidenceStr = task.evidence.length
-          ? task.evidence.map(e => '<li style="margin-bottom:4px;">'+esc(e)+'</li>').join('')
-          : '<li>'+esc(task.summary)+'</li>';
-        /* S2 이슈에서 해당 기준과 관련된 항목 추출 */
-        const relatedIssues = s2Issues.filter(iss => {
-          const lc = iss.toLowerCase();
-          if (task.name.includes('부채')) return lc.includes('부채') || lc.includes('대출') || lc.includes('사채') || lc.includes('만기') || lc.includes('cb') || lc.includes('잠식');
-          if (task.name.includes('BEP')) return lc.includes('적자') || lc.includes('bep') || lc.includes('흑자') || lc.includes('매출') || lc.includes('번레이트');
-          if (task.name.includes('최악') || task.name.includes('시나리오')) return lc.includes('런웨이') || lc.includes('현금') || lc.includes('잔고') || lc.includes('생존');
-          if (task.name.includes('3축') || task.name.includes('재무')) return lc.includes('dsc') || lc.includes('만기') || lc.includes('현금') || lc.includes('부채');
-          return false;
-        });
-        improvementHtml += `
-        <div style="background:#fff; border:1px solid #e0e0e0; border-radius:8px; padding:18px 20px; margin-bottom:16px;">
-          <div style="font-size:13px; font-weight:700; margin-bottom:4px;">과제 ${idx+1}. ${esc(task.num)} ${esc(task.name)} 개선</div>
-          <div style="font-size:11px; color:#333; margin-bottom:8px;">
-            <strong>현재 상태:</strong> ${esc(task.summary)}
-          </div>
-          <div style="font-size:11px; color:#333; margin-bottom:6px;"><strong>데이터 근거:</strong></div>
-          <ul style="padding-left:18px; margin-bottom:8px; font-size:10.5px;">${evidenceStr}</ul>
-          ${relatedIssues.length ? '<div style="font-size:11px; color:#333; margin-bottom:6px;"><strong>제출 자료에서 확인된 관련 사항:</strong></div><ul style="padding-left:18px; margin-bottom:8px; font-size:10.5px;">'+relatedIssues.map(i=>'<li style="margin-bottom:4px;">'+esc(i)+'</li>').join('')+'</ul>' : ''}
-          <div style="font-size:10px; color:#555; background:#f7f8fa; padding:8px 12px; border-radius:4px;">
-            개선 확인 방법: 해당 지표가 양호 수준으로 전환된 시점에 관련 증빙과 함께 재신청
-          </div>
-        </div>`;
-      });
-    }
-
-    /* S2 PDF용 강점 HTML */
-    let strengthsHtml = '';
-    if (!hasInterview && s2Strengths.length) {
-      strengthsHtml = '<div style="background:#dcfce7; border-radius:8px; padding:14px 18px; margin-bottom:20px;"><div style="font-size:12px; font-weight:600; color:#16a34a; margin-bottom:6px;">확인된 강점</div><ul style="padding-left:18px; font-size:10.5px; color:#333;">' +
-        s2Strengths.map(s => '<li style="margin-bottom:4px;">'+esc(s)+'</li>').join('') + '</ul></div>';
-    }
-
-    /* S2 PDF용 인터뷰 필요 사항 HTML */
-    let interviewNeedsHtml = '';
-    if (!hasInterview && s2InterviewNeeds.length) {
-      interviewNeedsHtml = '<div style="margin-top:20px;"><div style="font-size:12px; font-weight:600; margin-bottom:8px;">인터뷰 시 추가 확인이 필요한 사항</div><ul style="padding-left:18px; font-size:10.5px; color:#333;">' +
-        s2InterviewNeeds.map(s => '<li style="margin-bottom:4px;">'+esc(s)+'</li>').join('') + '</ul></div>';
-    }
-
-    /* 커스텀 리포트가 있으면 사용, 없으면 기존 자동생성 */
-    const customReportFn = CUSTOM_REPORTS[companyName];
     const container = document.createElement('div');
-
-    if (customReportFn) {
-      /* ── 커스텀 내러티브 리포트 ── */
-      const customBody = customReportFn(dateStr);
-      container.innerHTML = `
-<div id="pdf-report" style="width:210mm; padding:20mm 18mm; font-family:'Noto Sans KR',sans-serif; color:#1a1a1a; font-size:11px; line-height:1.8; background:#fff;">
-  <div style="text-align:center; padding:60px 0 36px; border-bottom:2px solid #1a1a1a; margin-bottom:28px;">
-    <div style="font-size:10px; color:#888; letter-spacing:0.15em; margin-bottom:10px;">GOWID NEXUS &middot; PIT-STOP</div>
-    <div style="font-size:24px; font-weight:700; margin-bottom:8px;">경영 개선 리포트</div>
-    <div style="font-size:15px; color:#555; margin-bottom:20px;">${esc(fullName)}</div>
-    <div style="font-size:10px; color:#999;">${yy}년 ${parseInt(mm)}월 ${parseInt(dd)}일</div>
-  </div>
-  ${customBody}
-  <div style="margin-top:48px; padding-top:14px; border-top:1px solid #e0e0e0; font-size:9px; color:#999; text-align:center;">
-    GOWID NEXUS &middot; Pit-Stop 경영 개선 리포트 &middot; ${dateStr}<br>
-    본 리포트는 피트스탑 심사 결과를 바탕으로 작성되었으며, 투자 권유 문서가 아닙니다.<br>
-    문의: 고위드넥서스 피트스탑팀
-  </div>
-</div>`;
-    } else {
-      /* ── 기존 자동생성 리포트 (폴백) ── */
-      container.innerHTML = `
+    container.innerHTML = `
 <div id="pdf-report" style="width:210mm; padding:20mm 18mm; font-family:'Noto Sans KR',sans-serif; color:#1a1a1a; font-size:11px; line-height:1.8; background:#fff;">
 
   <div style="text-align:center; padding:60px 0 36px; border-bottom:2px solid #1a1a1a; margin-bottom:28px;">
-    <div style="font-size:10px; color:#888; letter-spacing:0.15em; margin-bottom:10px;">GOWID NEXUS &middot; PIT-STOP</div>
+    <div style="font-size:10px; color:#888; letter-spacing:0.15em; margin-bottom:10px;">GOWID NEXUS · PIT-STOP</div>
     <div style="font-size:24px; font-weight:700; margin-bottom:8px;">경영 개선 리포트</div>
-    <div style="font-size:15px; color:#555; margin-bottom:20px;">${esc(fullName)}</div>
+    <div style="font-size:15px; color:#555; margin-bottom:20px;">주식회사 ${companyName}</div>
     <div style="font-size:10px; color:#999;">${yy}년 ${parseInt(mm)}월 ${parseInt(dd)}일</div>
   </div>
 
   <div style="background:#f7f8fa; border-radius:8px; padding:20px 24px; margin-bottom:28px;">
-    <div style="font-size:13px; font-weight:600; margin-bottom:10px;">대표님께</div>
+    <div style="font-size:13px; font-weight:600; margin-bottom:10px;">천영록 대표님께</div>
     <p style="font-size:11px; color:#333; line-height:1.8;">
       피트스탑 프로그램에 관심을 가져주셔서 감사합니다.<br><br>
-      ${hasInterview
-        ? '심사 과정(서류 검토 및 대표 인터뷰)에서 귀사의 사업 역량과 성장 잠재력을 확인할 수 있었습니다. 본 리포트는 피트스탑 심사 결과를 바탕으로, 향후 어떤 부분을 개선하시면 좋을지 구체적으로 정리한 것입니다.'
-        : '제출해 주신 자료를 바탕으로 서류 심사를 진행하였습니다. 본 리포트는 현재까지 확인된 재무 현황과 개선 방향을 정리한 것입니다.'}<br><br>
+      심사 과정에서 모트에이아이의 사업 역량과 성장 잠재력을 확인할 수 있었습니다.
+      특히 금융 AI 분야에서 쌓아오신 25건의 프로젝트 레퍼런스와, 2025년 창업 이래 첫 영업이익 흑자를 달성하신 점은 의미 있는 성과입니다.<br><br>
+      다만, 현재의 재무 구조상 피트스탑 자금이 사업 성장에 온전히 활용되기 어려운 상황으로 판단되어,
+      이번 라운드에서는 참여를 보류하게 되었습니다.<br><br>
+      본 리포트는 향후 재신청을 위해 어떤 부분을 개선하시면 좋을지 구체적으로 정리한 것입니다.
       개선이 진행되는 과정에서도 언제든 연락 주시면 함께 논의하겠습니다.
     </p>
   </div>
 
-  <div style="font-size:16px; font-weight:700; margin:32px 0 16px; padding-bottom:8px; border-bottom:2px solid #e0e0e0;">1. 진단 요약</div>
+  <div style="font-size:16px; font-weight:700; margin:32px 0 16px; padding-bottom:8px; border-bottom:2px solid #e0e0e0;">1. 현재 재무 상황 진단</div>
 
-  ${diagSummary ? '<div style="background:#f7f8fa; border-radius:8px; padding:14px 18px; margin-bottom:20px; font-size:11px; color:#333;">'+esc(diagSummary)+'</div>' : ''}
-
-  <table style="width:100%; border-collapse:collapse; margin:12px 0 20px; font-size:10.5px;">
-    <tr style="background:#f3f4f6;">
-      <th style="text-align:left; padding:8px 12px; border:1px solid #e5e7eb; font-weight:600;">기준</th>
-      <th style="text-align:left; padding:8px 12px; border:1px solid #e5e7eb; font-weight:600;">현재 상태</th>
-      <th style="text-align:left; padding:8px 12px; border:1px solid #e5e7eb; font-weight:600;">판정</th>
-    </tr>
-    ${criteriaRows}
-  </table>
-
-  <div style="font-size:16px; font-weight:700; margin:36px 0 16px; padding-bottom:8px; border-bottom:2px solid #e0e0e0;">2. 상세 진단 내역</div>
+  <p style="margin-bottom:14px;">심사 과정에서 확인된 귀사의 재무 현황입니다. 사업 역량과 별개로, 아래 구조적 이슈가 피트스탑 참여의 주요 보류 사유입니다.</p>
 
   <table style="width:100%; border-collapse:collapse; margin:12px 0 20px; font-size:10.5px;">
     <tr style="background:#f3f4f6;">
       <th style="text-align:left; padding:8px 12px; border:1px solid #e5e7eb; font-weight:600;">항목</th>
-      <th style="text-align:left; padding:8px 12px; border:1px solid #e5e7eb; font-weight:600;">내용</th>
+      <th style="text-align:left; padding:8px 12px; border:1px solid #e5e7eb; font-weight:600;">현재 상태</th>
+      <th style="text-align:left; padding:8px 12px; border:1px solid #e5e7eb; font-weight:600;">개선 필요 여부</th>
     </tr>
-    ${diagnosisRows}
+    <tr>
+      <td style="padding:8px 12px; border:1px solid #e5e7eb; font-weight:500;">전환사채(CB)</td>
+      <td style="padding:8px 12px; border:1px solid #e5e7eb;">22.1억 원, 만기 경과 상태. 5월·8월 분할 상환 예정</td>
+      <td style="padding:8px 12px; border:1px solid #e5e7eb; font-weight:600;">개선 필요</td>
+    </tr>
+    <tr>
+      <td style="padding:8px 12px; border:1px solid #e5e7eb; font-weight:500;">금융권 대출</td>
+      <td style="padding:8px 12px; border:1px solid #e5e7eb;">20.2억 원 (기보 보증, 단기 차입 등). 연 이자비용 약 2.5억</td>
+      <td style="padding:8px 12px; border:1px solid #e5e7eb; font-weight:600;">개선 필요</td>
+    </tr>
+    <tr>
+      <td style="padding:8px 12px; border:1px solid #e5e7eb; font-weight:500;">영업이익</td>
+      <td style="padding:8px 12px; border:1px solid #e5e7eb;">2025년 +1.2억 (첫 흑자). 단, 이자비용 차감 시 실질 적자</td>
+      <td style="padding:8px 12px; border:1px solid #e5e7eb; font-weight:600;">개선 필요</td>
+    </tr>
+    <tr>
+      <td style="padding:8px 12px; border:1px solid #e5e7eb; font-weight:500;">현금</td>
+      <td style="padding:8px 12px; border:1px solid #e5e7eb;">약 0.1억 원 (운영 여유 약 1.5개월)</td>
+      <td style="padding:8px 12px; border:1px solid #e5e7eb; font-weight:600;">개선 필요</td>
+    </tr>
+    <tr>
+      <td style="padding:8px 12px; border:1px solid #e5e7eb; font-weight:500;">사업 경쟁력</td>
+      <td style="padding:8px 12px; border:1px solid #e5e7eb;">금융 AI 특화 레퍼런스 25건, 유진투자증권 등 주요 고객 확보</td>
+      <td style="padding:8px 12px; border:1px solid #e5e7eb; color:#16a34a; font-weight:600;">강점</td>
+    </tr>
+    <tr>
+      <td style="padding:8px 12px; border:1px solid #e5e7eb; font-weight:500;">대표 역량</td>
+      <td style="padding:8px 12px; border:1px solid #e5e7eb;">위기 인식 명확, 흑자 전환 실행력 검증됨</td>
+      <td style="padding:8px 12px; border:1px solid #e5e7eb; color:#16a34a; font-weight:600;">강점</td>
+    </tr>
   </table>
 
-  ${hasInterview ? `
-  <div style="font-size:16px; font-weight:700; margin:36px 0 16px; padding-bottom:8px; border-bottom:2px solid #e0e0e0;">3. 인터뷰 종합 소견</div>
-  ${verdictLabel ? '<div style="background:#f7f8fa; border-radius:8px; padding:14px 18px; margin-bottom:16px; font-size:12px;"><strong>'+esc(verdictLabel)+'</strong><br><span style="color:#555;">'+esc(verdictReason)+'</span></div>' : ''}
-  ${interviewFindings}
-  <div style="font-size:16px; font-weight:700; margin:36px 0 16px; padding-bottom:8px; border-bottom:2px solid #e0e0e0;">4. 재신청 가이드</div>
+  <p style="font-size:11px; color:#555; margin-bottom:8px;">
+    보류 핵심 사유: 현 구조에서 피트스탑 자금(융자)이 투입되면, 사업 성장보다 기존 부채 상환에 우선 사용될 가능성이 높습니다.
+    부채 구조가 정리된 후에 자금이 투입되어야 실질적인 성장 효과를 기대할 수 있습니다.
+  </p>
+
+  <div style="font-size:16px; font-weight:700; margin:36px 0 16px; padding-bottom:8px; border-bottom:2px solid #e0e0e0;">2. 경영 개선 과제</div>
+
+  <p style="margin-bottom:18px;">아래 3가지 과제를 순서대로 진행하시면, 재신청 시 긍정적 검토가 가능합니다.</p>
+
+  <div style="background:#fff; border:1px solid #e0e0e0; border-radius:8px; padding:18px 20px; margin-bottom:16px;">
+    <div style="font-size:13px; font-weight:700; margin-bottom:4px;">과제 1. 전환사채(CB) 22.1억 정리</div>
+    <div style="font-size:10px; color:#888; margin-bottom:10px;">우선순위: 가장 시급 (5월 상환 도래)</div>
+    <div style="font-size:11px; color:#333; margin-bottom:8px;">
+      <strong>왜 필요한가:</strong> CB 만기가 이미 경과한 상태로, 투자자들이 언제든 상환을 청구할 수 있습니다.
+      현금 0.1억으로는 5월 상환분(약 2.2억)도 대응이 어렵습니다.
+    </div>
+    <div style="font-size:11px; color:#333; margin-bottom:6px;"><strong>구체적 실행 방안:</strong></div>
+    <ul style="padding-left:18px; margin-bottom:8px;">
+      <li style="margin-bottom:5px;">투자자 대상 출자전환 제안 — CB를 주식으로 전환하면 부채가 자본이 됩니다. 2025년 첫 흑자 전환을 근거로 향후 기업 가치 상승 시나리오를 제시하시면 설득력이 있습니다.</li>
+      <li style="margin-bottom:5px;">상위 투자자부터 개별 면담 — 크라우드펀딩 특성상 소액 다수이므로, 금액 기준 상위 투자자 10명을 우선 접촉하여 전환 동의를 확보하는 것이 효율적입니다.</li>
+      <li style="margin-bottom:5px;">전환이 어려운 경우, 최소한 만기 연장 + 이자율 조정 협상을 진행하여 즉각적인 상환 압박을 완화하는 것을 권장합니다.</li>
+    </ul>
+    <div style="font-size:10px; color:#555; background:#f7f8fa; padding:8px 12px; border-radius:4px;">
+      달성 기준: CB 잔액 0원 (전액 출자전환) 또는 상환 스케줄 재조정 완료
+    </div>
+  </div>
+
+  <div style="background:#fff; border:1px solid #e0e0e0; border-radius:8px; padding:18px 20px; margin-bottom:16px;">
+    <div style="font-size:13px; font-weight:700; margin-bottom:4px;">과제 2. 금융권 부채 재조정</div>
+    <div style="font-size:10px; color:#888; margin-bottom:10px;">우선순위: CB 정리와 병행</div>
+    <div style="font-size:11px; color:#333; margin-bottom:8px;">
+      <strong>왜 필요한가:</strong> 현재 연 이자비용이 약 2.5억인데, 2025년 영업이익이 1.2억입니다.
+      사업으로 버는 돈보다 이자로 나가는 돈이 더 많은 구조입니다.
+      이 구조가 유지되면 매출이 늘어도 실질적인 이익이 남지 않습니다.
+    </div>
+    <div style="font-size:11px; color:#333; margin-bottom:6px;"><strong>구체적 실행 방안:</strong></div>
+    <ul style="padding-left:18px; margin-bottom:8px;">
+      <li style="margin-bottom:5px;">기보 보증 대출 조건 재협상 — 금리 인하 또는 거치기간 연장을 요청합니다. 2025년 흑자 전환 실적이 협상 카드가 됩니다.</li>
+      <li style="margin-bottom:5px;">RCPS 보유 기관(한화자산운용 등)과 전환 조건 협의 — 상환 대신 보통주 전환으로 부채를 자본으로 전환하는 방안을 논의합니다.</li>
+      <li style="margin-bottom:5px;">단기 차입금을 중장기로 전환하여 월 상환 부담을 분산합니다.</li>
+    </ul>
+    <div style="font-size:10px; color:#555; background:#f7f8fa; padding:8px 12px; border-radius:4px;">
+      달성 기준: 연 이자비용을 영업이익 이하 수준(1.0억 이하)으로 축소
+    </div>
+  </div>
+
+  <div style="background:#fff; border:1px solid #e0e0e0; border-radius:8px; padding:18px 20px; margin-bottom:16px;">
+    <div style="font-size:13px; font-weight:700; margin-bottom:4px;">과제 3. 영업이익 흑자 6개월 연속 달성</div>
+    <div style="font-size:10px; color:#888; margin-bottom:10px;">우선순위: 과제 1·2 진행 후</div>
+    <div style="font-size:11px; color:#333; margin-bottom:8px;">
+      <strong>왜 필요한가:</strong> 2025년 연간 기준으로는 흑자를 달성하셨지만, 월별로는 변동이 있을 수 있습니다.
+      부채 구조가 정리된 후 지속적으로 이익을 낼 수 있다는 것이 확인되어야, 외부 자금이 성장에 제대로 작동합니다.
+    </div>
+    <div style="font-size:11px; color:#333; margin-bottom:6px;"><strong>구체적 실행 방안:</strong></div>
+    <ul style="padding-left:18px; margin-bottom:8px;">
+      <li style="margin-bottom:5px;">2026년 확정 매출(유진투자증권 AI UTS 5억)의 조기 수금 구조를 협상합니다. 선급금 비율을 높이면 현금 흐름이 안정됩니다.</li>
+      <li style="margin-bottom:5px;">한투신탁 POC를 본계약으로 전환 추진하여 파이프라인 확정률을 높입니다.</li>
+      <li style="margin-bottom:5px;">고정비(현 8명 인건비)를 현 수준으로 유지하면서 매출 레버리지를 활용하여 이익률을 개선합니다.</li>
+      <li style="margin-bottom:5px;">월별 손익 리포트를 직접 작성하시면, 3개월 롤링 기준으로 추세를 파악하기 쉽습니다.</li>
+    </ul>
+    <div style="font-size:10px; color:#555; background:#f7f8fa; padding:8px 12px; border-radius:4px;">
+      달성 기준: 부채 정리 완료 후 월별 영업이익 흑자 6개월 연속
+    </div>
+  </div>
+
+  <div style="font-size:16px; font-weight:700; margin:36px 0 16px; padding-bottom:8px; border-bottom:2px solid #e0e0e0;">3. 재신청 가이드</div>
+
   <p style="margin-bottom:14px;">아래 조건이 충족되면 피트스탑에 재신청하실 수 있습니다.</p>
+
   <table style="width:100%; border-collapse:collapse; margin:12px 0 20px; font-size:10.5px;">
     <tr style="background:#f3f4f6;">
       <th style="padding:8px 12px; border:1px solid #e5e7eb; font-weight:600; width:30px;">#</th>
-      <th style="padding:8px 12px; border:1px solid #e5e7eb; font-weight:600;">재신청 조건</th>
+      <th style="padding:8px 12px; border:1px solid #e5e7eb; font-weight:600;">조건</th>
       <th style="padding:8px 12px; border:1px solid #e5e7eb; font-weight:600;">제출 서류</th>
     </tr>
-    ${reopenRows}
+    <tr>
+      <td style="padding:8px 12px; border:1px solid #e5e7eb; text-align:center;">1</td>
+      <td style="padding:8px 12px; border:1px solid #e5e7eb;">CB 출자전환 완료 또는 상환 스케줄 재조정</td>
+      <td style="padding:8px 12px; border:1px solid #e5e7eb;">이사회 의사록 + 변경 등기부등본</td>
+    </tr>
+    <tr>
+      <td style="padding:8px 12px; border:1px solid #e5e7eb; text-align:center;">2</td>
+      <td style="padding:8px 12px; border:1px solid #e5e7eb;">금융권 부채 재조정 완료 (이자비용 축소)</td>
+      <td style="padding:8px 12px; border:1px solid #e5e7eb;">대출 잔액 증명서 + 이자비용 내역</td>
+    </tr>
+    <tr>
+      <td style="padding:8px 12px; border:1px solid #e5e7eb; text-align:center;">3</td>
+      <td style="padding:8px 12px; border:1px solid #e5e7eb;">부채 정리 후 영업이익 흑자 6개월 유지</td>
+      <td style="padding:8px 12px; border:1px solid #e5e7eb;">월별 손익계산서 6개월분</td>
+    </tr>
   </table>
-  ` : `
-  ${strengthsHtml}
-  <div style="font-size:16px; font-weight:700; margin:36px 0 16px; padding-bottom:8px; border-bottom:2px solid #e0e0e0;">3. 경영 개선 과제</div>
-  <p style="margin-bottom:18px;">서류 심사에서 확인된 개선 필요 항목입니다. 각 과제별 데이터 근거와 제출 자료에서 확인된 관련 사항을 함께 정리하였습니다.</p>
-  ${improvementHtml || '<div style="padding:14px 18px;background:#f7f8fa;border-radius:8px;font-size:11px;color:#555;">현재 서류 심사 기준으로 주요 개선 필요 항목이 없습니다. 인터뷰를 통해 추가 확인 후 안내드리겠습니다.</div>'}
-  ${interviewNeedsHtml}
-  <div style="font-size:16px; font-weight:700; margin:36px 0 16px; padding-bottom:8px; border-bottom:2px solid #e0e0e0;">4. 향후 절차</div>
-  <p style="margin-bottom:14px;">상기 개선 과제에 대한 진행 상황을 확인한 후 대표 인터뷰를 진행하며, 인터뷰 결과에 따라 최종 참여 여부가 결정됩니다.</p>
-  `}
 
   <div style="margin-top:48px; padding-top:14px; border-top:1px solid #e0e0e0; font-size:9px; color:#999; text-align:center;">
-    GOWID NEXUS &middot; Pit-Stop 경영 개선 리포트 &middot; ${dateStr}<br>
+    GOWID NEXUS · Pit-Stop 경영 개선 리포트 · ${dateStr}<br>
     본 리포트는 피트스탑 심사 결과를 바탕으로 작성되었으며, 투자 권유 문서가 아닙니다.<br>
     문의: 고위드넥서스 피트스탑팀
   </div>
 
 </div>`;
-    }
 
     document.body.appendChild(container);
     const el = document.getElementById('pdf-report');
@@ -3124,25 +2221,14 @@ html, body {
       pagebreak: { mode:['avoid-all','css','legacy'] }
     };
 
-    html2pdf().set(opt).from(el).outputPdf('blob').then(blob => {
-      /* 수동 다운로드 링크 — 브라우저가 blob UUID를 파일명으로 쓰는 문제 방지 */
-      const url = URL.createObjectURL(blob);
-      const a = document.createElement('a');
-      a.href = url;
-      a.download = fileName;
-      document.body.appendChild(a);
-      a.click();
-      document.body.removeChild(a);
-      setTimeout(() => URL.revokeObjectURL(url), 1000);
+    html2pdf().set(opt).from(el).save().then(() => {
       document.body.removeChild(container);
       btn.textContent = origText;
       btn.disabled = false;
-    }).catch(err => {
-      console.error('PDF 생성 실패:', err);
+    }).catch(() => {
       document.body.removeChild(container);
       btn.textContent = origText;
       btn.disabled = false;
-      alert('PDF 생성에 실패했습니다.\n\n대안: Ctrl+P → "PDF로 저장"을 선택해주세요.');
     });
   };
 
