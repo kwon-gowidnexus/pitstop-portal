@@ -2180,23 +2180,25 @@ html, body {
       pagebreak: { mode:['avoid-all','css','legacy'] }
     };
 
-    html2pdf().set(opt).from(el).outputPdf('blob').then(function(blob) {
+    html2pdf().set(opt).from(el).outputPdf('arraybuffer').then(function(ab) {
       document.body.removeChild(container);
-      /* 수동 다운로드 — 파일명 보장 */
-      var url = URL.createObjectURL(blob);
+      /* arraybuffer → Blob(application/pdf) → 수동 다운로드 */
+      var pdfBlob = new Blob([ab], { type: 'application/pdf' });
+      var url = URL.createObjectURL(pdfBlob);
       var a = document.createElement('a');
+      a.style.display = 'none';
       a.href = url;
       a.download = fileName;
       document.body.appendChild(a);
       a.click();
-      document.body.removeChild(a);
-      setTimeout(function(){ URL.revokeObjectURL(url); }, 1000);
+      setTimeout(function(){ document.body.removeChild(a); URL.revokeObjectURL(url); }, 500);
       btn.textContent = origText;
       btn.disabled = false;
-    }).catch(function() {
-      document.body.removeChild(container);
+    }).catch(function(err) {
+      if(container.parentNode) document.body.removeChild(container);
       btn.textContent = origText;
       btn.disabled = false;
+      console.error('PDF 생성 실패:', err);
     });
   };
 
