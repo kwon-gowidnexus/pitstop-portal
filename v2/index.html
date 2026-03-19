@@ -2126,6 +2126,109 @@ html, body {
   }
 
   /* ── 경영 개선 리포트 PDF 다운로드 (전 회사 공통) ───────────── */
+  /* ── 회사별 경영개선 리포트 데이터 ──────────────────────────── */
+  var improvementData = {
+    '모트에이아이': {
+      grade: 'RED', bizSummary: 'AI 에이전트 B2B 컨설팅/개발 (전신: 두물머리) | 금융 AI 특화 | 직원 8명, 설립 2015년',
+      fin: {revenue:'11.8', op:'+1.2', debt:'42.3', cash:'0.1', equity:'-294.1', runway:'0.7개월'},
+      diagnosis: '영업이익 흑자 전환(+1.2억)은 긍정적이나, CB 22.1억 출자전환 미완료가 핵심 블로커. 현 구조로는 피트스탑 자금이 부채 상환에 전용될 위험.',
+      tasks: [
+        {priority:'CRITICAL',title:'CB 22.1억 출자전환 완료',desc:'와디즈 크라우드펀딩 개인투자자 다수의 동의 필요. 만기 경과 상태로 일괄 상환 청구 리스크 상존.',action:'투자자 그룹별 접촉 로드맵 수립 → 전환 조건(전환가, 전환비율) 확정 → 서면 동의 확보',timeline:'즉시 착수 → 90일 내 완료 목표',kpi:'출자전환 동의율 90% 이상'},
+        {priority:'CRITICAL',title:'5월·8월 CB 분할상환(4.4억) 자금 확보',desc:'현금 0.1억 vs 상환액 4.4억. 상환 불이행 시 기한이익 상실 가능.',action:'출자전환 불응 투자자 대상 상환 스케줄 협상 / 대환 자금 확보 / 일부 자산 매각',timeline:'4월 말까지 자금 확보 계획 수립',kpi:'상환 재원 확보율 100%'},
+        {priority:'HIGH',title:'DSC 개선 (현 0.48x → 1.0x 이상)',desc:'이자비용 2.5억 > 영업이익 1.2억. 이자를 갚을 수 없는 구조.',action:'(1) CB 출자전환으로 이자비용 절감 (2) 매출 파이프라인 확정(유진투자증권 5억+α) (3) 불필요 비용 추가 절감',timeline:'출자전환 완료 후 6개월 내',kpi:'DSC 1.0x 이상 달성'},
+        {priority:'HIGH',title:'RCPS 기관 전환 조건 협의',desc:'한화자산운용(10.31%) 등 RCPS 기관 4사의 전환/상환 조건 명확화 필요.',action:'한화자산운용부터 개별 협의 → 전환가·시기 합의 → 서면 계약',timeline:'CB 정리와 병행, 120일 내',kpi:'RCPS 전환 합의서 체결'},
+        {priority:'MEDIUM',title:'매출 파이프라인 구체화 (목표 40억)',desc:'확정 5억(유진투자증권) 외 35억은 미확정. 파이프라인 가시성 부족.',action:'한투신탁 POC 확대 계약 체결 / 베리타AI 협업 규모 확정 / 신규 금융사 3곳 이상 제안',timeline:'180일 내',kpi:'확정 매출 15억 이상'}
+      ],
+      roadmap: {d90:'CB 출자전환 동의 90% 확보 + 5월 상환 자금 확보',d180:'RCPS 전환 합의 + 이자비용 50% 이상 절감 + 매출 확정 15억',d365:'DSC 1.0x 달성 + 자본잠식 해소 로드맵 수립'},
+      monitorKpi: ['CB 출자전환 동의율 (%)','DSC (영업이익/이자비용)','월 현금 잔고 (억원)','확정 매출 파이프라인 (억원)','RCPS 전환 진행률 (%)']
+    },
+    '마진맥스': {
+      grade: 'GREEN', bizSummary: '여행/숙박 예약 B2B SaaS | 설립 2022.05 (3년차) | 직원 5~10명',
+      fin: {revenue:'17.3', op:'+1.8', debt:'0', cash:'1.6', equity:'+2.8', runway:'20개월'},
+      diagnosis: '부채 3축 전부 Green. 흑자 + 무차입 구조의 최적 타겟. 성장 가속을 위한 구조적 개선에 집중.',
+      tasks: [
+        {priority:'HIGH',title:'지배구조 명확화 — CEO(18%) vs 최대주주(46%)',desc:'CEO 채지훈(18%)과 최대주주 빈태찬(46%)의 의사결정 구조가 불명확. 투자자 관점에서 경영권 리스크.',action:'주주간 계약서(SHA) 체결 — 경영권·의사결정·Exit 조건 명문화',timeline:'60일 내',kpi:'주주간계약서 체결 완료'},
+        {priority:'HIGH',title:'독점 자산·기술 경쟁력 확보',desc:'숙박 B2B SaaS 시장에서의 기술적 해자(moat) 불명확.',action:'(1) 독점 데이터셋 구축 (예약 패턴, 가격 최적화) (2) API 고도화로 전환비용 상승 (3) 특허 출원 검토',timeline:'180일 내',kpi:'독점 데이터 자산 목록 확정 + 특허 출원 1건'},
+        {priority:'MEDIUM',title:'고객사 집중도 분산',desc:'주요 고객 매출 의존도 미확인. 단일 고객 이탈 시 매출 급감 리스크.',action:'상위 5개 고객사 매출 비중 분석 → 비중 30% 초과 고객 있을 시 신규 고객 확보 가속',timeline:'90일 내 분석 완료 → 180일 내 신규 고객 3곳',kpi:'최대 고객 매출 비중 30% 이하'},
+        {priority:'MEDIUM',title:'성장 자금 활용 전략 수립',desc:'무차입·흑자 구조에서 피트스탑 자금의 명확한 활용처 필요.',action:'자금 사용 계획서 작성 — (1) 제품 개발 (2) 영업 확대 (3) 해외 진출 우선순위 배분',timeline:'30일 내',kpi:'자금 사용 계획서 완성 + 예상 ROI 산출'},
+        {priority:'LOW',title:'OPM 15% 이상 유지 전략',desc:'현 OPM 10.7%는 양호하나, 스케일업 시 마진 희석 가능.',action:'고정비/변동비 구조 분석 → 매출 증가 시 OPM 시뮬레이션 → 비용 통제 기준선 설정',timeline:'90일 내',kpi:'OPM 12% 이상 유지'}
+      ],
+      roadmap: {d90:'지배구조 SHA 체결 + 고객 집중도 분석 + 자금 활용 계획서',d180:'독점 자산 확보 + 신규 고객 3곳 + OPM 유지 전략',d365:'매출 30억 달성 + 시리즈A 준비 가능 상태'},
+      monitorKpi: ['월 매출 (억원)','OPM (%)','고객 수 및 상위 고객 집중도','런웨이 (개월)','신규 고객 확보 수']
+    },
+    '메뉴잇': {
+      grade: 'ORANGE', bizSummary: '태블릿 무인주문(스마트오더) B2B SaaS | 설립 2016.02 | 직원 33명 (150→33 구조조정 완료)',
+      fin: {revenue:'136.9', op:'+4.14', debt:'56.8', cash:'2.65', equity:'-34.84', runway:'2.3개월'},
+      diagnosis: '캐시 엔진 강력(OP +4.14억), 구조조정 실행력 확인(판관비 -45%). 2대 게이트: ① 기보 SPC 기한이익 상실 미행사 확인 ② IBK043 8억 차환.',
+      tasks: [
+        {priority:'CRITICAL',title:'기보 SPC 31억 기한이익 상실 Waiver 확보',desc:'자본 전액 잠식(-34.84억)으로 기한이익 상실 사유 해당. 채권자 재량으로 31억 즉시 청구 가능.',action:'(1) 기보 SPC 채권자에게 waiver letter 요청 (2) 흑자전환·구조조정 실적을 근거로 협상 (3) 자본잠식 해소 로드맵 제시',timeline:'즉시 착수 → 60일 내 waiver 확보',kpi:'Waiver letter 확보 완료'},
+        {priority:'CRITICAL',title:'IBK043 8억 차환 확정 (만기 2026.05.28)',desc:'만기까지 약 2개월. 차환 미확정 시 유동성 위기 촉발.',action:'기보 보증 연장 협의 → IBK 차환 조건 확정 → 서류 제출',timeline:'4월 말까지 차환 확정',kpi:'차환 계약 체결 완료'},
+        {priority:'CRITICAL',title:'연대보증 승계 확인 (김동훈→박주영)',desc:'전 대표 김동훈의 연대보증이 현 대표 박주영으로 승계되었는지 미확인.',action:'기존 대출 계약서 전수 검토 → 보증 승계 미완료 건 즉시 처리',timeline:'30일 내',kpi:'보증 승계 100% 완료 확인'},
+        {priority:'HIGH',title:'태블릿·배터리 단가 27%·45% 절감 실행',desc:'단가 절감 시 OP 15~20억 가능. 현 OP 4.14억 대비 4배 성장 잠재력.',action:'(1) 태블릿 OEM 재협상 (2) 배터리 대체 공급사 확보 (3) 단가 절감 분 OP 반영 시뮬레이션',timeline:'90일 내 공급사 협상 완료',kpi:'태블릿 단가 20%+ 절감 달성'},
+        {priority:'HIGH',title:'자본잠식 해소 로드맵',desc:'자본 -34.84억. 흑자 유지 시에도 자본잠식 해소까지 장기간 소요.',action:'(1) 연간 OP 15~20억 달성 시 2~3년 내 해소 시뮬레이션 (2) 유상증자 또는 자산재평가 병행 검토',timeline:'90일 내 로드맵 수립',kpi:'자본잠식 해소 예상 시점 확정'}
+      ],
+      roadmap: {d90:'기보 waiver + IBK 차환 + 보증 승계 확인 + 단가 협상',d180:'OP 10억+ 달성 + 자본잠식 해소 로드맵 실행 착수',d365:'금융부채 40억 이하 + 자본잠식 50% 해소 + OP 15억'},
+      monitorKpi: ['기보 SPC waiver 상태','IBK 차환 진행률','월 OP (억원)','금융부채 잔액 (억원)','자본총계 (억원)']
+    },
+    '웰로': {
+      grade: 'YELLOW', bizSummary: '정부정책 데이터 플랫폼 (B2C+B2G+B2B) | 설립 2021년 | 직원 35명 → 구조조정 중',
+      fin: {revenue:'23.9', op:'-52.7', debt:'12', cash:'75', equity:'+60.1', runway:'17개월'},
+      diagnosis: '현금 75억 + 투자금 70억 커밋으로 단기 생존 여유 있으나, 월 4.4억 번레이트가 핵심 리스크. 구조조정 실행 속도가 생존의 핵심.',
+      tasks: [
+        {priority:'CRITICAL',title:'월 번레이트 2.5억 이하로 감축',desc:'현 월 4.4억 번레이트. 현금 75억 기준 런웨이 17개월이나 투자금 입금 지연 시 급감.',action:'(1) 인력 50% 감축 실행 완료 (2) 커머스 사업 비용 완전 제거 (3) 외주/SaaS 구독 재검토',timeline:'60일 내 실행 완료',kpi:'월 번레이트 2.5억 이하'},
+        {priority:'CRITICAL',title:'투자금 70억 입금 확정',desc:'카카오뱅크 50억 + 신보 10억 + 나이스 10억 커밋 상태. 입금 지연 시 계획 차질.',action:'투자자별 입금 일정 서면 확인 → 지연 시 대안 자금 확보 플랜 수립',timeline:'30일 내 서면 확인',kpi:'투자금 입금 완료율 100%'},
+        {priority:'HIGH',title:'API 플랫폼 첫 유료 고객 확보',desc:'커머스→API 전환 후 유료 고객 0. 제품-시장 적합성 미검증.',action:'(1) 정부/공공기관 PoC 3건 제안 (2) 기존 B2G 네트워크 활용 (3) 고향사랑기부 플랫폼 업셀링',timeline:'90일 내 PoC 1건 + 유료 전환',kpi:'유료 고객 1사 이상'},
+        {priority:'HIGH',title:'고향사랑기부 매출 10억 기반 확대',desc:'검증된 매출원. 이를 캐시카우로 육성하여 번레이트 상쇄.',action:'기부 서비스 기능 고도화 → 지자체 확장 → 연 매출 20억 목표',timeline:'180일 내',kpi:'고향사랑기부 월 매출 1.5억+'},
+        {priority:'MEDIUM',title:'구조조정 후 핵심 역량 유지 검증',desc:'인력 50% 감축 시 개발/운영 역량 유지 가능 여부 불확실.',action:'핵심 인력(개발 리드, 운영 PO) 리텐션 플랜 수립 + 기능별 최소 인원 확정',timeline:'60일 내',kpi:'핵심 인력 이탈률 0%'}
+      ],
+      roadmap: {d90:'번레이트 2.5억 달성 + 투자금 입금 완료 + API PoC 1건',d180:'유료 고객 3사 + 고향사랑기부 20억 궤도 + 월 적자 1억 이하',d365:'API 플랫폼 ARR 5억+ + BEP 달성'},
+      monitorKpi: ['월 번레이트 (억원)','투자금 입금 진행률','유료 고객 수','고향사랑기부 월 매출','핵심 인력 잔존율']
+    },
+    '온오프믹스': {
+      grade: 'YELLOW', bizSummary: '이벤트테크 플랫폼 CEMS (13년 운영) | 설립 2010.02 | 직원 6명 (47→6 구조조정 완료)',
+      fin: {revenue:'17.6', op:'-5.8', debt:'7.2', cash:'7', equity:'-12.6', runway:'12개월'},
+      diagnosis: '부채 절대금액 소(7.2억)로 DW 잔고 대비 커버 가능. KIMST 방산 수주 확정 시 턴어라운드 가능.',
+      tasks: [
+        {priority:'CRITICAL',title:'KIMST 방산 수주 계약 확정',desc:'턴어라운드의 핵심 변수. 미확정 시 기존 이벤트 플랫폼만으로는 BEP 불가.',action:'(1) KIMST 제안서 최종 제출 (2) 계약 조건 협상 (3) 수주 실패 시 대안 시나리오 수립',timeline:'90일 내 수주 확정 또는 대안 확보',kpi:'방산 수주 계약 체결 여부'},
+        {priority:'HIGH',title:'선급금 회수 정상화',desc:'약 50개 시설에 투입된 선급금 회수 지연이 현금흐름 압박의 원인.',action:'(1) 시설별 선급금 잔액·회수 일정 전수 조사 (2) 회수 지연 시설 독촉/법적 조치 (3) 신규 투입 동결',timeline:'60일 내 전수 조사 → 90일 내 정상화',kpi:'선급금 회수율 80% 이상'},
+        {priority:'HIGH',title:'IBK 5억 만기 대응',desc:'차환 또는 상환 계획 미확정.',action:'(1) 기보 보증 연장 확인 (2) 차환 조건 협상 (3) 선급금 회수분으로 일부 상환',timeline:'만기 60일 전 확정',kpi:'차환/상환 계획 확정'},
+        {priority:'MEDIUM',title:'6명 체제 운영 효율 최적화',desc:'47→6명 감축 후 50개 시설 운영 + 방산 신사업 동시 진행 가능 여부.',action:'(1) 시설 관리 자동화/외주화 (2) 방산 전담 인력 배치 (3) 저수익 시설 정리',timeline:'90일 내',kpi:'인당 관리 시설 수 최적화'},
+        {priority:'MEDIUM',title:'이벤트 플랫폼 단독 BEP 시나리오 수립',desc:'방산 없이도 생존 가능한 시나리오 확보 필요.',action:'(1) 시설 50개 중 수익성 상위 집중 (2) 수수료 구조 재설계 (3) 월 고정비 최소화',timeline:'60일 내',kpi:'방산 제외 단독 BEP 시나리오 완성'}
+      ],
+      roadmap: {d90:'KIMST 수주 확정 + 선급금 전수 조사 + IBK 대응',d180:'선급금 회수 80% + 방산 매출 발생 + 월 적자 2억 이하',d365:'BEP 달성 + 자본잠식 해소 착수'},
+      monitorKpi: ['KIMST 수주 상태','선급금 회수율 (%)','IBK 차환 상태','월 OP (억원)','자본총계 (억원)']
+    },
+    '인테이크': {
+      grade: 'YELLOW', bizSummary: '대체단백/대체당 소재 B2B + 완제품 D2C | 설립 2013년 (13년차) | 직원 55명',
+      fin: {revenue:'201', op:'-24.7', debt:'26.7', cash:'101.8', equity:'+104.8', runway:'50개월'},
+      diagnosis: '현금 101.8억으로 부채 즉시 커버 가능. 그러나 월 2억 적자 지속 시 현금 소진 불가피. 비용 구조 혁신이 핵심.',
+      tasks: [
+        {priority:'CRITICAL',title:'BEP 달성 — 월 적자 2억 → 0 전환',desc:'연 적자 24.7억(월 약 2억). 현금 101.8억이지만 적자 지속 시 50개월 내 소진.',action:'(1) 비용 항목별 P&L 분석 (2) 저마진 제품라인 정리 (3) B2B 소재 매출 비중 확대 (4) 판관비 20% 절감 목표',timeline:'180일 내 월 적자 1억 이하',kpi:'월 OP 0 이상 달성'},
+        {priority:'HIGH',title:'55명 인력 구조 최적화',desc:'매출 201억 대비 인력 55명. 인당 매출 3.65억으로 업종 대비 검증 필요.',action:'(1) 부서별 인력 생산성 분석 (2) 비핵심 기능 외주화 (3) 목표 인원 설정 → 자연감소 + 구조조정',timeline:'90일 내 분석 → 180일 내 실행',kpi:'인당 매출 5억 이상'},
+        {priority:'HIGH',title:'B2B 소재 사업 수주 확대',desc:'대체단백/대체당 소재 B2B는 고마진. D2C 대비 안정적 수익원.',action:'(1) 기존 B2B 고객 업셀링 (2) 식품 대기업 3사 이상 신규 제안 (3) 연간 계약 전환',timeline:'180일 내',kpi:'B2B 매출 비중 60% 이상'},
+        {priority:'MEDIUM',title:'D2C 브랜드 독점성 강화',desc:'건강기능식품 D2C 시장 경쟁 심화. 차별화 없으면 마진 하락.',action:'(1) 독점 성분/특허 확보 (2) 브랜드 포지셔닝 재정립 (3) CAC/LTV 최적화',timeline:'180일 내',kpi:'D2C 재구매율 40% 이상'},
+        {priority:'MEDIUM',title:'추가 자금조달 계획 수립',desc:'적자 지속 시 투자금 소진 후 자금 공백 대비 필요.',action:'(1) BEP 달성 전제 하 시리즈 D 시나리오 (2) 은행 대출 여력 확인 (3) 전략적 투자자 탐색',timeline:'180일 내',kpi:'자금조달 옵션 2개 이상 확보'}
+      ],
+      roadmap: {d90:'인력 생산성 분석 + P&L 비용 항목 분석 + B2B 신규 제안 3건',d180:'월 적자 1억 이하 + 인력 최적화 실행 + B2B 60% 비중',d365:'BEP 달성 + D2C 재구매 40% + 추가 자금조달 옵션 확보'},
+      monitorKpi: ['월 OP (억원)','인당 매출 (억원)','B2B 매출 비중 (%)','현금 잔고 (억원)','D2C 재구매율 (%)']
+    },
+    '와이오엘오': {
+      grade: 'RED', bizSummary: '크로스보더 이커머스 플랫폼 "크로켓" | 설립 2017.03 (8년차) | 직원 25명 | 일본/미국 확장 중',
+      fin: {revenue:'33.6', op:'-7.9', debt:'17.6', cash:'5.5', equity:'+0.1', runway:'8개월'},
+      diagnosis: '매출 성장세(33.6억)이나 적자 지속(-7.9억). 자본 0.1억 극도 취약. 부채 만기 장기(2029~2033)가 유일한 완충.',
+      tasks: [
+        {priority:'CRITICAL',title:'OP 흑자 전환 — 손익분기 매출 확정',desc:'매출 성장에도 적자 지속. 고정비 대비 손익분기 매출 산출 필수.',action:'(1) 고정비/변동비 분리 분석 (2) BEP 매출 산출 (3) 매출 목표 역산 → 분기별 마일스톤',timeline:'30일 내 분석 → 180일 내 BEP 달성',kpi:'BEP 매출 달성'},
+        {priority:'CRITICAL',title:'비용 구조조정 — 25명 인력 최적화',desc:'매출 33.6억 / 25명 = 인당 1.34억. 적자 구조에서 인력 효율 개선 급선무.',action:'(1) 국가별(한국/일본/미국) 인력 ROI 분석 (2) 저성과 시장 철수 또는 축소 (3) 목표 인원 15명 이하',timeline:'90일 내',kpi:'인당 매출 2억 이상 + 월 인건비 20% 절감'},
+        {priority:'HIGH',title:'글로벌 확장 ROI 검증',desc:'일본/미국 진출 비용이 적자의 주요 원인일 가능성.',action:'(1) 국가별 매출/비용/마진 분석 (2) CAC·LTV 산출 (3) ROI 음수 시장 정리 또는 축소',timeline:'60일 내',kpi:'국가별 단위 경제성 양수 전환'},
+        {priority:'HIGH',title:'물류·결제 수수료 마진 개선',desc:'크로스보더 특성상 물류/결제 수수료가 마진 압박 요인.',action:'(1) 물류 파트너 재협상 (2) 결제 수수료 최적화 (3) 배송비 소비자 전가 모델 검토',timeline:'90일 내',kpi:'물류+결제 비용 매출 대비 5%p 절감'},
+        {priority:'MEDIUM',title:'자본 확충 — 긴급 증자 또는 전환사채 검토',desc:'자본 0.1억. 어떤 외부 충격에도 자본잠식 전환 가능.',action:'(1) 기존 주주 유상증자 (2) 전략적 투자자 브릿지론 (3) 정부 지원사업 활용',timeline:'90일 내',kpi:'자본 5억 이상 확보'}
+      ],
+      roadmap: {d90:'BEP 분석 + 인력 구조조정 + 국가별 ROI 검증',d180:'OP 흑자 전환 + 물류 마진 개선 + 자본 5억 확보',d365:'연 매출 50억 + OP 양수 유지 + 자본 안정화'},
+      monitorKpi: ['월 OP (억원)','국가별 매출/마진','인당 매출 (억원)','물류+결제 비용 비율','자본총계 (억원)']
+    }
+  };
+
+  /* ── 경영개선 리포트 PDF 생성 ─────────────────────────────────── */
   window.downloadImprovementReport = function(event) {
     const btn = event.currentTarget;
     const origText = btn.textContent;
@@ -2143,35 +2246,99 @@ html, body {
     const dateStr = yy+'-'+mm+'-'+dd;
     const fileName = '피트스탑_경영개선_리포트_'+nameClean+'_'+dateStr+'.pdf';
 
-    /* 대시보드에서 Section 1 + Section 2 내용 캡처 */
-    const dashboard = document.querySelector('.dashboard');
-    if (!dashboard) { btn.textContent = origText; btn.disabled = false; return; }
+    /* 회사별 데이터 조회 */
+    var data = improvementData[nameClean];
+    if (!data) { alert('해당 기업의 경영개선 데이터가 준비되지 않았습니다.'); btn.textContent = origText; btn.disabled = false; return; }
 
-    const clone = dashboard.cloneNode(true);
-    /* PDF 버튼, Capital Flow 링크 등 제거 */
-    clone.querySelectorAll('.section-link-row').forEach(r => r.remove());
+    var gradeColor = {GREEN:'#0d7a3e',YELLOW:'#b37a1a',ORANGE:'#d35400',RED:'#c0392b'}[data.grade]||'#666';
+    var gradeBg = {GREEN:'#e8f5e9',YELLOW:'#fff8e1',ORANGE:'#fff3e0',RED:'#fce4ec'}[data.grade]||'#f5f5f5';
+    var priorityColor = {CRITICAL:'#c0392b',HIGH:'#d35400',MEDIUM:'#b37a1a',LOW:'#2e7d32'};
+    var priorityBg = {CRITICAL:'#fce4ec',HIGH:'#fff3e0',MEDIUM:'#fff8e1',LOW:'#e8f5e9'};
 
-    const container = document.createElement('div');
-    container.innerHTML = `
-<div id="pdf-report" style="width:210mm; padding:18mm 16mm; font-family:'Noto Sans KR',sans-serif; color:#1a1a1a; font-size:11px; line-height:1.7; background:#fff;">
-  <div style="text-align:center; padding:48px 0 28px; border-bottom:2px solid #1a1a1a; margin-bottom:24px;">
-    <div style="font-size:10px; color:#888; letter-spacing:0.15em; margin-bottom:8px;">GOWID NEXUS · PIT-STOP</div>
-    <div style="font-size:22px; font-weight:700; margin-bottom:6px;">경영 개선 리포트</div>
-    <div style="font-size:14px; color:#555; margin-bottom:16px;">${esc(coName)}</div>
-    <div style="font-size:10px; color:#999;">${yy}년 ${parseInt(mm)}월 ${parseInt(dd)}일</div>
-  </div>
-  <div id="pdf-body"></div>
-  <div style="margin-top:40px; padding-top:12px; border-top:1px solid #e0e0e0; font-size:9px; color:#999; text-align:center;">
-    GOWID NEXUS · Pit-Stop 경영 개선 리포트 · ${dateStr}<br>
-    본 리포트는 피트스탑 심사 결과를 바탕으로 작성되었으며, 투자 권유 문서가 아닙니다.<br>
-    문의: 고위드넥서스 피트스탑팀
-  </div>
-</div>`;
+    var tasksHtml = data.tasks.map(function(t,i){
+      var pc = priorityColor[t.priority]||'#666';
+      var pb = priorityBg[t.priority]||'#f5f5f5';
+      return '<div style="margin-bottom:16px;page-break-inside:avoid;">'
+        +'<div style="display:flex;align-items:center;gap:8px;margin-bottom:6px;">'
+        +'<span style="display:inline-block;padding:2px 8px;border-radius:3px;font-size:9px;font-weight:700;color:#fff;background:'+pc+';">'+t.priority+'</span>'
+        +'<span style="font-size:13px;font-weight:600;">과제 '+(i+1)+'. '+t.title+'</span></div>'
+        +'<div style="padding:12px 14px;background:'+pb+';border-radius:6px;border-left:3px solid '+pc+';font-size:11px;line-height:1.7;">'
+        +'<div style="margin-bottom:6px;"><strong>현황:</strong> '+t.desc+'</div>'
+        +'<div style="margin-bottom:6px;"><strong>실행 방안:</strong> '+t.action+'</div>'
+        +'<div style="margin-bottom:6px;"><strong>목표 기한:</strong> '+t.timeline+'</div>'
+        +'<div><strong>성과 지표:</strong> '+t.kpi+'</div></div></div>';
+    }).join('');
+
+    var kpiHtml = data.monitorKpi.map(function(k){return '<li style="margin-bottom:4px;">'+k+'</li>';}).join('');
+
+    var html = '<div id="pdf-report" style="width:210mm;padding:18mm 16mm;font-family:\'Noto Sans KR\',sans-serif;color:#1a1a1a;font-size:11px;line-height:1.7;background:#fff;">'
+      /* 표지 */
+      +'<div style="text-align:center;padding:48px 0 28px;border-bottom:2px solid #1a1a1a;margin-bottom:28px;">'
+      +'<div style="font-size:10px;color:#888;letter-spacing:0.15em;margin-bottom:8px;">GOWID NEXUS · PIT-STOP</div>'
+      +'<div style="font-size:24px;font-weight:700;margin-bottom:8px;">경영 개선 리포트</div>'
+      +'<div style="font-size:16px;color:#555;margin-bottom:12px;">'+esc(coName)+'</div>'
+      +'<div style="display:inline-block;padding:4px 16px;border-radius:4px;font-size:12px;font-weight:700;color:'+gradeColor+';background:'+gradeBg+';">진단 등급: '+data.grade+'</div>'
+      +'<div style="margin-top:12px;font-size:10px;color:#999;">'+yy+'년 '+parseInt(mm)+'월 '+parseInt(dd)+'일</div></div>'
+
+      /* 1. 기업 개요 */
+      +'<div style="margin-bottom:24px;">'
+      +'<div style="font-size:14px;font-weight:700;border-bottom:1px solid #ddd;padding-bottom:6px;margin-bottom:12px;">1. 기업 개요</div>'
+      +'<div style="padding:10px 14px;background:#f8f9fa;border-radius:6px;font-size:11px;">'+data.bizSummary+'</div></div>'
+
+      /* 2. 재무 현황 */
+      +'<div style="margin-bottom:24px;">'
+      +'<div style="font-size:14px;font-weight:700;border-bottom:1px solid #ddd;padding-bottom:6px;margin-bottom:12px;">2. 재무 현황 요약</div>'
+      +'<table style="width:100%;border-collapse:collapse;font-size:11px;">'
+      +'<tr style="background:#f0f0f0;"><th style="padding:6px 10px;text-align:left;border:1px solid #ddd;">항목</th><th style="padding:6px 10px;text-align:right;border:1px solid #ddd;">금액 (억원)</th></tr>'
+      +'<tr><td style="padding:6px 10px;border:1px solid #ddd;">매출</td><td style="padding:6px 10px;text-align:right;border:1px solid #ddd;">'+data.fin.revenue+'</td></tr>'
+      +'<tr><td style="padding:6px 10px;border:1px solid #ddd;">영업이익</td><td style="padding:6px 10px;text-align:right;border:1px solid #ddd;">'+data.fin.op+'</td></tr>'
+      +'<tr><td style="padding:6px 10px;border:1px solid #ddd;">금융부채</td><td style="padding:6px 10px;text-align:right;border:1px solid #ddd;">'+data.fin.debt+'</td></tr>'
+      +'<tr><td style="padding:6px 10px;border:1px solid #ddd;">현금</td><td style="padding:6px 10px;text-align:right;border:1px solid #ddd;">'+data.fin.cash+'</td></tr>'
+      +'<tr><td style="padding:6px 10px;border:1px solid #ddd;">자본</td><td style="padding:6px 10px;text-align:right;border:1px solid #ddd;">'+data.fin.equity+'</td></tr>'
+      +'<tr style="background:#f8f9fa;"><td style="padding:6px 10px;border:1px solid #ddd;font-weight:600;">런웨이</td><td style="padding:6px 10px;text-align:right;border:1px solid #ddd;font-weight:600;">'+data.fin.runway+'</td></tr>'
+      +'</table></div>'
+
+      /* 3. 진단 요약 */
+      +'<div style="margin-bottom:24px;">'
+      +'<div style="font-size:14px;font-weight:700;border-bottom:1px solid #ddd;padding-bottom:6px;margin-bottom:12px;">3. 진단 요약</div>'
+      +'<div style="padding:12px 16px;background:'+gradeBg+';border-left:4px solid '+gradeColor+';border-radius:6px;font-size:12px;color:'+gradeColor+';">'+data.diagnosis+'</div></div>'
+
+      /* 4. 경영개선 과제 */
+      +'<div style="margin-bottom:24px;page-break-before:always;">'
+      +'<div style="font-size:14px;font-weight:700;border-bottom:1px solid #ddd;padding-bottom:6px;margin-bottom:16px;">4. 경영개선 과제 (우선순위순)</div>'
+      +tasksHtml+'</div>'
+
+      /* 5. 실행 로드맵 */
+      +'<div style="margin-bottom:24px;">'
+      +'<div style="font-size:14px;font-weight:700;border-bottom:1px solid #ddd;padding-bottom:6px;margin-bottom:12px;">5. 실행 로드맵</div>'
+      +'<div style="display:flex;gap:12px;">'
+      +'<div style="flex:1;padding:12px;background:#e3f2fd;border-radius:6px;border-top:3px solid #1976d2;">'
+      +'<div style="font-size:10px;font-weight:700;color:#1976d2;margin-bottom:6px;">90일 (단기)</div>'
+      +'<div style="font-size:11px;">'+data.roadmap.d90+'</div></div>'
+      +'<div style="flex:1;padding:12px;background:#e8f5e9;border-radius:6px;border-top:3px solid #388e3c;">'
+      +'<div style="font-size:10px;font-weight:700;color:#388e3c;margin-bottom:6px;">180일 (중기)</div>'
+      +'<div style="font-size:11px;">'+data.roadmap.d180+'</div></div>'
+      +'<div style="flex:1;padding:12px;background:#f3e5f5;border-radius:6px;border-top:3px solid #7b1fa2;">'
+      +'<div style="font-size:10px;font-weight:700;color:#7b1fa2;margin-bottom:6px;">1년 (장기)</div>'
+      +'<div style="font-size:11px;">'+data.roadmap.d365+'</div></div></div></div>'
+
+      /* 6. 모니터링 KPI */
+      +'<div style="margin-bottom:24px;">'
+      +'<div style="font-size:14px;font-weight:700;border-bottom:1px solid #ddd;padding-bottom:6px;margin-bottom:12px;">6. 핵심 모니터링 KPI</div>'
+      +'<ul style="margin:0;padding-left:20px;font-size:11px;">'+kpiHtml+'</ul></div>'
+
+      /* 푸터 */
+      +'<div style="margin-top:40px;padding-top:12px;border-top:1px solid #e0e0e0;font-size:9px;color:#999;text-align:center;">'
+      +'GOWID NEXUS · Pit-Stop 경영 개선 리포트 · '+dateStr+'<br>'
+      +'본 리포트는 피트스탑 진단 결과를 바탕으로 작성된 경영개선 권고안이며, 투자 권유 문서가 아닙니다.<br>'
+      +'문의: 고위드넥서스 피트스탑팀</div></div>';
+
+    var container = document.createElement('div');
+    container.innerHTML = html;
     document.body.appendChild(container);
-    document.getElementById('pdf-body').appendChild(clone);
-    const el = document.getElementById('pdf-report');
+    var el = document.getElementById('pdf-report');
 
-    const opt = {
+    var opt = {
       margin: 0,
       filename: fileName,
       image: { type:'jpeg', quality:0.98 },
@@ -2182,7 +2349,6 @@ html, body {
 
     html2pdf().set(opt).from(el).outputPdf('arraybuffer').then(function(ab) {
       document.body.removeChild(container);
-      /* arraybuffer → Blob(application/pdf) → 수동 다운로드 */
       var pdfBlob = new Blob([ab], { type: 'application/pdf' });
       var url = URL.createObjectURL(pdfBlob);
       var a = document.createElement('a');
