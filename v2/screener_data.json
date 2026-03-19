@@ -113,7 +113,8 @@
       "corp_id": 1198668123,
       "cf_url": "https://capital-flow-rm.vercel.app/company/1198668123",
       "survey_timestamp": "2026. 3. 5 오전 10:44:06",
-      "status": "active",
+      "status": "closed",
+      "close_reason": "피트스탑 종료",
       "cash_kpi": {
         "balance_date": "2026-03-01",
         "cash_mtd": 19.2,
@@ -288,7 +289,8 @@
       "corp_id": 2218134988,
       "cf_url": "https://capital-flow-rm.vercel.app/company/2218134988",
       "survey_timestamp": "2026. 2. 12 오후 1:39:44",
-      "status": "active",
+      "status": "closed",
+      "close_reason": "피트스탑 종료",
       "interview_date": "2026-03-12",
       "verdict_class": "conditional",
       "cash_kpi": {
