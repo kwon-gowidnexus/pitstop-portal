@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-03-19T06:01:05.011605",
+  "generated_at": "2026-03-19T21:48:14.674322",
   "data_source": "고위드 DW (BigQuery) + Metabase RM",
   "criteria_definitions": {
     "ceo_awareness": "대표의 객관적 인식 + 변화 의지 (인터뷰 필수)",
@@ -25,6 +25,7 @@
       "cf_url": "https://capital-flow-rm.vercel.app/company/8268602651",
       "survey_timestamp": "2026-02-16T22:08:10",
       "status": "closed",
+      "close_reason": "Go 판정 완료",
       "verdict_class": "go",
       "ceo_name": "채지훈",
       "applicant_name": "Been Bin",
@@ -32,7 +33,7 @@
       "pain_points": "고위드넥서스가 피트스탑 서비스 외 당사 서비스에 대해 투자 검토를 요청 드립니다.\nㄴ 고민은 당사가 소규모 인력으로 구성되어 아이디어 실행이 빠르다고 느끼지만 그에 비해 운용 자금이 부족하여 실행하지 못하는 프로젝트가 여러 있습니다.",
       "cash_kpi": {
         "balance_date": "2026-03-01",
-        "cash_mtd": 2.7,
+        "cash_mtd": 2.8,
         "monthly_burn": 0.3,
         "burn_positive": true,
         "runway_months": 20.0
@@ -67,7 +68,7 @@
           "confidence": "high",
           "evidence": [
             "금융부채 0.0억 (단기 0.0억 + 장기 0.0억) [DW FY2024]",
-            "CF 평균잔고 2.4억 — 부채의 32134% 커버"
+            "CF 평균잔고 2.4억 — 부채의 32566% 커버"
           ],
           "summary": "부채 0.0억, 잔고로 충분히 커버. 구조 건전.",
           "interview_required": false
@@ -77,8 +78,8 @@
           "grade": "green",
           "confidence": "medium",
           "evidence": [
-            "12개월 매출입금 108.9억 (현금주의)",
-            "매출 추이: 최근 3개월 -51% (8.7억 → 2.9억 → 1.8억)",
+            "12개월 매출입금 109.0억 (현금주의)",
+            "매출 추이: 최근 3개월 -51% (8.7억 → 2.9억 → 1.9억)",
             "영업이익 +1.8억 (이미 흑자)",
             "런웨이 20.0개월 (CF 기준)"
           ],
@@ -108,8 +109,7 @@
           "summary": "Red 0개. 부채 0, 흑자, 최적 타겟. 설립 3년차.",
           "interview_required": false
         }
-      },
-      "close_reason": "Go 판정 완료"
+      }
     },
     {
       "company_name": "인테이크 주식회사",
@@ -118,6 +118,7 @@
       "cf_url": "https://capital-flow-rm.vercel.app/company/1198668123",
       "survey_timestamp": "2026-03-05T10:44:06",
       "status": "closed",
+      "close_reason": "포트폴리오 종료",
       "verdict_class": "yellow",
       "ceo_name": "한녹엽",
       "applicant_name": "한녹엽",
@@ -125,10 +126,10 @@
       "pain_points": "13년차 식품 스타트업입니다. 단백 소재개발과 함께 B2C 완제품 비즈니스를 영위하고 있고 최근 150억가량 투자유치를 하면서 활발한 인수합병으로 연간 400억 연결매출 규모를 달성했으나, 아직 영업이익을 내지는 못하고 월 캐시번이 유지되고 있는 상황입니다. \n운전자금에 대한 필요성과 함께, 6개월내 BEP 달성에 대한 미션에 꽂혀서 지원게 되었습니다. ",
       "cash_kpi": {
         "balance_date": "2026-03-01",
-        "cash_mtd": 18.4,
+        "cash_mtd": 18.3,
         "monthly_burn": 2.0,
         "burn_positive": false,
-        "runway_months": 9.2
+        "runway_months": 9.1
       },
       "overall_grade": "conditional",
       "auto_assessed": 4,
@@ -170,12 +171,12 @@
           "grade": "red",
           "confidence": "medium",
           "evidence": [
-            "12개월 매출입금 199.8억 (현금주의)",
-            "매출 추이: 최근 3개월 -27% (14.0억 → 15.3억 → 6.6억)",
+            "12개월 매출입금 201.7억 (현금주의)",
+            "매출 추이: 최근 3개월 -23% (14.0억 → 15.3억 → 8.5억)",
             "영업적자 -24.7억/년 (월 2.1억)",
-            "런웨이 9.2개월 (CF 기준)"
+            "런웨이 9.1개월 (CF 기준)"
           ],
-          "summary": "매출 하락 추세 + 런웨이 9.2개월. BEP 달성 시급.",
+          "summary": "매출 하락 추세 + 런웨이 9.1개월. BEP 달성 시급.",
           "interview_required": true
         },
         "worst_case": {
@@ -183,9 +184,9 @@
           "grade": "yellow",
           "confidence": "high",
           "evidence": [
-            "CF 런웨이 9.2개월"
+            "CF 런웨이 9.1개월"
           ],
-          "summary": "런웨이 9.2개월. 6개월 내 매출 또는 비용 개선 필요.",
+          "summary": "런웨이 9.1개월. 6개월 내 매출 또는 비용 개선 필요.",
           "interview_required": false
         },
         "financial_3axis": {
@@ -200,8 +201,7 @@
           "summary": "Red 1개. 부채 낮음, 매출 대형, 6개월 BEP 미션",
           "interview_required": false
         }
-      },
-      "close_reason": "포트폴리오 종료"
+      }
     },
     {
       "company_name": "주식회사 웰로",
@@ -210,6 +210,7 @@
       "cf_url": "https://capital-flow-rm.vercel.app/company/7058602126",
       "survey_timestamp": "2026-02-09T21:42:20",
       "status": "closed",
+      "close_reason": "포트폴리오 종료",
       "verdict_class": "yellow",
       "ceo_name": "김유리안나",
       "applicant_name": "김유리안나Anna",
@@ -220,7 +221,7 @@
         "cash_mtd": 20.3,
         "monthly_burn": 2.0,
         "burn_positive": false,
-        "runway_months": 10.3
+        "runway_months": 10.2
       },
       "overall_grade": "conditional",
       "auto_assessed": 4,
@@ -265,9 +266,9 @@
             "12개월 매출입금 10.0억 (현금주의)",
             "매출 추이: 최근 3개월 -31% (1.3억 → 0.3억 → 0.1억)",
             "영업적자 -52.7억/년 (월 4.4억)",
-            "런웨이 10.3개월 (CF 기준)"
+            "런웨이 10.2개월 (CF 기준)"
           ],
-          "summary": "매출 하락 추세 + 런웨이 10.3개월. BEP 달성 시급.",
+          "summary": "매출 하락 추세 + 런웨이 10.2개월. BEP 달성 시급.",
           "interview_required": true
         },
         "worst_case": {
@@ -275,9 +276,9 @@
           "grade": "yellow",
           "confidence": "high",
           "evidence": [
-            "CF 런웨이 10.3개월"
+            "CF 런웨이 10.2개월"
           ],
-          "summary": "런웨이 10.3개월. 6개월 내 매출 또는 비용 개선 필요.",
+          "summary": "런웨이 10.2개월. 6개월 내 매출 또는 비용 개선 필요.",
           "interview_required": false
         },
         "financial_3axis": {
@@ -292,8 +293,7 @@
           "summary": "Red 1개. 조건부 진행 가능. 현금 75억으로 부채 커버 가능. 캐시번이 핵심 리스크.",
           "interview_required": false
         }
-      },
-      "close_reason": "포트폴리오 종료"
+      }
     },
     {
       "company_name": "주식회사 온오프믹스",
@@ -302,6 +302,7 @@
       "cf_url": "https://capital-flow-rm.vercel.app/company/2218134988",
       "survey_timestamp": "2026-02-12T13:39:44",
       "status": "closed",
+      "close_reason": "포트폴리오 종료",
       "verdict_class": "conditional",
       "ceo_name": "양준철",
       "applicant_name": "JoonCheol Yang",
@@ -309,7 +310,7 @@
       "pain_points": "1. 2022년 칸서스자산운용이라는 회사와 총 85억(신주 65억, 구주 20억)짜리 투자유치 계약을 맺었으나 1차 30억원만 집행이 되고 2차 55억이 2년간 미뤄지다가 최종 집행 하지 않음으로 정리가 되었습니다. \n\n2. 더불어서 티몬, 위메프 사태로 인해서 정산 받지 못하는 금액이 3억원 가량 발생했습니다. \n\n3. 티켓 사업은 '선급금' 이라는 금융모델을 진행할 수 있으면 거래액 및 매출액 확보를 하기 좋은 상황이나 회사가 운용할 수 있는 자금이 없어서 진행을 못하고 있습니다. ( 선급금 운용 사례 5차례 이상 보유 )\n\n4. 2024년 47 -> 25, 2025년 25 -> 9명으로 강도 높은 구조조정을 하면서 퇴직금+미지급 급여를 분납으로 협의하여 해고를 진행하게 되었습니다. \n\n5. 최근 경기도 협약 사업을 하나 수주했으나 사업비 예산 비목 중에 인건비 비율이 낮아서 Runway에 큰 도움이 되고 있지 않으나 경기도 측에서 사용 가능한 홍보수단을 모두 동원하여 플랫폼의 홍보를 진행하기로 하여 트래픽 회복에 따른 매출 회복이 기대되고 있는 상황 입니다. \n\n6. 3월 예정되어 있는 KIMST의 R&D 사업에 대해서 PM 을 맡아 5억원 대의 매출을 기대할 수 있는 건이 진행되고 있고, 이 건이 진행되면 Runway 에 대한 부담이 줄어드는 상태 입니다. \n\n7. 현재 네이버 예약 공식 판매대행사 지위를 갖고 있으며 최근에 관련된 지위를 유상으로 구매하고 싶다는 의향을 밝힌 곳이 있었습니다. ( 이도 주식회사 )\n\n8. 비즈니스 모델 과 파이프라인은 있으나 Cash Flow가 꼬여서 겪고 있는 문제를 빠르게 풀 수 있는 방법이 있다면 진행하고 싶습니다. ",
       "cash_kpi": {
         "balance_date": "2026-03-01",
-        "cash_mtd": 6.0,
+        "cash_mtd": 6.1,
         "monthly_burn": 1.9,
         "burn_positive": true,
         "runway_months": 20.0
@@ -356,8 +357,8 @@
           "grade": "yellow",
           "confidence": "medium",
           "evidence": [
-            "12개월 매출입금 112.1억 (현금주의)",
-            "매출 추이: 최근 3개월 +39% (9.6억 → 10.2억 → 3.8억)",
+            "12개월 매출입금 112.3억 (현금주의)",
+            "매출 추이: 최근 3개월 +40% (9.6억 → 10.2억 → 4.0억)",
             "영업적자 -5.8억/년 (월 0.5억)",
             "런웨이 20.0개월 (CF 기준)"
           ],
@@ -387,8 +388,7 @@
           "summary": "Red 2개. 금융부채 12.0억(DW 장기차입금 5.0억 반영). 부채/매출 68%(Red). KIMST 수주 확정 시 재평가.",
           "interview_required": false
         }
-      },
-      "close_reason": "포트폴리오 종료"
+      }
     },
     {
       "company_name": "(주)와이오엘오",
@@ -396,6 +396,7 @@
       "corp_id": 6108634204,
       "cf_url": "https://capital-flow-rm.vercel.app/company/6108634204",
       "survey_timestamp": "2026-03-06T02:44:38",
+      "status": "active",
       "verdict_class": "conditional",
       "ceo_name": "황유미",
       "applicant_name": "Yoomee Hwang",
@@ -437,8 +438,7 @@
           "confidence": "high",
           "evidence": [
             "금융부채 8.5억 (단기 0.0억 + 장기 8.5억) [DW FY2024]",
-            "CF 평균잔고 0.8억 — 부채의 10% 커버",
-            "커버율 10% — 잔고로 부채 통제 불가",
+            "CF 평균잔고 0.9억 — 부채의 10% 커버",
             "자본 -2.4억 (자본잠식)",
             "CB/전환사채 이슈: CB/전환사채 존재 여부 미확인 — 금융부채 괴리(9.1억)의 원인일 가능성"
           ],
@@ -450,8 +450,8 @@
           "grade": "red",
           "confidence": "medium",
           "evidence": [
-            "12개월 매출입금 348.1억 (현금주의)",
-            "매출 추이: 최근 3개월 -23% (30.8억 → 26.8억 → 16.7억)",
+            "12개월 매출입금 351.3억 (현금주의)",
+            "매출 추이: 최근 3개월 -20% (30.8억 → 26.8억 → 19.8억)",
             "영업적자 -7.9억/년 (월 0.7억)",
             "런웨이 20.0개월 (CF 기준)"
           ],
@@ -481,8 +481,7 @@
           "summary": "Red 2개. 만기 장기(2029-2033), 시간 여유. 매출 성장 중.",
           "interview_required": false
         }
-      },
-      "status": "active"
+      }
     },
     {
       "company_name": "주식회사 모트에이아이",
@@ -491,6 +490,7 @@
       "cf_url": "https://capital-flow-rm.vercel.app/company/1838600202",
       "survey_timestamp": "2026-02-10T12:48:17",
       "status": "closed",
+      "close_reason": "No-Go 판정",
       "verdict_class": "conditional",
       "ceo_name": "천영록",
       "applicant_name": "Jayden",
@@ -501,7 +501,7 @@
         "cash_mtd": 0.2,
         "monthly_burn": 0.2,
         "burn_positive": false,
-        "runway_months": 1.5
+        "runway_months": 1.4
       },
       "overall_grade": "red",
       "auto_assessed": 4,
@@ -549,7 +549,7 @@
             "12개월 매출입금 10.9억 (현금주의)",
             "매출 추이: 최근 3개월 +28% (1.1억 → 0.0억 → 0.3억)",
             "영업이익 +1.2억 (이미 흑자)",
-            "런웨이 1.5개월 (CF 기준)"
+            "런웨이 1.4개월 (CF 기준)"
           ],
           "summary": "이미 영업흑자 또는 매출 성장 추세. BEP 달성/유지 가능.",
           "interview_required": false
@@ -559,9 +559,9 @@
           "grade": "red",
           "confidence": "high",
           "evidence": [
-            "CF 런웨이 1.5개월"
+            "CF 런웨이 1.4개월"
           ],
-          "summary": "런웨이 1.5개월 미만. 즉각적 자금/비용 조치 없으면 생존 위험.",
+          "summary": "런웨이 1.4개월 미만. 즉각적 자금/비용 조치 없으면 생존 위험.",
           "interview_required": true
         },
         "financial_3axis": {
@@ -576,8 +576,7 @@
           "summary": "Red 3개. 진행 불가 판정. CB 22.1억 출자전환 선행 필수.",
           "interview_required": false
         }
-      },
-      "close_reason": "No-Go 판정"
+      }
     },
     {
       "company_name": "주식회사 메뉴잇",
@@ -585,6 +584,7 @@
       "corp_id": 1278700330,
       "cf_url": "https://capital-flow-rm.vercel.app/company/1278700330",
       "survey_timestamp": "2026-03-03T14:55:37",
+      "status": "active",
       "verdict_class": "conditional",
       "ceo_name": "박주영",
       "applicant_name": "김경훈",
@@ -639,8 +639,8 @@
           "grade": "green",
           "confidence": "medium",
           "evidence": [
-            "12개월 매출입금 155.4억 (현금주의)",
-            "매출 추이: 최근 3개월 +2% (8.4억 → 17.4억 → 6.7억)",
+            "12개월 매출입금 155.9억 (현금주의)",
+            "매출 추이: 최근 3개월 +3% (8.4억 → 17.4억 → 7.2억)",
             "영업이익 +4.1억 (이미 흑자)",
             "런웨이 2.2개월 (CF 기준)"
           ],
@@ -669,9 +669,7 @@
           "summary": "Red 3개. 캐시 엔진 강력. 2차 자료로 금융부채 51.8억 확인(기존 102억 오류), 사채 CB 아님 확인, IBK 10억 만기 연장. 구조 개선 뚜렷.",
           "interview_required": false
         }
-      },
-      "status": "active",
-      "grade_override": "conditional"
+      }
     }
   ]
 }
