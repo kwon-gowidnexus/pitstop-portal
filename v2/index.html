@@ -1169,7 +1169,7 @@ html, body {
       const nameClean = esc(co.company_name).replace(/^(주식회사\s*|㈜|\(주\))/, '').replace(/\s*주식회사$/, '');
       let metaParts = [];
       if (co.ceo_name) metaParts.push(esc(co.ceo_name));
-      if (isClosed && co.close_reason) metaParts.push(esc(co.close_reason));
+      // close_reason 제거 — CLOSED 배지로 충분
       const metaLine = metaParts.length ? metaParts.join(' · ') : '';
       // 접수일로부터 6개월 후 자료 폐기일
       const delDate = (function() {
