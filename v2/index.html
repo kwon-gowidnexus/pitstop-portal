@@ -1105,13 +1105,17 @@ html, body {
       return;
     }
     const html = companies.map((co, i) => {
+      const isClosed = (co.status||'').toLowerCase() === 'closed';
       const gc = gbClass(co.overall_grade);
       const gl = gbLabel(co.overall_grade);
+      const closedBadge = isClosed ? `<span style="font-size:8px;color:#999;background:#333;padding:1px 5px;border-radius:3px;margin-left:4px;vertical-align:middle;">CLOSED</span>` : '';
+      const dimStyle = isClosed ? 'opacity:0.5;' : '';
+      const nameClean = esc(co.company_name).replace(/^(주식회사\s*|㈜)/, '');
       return `
-        <div class="company-item" data-folder="${esc(co.folder_name)}" onclick="selectCompany('${esc(co.folder_name)}')">
+        <div class="company-item" data-folder="${esc(co.folder_name)}" onclick="selectCompany('${esc(co.folder_name)}')" style="${dimStyle}">
           <span class="ci-idx">${String(i+1).padStart(2,'0')}</span>
           <div class="ci-body">
-            <div class="ci-name">${esc(co.company_name)}</div>
+            <div class="ci-name">${nameClean}${closedBadge}</div>
           </div>
           <span class="grade-badge ${gc}"><span class="dot"></span>${gl}</span>
         </div>`;
@@ -1639,11 +1643,18 @@ html, body {
   }
 
   /* ── 공통 헬퍼 ─────────────────────────────────────────────── */
+  function sectionBadgeGlobal(grade, label) {
+    const gc2 = gbClass(grade);
+    const gl2 = gbLabel(grade);
+    return `<span class="grade-badge ${gc2}" style="font-size:9px;padding:3px 9px 3px 7px;margin-left:auto;">
+      <span class="dot" style="width:6px;height:6px;"></span>${label}: ${gl2}
+    </span>`;
+  }
   function sectionPlaceholder(title, grade, msg) {
     return `<div class="section">
       <div class="section-header"><div class="section-header-top">
         <div class="section-title">${title}</div>
-        ${sectionBadge(grade, title.includes('2') ? 'S2' : 'S3')}
+        ${sectionBadgeGlobal(grade, title.includes('2') ? 'S2' : 'S3')}
       </div><div class="section-intent"></div></div>
       <div class="no-data-block">${msg}</div></div>`;
   }
@@ -1651,7 +1662,7 @@ html, body {
     return `<div class="section">
       <div class="section-header"><div class="section-header-top">
         <div class="section-title">Section 2 — 제출 자료 기반 심화 진단</div>
-        ${sectionBadge(grade, 'S2')}
+        ${sectionBadgeGlobal(grade, 'S2')}
       </div><div class="section-intent">기업이 제출한 재무제표, 사업계획서, 보완자료를 반영한 정성 판단</div></div>
       <div class="s2-grid">${cards}</div></div>`;
   }
@@ -1659,7 +1670,7 @@ html, body {
     return `<div class="section">
       <div class="section-header"><div class="section-header-top">
         <div class="section-title">Section 3 — 인터뷰 종합 판정 (1+2+3 통합)</div>
-        ${sectionBadge(grade, 'S3')}
+        ${sectionBadgeGlobal(grade, 'S3')}
       </div><div class="section-intent">DW 데이터 + 제출 자료 + 대표 인터뷰를 모두 종합한 최종 판정</div></div>
       ${content}</div>`;
   }
@@ -1667,7 +1678,7 @@ html, body {
     return `<div class="section">
       <div class="section-header"><div class="section-header-top">
         <div class="section-title">Section 3 — 인터뷰 종합 판정 (1+2+3 통합)</div>
-        ${sectionBadge(grade || 'pending', 'S3')}
+        ${sectionBadgeGlobal(grade || 'pending', 'S3')}
       </div><div class="section-intent">DW 데이터 + 제출 자료 + 대표 인터뷰를 모두 종합한 최종 판정</div></div>
       <div class="no-data-block">인터뷰 미실시 — 인터뷰 완료 후 종합 판정이 생성됩니다.</div></div>`;
   }

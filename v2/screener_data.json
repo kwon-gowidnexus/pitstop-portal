@@ -569,7 +569,7 @@
         "burn_positive": false,
         "runway_months": 2.3
       },
-      "overall_grade": "red",
+      "overall_grade": "conditional",
       "auto_assessed": 4,
       "interview_required": 4,
       "criteria": {
