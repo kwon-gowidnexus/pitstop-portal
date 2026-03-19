@@ -2180,11 +2180,20 @@ html, body {
       pagebreak: { mode:['avoid-all','css','legacy'] }
     };
 
-    html2pdf().set(opt).from(el).save().then(() => {
+    html2pdf().set(opt).from(el).outputPdf('blob').then(function(blob) {
       document.body.removeChild(container);
+      /* 수동 다운로드 — 파일명 보장 */
+      var url = URL.createObjectURL(blob);
+      var a = document.createElement('a');
+      a.href = url;
+      a.download = fileName;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      setTimeout(function(){ URL.revokeObjectURL(url); }, 1000);
       btn.textContent = origText;
       btn.disabled = false;
-    }).catch(() => {
+    }).catch(function() {
       document.body.removeChild(container);
       btn.textContent = origText;
       btn.disabled = false;
