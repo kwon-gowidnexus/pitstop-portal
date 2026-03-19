@@ -1106,16 +1106,29 @@ html, body {
     }
     const html = companies.map((co, i) => {
       const isClosed = (co.status||'').toLowerCase() === 'closed';
-      const gc = gbClass(co.overall_grade);
-      const gl = gbLabel(co.overall_grade);
+      const effectiveGrade = co.grade_override || co.overall_grade;
+      const gc = gbClass(effectiveGrade);
+      const gl = gbLabel(effectiveGrade);
       const closedBadge = isClosed ? `<span style="font-size:8px;color:#999;background:#333;padding:1px 5px;border-radius:3px;margin-left:4px;vertical-align:middle;">CLOSED</span>` : '';
       const dimStyle = isClosed ? 'opacity:0.5;' : '';
       const nameClean = esc(co.company_name).replace(/^(주식회사\s*|㈜|\(주\))/, '').replace(/\s*주식회사$/, '');
+      /* 접수일 파싱 */
+      const ts = co.survey_timestamp || '';
+      const surveyDate = ts ? ts.slice(0,10).replace(/T.*$/,'') : '';
+      /* CEO + 메타 라인 */
+      const ceo = co.ceo_name ? esc(co.ceo_name) : '';
+      const closeReason = isClosed && co.close_reason ? esc(co.close_reason) : '';
+      const metaParts = [];
+      if (ceo) metaParts.push(ceo);
+      if (surveyDate) metaParts.push('접수 ' + surveyDate);
+      if (closeReason) metaParts.push(closeReason);
+      const metaLine = metaParts.length ? `<div style="font-size:9px;color:var(--text-dim);margin-top:1px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">${metaParts.join(' · ')}</div>` : '';
       return `
         <div class="company-item" data-folder="${esc(co.folder_name)}" onclick="selectCompany('${esc(co.folder_name)}')" style="${dimStyle}">
           <span class="ci-idx">${String(i+1).padStart(2,'0')}</span>
           <div class="ci-body">
             <div class="ci-name">${nameClean}${closedBadge}</div>
+            ${metaLine}
           </div>
           <span class="grade-badge ${gc}"><span class="dot"></span>${gl}</span>
         </div>`;
@@ -1146,8 +1159,9 @@ html, body {
 
   /* ── 대시보드 렌더 ──────────────────────────────────────────── */
   function renderDashboard(co) {
-    const gc = gbClass(co.overall_grade);
-    const gl = gbLabel(co.overall_grade);
+    const effectiveGrade = co.grade_override || co.overall_grade;
+    const gc = gbClass(effectiveGrade);
+    const gl = gbLabel(effectiveGrade);
     const CRITERIA_ORDER = ['ceo_awareness','business_moat','debt_control','bep_roadmap','worst_case','financial_3axis'];
     const CRITERIA_NUMS  = ['①','②','③','④','⑤','⑥'];
     const rawCriteria = co.criteria || {};
