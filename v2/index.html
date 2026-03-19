@@ -1110,7 +1110,7 @@ html, body {
       const gl = gbLabel(co.overall_grade);
       const closedBadge = isClosed ? `<span style="font-size:8px;color:#999;background:#333;padding:1px 5px;border-radius:3px;margin-left:4px;vertical-align:middle;">CLOSED</span>` : '';
       const dimStyle = isClosed ? 'opacity:0.5;' : '';
-      const nameClean = esc(co.company_name).replace(/^(주식회사\s*|㈜)/, '');
+      const nameClean = esc(co.company_name).replace(/^(주식회사\s*|㈜|\(주\))/, '').replace(/\s*주식회사$/, '');
       return `
         <div class="company-item" data-folder="${esc(co.folder_name)}" onclick="selectCompany('${esc(co.folder_name)}')" style="${dimStyle}">
           <span class="ci-idx">${String(i+1).padStart(2,'0')}</span>
@@ -1162,7 +1162,7 @@ html, body {
     const s1Grade = s1Red >= 2 ? 'red' : s1Red === 1 ? 'conditional' : s1Grades.every(g=>g==='green') ? 'green' : 'yellow';
     const s2GradeMap = {
       '마진맥스':'green', '인테이크':'yellow', '웰로':'yellow', '온오프믹스':'yellow',
-      '와이오엘오':'red', '모트에이아이':'red', '메뉴잇':'red', '젠테':'red'
+      '와이오엘오':'red', '모트에이아이':'red', '메뉴잇':'conditional', '젠테':'red'
     };
     const s3GradeMap = {
       '마진맥스':'pending', '인테이크':'pending', '웰로':'yellow', '온오프믹스':'conditional',
