@@ -1149,7 +1149,7 @@ html, body {
   /* ── 사이드바 ───────────────────────────────────────────────── */
   function renderCompanyList() {
     const companies = (SCREENER_DATA.companies || []).slice().sort((a, b) =>
-      tsToSortKey(a.survey_timestamp) - tsToSortKey(b.survey_timestamp)
+      tsToSortKey(b.survey_timestamp) - tsToSortKey(a.survey_timestamp)
     );
     const active = companies.filter(c => c.status !== 'closed');
     const closed = companies.filter(c => c.status === 'closed');
