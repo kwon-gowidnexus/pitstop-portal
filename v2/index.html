@@ -117,7 +117,7 @@ html, body {
 
 /* ─── Sidebar ────────────────────────────────────────────────────── */
 .sidebar {
-  width: 240px;
+  width: 280px;
   flex-shrink: 0;
   border-right: 1px solid var(--border);
   background: var(--surface);
@@ -195,13 +195,11 @@ html, body {
   font-weight: 500;
   color: var(--text-pri);
   white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
   margin-bottom: 2px;
-  display: flex; align-items: center; gap: 4px;
+  display: flex; align-items: center; gap: 5px;
 }
 .ci-meta { font-size: 9px; color: var(--text-dim); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-.ci-ts { text-align: right; flex-shrink: 0; margin-left: auto; }
+.ci-ts { text-align: right; flex-shrink: 0; margin-left: 6px; }
 .ci-ts-date { font-size: 10px; color: var(--text-sec); }
 .ci-ts-time { font-size: 9px; color: var(--text-dim); }
 .badge-closed {
@@ -970,7 +968,7 @@ html, body {
 
 @media (max-width: 700px) {
   .criteria-grid { grid-template-columns: 1fr; }
-  .sidebar { width: 200px; }
+  .sidebar { width: 240px; }
   .section { padding: 18px 16px 0; }
   .co-header { padding: 14px 16px 12px; flex-wrap: wrap; }
 }
