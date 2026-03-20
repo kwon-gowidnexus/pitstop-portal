@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-03-20T16:49:43.327912",
+  "generated_at": "2026-03-20T17:05:54.837114",
   "data_source": "고위드 DW (BigQuery) + Metabase RM",
   "criteria_definitions": {
     "ceo_awareness": "대표의 객관적 인식 + 변화 의지 (인터뷰 필수)",
@@ -677,7 +677,7 @@
       "folder_name": "위버딩",
       "corp_id": 4928701193,
       "cf_url": "https://capital-flow-rm.vercel.app/company/4928701193",
-      "survey_timestamp": "2026. 3. 18",
+      "survey_timestamp": "2026-03-18T00:00:00",
       "verdict_class": "conditional",
       "ceo_name": "신동환",
       "applicant_email": "dh.shin@noutecompany.com",
