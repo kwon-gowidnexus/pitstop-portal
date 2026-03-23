@@ -793,67 +793,6 @@ html, body {
   line-height: 1.5;
 }
 
-/* ─── Main Verdict Banner (top of dashboard) ─────────────────── */
-.verdict-main {
-  margin: 16px 24px 0;
-  border-radius: 6px;
-}
-.verdict-main.vb-unknown { border-color: var(--border-mid); background: var(--surface); }
-
-.verdict-main .vb-content { flex: 1; }
-.verdict-main .vb-content .vb-label {
-  font-family: var(--mono);
-  font-size: 10px;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
-  color: var(--text-dim);
-  margin-bottom: 2px;
-  opacity: 1;
-}
-.verdict-main .vb-content .vb-grade {
-  font-size: 18px;
-  line-height: 1.3;
-}
-.verdict-main .vb-summary {
-  font-size: 12px;
-  color: var(--text-sec);
-  margin-top: 2px;
-}
-.verdict-main .vb-icon {
-  font-size: 28px;
-  flex-shrink: 0;
-}
-
-/* ─── Signal Bar ──────────────────────────────────────────────── */
-.signal-bar {
-  display: flex;
-  gap: 6px;
-  margin: 12px 24px 0;
-  flex-wrap: wrap;
-}
-.signal-item {
-  display: flex;
-  align-items: center;
-  gap: 5px;
-  padding: 4px 10px;
-  border-radius: 4px;
-  font-size: 11px;
-  font-weight: 500;
-  background: var(--surface);
-  border: 1px solid var(--border);
-}
-.signal-item.sig-green  { background: var(--bg-green); border-color: #86efac; color: var(--c-green); }
-.signal-item.sig-yellow { background: var(--bg-yellow); border-color: #fde047; color: var(--c-yellow); }
-.signal-item.sig-red    { background: var(--bg-red); border-color: #fca5a5; color: var(--c-red); }
-.signal-item.sig-unknown { background: var(--surface); border-color: var(--border-mid); color: var(--text-dim); }
-.signal-dot {
-  width: 6px; height: 6px; border-radius: 50%;
-}
-.sig-green .signal-dot  { background: var(--c-green); }
-.sig-yellow .signal-dot { background: var(--c-yellow); }
-.sig-red .signal-dot    { background: var(--c-red); }
-.sig-unknown .signal-dot { background: var(--text-dim); }
-
 /* Interview 2-column */
 .interview-2col {
   display: grid;
@@ -1221,12 +1160,9 @@ html, body {
       const ts = parseTs(co.survey_timestamp);
       const isClosed = co.status === 'closed';
       const effectiveGrade = co.grade_override || co.overall_grade;
-      // 3색 체계: green→GO, yellow/conditional→CONDITIONAL, red→NO-GO — overall_grade 기준
-      const og = (co.overall_grade || '').toLowerCase();
-      const vClass = og === 'green' ? 'go' : og === 'red' ? 'nogo' : (og === 'yellow' || og === 'conditional') ? 'yellow' : null;
-      const verdictLabelMap = { go: 'GO', yellow: 'CONDITIONAL', nogo: 'NO-GO' };
+      const vClass = co.verdict_class || ({green:'go',yellow:'yellow',conditional:'conditional',red:'nogo'}[effectiveGrade]) || null;
       const verdictBadge = vClass
-        ? `<span class="ci-verdict v-${vClass}"><span class="dot"></span>${verdictLabelMap[vClass] || ''}</span>` : '';
+        ? `<span class="ci-verdict v-${vClass}"><span class="dot"></span></span>` : '';
       const closedBadge = isClosed ? `<span class="badge-closed">CLOSED</span>` : '';
       const nameClean = esc(co.company_name).replace(/^(주식회사\s*|㈜|\(주\))/, '').replace(/\s*주식회사$/, '');
       let metaParts = [];
@@ -1279,47 +1215,6 @@ html, body {
     renderDashboard(co);
   };
 
-  /* ── Verdict Banner + Signal Bar ──────────────────────────────── */
-  function makeVerdictBanner(co) {
-    const grade = (co.overall_grade || 'unknown').toLowerCase();
-    const gradeMap = {
-      green:       { cls: 'vb-green',   label: 'GO', text: '피트스탑 진행 가능 — 핵심 리스크 없음' },
-      yellow:      { cls: 'vb-yellow',  label: 'CONDITIONAL', text: '조건부 진행 — 모니터링 필요 항목 존재' },
-      conditional: { cls: 'vb-yellow',  label: 'CONDITIONAL', text: '조건부 진행 — Red 1개, 해소 조건 확인 필요' },
-      red:         { cls: 'vb-red',     label: 'NO-GO', text: '보류/불가 — Red 2개 이상, 구조적 리스크' },
-      unknown:     { cls: 'vb-unknown', label: 'PENDING', text: '데이터 부족 — 판정 불가' },
-    };
-    const v = gradeMap[grade] || gradeMap.unknown;
-    const rawCriteria = co.criteria || {};
-    const allKeys = ['debt_control','bep_roadmap','worst_case','financial_3axis'];
-    const redCount = allKeys.filter(k => (rawCriteria[k]||{}).grade === 'red').length;
-    const greenCount = allKeys.filter(k => (rawCriteria[k]||{}).grade === 'green').length;
-    const total = allKeys.filter(k => rawCriteria[k]).length;
-    const stats = `Red ${redCount} · Green ${greenCount} / ${total}기준`;
-    return `
-      <div class="verdict-banner verdict-main ${v.cls}">
-        <div class="vb-icon" style="font-size:28px;">●</div>
-        <div class="vb-content">
-          <div class="vb-label">PITSTOP VERDICT</div>
-          <div class="vb-grade">${v.label} <span style="font-size:12px;font-weight:400;color:var(--text-dim);margin-left:8px;">${stats}</span></div>
-          <div class="vb-summary">${v.text}</div>
-        </div>
-      </div>`;
-  }
-
-  function makeSignalBar(co) {
-    const rawCriteria = co.criteria || {};
-    const allKeys = ['debt_control','bep_roadmap','worst_case','financial_3axis'];
-    const items = allKeys.map(key => {
-      const cr = rawCriteria[key];
-      if (!cr || !cr.name) return '';
-      const g = (cr.grade || 'unknown').toLowerCase();
-      const sigCls = g === 'green' ? 'sig-green' : g === 'red' ? 'sig-red' : (g === 'yellow' || g === 'conditional' || g === 'orange') ? 'sig-yellow' : 'sig-unknown';
-      return `<div class="signal-item ${sigCls}"><span class="signal-dot"></span>${cr.name}</div>`;
-    }).filter(Boolean);
-    return `<div class="signal-bar">${items.join('')}</div>`;
-  }
-
   /* ── 대시보드 렌더 ──────────────────────────────────────────── */
   function renderDashboard(co) {
     const effectiveGrade = co.grade_override || co.overall_grade;
@@ -1339,11 +1234,11 @@ html, body {
     const s1Grade = s1Red >= 2 ? 'red' : s1Red === 1 ? 'conditional' : s1Grades.every(g=>g==='green') ? 'green' : 'yellow';
     const s2GradeMap = {
       '마진맥스':'green', '인테이크':'yellow', '웰로':'yellow', '온오프믹스':'yellow',
-      '와이오엘오':'red', '모트에이아이':'red', '메뉴잇':'conditional', '젠테':'red', '위버딩':'unknown'
+      '와이오엘오':'red', '모트에이아이':'red', '메뉴잇':'conditional', '젠테':'red'
     };
     const s3GradeMap = {
       '마진맥스':'pending', '인테이크':'pending', '웰로':'yellow', '온오프믹스':'conditional',
-      '와이오엘오':'pending', '모트에이아이':'red', '메뉴잇':'pending', '젠테':'red', '위버딩':'pending'
+      '와이오엘오':'pending', '모트에이아이':'red', '메뉴잇':'pending', '젠테':'red'
     };
     const s2Grade = s2GradeMap[co.folder_name] || 'unknown';
     const s3Grade = s3GradeMap[co.folder_name] || 'unknown';
@@ -1423,8 +1318,6 @@ html, body {
             <div class="co-name">${esc(co.company_name)}</div>
           </div>
         </div>
-        ${makeVerdictBanner(co)}
-        ${makeSignalBar(co)}
         ${section1}
         <div class="section-divider"></div>
         ${section2}
@@ -2076,32 +1969,57 @@ html, body {
           <tr><td>현금</td><td style="text-align:right">5.5</td></tr>
           <tr><td>자본</td><td style="text-align:right" class="val-neg">0.1 (극도로 취약)</td></tr>
         </tbody></table></div>
-      <div class="s2-card"><div class="s2-card-title">부채 구조</div>
-        <ul class="s2-info-list">
-          <li>금융부채 17.6억 vs 자본 0.1억 — 부채비율 극과다</li>
-          <li>만기 2029~2033년 장기 구조 — 단기 상환 압박 없음</li>
-          <li>부채/매출 비율 52%</li>
+      <div class="s2-card"><div class="s2-card-title">부채 구조 (2차 자료 확인, 총 15.7억)</div>
+        <table class="fin-table"><thead><tr><th>분류</th><th>금융기관</th><th style="text-align:right">금액</th><th style="text-align:right">이자율</th><th>만기</th><th>비고</th></tr></thead><tbody>
+          <tr><td>BW</td><td>기업은행</td><td style="text-align:right">3.0억</td><td style="text-align:right">1.50%</td><td>2029.02</td><td style="color:var(--c-orange)">후속투자 시 지분전환</td></tr>
+          <tr><td>벤처대출</td><td>기업은행</td><td style="text-align:right">3.0억</td><td style="text-align:right">8.00%</td><td>2029.02</td><td>-</td></tr>
+          <tr><td>정책자금</td><td>중진공</td><td style="text-align:right">0.4억</td><td style="text-align:right">2.53%</td><td>2028.09</td><td>-</td></tr>
+          <tr><td>BW</td><td>기보</td><td style="text-align:right">5.0억</td><td style="text-align:right">0.00%</td><td>2033.11</td><td style="color:var(--c-orange)">후속투자 시 지분전환</td></tr>
+          <tr><td>벤처대출</td><td>기업은행×기보</td><td style="text-align:right">4.3억</td><td style="text-align:right">8.00%</td><td>2033.11</td><td>기보 100% 보증</td></tr>
+          <tr style="font-weight:700;border-top:2px solid var(--border)"><td colspan="2">합계</td><td style="text-align:right">15.7억</td><td colspan="3"></td></tr>
+        </tbody></table>
+        <ul class="s2-info-list" style="margin-top:8px">
+          <li>BW 합계 8.0억 — 후속 투자 유치 시 전액 지분 전환 가능 (실질 상환 부담 7.7억)</li>
+          <li>만기 2028~2033년 장기 구조 — 단기 상환 압박 없음</li>
+          <li>고금리 벤처대출 7.3억(8%) — 연이자 0.6억 부담</li>
+        </ul></div>
+      <div class="s2-card"><div class="s2-card-title">글로벌 확장 실적 (2차 자료)</div>
+        <table class="fin-table"><thead><tr><th>항목</th><th style="text-align:right">금액/내용</th></tr></thead><tbody>
+          <tr><td colspan="2" style="font-weight:600;background:var(--bg-header)">투입 비용</td></tr>
+          <tr><td>마케팅</td><td style="text-align:right">0원</td></tr>
+          <tr><td>글로벌 PO 인건비</td><td style="text-align:right">월 450만원</td></tr>
+          <tr><td>기타 운영비</td><td style="text-align:right">월 12만원</td></tr>
+          <tr><td>PG 수수료</td><td style="text-align:right">GMV의 3%</td></tr>
+          <tr><td colspan="2" style="font-weight:600;background:var(--bg-header)">매출 기여 (2025.07.14 베타~)</td></tr>
+          <tr><td>25년 글로벌 GMV</td><td style="text-align:right">8,923만</td></tr>
+          <tr><td>25년 글로벌 매출</td><td style="text-align:right">3,769만</td></tr>
+          <tr><td>26년 GMV (1/1~3/15)</td><td style="text-align:right">4,282만</td></tr>
+        </tbody></table>
+        <ul class="s2-info-list" style="margin-top:8px">
+          <li>마케팅 0원으로 오가닉 성장 — 26년 2.5개월 만에 25년 하반기 GMV의 48% 달성</li>
+          <li>월 투입 ~462만 vs 월 매출 ~680만(25년 평균) — 글로벌 단독 흑자 구간</li>
         </ul></div>
       <div class="s2-card"><div class="s2-card-title">핵심 강점 vs 리스크</div>
         <ul class="s2-info-list">
           <li>강점: 매출 33.6억 성장세 — 크로스보더 이커머스 성장 시장</li>
-          <li>강점: 부채 만기 2029~2033년 장기 구조 — 단기 상환 압박 없음</li>
-          <li>강점: 일본/미국 글로벌 확장 진행 중</li>
+          <li>강점: BW 8억 전환 가능 → 실질 상환 부담 7.7억으로 축소</li>
+          <li>강점: 글로벌 확장 마케팅 0원 + 오가닉 성장 → 26년 연환산 GMV 2.1억 페이스</li>
+          <li>강점: 만기 2028~2033년 장기 — 단기 압박 없음</li>
           <li>리스크: 매출 성장에도 영업적자 -7.9억 지속</li>
           <li>리스크: 자본 0.1억 극도로 취약 — 부채비율 극과다</li>
-          <li>리스크: 부채/매출 비율 52% — 매출 대비 부채 부담 과중</li>
+          <li>리스크: 고금리 벤처대출 7.3억(8%) — 연이자 0.6억 부담</li>
         </ul></div>
       <div class="s2-card" style="grid-column:1/-1;"><div class="s2-card-title">진단 요약</div>
         <div style="padding:10px 14px;background:var(--bg-orange);border-radius:var(--r);font-size:12px;color:var(--c-orange);">
-          만기 장기(2029~2033)로 시간 여유는 있으나, 매출 성장에도 적자 지속. 인터뷰에서 OP 전환 플랜과 구조조정 의지 확인 필수.
+          부채 15.7억 중 BW 8억은 후속투자 시 전환 가능 → 실질 상환 부담 7.7억. 글로벌 확장은 마케팅 0원으로 오가닉 성장 중(26년 연환산 GMV 2.1억). 다만 영업적자 -7.9억 지속, 고금리(8%) 이자 부담 연 0.6억. OP 전환 플랜이 핵심.
         </div></div>
       <div class="s2-card" style="grid-column:1/-1;"><div class="s2-card-title">인터뷰 확인 필요 사항</div>
         <ul class="s2-info-list">
-          <li style="color:var(--c-red);font-weight:600">매출 성장에도 적자 지속 — OP 전환 구체적 타임라인과 손익분기 매출 규모</li>
-          <li>글로벌 확장(일본/미국) ROI — 국가별 매출 비중, CAC, LTV</li>
-          <li>비용 구조조정 의지 및 실행 플랜 — 25명 인력 최적화 방안</li>
-          <li>크로스보더 물류/결제 수수료 구조 — 마진 개선 여지</li>
-          <li>주요 카테고리/브랜드 독점 공급 계약 보유 여부</li>
+          <li style="color:var(--c-red);font-weight:600">영업적자 -7.9억 지속 — OP 전환 타임라인, BEP 매출 규모, 비용 구조조정 플랜</li>
+          <li style="color:var(--c-red);font-weight:600">BW 전환 조건 — "후속 투자 유치 시" 기준 정의, 전환가격, 희석률</li>
+          <li>글로벌 확장 스케일업 계획 — 마케팅 투입 시 기대 GMV, 국가별 전략</li>
+          <li>고금리 벤처대출 7.3억(8%) — 차환/상환 계획, 이자 부담 경감 방안</li>
+          <li>25명 인력 최적화 — 글로벌 PO 추가 채용 vs 국내 인력 재배치</li>
         </ul></div>`);
   }
 
