@@ -1291,7 +1291,7 @@ html, body {
     };
     const v = gradeMap[grade] || gradeMap.unknown;
     const rawCriteria = co.criteria || {};
-    const allKeys = ['ceo_awareness','business_moat','debt_control','bep_roadmap','worst_case','financial_3axis'];
+    const allKeys = ['debt_control','bep_roadmap','worst_case','financial_3axis'];
     const redCount = allKeys.filter(k => (rawCriteria[k]||{}).grade === 'red').length;
     const greenCount = allKeys.filter(k => (rawCriteria[k]||{}).grade === 'green').length;
     const total = allKeys.filter(k => rawCriteria[k]).length;
@@ -1309,7 +1309,7 @@ html, body {
 
   function makeSignalBar(co) {
     const rawCriteria = co.criteria || {};
-    const allKeys = ['debt_control','bep_roadmap','worst_case','financial_3axis','ceo_awareness','business_moat'];
+    const allKeys = ['debt_control','bep_roadmap','worst_case','financial_3axis'];
     const items = allKeys.map(key => {
       const cr = rawCriteria[key];
       if (!cr || !cr.name) return '';
