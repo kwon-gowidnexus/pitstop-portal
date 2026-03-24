@@ -922,43 +922,6 @@ html, body {
   line-height: 1.5;
 }
 
-/* Blocker Banner */
-.blocker-banner {
-  border-radius: var(--r);
-  padding: 14px 18px;
-  margin-bottom: 12px;
-  border: 1px solid var(--c-red);
-  background: rgba(244,67,54,0.04);
-}
-.blocker-title {
-  font-family: var(--mono);
-  font-size: 11px;
-  font-weight: 700;
-  color: var(--c-red);
-  letter-spacing: 0.06em;
-  margin-bottom: 8px;
-}
-.blocker-list {
-  list-style: none;
-  padding: 0;
-  margin: 0 0 8px 0;
-}
-.blocker-list li {
-  font-size: 12px;
-  color: var(--text-pri);
-  padding: 2px 0;
-  line-height: 1.5;
-}
-.blocker-summary {
-  font-size: 11px;
-  color: var(--text-dim);
-  line-height: 1.4;
-}
-
-.verdict-banner.vb-unknown { border-color: var(--border-mid); background: var(--bg-body); }
-.vb-unknown .vb-grade { color: var(--text-dim); }
-.vb-unknown .vb-label  { color: var(--text-dim); }
-
 /* Interview 2-column */
 .interview-2col {
   display: grid;
@@ -1329,11 +1292,9 @@ html, body {
       const ts = parseTs(co.survey_timestamp);
       const isClosed = co.status === 'closed';
       const effectiveGrade = co.grade_override || co.overall_grade;
-      const og = (co.overall_grade || '').toLowerCase();
-      const vClass = og === 'green' ? 'go' : og === 'red' ? 'nogo' : (og === 'yellow' || og === 'conditional') ? 'yellow' : null;
-      const verdictLabelMap = { go: 'GO', yellow: 'COND', nogo: 'NO-GO' };
+      const vClass = co.verdict_class || ({green:'go',yellow:'yellow',conditional:'conditional',red:'nogo'}[effectiveGrade]) || null;
       const verdictBadge = vClass
-        ? `<span class="ci-verdict v-${vClass}"><span class="dot"></span>${verdictLabelMap[vClass] || ''}</span>` : '';
+        ? `<span class="ci-verdict v-${vClass}"><span class="dot"></span></span>` : '';
       const closedBadge = isClosed ? `<span class="badge-closed">CLOSED</span>` : '';
       const nameClean = esc(co.company_name).replace(/^(주식회사\s*|㈜|\(주\))/, '').replace(/\s*주식회사$/, '');
       let metaParts = [];
@@ -1396,8 +1357,8 @@ html, body {
     const effectiveGrade = co.grade_override || co.overall_grade;
     const gc = gbClass(effectiveGrade);
     const gl = gbLabel(effectiveGrade);
-    const CRITERIA_ORDER = ['debt_control','bep_roadmap','worst_case','financial_3axis','revenue_concentration','investability'];
-    const CRITERIA_NUMS  = ['①','②','③','④','⑤','⑥'];
+    const CRITERIA_ORDER = ['debt_control','bep_roadmap','worst_case','financial_3axis'];
+    const CRITERIA_NUMS  = ['①','②','③','④'];
     const rawCriteria = co.criteria || {};
     const criteriaEntries = CRITERIA_ORDER.map((key,i) => ({
       ...(rawCriteria[key]||{}), _key:key, _num:CRITERIA_NUMS[i]
@@ -1575,47 +1536,6 @@ html, body {
     }).join('');
     const mezzSection = `<div class="mezz-grid">${mezzHtml}</div>`;
 
-    /* ── Investability Blocker Banner ─────────────────────── */
-    const invCr = rawCriteria['investability'] || {};
-    const rcCr = rawCriteria['revenue_concentration'] || {};
-    const invGrade = (invCr.grade||'unknown').toLowerCase();
-    const rcGrade = (rcCr.grade||'unknown').toLowerCase();
-    const hasBlockers = invGrade === 'red' || rcGrade === 'red';
-    let blockerHtml = '';
-    if (hasBlockers) {
-      const allEvidence = [...(invCr.evidence||[]), ...(rcCr.evidence||[])].filter(e => e.startsWith('⚠') || e.includes('블로커') || e.includes('집중'));
-      const items = allEvidence.length > 0
-        ? allEvidence.map(e => `<li>${esc(e)}</li>`).join('')
-        : (invCr.evidence||[]).slice(0,3).map(e => `<li>${esc(e)}</li>`).join('');
-      blockerHtml = `
-        <div class="blocker-banner">
-          <div class="blocker-title">⚠ 투자 집행 블로커</div>
-          <ul class="blocker-list">${items}</ul>
-          <div class="blocker-summary">${esc(invCr.summary||'')}${rcGrade==='red' ? ' / ' + esc(rcCr.summary||'') : ''}</div>
-        </div>`;
-    }
-
-    /* ── Verdict Banner (GO / CONDITIONAL / NO-GO) ──────── */
-    const ogLabel = {green:'GO',yellow:'CONDITIONAL',conditional:'CONDITIONAL',red:'NO-GO'}[effectiveGrade] || 'PENDING';
-    const ogCls = {green:'vb-green',yellow:'vb-yellow',conditional:'vb-yellow',red:'vb-red'}[effectiveGrade] || 'vb-unknown';
-    const coreKeys2 = ['debt_control','bep_roadmap','worst_case','financial_3axis'];
-    const coreRed = coreKeys2.filter(k=>(rawCriteria[k]||{}).grade==='red').length;
-    const coreGreen = coreKeys2.filter(k=>(rawCriteria[k]||{}).grade==='green').length;
-    const auxKeys2 = ['revenue_concentration','investability'];
-    const auxRed = auxKeys2.filter(k=>(rawCriteria[k]||{}).grade==='red').length;
-    const verdictStats = `Core Red ${coreRed} · Green ${coreGreen} / 4 ${auxRed>0?`| Blocker ${auxRed}`:''}`;
-    const verdictText = {
-      green:'피트스탑 진행 가능 — 핵심 리스크 없음',
-      yellow:'조건부 진행 — 모니터링 필요 항목 존재',
-      conditional:'조건부 진행 — Red 1개, 해소 조건 확인 필요',
-      red:'보류/불가 — 구조적 리스크 또는 투자 블로커 존재'
-    }[effectiveGrade] || '데이터 부족 — 판정 불가';
-    const verdictBannerHtml = `
-      <div class="verdict-banner ${ogCls}">
-        <div class="vb-grade">${ogLabel} <span style="font-size:11px;font-weight:400;opacity:0.7;margin-left:6px;">${verdictStats}</span></div>
-        <div class="vb-label">${verdictText}</div>
-      </div>`;
-
     $('main').innerHTML = `
       <div class="dashboard">
         <div class="co-header">
@@ -1623,8 +1543,6 @@ html, body {
             <div class="co-name">${esc(co.company_name)}</div>
           </div>
         </div>
-        ${verdictBannerHtml}
-        ${blockerHtml}
         ${stageBarHtml}
         ${nextActionHtml}
         ${mezzSection}
