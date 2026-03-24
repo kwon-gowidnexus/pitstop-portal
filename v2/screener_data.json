@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-03-24T17:08:48.303366",
+  "generated_at": "2026-03-24T19:08:55.233796",
   "data_source": "고위드 DW (BigQuery) + Metabase RM",
   "criteria_definitions": {
     "ceo_awareness": "대표의 객관적 인식 + 변화 의지 (인터뷰 필수)",
@@ -1450,7 +1450,7 @@
           },
           {
             "name": "주주명부",
-            "status": "missing"
+            "status": "received"
           }
         ]
       },
@@ -1472,8 +1472,8 @@
         },
         "shareholder_rights": {
           "name": "주주 동의권",
-          "grade": "unknown",
-          "detail": "인터뷰/자료 확인 필요"
+          "grade": "green",
+          "detail": "주주명부(2025.04.01 기준) PDF 확보. 보통주+우선주 구조, 스트롱벤처스 25억 라운드 확인. 상세 지분율 파싱 필요"
         }
       },
       "cf_trends": {
