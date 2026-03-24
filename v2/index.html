@@ -1357,8 +1357,8 @@ html, body {
     const effectiveGrade = co.grade_override || co.overall_grade;
     const gc = gbClass(effectiveGrade);
     const gl = gbLabel(effectiveGrade);
-    const CRITERIA_ORDER = ['debt_control','bep_roadmap','worst_case','financial_3axis'];
-    const CRITERIA_NUMS  = ['①','②','③','④'];
+    const CRITERIA_ORDER = ['debt_control','bep_roadmap','worst_case','financial_3axis','revenue_concentration','investability'];
+    const CRITERIA_NUMS  = ['①','②','③','④','⑤','⑥'];
     const rawCriteria = co.criteria || {};
     const criteriaEntries = CRITERIA_ORDER.map((key,i) => ({
       ...(rawCriteria[key]||{}), _key:key, _num:CRITERIA_NUMS[i]
@@ -1536,6 +1536,44 @@ html, body {
     }).join('');
     const mezzSection = `<div class="mezz-grid">${mezzHtml}</div>`;
 
+    /* ── Verdict Banner ───────────────────────────────────── */
+    const coreKeys = ['debt_control','bep_roadmap','worst_case','financial_3axis'];
+    const auxKeys = ['revenue_concentration','investability'];
+    const coreGrades = coreKeys.map(k => (rawCriteria[k]||{}).grade||'unknown');
+    const auxGrades = auxKeys.map(k => (rawCriteria[k]||{}).grade||'unknown');
+    const coreRed = coreGrades.filter(g=>g==='red').length;
+    const coreGreen = coreGrades.filter(g=>g==='green').length;
+    const auxRed = auxGrades.filter(g=>g==='red').length;
+    const ogLabel = {green:'GO',yellow:'CONDITIONAL',conditional:'CONDITIONAL',red:'NO-GO',pending:'PENDING'}[effectiveGrade] || 'PENDING';
+    const verdictStats = `Core Red ${coreRed} · Green ${coreGreen} / 4${auxRed>0?` | Blocker ${auxRed}`:''}`;
+    const verdictBannerHtml = `
+      <div class="verdict-banner vb-${effectiveGrade}" style="display:flex;align-items:center;gap:12px;padding:14px 20px;border-radius:10px;margin-bottom:12px;
+        background:${effectiveGrade==='green'?'#e8f5e9':effectiveGrade==='red'?'#fbe9e7':effectiveGrade==='yellow'||effectiveGrade==='conditional'?'#fff8e1':'#f5f5f5'};
+        border-left:4px solid ${effectiveGrade==='green'?'#43a047':effectiveGrade==='red'?'#e53935':effectiveGrade==='yellow'||effectiveGrade==='conditional'?'#f9a825':'#bdbdbd'};">
+        <span style="font-size:20px;font-weight:700;color:${effectiveGrade==='green'?'#2e7d32':effectiveGrade==='red'?'#c62828':effectiveGrade==='yellow'||effectiveGrade==='conditional'?'#e65100':'#757575'}">${ogLabel}</span>
+        <span style="font-size:11px;color:#888;">${verdictStats}</span>
+      </div>`;
+
+    /* ── Blocker Banner ───────────────────────────────────── */
+    const invData = rawCriteria['investability'] || {};
+    const rcData = rawCriteria['revenue_concentration'] || {};
+    const invGrade = (invData.grade||'').toLowerCase();
+    const rcGrade = (rcData.grade||'').toLowerCase();
+    const hasBlockers = invGrade === 'red' || rcGrade === 'red';
+    let blockerHtml = '';
+    if (hasBlockers) {
+      const blockerItems = [];
+      if (rcGrade === 'red') (rcData.evidence||[]).forEach(e => blockerItems.push(e));
+      if (invGrade === 'red') (invData.evidence||[]).forEach(e => blockerItems.push(e));
+      blockerHtml = `
+        <div style="padding:14px 20px;border-radius:10px;margin-bottom:12px;background:#fff3e0;border:1px solid #ffe0b2;">
+          <div style="font-size:13px;font-weight:700;color:#e65100;margin-bottom:8px;">&#9888; 투자 집행 블로커</div>
+          <ul style="margin:0;padding-left:18px;font-size:11px;color:#6d4c00;line-height:1.7;">
+            ${blockerItems.map(b => `<li>${esc(b)}</li>`).join('')}
+          </ul>
+        </div>`;
+    }
+
     $('main').innerHTML = `
       <div class="dashboard">
         <div class="co-header">
@@ -1543,6 +1581,8 @@ html, body {
             <div class="co-name">${esc(co.company_name)}</div>
           </div>
         </div>
+        ${verdictBannerHtml}
+        ${blockerHtml}
         ${stageBarHtml}
         ${nextActionHtml}
         ${mezzSection}
