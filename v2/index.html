@@ -423,6 +423,135 @@ html, body {
 }
 
 /* ─── Criteria Grid (Section 1) ─────────────────────────────────── */
+/* ─── Stage Progress Bar ────────────────────────────────────────── */
+.stage-bar {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  margin-bottom: 16px;
+  padding: 14px 18px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--r);
+}
+.stage-step {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
+  color: var(--text-dim);
+  white-space: nowrap;
+}
+.stage-step.done { color: var(--c-green); font-weight: 500; }
+.stage-step.current { color: var(--text-pri); font-weight: 600; }
+.stage-dot {
+  width: 10px; height: 10px;
+  border-radius: 50%;
+  border: 2px solid var(--border-mid);
+  background: var(--bg);
+  flex-shrink: 0;
+}
+.stage-step.done .stage-dot { background: var(--c-green); border-color: var(--c-green); }
+.stage-step.current .stage-dot {
+  border-color: var(--text-pri);
+  box-shadow: 0 0 0 3px rgba(17,24,39,0.12);
+}
+.stage-line {
+  flex: 1;
+  height: 2px;
+  background: var(--border);
+  margin: 0 8px;
+  min-width: 20px;
+}
+.stage-line.done { background: var(--c-green); }
+.stage-sub { font-size: 9px; color: var(--text-dim); margin-top: 1px; }
+.stage-step.done .stage-sub { color: var(--c-green); }
+.stage-step.current .stage-sub { color: var(--text-sec); }
+
+/* ─── Next Action Block ────────────────────────────────────────── */
+.next-action-block {
+  padding: 14px 18px;
+  background: #fffbeb;
+  border: 1px solid #fde68a;
+  border-radius: var(--r);
+  margin-bottom: 16px;
+  font-size: 12px;
+}
+.next-action-title {
+  font-weight: 600;
+  font-size: 12px;
+  margin-bottom: 8px;
+  color: var(--c-yellow);
+}
+.doc-checklist { list-style: none; padding: 0; margin: 0 0 8px; }
+.doc-checklist li {
+  padding: 3px 0;
+  font-size: 11px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.doc-check { font-size: 12px; }
+.doc-missing { color: var(--c-red); }
+.doc-received { color: var(--c-green); }
+.next-action-verdict {
+  font-size: 11px;
+  color: var(--text-sec);
+  padding-top: 6px;
+  border-top: 1px solid #fde68a;
+}
+
+/* ─── Mezzanine 4Q Cards ──────────────────────────────────────── */
+.mezz-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+  margin-bottom: 16px;
+}
+.mezz-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-top: 3px solid var(--border);
+  border-radius: var(--r);
+  padding: 12px 13px 10px;
+  text-align: center;
+}
+.mezz-card.grade-green  { border-top-color: var(--c-green); }
+.mezz-card.grade-yellow { border-top-color: var(--c-yellow); }
+.mezz-card.grade-red    { border-top-color: var(--c-red); }
+.mezz-card.grade-unknown { border-top-color: var(--border-mid); }
+.mezz-name { font-size: 11px; font-weight: 600; margin-bottom: 6px; }
+.mezz-grade {
+  font-family: var(--mono);
+  font-size: 10px;
+  font-weight: 500;
+  padding: 2px 8px;
+  border-radius: 3px;
+  display: inline-block;
+  margin-bottom: 6px;
+}
+.mezz-card.grade-green .mezz-grade  { background: var(--bg-green); color: var(--c-green); }
+.mezz-card.grade-yellow .mezz-grade { background: var(--bg-yellow); color: var(--c-yellow); }
+.mezz-card.grade-red .mezz-grade    { background: var(--bg-red); color: var(--c-red); }
+.mezz-card.grade-unknown .mezz-grade { background: var(--bg-unknown); color: var(--c-unknown); }
+.mezz-detail { font-size: 10px; color: var(--text-sec); line-height: 1.5; }
+
+/* ─── Sidebar Stage Badge ─────────────────────────────────────── */
+.ci-stage {
+  font-family: var(--mono);
+  font-size: 8px;
+  font-weight: 600;
+  padding: 1px 5px;
+  border-radius: 3px;
+  background: var(--surface2);
+  color: var(--text-sec);
+  margin-left: 4px;
+  letter-spacing: 0.05em;
+}
+.ci-stage.s1 { background: #dbeafe; color: #2563eb; }
+.ci-stage.s2 { background: #e0e7ff; color: #4f46e5; }
+.ci-stage.s3 { background: #fce7f3; color: #db2777; }
+
 .criteria-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -958,6 +1087,7 @@ html, body {
 /* ─── Responsive ────────────────────────────────────────────────── */
 @media (max-width: 1100px) {
   .criteria-grid { grid-template-columns: repeat(2, 1fr); }
+  .mezz-grid { grid-template-columns: repeat(2, 1fr); }
 }
 
 @media (max-width: 900px) {
@@ -968,6 +1098,8 @@ html, body {
 
 @media (max-width: 700px) {
   .criteria-grid { grid-template-columns: 1fr; }
+  .mezz-grid { grid-template-columns: repeat(2, 1fr); }
+  .stage-bar { flex-wrap: wrap; gap: 4px; padding: 10px 14px; }
   .sidebar { width: 240px; }
   .section { padding: 18px 16px 0; }
   .co-header { padding: 14px 16px 12px; flex-wrap: wrap; }
@@ -1181,7 +1313,12 @@ html, body {
         <div class="company-item${isClosed ? ' is-closed' : ''}" data-folder="${esc(co.folder_name)}" onclick="selectCompany('${esc(co.folder_name)}')">
           <span class="ci-idx">${String(i+1).padStart(2,'0')}</span>
           <div class="ci-body">
-            <div class="ci-name"><span>${nameClean}</span>${verdictBadge}${closedBadge}</div>
+            <div class="ci-name"><span>${nameClean}</span>${verdictBadge}${(function(){
+              const st = (co.stage||{}).current;
+              if (!st || st === 'closed') return closedBadge;
+              const num = st.replace('stage_','S');
+              return `<span class="ci-stage ${st.replace('stage_','s')}">${num}</span>${closedBadge}`;
+            })()}</div>
             ${metaLine ? `<div class="ci-meta">${metaLine}</div>` : ''}
             <div class="ci-meta ci-delete">자료 폐기 ${delDate}</div>
           </div>
@@ -1242,6 +1379,10 @@ html, body {
     };
     const s2Grade = s2GradeMap[co.folder_name] || 'unknown';
     const s3Grade = s3GradeMap[co.folder_name] || 'unknown';
+
+    // Stage 판정 (Section 2/3 라우팅에서도 사용)
+    const stage = co.stage || {};
+    const stCur = stage.current || 'stage_1';
 
     function sectionBadge(grade, label) {
       const gc2 = gbClass(grade);
@@ -1307,9 +1448,91 @@ html, body {
       section2 = fns[0](s2Grade);
       section3 = fns[1](s3Grade);
     } else {
-      section2 = sectionPlaceholder('Section 2 — 제출 자료 기반 심화 진단', s2Grade, '해당 기업의 심화 진단 데이터가 준비 중입니다.');
-      section3 = sectionPlaceholder('Section 3 — 인터뷰 종합 판정', s3Grade, '해당 기업의 인터뷰 종합 판정 데이터가 준비 중입니다.');
+      // 범용 렌더러: Stage + 메자닌 기반 요약
+      const stLabel = {stage_1:'Stage 1 진행 중', stage_2:'Stage 2 진행 중', stage_3:'Stage 3 완료', closed:'종료'}[stCur] || '';
+      const condEntries = Object.entries((co.criteria||{}).debt_control ? gatherConditions(co) : {});
+      section2 = sectionPlaceholder('Section 2 — 제출 자료 기반 심화 진단', s2Grade,
+        stCur === 'stage_1'
+          ? `${stLabel} — 자료 제출 후 심화 진단이 시작됩니다.`
+          : '해당 기업의 심화 진단 데이터가 준비 중입니다.');
+      section3 = sectionPlaceholder('Section 3 — 인터뷰 종합 판정', s3Grade,
+        stCur === 'stage_3' || stCur === 'closed'
+          ? '인터뷰 완료. 최종 판정 확정.'
+          : '해당 기업의 인터뷰 종합 판정 데이터가 준비 중입니다.');
     }
+
+    // 범용 조건 수집 헬퍼
+    function gatherConditions(co) { return {}; }
+
+    /* ── Stage Progress Bar ─────────────────────────────────── */
+    function stClass(step) {
+      const order = {stage_1:1, stage_2:2, stage_3:3, closed:4};
+      const cur = order[stCur] || 1;
+      const s = order[step] || 0;
+      if (stCur === 'closed') return 'done';
+      if (s < cur) return 'done';
+      if (s === cur) return 'current';
+      return '';
+    }
+    function stLine(from) {
+      const order = {stage_1:1, stage_2:2, stage_3:3};
+      return (order[stCur]||1) > (order[from]||0) || stCur === 'closed' ? 'done' : '';
+    }
+    const stageBarHtml = `
+      <div class="stage-bar">
+        <div class="stage-step ${stClass('stage_1')}">
+          <span class="stage-dot"></span>
+          <div><div>Stage 1</div><div class="stage-sub">DW 자동</div></div>
+        </div>
+        <div class="stage-line ${stLine('stage_1')}"></div>
+        <div class="stage-step ${stClass('stage_2')}">
+          <span class="stage-dot"></span>
+          <div><div>Stage 2</div><div class="stage-sub">자료 심화</div></div>
+        </div>
+        <div class="stage-line ${stLine('stage_2')}"></div>
+        <div class="stage-step ${stClass('stage_3')}">
+          <span class="stage-dot"></span>
+          <div><div>Stage 3</div><div class="stage-sub">인터뷰</div></div>
+        </div>
+        <div class="stage-line ${stLine('stage_3')}"></div>
+        <div class="stage-step ${stCur==='closed'?'done':''}">
+          <span class="stage-dot"></span>
+          <div><div>완료</div></div>
+        </div>
+      </div>`;
+
+    /* ── Next Action Block ──────────────────────────────────── */
+    const reqDocs = stage.required_documents || [];
+    const nextAction = stage.next_action || '';
+    let nextActionHtml = '';
+    if (nextAction && stCur !== 'closed') {
+      const docsHtml = reqDocs.map(d => {
+        const icon = d.status === 'received' ? '<span class="doc-check doc-received">&#9745;</span>' : '<span class="doc-check doc-missing">&#9744;</span>';
+        return `<li>${icon} ${esc(d.name)}</li>`;
+      }).join('');
+      nextActionHtml = `
+        <div class="next-action-block">
+          <div class="next-action-title">다음 단계: ${esc(nextAction)}</div>
+          ${docsHtml ? `<ul class="doc-checklist">${docsHtml}</ul>` : ''}
+          <div class="next-action-verdict">현재 판정: ${gl} → 자료 보충 시 판정 업데이트 예정</div>
+        </div>`;
+    }
+
+    /* ── Mezzanine 4Q Cards ─────────────────────────────────── */
+    const mezz = co.mezzanine || {};
+    const mezzOrder = ['repayment','conversion_upside','debt_leakage','shareholder_rights'];
+    const mezzHtml = mezzOrder.map(key => {
+      const m = mezz[key] || {};
+      const mg = m.grade || 'unknown';
+      const gcls = critGradeClass(mg);
+      return `
+        <div class="mezz-card ${gcls}">
+          <div class="mezz-name">${esc(m.name||key)}</div>
+          <div class="mezz-grade">${critGradeLabel(mg)}</div>
+          <div class="mezz-detail">${esc(m.detail||'')}</div>
+        </div>`;
+    }).join('');
+    const mezzSection = `<div class="mezz-grid">${mezzHtml}</div>`;
 
     $('main').innerHTML = `
       <div class="dashboard">
@@ -1318,6 +1541,9 @@ html, body {
             <div class="co-name">${esc(co.company_name)}</div>
           </div>
         </div>
+        ${stageBarHtml}
+        ${nextActionHtml}
+        ${mezzSection}
         ${section1}
         <div class="section-divider"></div>
         ${section2}
