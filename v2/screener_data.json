@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-03-24T16:55:51.686658",
+  "generated_at": "2026-03-24T17:08:48.303366",
   "data_source": "고위드 DW (BigQuery) + Metabase RM",
   "criteria_definitions": {
     "ceo_awareness": "대표의 객관적 인식 + 변화 의지 (인터뷰 필수)",
@@ -57,10 +57,6 @@
           },
           {
             "name": "주주명부",
-            "status": "missing"
-          },
-          {
-            "name": "정관",
             "status": "missing"
           }
         ]
@@ -257,10 +253,6 @@
           },
           {
             "name": "주주명부",
-            "status": "missing"
-          },
-          {
-            "name": "정관",
             "status": "missing"
           }
         ]
@@ -851,10 +843,6 @@
           {
             "name": "주주명부",
             "status": "missing"
-          },
-          {
-            "name": "정관",
-            "status": "missing"
           }
         ]
       },
@@ -1259,10 +1247,6 @@
           {
             "name": "주주명부",
             "status": "missing"
-          },
-          {
-            "name": "정관",
-            "status": "missing"
           }
         ]
       },
@@ -1466,10 +1450,6 @@
           },
           {
             "name": "주주명부",
-            "status": "missing"
-          },
-          {
-            "name": "정관",
             "status": "missing"
           }
         ]
