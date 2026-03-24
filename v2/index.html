@@ -1984,31 +1984,40 @@ html, body {
         <div style="font-size:10px;color:#666;margin-top:6px;">
           &#10003; DW FY2024 크로스체크: 매출 10.2억, OP -19.7억, 자본 17.0억, 현금 17.4억 — <b style="color:var(--c-green);">일치</b><br>
           &#10003; FY2023 자본잉여금 26.3→53.1억 (+26.8억) = 스트롱벤처스 라운드 유입 확인<br>
-          &#9888; FY2024 현금 34.1→17.4억 (-16.7억): 적자 17.0억에 의한 소진과 대략 일치
+          &#9888; FY2024 현금 34.1→17.4억 (-16.7억): 적자 17.0억에 의한 소진과 일치<br>
+          <b style="color:var(--c-red);">&#10007; FY2024 말 현금 17.4억 → 2026.03 DW 잔고 0.54억: 2025년 적자 16.8억으로 거의 전액 소진</b>
         </div></div>
 
-      <div class="s2-card" style="grid-column:1/-1;"><div class="s2-card-title">2025년 월별 손익 (제출자료, 단위: 백만원) ${dv('ok','제출PL 파싱 완료')}</div>
-        <table class="fin-table" style="font-size:11px;"><thead><tr><th>항목</th><th style="text-align:right">연간</th><th style="text-align:right">1월</th><th style="text-align:right">2월</th><th style="text-align:right">3월</th><th style="text-align:right">Q1합</th><th style="text-align:right">월평균</th></tr></thead><tbody>
-          <tr><td>매출</td><td style="text-align:right">1,091</td><td style="text-align:right">159</td><td style="text-align:right">107</td><td style="text-align:right">88</td><td style="text-align:right">354</td><td style="text-align:right">91</td></tr>
-          <tr><td>판관비</td><td style="text-align:right" class="val-neg">2,774</td><td style="text-align:right">251</td><td style="text-align:right">213</td><td style="text-align:right">214</td><td style="text-align:right">678</td><td style="text-align:right">231</td></tr>
-          <tr><td>&nbsp;&nbsp;급여</td><td style="text-align:right">1,273</td><td style="text-align:right">93</td><td style="text-align:right">93</td><td style="text-align:right">109</td><td style="text-align:right">295</td><td style="text-align:right">106</td></tr>
-          <tr><td>&nbsp;&nbsp;지급수수료</td><td style="text-align:right">475</td><td style="text-align:right">41</td><td style="text-align:right">23</td><td style="text-align:right">30</td><td style="text-align:right">94</td><td style="text-align:right">40</td></tr>
-          <tr><td>&nbsp;&nbsp;광고비</td><td style="text-align:right">233</td><td style="text-align:right">77</td><td style="text-align:right">23</td><td style="text-align:right">17</td><td style="text-align:right">117</td><td style="text-align:right">19</td></tr>
-          <tr><td>&nbsp;&nbsp;SW이용료</td><td style="text-align:right">161</td><td style="text-align:right">14</td><td style="text-align:right">30</td><td style="text-align:right">10</td><td style="text-align:right">54</td><td style="text-align:right">13</td></tr>
-          <tr><td>&nbsp;&nbsp;임차료</td><td style="text-align:right">103</td><td style="text-align:right">8</td><td style="text-align:right">8</td><td style="text-align:right">8</td><td style="text-align:right">24</td><td style="text-align:right">9</td></tr>
-          <tr style="font-weight:700;border-top:2px solid #333;"><td>영업손실</td><td style="text-align:right" class="val-neg">-1,683</td><td style="text-align:right" class="val-neg">-92</td><td style="text-align:right" class="val-neg">-106</td><td style="text-align:right" class="val-neg">-126</td><td style="text-align:right" class="val-neg">-324</td><td style="text-align:right" class="val-neg">-140</td></tr>
-        </tbody></table>
+      <div class="s2-card" style="grid-column:1/-1;"><div class="s2-card-title">2025년 월별 손익 — 12개월 전체 (제출자료, 단위: 백만원) ${dv('ok','제출PL 12개월 파싱')}</div>
+        <div style="overflow-x:auto;">
+        <table class="fin-table" style="font-size:10.5px;white-space:nowrap;"><thead><tr><th>월</th><th style="text-align:right">매출</th><th style="text-align:right">급여</th><th style="text-align:right">수수료</th><th style="text-align:right">광고</th><th style="text-align:right">임차</th><th style="text-align:right">영업손실</th><th style="text-align:right">순손실</th></tr></thead><tbody>
+          <tr><td>1월</td><td style="text-align:right">159</td><td style="text-align:right">93</td><td style="text-align:right">41</td><td style="text-align:right">77</td><td style="text-align:right">8</td><td style="text-align:right" class="val-neg">-92</td><td style="text-align:right" class="val-neg">-63</td></tr>
+          <tr><td>2월</td><td style="text-align:right">107</td><td style="text-align:right">93</td><td style="text-align:right">23</td><td style="text-align:right">23</td><td style="text-align:right">8</td><td style="text-align:right" class="val-neg">-106</td><td style="text-align:right" class="val-neg">-110</td></tr>
+          <tr><td>3월</td><td style="text-align:right">88</td><td style="text-align:right">109</td><td style="text-align:right">30</td><td style="text-align:right">17</td><td style="text-align:right">8</td><td style="text-align:right" class="val-neg">-126</td><td style="text-align:right" class="val-neg">-124</td></tr>
+          <tr><td>4월</td><td style="text-align:right">77</td><td style="text-align:right">106</td><td style="text-align:right">56</td><td style="text-align:right">17</td><td style="text-align:right">8</td><td style="text-align:right" class="val-neg">-157</td><td style="text-align:right" class="val-neg">-164</td></tr>
+          <tr><td>5월</td><td style="text-align:right">68</td><td style="text-align:right">100</td><td style="text-align:right">33</td><td style="text-align:right">16</td><td style="text-align:right">8</td><td style="text-align:right" class="val-neg">-139</td><td style="text-align:right" class="val-neg">-142</td></tr>
+          <tr><td>6월</td><td style="text-align:right">51</td><td style="text-align:right">104</td><td style="text-align:right">57</td><td style="text-align:right">12</td><td style="text-align:right">8</td><td style="text-align:right" class="val-neg">-192</td><td style="text-align:right" class="val-neg">-221</td></tr>
+          <tr style="background:#fff8f0;"><td>7월</td><td style="text-align:right">14</td><td style="text-align:right">104</td><td style="text-align:right">33</td><td style="text-align:right">5</td><td style="text-align:right">10</td><td style="text-align:right" class="val-neg">-138</td><td style="text-align:right" class="val-neg">-135</td></tr>
+          <tr style="background:#fff0f0;"><td>8월</td><td style="text-align:right">20</td><td style="text-align:right">112</td><td style="text-align:right">28</td><td style="text-align:right">9</td><td style="text-align:right">7</td><td style="text-align:right" class="val-neg"><b>-268</b></td><td style="text-align:right" class="val-neg"><b>-268</b></td></tr>
+          <tr style="background:#f0fff0;"><td>9월</td><td style="text-align:right" class="val-pos"><b>290</b></td><td style="text-align:right">109</td><td style="text-align:right">34</td><td style="text-align:right">8</td><td style="text-align:right">12</td><td style="text-align:right" class="val-pos"><b>+58</b></td><td style="text-align:right" class="val-pos"><b>+63</b></td></tr>
+          <tr><td>10월</td><td style="text-align:right">32</td><td style="text-align:right">113</td><td style="text-align:right">47</td><td style="text-align:right">11</td><td style="text-align:right">8</td><td style="text-align:right" class="val-neg">-155</td><td style="text-align:right" class="val-neg">-149</td></tr>
+          <tr style="background:#fff0f0;"><td>11월</td><td style="text-align:right" class="val-neg">-2</td><td style="text-align:right">111</td><td style="text-align:right">36</td><td style="text-align:right">7</td><td style="text-align:right">8</td><td style="text-align:right" class="val-neg"><b>-237</b></td><td style="text-align:right" class="val-neg"><b>-234</b></td></tr>
+          <tr><td>12월</td><td style="text-align:right">186</td><td style="text-align:right">118</td><td style="text-align:right">57</td><td style="text-align:right">32</td><td style="text-align:right">8</td><td style="text-align:right" class="val-neg">-131</td><td style="text-align:right" class="val-neg">-26</td></tr>
+          <tr style="font-weight:700;border-top:2px solid #333;"><td>연간</td><td style="text-align:right">1,091</td><td style="text-align:right">1,273</td><td style="text-align:right">475</td><td style="text-align:right">233</td><td style="text-align:right">103</td><td style="text-align:right" class="val-neg">-1,683</td><td style="text-align:right" class="val-neg">-1,573</td></tr>
+          <tr style="color:#888;border-top:1px solid #ddd;"><td>월평균</td><td style="text-align:right">91</td><td style="text-align:right">106</td><td style="text-align:right">40</td><td style="text-align:right">19</td><td style="text-align:right">9</td><td style="text-align:right">-140</td><td style="text-align:right">-131</td></tr>
+        </tbody></table></div>
         <div style="font-size:10px;color:#666;margin-top:6px;">
-          &#10003; 2025년 매출 10.9억 vs FY2024 10.2억 — 성장 둔화 (YoY +7%)<br>
-          &#9888; 급여 비중 46% (12.7억/27.7억) — 8명 기준 인당 연 1.6억 (설문 기준)<br>
-          &#9888; 9월 매출 2.9억 스파이크 + 11월 마이너스(-22M) — <b style="color:var(--c-orange);">계절성 또는 정산 조정 확인 필요</b>
+          &#9888; <b style="color:var(--c-red);">매출 극심한 변동</b>: 7월 14M(최저) → 9월 290M(최고) → 11월 -2M(마이너스) — B2B 정산 시점 의존 구조<br>
+          &#9888; 9월만 유일한 흑자(영업이익 +58M) — Goodnotes 분기 정산 추정, 나머지 11개월 전부 적자<br>
+          &#9888; 급여 비중 46% (12.7억/27.7억) — 8명 기준 인당 연 1.6억<br>
+          &#9888; <b style="color:var(--c-red);">하반기 악화</b>: H1 평균 영업손실 -135M → H2 평균 -145M (8월 -268M 최악)
         </div></div>
 
       <div class="s2-card" style="grid-column:1/-1;"><div class="s2-card-title">금융권 부채 상세 ${dv('ok','제출BS 확인')}</div>
         <table class="fin-table"><thead><tr><th>구분</th><th style="text-align:right">FY2022</th><th style="text-align:right">FY2023</th><th style="text-align:right">FY2024</th><th>비고</th></tr></thead><tbody>
           <tr><td>단기차입금</td><td style="text-align:right">0.0</td><td style="text-align:right">0.1</td><td style="text-align:right">4.0</td><td>FY2024 급증 (+3.9억)</td></tr>
           <tr><td>비유동부채(포인트충당)</td><td style="text-align:right">0.6</td><td style="text-align:right">1.2</td><td style="text-align:right">0.0</td><td>FY2024 거의 소멸</td></tr>
-          <tr style="font-weight:600;border-top:2px solid #333;"><td>부채총계</td><td style="text-align:right">0.7</td><td style="text-align:right">2.2</td><td style="text-align:right">5.2</td><td>현금 17.4억 → 커버리지 3.3x</td></tr>
+          <tr style="font-weight:600;border-top:2px solid #333;"><td>부채총계</td><td style="text-align:right">0.7</td><td style="text-align:right">2.2</td><td style="text-align:right">5.2</td><td class="val-neg">현재 잔고 0.54억 → 커버리지 0.1x</td></tr>
         </tbody></table>
         <div style="font-size:10px;color:#666;margin-top:6px;">
           &#10003; 사채/CB 항목 BS에 없음 — 제출 재무제표 기준 CB/BW 미발행으로 추정<br>
@@ -2028,37 +2037,47 @@ html, body {
           &#9888; 우선주 전환조건, 동의권 조항 — <b style="color:var(--c-orange);">인터뷰 확인 필요</b>
         </div></div>
 
-      <div class="s2-card" style="grid-column:1/-1;"><div class="s2-card-title">CF 실거래 트렌드 ${dv('ok','DW 조회')}</div>
-        <table class="fin-table"><thead><tr><th>지표</th><th style="text-align:right">수치</th><th>판정</th></tr></thead><tbody>
-          <tr><td>매출 추이 (3개월)</td><td style="text-align:right" class="val-neg">-4.0%</td><td style="color:var(--c-red);">역성장</td></tr>
-          <tr><td>12개월 매출입금</td><td style="text-align:right">3.5억</td><td>현금주의 기준</td></tr>
-          <tr><td>CF 평균잔고</td><td style="text-align:right">0.6억</td><td style="color:var(--c-red);">낮음</td></tr>
-          <tr><td>잔고 변화 (3개월)</td><td style="text-align:right" class="val-neg">-63.2%</td><td style="color:var(--c-red);">급감</td></tr>
-          <tr><td>월 번레이트</td><td style="text-align:right">0.6억</td><td>런웨이 0.8개월 (CF)</td></tr>
-        </tbody></table>
+      <div class="s2-card" style="grid-column:1/-1;"><div class="s2-card-title">현금 소진 추이 — DW 실거래 12개월 (단위: 억원) ${dv('fail','런웨이 0.8개월')}</div>
+        <div style="overflow-x:auto;">
+        <table class="fin-table" style="font-size:10.5px;white-space:nowrap;"><thead><tr><th>월</th><th style="text-align:right">평균잔고</th><th style="text-align:right">월 번레이트</th><th style="text-align:right">런웨이</th><th>상태</th></tr></thead><tbody>
+          <tr><td>2025-04</td><td style="text-align:right">13.2</td><td style="text-align:right">-1.44</td><td style="text-align:right">9.2개월</td><td style="color:var(--c-green);">안정</td></tr>
+          <tr><td>2025-05</td><td style="text-align:right">12.3</td><td style="text-align:right">-0.89</td><td style="text-align:right">13.8개월</td><td style="color:var(--c-green);">안정</td></tr>
+          <tr><td>2025-06</td><td style="text-align:right">10.3</td><td style="text-align:right">-0.84</td><td style="text-align:right">12.3개월</td><td style="color:var(--c-green);">안정</td></tr>
+          <tr><td>2025-07</td><td style="text-align:right">6.9</td><td style="text-align:right">-0.75</td><td style="text-align:right">9.2개월</td><td style="color:var(--c-yellow);">주의</td></tr>
+          <tr><td>2025-08</td><td style="text-align:right">6.7</td><td style="text-align:right">-0.85</td><td style="text-align:right">7.8개월</td><td style="color:var(--c-yellow);">주의</td></tr>
+          <tr><td>2025-09</td><td style="text-align:right">4.4</td><td style="text-align:right">-0.79</td><td style="text-align:right">5.5개월</td><td style="color:var(--c-orange);">경고</td></tr>
+          <tr style="background:#fff8f0;"><td>2025-10</td><td style="text-align:right">3.4</td><td style="text-align:right">-0.84</td><td style="text-align:right">4.0개월</td><td style="color:var(--c-orange);">경고</td></tr>
+          <tr style="background:#fff8f0;"><td>2025-11</td><td style="text-align:right">2.9</td><td style="text-align:right">-0.89</td><td style="text-align:right">3.2개월</td><td style="color:var(--c-orange);">경고</td></tr>
+          <tr style="background:#fff0f0;"><td>2025-12</td><td style="text-align:right" class="val-neg">1.6</td><td style="text-align:right">-0.93</td><td style="text-align:right">1.7개월</td><td style="color:var(--c-red);font-weight:700;">위험</td></tr>
+          <tr style="background:#fff0f0;"><td>2026-01</td><td style="text-align:right" class="val-neg"><b>0.48</b></td><td style="text-align:right">-0.88</td><td style="text-align:right"><b>0.5개월</b></td><td style="color:var(--c-red);font-weight:700;">임계</td></tr>
+          <tr style="background:#fff0f0;"><td>2026-02</td><td style="text-align:right" class="val-neg">0.77</td><td style="text-align:right">-0.71</td><td style="text-align:right">1.1개월</td><td style="color:var(--c-red);font-weight:700;">위험</td></tr>
+          <tr style="background:#ffe0e0;"><td><b>2026-03</b></td><td style="text-align:right" class="val-neg"><b>0.54</b></td><td style="text-align:right">-0.65</td><td style="text-align:right"><b>0.8개월</b></td><td style="color:var(--c-red);font-weight:700;">임계</td></tr>
+        </tbody></table></div>
         <div style="font-size:10px;color:#666;margin-top:6px;">
-          &#9888; BS 현금 17.4억 vs CF 잔고 0.6억 괴리 — <b style="color:var(--c-orange);">고위드 미등록 계좌에 자금 분산 추정</b><br>
-          &#10003; 제출PL 월 번레이트 1.4억 (판관비-매출) → BS 현금 기준 런웨이 12.4개월<br>
-          &#10003; CF 런웨이 0.8개월은 등록 계좌 한정 — BS 기준이 실질 런웨이
+          <b style="color:var(--c-red);">&#10007; BS 현금 17.4억(FY2024 말) → 2026-03 잔고 0.54억: 11개월간 12.6억 소진 확인</b><br>
+          &#9888; 2025년 영업손실 16.8억 + 판관비 구조 고정 → 현금 일직선 하락<br>
+          &#9888; 2026-01 런웨이 0.5개월(최저) → 2월 0.77억 소폭 반등 (차입 또는 매출 입금 추정)<br>
+          &#9888; <b style="color:var(--c-red);">피트스탑 자금 투입 시 즉시 운영비 소진 리스크 — 자금 사용처 통제 조건 필수</b>
         </div></div>
 
       <div class="s2-card"><div class="s2-card-title">핵심 강점 ${dv('ok','복합 검증')}</div>
         <ul class="s2-info-list">
           <li>매출 3년 CAGR 138% — FY22 1.8억 → FY24 10.2억 (5.7배 성장)</li>
-          <li>현금 17.4억 vs 부채 5.2억 — 순현금 12.2억 (커버리지 3.3x)</li>
-          <li>자본 17.0억 건전 (자본잠식 아님), 결손금 40.3억이나 자본잉여금 53.1억으로 상쇄</li>
           <li>CB/BW 미발행 추정 (BS 사채 항목 없음) — 전환 희석 리스크 낮음</li>
+          <li>자본 17.0억 건전 (자본잠식 아님), 결손금 40.3억이나 자본잉여금 53.1억으로 상쇄</li>
           <li>Goodnotes B2B 채널 검증 (2년 거래액 100억) + 아시아 B2C 확장 계획</li>
+          <li>번레이트 축소 추세: 월 -1.44억(4월) → -0.65억(3월) — 인원 감축 효과 반영</li>
         </ul></div>
 
-      <div class="s2-card"><div class="s2-card-title">핵심 리스크 ${dv('warn','일부 미확인')}</div>
+      <div class="s2-card"><div class="s2-card-title">핵심 리스크 ${dv('fail','현금 고갈')}</div>
         <ul class="s2-info-list">
-          <li style="color:var(--c-red);font-weight:600;">영업적자 3년 연속 확대: -14.0 → -14.0 → -19.7억 (2025년 -16.8억 진행중)</li>
+          <li style="color:var(--c-red);font-weight:600;">현금 고갈: BS 17.4억(FY2024) → DW 0.54억(2026.03) — 11개월간 12.6억 소진</li>
+          <li style="color:var(--c-red);font-weight:600;">런웨이 0.8개월 — 사실상 생존 임계점, 즉시 자금 수혈 필요</li>
+          <li style="color:var(--c-red);font-weight:600;">영업적자 3년 연속: -14.0 → -14.0 → -19.7억, 2025년 -16.8억 (매출의 1.5배)</li>
           <li style="color:var(--c-red);font-weight:600;">2025년 매출 성장 둔화: YoY +7% (FY23→24 +76% 대비 급락)</li>
+          <li style="color:var(--c-orange);font-weight:600;">매출 변동성 극심: 7월 14M → 9월 290M → 11월 -2M (B2B 정산 의존)</li>
           <li style="color:var(--c-orange);font-weight:600;">급여 비중 46% + 인원 21→8명 감축 — 핵심인력 유지 여부 불확실</li>
           <li style="color:var(--c-orange);font-weight:600;">단기차입금 FY2024 4.0억 신규 — 차입 사유/상환계획 미확인</li>
-          <li>9월 매출 2.9억 스파이크 (월평균 0.9억의 3.2배) — 일회성 여부 확인 필요</li>
-          <li>CF 등록계좌 잔고 0.6억 — 유동성 분산 확인 필요</li>
         </ul></div>
 
       <div class="s2-card" style="grid-column:1/-1;"><div class="s2-card-title">데이터 검증 종합 ${dv('ok','5/7 검증')}</div>
@@ -2067,26 +2086,27 @@ html, body {
           <tr><td>제출 월별 손익계산서 (2025)</td><td style="color:var(--c-green);font-weight:600;">&#10003; 확보</td><td>연간 합계 FY2024 수준과 정합</td></tr>
           <tr><td>IR자료 (PDF)</td><td style="color:var(--c-green);font-weight:600;">&#10003; 확보</td><td>사업 개요와 일치</td></tr>
           <tr><td>주주명부 (2025.04.01)</td><td style="color:var(--c-green);font-weight:600;">&#10003; 확보</td><td style="color:var(--c-orange);">상세 파싱 대기</td></tr>
-          <tr><td>DW 실거래 (CF)</td><td style="color:var(--c-green);font-weight:600;">&#10003; 조회</td><td style="color:var(--c-orange);">BS 현금 괴리 (17.4 vs 0.6억)</td></tr>
+          <tr><td>DW 실거래 (CF) 12개월</td><td style="color:var(--c-green);font-weight:600;">&#10003; 조회</td><td style="color:var(--c-red);font-weight:600;">BS 17.4억 → 0.54억 소진 확인</td></tr>
           <tr><td>사채/CB 계약서</td><td style="color:#999;">&#9744; 미확보</td><td>BS 기준 미발행 추정 — 인터뷰 확인</td></tr>
           <tr><td>정관</td><td style="color:#999;">&#9744; 미확보</td><td>우선주 조건 확인 필요</td></tr>
         </tbody></table></div>
 
       <div class="s2-card" style="grid-column:1/-1;"><div class="s2-card-title">진단 요약</div>
         <div style="padding:10px 14px;background:var(--bg-orange);border-radius:var(--r);font-size:12px;color:var(--c-orange);">
-          <b>Orange Zone (Conditional)</b> — 매출 고성장(CAGR 138%)이나 적자 확대(-19.7→-16.8억)가 지속. 2025년 성장 둔화(YoY+7%)가 핵심 우려. 현금 17.4억 + 자본 17.0억으로 재무 여력 건전하고, CB/BW 미발행(추정)으로 전환 리스크 낮음. 단기차입 4.0억 신규 발생 및 급여 구조(인원 8명/연 12.7억) 적정성 인터뷰 확인 필요.
+          <b>Orange Zone (Conditional)</b> — 매출 CAGR 138% 고성장이나, <b>현금 거의 고갈(0.54억, 런웨이 0.8개월)</b>이 핵심 이슈. 2025년 영업손실 16.8억으로 FY2024 말 현금 17.4억을 거의 전액 소진. 성장 둔화(YoY+7%), B2B 정산 의존 매출 변동성(7월 14M vs 9월 290M), 번레이트 월 0.65~0.93억 지속. CB/BW 미발행(추정)은 긍정적이나, 피트스탑 자금 투입 시 운영비 즉시 소진 가능 — <b>자금 용처 통제 + BEP 타임라인 검증 필수</b>.
         </div></div>
 
       <div class="s2-card" style="grid-column:1/-1;"><div class="s2-card-title">인터뷰 확인 필요 사항</div>
         <ul class="s2-info-list">
-          <li style="color:var(--c-red);font-weight:600;">CRITICAL: BEP 달성 시기 — 판관비 27.7억 대비 매출 10.9억, 흑자전환 매출 목표는?</li>
-          <li style="color:var(--c-red);font-weight:600;">CRITICAL: 2025년 매출 성장 둔화 원인 — Goodnotes B2B 의존도, B2C 전환 진척</li>
+          <li style="color:var(--c-red);font-weight:600;">CRITICAL: 현금 0.54억 — 피트스탑 자금 투입 시 사용처 어떻게 통제할 것인가?</li>
+          <li style="color:var(--c-red);font-weight:600;">CRITICAL: BEP 달성 시기 — 번레이트 월 0.65억, 매출 월 0.91억 → 흑자전환 필요 매출은?</li>
+          <li style="color:var(--c-red);font-weight:600;">CRITICAL: 2025년 매출 성장 둔화(+7%) 원인 — Goodnotes B2B 의존도, B2C 전환 진척</li>
           <li style="color:var(--c-orange);font-weight:600;">WARNING: 단기차입금 4.0억 — 차입처, 조건(이율/만기), 상환 계획</li>
           <li style="color:var(--c-orange);font-weight:600;">WARNING: 구독제 전환 전략 — 수수료→구독 전환 시 매출 감소 가능성 시뮬레이션</li>
           <li style="color:var(--c-orange);font-weight:600;">WARNING: 인원 감축 (21→8명) 후 핵심인력 잔류 현황, 채용 계획</li>
           <li>대표 지분율 및 우선주 전환 조건 (주주명부 상세 확인)</li>
-          <li>9월 매출 스파이크 2.9억 — 일회성 계약/정산 vs 반복 가능 매출</li>
-          <li>CF 잔고 0.6억 vs BS 현금 17.4억 — 미등록 계좌 자금 분산 현황</li>
+          <li>9월 매출 2.9억 스파이크 — B2B 분기 정산인지 일회성인지 확인</li>
+          <li>2026-02 잔고 0.48→0.77억 반등 — 추가 차입? 매출 입금? 확인</li>
         </ul></div>`);
   }
 
