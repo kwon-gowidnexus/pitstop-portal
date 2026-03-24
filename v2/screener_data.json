@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-03-23T17:40:33.105823",
+  "generated_at": "2026-03-24T09:40:55.522257",
   "data_source": "고위드 DW (BigQuery) + Metabase RM",
   "criteria_definitions": {
     "ceo_awareness": "대표의 객관적 인식 + 변화 의지 (인터뷰 필수)",
@@ -33,10 +33,88 @@
       "pain_points": "고위드넥서스가 피트스탑 서비스 외 당사 서비스에 대해 투자 검토를 요청 드립니다.\nㄴ 고민은 당사가 소규모 인력으로 구성되어 아이디어 실행이 빠르다고 느끼지만 그에 비해 운용 자금이 부족하여 실행하지 못하는 프로젝트가 여러 있습니다.",
       "cash_kpi": {
         "balance_date": "2026-03-01",
-        "cash_mtd": 3.2,
+        "cash_mtd": 3.3,
         "monthly_burn": 0.3,
         "burn_positive": true,
         "runway_months": 20.0
+      },
+      "stage": {
+        "current": "stage_2",
+        "stage_1_completed": true,
+        "stage_2_completed": true,
+        "stage_3_completed": false,
+        "next_action": "독점성/모트 인터뷰 + 대표 역량 인터뷰",
+        "required_documents": [
+          {
+            "name": "재무상태표 (최근 FY)",
+            "status": "received"
+          },
+          {
+            "name": "손익계산서 (최근 FY)",
+            "status": "received"
+          },
+          {
+            "name": "주주명부",
+            "status": "missing"
+          },
+          {
+            "name": "정관",
+            "status": "missing"
+          }
+        ]
+      },
+      "mezzanine": {
+        "repayment": {
+          "name": "상환 가능성",
+          "grade": "green",
+          "detail": "OP흑자 +1.8억, DSC green"
+        },
+        "conversion_upside": {
+          "name": "전환 매력도",
+          "grade": "red",
+          "detail": "매출 3m 성장 -50.6% (역성장)"
+        },
+        "debt_leakage": {
+          "name": "부채 유출 리스크",
+          "grade": "green",
+          "detail": "금융부채 없음"
+        },
+        "shareholder_rights": {
+          "name": "주주 동의권",
+          "grade": "unknown",
+          "detail": "인터뷰/자료 확인 필요"
+        }
+      },
+      "cf_trends": {
+        "revenue": {
+          "revenue_growth_3m": -50.6,
+          "revenue_12m_eok": 109.0,
+          "months_available": 12,
+          "latest_month": "2026-03-01"
+        },
+        "balance": {
+          "balance_change_3m": 61.8,
+          "declining_months": 0,
+          "current_balance_eok": 3.6,
+          "months_available": 6
+        },
+        "financial_history": [
+          {
+            "fiscal_year": "2024",
+            "sales_eok": 17.3,
+            "op_eok": 1.8
+          },
+          {
+            "fiscal_year": "2023",
+            "sales_eok": 13.4,
+            "op_eok": 0.3
+          },
+          {
+            "fiscal_year": "2022",
+            "sales_eok": 2.4,
+            "op_eok": -1.4
+          }
+        ]
       },
       "overall_grade": "green",
       "auto_assessed": 4,
@@ -68,7 +146,7 @@
           "confidence": "high",
           "evidence": [
             "금융부채 0.0억 (단기 0.0억 + 장기 0.0억) [DW FY2024]",
-            "CF 평균잔고 2.5억 — 부채의 34376% 커버"
+            "CF 평균잔고 2.5억 — 부채의 34749% 커버"
           ],
           "summary": "부채 0.0억, 잔고로 충분히 커버. 구조 건전.",
           "interview_required": false
@@ -129,7 +207,93 @@
         "cash_mtd": 17.9,
         "monthly_burn": 2.0,
         "burn_positive": false,
-        "runway_months": 8.9
+        "runway_months": 9.0
+      },
+      "stage": {
+        "current": "stage_2",
+        "stage_1_completed": true,
+        "stage_2_completed": true,
+        "stage_3_completed": false,
+        "next_action": "독점성/모트 인터뷰 + 대표 역량 인터뷰",
+        "required_documents": [
+          {
+            "name": "재무상태표 (최근 FY)",
+            "status": "received"
+          },
+          {
+            "name": "손익계산서 (최근 FY)",
+            "status": "received"
+          },
+          {
+            "name": "금융기관 대출 잔액 증명원",
+            "status": "received"
+          },
+          {
+            "name": "사채/CB 계약서",
+            "status": "missing"
+          },
+          {
+            "name": "주주명부",
+            "status": "missing"
+          },
+          {
+            "name": "정관",
+            "status": "missing"
+          }
+        ]
+      },
+      "mezzanine": {
+        "repayment": {
+          "name": "상환 가능성",
+          "grade": "red",
+          "detail": "OP적자 -24.7억, DSC red"
+        },
+        "conversion_upside": {
+          "name": "전환 매력도",
+          "grade": "red",
+          "detail": "매출 3m 성장 -14.9% (역성장)"
+        },
+        "debt_leakage": {
+          "name": "부채 유출 리스크",
+          "grade": "red",
+          "detail": "잔고 5개월 연속 하락"
+        },
+        "shareholder_rights": {
+          "name": "주주 동의권",
+          "grade": "unknown",
+          "detail": "인터뷰/자료 확인 필요"
+        }
+      },
+      "cf_trends": {
+        "revenue": {
+          "revenue_growth_3m": -14.9,
+          "revenue_12m_eok": 205.5,
+          "months_available": 12,
+          "latest_month": "2026-03-01"
+        },
+        "balance": {
+          "balance_change_3m": -32.0,
+          "declining_months": 5,
+          "current_balance_eok": 17.5,
+          "months_available": 6
+        },
+        "financial_history": [
+          {
+            "fiscal_year": "2024",
+            "sales_eok": 201.0,
+            "op_eok": -24.7
+          },
+          {
+            "fiscal_year": "2023",
+            "sales_eok": 174.3,
+            "op_eok": -34.4
+          },
+          {
+            "fiscal_year": "2022",
+            "sales_eok": 181.0,
+            "op_eok": -38.9
+          }
+        ]
       },
       "overall_grade": "conditional",
       "auto_assessed": 4,
@@ -171,12 +335,12 @@
           "grade": "red",
           "confidence": "medium",
           "evidence": [
-            "12개월 매출입금 203.2억 (현금주의)",
-            "매출 추이: 최근 3개월 -20% (14.0억 → 15.3억 → 10.0억)",
+            "12개월 매출입금 205.5억 (현금주의)",
+            "매출 추이: 최근 3개월 -15% (14.0억 → 15.3억 → 12.3억)",
             "영업적자 -24.7억/년 (월 2.1억)",
-            "런웨이 8.9개월 (CF 기준)"
+            "런웨이 9.0개월 (CF 기준)"
           ],
-          "summary": "매출 하락 추세 + 런웨이 8.9개월. BEP 달성 시급.",
+          "summary": "매출 하락 추세 + 런웨이 9.0개월. BEP 달성 시급.",
           "interview_required": true
         },
         "worst_case": {
@@ -184,9 +348,9 @@
           "grade": "yellow",
           "confidence": "high",
           "evidence": [
-            "CF 런웨이 8.9개월"
+            "CF 런웨이 9.0개월"
           ],
-          "summary": "런웨이 8.9개월. 6개월 내 매출 또는 비용 개선 필요.",
+          "summary": "런웨이 9.0개월. 6개월 내 매출 또는 비용 개선 필요.",
           "interview_required": false
         },
         "financial_3axis": {
@@ -218,10 +382,96 @@
       "pain_points": "현재 24년 9월 시리즈A 라운드 클로징 이후, 25년 12월 신규 전략투자자로부터 요청받아 브릿지 라운드를 열어 올해 3월 말일 기준으로 투자금 납일 완료하는 일정을 진행 중입니다. 현재 2가지 고민점이 크게 존재하여 고위드 김항기 대표님 글을 보고 바로 신청하게 됐습니다.\n\n1. 세일즈/마케팅 조직을 효과적으로 구성하는 방안\n26년 및 향후 5개년에 대한 제품개발 및 매출성장에 대해서는 로드맵과 모델링을 구성하여 진행 중이나, \n\"세일즈/마케팅 리더십 및 시스템\"없이 인바운드로 들어오는 고객문의를 대응하기에만 급급한 상황입니다. 조직화된 시스템을 구성해나가야 하는데, 기업의 숫자를 책임지는 대표로서 생존과 성장을 위한 우선순위/조직구성 정렬을 제대로 못하고 있다는 생각이 듭니다. \n\n이 문제를 해결하기 위해 책도 찾아읽고 외국 자료들도 리서치하면서 스스로 깊은 고민과 가설들을 실행하고 있지만, 세일즈&마케팅 조직을 채용한 후에 실제 매출로 전환되는 과정을 보지 못하고 계속 실패 중이어서, 구성원을 채용하거나 조직을 빌딩할 때 언제까지 기회와 시간을 드려야 할지에 대한 고민이 되어, 피트스탑을 통해 조직운영 차원에서 점검해나가고 싶습니다.\n\n2. 기업 체력강화를 위한 투자금의 재투자를 위한 방안 \n재무적으로는 비용에 대한 통제를 계속 하고 있다고 생각하고 있지만, 진단을 받는 관점에서 현재 비용 통제를 객관적으로 잘 하고 있는것인지 외부자의 시선에서 평가받고 싶습니다. 또한 지금까지는 투자금을 회사 운영자금으로 통칭하여 사용했었는데, 본질적으로 회사의 체력을 키우는 방향으로 재투자하는 방안에 대해 함께 고민하고 싶습니다. \n\n회사 미션과 목표에 맞춰 자금을 효과적으로 재투자하고 더 단단하게 성장하는 방향성을, 수많은 기업들의 현황을 보시는 고위드의 입장에서 진단받고 개선해나가고 싶습니다. \n",
       "cash_kpi": {
         "balance_date": "2026-03-01",
-        "cash_mtd": 20.0,
+        "cash_mtd": 19.9,
         "monthly_burn": 2.0,
         "burn_positive": false,
         "runway_months": 10.1
+      },
+      "stage": {
+        "current": "stage_3",
+        "stage_1_completed": true,
+        "stage_2_completed": true,
+        "stage_3_completed": true,
+        "next_action": "최종 판정 확정",
+        "required_documents": [
+          {
+            "name": "재무상태표 (최근 FY)",
+            "status": "received"
+          },
+          {
+            "name": "손익계산서 (최근 FY)",
+            "status": "received"
+          },
+          {
+            "name": "금융기관 대출 잔액 증명원",
+            "status": "received"
+          },
+          {
+            "name": "사채/CB 계약서",
+            "status": "missing"
+          },
+          {
+            "name": "주주명부",
+            "status": "missing"
+          },
+          {
+            "name": "정관",
+            "status": "missing"
+          }
+        ]
+      },
+      "mezzanine": {
+        "repayment": {
+          "name": "상환 가능성",
+          "grade": "red",
+          "detail": "OP적자 -52.7억, DSC red"
+        },
+        "conversion_upside": {
+          "name": "전환 매력도",
+          "grade": "green",
+          "detail": "매출 3m 성장 -31.1% (역성장) + 독점성 확인"
+        },
+        "debt_leakage": {
+          "name": "부채 유출 리스크",
+          "grade": "red",
+          "detail": "잔고 5개월 연속 하락"
+        },
+        "shareholder_rights": {
+          "name": "주주 동의권",
+          "grade": "unknown",
+          "detail": "인터뷰/자료 확인 필요"
+        }
+      },
+      "cf_trends": {
+        "revenue": {
+          "revenue_growth_3m": -31.1,
+          "revenue_12m_eok": 10.0,
+          "months_available": 12,
+          "latest_month": "2026-03-01"
+        },
+        "balance": {
+          "balance_change_3m": -39.8,
+          "declining_months": 5,
+          "current_balance_eok": 19.6,
+          "months_available": 6
+        },
+        "financial_history": [
+          {
+            "fiscal_year": "2024",
+            "sales_eok": 6.7,
+            "op_eok": -26.5
+          },
+          {
+            "fiscal_year": "2023",
+            "sales_eok": 13.3,
+            "op_eok": -2.9
+          },
+          {
+            "fiscal_year": "2022",
+            "sales_eok": 1.8,
+            "op_eok": -9.7
+          }
+        ]
       },
       "overall_grade": "conditional",
       "auto_assessed": 4,
@@ -315,6 +565,92 @@
         "burn_positive": true,
         "runway_months": 20.0
       },
+      "stage": {
+        "current": "stage_3",
+        "stage_1_completed": true,
+        "stage_2_completed": true,
+        "stage_3_completed": true,
+        "next_action": "최종 판정 확정",
+        "required_documents": [
+          {
+            "name": "재무상태표 (최근 FY)",
+            "status": "received"
+          },
+          {
+            "name": "손익계산서 (최근 FY)",
+            "status": "received"
+          },
+          {
+            "name": "금융기관 대출 잔액 증명원",
+            "status": "received"
+          },
+          {
+            "name": "사채/CB 계약서",
+            "status": "received"
+          },
+          {
+            "name": "주주명부",
+            "status": "missing"
+          },
+          {
+            "name": "정관",
+            "status": "missing"
+          }
+        ]
+      },
+      "mezzanine": {
+        "repayment": {
+          "name": "상환 가능성",
+          "grade": "red",
+          "detail": "OP적자 -5.8억, DSC red"
+        },
+        "conversion_upside": {
+          "name": "전환 매력도",
+          "grade": "green",
+          "detail": "매출 3m 성장 +42.4%"
+        },
+        "debt_leakage": {
+          "name": "부채 유출 리스크",
+          "grade": "red",
+          "detail": "잔고 3m 변화 +126.7% (안정) + CB/사채 전환 이슈 미확인. 자본잠식으로 전환 구조 복잡"
+        },
+        "shareholder_rights": {
+          "name": "주주 동의권",
+          "grade": "unknown",
+          "detail": "인터뷰/자료 확인 필요"
+        }
+      },
+      "cf_trends": {
+        "revenue": {
+          "revenue_growth_3m": 42.4,
+          "revenue_12m_eok": 112.8,
+          "months_available": 12,
+          "latest_month": "2026-03-01"
+        },
+        "balance": {
+          "balance_change_3m": 126.7,
+          "declining_months": 0,
+          "current_balance_eok": 5.8,
+          "months_available": 6
+        },
+        "financial_history": [
+          {
+            "fiscal_year": "2024",
+            "sales_eok": 30.9,
+            "op_eok": -14.5
+          },
+          {
+            "fiscal_year": "2023",
+            "sales_eok": 25.6,
+            "op_eok": -22.2
+          },
+          {
+            "fiscal_year": "2022",
+            "sales_eok": 14.8,
+            "op_eok": -9.2
+          }
+        ]
+      },
       "overall_grade": "red",
       "auto_assessed": 4,
       "interview_required": 4,
@@ -357,8 +693,8 @@
           "grade": "yellow",
           "confidence": "medium",
           "evidence": [
-            "12개월 매출입금 112.4억 (현금주의)",
-            "매출 추이: 최근 3개월 +40% (9.6억 → 10.2억 → 4.0억)",
+            "12개월 매출입금 112.8억 (현금주의)",
+            "매출 추이: 최근 3개월 +42% (9.6억 → 10.2억 → 4.4억)",
             "영업적자 -5.8억/년 (월 0.5억)",
             "런웨이 20.0개월 (CF 기준)"
           ],
@@ -408,6 +744,92 @@
         "burn_positive": true,
         "runway_months": 20.0
       },
+      "stage": {
+        "current": "stage_2",
+        "stage_1_completed": true,
+        "stage_2_completed": true,
+        "stage_3_completed": false,
+        "next_action": "대표 역량 인터뷰",
+        "required_documents": [
+          {
+            "name": "재무상태표 (최근 FY)",
+            "status": "received"
+          },
+          {
+            "name": "손익계산서 (최근 FY)",
+            "status": "received"
+          },
+          {
+            "name": "금융기관 대출 잔액 증명원",
+            "status": "received"
+          },
+          {
+            "name": "사채/CB 계약서",
+            "status": "received"
+          },
+          {
+            "name": "주주명부",
+            "status": "missing"
+          },
+          {
+            "name": "정관",
+            "status": "missing"
+          }
+        ]
+      },
+      "mezzanine": {
+        "repayment": {
+          "name": "상환 가능성",
+          "grade": "red",
+          "detail": "OP적자 -7.9억, DSC red"
+        },
+        "conversion_upside": {
+          "name": "전환 매력도",
+          "grade": "red",
+          "detail": "매출 3m 성장 -19.1% (역성장)"
+        },
+        "debt_leakage": {
+          "name": "부채 유출 리스크",
+          "grade": "red",
+          "detail": "잔고 3m 변화 -64.1% (급감) + CB/전환사채 존재 여부 미확인 — 금융부채 괴리(9.1억)의 원인일 가능성"
+        },
+        "shareholder_rights": {
+          "name": "주주 동의권",
+          "grade": "unknown",
+          "detail": "인터뷰/자료 확인 필요"
+        }
+      },
+      "cf_trends": {
+        "revenue": {
+          "revenue_growth_3m": -19.1,
+          "revenue_12m_eok": 352.0,
+          "months_available": 12,
+          "latest_month": "2026-03-01"
+        },
+        "balance": {
+          "balance_change_3m": -64.1,
+          "declining_months": 2,
+          "current_balance_eok": 0.1,
+          "months_available": 6
+        },
+        "financial_history": [
+          {
+            "fiscal_year": "2024",
+            "sales_eok": 31.9,
+            "op_eok": -4.2
+          },
+          {
+            "fiscal_year": "2022",
+            "sales_eok": 24.0,
+            "op_eok": -32.4
+          },
+          {
+            "fiscal_year": "2021",
+            "sales_eok": 10.2,
+            "op_eok": -24.0
+          }
+        ]
+      },
       "overall_grade": "red",
       "auto_assessed": 4,
       "interview_required": 4,
@@ -437,14 +859,13 @@
           "grade": "red",
           "confidence": "high",
           "evidence": [
-            "금융부채 15.7억 (2차 자료 확인): BW 8.0억 + 벤처대출 7.3억 + 정책자금 0.4억",
-            "BW 8.0억(기업은행 3억+기보 5억) — 후속투자 유치 시 지분전환 → 실질 상환부담 7.7억",
-            "벤처대출 7.3억 고금리(8%) — 연이자 0.6억",
-            "CF 평균잔고 0.8억 — 실질부채(7.7억)의 10% 커버",
+            "금융부채 8.5억 (단기 0.0억 + 장기 8.5억) [DW FY2024]",
+            "CF 평균잔고 0.8억 — 부채의 10% 커버",
+            "커버율 10% — 잔고로 부채 통제 불가",
             "자본 -2.4억 (자본잠식)",
-            "DW 8.5억 vs 실제 15.7억 괴리: BW가 DW에 미반영된 것으로 확인"
+            "CB/전환사채 이슈: CB/전환사채 존재 여부 미확인 — 금융부채 괴리(9.1억)의 원인일 가능성"
           ],
-          "summary": "총부채 15.7억, BW 8억 전환 가능하나 실질 7.7억+이자 0.6억/년. 자본잠식.",
+          "summary": "부채 8.5억, 구조 제어 어려움. CB/전환 이슈 또는 자본잠식 심각.",
           "interview_required": true
         },
         "bep_roadmap": {
@@ -452,8 +873,8 @@
           "grade": "red",
           "confidence": "medium",
           "evidence": [
-            "12개월 매출입금 351.8억 (현금주의)",
-            "매출 추이: 최근 3개월 -19% (30.8억 → 26.8억 → 20.3억)",
+            "12개월 매출입금 352.0억 (현금주의)",
+            "매출 추이: 최근 3개월 -19% (30.8억 → 26.8억 → 20.6억)",
             "영업적자 -7.9억/년 (월 0.7억)",
             "런웨이 20.0개월 (CF 기준)"
           ],
@@ -477,7 +898,7 @@
           "confidence": "high",
           "evidence": [
             "DSC: N/A → red (OP -7.9억 적자 -- DSC 산정 불가)",
-            "부채/매출: 47% → red (금융부채 15.7억 / 매출 33.6억 = 47%. ※ BW 8억 전환 시 실질 7.7억/33.6억=23%(yellow))",
+            "부채/매출: 52% → red (금융부채 17.6억 / 매출 33.6억 = 52%. ※ DW FY2024 기준 8.5억/31.9억=27%(yellow) — 원본 BS 확인 시 등급 변동 가능)",
             "만기/현금: 0.33x → green (만기 장기(2029-2033). 단기 만기 부담 없음)"
           ],
           "summary": "Red 2개. 만기 장기(2029-2033), 시간 여유. 매출 성장 중.",
@@ -503,7 +924,93 @@
         "cash_mtd": 0.2,
         "monthly_burn": 0.2,
         "burn_positive": false,
-        "runway_months": 1.3
+        "runway_months": 1.2
+      },
+      "stage": {
+        "current": "stage_3",
+        "stage_1_completed": true,
+        "stage_2_completed": true,
+        "stage_3_completed": true,
+        "next_action": "최종 판정 확정",
+        "required_documents": [
+          {
+            "name": "재무상태표 (최근 FY)",
+            "status": "received"
+          },
+          {
+            "name": "손익계산서 (최근 FY)",
+            "status": "received"
+          },
+          {
+            "name": "금융기관 대출 잔액 증명원",
+            "status": "missing"
+          },
+          {
+            "name": "사채/CB 계약서",
+            "status": "received"
+          },
+          {
+            "name": "주주명부",
+            "status": "missing"
+          },
+          {
+            "name": "정관",
+            "status": "missing"
+          }
+        ]
+      },
+      "mezzanine": {
+        "repayment": {
+          "name": "상환 가능성",
+          "grade": "yellow",
+          "detail": "OP흑자 +1.2억, DSC red"
+        },
+        "conversion_upside": {
+          "name": "전환 매력도",
+          "grade": "red",
+          "detail": "매출 3m 성장 +28.4% + 독점성 부재"
+        },
+        "debt_leakage": {
+          "name": "부채 유출 리스크",
+          "grade": "red",
+          "detail": "잔고 3m 변화 -24.9% (급감) + CB 22.1억 출자전환 미완료. 전환 선행 필수 (내부 심사 조건)"
+        },
+        "shareholder_rights": {
+          "name": "주주 동의권",
+          "grade": "unknown",
+          "detail": "인터뷰/자료 확인 필요"
+        }
+      },
+      "cf_trends": {
+        "revenue": {
+          "revenue_growth_3m": 28.4,
+          "revenue_12m_eok": 10.9,
+          "months_available": 12,
+          "latest_month": "2026-03-01"
+        },
+        "balance": {
+          "balance_change_3m": -24.9,
+          "declining_months": 1,
+          "current_balance_eok": 0.2,
+          "months_available": 6
+        },
+        "financial_history": [
+          {
+            "fiscal_year": "2024",
+            "sales_eok": 11.5,
+            "op_eok": -13.8
+          },
+          {
+            "fiscal_year": "2023",
+            "sales_eok": 8.2,
+            "op_eok": -8.6
+          },
+          {
+            "fiscal_year": "2022",
+            "sales_eok": 5.7,
+            "op_eok": -17.0
+          }
+        ]
       },
       "overall_grade": "red",
       "auto_assessed": 4,
@@ -551,7 +1058,7 @@
             "12개월 매출입금 10.9억 (현금주의)",
             "매출 추이: 최근 3개월 +28% (1.1억 → 0.0억 → 0.3억)",
             "영업이익 +1.2억 (이미 흑자)",
-            "런웨이 1.3개월 (CF 기준)"
+            "런웨이 1.2개월 (CF 기준)"
           ],
           "summary": "이미 영업흑자 또는 매출 성장 추세. BEP 달성/유지 가능.",
           "interview_required": false
@@ -561,9 +1068,9 @@
           "grade": "red",
           "confidence": "high",
           "evidence": [
-            "CF 런웨이 1.3개월"
+            "CF 런웨이 1.2개월"
           ],
-          "summary": "런웨이 1.3개월 미만. 즉각적 자금/비용 조치 없으면 생존 위험.",
+          "summary": "런웨이 1.2개월 미만. 즉각적 자금/비용 조치 없으면 생존 위험.",
           "interview_required": true
         },
         "financial_3axis": {
@@ -594,10 +1101,96 @@
       "pain_points": "안녕하세요, 담당자님.\n메뉴잇 팀 김경훈 입니다.\n\n메뉴잇은 태블릿 기반 무인주문(스마트오더) 솔루션을 B2B로 공급하고, 국내는 SK쉴더스(ADT캡스) 채널 단독 납품 구조로 운영 중 입니다. 하드웨어는 해외 생상 및 수입 기반으로 리드타임이 길고 생산 / 물류 / AS 관련 비용이 선투입되는 반면 매출 회수(정산)은 이후에 진행되어 운전자금 갭(현금흐름 미스매치)가 반복 됩니다.\n\n최근 12개월은 고정비를 최대한 걷어내는 방향으로 비용구조를 재편했습니다. 인력은 150명전후(도급, 파견 포함)에서 30명대 수준으로 축소하였고, 신규채용, 마케팅, 브랜딩 집행은 최소한으로 유지하였습니다. 사무공간 및 구독형 Saas와 외주계약도 간소화 혹은 자동화 및 축소를 거쳐 월 고정비를 최소화 하였습니다. 현재 비용은 본업 수행에 필요한 개발 / 생산 / 물류 / 품질 중심의 변동비 비중이 높습니다. \n\n피스스탑에는 단순 자금조달이 아닌 현금흐름 기준으로 우선순위를 재정렬하고 90일 내 실행 가능한 정비 로드맵(조직운영 및 정산, 채권 및 재고 리스크)를 안정화 해주는 역할을 기대하고 있습니다. 실행 단계에서는 Fuel(거래처 결제를 카드 결제로 전환해 현금 유출 시점을 이연)같은 수단도 병행 검토하여 단기 유동성 공백을 메우고, 동시에 구조 개선이 실제로 돌아가게 만들고자 합니다.\n\n주요 고민은 아래 같습니다.\n1. 런웨이 단축 : 선투입 후회수 구조로 현금이 마르는 구간이 발생\n2. 운전자금 구조 재설계 : 재고, 생산 리드다임과 정산 조건 간극을 최대한 줄이는 조건완화 및 경제의 규모화  (현재는 기거래처에 대한 결제구조 및 리드타임을 획기적으로 절감 및 단축하고 있습니다)\n\n감사합니다.\n김경훈 드림",
       "cash_kpi": {
         "balance_date": "2026-03-01",
-        "cash_mtd": 2.9,
+        "cash_mtd": 2.6,
         "monthly_burn": 1.5,
         "burn_positive": false,
-        "runway_months": 1.9
+        "runway_months": 1.8
+      },
+      "stage": {
+        "current": "stage_3",
+        "stage_1_completed": true,
+        "stage_2_completed": true,
+        "stage_3_completed": true,
+        "next_action": "최종 판정 확정",
+        "required_documents": [
+          {
+            "name": "재무상태표 (최근 FY)",
+            "status": "received"
+          },
+          {
+            "name": "손익계산서 (최근 FY)",
+            "status": "received"
+          },
+          {
+            "name": "금융기관 대출 잔액 증명원",
+            "status": "received"
+          },
+          {
+            "name": "사채/CB 계약서",
+            "status": "missing"
+          },
+          {
+            "name": "주주명부",
+            "status": "missing"
+          },
+          {
+            "name": "정관",
+            "status": "missing"
+          }
+        ]
+      },
+      "mezzanine": {
+        "repayment": {
+          "name": "상환 가능성",
+          "grade": "yellow",
+          "detail": "OP흑자 +4.1억, DSC red"
+        },
+        "conversion_upside": {
+          "name": "전환 매력도",
+          "grade": "yellow",
+          "detail": "매출 3m 성장 +3.1% (소폭)"
+        },
+        "debt_leakage": {
+          "name": "부채 유출 리스크",
+          "grade": "green",
+          "detail": "잔고 3m 변화 +24.7% (안정)"
+        },
+        "shareholder_rights": {
+          "name": "주주 동의권",
+          "grade": "unknown",
+          "detail": "인터뷰/자료 확인 필요"
+        }
+      },
+      "cf_trends": {
+        "revenue": {
+          "revenue_growth_3m": 3.1,
+          "revenue_12m_eok": 155.9,
+          "months_available": 12,
+          "latest_month": "2026-03-01"
+        },
+        "balance": {
+          "balance_change_3m": 24.7,
+          "declining_months": 1,
+          "current_balance_eok": 2.5,
+          "months_available": 6
+        },
+        "financial_history": [
+          {
+            "fiscal_year": "2024",
+            "sales_eok": 149.7,
+            "op_eok": -48.0
+          },
+          {
+            "fiscal_year": "2023",
+            "sales_eok": 185.7,
+            "op_eok": 16.0
+          },
+          {
+            "fiscal_year": "2022",
+            "sales_eok": 103.3,
+            "op_eok": 9.4
+          }
+        ]
       },
       "overall_grade": "red",
       "auto_assessed": 4,
@@ -629,7 +1222,7 @@
           "confidence": "high",
           "evidence": [
             "금융부채 51.8억 (go_nogo FY2025(가결산, 2차 자료)) — DW 105.0억(FY2024)은 구기준",
-            "CF 평균잔고 2.5억 — 부채의 5% 커버",
+            "CF 평균잔고 2.4억 — 부채의 5% 커버",
             "커버율 5% — 잔고로 부채 통제 불가",
             "자본 -34.8억 (자본잠식)"
           ],
@@ -644,7 +1237,7 @@
             "12개월 매출입금 155.9억 (현금주의)",
             "매출 추이: 최근 3개월 +3% (8.4억 → 17.4억 → 7.2억)",
             "영업이익 +4.1억 (이미 흑자)",
-            "런웨이 1.9개월 (CF 기준)"
+            "런웨이 1.8개월 (CF 기준)"
           ],
           "summary": "이미 영업흑자 또는 매출 성장 추세. BEP 달성/유지 가능.",
           "interview_required": false
@@ -654,9 +1247,9 @@
           "grade": "red",
           "confidence": "high",
           "evidence": [
-            "CF 런웨이 1.9개월"
+            "CF 런웨이 1.8개월"
           ],
-          "summary": "런웨이 1.9개월 미만. 즉각적 자금/비용 조치 없으면 생존 위험.",
+          "summary": "런웨이 1.8개월 미만. 즉각적 자금/비용 조치 없으면 생존 위험.",
           "interview_required": true
         },
         "financial_3axis": {
@@ -688,6 +1281,92 @@
         "monthly_burn": 0.6,
         "burn_positive": false,
         "runway_months": 0.8
+      },
+      "stage": {
+        "current": "stage_2",
+        "stage_1_completed": true,
+        "stage_2_completed": true,
+        "stage_3_completed": false,
+        "next_action": "독점성/모트 인터뷰 + 대표 역량 인터뷰",
+        "required_documents": [
+          {
+            "name": "재무상태표 (최근 FY)",
+            "status": "received"
+          },
+          {
+            "name": "손익계산서 (최근 FY)",
+            "status": "received"
+          },
+          {
+            "name": "금융기관 대출 잔액 증명원",
+            "status": "received"
+          },
+          {
+            "name": "사채/CB 계약서",
+            "status": "missing"
+          },
+          {
+            "name": "주주명부",
+            "status": "missing"
+          },
+          {
+            "name": "정관",
+            "status": "missing"
+          }
+        ]
+      },
+      "mezzanine": {
+        "repayment": {
+          "name": "상환 가능성",
+          "grade": "red",
+          "detail": "OP적자 -19.7억, DSC red"
+        },
+        "conversion_upside": {
+          "name": "전환 매력도",
+          "grade": "red",
+          "detail": "매출 3m 성장 -4.0% (역성장)"
+        },
+        "debt_leakage": {
+          "name": "부채 유출 리스크",
+          "grade": "red",
+          "detail": "잔고 3m 변화 -63.2% (급감)"
+        },
+        "shareholder_rights": {
+          "name": "주주 동의권",
+          "grade": "unknown",
+          "detail": "인터뷰/자료 확인 필요"
+        }
+      },
+      "cf_trends": {
+        "revenue": {
+          "revenue_growth_3m": -4.0,
+          "revenue_12m_eok": 3.5,
+          "months_available": 12,
+          "latest_month": "2026-03-01"
+        },
+        "balance": {
+          "balance_change_3m": -63.2,
+          "declining_months": 1,
+          "current_balance_eok": 0.6,
+          "months_available": 6
+        },
+        "financial_history": [
+          {
+            "fiscal_year": "2024",
+            "sales_eok": 10.2,
+            "op_eok": -19.7
+          },
+          {
+            "fiscal_year": "2023",
+            "sales_eok": 5.8,
+            "op_eok": -14.0
+          },
+          {
+            "fiscal_year": "2022",
+            "sales_eok": 1.8,
+            "op_eok": -14.0
+          }
+        ]
       },
       "overall_grade": "red",
       "auto_assessed": 4,
