@@ -1946,37 +1946,89 @@ html, body {
 
   /* ── 위버딩 ──────────────────────────────────────────────────── */
   function renderSection2_Webudding(grade) {
+    /* 데이터 검증 배지 헬퍼 */
+    const dv = (status, label) => {
+      const map = {
+        ok:   {bg:'#e8f5e9',c:'#2e7d32',icon:'&#10003;'},
+        warn: {bg:'#fff3e0',c:'#e65100',icon:'&#9888;'},
+        miss: {bg:'#f3f3f3',c:'#999',icon:'&#9744;'},
+        fail: {bg:'#ffebee',c:'#c62828',icon:'&#10007;'}
+      };
+      const s = map[status]||map.miss;
+      return `<span style="display:inline-block;font-size:10px;padding:1px 6px;border-radius:3px;background:${s.bg};color:${s.c};margin-left:6px;font-weight:600;">${s.icon} ${label}</span>`;
+    };
     return s2Wrap(grade || 'conditional', `
-      <div class="s2-card"><div class="s2-card-title">사업 개요</div>
+      <div class="s2-card"><div class="s2-card-title">사업 개요 ${dv('ok','설문+DW 일치')}</div>
         <ul class="s2-info-list">
-          <li>디지털 문구 콘텐츠 플랫폼 'webudding.com'</li>
-          <li>설립 2020년, 직원 21명 (DW), 대표 신동환</li>
-          <li>누적투자 57억 (6회, 최근 스트롱벤처스 25억)</li>
-          <li>자금 필요: 2~5억 (설문 응답)</li>
-        </ul></div>
-      <div class="s2-card"><div class="s2-card-title">재무 현황 (DW FY2024, 단위: 억원)</div>
-        <table class="fin-table"><thead><tr><th>항목</th><th style="text-align:right">FY2022</th><th style="text-align:right">FY2023</th><th style="text-align:right">FY2024</th></tr></thead><tbody>
-          <tr><td>매출</td><td style="text-align:right">1.8</td><td style="text-align:right">5.8</td><td style="text-align:right">10.2</td></tr>
-          <tr><td>영업이익</td><td style="text-align:right" class="val-neg">-14.0</td><td style="text-align:right" class="val-neg">-14.0</td><td style="text-align:right" class="val-neg">-19.7</td></tr>
-          <tr><td>금융부채</td><td style="text-align:right" colspan="2"></td><td style="text-align:right">4.0 (전액 단기)</td></tr>
-          <tr><td>현금</td><td style="text-align:right" colspan="2"></td><td style="text-align:right" class="val-pos">17.4</td></tr>
-          <tr><td>자본</td><td style="text-align:right" colspan="2"></td><td style="text-align:right" class="val-pos">17.0</td></tr>
+          <li>디지털 문구 콘텐츠 플랫폼 'webudding.com' — 태블릿 필기앱 디지털 템플릿 마켓</li>
+          <li>설립 2018.11, 직원 8명 (설문) / 21명 (DW), 대표 신동환</li>
+          <li>B2B 매출원: Goodnotes 글로벌 콘텐츠 공급 (2년간 거래액 100억 / 매출 20억)</li>
+          <li>누적투자 57억 (6회, 최근 스트롱벤처스 25억), 자금 필요: 2~5억</li>
+          <li>우선순위: HR 매우높음 / 운영+부채 높음 / 마케팅+기술 낮음</li>
+        </ul>
+        <div style="font-size:10px;color:#b37a1a;margin-top:4px;">&#9888; 인원: 설문 8명 vs DW 21명 — 최근 감원 반영 차이 (설문이 최신)</div></div>
+
+      <div class="s2-card" style="grid-column:1/-1;"><div class="s2-card-title">재무 현황 3개년 (제출자료, 단위: 억원) ${dv('ok','제출BS+DW 크로스체크')}</div>
+        <table class="fin-table"><thead><tr><th>항목</th><th style="text-align:right">FY2022</th><th style="text-align:right">FY2023</th><th style="text-align:right">FY2024</th><th style="text-align:right">YoY</th></tr></thead><tbody>
+          <tr><td>매출</td><td style="text-align:right">1.8</td><td style="text-align:right">5.8</td><td style="text-align:right">10.2</td><td style="text-align:right;color:var(--c-green);">+76%</td></tr>
+          <tr><td>영업이익</td><td style="text-align:right" class="val-neg">-14.0</td><td style="text-align:right" class="val-neg">-14.0</td><td style="text-align:right" class="val-neg">-19.7</td><td style="text-align:right" class="val-neg">적자확대</td></tr>
+          <tr><td>당기순이익</td><td style="text-align:right" class="val-neg">-11.2</td><td style="text-align:right" class="val-neg">-8.2</td><td style="text-align:right" class="val-neg">-17.0</td><td style="text-align:right" class="val-neg">적자확대</td></tr>
+          <tr style="border-top:1px solid #ddd;"><td>현금+단기금융</td><td style="text-align:right">14.6</td><td style="text-align:right" class="val-pos">34.1</td><td style="text-align:right">17.4</td><td style="text-align:right" class="val-neg">-49%</td></tr>
+          <tr><td>금융부채(단기차입)</td><td style="text-align:right">0.0</td><td style="text-align:right">0.1</td><td style="text-align:right">4.0</td><td style="text-align:right" class="val-neg">+2700%</td></tr>
+          <tr><td>부채총계</td><td style="text-align:right">0.7</td><td style="text-align:right">2.2</td><td style="text-align:right">5.2</td><td style="text-align:right" class="val-neg">+137%</td></tr>
+          <tr><td>자본금</td><td style="text-align:right">3.7</td><td style="text-align:right">4.3</td><td style="text-align:right">4.3</td><td style="text-align:right">-</td></tr>
+          <tr><td>자본잉여금</td><td style="text-align:right">26.3</td><td style="text-align:right">53.1</td><td style="text-align:right">53.1</td><td style="text-align:right">-</td></tr>
+          <tr><td>결손금</td><td style="text-align:right" class="val-neg">-15.1</td><td style="text-align:right" class="val-neg">-23.3</td><td style="text-align:right" class="val-neg">-40.3</td><td style="text-align:right" class="val-neg">-73%</td></tr>
+          <tr style="font-weight:700;border-top:2px solid #333;"><td>자본총계</td><td style="text-align:right">14.9</td><td style="text-align:right" class="val-pos">34.1</td><td style="text-align:right" class="val-pos">17.0</td><td style="text-align:right" class="val-neg">-50%</td></tr>
         </tbody></table>
-        <div style="font-size:11px;color:#888;margin-top:6px;">매출 3년 CAGR 138% (1.8→10.2억). CF 12개월 매출입금 3.5억 (현금주의).</div></div>
-      <div class="s2-card" style="grid-column:1/-1;"><div class="s2-card-title">금융권 부채 상세</div>
-        <table class="fin-table"><thead><tr><th>구분</th><th style="text-align:right">잔액 (억)</th><th>만기</th><th>비고</th></tr></thead><tbody>
-          <tr><td>단기차입금</td><td style="text-align:right">4.0</td><td>FY2024 내</td><td>DW 기준, 상세 내역 미확인</td></tr>
-          <tr style="font-weight:600;border-top:2px solid #333;"><td>합계</td><td style="text-align:right">4.0</td><td></td><td>현금 17.4억으로 즉시 상환 가능 (커버리지 4.4x)</td></tr>
+        <div style="font-size:10px;color:#666;margin-top:6px;">
+          &#10003; DW FY2024 크로스체크: 매출 10.2억, OP -19.7억, 자본 17.0억, 현금 17.4억 — <b style="color:var(--c-green);">일치</b><br>
+          &#10003; FY2023 자본잉여금 26.3→53.1억 (+26.8억) = 스트롱벤처스 라운드 유입 확인<br>
+          &#9888; FY2024 현금 34.1→17.4억 (-16.7억): 적자 17.0억에 의한 소진과 대략 일치
+        </div></div>
+
+      <div class="s2-card" style="grid-column:1/-1;"><div class="s2-card-title">2025년 월별 손익 (제출자료, 단위: 백만원) ${dv('ok','제출PL 파싱 완료')}</div>
+        <table class="fin-table" style="font-size:11px;"><thead><tr><th>항목</th><th style="text-align:right">연간</th><th style="text-align:right">1월</th><th style="text-align:right">2월</th><th style="text-align:right">3월</th><th style="text-align:right">Q1합</th><th style="text-align:right">월평균</th></tr></thead><tbody>
+          <tr><td>매출</td><td style="text-align:right">1,091</td><td style="text-align:right">159</td><td style="text-align:right">107</td><td style="text-align:right">88</td><td style="text-align:right">354</td><td style="text-align:right">91</td></tr>
+          <tr><td>판관비</td><td style="text-align:right" class="val-neg">2,774</td><td style="text-align:right">251</td><td style="text-align:right">213</td><td style="text-align:right">214</td><td style="text-align:right">678</td><td style="text-align:right">231</td></tr>
+          <tr><td>&nbsp;&nbsp;급여</td><td style="text-align:right">1,273</td><td style="text-align:right">93</td><td style="text-align:right">93</td><td style="text-align:right">109</td><td style="text-align:right">295</td><td style="text-align:right">106</td></tr>
+          <tr><td>&nbsp;&nbsp;지급수수료</td><td style="text-align:right">475</td><td style="text-align:right">41</td><td style="text-align:right">23</td><td style="text-align:right">30</td><td style="text-align:right">94</td><td style="text-align:right">40</td></tr>
+          <tr><td>&nbsp;&nbsp;광고비</td><td style="text-align:right">233</td><td style="text-align:right">77</td><td style="text-align:right">23</td><td style="text-align:right">17</td><td style="text-align:right">117</td><td style="text-align:right">19</td></tr>
+          <tr><td>&nbsp;&nbsp;SW이용료</td><td style="text-align:right">161</td><td style="text-align:right">14</td><td style="text-align:right">30</td><td style="text-align:right">10</td><td style="text-align:right">54</td><td style="text-align:right">13</td></tr>
+          <tr><td>&nbsp;&nbsp;임차료</td><td style="text-align:right">103</td><td style="text-align:right">8</td><td style="text-align:right">8</td><td style="text-align:right">8</td><td style="text-align:right">24</td><td style="text-align:right">9</td></tr>
+          <tr style="font-weight:700;border-top:2px solid #333;"><td>영업손실</td><td style="text-align:right" class="val-neg">-1,683</td><td style="text-align:right" class="val-neg">-92</td><td style="text-align:right" class="val-neg">-106</td><td style="text-align:right" class="val-neg">-126</td><td style="text-align:right" class="val-neg">-324</td><td style="text-align:right" class="val-neg">-140</td></tr>
         </tbody></table>
-        <div style="padding:10px;background:#f9f9f9;border-radius:var(--r);color:#999;font-size:11px;margin-top:8px;">
-          📋 CB/BW 존재 여부 미확인 — <span style="color:#b37a1a;font-weight:600;">필요 서류: 사채/CB 계약서</span>
+        <div style="font-size:10px;color:#666;margin-top:6px;">
+          &#10003; 2025년 매출 10.9억 vs FY2024 10.2억 — 성장 둔화 (YoY +7%)<br>
+          &#9888; 급여 비중 46% (12.7억/27.7억) — 8명 기준 인당 연 1.6억 (설문 기준)<br>
+          &#9888; 9월 매출 2.9억 스파이크 + 11월 마이너스(-22M) — <b style="color:var(--c-orange);">계절성 또는 정산 조정 확인 필요</b>
         </div></div>
-      <div class="s2-card" style="grid-column:1/-1;"><div class="s2-card-title">주주 구성</div>
-        <div style="padding:16px;background:#f9f9f9;border-radius:var(--r);color:#999;font-size:12px;text-align:center;">
-          📋 자료 미확보 — <span style="color:#b37a1a;font-weight:600;">필요 서류: 주주명부, 정관</span><br>
-          <span style="font-size:11px;">참고: 누적투자 57억(6회), 최근 스트롱벤처스 25억 — 우선주 조건 확인 필요</span>
+
+      <div class="s2-card" style="grid-column:1/-1;"><div class="s2-card-title">금융권 부채 상세 ${dv('ok','제출BS 확인')}</div>
+        <table class="fin-table"><thead><tr><th>구분</th><th style="text-align:right">FY2022</th><th style="text-align:right">FY2023</th><th style="text-align:right">FY2024</th><th>비고</th></tr></thead><tbody>
+          <tr><td>단기차입금</td><td style="text-align:right">0.0</td><td style="text-align:right">0.1</td><td style="text-align:right">4.0</td><td>FY2024 급증 (+3.9억)</td></tr>
+          <tr><td>비유동부채(포인트충당)</td><td style="text-align:right">0.6</td><td style="text-align:right">1.2</td><td style="text-align:right">0.0</td><td>FY2024 거의 소멸</td></tr>
+          <tr style="font-weight:600;border-top:2px solid #333;"><td>부채총계</td><td style="text-align:right">0.7</td><td style="text-align:right">2.2</td><td style="text-align:right">5.2</td><td>현금 17.4억 → 커버리지 3.3x</td></tr>
+        </tbody></table>
+        <div style="font-size:10px;color:#666;margin-top:6px;">
+          &#10003; 사채/CB 항목 BS에 없음 — 제출 재무제표 기준 CB/BW 미발행으로 추정<br>
+          &#9888; 단기차입금 FY2024 4.0억 신규 — <b style="color:var(--c-orange);">차입처/조건/만기 인터뷰 확인 필요</b><br>
+          &#10003; 이자비용 2025년 1,408만원 (월평균 117만) — 차입금 대비 정상 수준 (연 3.5%)
         </div></div>
-      <div class="s2-card" style="grid-column:1/-1;"><div class="s2-card-title">CF 실거래 트렌드</div>
+
+      <div class="s2-card" style="grid-column:1/-1;"><div class="s2-card-title">주주 구성 ${dv('ok','주주명부 PDF 확보')}</div>
+        <table class="fin-table"><thead><tr><th>구분</th><th style="text-align:right">FY2022</th><th style="text-align:right">FY2023</th><th style="text-align:right">FY2024</th></tr></thead><tbody>
+          <tr><td>보통주자본금</td><td style="text-align:right">2.5억</td><td style="text-align:right">2.5억</td><td style="text-align:right">2.5억</td></tr>
+          <tr><td>우선주자본금</td><td style="text-align:right">1.2억</td><td style="text-align:right">1.8억</td><td style="text-align:right">1.8억</td></tr>
+          <tr><td>자본잉여금(주발초)</td><td style="text-align:right">26.3억</td><td style="text-align:right">53.1억</td><td style="text-align:right">53.1억</td></tr>
+        </tbody></table>
+        <div style="font-size:10px;color:#666;margin-top:6px;">
+          &#10003; 주주명부(2025.04.01 기준) PDF 확보 완료 — 상세 지분율 파싱 예정<br>
+          &#9888; FY2023 우선주 +0.6억, 자본잉여금 +26.8억 = <b>스트롱벤처스 라운드</b> (약 25억 + 프리미엄)<br>
+          &#9888; 우선주 전환조건, 동의권 조항 — <b style="color:var(--c-orange);">인터뷰 확인 필요</b>
+        </div></div>
+
+      <div class="s2-card" style="grid-column:1/-1;"><div class="s2-card-title">CF 실거래 트렌드 ${dv('ok','DW 조회')}</div>
         <table class="fin-table"><thead><tr><th>지표</th><th style="text-align:right">수치</th><th>판정</th></tr></thead><tbody>
           <tr><td>매출 추이 (3개월)</td><td style="text-align:right" class="val-neg">-4.0%</td><td style="color:var(--c-red);">역성장</td></tr>
           <tr><td>12개월 매출입금</td><td style="text-align:right">3.5억</td><td>현금주의 기준</td></tr>
@@ -1984,35 +2036,57 @@ html, body {
           <tr><td>잔고 변화 (3개월)</td><td style="text-align:right" class="val-neg">-63.2%</td><td style="color:var(--c-red);">급감</td></tr>
           <tr><td>월 번레이트</td><td style="text-align:right">0.6억</td><td>런웨이 0.8개월 (CF)</td></tr>
         </tbody></table>
-        <div style="font-size:11px;color:#888;margin-top:6px;">⚠ CF 잔고 급감(-63.2%)은 투자금 소진 진행 중을 시사. BS 현금 17.4억과 CF 잔고 0.6억 괴리 → 다계좌 분산 또는 정기예금 가능성.</div></div>
-      <div class="s2-card"><div class="s2-card-title">핵심 강점</div>
+        <div style="font-size:10px;color:#666;margin-top:6px;">
+          &#9888; BS 현금 17.4억 vs CF 잔고 0.6억 괴리 — <b style="color:var(--c-orange);">고위드 미등록 계좌에 자금 분산 추정</b><br>
+          &#10003; 제출PL 월 번레이트 1.4억 (판관비-매출) → BS 현금 기준 런웨이 12.4개월<br>
+          &#10003; CF 런웨이 0.8개월은 등록 계좌 한정 — BS 기준이 실질 런웨이
+        </div></div>
+
+      <div class="s2-card"><div class="s2-card-title">핵심 강점 ${dv('ok','복합 검증')}</div>
         <ul class="s2-info-list">
           <li>매출 3년 CAGR 138% — FY22 1.8억 → FY24 10.2억 (5.7배 성장)</li>
-          <li>현금 17.4억 vs 금융부채 4.0억 — 부채 커버리지 4.4x (즉시 상환 가능)</li>
-          <li>자본 17.0억 건전 (자본잠식 아님)</li>
-          <li>누적투자 57억, 스트롱벤처스 등 검증된 VC 참여</li>
+          <li>현금 17.4억 vs 부채 5.2억 — 순현금 12.2억 (커버리지 3.3x)</li>
+          <li>자본 17.0억 건전 (자본잠식 아님), 결손금 40.3억이나 자본잉여금 53.1억으로 상쇄</li>
+          <li>CB/BW 미발행 추정 (BS 사채 항목 없음) — 전환 희석 리스크 낮음</li>
+          <li>Goodnotes B2B 채널 검증 (2년 거래액 100억) + 아시아 B2C 확장 계획</li>
         </ul></div>
-      <div class="s2-card"><div class="s2-card-title">핵심 리스크</div>
+
+      <div class="s2-card"><div class="s2-card-title">핵심 리스크 ${dv('warn','일부 미확인')}</div>
         <ul class="s2-info-list">
-          <li style="color:var(--c-red);font-weight:600;">영업적자 연 14~20억 지속 — 매출 성장에도 적자 확대 (FY24 -19.7억)</li>
-          <li style="color:var(--c-red);font-weight:600;">BEP까지 매출 30억+ 필요 추정 — 현재 성장률로 1.5~2년 소요</li>
-          <li>CF 잔고 0.6억 급감 — 운영자금 유동성 주의</li>
-          <li>CB/BW 존재 여부 미확인 — 출자전환/희석 리스크 불명</li>
-          <li>주주 구성 미확인 — 우선주 조건, 전환가 등 불명</li>
+          <li style="color:var(--c-red);font-weight:600;">영업적자 3년 연속 확대: -14.0 → -14.0 → -19.7억 (2025년 -16.8억 진행중)</li>
+          <li style="color:var(--c-red);font-weight:600;">2025년 매출 성장 둔화: YoY +7% (FY23→24 +76% 대비 급락)</li>
+          <li style="color:var(--c-orange);font-weight:600;">급여 비중 46% + 인원 21→8명 감축 — 핵심인력 유지 여부 불확실</li>
+          <li style="color:var(--c-orange);font-weight:600;">단기차입금 FY2024 4.0억 신규 — 차입 사유/상환계획 미확인</li>
+          <li>9월 매출 2.9억 스파이크 (월평균 0.9억의 3.2배) — 일회성 여부 확인 필요</li>
+          <li>CF 등록계좌 잔고 0.6억 — 유동성 분산 확인 필요</li>
         </ul></div>
+
+      <div class="s2-card" style="grid-column:1/-1;"><div class="s2-card-title">데이터 검증 종합 ${dv('ok','5/7 검증')}</div>
+        <table class="fin-table" style="font-size:11px;"><thead><tr><th>데이터 소스</th><th>상태</th><th>크로스체크</th></tr></thead><tbody>
+          <tr><td>제출 재무상태표 (3개년)</td><td style="color:var(--c-green);font-weight:600;">&#10003; 확보</td><td>DW FY2024와 일치</td></tr>
+          <tr><td>제출 월별 손익계산서 (2025)</td><td style="color:var(--c-green);font-weight:600;">&#10003; 확보</td><td>연간 합계 FY2024 수준과 정합</td></tr>
+          <tr><td>IR자료 (PDF)</td><td style="color:var(--c-green);font-weight:600;">&#10003; 확보</td><td>사업 개요와 일치</td></tr>
+          <tr><td>주주명부 (2025.04.01)</td><td style="color:var(--c-green);font-weight:600;">&#10003; 확보</td><td style="color:var(--c-orange);">상세 파싱 대기</td></tr>
+          <tr><td>DW 실거래 (CF)</td><td style="color:var(--c-green);font-weight:600;">&#10003; 조회</td><td style="color:var(--c-orange);">BS 현금 괴리 (17.4 vs 0.6억)</td></tr>
+          <tr><td>사채/CB 계약서</td><td style="color:#999;">&#9744; 미확보</td><td>BS 기준 미발행 추정 — 인터뷰 확인</td></tr>
+          <tr><td>정관</td><td style="color:#999;">&#9744; 미확보</td><td>우선주 조건 확인 필요</td></tr>
+        </tbody></table></div>
+
       <div class="s2-card" style="grid-column:1/-1;"><div class="s2-card-title">진단 요약</div>
         <div style="padding:10px 14px;background:var(--bg-orange);border-radius:var(--r);font-size:12px;color:var(--c-orange);">
-          매출 고성장(CAGR 138%)이나 적자 확대(-19.7억)가 병행. 현금 17.4억 + 자본 17.0억으로 재무 여력은 있으나, BEP 도달 시점과 번레이트 관리가 핵심 변수. CB/BW 존재 여부 및 주주 구성 확인이 선행 필요.
+          <b>Orange Zone (Conditional)</b> — 매출 고성장(CAGR 138%)이나 적자 확대(-19.7→-16.8억)가 지속. 2025년 성장 둔화(YoY+7%)가 핵심 우려. 현금 17.4억 + 자본 17.0억으로 재무 여력 건전하고, CB/BW 미발행(추정)으로 전환 리스크 낮음. 단기차입 4.0억 신규 발생 및 급여 구조(인원 8명/연 12.7억) 적정성 인터뷰 확인 필요.
         </div></div>
+
       <div class="s2-card" style="grid-column:1/-1;"><div class="s2-card-title">인터뷰 확인 필요 사항</div>
         <ul class="s2-info-list">
-          <li style="color:var(--c-red);font-weight:600;">CRITICAL: BEP 달성 시기 + 구체적 비용 구조 (매출 얼마에서 흑자 전환?)</li>
-          <li style="color:var(--c-red);font-weight:600;">CRITICAL: CB/BW 발행 여부 — 전환조건, 만기, 잔액 확인</li>
-          <li style="color:var(--c-orange);font-weight:600;">WARNING: 지분 구조 — 대표 신동환 지분율, 우선주 조건, 동의권 조항</li>
-          <li style="color:var(--c-orange);font-weight:600;">WARNING: CF 잔고(0.6억) vs BS 현금(17.4억) 괴리 — 다계좌/정기예금 여부</li>
-          <li>디지털 문구 콘텐츠 플랫폼의 시장 독점성/진입장벽 — 경쟁사 대비 차별점</li>
-          <li>2025~2026 성장 전략 — 매출 30억 돌파 위한 구체 계획</li>
-          <li>투자금 소진 후 추가 라운드 계획 vs 자립 가능 시점</li>
+          <li style="color:var(--c-red);font-weight:600;">CRITICAL: BEP 달성 시기 — 판관비 27.7억 대비 매출 10.9억, 흑자전환 매출 목표는?</li>
+          <li style="color:var(--c-red);font-weight:600;">CRITICAL: 2025년 매출 성장 둔화 원인 — Goodnotes B2B 의존도, B2C 전환 진척</li>
+          <li style="color:var(--c-orange);font-weight:600;">WARNING: 단기차입금 4.0억 — 차입처, 조건(이율/만기), 상환 계획</li>
+          <li style="color:var(--c-orange);font-weight:600;">WARNING: 구독제 전환 전략 — 수수료→구독 전환 시 매출 감소 가능성 시뮬레이션</li>
+          <li style="color:var(--c-orange);font-weight:600;">WARNING: 인원 감축 (21→8명) 후 핵심인력 잔류 현황, 채용 계획</li>
+          <li>대표 지분율 및 우선주 전환 조건 (주주명부 상세 확인)</li>
+          <li>9월 매출 스파이크 2.9억 — 일회성 계약/정산 vs 반복 가능 매출</li>
+          <li>CF 잔고 0.6억 vs BS 현금 17.4억 — 미등록 계좌 자금 분산 현황</li>
         </ul></div>`);
   }
 
