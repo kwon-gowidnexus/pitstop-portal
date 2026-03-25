@@ -1383,7 +1383,7 @@ html, body {
 
     // Stage 판정 (Section 2/3 라우팅에서도 사용)
     const stage = co.stage || {};
-    const stCur = stage.current || 'stage_1';
+    const stCur = co.status === 'closed' ? 'closed' : (stage.current || 'stage_1');
 
     function sectionBadge(grade, label) {
       const gc2 = gbClass(grade);
