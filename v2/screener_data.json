@@ -1413,6 +1413,8 @@
       "corp_id": 4928701193,
       "cf_url": "https://capital-flow-rm.vercel.app/company/4928701193",
       "survey_timestamp": "2026-03-18T00:00:00",
+      "status": "closed",
+      "close_reason": "보류 — Q2 관찰 후 재논의",
       "verdict_class": "nogo",
       "ceo_name": "신동환",
       "applicant_name": "Donghwan Shin",
