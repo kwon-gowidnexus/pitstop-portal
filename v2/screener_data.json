@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-03-24T19:08:55.233796",
+  "generated_at": "2026-04-06T13:34:02.308335",
   "data_source": "고위드 DW (BigQuery) + Metabase RM",
   "criteria_definitions": {
     "ceo_awareness": "대표의 객관적 인식 + 변화 의지 (인터뷰 필수)",
@@ -34,18 +34,18 @@
       "applicant_email": "been.bin@marginmax.me",
       "pain_points": "고위드넥서스가 피트스탑 서비스 외 당사 서비스에 대해 투자 검토를 요청 드립니다.\nㄴ 고민은 당사가 소규모 인력으로 구성되어 아이디어 실행이 빠르다고 느끼지만 그에 비해 운용 자금이 부족하여 실행하지 못하는 프로젝트가 여러 있습니다.",
       "cash_kpi": {
-        "balance_date": "2026-03-01",
-        "cash_mtd": 3.3,
+        "balance_date": "2026-04-01",
+        "cash_mtd": 4.0,
         "monthly_burn": 0.3,
-        "burn_positive": true,
-        "runway_months": 20.0
+        "burn_positive": false,
+        "runway_months": 12.3
       },
       "stage": {
-        "current": "stage_2",
+        "current": "closed",
         "stage_1_completed": true,
         "stage_2_completed": true,
-        "stage_3_completed": false,
-        "next_action": "독점성/모트 인터뷰 + 대표 역량 인터뷰",
+        "stage_3_completed": true,
+        "next_action": null,
         "required_documents": [
           {
             "name": "재무상태표 (최근 FY)",
@@ -70,7 +70,7 @@
         "conversion_upside": {
           "name": "전환 매력도",
           "grade": "red",
-          "detail": "매출 3m 성장 -50.6% (역성장)"
+          "detail": "매출 3m 성장 -77.4% (역성장)"
         },
         "debt_leakage": {
           "name": "부채 유출 리스크",
@@ -85,15 +85,15 @@
       },
       "cf_trends": {
         "revenue": {
-          "revenue_growth_3m": -50.6,
-          "revenue_12m_eok": 109.0,
+          "revenue_growth_3m": -77.4,
+          "revenue_12m_eok": 102.4,
           "months_available": 12,
-          "latest_month": "2026-03-01"
+          "latest_month": "2026-04-01"
         },
         "balance": {
-          "balance_change_3m": 61.8,
+          "balance_change_3m": 62.0,
           "declining_months": 0,
-          "current_balance_eok": 3.6,
+          "current_balance_eok": 4.2,
           "months_available": 6
         },
         "financial_history": [
@@ -144,7 +144,7 @@
           "confidence": "high",
           "evidence": [
             "금융부채 0.0억 (단기 0.0억 + 장기 0.0억) [DW FY2024]",
-            "CF 평균잔고 2.5억 — 부채의 34749% 커버"
+            "CF 평균잔고 3.2억 — 부채의 43404% 커버"
           ],
           "summary": "부채 0.0억, 잔고로 충분히 커버. 구조 건전.",
           "interview_required": false
@@ -154,10 +154,10 @@
           "grade": "green",
           "confidence": "medium",
           "evidence": [
-            "12개월 매출입금 109.0억 (현금주의)",
-            "매출 추이: 최근 3개월 -51% (8.7억 → 2.9억 → 2.0억)",
+            "12개월 매출입금 102.4억 (현금주의)",
+            "매출 추이: 최근 3개월 -77% (2.9억 → 2.0억 → 0.0억)",
             "영업이익 +1.8억 (이미 흑자)",
-            "런웨이 20.0개월 (CF 기준)"
+            "런웨이 12.3개월 (CF 기준)"
           ],
           "summary": "이미 영업흑자 또는 매출 성장 추세. BEP 달성/유지 가능.",
           "interview_required": false
@@ -167,10 +167,9 @@
           "grade": "green",
           "confidence": "high",
           "evidence": [
-            "CF 런웨이 20.0개월",
-            "월 burn rate 0.3억 (CF 기준)"
+            "CF 런웨이 12.3개월"
           ],
-          "summary": "런웨이 20.0개월+. 최악 시나리오에서도 시간 여유 충분.",
+          "summary": "런웨이 12.3개월+. 최악 시나리오에서도 시간 여유 충분.",
           "interview_required": false
         },
         "financial_3axis": {
@@ -216,24 +215,24 @@
       "survey_timestamp": "2026-03-05T10:44:06",
       "status": "closed",
       "close_reason": "캡테이블 부적합 (RCPS 189억, 대표 15.4%) — 경영개선 리포트 전달 + Fuel/자회사 카드 전환 제안 완료 (2026-03-26)",
-      "verdict_class": "nogo",
+      "verdict_class": "yellow",
       "ceo_name": "한녹엽",
       "applicant_name": "한녹엽",
       "applicant_email": "knox@intakefoods.kr",
       "pain_points": "13년차 식품 스타트업입니다. 단백 소재개발과 함께 B2C 완제품 비즈니스를 영위하고 있고 최근 150억가량 투자유치를 하면서 활발한 인수합병으로 연간 400억 연결매출 규모를 달성했으나, 아직 영업이익을 내지는 못하고 월 캐시번이 유지되고 있는 상황입니다. \n운전자금에 대한 필요성과 함께, 6개월내 BEP 달성에 대한 미션에 꽂혀서 지원게 되었습니다. ",
       "cash_kpi": {
-        "balance_date": "2026-03-01",
-        "cash_mtd": 17.9,
-        "monthly_burn": 2.0,
+        "balance_date": "2026-04-01",
+        "cash_mtd": 19.3,
+        "monthly_burn": 0.9,
         "burn_positive": false,
-        "runway_months": 9.0
+        "runway_months": 20.0
       },
       "stage": {
-        "current": "stage_2",
+        "current": "closed",
         "stage_1_completed": true,
         "stage_2_completed": true,
-        "stage_3_completed": false,
-        "next_action": "독점성/모트 인터뷰 + 대표 역량 인터뷰",
+        "stage_3_completed": true,
+        "next_action": null,
         "required_documents": [
           {
             "name": "재무상태표 (최근 FY)",
@@ -266,12 +265,12 @@
         "conversion_upside": {
           "name": "전환 매력도",
           "grade": "red",
-          "detail": "매출 3m 성장 -14.9% (역성장)"
+          "detail": "매출 3m 성장 -15.1% (역성장)"
         },
         "debt_leakage": {
           "name": "부채 유출 리스크",
-          "grade": "red",
-          "detail": "잔고 5개월 연속 하락"
+          "grade": "yellow",
+          "detail": "잔고 3m 변화 -14.2%"
         },
         "shareholder_rights": {
           "name": "주주 동의권",
@@ -281,15 +280,15 @@
       },
       "cf_trends": {
         "revenue": {
-          "revenue_growth_3m": -14.9,
-          "revenue_12m_eok": 205.5,
+          "revenue_growth_3m": -15.1,
+          "revenue_12m_eok": 207.0,
           "months_available": 12,
-          "latest_month": "2026-03-01"
+          "latest_month": "2026-04-01"
         },
         "balance": {
-          "balance_change_3m": -32.0,
-          "declining_months": 5,
-          "current_balance_eok": 17.5,
+          "balance_change_3m": -14.2,
+          "declining_months": 0,
+          "current_balance_eok": 20.0,
           "months_available": 6
         },
         "financial_history": [
@@ -340,7 +339,7 @@
           "confidence": "high",
           "evidence": [
             "금융부채 16.9억 (단기 16.7억 + 장기 0.3억) [DW FY2024]",
-            "CF 평균잔고 20.5억 — 부채의 121% 커버"
+            "CF 평균잔고 20.0억 — 부채의 118% 커버"
           ],
           "summary": "부채 16.9억, 잔고로 충분히 커버. 구조 건전.",
           "interview_required": false
@@ -350,22 +349,22 @@
           "grade": "red",
           "confidence": "medium",
           "evidence": [
-            "12개월 매출입금 205.5억 (현금주의)",
-            "매출 추이: 최근 3개월 -15% (14.0억 → 15.3억 → 12.3억)",
+            "12개월 매출입금 207.0억 (현금주의)",
+            "매출 추이: 최근 3개월 -15% (15.5억 → 25.4억 → 0.9억)",
             "영업적자 -24.7억/년 (월 2.1억)",
-            "런웨이 9.0개월 (CF 기준)"
+            "런웨이 20.0개월 (CF 기준)"
           ],
-          "summary": "매출 하락 추세 + 런웨이 9.0개월. BEP 달성 시급.",
+          "summary": "매출 하락 추세 + 런웨이 20.0개월. BEP 달성 시급.",
           "interview_required": true
         },
         "worst_case": {
           "name": "최악 시나리오",
-          "grade": "yellow",
+          "grade": "green",
           "confidence": "high",
           "evidence": [
-            "CF 런웨이 9.0개월"
+            "CF 런웨이 20.0개월"
           ],
-          "summary": "런웨이 9.0개월. 6개월 내 매출 또는 비용 개선 필요.",
+          "summary": "런웨이 20.0개월+. 최악 시나리오에서도 시간 여유 충분.",
           "interview_required": false
         },
         "financial_3axis": {
@@ -417,11 +416,11 @@
       "applicant_email": "yuri@wello.info",
       "pain_points": "현재 24년 9월 시리즈A 라운드 클로징 이후, 25년 12월 신규 전략투자자로부터 요청받아 브릿지 라운드를 열어 올해 3월 말일 기준으로 투자금 납일 완료하는 일정을 진행 중입니다. 현재 2가지 고민점이 크게 존재하여 고위드 김항기 대표님 글을 보고 바로 신청하게 됐습니다.\n\n1. 세일즈/마케팅 조직을 효과적으로 구성하는 방안\n26년 및 향후 5개년에 대한 제품개발 및 매출성장에 대해서는 로드맵과 모델링을 구성하여 진행 중이나, \n\"세일즈/마케팅 리더십 및 시스템\"없이 인바운드로 들어오는 고객문의를 대응하기에만 급급한 상황입니다. 조직화된 시스템을 구성해나가야 하는데, 기업의 숫자를 책임지는 대표로서 생존과 성장을 위한 우선순위/조직구성 정렬을 제대로 못하고 있다는 생각이 듭니다. \n\n이 문제를 해결하기 위해 책도 찾아읽고 외국 자료들도 리서치하면서 스스로 깊은 고민과 가설들을 실행하고 있지만, 세일즈&마케팅 조직을 채용한 후에 실제 매출로 전환되는 과정을 보지 못하고 계속 실패 중이어서, 구성원을 채용하거나 조직을 빌딩할 때 언제까지 기회와 시간을 드려야 할지에 대한 고민이 되어, 피트스탑을 통해 조직운영 차원에서 점검해나가고 싶습니다.\n\n2. 기업 체력강화를 위한 투자금의 재투자를 위한 방안 \n재무적으로는 비용에 대한 통제를 계속 하고 있다고 생각하고 있지만, 진단을 받는 관점에서 현재 비용 통제를 객관적으로 잘 하고 있는것인지 외부자의 시선에서 평가받고 싶습니다. 또한 지금까지는 투자금을 회사 운영자금으로 통칭하여 사용했었는데, 본질적으로 회사의 체력을 키우는 방향으로 재투자하는 방안에 대해 함께 고민하고 싶습니다. \n\n회사 미션과 목표에 맞춰 자금을 효과적으로 재투자하고 더 단단하게 성장하는 방향성을, 수많은 기업들의 현황을 보시는 고위드의 입장에서 진단받고 개선해나가고 싶습니다. \n",
       "cash_kpi": {
-        "balance_date": "2026-03-01",
-        "cash_mtd": 19.9,
-        "monthly_burn": 2.0,
+        "balance_date": "2026-04-01",
+        "cash_mtd": 19.3,
+        "monthly_burn": 2.3,
         "burn_positive": false,
-        "runway_months": 10.1
+        "runway_months": 8.4
       },
       "stage": {
         "current": "closed",
@@ -461,7 +460,7 @@
         "conversion_upside": {
           "name": "전환 매력도",
           "grade": "green",
-          "detail": "매출 3m 성장 -31.1% (역성장) + 독점성 확인"
+          "detail": "매출 3m 성장 -85.3% (역성장) + 독점성 확인"
         },
         "debt_leakage": {
           "name": "부채 유출 리스크",
@@ -476,15 +475,15 @@
       },
       "cf_trends": {
         "revenue": {
-          "revenue_growth_3m": -31.1,
-          "revenue_12m_eok": 10.0,
+          "revenue_growth_3m": -85.3,
+          "revenue_12m_eok": 9.3,
           "months_available": 12,
-          "latest_month": "2026-03-01"
+          "latest_month": "2026-04-01"
         },
         "balance": {
-          "balance_change_3m": -39.8,
+          "balance_change_3m": -18.2,
           "declining_months": 5,
-          "current_balance_eok": 19.6,
+          "current_balance_eok": 19.1,
           "months_available": 6
         },
         "financial_history": [
@@ -535,7 +534,7 @@
           "confidence": "high",
           "evidence": [
             "금융부채 12.0억 (go_nogo FY2025(가결산)) — DW 12.0억(FY2024)은 구기준",
-            "CF 평균잔고 21.9억 — 부채의 182% 커버"
+            "CF 평균잔고 20.4억 — 부채의 170% 커버"
           ],
           "summary": "부채 12.0억, 잔고로 충분히 커버. 구조 건전.",
           "interview_required": false
@@ -545,12 +544,12 @@
           "grade": "red",
           "confidence": "medium",
           "evidence": [
-            "12개월 매출입금 10.0억 (현금주의)",
-            "매출 추이: 최근 3개월 -31% (1.3억 → 0.3억 → 0.1억)",
+            "12개월 매출입금 9.3억 (현금주의)",
+            "매출 추이: 최근 3개월 -85% (0.3억 → 0.1억 → 0.0억)",
             "영업적자 -52.7억/년 (월 4.4억)",
-            "런웨이 10.1개월 (CF 기준)"
+            "런웨이 8.4개월 (CF 기준)"
           ],
-          "summary": "매출 하락 추세 + 런웨이 10.1개월. BEP 달성 시급.",
+          "summary": "매출 하락 추세 + 런웨이 8.4개월. BEP 달성 시급.",
           "interview_required": true
         },
         "worst_case": {
@@ -558,9 +557,9 @@
           "grade": "yellow",
           "confidence": "high",
           "evidence": [
-            "CF 런웨이 10.1개월"
+            "CF 런웨이 8.4개월"
           ],
-          "summary": "런웨이 10.1개월. 6개월 내 매출 또는 비용 개선 필요.",
+          "summary": "런웨이 8.4개월. 6개월 내 매출 또는 비용 개선 필요.",
           "interview_required": false
         },
         "financial_3axis": {
@@ -612,8 +611,8 @@
       "applicant_email": "ceo@onoffmix.com",
       "pain_points": "1. 2022년 칸서스자산운용이라는 회사와 총 85억(신주 65억, 구주 20억)짜리 투자유치 계약을 맺었으나 1차 30억원만 집행이 되고 2차 55억이 2년간 미뤄지다가 최종 집행 하지 않음으로 정리가 되었습니다. \n\n2. 더불어서 티몬, 위메프 사태로 인해서 정산 받지 못하는 금액이 3억원 가량 발생했습니다. \n\n3. 티켓 사업은 '선급금' 이라는 금융모델을 진행할 수 있으면 거래액 및 매출액 확보를 하기 좋은 상황이나 회사가 운용할 수 있는 자금이 없어서 진행을 못하고 있습니다. ( 선급금 운용 사례 5차례 이상 보유 )\n\n4. 2024년 47 -> 25, 2025년 25 -> 9명으로 강도 높은 구조조정을 하면서 퇴직금+미지급 급여를 분납으로 협의하여 해고를 진행하게 되었습니다. \n\n5. 최근 경기도 협약 사업을 하나 수주했으나 사업비 예산 비목 중에 인건비 비율이 낮아서 Runway에 큰 도움이 되고 있지 않으나 경기도 측에서 사용 가능한 홍보수단을 모두 동원하여 플랫폼의 홍보를 진행하기로 하여 트래픽 회복에 따른 매출 회복이 기대되고 있는 상황 입니다. \n\n6. 3월 예정되어 있는 KIMST의 R&D 사업에 대해서 PM 을 맡아 5억원 대의 매출을 기대할 수 있는 건이 진행되고 있고, 이 건이 진행되면 Runway 에 대한 부담이 줄어드는 상태 입니다. \n\n7. 현재 네이버 예약 공식 판매대행사 지위를 갖고 있으며 최근에 관련된 지위를 유상으로 구매하고 싶다는 의향을 밝힌 곳이 있었습니다. ( 이도 주식회사 )\n\n8. 비즈니스 모델 과 파이프라인은 있으나 Cash Flow가 꼬여서 겪고 있는 문제를 빠르게 풀 수 있는 방법이 있다면 진행하고 싶습니다. ",
       "cash_kpi": {
-        "balance_date": "2026-03-01",
-        "cash_mtd": 6.0,
+        "balance_date": "2026-04-01",
+        "cash_mtd": 4.9,
         "monthly_burn": 1.9,
         "burn_positive": true,
         "runway_months": 20.0
@@ -655,13 +654,13 @@
         },
         "conversion_upside": {
           "name": "전환 매력도",
-          "grade": "green",
-          "detail": "매출 3m 성장 +42.4%"
+          "grade": "red",
+          "detail": "매출 3m 성장 -20.8% (역성장)"
         },
         "debt_leakage": {
           "name": "부채 유출 리스크",
           "grade": "red",
-          "detail": "잔고 3m 변화 +126.7% (안정) + CB/사채 전환 이슈 미확인. 자본잠식으로 전환 구조 복잡"
+          "detail": "잔고 3m 변화 +8.7% (안정) + CB/사채 전환 이슈 미확인. 자본잠식으로 전환 구조 복잡"
         },
         "shareholder_rights": {
           "name": "주주 동의권",
@@ -671,15 +670,15 @@
       },
       "cf_trends": {
         "revenue": {
-          "revenue_growth_3m": 42.4,
-          "revenue_12m_eok": 112.8,
+          "revenue_growth_3m": -20.8,
+          "revenue_12m_eok": 96.5,
           "months_available": 12,
-          "latest_month": "2026-03-01"
+          "latest_month": "2026-04-01"
         },
         "balance": {
-          "balance_change_3m": 126.7,
-          "declining_months": 0,
-          "current_balance_eok": 5.8,
+          "balance_change_3m": 8.7,
+          "declining_months": 1,
+          "current_balance_eok": 4.5,
           "months_available": 6
         },
         "financial_history": [
@@ -730,7 +729,7 @@
           "confidence": "high",
           "evidence": [
             "금융부채 12.0억 (단기 7.0억 + 장기 5.0억) [DW FY2024]",
-            "CF 평균잔고 5.1억 — 부채의 43% 커버",
+            "CF 평균잔고 5.2억 — 부채의 43% 커버",
             "자본 -12.6억 (자본잠식)",
             "CB/전환사채 이슈: CB/사채 전환 이슈 미확인. 자본잠식으로 전환 구조 복잡"
           ],
@@ -739,15 +738,15 @@
         },
         "bep_roadmap": {
           "name": "BEP 로드맵",
-          "grade": "yellow",
+          "grade": "red",
           "confidence": "medium",
           "evidence": [
-            "12개월 매출입금 112.8억 (현금주의)",
-            "매출 추이: 최근 3개월 +42% (9.6억 → 10.2억 → 4.4억)",
+            "12개월 매출입금 96.5억 (현금주의)",
+            "매출 추이: 최근 3개월 -21% (10.2억 → 5.3억 → 0.3억)",
             "영업적자 -5.8억/년 (월 0.5억)",
             "런웨이 20.0개월 (CF 기준)"
           ],
-          "summary": "영업적자 -5.8억이나 매출 정체/소폭 변동. BEP 달성 경로 확인 필요. 런웨이 20.0개월.",
+          "summary": "매출 하락 추세 + 런웨이 20.0개월. BEP 달성 시급.",
           "interview_required": true
         },
         "worst_case": {
@@ -811,18 +810,18 @@
       "applicant_name": "Yoomee Hwang",
       "pain_points": "피트 스탑의 취지에 공감하여, 개선해보고 싶은 부분들이 있어 지원하게 되었습니다. 이번 기회를 통해 현재 가지고 있는 문제들을 해결하는 터닝포인트가 되길 기대합니다. \n(주요 고민 포인트: BM 관련 운영 / 자금조달)",
       "cash_kpi": {
-        "balance_date": "2026-03-01",
-        "cash_mtd": 0.3,
-        "monthly_burn": 1.1,
+        "balance_date": "2026-04-01",
+        "cash_mtd": 0.2,
+        "monthly_burn": 2.0,
         "burn_positive": true,
         "runway_months": 20.0
       },
       "stage": {
-        "current": "stage_2",
+        "current": "closed",
         "stage_1_completed": true,
         "stage_2_completed": true,
-        "stage_3_completed": false,
-        "next_action": "대표 역량 인터뷰",
+        "stage_3_completed": true,
+        "next_action": null,
         "required_documents": [
           {
             "name": "재무상태표 (최근 FY)",
@@ -842,7 +841,7 @@
           },
           {
             "name": "주주명부",
-            "status": "received"
+            "status": "missing"
           }
         ]
       },
@@ -855,12 +854,12 @@
         "conversion_upside": {
           "name": "전환 매력도",
           "grade": "red",
-          "detail": "매출 3m 성장 -19.1% (역성장)"
+          "detail": "매출 3m 성장 -36.9% (역성장)"
         },
         "debt_leakage": {
           "name": "부채 유출 리스크",
           "grade": "red",
-          "detail": "잔고 3m 변화 -64.1% (급감) + CB/전환사채 존재 여부 미확인 — 금융부채 괴리(9.1억)의 원인일 가능성"
+          "detail": "잔고 3개월 연속 하락 + CB/전환사채 존재 여부 미확인 — 금융부채 괴리(9.1억)의 원인일 가능성"
         },
         "shareholder_rights": {
           "name": "주주 동의권",
@@ -870,15 +869,15 @@
       },
       "cf_trends": {
         "revenue": {
-          "revenue_growth_3m": -19.1,
-          "revenue_12m_eok": 352.0,
+          "revenue_growth_3m": -36.9,
+          "revenue_12m_eok": 332.7,
           "months_available": 12,
-          "latest_month": "2026-03-01"
+          "latest_month": "2026-04-01"
         },
         "balance": {
-          "balance_change_3m": -64.1,
-          "declining_months": 2,
-          "current_balance_eok": 0.1,
+          "balance_change_3m": -97.5,
+          "declining_months": 3,
+          "current_balance_eok": 0.0,
           "months_available": 6
         },
         "financial_history": [
@@ -929,8 +928,8 @@
           "confidence": "high",
           "evidence": [
             "금융부채 8.5억 (단기 0.0억 + 장기 8.5억) [DW FY2024]",
-            "CF 평균잔고 0.8억 — 부채의 10% 커버",
-            "커버율 10% — 잔고로 부채 통제 불가",
+            "CF 평균잔고 0.3억 — 부채의 4% 커버",
+            "커버율 4% — 잔고로 부채 통제 불가",
             "자본 -2.4억 (자본잠식)",
             "CB/전환사채 이슈: CB/전환사채 존재 여부 미확인 — 금융부채 괴리(9.1억)의 원인일 가능성"
           ],
@@ -942,8 +941,8 @@
           "grade": "red",
           "confidence": "medium",
           "evidence": [
-            "12개월 매출입금 352.0억 (현금주의)",
-            "매출 추이: 최근 3개월 -19% (30.8억 → 26.8억 → 20.6억)",
+            "12개월 매출입금 332.7억 (현금주의)",
+            "매출 추이: 최근 3개월 -37% (26.8억 → 29.8억 → 3.1억)",
             "영업적자 -7.9억/년 (월 0.7억)",
             "런웨이 20.0개월 (CF 기준)"
           ],
@@ -956,7 +955,7 @@
           "confidence": "high",
           "evidence": [
             "CF 런웨이 20.0개월",
-            "월 burn rate 1.1억 (CF 기준)"
+            "월 burn rate 2.0억 (CF 기준)"
           ],
           "summary": "런웨이 20.0개월+. 최악 시나리오에서도 시간 여유 충분.",
           "interview_required": false
@@ -1012,11 +1011,11 @@
       "applicant_email": "jayden.choo@doomoolmori.com",
       "pain_points": "모트AI는 영업적으로는 턴어라운드를 시작했지만 현금흐름과 재무상에선 어려움을 지속하고 있습니다. 갚아야할 자금의 기한은 다가오고, 그로 인한 갈등과 시간 소모가 있습니다. B2B 영업이 속도가 나기도 하고 때론 느려지기도 하는데 이로 인한 자금 사이클의 리스크에 시달리며, 추가 자금을 유치하기엔 비즈니스 모델의 완성도가 낮습니다. 다만, AI 시대에 맞는 집중력 있는 활동과, 영업이익 흑자 전환, 구조조정의 완비 등으로 상황은 지속 개선되고 있습니다.\r\n\r\n많은 자금소모와 고생을 통해 얻은 경영적 학습으로 기업으로 성장해왔는데, 이에 대한 책임이 무겁다고 생각합니다. 이에 피트스탑 같은 프로그램이 더 성장하고 개선할 수 있는 경영자에게 꼭 필요한 자원을 제공하는 것 같아 감사한 마음이 들었습니다.\r\n\r\n바라는 점은 (1) 각종 b2b AI 서비스와 제품을 더 빠르게 공급하고 활용할 수 있는 매출처와 플랫폼, 그리고 (2) 단기적 자금 순환에 여유를 주고 일부 대환을 할 수 있는 5억 원의 융자가 있으면 좋겠습니다. 자금적 도움을 통해 시간을 벌어주시면, 당사는 그 시간을 통해 더 시너지 높은 AI 작업을 함께 하여 더 큰 수익화를 나눌 수 있으면 좋겠습니다.\r\n\r\n감사합니다.",
       "cash_kpi": {
-        "balance_date": "2026-03-01",
-        "cash_mtd": 0.2,
+        "balance_date": "2026-04-01",
+        "cash_mtd": 0.3,
         "monthly_burn": 0.2,
         "burn_positive": false,
-        "runway_months": 1.2
+        "runway_months": 1.7
       },
       "stage": {
         "current": "closed",
@@ -1056,12 +1055,12 @@
         "conversion_upside": {
           "name": "전환 매력도",
           "grade": "red",
-          "detail": "매출 3m 성장 +28.4% + 독점성 부재"
+          "detail": "매출 3m 성장 -49.6% (역성장) + 독점성 부재"
         },
         "debt_leakage": {
           "name": "부채 유출 리스크",
           "grade": "red",
-          "detail": "잔고 3m 변화 -24.9% (급감) + CB 22.1억 출자전환 미완료. 전환 선행 필수 (내부 심사 조건)"
+          "detail": "잔고 3m 변화 +385.5% (안정) + CB 22.1억 출자전환 미완료. 전환 선행 필수 (내부 심사 조건)"
         },
         "shareholder_rights": {
           "name": "주주 동의권",
@@ -1071,15 +1070,15 @@
       },
       "cf_trends": {
         "revenue": {
-          "revenue_growth_3m": 28.4,
-          "revenue_12m_eok": 10.9,
+          "revenue_growth_3m": -49.6,
+          "revenue_12m_eok": 11.2,
           "months_available": 12,
-          "latest_month": "2026-03-01"
+          "latest_month": "2026-04-01"
         },
         "balance": {
-          "balance_change_3m": -24.9,
-          "declining_months": 1,
-          "current_balance_eok": 0.2,
+          "balance_change_3m": 385.5,
+          "declining_months": 0,
+          "current_balance_eok": 0.4,
           "months_available": 6
         },
         "financial_history": [
@@ -1130,8 +1129,8 @@
           "confidence": "high",
           "evidence": [
             "금융부채 42.3억 (go_nogo FY2025(가결산)) — DW 25.6억(FY2024)은 구기준",
-            "CF 평균잔고 0.2억 — 부채의 0% 커버",
-            "커버율 0% — 잔고로 부채 통제 불가",
+            "CF 평균잔고 0.3억 — 부채의 1% 커버",
+            "커버율 1% — 잔고로 부채 통제 불가",
             "자본 -29.4억 (자본잠식)",
             "CB/전환사채 이슈: CB 22.1억 출자전환 미완료. 전환 선행 필수 (내부 심사 조건)",
             "⚠️ CB 22.1억 만기 2개월 이내 — 상환/전환 압박"
@@ -1144,10 +1143,10 @@
           "grade": "green",
           "confidence": "medium",
           "evidence": [
-            "12개월 매출입금 10.9억 (현금주의)",
-            "매출 추이: 최근 3개월 +28% (1.1억 → 0.0억 → 0.3억)",
-            "영업이익 +1.2억 (흑자 14개월 유지)",
-            "런웨이 1.2개월 (CF 기준)"
+            "12개월 매출입금 11.2억 (현금주의)",
+            "매출 추이: 최근 3개월 -50% (0.0억 → 1.0억 → 0.0억)",
+            "영업이익 +1.2억 (흑자 15개월 유지)",
+            "런웨이 1.7개월 (CF 기준)"
           ],
           "summary": "이미 영업흑자 또는 매출 성장 추세. BEP 달성/유지 가능.",
           "interview_required": false
@@ -1157,10 +1156,10 @@
           "grade": "red",
           "confidence": "high",
           "evidence": [
-            "CF 런웨이 1.2개월",
+            "CF 런웨이 1.7개월",
             "자본잠식 해소: 24.5년 소요 (자본 -29.4억 / OP +1.2억)"
           ],
-          "summary": "런웨이 1.2개월 미만. 즉각적 자금/비용 조치 없으면 생존 위험.",
+          "summary": "런웨이 1.7개월 미만. 즉각적 자금/비용 조치 없으면 생존 위험.",
           "interview_required": true
         },
         "financial_3axis": {
@@ -1215,18 +1214,18 @@
       "applicant_email": "kkh@menuit.io",
       "pain_points": "안녕하세요, 담당자님.\n메뉴잇 팀 김경훈 입니다.\n\n메뉴잇은 태블릿 기반 무인주문(스마트오더) 솔루션을 B2B로 공급하고, 국내는 SK쉴더스(ADT캡스) 채널 단독 납품 구조로 운영 중 입니다. 하드웨어는 해외 생상 및 수입 기반으로 리드타임이 길고 생산 / 물류 / AS 관련 비용이 선투입되는 반면 매출 회수(정산)은 이후에 진행되어 운전자금 갭(현금흐름 미스매치)가 반복 됩니다.\n\n최근 12개월은 고정비를 최대한 걷어내는 방향으로 비용구조를 재편했습니다. 인력은 150명전후(도급, 파견 포함)에서 30명대 수준으로 축소하였고, 신규채용, 마케팅, 브랜딩 집행은 최소한으로 유지하였습니다. 사무공간 및 구독형 Saas와 외주계약도 간소화 혹은 자동화 및 축소를 거쳐 월 고정비를 최소화 하였습니다. 현재 비용은 본업 수행에 필요한 개발 / 생산 / 물류 / 품질 중심의 변동비 비중이 높습니다. \n\n피스스탑에는 단순 자금조달이 아닌 현금흐름 기준으로 우선순위를 재정렬하고 90일 내 실행 가능한 정비 로드맵(조직운영 및 정산, 채권 및 재고 리스크)를 안정화 해주는 역할을 기대하고 있습니다. 실행 단계에서는 Fuel(거래처 결제를 카드 결제로 전환해 현금 유출 시점을 이연)같은 수단도 병행 검토하여 단기 유동성 공백을 메우고, 동시에 구조 개선이 실제로 돌아가게 만들고자 합니다.\n\n주요 고민은 아래 같습니다.\n1. 런웨이 단축 : 선투입 후회수 구조로 현금이 마르는 구간이 발생\n2. 운전자금 구조 재설계 : 재고, 생산 리드다임과 정산 조건 간극을 최대한 줄이는 조건완화 및 경제의 규모화  (현재는 기거래처에 대한 결제구조 및 리드타임을 획기적으로 절감 및 단축하고 있습니다)\n\n감사합니다.\n김경훈 드림",
       "cash_kpi": {
-        "balance_date": "2026-03-01",
-        "cash_mtd": 2.6,
-        "monthly_burn": 1.5,
-        "burn_positive": false,
-        "runway_months": 1.8
+        "balance_date": "2026-04-01",
+        "cash_mtd": 2.2,
+        "monthly_burn": 4.6,
+        "burn_positive": true,
+        "runway_months": 20.0
       },
       "stage": {
-        "current": "stage_3",
+        "current": "closed",
         "stage_1_completed": true,
         "stage_2_completed": true,
         "stage_3_completed": true,
-        "next_action": "최종 판정 확정",
+        "next_action": null,
         "required_documents": [
           {
             "name": "재무상태표 (최근 FY)",
@@ -1259,12 +1258,12 @@
         "conversion_upside": {
           "name": "전환 매력도",
           "grade": "yellow",
-          "detail": "매출 3m 성장 +3.1% (소폭)"
+          "detail": "매출 3m 성장 +4.6% (소폭)"
         },
         "debt_leakage": {
           "name": "부채 유출 리스크",
           "grade": "green",
-          "detail": "잔고 3m 변화 +24.7% (안정)"
+          "detail": "잔고 3m 변화 +5.5% (안정)"
         },
         "shareholder_rights": {
           "name": "주주 동의권",
@@ -1274,15 +1273,15 @@
       },
       "cf_trends": {
         "revenue": {
-          "revenue_growth_3m": 3.1,
-          "revenue_12m_eok": 155.9,
+          "revenue_growth_3m": 4.6,
+          "revenue_12m_eok": 128.9,
           "months_available": 12,
-          "latest_month": "2026-03-01"
+          "latest_month": "2026-04-01"
         },
         "balance": {
-          "balance_change_3m": 24.7,
-          "declining_months": 1,
-          "current_balance_eok": 2.5,
+          "balance_change_3m": 5.5,
+          "declining_months": 2,
+          "current_balance_eok": 2.0,
           "months_available": 6
         },
         "financial_history": [
@@ -1333,7 +1332,7 @@
           "confidence": "high",
           "evidence": [
             "금융부채 51.8억 (go_nogo FY2025(가결산, 2차 자료)) — DW 105.0억(FY2024)은 구기준",
-            "CF 평균잔고 2.4억 — 부채의 5% 커버",
+            "CF 평균잔고 2.5억 — 부채의 5% 커버",
             "커버율 5% — 잔고로 부채 통제 불가",
             "자본 -34.8억 (자본잠식)"
           ],
@@ -1345,10 +1344,10 @@
           "grade": "green",
           "confidence": "medium",
           "evidence": [
-            "12개월 매출입금 155.9억 (현금주의)",
-            "매출 추이: 최근 3개월 +3% (8.4억 → 17.4억 → 7.2억)",
-            "영업이익 +4.1억 (흑자 14개월 유지)",
-            "런웨이 1.8개월 (CF 기준)"
+            "12개월 매출입금 128.9억 (현금주의)",
+            "매출 추이: 최근 3개월 +5% (17.4억 → 7.5억 → 0.0억)",
+            "영업이익 +4.1억 (흑자 15개월 유지)",
+            "런웨이 20.0개월 (CF 기준)"
           ],
           "summary": "이미 영업흑자 또는 매출 성장 추세. BEP 달성/유지 가능.",
           "interview_required": false
@@ -1358,11 +1357,12 @@
           "grade": "red",
           "confidence": "high",
           "evidence": [
-            "CF 런웨이 1.8개월",
+            "CF 런웨이 20.0개월",
+            "월 burn rate 4.6억 (CF 기준)",
             "자본잠식 해소: 8.5년 소요 (자본 -34.8억 / OP +4.1억)",
             "⚠️ SK쉴더스(ADT캡스) 이탈 시 매출 95% 소멸 — 즉시 생존 위기"
           ],
-          "summary": "런웨이 1.8개월 미만. 즉각적 자금/비용 조치 없으면 생존 위험.",
+          "summary": "런웨이 20.0개월 미만. 즉각적 자금/비용 조치 없으면 생존 위험.",
           "interview_required": true
         },
         "financial_3axis": {
@@ -1421,18 +1421,18 @@
       "applicant_email": "dh.shin@noutecompany.com",
       "pain_points": "1. 당사가 운영하고 있는 위버딩 서비스의 수익모델을 마켓플레이스 수수료 구조에서 구독제 모델로 변경하고자 하며, 이 과정에서 전략에 대한 저희의 판단이 적절한지에 대한 고민이 있습니다.\n\n2. 최근 저희 팀은 투자금을 많이 소진함에 따라 인원을 많이 감축했습니다. 피트스탑을 통해 런웨이를 조금 더 확보하고, 그 기간 동안 현재 팀에 남은 정예 팀원들과 다시 회사와 서비스의 비전을 세우고 달려보고 싶습니다. 이 과정에서 도움을 받고 싶습니다.\n\n3. ",
       "cash_kpi": {
-        "balance_date": "2026-03-01",
+        "balance_date": "2026-04-01",
         "cash_mtd": 0.5,
         "monthly_burn": 0.6,
         "burn_positive": false,
-        "runway_months": 0.8
+        "runway_months": 0.9
       },
       "stage": {
-        "current": "stage_2",
+        "current": "closed",
         "stage_1_completed": true,
         "stage_2_completed": true,
-        "stage_3_completed": false,
-        "next_action": "독점성/모트 인터뷰 + 대표 역량 인터뷰",
+        "stage_3_completed": true,
+        "next_action": null,
         "required_documents": [
           {
             "name": "재무상태표 (최근 FY)",
@@ -1445,10 +1445,6 @@
           {
             "name": "금융기관 대출 잔액 증명원",
             "status": "received"
-          },
-          {
-            "name": "사채/CB 계약서",
-            "status": "missing"
           },
           {
             "name": "주주명부",
@@ -1465,29 +1461,29 @@
         "conversion_upside": {
           "name": "전환 매력도",
           "grade": "red",
-          "detail": "매출 3m 성장 -4.0% (역성장)"
+          "detail": "매출 3m 성장 -34.1% (역성장)"
         },
         "debt_leakage": {
           "name": "부채 유출 리스크",
-          "grade": "red",
-          "detail": "잔고 3m 변화 -63.2% (급감)"
+          "grade": "green",
+          "detail": "잔고 3m 변화 +15.4% (안정)"
         },
         "shareholder_rights": {
           "name": "주주 동의권",
           "grade": "green",
-          "detail": "주주명부(2025.04.01 기준) PDF 확보. 보통주+우선주 구조, 스트롱벤처스 25억 라운드 확인. 상세 지분율 파싱 필요"
+          "detail": "RCPS 2건(펀드2곳), Goodnotes 14% 지분. 보통주+우선주 구조, 스트롱벤처스 25억 라운드"
         }
       },
       "cf_trends": {
         "revenue": {
-          "revenue_growth_3m": -4.0,
-          "revenue_12m_eok": 3.5,
+          "revenue_growth_3m": -34.1,
+          "revenue_12m_eok": 3.7,
           "months_available": 12,
-          "latest_month": "2026-03-01"
+          "latest_month": "2026-04-01"
         },
         "balance": {
-          "balance_change_3m": -63.2,
-          "declining_months": 1,
+          "balance_change_3m": 15.4,
+          "declining_months": 0,
           "current_balance_eok": 0.6,
           "months_available": 6
         },
@@ -1549,12 +1545,12 @@
           "grade": "red",
           "confidence": "medium",
           "evidence": [
-            "12개월 매출입금 3.5억 (현금주의)",
-            "매출 추이: 최근 3개월 -4% (0.6억 → 0.8억 → 0.1억)",
+            "12개월 매출입금 3.7억 (현금주의)",
+            "매출 추이: 최근 3개월 -34% (0.8억 → 0.2억 → 0.3억)",
             "영업적자 -19.7억/년 (월 1.6억)",
-            "런웨이 0.8개월 (CF 기준)"
+            "런웨이 0.9개월 (CF 기준)"
           ],
-          "summary": "매출 하락 추세 + 런웨이 0.8개월. BEP 달성 시급.",
+          "summary": "매출 하락 추세 + 런웨이 0.9개월. BEP 달성 시급.",
           "interview_required": true
         },
         "worst_case": {
@@ -1562,9 +1558,9 @@
           "grade": "red",
           "confidence": "high",
           "evidence": [
-            "CF 런웨이 0.8개월"
+            "CF 런웨이 0.9개월"
           ],
-          "summary": "런웨이 0.8개월 미만. 즉각적 자금/비용 조치 없으면 생존 위험.",
+          "summary": "런웨이 0.9개월 미만. 즉각적 자금/비용 조치 없으면 생존 위험.",
           "interview_required": true
         },
         "financial_3axis": {
@@ -1576,7 +1572,7 @@
             "부채/매출: 39% → red (금융부채 4.0억(단기차입) / 매출 10.2억 = 39%)",
             "만기/현금: 7.4x → red (단기차입 4.0억 / CF잔고 0.54억 = 7.4x. BS 현금과 괴리 심각)"
           ],
-          "summary": "Red 3개. 매출 5.7배 성장(FY22→24)이나 현금 소진 심각(BS 17.4→CF 0.54억). 적자 규모가 핵심 리스크.",
+          "summary": "Red 3개. 사전미팅(2026-03-26): CB 없음(RCPS only), Goodnotes 독점 확인, 18→9 구조조정 진행 중. 그러나 비전 전환 가설 단계+캐시엔진 부재→보류 판정.",
           "interview_required": false
         },
         "revenue_concentration": {
@@ -1600,6 +1596,204 @@
             "⚠️ CF 잔고 0.54억 — 즉시 자금 소진 위험"
           ],
           "summary": "선순위 4억 — 부채 구조 정리 또는 관찰 필요.",
+          "interview_required": false
+        }
+      }
+    },
+    {
+      "company_name": "(주)리콘랩스",
+      "folder_name": "리콘랩스",
+      "corp_id": 4978601565,
+      "cf_url": "https://capital-flow-rm.vercel.app/company/4978601565",
+      "survey_timestamp": "2026-04-05T12:29:31",
+      "ceo_name": "반성훈",
+      "applicant_email": "seonghoon.ban@reconlabs.kr",
+      "founded_date": "2019-11-12",
+      "website": "reconlabs.ai",
+      "description": "3D, 이미지, 영상 등 AI 에이전트 기반으로 창작을 도와주는 솔루션 제공",
+      "total_investment": "50억~100억 미만",
+      "funding_need": "2억~5억 미만",
+      "funding_purpose": "운영 안정화 (BEP 달성까지 버퍼)",
+      "pain_points": "불필요한 지출, 낭비성 항목들이 많은 것으로 파악됨. 카드 정리 및 비용 절감 도움.",
+      "cash_kpi": {
+        "balance_date": "2026-04-01",
+        "cash_mtd": 0.8,
+        "monthly_burn": 0.2,
+        "burn_positive": false,
+        "runway_months": 4.6
+      },
+      "stage": {
+        "current": "stage_1",
+        "stage_1_completed": true,
+        "stage_2_completed": false,
+        "stage_3_completed": false,
+        "next_action": "자료 제출 요청 (BS, 부채 내역, 주주명부)",
+        "required_documents": [
+          {
+            "name": "재무상태표 (최근 FY)",
+            "status": "received"
+          },
+          {
+            "name": "손익계산서 (최근 FY)",
+            "status": "received"
+          },
+          {
+            "name": "금융기관 대출 잔액 증명원",
+            "status": "missing"
+          },
+          {
+            "name": "사채/CB 계약서",
+            "status": "missing"
+          },
+          {
+            "name": "주주명부",
+            "status": "missing"
+          }
+        ]
+      },
+      "mezzanine": {
+        "repayment": {
+          "name": "상환 가능성",
+          "grade": "red",
+          "detail": "OP적자 -2210433364.0억, DSC red"
+        },
+        "conversion_upside": {
+          "name": "전환 매력도",
+          "grade": "red",
+          "detail": "매출 3m 성장 -37.1% (역성장)"
+        },
+        "debt_leakage": {
+          "name": "부채 유출 리스크",
+          "grade": "green",
+          "detail": "잔고 3m 변화 +46.0% (안정)"
+        },
+        "shareholder_rights": {
+          "name": "주주 동의권",
+          "grade": "unknown",
+          "detail": "인터뷰/자료 확인 필요"
+        }
+      },
+      "cf_trends": {
+        "revenue": {
+          "revenue_growth_3m": -37.1,
+          "revenue_12m_eok": 6.5,
+          "months_available": 12,
+          "latest_month": "2026-04-01"
+        },
+        "balance": {
+          "balance_change_3m": 46.0,
+          "declining_months": 1,
+          "current_balance_eok": 0.5,
+          "months_available": 6
+        },
+        "financial_history": [
+          {
+            "fiscal_year": "2024",
+            "sales_eok": 8.4,
+            "op_eok": -22.1
+          },
+          {
+            "fiscal_year": "2023",
+            "sales_eok": 5.6,
+            "op_eok": -36.8
+          },
+          {
+            "fiscal_year": "2022",
+            "sales_eok": 2.9,
+            "op_eok": -25.2
+          }
+        ]
+      },
+      "overall_grade": "red",
+      "auto_assessed": 5,
+      "interview_required": 6,
+      "criteria": {
+        "ceo_awareness": {
+          "name": "대표 인식",
+          "grade": "unknown",
+          "confidence": "interview",
+          "evidence": [
+            "DW/CF 데이터로 판정 불가 — 인터뷰 필수 항목"
+          ],
+          "summary": "인터뷰에서 확인 필요: 현 상태 객관적 인식 + 구체적 변화 의지",
+          "interview_required": true
+        },
+        "business_moat": {
+          "name": "독점성",
+          "grade": "unknown",
+          "confidence": "interview",
+          "evidence": [
+            "DW/CF 데이터로 판정 불가 — 인터뷰 필수 항목"
+          ],
+          "summary": "인터뷰에서 확인 필요: 경쟁사 진입 장벽, 대체 불가능한 자산/기술",
+          "interview_required": true
+        },
+        "debt_control": {
+          "name": "부채 제어",
+          "grade": "red",
+          "confidence": "high",
+          "evidence": [
+            "금융부채 20.0억 (단기 20.0억 + 장기 0.0억) [DW FY2024]",
+            "CF 평균잔고 0.7억 — 부채의 4% 커버",
+            "커버율 4% — 잔고로 부채 통제 불가"
+          ],
+          "summary": "부채 20.0억, 구조 제어 어려움. CB/전환 이슈 또는 자본잠식 심각.",
+          "interview_required": true
+        },
+        "bep_roadmap": {
+          "name": "BEP 로드맵",
+          "grade": "red",
+          "confidence": "medium",
+          "evidence": [
+            "12개월 매출입금 6.5억 (현금주의)",
+            "매출 추이: 최근 3개월 -37% (1.3억 → 0.5억 → 0.0억)",
+            "영업적자 -2210433364.0억/년 (월 184202780.3억)",
+            "런웨이 4.6개월 (CF 기준)"
+          ],
+          "summary": "매출 하락 추세 + 런웨이 4.6개월. BEP 달성 시급.",
+          "interview_required": true
+        },
+        "worst_case": {
+          "name": "최악 시나리오",
+          "grade": "red",
+          "confidence": "high",
+          "evidence": [
+            "CF 런웨이 4.6개월"
+          ],
+          "summary": "런웨이 4.6개월 미만. 즉각적 자금/비용 조치 없으면 생존 위험.",
+          "interview_required": true
+        },
+        "financial_3axis": {
+          "name": "재무 3축",
+          "grade": "red",
+          "confidence": "high",
+          "evidence": [
+            "DSC: 0.26 → red (현금 5.1억 / 단기차입 20억 = 26% 커버. 부채 구성 상세 미확인 (CB/RCPS 가능성))",
+            "부채/매출: 2.37 → red (금융부채 20억 / 매출 8.4억 = 237%. 매출 대비 부채 과다)",
+            "만기/현금: N/A → ? (단기차입 20억 만기 미확인. 이메일 확인 필요)"
+          ],
+          "summary": "Red 2개. DW 보강 (2026-04-06). 단기차입 20억 정체 확인 최우선. 현금 0.5억, 런웨이 0.3개월. 재무입금(증자/보조금?)으로 연명 중. 설문 매출 20~30억 vs DW 8.4억 괴리.",
+          "interview_required": false
+        },
+        "revenue_concentration": {
+          "name": "매출 집중도",
+          "grade": "unknown",
+          "confidence": "interview",
+          "evidence": [
+            "매출처별 비중 데이터 없음 — 인터뷰 확인 필요"
+          ],
+          "summary": "매출 집중도 미확인. 단일 거래처 의존 여부 인터뷰에서 확인 필요.",
+          "interview_required": true
+        },
+        "investability": {
+          "name": "투자 진입 장벽",
+          "grade": "yellow",
+          "confidence": "high",
+          "evidence": [
+            "선순위 금융부채: 2000000000.0억",
+            "자본: 1141950733.0억"
+          ],
+          "summary": "선순위 2000000000억 — 부채 구조 정리 또는 관찰 필요.",
           "interview_required": false
         }
       }
