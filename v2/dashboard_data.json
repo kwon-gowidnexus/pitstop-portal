@@ -1,6 +1,26 @@
 {
-  "generated_at": "2026-04-06T14:29:34.590009+09:00",
+  "generated_at": "2026-04-08T21:56:25.167418+00:00",
   "source": "피트스탑_준비_*.md + go_nogo_assessment.json",
+  "assessment_versions": {
+    "v1": {
+      "label": "v1 — 기본 설문 (27열)",
+      "date": "2026-02 ~ 2026-03",
+      "fields": "A:AA (타임스탬프~페인포인트)",
+      "note": "부채 상세/메자닌/동의권/BEP 자가진단 미수집. 판정 불완전 가능"
+    },
+    "v2": {
+      "label": "v2 — 확장 설문 (34열)",
+      "date": "2026-04 ~",
+      "fields": "A:AH (+연락처/주주명부/부채현황/메자닌/동의권/계약서/BEP자가진단)",
+      "note": "부채 구성·메자닌·동의권·BEP 자가진단 포함. 완전 판정 가능"
+    },
+    "v3": {
+      "label": "v3 — 풀 대시보드 (MD 기반)",
+      "date": "2026-04 ~",
+      "fields": "A:AH + 피트스탑_준비_*.md 전체 분석",
+      "note": "7대 게이트/재무직감/IR분석/BEP시나리오/KHK판단 포함. 완전 판정"
+    }
+  },
   "companies": [
     {
       "id": "리콘랩스",
@@ -9,14 +29,14 @@
       "stage": "stage_2",
       "stage_label": "서면 확인 단계",
       "overall_verdict": "RED",
-      "verdict_summary": "부채 20억 정체 미확인 + 현금 0.5억(사실상 고갈) + 실매출 급감(26.03 490만원) + 정부지원금 의존 97.8%. Stage 2 최우선: 부채 20억 구성 + 실매출 확인.",
+      "verdict_summary": "부채 20.7억(기보 20+기업은행 0.7) + RCPS 77억(동의권 3명+) + 현금 0.5억(사실상 고갈) + 실매출 급감(26.03 490만원) + 정부지원금 의존 97.8%. Stage 2 최우선: RCPS 전환조건 확인 + 동의권자 특정 + 실매출 확인.",
       "meta": {
         "ceo": "반성훈",
         "email": "seonghoon.ban@reconlabs.kr",
         "founded": "2019-11-14",
-        "business": "AI 3D 모델링/디자인 플랫폼 (XR, 커머스 영상)",
+        "business": "\"3D, 이미지, 영상 등 AI 에이전트 기반으로 창작을 도와주는 솔루션 제공\"",
         "cf_url": "https://capital-flow-rm.vercel.app/company/4978601565",
-        "investment_total": "61.5억 (4회, 최종 롯데벤처스 2022-05-03 Series A)",
+        "investment_total": "50억~100억 미만 | 필요자금: 2억~5억 미만",
         "gowid_grade": "한도 6,000만, 리스크등급 6, 안정성 58 / 성장성 36, **연체이력 36회**(현재 0원)",
         "delinquency": "연체이력 36회",
         "survey_timestamp": "2026-04-05T12:29:31"
@@ -26,13 +46,13 @@
           "id": "G1",
           "name": "피트스탑 적합성",
           "status": "warning",
-          "summary": "\"운영 안정화(BEP 달성까지 버퍼)\" + \"불필요한 지출 정리\". 구조 변화 의지 존재하나 구체성 부족"
+          "summary": "자금목적: \"운영 안정화(BEP 달성까지 버퍼)\" / 페인포인트: \"불필요한 지출, 낭비성 항목들이 많은 것으로 파악됨. 카드 정리 및 비용 절감 도움.\" 구조 변화 의지 존재하나 구체성 부족"
         },
         {
           "id": "G2",
           "name": "부채 선순위",
           "status": "red",
-          "summary": "단기차입 20억 (FY23~24 BS). 금융권/CB 미확인. DW 이자지급=0 vs BS 이자비용 0.9억 → CB 미지급이자 가능성"
+          "summary": "부채 20.7억 확인: 기보 20억 + 기업은행 0.7억(만기 3년+). RCPS 77억(카카오벤처스 등 8개사). 동의권자 3명+. DW 이자지급=0 vs BS 이자비용 0.9억 → 괴리 여전"
         },
         {
           "id": "G3",
@@ -62,7 +82,7 @@
           "id": "G7",
           "name": "EXIT 시나리오",
           "status": "red",
-          "summary": "누적적자 66억, 자본 11.4억, 부채비율 215%. CB/RCPS 존재·전환 조건 미확인"
+          "summary": "누적적자 66억, 자본 11.4억, 부채비율 215%. RCPS 77억 확인(8개 투자자). 동의권 3명+필요 — 신규 투자 시 기존 투자자 동의 필수. 전환 조건 미확인"
         }
       ],
       "new_findings": [
@@ -685,12 +705,140 @@
           }
         ]
       },
+      "business_context": {
+        "competitors": [
+          {
+            "category": "AI 3D 생성",
+            "name": "Meshy",
+            "funding": "~$12M",
+            "vs_us": "게임 에셋 특화, UX 간결. 리콘랩스는 실사 3D 품질 우위"
+          },
+          {
+            "category": "AI 3D 생성",
+            "name": "Luma AI",
+            "funding": "~$43M",
+            "vs_us": "NeRF/3DGS 최고 품질. 처리 속도에서 리콘랩스 우위"
+          },
+          {
+            "category": "AI 3D 생성",
+            "name": "Tripo AI",
+            "funding": "~$20M",
+            "vs_us": "API 생태계 강함. 리콘랩스는 파트 단위 편집 차별화"
+          },
+          {
+            "category": "AI 디자인",
+            "name": "Canva AI",
+            "funding": "$26B 밸류",
+            "vs_us": "브랜드/사용자 압도적. Agentic 워크플로우 없음"
+          },
+          {
+            "category": "AI 디자인",
+            "name": "Figma AI",
+            "funding": "~$12.5B",
+            "vs_us": "디자이너 록인. 3D 연계 없음"
+          },
+          {
+            "category": "AI 디자인",
+            "name": "Adobe Firefly",
+            "funding": "시총 $150B+",
+            "vs_us": "엔터프라이즈 신뢰. 고가/무거움"
+          }
+        ],
+        "comp_positioning": "포지셔닝: 3Dpresso(사진→3D)에서 접근성 우위, GenPresso(3D+AI 통합 디자인)라는 틈새가 차별점. 단, 펀딩 규모(Luma $43M vs 리콘랩스 ~$77억)와 브랜드 인지도에서 열위. 기술 해자는 있으나 수익화 격차가 핵심 리스크.**",
+        "shareholders": [
+          {
+            "name": "반성훈 (CEO)",
+            "share_type": "보통주",
+            "shares": "50,000",
+            "pct": "53.90%",
+            "note": "경영권 확보"
+          },
+          {
+            "name": "카카오-신한 제1호 트나이트 투자조합",
+            "share_type": "우선주",
+            "shares": "9,301",
+            "pct": "10.03%",
+            "note": "최대 투자자"
+          },
+          {
+            "name": "네이버 주식회사",
+            "share_type": "우선주",
+            "shares": "5,627",
+            "pct": "6.07%",
+            "note": ""
+          },
+          {
+            "name": "블루포인트파트너스",
+            "share_type": "우선주",
+            "shares": "5,560",
+            "pct": "5.99%",
+            "note": ""
+          },
+          {
+            "name": "한화비전",
+            "share_type": "우선주",
+            "shares": "5,169",
+            "pct": "5.57%",
+            "note": ""
+          },
+          {
+            "name": "한국투자 ESG 뉴딜펀드",
+            "share_type": "우선주",
+            "shares": "5,169",
+            "pct": "5.57%",
+            "note": ""
+          },
+          {
+            "name": "기술보증기금",
+            "share_type": "우선주",
+            "shares": "4,410",
+            "pct": "4.75%",
+            "note": "대출 20억과 별도 지분"
+          },
+          {
+            "name": "롯데-FRONT1스타트업펀드",
+            "share_type": "우선주",
+            "shares": "3,575",
+            "pct": "3.85%",
+            "note": ""
+          },
+          {
+            "name": "우종범",
+            "share_type": "보통주",
+            "shares": "504",
+            "pct": "0.54%",
+            "note": "공동창업자/임원 추정"
+          },
+          {
+            "name": "롯데크리에이트펀드",
+            "share_type": "우선주",
+            "shares": "1,723",
+            "pct": "1.86%",
+            "note": ""
+          },
+          {
+            "name": "디케이테크인",
+            "share_type": "우선주",
+            "shares": "1,723",
+            "pct": "1.86%",
+            "note": ""
+          }
+        ],
+        "sh_analysis": [
+          "보통주: CEO 53.9% + 우종범 0.5% = 54.4% → 경영권 안정",
+          "우선주(RCPS): 9개 투자자, 합계 42,257주(45.6%) = 설문 \"RCPS 77억\"과 일치",
+          "동의권 3명+: 카카오-신한(10%), 네이버(6%), 블루포인트(6%), 한화비전(5.6%), 한국투자(5.6%) — 5개사 이상이 주요 투자자. 동의권 행사 주체 특정 필요",
+          "기보 이중 포지션: 대출 20억 + 지분 4.75% — 채권자이자 주주. 이해 상충 가능성",
+          "롯데 2개 펀드: FRONT1(3.9%) + 크리에이트(1.9%) = 합산 5.7% — 실질 영향력 주의",
+          ""
+        ]
+      },
       "red_flags": [
         {
           "id": 1,
           "severity": "CRITICAL",
           "title": "실매출 급감 + 보조금 의존 97.8%",
-          "detail": "현금흐름표 26.03 기준: - 실매출: 490만원 (제품매출만). 26.02 기타매출 1.07억은 단발성(26.03 소멸) - 정부지원금: 2.14억 (수입의 97.8%) - 보조금이 끊기면 즉시 파산. 이것은 \"매출 회사\"가 아니라 \"보조금 수령 법인\""
+          "detail": "현금흐름표 26.02~03 기준 (25.10~26.01은 미분류): - 26.03 실매출: 490만원 (제품매출만). 26.02 기타매출 1.07억은 단발성(26.03 소멸) - 정부지원금: 2.14억 (26.03 수입의 97.8%) - 보조금이 끊기면 즉시 파산. 이것은 \"매출 회사\"가 아니라 \"보조금 수령 법인\" - 단, DW 매출입금은 월 0.4~1.4억 기록 — 미분류 기간 포함 시 매출 규모가 다를 수 있음. 분류 완성 전까지 \"490만원=전체 매출\"로 단정 불가"
         },
         {
           "id": 2,
@@ -702,7 +850,7 @@
           "id": 3,
           "severity": "CRITICAL",
           "title": "매출 괴리 3중",
-          "detail": "| 소스 | 매출 | |------|------| | 설문 응답 | \"20~30억\" | | IR 덱 FY25 | 확보 11.5억 | | DW 입금 | 연환산 ~5~7억 | | 현금흐름표 26.03 | 490만원/월 | CEO 제시 수치 vs 팩트 간 괴리가 3단계로 누적. 인터뷰에서 매출 인식 기준 반드시 확인."
+          "detail": "- 설문 응답: \"20~30억\" - IR 덱 FY25: 확보 11.5억 - DW 입금: 연환산 ~5~7억 - 현금흐름표 26.03: 490만원/월 CEO 제시 수치 vs 팩트 간 괴리가 3단계로 누적. 인터뷰에서 매출 인식 기준 반드시 확인."
         },
         {
           "id": 4,
@@ -732,15 +880,107 @@
           "id": 8,
           "severity": "MEDIUM",
           "title": "현금흐름표 4개월 미분류",
-          "detail": "25.10~26.01 입출금 합산 약 10억이 전부 \"분류 없음\". 계정과목 매핑 미완. - 내부 관리 체계 미성숙 신호 - 분류 완성 요청 필수"
+          "detail": "25.10~26.01 입출금 합산 약 10억이 전부 \"분류 없음\". 계정과목 매핑 미완. - 내부 관리 체계 미성숙 신호 - 분류 완성 요청 필수 - 이 기간의 매출/보조금 비율을 모르기 때문에 FLAG 1(실매출 490만원)과 FLAG 3(매출 괴리)의 판단에 불확실성 존재. 분류 완성이 다른 FLAG 판정의 전제 조건"
         },
         {
           "id": 9,
           "severity": "MEDIUM",
           "title": "BS 이자비용 vs DW 이자지급 불일치",
-          "detail": "FY24 BS 이자비용 0.88억이지만 DW interest_payment_out = 0. - CB/RCPS의 발생주의 이자 (만기까지 미지급, 원금에 가산) - 또는 DW 집계 누락 - 20억 차입이 CB라면: 만기 시점에 원금+이자 한꺼번에 상환 압박 ---"
+          "detail": "FY24 BS 이자비용 0.88억이지만 DW interest_payment_out = 0. - CB/RCPS의 발생주의 이자 (만기까지 미지급, 원금에 가산) - 또는 DW 집계 누락 - 20억 차입이 CB라면: 만기 시점에 원금+이자 한꺼번에 상환 압박"
         }
       ],
+      "intuition_check": {
+        "health_check": [
+          {
+            "id": 1,
+            "metric": "GP 마진",
+            "value": "~100%",
+            "verdict": "GREEN",
+            "reason": "매출원가 거의 0. 사업 본질 고마진"
+          },
+          {
+            "id": 2,
+            "metric": "OP 마진",
+            "value": "-263%",
+            "verdict": "RED",
+            "reason": "고정비가 매출의 2.4배. GP-OP 갭 363%p"
+          },
+          {
+            "id": 3,
+            "metric": "Debt/EBITDA",
+            "value": "N/A",
+            "verdict": "RED",
+            "reason": "EBITDA 음수, 자력 상환 불가"
+          },
+          {
+            "id": 4,
+            "metric": "FCF",
+            "value": "월 -1.6억",
+            "verdict": "RED",
+            "reason": "보조금 없이 즉시 파산"
+          },
+          {
+            "id": 5,
+            "metric": "매출 성장",
+            "value": "+50% YoY",
+            "verdict": "YELLOW",
+            "reason": "5.6→8.4억(BS) 성장 중. 현금흐름표 26.03 제품매출 490만원이나 미분류 4개월분 미반영. DW 매출입금 월 0.4~1.4억과 괴리 — 분류 완성 후 재확인"
+          }
+        ],
+        "frames": [
+          {
+            "id": 2,
+            "name": "ICR 역산",
+            "verdict": "RED",
+            "detail": "ICR = EBIT/이자비용 = -22.1억/0.88억 = -25.1배. 영업이익이 음수이므로 이자 커버 자체가 불가. 판정: RED. (이전 오류: 매출 8.4억을 분자로 사용 → 9.5배로 과대 산출)"
+          },
+          {
+            "id": 3,
+            "name": "BEP 역산",
+            "verdict": "RED",
+            "detail": "고정비 19.9억/년, 공헌이익률 90%. BEP 매출 = 22.1억/년 = 1.84억/월 현재 0.86억/월 → 2.14배 필요. 인원 22→12명 감축 시 BEP 1.04억/월로 현실적 범위 진입. 판정: RED"
+          },
+          {
+            "id": 4,
+            "name": "인당매출 역산",
+            "verdict": "RED",
+            "detail": "1인당 매출 0.38억/인 (SaaS 평균 3~5억의 1/10). 인건비/매출 186%. 판정: RED"
+          }
+        ],
+        "five_fingers": [
+          {
+            "finger": "엄지",
+            "metric": "GP마진",
+            "verdict": "GREEN",
+            "note": "고마진 AI SaaS"
+          },
+          {
+            "finger": "검지",
+            "metric": "OP마진",
+            "verdict": "RED",
+            "note": "-263%. \"돈 버는 사업에 돈 쓰는 조직\""
+          },
+          {
+            "finger": "중지",
+            "metric": "Debt",
+            "verdict": "RED",
+            "note": "EBITDA 음수, 자력 상환 불가"
+          },
+          {
+            "finger": "약지",
+            "metric": "ICR",
+            "verdict": "RED",
+            "note": "-25.1배. OP 음수로 이자 커버 불가"
+          },
+          {
+            "finger": "소지",
+            "metric": "CCC",
+            "verdict": "N/A",
+            "note": "제품매출 490만원/월, 운전자본 무의미"
+          }
+        ],
+        "one_liner": "GP 100%인데 OP -263% = '기술은 있는데 장사를 안/못 하는' 회사. ICR -25배, 이자도 고정비도 모두 커버 불가. 인원 절반 감축 + 매출 1.2배면 BEP 가능하지만, 26.03 실매출 490만원이 현실."
+      },
       "bep": {
         "current_state": [
           {
@@ -805,54 +1045,75 @@
       },
       "khk_preview": {
         "go": [
-          "단기차입 20억이 CB/RCPS(출자전환 가능)이고, 기존 투자자가 협조적",
+          "기보 20억이 만기 3년+ 장기 → 당장 상환 압박 없음. RCPS 77억도 전환 가능 구조면 부채 리스크 완화",
           "셔터스톡 파트너십 + GenPresso SaaS 전환으로 반복 매출 가시화",
           "PCT 35건 + KAIST 팀 → 기술 자산 가치 인정, 전략적 투자/M&A 가능성",
-          "대표가 추가 감축 + SaaS 피벗 의지 명확",
-          "20억이 금융권 부채 → \"금융권 부채가 많은 회사는 절대 안 들어가요\" (즉시 NO-GO)",
-          "실매출 490만원 + 보조금 97.8% → \"이거 회사가 아니라 보조금 프로젝트잖아\"",
-          "매출 3중 괴리(설문/IR/DW) → \"대표가 숫자를 모르거나 속이고 있어\"",
-          "대여금 5,000만원 + 법무비용 2,050만원 → \"현금 없는데 돈이 어디로 빠져나가는 거야\"",
-          "선순위 20억 + 피트스탑 후순위 → \"50억 선순위에 3억 후순위 = 무의미\""
+          "대표가 \"감축 가능한 항목이 있다\" + SaaS 피벗 의지 명확 (BEP 자가진단: 가능)"
         ],
-        "nogo": [],
+        "nogo": [
+          "⚠️ 기보 20억 = 금융권 부채 확정 → \"금융권 부채가 많은 회사는 절대 안 들어가요\" (즉시 NO-GO 트리거)",
+          "RCPS 77억 + 동의권자 3명+ → 신규 자금 투입 시 기존 투자자 동의 절차 복잡, 피트스탑 구조설계 난이도 상승",
+          "실매출 490만원 + 보조금 97.8% → \"이거 회사가 아니라 보조금 프로젝트잖아\"",
+          "매출 3중 괴리(설문 20~30억/IR 11.5억/DW 5~7억/현금흐름표 490만원) → \"대표가 숫자를 모르거나 속이고 있어\"",
+          "대여금 5,000만원 + 법무비용 2,050만원 → \"현금 없는데 돈이 어디로 빠져나가는 거야\""
+        ],
         "hold": [
           "AI 3D + PCT 35건 기술력 인정 → \"기술 좋은데 BM이 안 돌아가니까 관찰\" (메뉴잇 패턴)",
-          "부채 구조조정(출자전환) + SaaS 전환 성공 시 재논의 → \"다음에 얘기하자\""
+          "기보 만기 장기(3년+) + RCPS 출자전환 협의 가능 → \"구조를 정리하면 다시 보자\"",
+          "BEP 자가진단 \"가능\" → 구체적 감축 계획 수취 후 재판단"
         ]
       },
       "actions": [
         {
           "priority": 1,
-          "action": "이메일 발송: 사전 확인 항목 6건 (부채/주주/현금/매출/운영/기대)",
+          "action": "이메일 발송: 사전 확인 항목 5건 (RCPS전환조건/현금·보조금/매출구조/운영/비용절감)",
           "owner": "KYI",
           "deadline": "즉시"
         },
         {
           "priority": 2,
-          "action": "DW 크로스체크: 이메일 답변 수취 후 BS vs 답변 vs 현금흐름표 대조",
+          "action": "주주명부 확인: Drive 링크 다운로드 → 지분율/투자자별 지분 파악",
           "owner": "KYI",
-          "deadline": "답변 후"
+          "deadline": "즉시"
         },
         {
           "priority": 3,
+          "action": "KHK 사전 보고: 기보 20억(금융권) 확정 → NO-GO 트리거 해당 여부 판단 요청",
+          "owner": "KYI→KHK",
+          "deadline": "이메일 전"
+        },
+        {
+          "priority": 4,
           "action": "매출 팩트체크: 설문(20~30억) vs IR(11.5억) vs DW(5~7억) vs 현금흐름표(490만원) 정리",
           "owner": "KYI",
           "deadline": "답변 후"
         },
         {
-          "priority": 4,
-          "action": "Stage 판별: 부채 20억 정체 + 매출 실체 확인 → GO/NO-GO 프리스크리닝",
+          "priority": 5,
+          "action": "Stage 판별: RCPS 전환조건 + 매출 실체 + KHK 금융권부채 판단 → GO/NO-GO",
           "owner": "KYI→KHK",
           "deadline": "-"
         }
       ],
-      "email_draft": "반성훈 대표님, 안녕하세요. 고위드넥서스 권영인입니다.\n\n피트스탑 프로세스 다음 단계 준비를 위해 몇 가지 사전 확인을 드리려 합니다.\n인터뷰 자리에서 보다 심도 있는 논의가 가능하도록, 아래 내용을 미리 공유해 주시면\n큰 도움이 될 것 같습니다.\n\n1. 부채 상세\n   - 현재 금융권 부채(은행/기보/정금) 총액과 구성\n   - CB/BW/RCPS 등 전환사채 존재 여부, 잔액, 만기, 전환 조건\n   - 사채 또는 기타 차입금 여부 (현금흐름표상 사채상환 건 포함)\n\n2. 주주 현황\n   - 주주명부 (지분율 포함)\n   - 기존 투자자의 동의권 범위 (신규 CB 발행 시 동의 필요 여부)\n\n3. 현금 및 자금 현황\n   - 현재 통장 실잔고 (법인 전체)\n   - 향후 3개월 내 확정 입금 예정 건\n   - 최근 수령한 정부지원금/보조금 내역 (종류, 금액, 잔여 가용액, 종료 시점)\n\n4. 매출 구조\n   - FY2025 매출 실적 (확정 기준, 매출 인식 기준 명시)\n   - 주요 매출처 Top 3과 비중\n   - 설문 \"20~30억\" 기재의 기준 (확정 매출 vs 계약액 vs 목표)\n\n5. 운영 관련\n   - 현금흐름표상 대여금 항목(2~3월)의 수취인 및 용도\n   - 법무비용(3월) 관련 진행 중인 법적 이슈 유무\n   - 임금 지급 현황 (체불 이력 유무)\n\n6. 피트스탑 기대 사항\n   - 피트스탑에서 기대하시는 구체적 지원 내용과 자금 용도\n   - 현재 가장 시급한 경영 이슈\n\n가능한 범위 내에서 편하게 공유해 주시면 됩니다.\n답변이 어려운 항목이 있으시면 인터뷰 자리에서 직접 논의해도 괜찮습니다.\n\n감사합니다.\n권영인 드림\n고위드넥서스"
+      "email_draft": "반성훈 대표님, 안녕하세요. 고위드넥서스 권영인입니다.\n\n피트스탑 프로세스 다음 단계 준비를 위해 몇 가지 사전 확인을 드리려 합니다.\n설문에서 공유해 주신 부채/RCPS/주주 현황은 잘 확인했고, 추가로 아래 사항을\n미리 확인드리면 인터뷰 자리에서 보다 심도 있는 논의가 가능할 것 같습니다.\n\n1. RCPS 전환 조건\n   - RCPS 77억의 전환가격, 만기, 풋옵션(상환청구권) 조건\n   - 현재 전환 또는 상환 청구를 받은 상태인지 여부\n   - 메자닌 계약서 요약본 공유 가능 여부\n\n2. 현금 및 보조금 현황\n   - 현재 통장 실잔고 (법인 전체)\n   - 향후 3개월 내 확정 입금 예정 건\n   - 최근 수령한 정부지원금/보조금 내역 (종류, 금액, 잔여 가용액, 종료 시점)\n\n3. 매출 구조\n   - FY2025 매출 실적 (확정 기준, 매출 인식 기준 명시)\n   - 주요 매출처 Top 3과 비중\n   - 설문 \"20~30억\" 기재의 기준 (확정 매출 vs 계약액 vs 목표)\n\n4. 운영 관련\n   - 현금흐름표상 대여금 항목(2~3월)의 수취인 및 용도\n   - 법무비용(3월) 관련 진행 중인 법적 이슈 유무\n   - 임금 지급 현황 (체불 이력 유무)\n\n5. 비용 절감 계획\n   - \"감축 가능한 항목\"의 구체적 내용과 절감 예상 금액\n   - BEP 달성까지 예상 소요 기간과 전제 조건\n\n가능한 범위 내에서 편하게 공유해 주시면 됩니다.\n답변이 어려운 항목이 있으시면 인터뷰 자리에서 직접 논의해도 괜찮습니다.\n\n감사합니다.\n권영인 드림\n고위드넥서스",
+      "assessment_version": "v3",
+      "_screener": {
+        "survey_v2": {
+          "ceo_phone": "010-3315-1598",
+          "shareholder_register": "https://drive.google.com/open?id=1vcTlTXTY4eypbHx0893HLAR0x7Dw09J-",
+          "debt_status": "기술보증기금 20억, 기업은행 추가 대출 7000만원 (만기 3년이상 남음)",
+          "mezzanine_status": "RCPS 77억 / 투자자: 카카오벤처스, 롯데벤처스, 네이버D2SF, 한국투자파트너스, 한화비전, 디케이테크인, 블루포인트파트너스, 기술보증기금",
+          "investor_consent": "필요 — 동의권자 3명 이상",
+          "mezzanine_contract": "",
+          "bep_selfcheck": "가능하다 — 감축 가능한 항목이 있다"
+        }
+      }
     },
     {
       "id": "마진맥스",
       "name": "주식회사 마진맥스",
       "status": "closed",
+      "assessment_version": "v2",
       "stage": "closed",
       "stage_label": "종료",
       "overall_verdict": "GREEN",
@@ -872,12 +1133,23 @@
       "new_findings": [],
       "financials": {},
       "ir_analysis": {},
+      "business_context": {},
       "red_flags": [],
+      "intuition_check": {},
       "bep": {},
       "khk_preview": {},
       "actions": [],
       "email_draft": "",
       "_screener": {
+        "survey_v2": {
+          "ceo_phone": "",
+          "shareholder_register": "",
+          "debt_status": "",
+          "mezzanine_status": "",
+          "investor_consent": "",
+          "mezzanine_contract": "",
+          "bep_selfcheck": ""
+        },
         "company_name": "주식회사 마진맥스",
         "folder_name": "마진맥스",
         "corp_id": 8268602651,
@@ -1063,12 +1335,92 @@
             "interview_required": false
           }
         }
+      },
+      "gonogo_analysis": {
+        "fiscal_year": "FY2024(DW)",
+        "revenue": "17.3",
+        "op": "+1.8",
+        "financial_debt": "0",
+        "cash": "1.6",
+        "equity": "2.8",
+        "dsc": {
+          "value": "N/A",
+          "grade": "green",
+          "note": "금융권 차입금 0 -- DSC 산정 불요"
+        },
+        "debt_revenue": {
+          "value": "0%",
+          "grade": "green",
+          "note": "부채총계 0.3억 전액 매입채무 등 운영성 부채"
+        },
+        "maturity_cash": {
+          "value": "0x",
+          "grade": "green",
+          "note": "만기 도래 차입금 없음"
+        },
+        "red_count": 0,
+        "conditions": {
+          "c1_debt": {
+            "grade": "O",
+            "note": "금융권 부채 제로. 부채총계 0.3억은 전액 운영성"
+          },
+          "c2_conversion": {
+            "grade": "O",
+            "note": "CB/BW 없음. 출자전환 이슈 없음"
+          },
+          "c3_cash_engine": {
+            "grade": "O",
+            "note": "OP +1.8억 흑자. OPM 10.7%(FY24)"
+          },
+          "c4_moat": {
+            "grade": "?",
+            "note": "숙박 B2B SaaS -- 독점 기술/데이터 인터뷰 확인 필요"
+          },
+          "c5_equity": {
+            "grade": "?",
+            "note": "빈태찬 46% 최대주주. 대표 이원화 구조 확인 필요"
+          },
+          "c6_ceo": {
+            "grade": "?",
+            "note": "설문 CEO 채지훈(18%) vs 법인세 대표 빈태찬(46%) 불일치"
+          },
+          "c7_restructuring": {
+            "grade": "N/A",
+            "note": "흑자 기업 -- 구조조정 불요"
+          }
+        },
+        "revenue_concentration": {
+          "top1_customer": null,
+          "top1_share": null,
+          "contract_type": null,
+          "grade": "unknown",
+          "note": "미확인"
+        },
+        "cb_maturity": {
+          "has_cb": false,
+          "grade": "green",
+          "note": "CB/BW 없음"
+        },
+        "investability": {
+          "senior_debt_eok": 0,
+          "equity_eok": 2.8,
+          "capital_eroded": false,
+          "min_meaningful_investment_eok": 5,
+          "grade": "green",
+          "note": "부채 0, 자본 2.8억 건전",
+          "blockers": []
+        },
+        "next_action": "인터뷰 -> 독점자산/대표역량 확인",
+        "note": "부채 0, 흑자, 최적 타겟. 설립 3년차.",
+        "dw_note": "",
+        "observation_period": {}
       }
     },
     {
       "id": "인테이크",
       "name": "인테이크 주식회사",
       "status": "closed",
+      "assessment_version": "v2",
       "stage": "closed",
       "stage_label": "종료",
       "overall_verdict": "YELLOW",
@@ -1088,12 +1440,23 @@
       "new_findings": [],
       "financials": {},
       "ir_analysis": {},
+      "business_context": {},
       "red_flags": [],
+      "intuition_check": {},
       "bep": {},
       "khk_preview": {},
       "actions": [],
       "email_draft": "",
       "_screener": {
+        "survey_v2": {
+          "ceo_phone": "010-9557-4817",
+          "shareholder_register": "",
+          "debt_status": "",
+          "mezzanine_status": "",
+          "investor_consent": "",
+          "mezzanine_contract": "",
+          "bep_selfcheck": ""
+        },
         "company_name": "인테이크 주식회사",
         "folder_name": "인테이크",
         "corp_id": 1198668123,
@@ -1287,12 +1650,92 @@
             "interview_required": false
           }
         }
+      },
+      "gonogo_analysis": {
+        "fiscal_year": "접수서류(FY 미확인)",
+        "revenue": "201",
+        "op": "-24.7",
+        "financial_debt": "26.7",
+        "cash": "101.8",
+        "equity": "104.8",
+        "dsc": {
+          "value": "N/A",
+          "grade": "red",
+          "note": "OP -24.7억 적자 -- DSC 산정 불가"
+        },
+        "debt_revenue": {
+          "value": "13%",
+          "grade": "yellow",
+          "note": "금융부채 26.7억 / 매출 201억 = 13%. ※ DW FY2024 기준 17.0억/201억=8.5%(green) — 원본 BS 확인 시 등급 변동 가능"
+        },
+        "maturity_cash": {
+          "value": "0.16x",
+          "grade": "green",
+          "note": "만기도래 16.2억 / 현금 101.8억. 현금으로 충분히 커버"
+        },
+        "red_count": 1,
+        "conditions": {
+          "c1_debt": {
+            "grade": "-",
+            "note": "금융부채 26.7억 존재하나 현금 101.8억으로 즉시 상환 가능"
+          },
+          "c2_conversion": {
+            "grade": "O",
+            "note": "CB 전환 이슈 없음 (확인 필요)"
+          },
+          "c3_cash_engine": {
+            "grade": "-",
+            "note": "OP -24.7억 적자. 매출 201억 대형이나 BEP 미도달"
+          },
+          "c4_moat": {
+            "grade": "?",
+            "note": "건강기능식품 D2C -- 브랜드/채널 독점성 인터뷰 확인"
+          },
+          "c5_equity": {
+            "grade": "?",
+            "note": "지분 구조 미확인"
+          },
+          "c6_ceo": {
+            "grade": "?",
+            "note": "대표 역량 인터뷰 확인 필요"
+          },
+          "c7_restructuring": {
+            "grade": "?",
+            "note": "적자 구조 -- 비용 구조조정 의지/플랜 확인 필요"
+          }
+        },
+        "revenue_concentration": {
+          "top1_customer": null,
+          "top1_share": null,
+          "contract_type": null,
+          "grade": "unknown",
+          "note": "미확인"
+        },
+        "cb_maturity": {
+          "has_cb": "unknown",
+          "grade": "unknown",
+          "note": "CB 전환 이슈 없음 (확인 필요)"
+        },
+        "investability": {
+          "senior_debt_eok": 26.7,
+          "equity_eok": 104.8,
+          "capital_eroded": false,
+          "min_meaningful_investment_eok": 30,
+          "grade": "green",
+          "note": "현금 101.8억으로 부채 즉시 상환 가능. 투자 진입 장벽 낮음",
+          "blockers": []
+        },
+        "next_action": "인터뷰 -> BEP 플랜/사업구조 확인",
+        "note": "부채 낮음, 매출 대형, 6개월 BEP 미션",
+        "dw_note": "DW FY2024: 금융부채 17.0억(단기 16.7+장기 0.3) vs go_nogo 26.7억 — 차이 9.7억은 기타금융부채/유동성장기차입금 포함 가능성. 원본 BS 재확인 필요",
+        "observation_period": {}
       }
     },
     {
       "id": "웰로",
       "name": "주식회사 웰로",
       "status": "closed",
+      "assessment_version": "v2",
       "stage": "closed",
       "stage_label": "종료",
       "overall_verdict": "YELLOW",
@@ -1312,12 +1755,23 @@
       "new_findings": [],
       "financials": {},
       "ir_analysis": {},
+      "business_context": {},
       "red_flags": [],
+      "intuition_check": {},
       "bep": {},
       "khk_preview": {},
       "actions": [],
       "email_draft": "",
       "_screener": {
+        "survey_v2": {
+          "ceo_phone": "",
+          "shareholder_register": "",
+          "debt_status": "",
+          "mezzanine_status": "",
+          "investor_consent": "",
+          "mezzanine_contract": "",
+          "bep_selfcheck": ""
+        },
         "company_name": "주식회사 웰로",
         "folder_name": "웰로",
         "corp_id": 7058602126,
@@ -1511,12 +1965,92 @@
             "interview_required": false
           }
         }
+      },
+      "gonogo_analysis": {
+        "fiscal_year": "FY2025(가결산)",
+        "revenue": "23.9",
+        "op": "-52.7",
+        "financial_debt": "12",
+        "cash": "75",
+        "equity": "60.1",
+        "dsc": {
+          "value": "N/A",
+          "grade": "red",
+          "note": "OP -52.7억 적자 -- DSC 산정 불가"
+        },
+        "debt_revenue": {
+          "value": "50%",
+          "grade": "green",
+          "note": "비율 50%이나 금융부채 12억 vs CF 평균잔고 48억 (잔고가 4배) → 즉시 상환 커버 가능"
+        },
+        "maturity_cash": {
+          "value": "0.16x",
+          "grade": "green",
+          "note": "만기도래 12억 / 현금 75억 = 0.16x. 현금 여유 충분"
+        },
+        "red_count": 1,
+        "conditions": {
+          "c1_debt": {
+            "grade": "-",
+            "note": "금융부채 12억. 현금 75억 대비 소액이나 비율상 높음"
+          },
+          "c2_conversion": {
+            "grade": "O",
+            "note": "시리즈B 투자 이력. 전환 이슈 없음 (내부 심사 확인)"
+          },
+          "c3_cash_engine": {
+            "grade": "X",
+            "note": "OP -52.7억 대규모 적자. 월 번레이트 약 4.4억"
+          },
+          "c4_moat": {
+            "grade": "O",
+            "note": "독점 기술/데이터 보유 (인터뷰 확인)"
+          },
+          "c5_equity": {
+            "grade": "-",
+            "note": "시리즈B 후 희석 상태 확인 완료. 대표 지분 유지 (인터뷰)"
+          },
+          "c6_ceo": {
+            "grade": "O",
+            "note": "대표 구조조정 실행력 확인 (인터뷰)"
+          },
+          "c7_restructuring": {
+            "grade": "O",
+            "note": "인력 50% 감축 실행 중. 구조조정 의지 확인됨 (내부 심사)"
+          }
+        },
+        "revenue_concentration": {
+          "top1_customer": null,
+          "top1_share": null,
+          "contract_type": null,
+          "grade": "unknown",
+          "note": "미확인"
+        },
+        "cb_maturity": {
+          "has_cb": false,
+          "grade": "green",
+          "note": "시리즈B 투자. 전환 이슈 없음"
+        },
+        "investability": {
+          "senior_debt_eok": 12,
+          "equity_eok": 60.1,
+          "capital_eroded": false,
+          "min_meaningful_investment_eok": 15,
+          "grade": "green",
+          "note": "현금 75억 보유, 부채 12억 소형. 투자 진입 장벽 낮음",
+          "blockers": []
+        },
+        "next_action": "종료 — 구조조정 모니터링 3개월 후 재검토",
+        "note": "인터뷰 완료 후 종료. 현금 75억으로 부채 커버 가능. 캐시번이 핵심 리스크.",
+        "dw_note": "DW FY2024: 매출 6.7억, OP -26.5억 vs go_nogo FY2025 가결산 매출 23.9억, OP -52.7억 — FY 차이. DW FY2025 미적재",
+        "observation_period": {}
       }
     },
     {
       "id": "온오프믹스",
       "name": "주식회사 온오프믹스",
       "status": "closed",
+      "assessment_version": "v2",
       "stage": "closed",
       "stage_label": "종료",
       "overall_verdict": "ORANGE",
@@ -1536,12 +2070,23 @@
       "new_findings": [],
       "financials": {},
       "ir_analysis": {},
+      "business_context": {},
       "red_flags": [],
+      "intuition_check": {},
       "bep": {},
       "khk_preview": {},
       "actions": [],
       "email_draft": "",
       "_screener": {
+        "survey_v2": {
+          "ceo_phone": "",
+          "shareholder_register": "",
+          "debt_status": "",
+          "mezzanine_status": "",
+          "investor_consent": "",
+          "mezzanine_contract": "",
+          "bep_selfcheck": ""
+        },
         "company_name": "주식회사 온오프믹스",
         "folder_name": "온오프믹스",
         "corp_id": 2218134988,
@@ -1741,15 +2286,98 @@
             "interview_required": false
           }
         }
+      },
+      "gonogo_analysis": {
+        "fiscal_year": "FY2024(DW)",
+        "revenue": "17.6",
+        "op": "-5.8",
+        "financial_debt": "12.0",
+        "cash": "7",
+        "equity": "-12.6",
+        "dsc": {
+          "value": "N/A",
+          "grade": "red",
+          "note": "OP -5.8억 적자 -- DSC 산정 불가"
+        },
+        "debt_revenue": {
+          "value": "68%",
+          "grade": "red",
+          "note": "금융부채 12.0억(단기 7.0+장기 5.0, DW FY2024) / 매출 17.6억 = 68%. CF 평균잔고 6.0억 대비 괴리 100% → 50%룰 미적용"
+        },
+        "maturity_cash": {
+          "value": "0.7x",
+          "grade": "green",
+          "note": "만기도래 5억(IBK) / 현금 7억 = 0.7x"
+        },
+        "red_count": 2,
+        "conditions": {
+          "c1_debt": {
+            "grade": "X",
+            "note": "DW FY2024 기준 금융부채 12.0억(단기 7.0+장기 5.0). 자본잠식(-12.6억) 상태"
+          },
+          "c2_conversion": {
+            "grade": "X",
+            "note": "CB/사채 전환 이슈 미확인. 자본잠식으로 전환 구조 복잡"
+          },
+          "c3_cash_engine": {
+            "grade": "-",
+            "note": "OP -5.8억 적자이나 KIMST 방산 수주 시 흑자 전환 가능성"
+          },
+          "c4_moat": {
+            "grade": "-",
+            "note": "이벤트 플랫폼 13년 운영. 방산(KIMST) 독점성 제한적 (인터뷰 확인)"
+          },
+          "c5_equity": {
+            "grade": "-",
+            "note": "양준철 대표 지분 확인 완료 (인터뷰)"
+          },
+          "c6_ceo": {
+            "grade": "O",
+            "note": "13년 운영 경험. 방산 전환 의지 확인 (인터뷰 2026-03-12)"
+          },
+          "c7_restructuring": {
+            "grade": "O",
+            "note": "이벤트->방산 피벗. 구조조정 의지 확인됨 (인터뷰)"
+          }
+        },
+        "revenue_concentration": {
+          "top1_customer": "KIMST(방산)",
+          "top1_share": null,
+          "contract_type": "project",
+          "grade": "unknown",
+          "note": "이벤트→방산 피벗 중. KIMST 수주 확정 시 단일 고객 의존 가능성"
+        },
+        "cb_maturity": {
+          "has_cb": "unknown",
+          "grade": "unknown",
+          "note": "CB/사채 전환 이슈 미확인. 자본잠식으로 전환 구조 복잡"
+        },
+        "investability": {
+          "senior_debt_eok": 12.0,
+          "equity_eok": -12.6,
+          "capital_eroded": true,
+          "min_meaningful_investment_eok": 25,
+          "grade": "red",
+          "note": "자본잠식 -12.6억 + 금융부채 12억. 투자금 부채 상환에 선소진",
+          "blockers": [
+            "자본잠식 -12.6억",
+            "금융부채 12억 선순위"
+          ]
+        },
+        "next_action": "종료 — KIMST 수주 확정 시 재검토",
+        "note": "인터뷰 완료 후 종료. 부채/매출 68%(Red). 자본잠식 + KIMST 수주 불확실.",
+        "dw_note": "DW FY2024: 매출 30.9억, OP -14.5억 — go_nogo 매출 17.6억과 괴리(FY 기준 차이 추정). 금융부채는 DW 12.0억(단기 7.0+장기 5.0) 확인 반영",
+        "observation_period": {}
       }
     },
     {
       "id": "와이오엘오",
       "name": "(주)와이오엘오",
       "status": "closed",
+      "assessment_version": "v2",
       "stage": "closed",
       "stage_label": "종료",
-      "overall_verdict": "CLOSED",
+      "overall_verdict": "ORANGE",
       "verdict_summary": "크로스보더 이커머스 플랫폼 '크로켓', 매출 33.6억, OP -7.9억 적자. 직원 25명, 일본/미국 글로벌 확장 중.; 금융부채 17.6억 vs 자본 0.1억 — 부채비율 극과다이나 만기 2029~2033년 장기구조. 9.1억 괴리(CB 가능성) 확인 필요.; Orange Zone: 만기 장기로 시간 여유 있으나, 자본 잠식 직전 + 적자 지속 — CB 확인 + OP 전환 플랜 인터뷰 필수.",
       "meta": {
         "ceo": "",
@@ -1766,12 +2394,23 @@
       "new_findings": [],
       "financials": {},
       "ir_analysis": {},
+      "business_context": {},
       "red_flags": [],
+      "intuition_check": {},
       "bep": {},
       "khk_preview": {},
       "actions": [],
       "email_draft": "",
       "_screener": {
+        "survey_v2": {
+          "ceo_phone": "01075401029",
+          "shareholder_register": "",
+          "debt_status": "",
+          "mezzanine_status": "",
+          "investor_consent": "",
+          "mezzanine_contract": "",
+          "bep_selfcheck": ""
+        },
         "company_name": "(주)와이오엘오",
         "folder_name": "와이오엘오",
         "corp_id": 6108634204,
@@ -1969,12 +2608,99 @@
             "interview_required": false
           }
         }
+      },
+      "gonogo_analysis": {
+        "fiscal_year": "접수서류(FY 미확인)",
+        "revenue": "33.6",
+        "op": "-7.9",
+        "financial_debt": "17.6",
+        "cash": "5.5",
+        "equity": "0.1",
+        "dsc": {
+          "value": "N/A",
+          "grade": "red",
+          "note": "OP -7.9억 적자 -- DSC 산정 불가"
+        },
+        "debt_revenue": {
+          "value": "52%",
+          "grade": "red",
+          "note": "금융부채 17.6억 / 매출 33.6억 = 52%. ※ DW FY2024 기준 8.5억/31.9억=27%(yellow) — 원본 BS 확인 시 등급 변동 가능"
+        },
+        "maturity_cash": {
+          "value": "0.33x",
+          "grade": "green",
+          "note": "만기 장기(2029-2033). 단기 만기 부담 없음"
+        },
+        "red_count": 2,
+        "conditions": {
+          "c1_debt": {
+            "grade": "X",
+            "note": "금융부채 17.6억(접수서류). DW FY2024 기준 8.5억(전액 장기) — 차이 9.1억 확인 필요. 자본 0.1억 대비 부채 과다"
+          },
+          "c2_conversion": {
+            "grade": "X",
+            "note": "CB/전환사채 존재 여부 미확인 — 금융부채 괴리(9.1억)의 원인일 가능성"
+          },
+          "c3_cash_engine": {
+            "grade": "-",
+            "note": "OP -7.9억 적자. 매출 33.6억 성장세이나 흑자 전환 미달"
+          },
+          "c4_moat": {
+            "grade": "-",
+            "note": "F&B/라이프스타일 브랜드 -- 브랜드 독점성 인터뷰 확인 필요"
+          },
+          "c5_equity": {
+            "grade": "?",
+            "note": "지분 구조 미확인"
+          },
+          "c6_ceo": {
+            "grade": "?",
+            "note": "대표 역량/비전 인터뷰 확인 필요"
+          },
+          "c7_restructuring": {
+            "grade": "?",
+            "note": "구조조정 의지/플랜 인터뷰 확인 필요"
+          }
+        },
+        "revenue_concentration": {
+          "top1_customer": "PG 정산(B2C 이커머스)",
+          "top1_share": 0,
+          "contract_type": "none",
+          "grade": "green",
+          "note": "DW 매출입금 1,537건/438억 — B2C 이커머스 분산구조, PG 정산(비바리퍼블리카/eximbay 소액). 단일 거래처 집중 없음"
+        },
+        "cb_maturity": {
+          "has_cb": "unknown",
+          "total_cb_eok": null,
+          "earliest_maturity": null,
+          "months_to_maturity": null,
+          "conversion_likelihood": null,
+          "grade": "unknown",
+          "note": "go_nogo 17.6억 vs DW 8.5억 차이 9.1억 — CB/전환사채 포함 가능성 높음. 인터뷰 확인 필요"
+        },
+        "investability": {
+          "senior_debt_eok": 17.6,
+          "equity_eok": 0.1,
+          "capital_eroded": false,
+          "min_meaningful_investment_eok": 20,
+          "grade": "yellow",
+          "note": "선순위 17.6억 + 자본 0.1억(잠식 직전). 만기 장기(2029-2033)라 즉시 압박은 없으나, 부채 구조 정리 선행 필요",
+          "blockers": [
+            "자본 0.1억 — 실질 잠식 직전",
+            "금융부채 17.6억 중 9.1억 성격 미확인(CB 가능성)"
+          ]
+        },
+        "next_action": "인터뷰 -> CB 확인 + 구조조정 의지 + OP 전환 플랜 확인",
+        "note": "만기 장기(2029-2033), 시간 여유. 매출 성장 중. 금융부채 괴리(9.1억) 해결 필요.",
+        "dw_note": "DW FY2024: 금융부채 8.5억(전액 장기) vs go_nogo 17.6억 — 차이 9.1억은 CB/사채/기타금융부채 포함 가능성. 원본 BS 재확인 필요. DW OP -4.2억 vs go_nogo -7.9억(FY 차이 추정)",
+        "observation_period": {}
       }
     },
     {
       "id": "모트에이아이",
       "name": "주식회사 모트에이아이",
       "status": "closed",
+      "assessment_version": "v2",
       "stage": "closed",
       "stage_label": "종료",
       "overall_verdict": "ORANGE",
@@ -1994,12 +2720,23 @@
       "new_findings": [],
       "financials": {},
       "ir_analysis": {},
+      "business_context": {},
       "red_flags": [],
+      "intuition_check": {},
       "bep": {},
       "khk_preview": {},
       "actions": [],
       "email_draft": "",
       "_screener": {
+        "survey_v2": {
+          "ceo_phone": "",
+          "shareholder_register": "",
+          "debt_status": "",
+          "mezzanine_status": "",
+          "investor_consent": "",
+          "mezzanine_contract": "",
+          "bep_selfcheck": ""
+        },
         "company_name": "주식회사 모트에이아이",
         "folder_name": "모트에이아이",
         "corp_id": 1838600202,
@@ -2202,12 +2939,100 @@
             "interview_required": false
           }
         }
+      },
+      "gonogo_analysis": {
+        "fiscal_year": "FY2025(가결산)",
+        "revenue": "11.8",
+        "op": "+1.2",
+        "financial_debt": "42.3",
+        "cash": "0.1",
+        "equity": "-29.4",
+        "dsc": {
+          "value": "0.48x",
+          "grade": "red",
+          "note": "OP 1.2억 vs 이자비용 2.5억. 이자만으로 OP 초과"
+        },
+        "debt_revenue": {
+          "value": "358%",
+          "grade": "red",
+          "note": "금융부채 42.3억 / 매출 11.8억 = 358%. 매출 대비 부채 극과다"
+        },
+        "maturity_cash": {
+          "value": "22x",
+          "grade": "red",
+          "note": "CB 22.1억 이미 만기 경과. 5월 2.2억+8월 2.2억 상환 예정 vs 현금 0.1억. 커버 불가"
+        },
+        "red_count": 3,
+        "conditions": {
+          "c1_debt": {
+            "grade": "XX",
+            "note": "금융부채 42.3억(CB 22.1억+대출 20.2억). 매출의 3.6배. 진행 불가 핵심 사유"
+          },
+          "c2_conversion": {
+            "grade": "X",
+            "note": "CB 22.1억 출자전환 미완료. 전환 선행 필수 (내부 심사 조건)"
+          },
+          "c3_cash_engine": {
+            "grade": "-",
+            "note": "OP +1.2억 흑자이나 이자비용(2.5억) 차감 시 순적자"
+          },
+          "c4_moat": {
+            "grade": "X",
+            "note": "AI 영상편집 — 경쟁 과다, 독점 기술 부재 확인 (인터뷰)"
+          },
+          "c5_equity": {
+            "grade": "X",
+            "note": "자본잠식 -29.4억. 지분 가치 사실상 없음 (인터뷰 확인)"
+          },
+          "c6_ceo": {
+            "grade": "-",
+            "note": "기술력은 있으나 재무관리 역량 부족 (인터뷰 확인)"
+          },
+          "c7_restructuring": {
+            "grade": "-",
+            "note": "부채 리스트럭처링 논의 중이나 실행 미흡 (인터뷰 확인)"
+          }
+        },
+        "revenue_concentration": {
+          "top1_customer": null,
+          "top1_share": null,
+          "contract_type": null,
+          "grade": "unknown",
+          "note": "미확인"
+        },
+        "cb_maturity": {
+          "has_cb": true,
+          "total_cb_eok": 22.1,
+          "earliest_maturity": "2026-05",
+          "months_to_maturity": 2,
+          "conversion_likelihood": "low",
+          "grade": "red",
+          "note": "CB 22.1억 만기 경과. 5월 2.2억+8월 2.2억 상환 예정. 전환 가능성 낮음"
+        },
+        "investability": {
+          "senior_debt_eok": 42.3,
+          "equity_eok": -29.4,
+          "capital_eroded": true,
+          "min_meaningful_investment_eok": 50,
+          "grade": "red",
+          "note": "선순위 42.3억(CB 22.1+대출 20.2) + 자본잠식 -29.4억. 최소 50억 투입 필요",
+          "blockers": [
+            "CB 22.1억 출자전환 미완료 — 최대 블로커",
+            "자본잠식 -29.4억",
+            "선순위 부채 42.3억"
+          ]
+        },
+        "next_action": "종료 — CB 출자전환 완료 시 재검토",
+        "note": "인터뷰 완료 후 종료. CB 22.1억 출자전환 선행 필수. 진행 불가 판정.",
+        "dw_note": "DW FY2024: 금융부채 25.6억(단기 6.5+장기 19.1) vs go_nogo 42.3억 — 차이 16.7억은 CB 22.1억이 DW 미반영. go_nogo가 정확. DW OP -13.8억 vs go_nogo +1.2억(FY2025 가결산 흑자 전환)",
+        "observation_period": {}
       }
     },
     {
       "id": "메뉴잇",
       "name": "주식회사 메뉴잇",
       "status": "closed",
+      "assessment_version": "v2",
       "stage": "closed",
       "stage_label": "종료",
       "overall_verdict": "ORANGE",
@@ -2227,12 +3052,23 @@
       "new_findings": [],
       "financials": {},
       "ir_analysis": {},
+      "business_context": {},
       "red_flags": [],
+      "intuition_check": {},
       "bep": {},
       "khk_preview": {},
       "actions": [],
       "email_draft": "",
       "_screener": {
+        "survey_v2": {
+          "ceo_phone": "010-3541-6361",
+          "shareholder_register": "",
+          "debt_status": "",
+          "mezzanine_status": "",
+          "investor_consent": "",
+          "mezzanine_contract": "",
+          "bep_selfcheck": ""
+        },
         "company_name": "주식회사 메뉴잇",
         "folder_name": "메뉴잇",
         "corp_id": 1278700330,
@@ -2437,15 +3273,111 @@
             "interview_required": false
           }
         }
+      },
+      "gonogo_analysis": {
+        "fiscal_year": "FY2025(가결산, 2차 자료)",
+        "revenue": "136.9",
+        "op": "+4.1",
+        "financial_debt": "51.8",
+        "cash": "2.65",
+        "equity": "-34.8",
+        "dsc": {
+          "value": "0.76x",
+          "grade": "red",
+          "note": "OP 4.1억 vs 원리금 추정 5.4억/년(이자 2.9억+원금상환 2.5억). 커버 부족"
+        },
+        "debt_revenue": {
+          "value": "38%",
+          "grade": "red",
+          "note": "금융부채 51.8억(사채 31억+은행 19.5억+개인/VC 1.3억) / 매출 136.9억 = 38%"
+        },
+        "maturity_cash": {
+          "value": "3.3x",
+          "grade": "red",
+          "note": "3개월 내 만기 8.6억(IBK043 8억 2026.05.28 + IBK035 0.6억 2026.05.17) / 현금 2.65억"
+        },
+        "red_count": 3,
+        "conditions": {
+          "c1_debt": {
+            "grade": "X",
+            "note": "금융부채 51.8억(2차 자료 확인). IBK033 10억 만기 2027.03(기보 연장 완료). IBK043 8억 2026.05 차환 협의 중"
+          },
+          "c2_conversion": {
+            "grade": "O",
+            "note": "사채 31억 CB 아님 확인(2차 자료). 기보 유동화 SPC 순수 채권, 표면이율=만기보장수익률"
+          },
+          "c3_cash_engine": {
+            "grade": "O",
+            "note": "OP +4.1억 흑자, 매출 136.9억. 공급구조 전환(태블릿 27%+배터리 45% 단가절감) 시 OP 15~20억 가능"
+          },
+          "c4_moat": {
+            "grade": "-",
+            "note": "테이블오더 SaaS -- 시장 성장 중이나 경쟁 다수. SK쉴더스(ADT) 주요 고객"
+          },
+          "c5_equity": {
+            "grade": "?",
+            "note": "자본잠식 -34.8억(2025가결산). 순이익 25.3억으로 -60.2→-34.8 개선 중"
+          },
+          "c6_ceo": {
+            "grade": "-",
+            "note": "연대보증 감수, 금융기관 직접 협상, 공급구조 전환 실행. 실행력 긍정적"
+          },
+          "c7_restructuring": {
+            "grade": "O",
+            "note": "판관비 45% 삭감(127.9→69.8억), 식스티페이 36.2% 고금리 탈출, 국민/기업은행 재약정 완료"
+          }
+        },
+        "revenue_concentration": {
+          "top1_customer": "SK쉴더스(ADT캡스)",
+          "top1_share": 95,
+          "contract_type": "annual_renewal",
+          "grade": "red",
+          "note": "매출 95% SK쉴더스 VMI 공급. 연 1회 갱신, 국내 독점조건으로 독자영업 불가. 올해 계약 12월 말까지. SK쉴더스도 리파이낸싱/매각 준비 중"
+        },
+        "cb_maturity": {
+          "has_cb": false,
+          "total_cb_eok": 0,
+          "grade": "green",
+          "note": "사채 31억 CB 아님 확인(2차 자료). 기보 유동화 SPC 순수 채권. 이동화증권 유동화 기구 만기 2026.11 — 상환 청구 가능성(담당자 교체)"
+        },
+        "investability": {
+          "senior_debt_eok": 51.8,
+          "equity_eok": -34.8,
+          "capital_eroded": true,
+          "min_meaningful_investment_eok": 50,
+          "grade": "red",
+          "note": "선순위 51.8억 + 자본잠식 -34.8억. 신규 투자자 50억 넣어도 업사이드 불명확. 6개월 자력 턴어라운드 증명 후 재논의(2026.09)",
+          "blockers": [
+            "선순위 부채 51.8억 — 신규 투자 진입 장벽",
+            "자본잠식 -34.8억",
+            "SK쉴더스 매출 95% 단일채널 리스크",
+            "기보 유동화 만기 2026.11 상환 청구 가능성"
+          ]
+        },
+        "next_action": "6개월 관찰 기간 (2026.09까지). IBK043 8억 차환(2026.05) + 퓨얼서비스 입고(4/15) + 광고 플랫폼 출시 모니터링",
+        "note": "캐시 엔진 강력(OP +4.1억). 투자 구조 블로커: 선순위 51.8억+자본잠식+단일채널. 6개월 자력 증명 후 재논의.",
+        "dw_note": "DW FY2024: 금융부채 105억(단기 66+장기 39) vs go_nogo 51.8억(2차 자료 FY2025 가결산) — FY2025 부채정리(식스티페이 탈출, IBK 재약정) 반영. DW OP -48억 vs go_nogo +4.1억(FY2025 흑자 전환)",
+        "observation_period": {
+          "start": "2026-03-24",
+          "end": "2026-09-24",
+          "milestones": [
+            "4월: 퓨얼서비스 신규 재고 입고 → 월 11억 공급 재개",
+            "5월: 아사코리아 분쟁 8억 회수 여부",
+            "6월: 상반기 OP 실적 확인 (목표: 부채 10억 상환)",
+            "9월: 고위드넥서스 재미팅 — 6개월 실적 지표 기반 재평가"
+          ],
+          "note": "2026.03.24 미팅에서 6개월 관찰 후 재논의 합의. SK쉴더스 SI 투자(30억/지분30%/밸류70억) 시나리오는 2027 상반기 이후"
+        }
       }
     },
     {
       "id": "위버딩",
       "name": "위버딩 주식회사",
       "status": "closed",
+      "assessment_version": "v2",
       "stage": "closed",
       "stage_label": "종료",
-      "overall_verdict": "CLOSED",
+      "overall_verdict": "RED",
       "verdict_summary": "디지털 문구 콘텐츠 플랫폼 '위버딩', 매출 10.2억, OP -19.7억 적자. Goodnotes 독점 한국 공급자(마켓플레이스 60-70%).; 투자: RCPS 2건(CB 없음), Goodnotes 14% 지분. 금융부채 4억(국민은행 마통, 2027.03 만기). TIPS로 2027.01까지 런웨이.; Stage 3 보류(2026-03-26): 구조조정 18→9 진행 중이나, 비전 전환 가설 단계+캐시엔진 부재. Q2 3조건 충족 시 재논의.",
       "meta": {
         "ceo": "",
@@ -2462,12 +3394,23 @@
       "new_findings": [],
       "financials": {},
       "ir_analysis": {},
+      "business_context": {},
       "red_flags": [],
+      "intuition_check": {},
       "bep": {},
       "khk_preview": {},
       "actions": [],
       "email_draft": "",
       "_screener": {
+        "survey_v2": {
+          "ceo_phone": "010-6574-0409",
+          "shareholder_register": "",
+          "debt_status": "",
+          "mezzanine_status": "",
+          "investor_consent": "",
+          "mezzanine_contract": "",
+          "bep_selfcheck": ""
+        },
         "company_name": "위버딩 주식회사",
         "folder_name": "위버딩",
         "corp_id": 4928701193,
@@ -2659,6 +3602,157 @@
             "interview_required": false
           }
         }
+      },
+      "gonogo_analysis": {
+        "fiscal_year": "FY2024(DW)",
+        "revenue": "10.2",
+        "op": "-19.7",
+        "financial_debt": "4.0",
+        "cash": "0.4",
+        "equity": "17.0",
+        "dsc": {
+          "value": "N/A",
+          "grade": "red",
+          "note": "OP -19.7억 적자 -- DSC 산정 불가"
+        },
+        "debt_revenue": {
+          "value": "39%",
+          "grade": "red",
+          "note": "금융부채 4.0억(단기차입) / 매출 10.2억 = 39%"
+        },
+        "maturity_cash": {
+          "value": "7.4x",
+          "grade": "red",
+          "note": "단기차입 4.0억 / CF잔고 0.54억 = 7.4x. BS 현금과 괴리 심각"
+        },
+        "red_count": 3,
+        "conditions": {
+          "c1_debt": {
+            "grade": "-",
+            "note": "금융부채 4.0억(국민은행 마통, 신보 보증). 2026.03 갱신, 2027.03 만기. 연 10% 원금상환 요청 가능(~4천만)"
+          },
+          "c2_conversion": {
+            "grade": "O",
+            "note": "CB/BW 없음 확인. 전액 RCPS(2건). 상환=배당가능이익 한도→적자기업 사실상 불가"
+          },
+          "c3_cash_engine": {
+            "grade": "X",
+            "note": "OP -19.7억 적자. TIPS 2027.01까지 연장으로 런웨이 확보. 월 현금사이클: ~0→1억+(정부2천+매출3천~1억)"
+          },
+          "c4_moat": {
+            "grade": "△",
+            "note": "Goodnotes 독점 한국 공급자(2023.02~2028.06), 마켓플레이스 60-70% 점유. 단, 계약기간 중 경쟁 노트앱 공급 불가→TAM 제한"
+          },
+          "c5_equity": {
+            "grade": "-",
+            "note": "RCPS 2건(펀드2곳), Goodnotes 14% 지분. 보통주+우선주 구조, 스트롱벤처스 25억 라운드"
+          },
+          "c6_ceo": {
+            "grade": "△",
+            "note": "KYI 사전미팅(2026-03-26): 공동창업자 3인(신동환=서비스/개발, 동현=해외B2B, 동규=경영관리). 비전 전환 논의 중이나 가설 단계, 실행 증거 부족"
+          },
+          "c7_restructuring": {
+            "grade": "O",
+            "note": "18→9명 4월 완료 예정. 퇴직금 선납입. 잔류: 창업자3+디자이너2+운영2+개발2. 추가 급진적 구조조정 필요 여부 Q2 판단"
+          }
+        },
+        "revenue_concentration": {
+          "top1_customer": "PG 정산(B2C 다수)",
+          "top1_share": 0,
+          "contract_type": "none",
+          "grade": "green",
+          "note": "DW 매출입금 917건/4.2억 — 소액 B2C 분산구조, 단일 거래처 집중 없음"
+        },
+        "cb_maturity": {
+          "has_cb": "no",
+          "total_cb_eok": 0,
+          "earliest_maturity": null,
+          "months_to_maturity": null,
+          "conversion_likelihood": null,
+          "grade": "green",
+          "note": "사전미팅 확인: CB/BW 없음. 전액 RCPS(2건, 펀드2곳). 1:1전환, 6%복리, 10년윈도우(2021.07~). 상환=배당가능이익 한도→적자기업이므로 사실상 불가"
+        },
+        "investability": {
+          "senior_debt_eok": 4.0,
+          "equity_eok": 17.0,
+          "capital_eroded": false,
+          "min_meaningful_investment_eok": 20,
+          "grade": "yellow",
+          "note": "선순위 4억 소형이나, OP -19.7억 적자 → 연간 20억 캐시번. 투자금 대부분 운영비로 소진 우려",
+          "blockers": [
+            "OP 적자 연 20억 — 투자금 소진 속도 과다",
+            "CF 잔고 0.54억 — 즉시 자금 소진 위험"
+          ]
+        },
+        "next_action": "Q2 관찰(2026.04~06) → 3조건 충족 시 KHK 인터뷰(Stage 4) 진행",
+        "note": "사전미팅(2026-03-26): CB 없음(RCPS only), Goodnotes 독점 확인, 18→9 구조조정 진행 중. 그러나 비전 전환 가설 단계+캐시엔진 부재→보류 판정.",
+        "dw_note": "",
+        "observation_period": {}
+      }
+    },
+    {
+      "id": "브레이크앤컴퍼니",
+      "name": "브레이크앤컴퍼니",
+      "status": "new",
+      "assessment_version": "v1",
+      "stage": "stage_1",
+      "stage_label": "신규 접수",
+      "overall_verdict": "PENDING",
+      "verdict_summary": "",
+      "meta": {
+        "ceo": "이기선",
+        "email": "ks.lee@break.co.kr",
+        "founded": "2021. 3. 31",
+        "business": "당사는 국내 최고의 트레이딩 카드 전문 기업입니다. \n1. TELECA : K-Original card 브랜드 \n글로벌 경쟁력이 있는 한국의 IP를 트레이딩 카드로 제작해서 해외에 수출합니다. \n\n2. brg : 아시아 No.1 그레이딩 서비스 \n트레이딩 카드는 2차 거래가 되는 자산으로, 반드시 진품 여부와 상태에 대한 판별이 필요합니다.\nbrg 그레이딩은 국내 유일 인증 기관으로 이미 30만장 이상의 서비스를 제공하여, 카드 시세와 거래의 기준으로 자리매김 하였습니다. \n\n3. BREAK : 카드거래 특화 플랫폼\n브레이크는 C2C 카드거래 특화 플랫폼 입니다.\n경매, DROP 및 다양한 이벤트로 빠르게 유저와 거래액이 성장하고 있습니다. \n(현재 2만 5천 / 월 거래액 4억원 달성)",
+        "cf_url": "",
+        "investment_total": "",
+        "gowid_grade": "",
+        "delinquency": "",
+        "survey_timestamp": "2026-04-07T11:59:10"
+      },
+      "gates": [],
+      "new_findings": [],
+      "financials": {},
+      "ir_analysis": {},
+      "business_context": {},
+      "red_flags": [],
+      "intuition_check": {},
+      "bep": {},
+      "khk_preview": {},
+      "actions": [],
+      "email_draft": "",
+      "_screener": {},
+      "gonogo_analysis": {
+        "fiscal_year": "미확인(신규접수)",
+        "revenue": "0",
+        "op": "0",
+        "financial_debt": "0",
+        "cash": "0",
+        "equity": "0",
+        "dsc": {
+          "value": "N/A",
+          "grade": "unknown",
+          "note": "신규 접수 — DW 조회 필요"
+        },
+        "debt_revenue": {
+          "value": "N/A",
+          "grade": "unknown",
+          "note": "신규 접수"
+        },
+        "maturity_cash": {
+          "value": "N/A",
+          "grade": "unknown",
+          "note": "신규 접수"
+        },
+        "red_count": 0,
+        "conditions": {},
+        "revenue_concentration": {},
+        "cb_maturity": {},
+        "investability": {},
+        "next_action": "",
+        "note": "자동 등록 (2026. 4. 7 오전 11:59:10). CEO: 이기선",
+        "dw_note": "",
+        "observation_period": {}
       }
     }
   ]
