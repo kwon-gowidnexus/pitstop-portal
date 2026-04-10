@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Pitstop Portal — 대시보드 v3</title>
+<title>Pitstop Portal — 대시보드 v3.5</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700&family=Noto+Sans+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
@@ -34,7 +34,7 @@
   --c-unknown:  #9ca3af;
   --bg-unknown: #f3f4f6;
 
-  /* v3 추가 토큰 */
+  /* v3.5 추가 토큰 */
   --verdict-red-bg:    #fff0f0;
   --verdict-yellow-bg: #fffbeb;
   --verdict-green-bg:  #f0fdf4;
@@ -95,12 +95,15 @@ html, body { height: 100%; background: var(--bg); color: var(--text-pri); font-f
 
 .ci-idx { font-family: var(--mono); font-size: 9px; color: var(--text-dim); width: 16px; text-align: right; flex-shrink: 0; }
 .ci-body { flex: 1; min-width: 0; }
-.ci-name { font-size: 12px; font-weight: 500; color: var(--text-pri); white-space: nowrap; margin-bottom: 2px; display: flex; align-items: center; gap: 5px; }
+.ci-name { font-size: 12px; font-weight: 500; color: var(--text-pri); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; margin-bottom: 2px; }
+.ci-badges { display: flex; align-items: center; gap: 4px; margin-bottom: 2px; flex-wrap: wrap; }
 .ci-meta { font-size: 9px; color: var(--text-dim); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .ci-ts { text-align: right; flex-shrink: 0; margin-left: 6px; }
 .ci-ts-date { font-size: 10px; color: var(--text-sec); }
 .ci-ts-time { font-size: 9px; color: var(--text-dim); }
 .badge-closed { font-size: 8px; color: #999; background: #333; padding: 1px 5px; border-radius: 3px; font-weight: 500; letter-spacing: 0.03em; flex-shrink: 0; }
+.badge-ver { font-size: 7px; color: #888; background: #2a2a2a; padding: 1px 4px; border-radius: 2px; font-weight: 400; letter-spacing: 0.04em; font-family: var(--mono); flex-shrink: 0; }
+.badge-ver.ver-outdated { color: #c9873c; background: rgba(201,135,60,0.12); }
 
 .ci-verdict { display: inline-flex; align-items: center; gap: 3px; font-size: 8px; padding: 1px 6px; border-radius: 3px; font-weight: 500; flex-shrink: 0; font-family: var(--mono); text-transform: uppercase; letter-spacing: 0.06em; }
 .ci-verdict .dot { width: 5px; height: 5px; border-radius: 50%; flex-shrink: 0; }
@@ -110,6 +113,12 @@ html, body { height: 100%; background: var(--bg); color: var(--text-pri); font-f
 .ci-verdict.v-yellow .dot { background: var(--c-yellow); }
 .ci-verdict.v-green  { background: var(--bg-green);  color: var(--c-green); }
 .ci-verdict.v-green .dot { background: var(--c-green); }
+.ci-verdict.v-orange { background: var(--bg-orange); color: var(--c-orange); }
+.ci-verdict.v-orange .dot { background: var(--c-orange); }
+.ci-verdict.v-closed { background: var(--bg-unknown); color: var(--c-unknown); }
+.ci-verdict.v-closed .dot { background: var(--c-unknown); }
+.ci-verdict.v-pending { background: #1a1a2e; color: #7c83ff; border: 1px solid #7c83ff44; }
+.ci-verdict.v-pending .dot { background: #7c83ff; }
 
 .company-item.is-closed .ci-name span:first-child { color: var(--text-dim); }
 .company-item.is-closed .ci-meta,
@@ -183,6 +192,9 @@ html, body { height: 100%; background: var(--bg); color: var(--text-pri); font-f
 .verdict-strip.vs-red    { background: var(--verdict-red-bg);    border-left: 4px solid var(--c-red); }
 .verdict-strip.vs-yellow { background: var(--verdict-yellow-bg); border-left: 4px solid var(--c-yellow); }
 .verdict-strip.vs-green  { background: var(--verdict-green-bg);  border-left: 4px solid var(--c-green); }
+.verdict-strip.vs-orange { background: var(--bg-orange);         border-left: 4px solid var(--c-orange); }
+.verdict-strip.vs-closed { background: var(--bg-unknown);        border-left: 4px solid var(--c-unknown); }
+.verdict-strip.vs-pending { background: #1a1a2e;                 border-left: 4px solid #7c83ff; }
 .verdict-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; margin-top: 4px; }
 .verdict-dot.vd-red    { background: var(--c-red); }
 .verdict-dot.vd-yellow { background: var(--c-yellow); }
@@ -250,6 +262,15 @@ html, body { height: 100%; background: var(--bg); color: var(--text-pri); font-f
 .fin-table .trend { font-family: var(--sans); font-size: 11px; color: var(--text-sec); text-align: left; }
 .fin-table.compact { font-size: 11px; }
 .fin-table.compact td, .fin-table.compact th { padding: 5px 8px; }
+
+/* Data table — 사업 컨텍스트 등 텍스트가 긴 테이블 */
+.data-table { width: 100%; border-collapse: collapse; font-size: 12px; }
+.data-table thead th { font-family: var(--mono); font-size: 9px; text-transform: uppercase; color: var(--text-dim); padding: 8px 12px; border-bottom: 2px solid var(--border-mid); text-align: left; white-space: nowrap; }
+.data-table tbody td { padding: 10px 12px; border-bottom: 1px solid var(--border); vertical-align: top; line-height: 1.6; }
+.data-table tbody tr:hover { background: var(--surface); }
+.data-table tbody tr:nth-child(even) { background: rgba(0,0,0,0.015); }
+.data-table td.col-narrow { white-space: nowrap; width: 1%; }
+.data-table td.col-num { text-align: right; font-family: var(--mono); white-space: nowrap; }
 
 /* Cash KPI card */
 .cash-kpi-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--r); padding: 14px 18px; margin-bottom: 16px; display: flex; gap: 32px; align-items: flex-start; }
@@ -349,6 +370,11 @@ html, body { height: 100%; background: var(--bg); color: var(--text-pri); font-f
 .email-actions { display: flex; justify-content: flex-end; margin-bottom: 8px; }
 .btn-copy { font-family: var(--mono); font-size: 9px; padding: 5px 12px; background: var(--surface); border: 1px solid var(--border); color: var(--text-sec); cursor: pointer; border-radius: var(--r); transition: background 0.1s; }
 .btn-copy:hover { background: var(--surface2); }
+.btn-report-view, .btn-report-pdf { font-family: var(--sans); font-size: 12px; padding: 8px 20px; border-radius: var(--r); cursor: pointer; text-decoration: none; font-weight: 500; transition: background 0.15s; white-space: nowrap; }
+.btn-report-view { background: var(--surface); border: 1px solid var(--border); color: var(--text-sec); }
+.btn-report-view:hover { background: var(--surface2); }
+.btn-report-pdf { background: #1a2332; border: 1px solid #1a2332; color: #fff; }
+.btn-report-pdf:hover { background: #2c3e50; }
 
 /* ─── IR Analysis ────────────────────────────────────────────────── */
 .ir-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 16px; }
@@ -385,6 +411,37 @@ html, body { height: 100%; background: var(--bg); color: var(--text-pri); font-f
 /* Utility */
 .mt-12 { margin-top: 12px; }
 .mt-16 { margin-top: 16px; }
+
+/* ─── Financial Intuition ────────────────────────────────────────── */
+/* Five Fingers grid */
+.five-fingers-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 8px; margin-bottom: 16px; }
+.finger-card { border: 1px solid var(--border); border-radius: var(--r); border-top: 3px solid transparent; padding: 12px 12px 10px; background: var(--surface); }
+.finger-card.fc-green  { border-top-color: var(--c-green); }
+.finger-card.fc-yellow { border-top-color: var(--c-yellow); }
+.finger-card.fc-red    { border-top-color: var(--c-red); }
+.finger-card.fc-na     { border-top-color: var(--c-unknown); }
+.finger-name { font-family: var(--mono); font-size: 9px; color: var(--text-dim); margin-bottom: 6px; }
+.finger-metric { font-size: 12px; font-weight: 600; color: var(--text-pri); margin-bottom: 4px; }
+.finger-note { font-size: 11px; color: var(--text-sec); line-height: 1.5; }
+
+/* Health check table — reuse fin-table */
+
+/* Frame cards (collapsible) */
+.frame-list { display: flex; flex-direction: column; gap: 6px; }
+.frame-item { border: 1px solid var(--border); border-radius: var(--r); overflow: hidden; }
+.frame-header { display: flex; align-items: center; gap: 8px; padding: 9px 12px; background: var(--surface); cursor: pointer; user-select: none; }
+.frame-header:hover { background: var(--surface2); }
+.frame-num { font-family: var(--mono); font-size: 9px; color: var(--text-dim); flex-shrink: 0; }
+.frame-name { font-size: 12px; font-weight: 500; color: var(--text-pri); flex: 1; }
+.frame-toggle { font-family: var(--mono); font-size: 9px; color: var(--text-dim); flex-shrink: 0; transition: transform 0.2s; }
+.frame-item.open .frame-toggle { transform: rotate(90deg); }
+.frame-body { display: none; padding: 10px 14px; font-size: 12px; color: var(--text-sec); line-height: 1.6; border-top: 1px solid var(--border); background: var(--bg); }
+.frame-item.open .frame-body { display: block; }
+
+/* One-liner */
+.intuition-oneliner { background: var(--surface); border: 1px solid var(--border); border-radius: var(--r); padding: 12px 16px; font-size: 13px; color: var(--text-sec); font-style: italic; line-height: 1.6; margin-top: 16px; }
+.intuition-oneliner::before { content: '\201C'; font-size: 16px; color: var(--text-dim); margin-right: 2px; }
+.intuition-oneliner::after  { content: '\201D'; font-size: 16px; color: var(--text-dim); margin-left: 2px; }
 </style>
 </head>
 <body>
@@ -393,7 +450,7 @@ html, body { height: 100%; background: var(--bg); color: var(--text-pri); font-f
   <div class="topbar">
     <span class="tb-logo">Pitstop Portal</span>
     <span class="tb-sep">·</span>
-    <span class="tb-page">대시보드 v3</span>
+    <span class="tb-page">대시보드 v3.5</span>
     <span class="tb-badge">INTERNAL</span>
     <span class="tb-spacer"></span>
     <span class="tb-sub" id="tb-date"></span>
@@ -456,13 +513,13 @@ function esc(s) {
 
 function verdictClass(v) {
   if (!v) return '';
-  const m = { RED: 'v-red', YELLOW: 'v-yellow', GREEN: 'v-green' };
-  return m[v.toUpperCase()] || 'v-green';
+  const m = { RED: 'v-red', YELLOW: 'v-yellow', GREEN: 'v-green', ORANGE: 'v-orange', CLOSED: 'v-closed', PENDING: 'v-pending' };
+  return m[v.toUpperCase()] || '';
 }
 
 function verdictStripClass(v) {
   if (!v) return '';
-  const m = { RED: 'vs-red', YELLOW: 'vs-yellow', GREEN: 'vs-green' };
+  const m = { RED: 'vs-red', YELLOW: 'vs-yellow', GREEN: 'vs-green', ORANGE: 'vs-orange', CLOSED: 'vs-closed', PENDING: 'vs-pending' };
   return m[v.toUpperCase()] || '';
 }
 
@@ -505,12 +562,10 @@ function buildSidebar(companies) {
   const active  = companies.filter(c => c.status !== 'closed');
   const closed  = companies.filter(c => c.status === 'closed');
 
-  // Sort active by survey_timestamp desc
-  active.sort((a,b) => {
-    const ta = (a.meta && a.meta.survey_timestamp) || (a._screener && a._screener.survey_timestamp) || '';
-    const tb = (b.meta && b.meta.survey_timestamp) || (b._screener && b._screener.survey_timestamp) || '';
-    return tb.localeCompare(ta);
-  });
+  // Sort by survey_timestamp desc (most recent first)
+  const getTs = c => (c.meta && c.meta.survey_timestamp) || (c._screener && c._screener.survey_timestamp) || '';
+  active.sort((a,b) => getTs(b).localeCompare(getTs(a)));
+  closed.sort((a,b) => getTs(b).localeCompare(getTs(a)));
 
   const el = document.getElementById('company-list');
   const count = document.getElementById('sh-count');
@@ -538,21 +593,36 @@ function buildSidebar(companies) {
   });
 }
 
+function calcExpiryDate(ts) {
+  if (!ts) return '';
+  const d = new Date(ts);
+  if (isNaN(d)) return '';
+  d.setMonth(d.getMonth() + 6);
+  return `${d.getFullYear()}.${String(d.getMonth()+1).padStart(2,'0')}.${String(d.getDate()).padStart(2,'0')}`;
+}
+
 function buildCompanyItem(c, idx, isClosed) {
   const vl = (c.overall_verdict || '').toUpperCase();
   const vcls = verdictClass(vl);
   const ts = (c.meta && c.meta.survey_timestamp) || (c._screener && c._screener.survey_timestamp) || '';
+  const ver = c.assessment_version || 'v1';
+  const CURRENT_VER = 'v3.5';
+  const verOutdated = ver !== CURRENT_VER && ver !== 'v3';
+  const verBadge = `<span class="badge-ver${verOutdated ? ' ver-outdated' : ''}">${ver}</span>`;
+  const expiry = calcExpiryDate(ts);
 
   return `
 <div class="company-item${isClosed ? ' is-closed' : ''}" data-id="${esc(c.id)}">
   <div class="ci-idx">${idx}</div>
   <div class="ci-body">
-    <div class="ci-name">
-      <span>${esc(c.name)}</span>
+    <div class="ci-name">${esc(c.name)}</div>
+    <div class="ci-badges">
       ${isClosed ? '<span class="badge-closed">CLOSED</span>' : ''}
+      ${verBadge}
       ${vl ? `<span class="ci-verdict ${vcls}"><span class="dot"></span>${vl}</span>` : ''}
     </div>
     <div class="ci-meta">${esc(c.stage_label || c.stage || '')}${c.meta && c.meta.ceo ? ' · ' + c.meta.ceo : ''}</div>
+    ${expiry ? `<div class="ci-meta">자료 폐기 ${expiry}</div>` : ''}
   </div>
   <div class="ci-ts">
     <div class="ci-ts-date">${fmtDate(ts)}</div>
@@ -625,14 +695,25 @@ function renderDashboard(c) {
 /* ─── Closed company ─────────────────────────────────────────────── */
 function renderClosed(c) {
   const s = c._screener || {};
+  const g = c.gonogo_analysis || {};
   const vl = (c.overall_verdict || '').toUpperCase();
-  const vcls = verdictClass(vl);
+
+  // 분석 데이터(gates, financials 등)가 있으면 active 뷰 + 종료 배너
+  const hasFullData = (c.gates && c.gates.length) || (c.financials && c.financials.bs_summary);
+  if (hasFullData) {
+    let html = `<div class="closed-banner" style="background:var(--surface);border:1px solid var(--border);border-left:4px solid var(--text-dim);border-radius:var(--r);padding:12px 16px;margin-bottom:16px;">
+      <div style="font-weight:600;color:var(--text-sec);">종료 — ${esc(c.stage_label || 'CLOSED')}</div>
+      ${s.close_reason ? `<div style="font-size:12px;color:var(--text-dim);margin-top:4px;">${esc(s.close_reason)}</div>` : ''}
+      ${g.closed_reason ? `<div style="font-size:12px;color:var(--text-dim);margin-top:4px;">${esc(g.closed_reason)}</div>` : ''}
+    </div>`;
+    // 나머지는 active 뷰와 동일하게 렌더링
+    html += renderActive(c);
+    return html;
+  }
 
   let html = `
-    <!-- A. Company Header (minimal) -->
     ${renderHeader(c)}
     <div class="section-divider"></div>
-
     <div class="closed-view">
       <div class="closed-header">종료된 딜 — ${esc(c.stage_label || 'CLOSED')}</div>`;
 
@@ -641,14 +722,137 @@ function renderClosed(c) {
   }
 
   if (s.close_reason) {
-    html += `<div class="screener-meta-label" style="font-family:var(--mono);font-size:9px;text-transform:uppercase;color:var(--text-dim);margin-bottom:6px;">종료 사유</div>
+    html += `<div class="section-label" style="margin-top:12px;">종료 사유</div>
     <div class="close-reason-box">${esc(s.close_reason)}</div>`;
   }
 
-  // Screener summary
-  if (s.cash_kpi || s.cf_trends) {
-    html += `<div style="margin-top:20px;font-family:var(--mono);font-size:9px;text-transform:uppercase;color:var(--text-dim);letter-spacing:0.14em;margin-bottom:10px;">스크리너 요약</div>`;
+  // ── Go/No-Go 분석 (from gonogo_analysis) ──
+  if (g.revenue || g.cash) {
+    // 1. 재무 스냅샷
+    html += `<div class="section-label" style="margin-top:24px;">재무 스냅샷 <span style="font-size:9px;color:var(--text-dim);font-weight:400;">${esc(g.fiscal_year||'')}</span></div>`;
+    const opVal = parseFloat(g.op) || 0;
+    const eqVal = parseFloat(g.equity) || 0;
+    html += `<div class="screener-meta-grid" style="grid-template-columns:repeat(5,1fr);">
+      <div class="screener-meta-card"><div class="screener-meta-label">매출</div><div class="screener-meta-value">${esc(g.revenue||'—')}억</div></div>
+      <div class="screener-meta-card"><div class="screener-meta-label">영업이익</div><div class="screener-meta-value ${opVal<0?'num-neg':'num-pos'}">${opVal>=0?'+':''}${esc(g.op||'—')}억</div></div>
+      <div class="screener-meta-card"><div class="screener-meta-label">금융부채</div><div class="screener-meta-value">${esc(g.financial_debt||'—')}억</div></div>
+      <div class="screener-meta-card"><div class="screener-meta-label">현금</div><div class="screener-meta-value">${esc(g.cash||'—')}억</div></div>
+      <div class="screener-meta-card"><div class="screener-meta-label">자본</div><div class="screener-meta-value ${eqVal<0?'num-neg':''}">${esc(g.equity||'—')}억</div></div>
+    </div>`;
 
+    // DW 주석
+    if (g.dw_note) {
+      html += `<div style="font-size:10px;color:var(--text-dim);margin-top:6px;padding:6px 10px;background:var(--surface);border-radius:4px;">※ ${esc(g.dw_note)}</div>`;
+    }
+
+    // 2. 부채 3축
+    const axes = [g.dsc, g.debt_revenue, g.maturity_cash].filter(a => a && a.value);
+    if (axes.length) {
+      html += `<div class="section-label" style="margin-top:20px;">부채 3축</div>`;
+      html += `<div class="screener-meta-grid" style="grid-template-columns:repeat(3,1fr);">`;
+      const axisNames = ['DSC (원리금커버)', '부채/매출', '만기/현금'];
+      [g.dsc, g.debt_revenue, g.maturity_cash].forEach((ax, i) => {
+        if (!ax) return;
+        const gbcls = ax.grade === 'green' ? 'gb-green' : ax.grade === 'red' ? 'gb-red' : ax.grade === 'yellow' ? 'gb-yellow' : 'gb-unknown';
+        html += `<div class="screener-meta-card">
+          <div class="screener-meta-label">${axisNames[i]}</div>
+          <div style="margin-top:4px;font-size:16px;font-weight:600;font-family:var(--mono);">${esc(ax.value||'N/A')}</div>
+          <div style="margin-top:4px;"><span class="grade-badge ${gbcls}"><span class="dot"></span>${esc((ax.grade||'?').toUpperCase())}</span></div>
+          <div style="font-size:10px;color:var(--text-sec);margin-top:4px;">${esc(ax.note||'')}</div>
+        </div>`;
+      });
+      html += `</div>`;
+    }
+
+    // 3. 7대 조건 (conditions)
+    const conds = g.conditions || {};
+    const condKeys = Object.keys(conds);
+    if (condKeys.length) {
+      const condLabels = {
+        c1_debt: 'C1 부채', c2_conversion: 'C2 전환', c3_cash_engine: 'C3 캐시엔진',
+        c4_moat: 'C4 해자', c5_equity: 'C5 지분', c6_ceo: 'C6 대표', c7_restructuring: 'C7 구조조정'
+      };
+      html += `<div class="section-label" style="margin-top:20px;">7대 조건 판정</div>`;
+      html += `<table class="fin-table"><thead><tr><th>항목</th><th>등급</th><th>소견</th></tr></thead><tbody>`;
+      condKeys.forEach(k => {
+        const cd = conds[k];
+        const gradeMap = {'O':'🟢','X':'🔴','XX':'🔴🔴','-':'🟡','△':'🟡','?':'⬜','N/A':'—'};
+        const icon = gradeMap[cd.grade] || cd.grade;
+        html += `<tr><td style="white-space:nowrap;">${esc(condLabels[k]||k)}</td><td style="text-align:center;">${icon}</td><td>${esc(cd.note||'')}</td></tr>`;
+      });
+      html += `</tbody></table>`;
+    }
+
+    // 4. 투자진입장벽 + CB/매출집중도
+    const inv = g.investability || {};
+    const cb = g.cb_maturity || {};
+    const rc = g.revenue_concentration || {};
+    if (inv.grade || cb.grade || rc.grade) {
+      html += `<div class="section-label" style="margin-top:20px;">투자 구조 분석</div>`;
+      html += `<div class="screener-meta-grid" style="grid-template-columns:repeat(3,1fr);">`;
+      // Investability
+      if (inv.grade) {
+        const gbcls = inv.grade === 'green' ? 'gb-green' : inv.grade === 'red' ? 'gb-red' : 'gb-yellow';
+        html += `<div class="screener-meta-card">
+          <div class="screener-meta-label">투자진입장벽</div>
+          <div style="margin-top:4px;"><span class="grade-badge ${gbcls}"><span class="dot"></span>${esc(inv.grade.toUpperCase())}</span></div>
+          <div style="font-size:10px;color:var(--text-sec);margin-top:4px;">${esc(inv.note||'')}</div>
+          ${(inv.blockers||[]).length ? `<div style="margin-top:6px;font-size:10px;color:var(--c-red);">블로커: ${inv.blockers.map(b=>esc(b)).join(', ')}</div>` : ''}
+        </div>`;
+      }
+      // CB
+      if (cb.grade) {
+        const gbcls2 = cb.grade === 'green' ? 'gb-green' : cb.grade === 'red' ? 'gb-red' : cb.grade === 'yellow' ? 'gb-yellow' : 'gb-unknown';
+        html += `<div class="screener-meta-card">
+          <div class="screener-meta-label">CB/메자닌</div>
+          <div style="margin-top:4px;"><span class="grade-badge ${gbcls2}"><span class="dot"></span>${esc(cb.grade.toUpperCase())}</span></div>
+          <div style="font-size:10px;color:var(--text-sec);margin-top:4px;">${esc(cb.note||'')}</div>
+        </div>`;
+      }
+      // Revenue concentration
+      if (rc.grade) {
+        const gbcls3 = rc.grade === 'green' ? 'gb-green' : rc.grade === 'red' ? 'gb-red' : rc.grade === 'yellow' ? 'gb-yellow' : 'gb-unknown';
+        html += `<div class="screener-meta-card">
+          <div class="screener-meta-label">매출집중도</div>
+          <div style="margin-top:4px;"><span class="grade-badge ${gbcls3}"><span class="dot"></span>${esc((rc.grade||'?').toUpperCase())}</span></div>
+          ${rc.top1_customer ? `<div style="font-size:10px;color:var(--text-sec);margin-top:4px;">Top1: ${esc(rc.top1_customer)}${rc.top1_share ? ' ('+rc.top1_share+'%)' : ''}</div>` : ''}
+          <div style="font-size:10px;color:var(--text-sec);margin-top:2px;">${esc(rc.note||'')}</div>
+        </div>`;
+      }
+      html += `</div>`;
+    }
+
+    // 5. 관찰 기간 (위버딩/메뉴잇 등)
+    const obs = g.observation_period || {};
+    if (obs.start) {
+      html += `<div class="section-label" style="margin-top:20px;">관찰 기간</div>`;
+      html += `<div style="padding:10px 14px;background:var(--surface);border-radius:6px;border:1px solid var(--border);">`;
+      html += `<div style="font-size:12px;font-weight:600;">${esc(obs.start)} ~ ${esc(obs.end||'')}</div>`;
+      if (obs.milestones && obs.milestones.length) {
+        html += `<ul style="margin:8px 0 0;padding-left:18px;font-size:11px;color:var(--text-sec);">`;
+        obs.milestones.forEach(m => { html += `<li style="margin-bottom:4px;">${esc(m)}</li>`; });
+        html += `</ul>`;
+      }
+      if (obs.note) html += `<div style="font-size:10px;color:var(--text-dim);margin-top:6px;">${esc(obs.note)}</div>`;
+      html += `</div>`;
+    }
+
+    // 6. 다음 액션
+    if (g.next_action) {
+      html += `<div class="section-label" style="margin-top:20px;">다음 액션</div>`;
+      html += `<div style="padding:10px 14px;background:var(--surface);border-radius:6px;border:1px solid var(--border);font-size:12px;">${esc(g.next_action)}</div>`;
+    }
+
+    // 7. 내부 메모
+    if (g.note) {
+      html += `<div class="section-label" style="margin-top:20px;">내부 메모</div>`;
+      html += `<div style="padding:10px 14px;background:var(--surface);border-radius:6px;border:1px solid var(--border);font-size:11px;color:var(--text-sec);">${esc(g.note)}</div>`;
+    }
+  }
+
+  // Legacy screener data (fallback)
+  else if (s.cash_kpi || s.cf_trends) {
+    html += `<div class="section-label" style="margin-top:20px;">스크리너 요약</div>`;
     if (s.cash_kpi) {
       html += `<div class="screener-meta-grid">
         <div class="screener-meta-card"><div class="screener-meta-label">현금 잔고</div><div class="screener-meta-value">${esc(s.cash_kpi.current_balance_eok || s.cash_kpi.cash_mtd || '—')}억</div></div>
@@ -656,26 +860,18 @@ function renderClosed(c) {
         <div class="screener-meta-card"><div class="screener-meta-label">런웨이</div><div class="screener-meta-value">${esc(s.cash_kpi.runway_months || '—')}개월</div></div>
       </div>`;
     }
-
-    // Financial history table
     if (s.cf_trends && s.cf_trends.financial_history && s.cf_trends.financial_history.length) {
       html += `<table class="fin-table" style="margin-top:8px;"><thead><tr>
         <th>회계연도</th><th>매출(억)</th><th>영업이익(억)</th>
       </tr></thead><tbody>`;
       s.cf_trends.financial_history.forEach(r => {
         const opCls = r.op_eok < 0 ? 'num-neg' : 'num-pos';
-        html += `<tr>
-          <td>${esc(r.fiscal_year)}</td>
-          <td>${esc(r.sales_eok)}</td>
-          <td class="${opCls}">${r.op_eok >= 0 ? '+' : ''}${esc(r.op_eok)}</td>
-        </tr>`;
+        html += `<tr><td>${esc(r.fiscal_year)}</td><td>${esc(r.sales_eok)}</td><td class="${opCls}">${r.op_eok >= 0 ? '+' : ''}${esc(r.op_eok)}</td></tr>`;
       });
       html += `</tbody></table>`;
     }
-
-    // Mezzanine 3축
     if (s.mezzanine) {
-      html += `<div style="margin-top:16px;font-family:var(--mono);font-size:9px;text-transform:uppercase;color:var(--text-dim);letter-spacing:0.14em;margin-bottom:8px;">메자닌 3축</div>`;
+      html += `<div style="margin-top:16px;" class="section-label">메자닌 3축</div>`;
       html += `<div class="screener-meta-grid" style="grid-template-columns:repeat(4,1fr);">`;
       Object.values(s.mezzanine).forEach(m => {
         const gbcls = m.grade === 'green' ? 'gb-green' : m.grade === 'red' ? 'gb-red' : m.grade === 'yellow' ? 'gb-yellow' : 'gb-unknown';
@@ -735,6 +931,22 @@ function renderActive(c) {
     html += renderIRAnalysis(c);
   }
 
+  // Business Context (competitors + shareholders)
+  const bc = c.business_context || {};
+  const hasBC = (bc.competitors && bc.competitors.length) || (bc.shareholders && bc.shareholders.length);
+  if (hasBC) {
+    html += `<div class="section-divider"></div>`;
+    html += renderBusinessContext(c);
+  }
+
+  // Financial Intuition (between IR Analysis and Red Flags)
+  const ic = c.intuition_check || {};
+  const hasIC = (ic.health_check && ic.health_check.length) || (ic.frames && ic.frames.length) || (ic.five_fingers && ic.five_fingers.length) || ic.one_liner;
+  if (hasIC) {
+    html += `<div class="section-divider"></div>`;
+    html += renderIntuitionCheck(c);
+  }
+
   // F. Red Flags
   if (c.red_flags && c.red_flags.length) {
     html += `<div class="section-divider"></div>`;
@@ -765,6 +977,12 @@ function renderActive(c) {
   if (c.email_draft) {
     html += `<div class="section-divider"></div>`;
     html += renderEmailDraft(c);
+  }
+
+  // K. Report Download (active companies with overall_verdict)
+  if (c.status === 'active' && c.overall_verdict) {
+    html += `<div class="section-divider"></div>`;
+    html += renderReportDownload(c);
   }
 
   return html;
@@ -808,6 +1026,14 @@ function renderHeader(c) {
   if (m.gowid_grade)      pills += `<span class="co-stat-pill">${esc(m.gowid_grade)}</span>`;
   if (m.delinquency)      pills += `<span class="co-stat-pill stat-pill-alert">${esc(m.delinquency)}</span>`;
 
+  // Assessment version badge
+  const ver = c.assessment_version || 'v1';
+  const CURRENT_VER = 'v3.5';
+  const verIsOutdated = ver !== CURRENT_VER && ver !== 'v3';
+  const verBadgeHtml = verIsOutdated
+    ? `<span class="badge-ver ver-outdated" title="이 판정은 ${ver} 설문 기준입니다. ${CURRENT_VER}로 재검토 필요.">${ver} 판정 — ${CURRENT_VER} 미반영</span>`
+    : `<span class="badge-ver">${ver} 판정</span>`;
+
   // CF RM button
   let cfBtn = '';
   if (m.cf_url) {
@@ -828,6 +1054,7 @@ function renderHeader(c) {
       ${pills ? `<div class="co-meta">${pills}</div>` : ''}
     </div>
     <div class="co-header-right">
+      ${verBadgeHtml}
       ${cfBtn}
       ${emailBtn}
     </div>
@@ -994,11 +1221,14 @@ function renderBSTable(bs) {
 
     const rowCls = isGroupStart ? 'row-group' : '';
     html += `<tr class="${rowCls}">`;
+    // Detect if last header is a trend column (e.g. "전월대비") vs a FY column
+    const lastHeader = (bs.headers || [])[row.length - 1] || '';
+    const lastIsTrend = !lastHeader.startsWith('FY');
     row.forEach((cell, ci) => {
       if (ci === 0) {
         html += `<td>${esc(cell)}</td>`;
-      } else if (ci === row.length - 1) {
-        // trend column
+      } else if (ci === row.length - 1 && lastIsTrend) {
+        // trend column (only if last header is not a FY year)
         html += `<td class="trend">${esc(cell)}</td>`;
       } else {
         const neg = String(cell).trim().startsWith('-');
@@ -1215,19 +1445,29 @@ function renderIRAnalysis(c) {
     <div class="section-label">IR Analysis</div>
     <div class="section-title">IR 분석 — IR vs 팩트</div>`;
 
-  // Products
+  // Products — 테이블
   if (ir.products && ir.products.length) {
     html += `<div style="margin-top:12px;font-family:var(--mono);font-size:9px;text-transform:uppercase;color:var(--text-dim);margin-bottom:8px;">제품</div>`;
-    html += `<div class="ir-grid">`;
-    ir.products.forEach(p => {
-      html += `<div class="ir-card">
-        <div class="ir-card-label">Product</div>
-        <div class="ir-product-name">${esc(p.name)}</div>
-        <div class="ir-product-desc">${esc(p.description)}</div>
-        ${p.metrics ? `<div class="ir-product-metrics">${esc(p.metrics)}</div>` : ''}
-      </div>`;
+    html += `<div style="overflow-x:auto;">`;
+    html += `<table class="data-table">
+      <colgroup>
+        <col style="width:4%;">
+        <col style="width:18%;">
+        <col style="width:50%;">
+        <col style="width:28%;">
+      </colgroup>
+      <thead><tr>
+        <th>#</th><th>제품명</th><th>설명</th><th>매출/지표</th>
+      </tr></thead><tbody>`;
+    ir.products.forEach((p, i) => {
+      html += `<tr>
+        <td style="font-family:var(--mono);color:var(--text-dim);">${i + 1}</td>
+        <td style="font-weight:600;">${esc(p.name)}</td>
+        <td style="font-size:11px;color:var(--text-sec);">${esc(p.description)}</td>
+        <td style="font-family:var(--mono);font-size:11px;">${p.metrics ? esc(p.metrics) : '-'}</td>
+      </tr>`;
     });
-    html += `</div>`;
+    html += `</tbody></table></div>`;
   }
 
   // Team
@@ -1262,6 +1502,164 @@ function renderIRAnalysis(c) {
       </tr>`;
     });
     html += `</tbody></table>`;
+  }
+
+  html += `</div>`;
+  return html;
+}
+
+/* ─── Financial Intuition ───────────────────────────────────────── */
+function intuitionVerdictClass(v) {
+  if (!v) return 'fc-na';
+  const m = { GREEN: 'fc-green', YELLOW: 'fc-yellow', RED: 'fc-red' };
+  return m[(v || '').toUpperCase()] || 'fc-na';
+}
+
+function intuitionBadge(v) {
+  if (!v) return '';
+  const cls = { GREEN: 'gb-green', YELLOW: 'gb-yellow', RED: 'gb-red', 'N/A': 'gb-unknown' }[v.toUpperCase()] || 'gb-unknown';
+  return `<span class="grade-badge ${cls}"><span class="dot"></span>${esc(v)}</span>`;
+}
+
+/* ─── Business Context (경쟁환경 + 주주구성) ───────────────────── */
+function renderBusinessContext(c) {
+  const bc = c.business_context || {};
+  let html = `<div class="dash-section">
+    <div class="section-title">사업 컨텍스트</div>`;
+
+  // 경쟁환경 — 테이블 (열 너비 지정)
+  if (bc.competitors && bc.competitors.length) {
+    html += `<div class="subsection-title" style="margin-top:12px;">경쟁 환경</div>`;
+    html += `<div style="overflow-x:auto;">`;
+    html += `<table class="data-table">
+      <colgroup>
+        <col style="width:15%;">
+        <col style="width:20%;">
+        <col style="width:20%;">
+        <col style="width:45%;">
+      </colgroup>
+      <thead><tr>
+        <th>카테고리</th><th>경쟁사</th><th>펀딩/규모</th><th>당사 대비</th>
+      </tr></thead><tbody>`;
+    bc.competitors.forEach(r => {
+      html += `<tr>
+        <td class="col-narrow" style="color:var(--text-dim);">${esc(r.category)}</td>
+        <td style="font-weight:600;">${esc(r.name)}</td>
+        <td class="col-narrow" style="font-family:var(--mono);font-size:11px;">${esc(r.funding)}</td>
+        <td style="font-size:11px;color:var(--text-sec);">${esc(r.vs_us)}</td>
+      </tr>`;
+    });
+    html += `</tbody></table></div>`;
+    if (bc.comp_positioning) {
+      html += `<div class="meta-line" style="margin-top:10px;font-style:italic;">${esc(bc.comp_positioning)}</div>`;
+    }
+  }
+
+  // 주주구성 — 테이블 (열 너비 지정)
+  if (bc.shareholders && bc.shareholders.length) {
+    html += `<div class="subsection-title" style="margin-top:16px;">주주 구성</div>`;
+    html += `<div style="overflow-x:auto;">`;
+    html += `<table class="data-table">
+      <colgroup>
+        <col style="width:22%;">
+        <col style="width:15%;">
+        <col style="width:15%;">
+        <col style="width:10%;">
+        <col style="width:38%;">
+      </colgroup>
+      <thead><tr>
+        <th>주주</th><th>주식 종류</th><th>주식수</th><th>지분율</th><th>비고</th>
+      </tr></thead><tbody>`;
+    bc.shareholders.forEach(r => {
+      const isCeo = (r.name||'').includes('CEO') || (r.note||'').includes('경영권');
+      html += `<tr${isCeo ? ' style="font-weight:600;"' : ''}>
+        <td>${esc(r.name)}</td>
+        <td class="col-narrow">${esc(r.share_type)}</td>
+        <td class="col-num">${esc(r.shares)}</td>
+        <td class="col-num">${esc(r.pct)}</td>
+        <td style="font-size:11px;color:var(--text-sec);">${esc(r.note)}</td>
+      </tr>`;
+    });
+    html += `</tbody></table></div>`;
+    if (bc.sh_analysis && bc.sh_analysis.length) {
+      html += `<div style="margin-top:10px;">`;
+      bc.sh_analysis.forEach(a => {
+        html += `<div class="meta-line" style="margin-bottom:4px;">• ${esc(a)}</div>`;
+      });
+      html += `</div>`;
+    }
+  }
+
+  html += `</div>`;
+  return html;
+}
+
+function renderIntuitionCheck(c) {
+  const ic = c.intuition_check || {};
+  let html = `<div class="dash-section">
+    <div class="section-label">Financial Intuition</div>
+    <div class="section-title">재무직감 노트 판단</div>`;
+
+  // 1. Five Fingers
+  if (ic.five_fingers && ic.five_fingers.length) {
+    html += `<div style="margin-top:12px;font-family:var(--mono);font-size:9px;text-transform:uppercase;color:var(--text-dim);margin-bottom:8px;">5개 손가락 진단</div>`;
+    html += `<div class="five-fingers-grid">`;
+    ic.five_fingers.forEach(f => {
+      const cardCls = intuitionVerdictClass(f.verdict);
+      html += `<div class="finger-card ${cardCls}">
+        <div class="finger-name">${esc(f.finger)}</div>
+        <div style="margin-bottom:6px;">${intuitionBadge(f.verdict)}</div>
+        <div class="finger-metric">${esc(f.metric)}</div>
+        <div class="finger-note">${esc(f.note)}</div>
+      </div>`;
+    });
+    html += `</div>`;
+  }
+
+  // 2. 30초 헬스체크 테이블
+  if (ic.health_check && ic.health_check.length) {
+    html += `<div style="margin-top:16px;font-family:var(--mono);font-size:9px;text-transform:uppercase;color:var(--text-dim);margin-bottom:8px;">30초 헬스체크</div>`;
+    html += `<table class="fin-table"><thead><tr>
+      <th style="text-align:left;width:24px;">#</th>
+      <th style="text-align:left;">지표</th>
+      <th style="text-align:left;">수치</th>
+      <th style="text-align:left;">판정</th>
+      <th style="text-align:left;">근거</th>
+    </tr></thead><tbody>`;
+    ic.health_check.forEach(row => {
+      html += `<tr>
+        <td style="font-family:var(--mono);color:var(--text-dim);text-align:left;">${esc(row.id)}</td>
+        <td style="text-align:left;font-weight:600;">${esc(row.metric)}</td>
+        <td style="text-align:left;font-family:var(--mono);">${esc(row.value)}</td>
+        <td style="text-align:left;">${intuitionBadge(row.verdict)}</td>
+        <td style="text-align:left;font-size:11px;color:var(--text-sec);">${esc(row.reason)}</td>
+      </tr>`;
+    });
+    html += `</tbody></table>`;
+  }
+
+  // 3. 역산 프레임 카드 (collapsible)
+  if (ic.frames && ic.frames.length) {
+    html += `<div style="margin-top:16px;font-family:var(--mono);font-size:9px;text-transform:uppercase;color:var(--text-dim);margin-bottom:8px;">역산 프레임</div>`;
+    html += `<div class="frame-list">`;
+    ic.frames.forEach((f, idx) => {
+      const frameId = `frame-${c.id}-${idx}`;
+      html += `<div class="frame-item" id="${esc(frameId)}">
+        <div class="frame-header" onclick="document.getElementById('${esc(frameId)}').classList.toggle('open')">
+          <span class="frame-num">F${esc(f.id)}</span>
+          <span class="frame-name">${esc(f.name)}</span>
+          ${intuitionBadge(f.verdict)}
+          <span class="frame-toggle">▶</span>
+        </div>
+        <div class="frame-body">${esc(f.detail)}</div>
+      </div>`;
+    });
+    html += `</div>`;
+  }
+
+  // 4. 직감 한줄 (One-liner)
+  if (ic.one_liner) {
+    html += `<div class="intuition-oneliner">${esc(ic.one_liner)}</div>`;
   }
 
   html += `</div>`;
@@ -1401,9 +1799,23 @@ function renderBEP(c) {
 /* ─── H. KHK Decision ──────────────────────────────────────────── */
 function renderKHK(c) {
   const khk = c.khk_preview || {};
-  const go   = khk.go   || [];
-  const nogo = khk.nogo || [];
-  const hold = khk.hold || [];
+  const rawGo = khk.go  || [];
+  const hold  = khk.hold || [];
+
+  // JSON의 go 배열에 GO/NO-GO 혼재 시 키워드로 분리
+  const NOGO_KEYWORDS = ['NO-GO', '절대 안 들어', '절대 안', '즉시 NO-GO', '보조금 프로젝트', '숫자를 모르', '어디로 빠져'];
+  let go   = [];
+  let nogo = [];
+  if ((khk.nogo || []).length) {
+    go   = rawGo;
+    nogo = khk.nogo;
+  } else {
+    // auto-split
+    rawGo.forEach(item => {
+      if (NOGO_KEYWORDS.some(kw => item.includes(kw))) nogo.push(item);
+      else go.push(item);
+    });
+  }
 
   let html = `<div class="dash-section">
     <div class="section-label">KHK Decision</div>
@@ -1428,16 +1840,7 @@ function renderKHK(c) {
   if (nogo.length) {
     nogo.forEach((item, i) => { html += `<li data-no="${i+1}.">${esc(item)}</li>`; });
   } else {
-    // Pull NO-GO items from GO list that contain keywords
-    const nogoFromGo = go.filter(item =>
-      item.includes('절대') || item.includes('NO-GO') || item.includes('금융권') ||
-      item.includes('보조금 프로젝트') || item.includes('숫자를 모르') || item.includes('어디로 빠')
-    );
-    if (nogoFromGo.length) {
-      nogoFromGo.forEach((item, i) => { html += `<li data-no="${i+1}.">${esc(item)}</li>`; });
-    } else {
-      html += `<li style="color:var(--text-dim);font-style:italic;" data-no="">—</li>`;
-    }
+    html += `<li style="color:var(--text-dim);font-style:italic;" data-no="">—</li>`;
   }
   html += `</ul></div>`;
 
@@ -1497,6 +1900,28 @@ function renderActions(c) {
 }
 
 /* ─── J. Email Draft ────────────────────────────────────────────── */
+/* ─── K. Report Download ───────────────────────────────────────── */
+function renderReportDownload(c) {
+  // Map company name to report file
+  const reportFiles = {
+    '리콘랩스': 'report_reconlabs.html'
+  };
+  const file = reportFiles[c.name];
+  if (!file) return '';
+
+  return `<div class="dash-section">
+    <div class="section-label">경영개선 리포트</div>
+    <div style="display:flex;align-items:center;gap:16px;padding:16px 0;">
+      <div style="flex:1;">
+        <div style="font-weight:600;margin-bottom:4px;">${esc(c.name)} 경영개선 리포트</div>
+        <div style="font-size:12px;color:var(--text-dim);">피트스탑 적합성 진단 + 경영개선 권고사항 + 재신청 기준</div>
+      </div>
+      <a href="${file}" target="_blank" class="btn-report-view">리포트 보기</a>
+      <button class="btn-report-pdf" onclick="window.open('${file}','_blank')">PDF 다운로드</button>
+    </div>
+  </div>`;
+}
+
 function renderEmailDraft(c) {
   if (!c.email_draft) return '';
   return `<div class="dash-section" id="email-section">

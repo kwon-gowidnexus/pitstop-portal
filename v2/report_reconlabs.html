@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<title>리콘랩스 경영개선 리포트 — 고위드넥서스 피트스탑</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700&family=Noto+Sans+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+/* ─── Base ─── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --navy: #1a2332;
+  --navy-light: #2c3e50;
+  --charcoal: #2d3436;
+  --text: #1a1a1a;
+  --text-sec: #4a5568;
+  --text-dim: #718096;
+  --border: #d2d6dc;
+  --border-light: #e8ecf0;
+  --bg-header: #1a2332;
+  --bg-section: #f7f8fa;
+  --accent: #2563eb;
+  --red: #dc2626;
+  --green: #16a34a;
+  --yellow: #d97706;
+  --sans: 'Noto Sans KR', -apple-system, sans-serif;
+  --mono: 'Noto Sans Mono', monospace;
+}
+
+body {
+  font-family: var(--sans);
+  font-size: 10pt;
+  line-height: 1.65;
+  color: var(--text);
+  background: #fff;
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+}
+
+/* ─── Print / PDF ─── */
+@media print {
+  @page { margin: 0; }
+  body { margin: 0; padding: 10mm 14mm; }
+  .no-print { display: none !important; }
+  .page-break { page-break-before: always; }
+  .section-title { break-after: avoid; }
+}
+
+/* ─── Report container ─── */
+.report {
+  max-width: 210mm;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* ─── Cover Header ─── */
+.cover-header {
+  background: var(--bg-header);
+  color: #fff;
+  padding: 40px 32px 32px;
+  margin: 0 -24px 0;
+}
+.cover-header .firm-name {
+  font-size: 11pt;
+  font-weight: 300;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.6);
+  margin-bottom: 8px;
+}
+.cover-header .report-title {
+  font-size: 22pt;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+  margin-bottom: 4px;
+}
+.cover-header .report-subtitle {
+  font-size: 11pt;
+  font-weight: 300;
+  color: rgba(255,255,255,0.7);
+}
+.cover-meta {
+  display: flex;
+  gap: 32px;
+  margin-top: 20px;
+  padding-top: 16px;
+  border-top: 1px solid rgba(255,255,255,0.15);
+  font-size: 9pt;
+  color: rgba(255,255,255,0.55);
+}
+.cover-meta strong { color: rgba(255,255,255,0.85); font-weight: 500; }
+
+/* ─── Disclaimer ─── */
+.disclaimer {
+  background: var(--bg-section);
+  border-left: 3px solid var(--border);
+  padding: 12px 16px;
+  margin: 24px 0;
+  font-size: 8.5pt;
+  color: var(--text-dim);
+  line-height: 1.6;
+}
+
+/* ─── Section ─── */
+.section {
+  margin-top: 28px;
+  padding-top: 20px;
+  border-top: 2px solid var(--navy);
+}
+.section-header {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+.section-num {
+  font-family: var(--mono);
+  font-size: 9pt;
+  font-weight: 500;
+  color: var(--text-dim);
+  letter-spacing: 1px;
+  white-space: nowrap;
+}
+.section-title {
+  font-size: 13pt;
+  font-weight: 700;
+  color: var(--navy);
+}
+.subsection-title {
+  font-size: 10.5pt;
+  font-weight: 600;
+  color: var(--charcoal);
+  margin: 20px 0 10px;
+  padding-bottom: 4px;
+  border-bottom: 1px solid var(--border-light);
+}
+
+/* ─── Tables ─── */
+.ib-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 9pt;
+  margin: 12px 0 16px;
+}
+.ib-table thead th {
+  background: var(--navy);
+  color: #fff;
+  font-weight: 500;
+  padding: 8px 10px;
+  text-align: left;
+  font-size: 8.5pt;
+  letter-spacing: 0.3px;
+}
+.ib-table thead th.num { text-align: right; }
+.ib-table tbody td {
+  padding: 7px 10px;
+  border-bottom: 1px solid var(--border-light);
+  vertical-align: top;
+}
+.ib-table tbody td.num {
+  text-align: right;
+  font-family: var(--mono);
+  font-size: 9pt;
+}
+.ib-table tbody tr:nth-child(even) { background: #fafbfc; }
+.ib-table tbody tr:last-child td { border-bottom: 2px solid var(--navy); }
+.ib-table .row-highlight { background: #eef2ff !important; font-weight: 500; }
+
+/* ─── Verdict badge ─── */
+.verdict-inline {
+  display: inline-block;
+  font-size: 8pt;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: 3px;
+  letter-spacing: 0.5px;
+  vertical-align: middle;
+}
+.v-red { background: #fef2f2; color: var(--red); border: 1px solid #fecaca; }
+.v-green { background: #f0fdf4; color: var(--green); border: 1px solid #bbf7d0; }
+.v-yellow { background: #fffbeb; color: var(--yellow); border: 1px solid #fde68a; }
+.v-gray { background: #f3f4f6; color: #6b7280; border: 1px solid #d1d5db; }
+
+/* ─── Key metric box ─── */
+.metric-row {
+  display: flex;
+  gap: 12px;
+  margin: 12px 0 16px;
+  flex-wrap: wrap;
+}
+.metric-box {
+  flex: 1;
+  min-width: 120px;
+  background: var(--bg-section);
+  border: 1px solid var(--border-light);
+  border-radius: 4px;
+  padding: 12px 14px;
+  text-align: center;
+}
+.metric-box .metric-label {
+  font-size: 8pt;
+  color: var(--text-dim);
+  margin-bottom: 4px;
+}
+.metric-box .metric-value {
+  font-family: var(--mono);
+  font-size: 14pt;
+  font-weight: 700;
+  color: var(--navy);
+}
+.metric-box .metric-value.danger { color: var(--red); }
+
+/* ─── Bullet list ─── */
+.ib-list {
+  list-style: none;
+  padding: 0;
+  margin: 8px 0;
+}
+.ib-list li {
+  padding: 4px 0 4px 16px;
+  position: relative;
+  line-height: 1.6;
+}
+.ib-list li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.65em;
+  width: 6px;
+  height: 6px;
+  background: var(--navy);
+  border-radius: 1px;
+}
+
+/* ─── Summary box ─── */
+.summary-box {
+  background: var(--bg-section);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 16px 20px;
+  margin: 16px 0;
+}
+.summary-box p { margin-bottom: 8px; }
+.summary-box p:last-child { margin-bottom: 0; }
+
+/* ─── Callout ─── */
+.callout {
+  border-left: 3px solid var(--navy);
+  padding: 12px 16px;
+  margin: 16px 0;
+  background: var(--bg-section);
+  font-size: 9.5pt;
+}
+.callout.positive {
+  border-left-color: var(--green);
+  background: #f0fdf4;
+}
+
+/* ─── Footer ─── */
+.report-footer {
+  margin-top: 40px;
+  padding: 20px 0 30px;
+  border-top: 2px solid var(--navy);
+  text-align: center;
+  font-size: 8.5pt;
+  color: var(--text-dim);
+}
+
+/* ─── Download bar ─── */
+.download-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background: var(--navy);
+  padding: 12px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  z-index: 100;
+}
+.download-bar span { color: #fff; font-size: 10pt; }
+.btn-download {
+  background: #fff;
+  color: var(--navy);
+  border: none;
+  padding: 8px 24px;
+  font-size: 10pt;
+  font-weight: 600;
+  border-radius: 4px;
+  cursor: pointer;
+  font-family: var(--sans);
+}
+.btn-download:hover { background: #e5e7eb; }
+.spacer-for-bar { height: 52px; }
+</style>
+</head>
+<body>
+
+<!-- Download bar (hidden in print) -->
+<div class="download-bar no-print">
+  <span>리콘랩스 경영개선 리포트</span>
+  <button class="btn-download" onclick="downloadPDF()">PDF 다운로드</button>
+</div>
+<div class="spacer-for-bar no-print"></div>
+
+<div class="report" id="report-content">
+
+<!-- ═══ Cover ═══ -->
+<div class="cover-header">
+  <div class="firm-name">GOWID NEXUS</div>
+  <div class="report-title">경영개선 리포트</div>
+  <div class="report-subtitle">리콘랩스 (Reconlabs Inc.)</div>
+  <div class="cover-meta">
+    <div>작성 <strong>피트스탑팀</strong></div>
+    <div>일자 <strong>2026.04.07</strong></div>
+    <div>대표 <strong>반성훈</strong></div>
+  </div>
+</div>
+
+<!-- Disclaimer -->
+<div class="disclaimer">
+  본 리포트는 리콘랩스가 제출한 설문, IR 자료, 현금흐름표와 법인이 사용에 동의한 고위드 데이터(법인카드 결제, 입출금 내역, 신용정보)를 기반으로 작성되었습니다. 내부 관리회계 자료나 상세 계약 조건 등 저희가 접근할 수 없는 정보가 있어 실제와 다른 부분이 있을 수 있으며, 이 점 감안하여 읽어 주시기 바랍니다.
+</div>
+
+<!-- ═══ 피트스탑이란 ═══ -->
+<div class="summary-box">
+  <p><strong>피트스탑이란</strong></p>
+  <p>피트스탑은 매출은 있으나 비용 구조의 비효율로 수익성이 저해되는 스타트업을 대상으로, 운영 자금 지원과 함께 비용 절감 및 운영 안정화를 돕는 프로그램입니다.</p>
+  <p>지원 대상은 비용을 줄이면 자체 매출로 운영이 가능한 회사이며, 매출 자체를 만들어야 하는 단계의 회사는 피트스탑의 지원 범위를 넘어섭니다.</p>
+  <p>이 기준에 비추어 리콘랩스의 현재 상황을 진단하고, 향후 재신청을 위한 경영개선 방향을 제시합니다.</p>
+</div>
+
+<!-- ═══ I. 리콘랩스가 가진 것 ═══ -->
+<div class="section">
+  <div class="section-header"><div class="section-num">SECTION I</div><div class="section-title">리콘랩스가 가진 것</div></div>
+
+  <div class="callout positive">
+    <ul class="ib-list">
+      <li><strong>PCT 35건, SCI 2편(ACM CHI 2025).</strong> 기술이 논문과 특허로 검증된 회사는 드뭅니다.</li>
+      <li><strong>셔터스톡 공인 3D 콘텐츠 제작 협력사 (전 세계 3곳).</strong> 글로벌 파트너십이 실재합니다.</li>
+      <li><strong>GP마진 100%.</strong> 비용만 줄이면 바로 이익이 나는 구조입니다.</li>
+      <li><strong>31명에서 22명으로 감축 실행.</strong> 구조조정 의지가 행동으로 확인됩니다.</li>
+      <li><strong>GenPresso의 Agentic AI 디자인</strong>은 Canva, Figma, Adobe 어느 쪽도 점유하지 않은 포지션입니다.</li>
+    </ul>
+  </div>
+  <p style="margin-top:12px;">리콘랩스의 문제는 기술이 아니라 비용과 매출 사이의 불균형입니다. 비용 문제는 기술 문제보다 풀 수 있는 문제입니다. 아래 재무 현황과 진단을 바탕으로 경영개선 방향을 제시합니다.</p>
+</div>
+
+<!-- ═══ II. 재무 현황 ═══ -->
+<div class="section">
+  <div class="section-header"><div class="section-num">SECTION II</div><div class="section-title">재무 현황</div></div>
+
+  <div class="metric-row">
+    <div class="metric-box">
+      <div class="metric-label">현금 잔고</div>
+      <div class="metric-value danger">0.5억</div>
+    </div>
+    <div class="metric-box">
+      <div class="metric-label">월 영업출금</div>
+      <div class="metric-value">1.68억</div>
+    </div>
+    <div class="metric-box">
+      <div class="metric-label">인원</div>
+      <div class="metric-value">22명</div>
+    </div>
+    <div class="metric-box">
+      <div class="metric-label">금융부채</div>
+      <div class="metric-value danger">20.7억</div>
+    </div>
+    <div class="metric-box">
+      <div class="metric-label">RCPS</div>
+      <div class="metric-value">77억</div>
+    </div>
+  </div>
+
+  <p style="font-size:8.5pt;color:var(--text-dim);text-align:right;margin-bottom:2px;">단위: 억원</p>
+  <table class="ib-table">
+    <thead>
+      <tr>
+        <th>항목</th>
+        <th class="num">FY2022</th>
+        <th class="num">FY2023</th>
+        <th class="num">FY2024</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>매출</td><td class="num">2.9</td><td class="num">5.6</td><td class="num">8.4</td></tr>
+      <tr><td>영업이익</td><td class="num" style="color:var(--red)">-25.2</td><td class="num" style="color:var(--red)">-36.8</td><td class="num" style="color:var(--red)">-22.1</td></tr>
+      <tr><td>GP마진</td><td class="num">~100%</td><td class="num">~100%</td><td class="num">~100%</td></tr>
+      <tr><td>OP마진</td><td class="num" style="color:var(--red)">-869%</td><td class="num" style="color:var(--red)">-657%</td><td class="num" style="color:var(--red)">-263%</td></tr>
+      <tr><td>인건비</td><td class="num">9.9</td><td class="num">17.6</td><td class="num">10.8</td></tr>
+      <tr><td>임차료</td><td class="num">1.7</td><td class="num">3.4</td><td class="num">3.4</td></tr>
+      <tr><td>수수료/외주</td><td class="num">3.7</td><td class="num">4.8</td><td class="num">4.0</td></tr>
+      <tr><td>현금</td><td class="num">18.5</td><td class="num">26.8</td><td class="num" style="color:var(--red)">5.1</td></tr>
+      <tr><td>누적적자</td><td class="num" style="color:var(--red)">-19.7</td><td class="num" style="color:var(--red)">-47.6</td><td class="num" style="color:var(--red)">-66.1</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- ═══ III. 적합성 진단 ═══ -->
+<div class="section">
+  <div class="section-header"><div class="section-num">SECTION III</div><div class="section-title">피트스탑 적합성 진단</div></div>
+
+  <p style="margin-bottom:16px;">피트스탑의 핵심 질문은 <strong>"비용을 줄이면 이 회사가 자생할 수 있는가"</strong>입니다.</p>
+
+  <!-- (1) 매출 -->
+  <div class="subsection-title">(1) 매출 존재 여부 <span class="verdict-inline v-yellow">불확실</span></div>
+  <p>매출은 존재하나 규모가 불확실합니다.</p>
+  <ul class="ib-list">
+    <li>BS 기준: FY24 매출 8.4억 (YoY +50%)</li>
+    <li>고위드 데이터: 월 0.4~1.4억 입금 (연환산 5~7억)</li>
+    <li>현금흐름표 26.03: 제품매출 490만원 (수입의 97.8%가 정부보조금)</li>
+  </ul>
+  <p style="margin-top:8px;">세 수치 간 괴리가 크고, 현금흐름표 25.10~26.01의 4개월이 미분류 상태여서 이 기간의 매출과 보조금을 구분할 수 없습니다. "매출이 있는 회사"인지 "보조금으로 연명하는 회사"인지가 현재 데이터로는 확정이 안 됩니다.</p>
+
+  <!-- (2) 비용 절감 -->
+  <div class="subsection-title">(2) 비용 절감 후 자생 가능 여부 <span class="verdict-inline v-yellow">조건부 가능</span></div>
+  <p>GP마진이 100%이므로 사업 모델 자체의 수익 구조는 우수합니다. 문제는 고정비가 매출의 2.4배라는 점입니다.</p>
+
+  <p style="margin-top:12px;font-weight:500;">FY24 고정비 구성 (연간 약 19.9억)</p>
+  <table class="ib-table" style="max-width:400px;">
+    <thead><tr><th>항목</th><th class="num">금액</th><th class="num">비중</th></tr></thead>
+    <tbody>
+      <tr><td>인건비</td><td class="num">10.8억</td><td class="num">54%</td></tr>
+      <tr><td>수수료/외주</td><td class="num">4.0억</td><td class="num">20%</td></tr>
+      <tr><td>임차료</td><td class="num">3.4억</td><td class="num">17%</td></tr>
+      <tr><td>기타</td><td class="num">1.7억</td><td class="num">9%</td></tr>
+    </tbody>
+  </table>
+
+  <p style="margin-top:12px;font-weight:500;">BEP 시나리오 (공헌이익률 90% 가정)</p>
+  <table class="ib-table">
+    <thead><tr><th>시나리오</th><th class="num">인원</th><th class="num">월 고정비</th><th class="num">BEP 매출(월)</th></tr></thead>
+    <tbody>
+      <tr><td>현상 유지</td><td class="num">22명</td><td class="num">1.68억</td><td class="num">1.87억</td></tr>
+      <tr><td>15명 감축</td><td class="num">15명</td><td class="num">1.15억</td><td class="num">1.28억</td></tr>
+      <tr class="row-highlight"><td><strong>10명 감축</strong></td><td class="num"><strong>10명</strong></td><td class="num"><strong>0.80억</strong></td><td class="num"><strong>0.89억</strong></td></tr>
+      <tr><td>10명 + 임차 축소</td><td class="num">10명</td><td class="num">0.60억</td><td class="num">0.67억</td></tr>
+    </tbody>
+  </table>
+  <p style="margin-top:8px;">10명 체제에서 월 매출 0.9억을 유지할 수 있다면 BEP 진입이 가능합니다. 고위드 데이터 기준으로 월 입금이 0.9억을 넘는 달이 존재하므로 이론적으로는 가능한 범위입니다. 다만 그 입금에서 보조금을 분리한 순수 매출이 얼마인지가 관건입니다.</p>
+
+  <!-- (3) 금융부채 -->
+  <div class="subsection-title">(3) 금융부채 <span class="verdict-inline v-red">부적합</span></div>
+  <p>기보 20억 + 기업은행 0.7억, 합계 20.7억의 금융권 부채가 있습니다.</p>
+  <p style="margin-top:8px;">피트스탑이 지원하는 운영 자금은 비용 절감과 안정화에 쓰여야 합니다. 금융부채가 크면 지원 자금이 기존 채무 상환에 흡수될 위험이 있어, 금융부채가 없거나 매출 범위 내에서 만기가 길고 관리 가능한 수준이어야 합니다.</p>
+  <ul class="ib-list">
+    <li>금융부채 20.7억은 연 매출 8.4억의 <strong>2.5배</strong>로, 매출 범위를 크게 초과합니다.</li>
+    <li>DW상 이자 지급이 0원이나 BS 이자비용은 0.88억으로, 미지급이자가 원금에 가산되는 구조일 가능성이 있습니다.</li>
+    <li>만기 3년 이상으로 즉시 상환 압박은 없으나, 연장이 확실한지는 확인되지 않았습니다.</li>
+  </ul>
+
+  <!-- (4) 주주 구조 -->
+  <div class="subsection-title">(4) 주주 구조 <span class="verdict-inline v-red">부적합</span></div>
+  <p>RCPS 77억, 9개 기관 투자자, 동의권자 3명 이상입니다.</p>
+  <p style="margin-top:8px;">피트스탑을 통한 신규 자금 투입 시 기존 투자자의 동의가 필요할 수 있습니다. 동의권자가 없거나 단순하고 협조적인 구조여야 신속한 지원이 가능합니다.</p>
+  <ul class="ib-list">
+    <li>카카오벤처스(10.0%), 네이버(6.1%), 블루포인트(6.0%), 한화비전(5.6%), 한국투자(5.6%) 등 5개사 이상이 주요 투자자</li>
+    <li>RCPS 전환 조건(전환가, 만기, 상환청구권)이 미확인 상태</li>
+    <li>기보는 대출 20억(채권자)과 지분 4.75%(주주)를 동시에 보유 — 이해 상충 가능성</li>
+  </ul>
+
+  <!-- 종합 판정 -->
+  <div class="subsection-title">종합 판정</div>
+  <table class="ib-table">
+    <thead><tr><th>기준</th><th style="width:100px;text-align:center;">판정</th><th>비고</th></tr></thead>
+    <tbody>
+      <tr><td>(1) 매출 존재</td><td style="text-align:center;"><span class="verdict-inline v-yellow">불확실</span></td><td>BS 8.4억 vs CF 490만원, 미분류 4개월</td></tr>
+      <tr><td>(2) 비용 절감 후 자생</td><td style="text-align:center;"><span class="verdict-inline v-yellow">조건부</span></td><td>10명 체제 + 월매출 0.9억이면 BEP</td></tr>
+      <tr><td>(3) 금융부채</td><td style="text-align:center;"><span class="verdict-inline v-red">부적합</span></td><td>20.7억 (매출의 2.5배)</td></tr>
+      <tr><td>(4) 주주 구조</td><td style="text-align:center;"><span class="verdict-inline v-red">부적합</span></td><td>RCPS 77억, 동의권자 3명+</td></tr>
+    </tbody>
+  </table>
+  <div class="callout">
+    (2)의 잠재력은 인정되나, (3)과 (4)가 현 상태에서 피트스탑 지원의 구조적 장벽입니다. (1)의 불확실성까지 합치면 현 시점에서는 진행이 어렵다는 판단입니다.
+  </div>
+</div>
+
+<!-- ═══ IV. 경영개선 권고 ═══ -->
+<div class="section">
+  <div class="section-header"><div class="section-num">SECTION IV</div><div class="section-title">경영개선 권고사항</div></div>
+  <p style="margin-bottom:16px;">피트스탑 재신청 여부와 무관하게, 현재 리콘랩스에 필요하다고 판단되는 개선 방향입니다.</p>
+
+  <div class="subsection-title">(1) 매출 실체 확인 — 1개월 내</div>
+  <ul class="ib-list">
+    <li>현금흐름표 25.10~26.01 미분류 4개월의 계정과목 분류를 완성해 주십시오. 이것이 없으면 매출 규모를 경영진 본인도, 투자자도, 저희도 알 수 없습니다.</li>
+    <li>매출 인식 기준(계약 vs 현금 vs 발생)을 통일하고, 반복 매출(SaaS 구독, 로열티)과 단발성 수입(프로젝트, 보조금)을 분리 집계하십시오.</li>
+    <li>설문(20~30억), IR(11.5억), 고위드 데이터(5~7억), 현금흐름표(490만원) 간 괴리의 원인을 정리하십시오. 이 괴리가 해소되지 않으면 어떤 형태의 외부 자금 유치도 어렵습니다.</li>
+  </ul>
+
+  <div class="subsection-title">(2) 비용 구조 재편 — 즉시 실행</div>
+  <ul class="ib-list">
+    <li><strong>인원 목표: 22명 → 12~15명.</strong> 핵심 R&D와 최소 영업/운영으로 구성하여 월 인건비를 1.3억에서 0.7~0.9억으로 축소. 인당매출 0.38억은 SaaS 업종 평균(3~5억)의 1/10 수준이며, 현재 조직 규모가 매출 규모를 앞서고 있습니다.</li>
+    <li><strong>수수료/외주 4.0억 전수 검토:</strong> "이것이 없으면 매출이 줄어드는가"를 기준으로 판단.</li>
+    <li><strong>임차료 3.4억:</strong> 10~15명 규모에 맞는 공간으로 축소 검토.</li>
+    <li><strong>대여금 5,000만원(26.02~03):</strong> 수취인과 용도 명확화. 현금 0.5억 상황에서 용도 불명의 자금 유출은 외부 자금 유치 시 반드시 설명을 요구받습니다.</li>
+    <li><strong>법무비용 2,050만원(26.03):</strong> 진행 중인 소송이나 분쟁이 있다면 예상 비용과 일정 정리.</li>
+  </ul>
+
+  <div class="subsection-title">(3) 금융부채 정리 — 3~6개월</div>
+  <ul class="ib-list">
+    <li>기보 20억의 성격 확인: CB 여부, 만기, 이자 구조(미지급이자 원금 가산 여부).</li>
+    <li>출자전환 또는 만기 연장 가능 여부를 기보와 협의하십시오. 금융부채가 매출 범위 내로 줄어들거나 구조가 변경되면 외부 자금 유치의 장벽이 크게 낮아집니다.</li>
+  </ul>
+
+  <div class="subsection-title">(4) 주주 구조 정리 — 3~6개월</div>
+  <ul class="ib-list">
+    <li>RCPS 9개 투자자별 조건표 작성: 전환가, 만기, 상환청구권(풋옵션), 동의권 범위. 이 표가 없으면 어떤 형태의 신규 자금 유치도 구조 설계가 불가능합니다.</li>
+    <li>주요 투자자(카카오벤처스, 네이버, 블루포인트)와 출자전환 또는 조건 변경에 대한 사전 대화를 시작하십시오.</li>
+  </ul>
+
+  <div class="subsection-title">(5) 자금 관리 체계 정비</div>
+  <ul class="ib-list">
+    <li>현금흐름표를 매월 항목별로 분류하여 관리하십시오. 4개월치 미분류는 내부에서도 자금 흐름을 파악하지 못하고 있다는 뜻입니다.</li>
+  </ul>
+</div>
+
+<!-- ═══ V. 재신청 기준 ═══ -->
+<div class="section">
+  <div class="section-header"><div class="section-num">SECTION V</div><div class="section-title">피트스탑 재신청 기준</div></div>
+  <p style="margin-bottom:12px;">아래 조건이 갖춰지면 재검토가 가능합니다.</p>
+
+  <table class="ib-table">
+    <thead><tr><th style="width:30px;">#</th><th>조건</th><th style="width:100px;">우선순위</th></tr></thead>
+    <tbody>
+      <tr><td class="num">1</td><td>월 자체 매출 0.8억 이상이 3개월 연속 확인 (보조금 제외, 현금 기준)</td><td style="text-align:center;"><span class="verdict-inline v-red">필수</span></td></tr>
+      <tr><td class="num">2</td><td>월 고정비 1.0억 이하로 축소 완료</td><td style="text-align:center;"><span class="verdict-inline v-red">필수</span></td></tr>
+      <tr><td class="num">3</td><td>금융부채가 매출 범위 내로 정리 (출자전환, 만기 연장, 또는 상환 계획 확정)</td><td style="text-align:center;"><span class="verdict-inline v-red">필수</span></td></tr>
+      <tr><td class="num">4</td><td>RCPS 투자자별 조건표 완성, 신규 자금 유치에 대한 동의 가능성 확인</td><td style="text-align:center;"><span class="verdict-inline v-yellow">권장</span></td></tr>
+      <tr><td class="num">5</td><td>현금흐름표 최소 6개월분 항목별 분류 완성</td><td style="text-align:center;"><span class="verdict-inline v-yellow">권장</span></td></tr>
+    </tbody>
+  </table>
+  <div class="callout">
+    1번과 2번이 갖춰지면 "비용을 줄이면 자생할 수 있는 회사"에 해당합니다. 여기에 3번과 4번이 정리되면 피트스탑이 가장 효과적으로 지원할 수 있는 구간에 들어옵니다.
+  </div>
+</div>
+
+<!-- Footer -->
+<div class="report-footer">
+  GOWID NEXUS &middot; Pitstop Team &middot; Confidential<br>
+  본 자료는 리콘랩스에 제공하기 위해 작성되었으며, 제3자 공유 시 사전 동의가 필요합니다.
+</div>
+
+</div><!-- /report-content -->
+
+<script>
+function downloadPDF() {
+  window.print();
+}
+</script>
+
+</body>
+</html>
