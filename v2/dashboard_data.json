@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-04-16T21:55:57.976931+00:00",
+  "generated_at": "2026-04-19T21:49:14.149060+00:00",
   "source": "피트스탑_준비_*.md + go_nogo_assessment.json",
   "assessment_versions": {
     "v1": {
@@ -23,6 +23,182 @@
     "v3.5": "피트스탑 내부 정의 반영 — G1 3단계(매출+적자=FIT), G2 부채/동의권 분리, G3 비용절감BEP, G7 전환가논리"
   },
   "companies": [
+    {
+      "id": "데이오프컴퍼니",
+      "name": "데이오프컴퍼니",
+      "status": "active",
+      "stage": "stage_1",
+      "stage_label": "서류 스크리닝",
+      "overall_verdict": "RED",
+      "verdict_summary": "RED 2건, YELLOW 2건, PENDING 3건. Stage 2 서면 확인 필요.",
+      "meta": {
+        "ceo": "조현수",
+        "email": "nick@dayoff.co.kr",
+        "founded": "2022.",
+        "business": "\"데이오프컴퍼니는 여행 롱테일 특화 OTA ‘데이오프’를 운영하고 있습니다.  https://dayoff.co.kr  그리고 올해 호주 및 미주 \"",
+        "cf_url": "",
+        "investment_total": "10억~20억 미만 | 필요자금: 5억~10억 미만",
+        "gowid_grade": "",
+        "delinquency": "",
+        "survey_timestamp": "2026-04-18T10:41:07"
+      },
+      "gates": [
+        {
+          "id": "G1",
+          "name": "피트스탑 적합성",
+          "status": "red",
+          "summary": "매출 없음 (pre-revenue) — 피트스탑 범위 초과"
+        },
+        {
+          "id": "G2",
+          "name": "부채 & 동의권",
+          "status": "red",
+          "summary": "금융부채 4억 (매출 미확인) / 기존 메자닌: RCPS 2억 / 만기 2033.05 / 전환가 2,700원 / 투자자 : GS리테일"
+        },
+        {
+          "id": "G3",
+          "name": "캐시 엔진",
+          "status": "unknown",
+          "summary": "DW 데이터 미확보 — 매출/burn 확인 필요"
+        },
+        {
+          "id": "G4",
+          "name": "구조조정 의지",
+          "status": "warning",
+          "summary": "BEP 자가진단: \"가능하다 — 감축 가능한 항목이 있다\" — 구체 계획 확인 필요"
+        },
+        {
+          "id": "G5",
+          "name": "독점 자산",
+          "status": "unknown",
+          "summary": "사업설명에서 명확한 기술 해자 미감지 — 인터뷰 확인 필요"
+        },
+        {
+          "id": "G6",
+          "name": "대표 역량",
+          "status": "unknown",
+          "summary": "사전미팅에서 확인 필요"
+        },
+        {
+          "id": "G7",
+          "name": "EXIT 시나리오",
+          "status": "warning",
+          "summary": "기존 메자닌: RCPS 2억 / 만기 2033.05 / 전환가 2,700원 / 투자자 : GS리테일"
+        }
+      ],
+      "new_findings": [
+        "[HIGH] 동의권 복잡성: 동의권: 필요 — 동의권자 3명 이상 — 신규 투자 시 기존 투자자 동의 필수",
+        "[HIGH] 메자닌 오버행: RCPS 2억 / 만기 2033.05 / 전환가 2,700원 / 투자자 : GS리테일"
+      ],
+      "financials": {
+        "bs_summary": {
+          "headers": [],
+          "rows": []
+        },
+        "cash_balance": {
+          "headers": [],
+          "rows": []
+        },
+        "cash_flow_dw": {
+          "headers": [],
+          "rows": []
+        },
+        "cash_flow_submitted": {
+          "income": {
+            "headers": [],
+            "rows": []
+          },
+          "expense": {
+            "headers": [],
+            "rows": []
+          },
+          "net": {
+            "headers": [],
+            "rows": []
+          }
+        },
+        "headcount": {
+          "headers": [],
+          "rows": []
+        }
+      },
+      "ir_analysis": {
+        "products": [],
+        "team": [],
+        "market": "",
+        "discrepancies": []
+      },
+      "business_context": {
+        "competitors": [],
+        "comp_positioning": "",
+        "shareholders": [],
+        "sh_analysis": []
+      },
+      "red_flags": [
+        {
+          "id": 1,
+          "severity": "HIGH",
+          "title": "동의권 복잡성",
+          "detail": "동의권: 필요 — 동의권자 3명 이상 — 신규 투자 시 기존 투자자 동의 필수"
+        },
+        {
+          "id": 2,
+          "severity": "HIGH",
+          "title": "메자닌 오버행",
+          "detail": "RCPS 2억 / 만기 2033.05 / 전환가 2,700원 / 투자자 : GS리테일 RCPS 1억 / 만기 2033.07 / 전환가 2,700원 / 투자자 : 씨엔티테크 RCPS ---"
+        }
+      ],
+      "intuition_check": {
+        "health_check": [],
+        "frames": [],
+        "five_fingers": [],
+        "one_liner": ""
+      },
+      "bep": {
+        "current_state": [],
+        "scenarios": [],
+        "runway_with_investment": []
+      },
+      "khk_preview": {
+        "go": [],
+        "nogo": [],
+        "hold": []
+      },
+      "actions": [
+        {
+          "priority": 1,
+          "action": "DW 재무 데이터 확인",
+          "owner": "자동(CI)",
+          "deadline": "완료 필요"
+        },
+        {
+          "priority": 1,
+          "action": "`/pitstop 데이오프컴퍼니` 실행 (심화 분석)",
+          "owner": "KYI",
+          "deadline": "이번 주"
+        },
+        {
+          "priority": 2,
+          "action": "사전 확인 이메일 발송",
+          "owner": "KYI",
+          "deadline": "Stage 1 완료 후"
+        },
+        {
+          "priority": 2,
+          "action": "BEP 시나리오 작성",
+          "owner": "KYI",
+          "deadline": "이메일 발송 전"
+        },
+        {
+          "priority": 3,
+          "action": "사전미팅 (G6 대표역량 확인)",
+          "owner": "KYI+KHK",
+          "deadline": "Stage 2 완료 후"
+        }
+      ],
+      "email_draft": "",
+      "assessment_version": "v3"
+    },
     {
       "id": "리콘랩스",
       "name": "리콘랩스",
