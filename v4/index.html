@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Pitstop Portal — 대시보드 v3.5</title>
+<title>Pitstop Portal v4 — 데이오프컴퍼니 외</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700&family=Noto+Sans+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
@@ -450,7 +450,7 @@ html, body { height: 100%; background: var(--bg); color: var(--text-pri); font-f
   <div class="topbar">
     <span class="tb-logo">Pitstop Portal</span>
     <span class="tb-sep">·</span>
-    <span class="tb-page">대시보드 v3.5</span>
+    <span class="tb-page">대시보드 v4</span>
     <span class="tb-badge">INTERNAL</span>
     <span class="tb-spacer"></span>
     <span class="tb-sub" id="tb-date"></span>
@@ -606,7 +606,7 @@ function buildCompanyItem(c, idx, isClosed) {
   const vcls = verdictClass(vl);
   const ts = (c.meta && c.meta.survey_timestamp) || (c._screener && c._screener.survey_timestamp) || '';
   const ver = c.assessment_version || 'v1';
-  const CURRENT_VER = 'v3.5';
+  const CURRENT_VER = 'v4';
   const verOutdated = ver !== CURRENT_VER && ver !== 'v3';
   const verBadge = `<span class="badge-ver${verOutdated ? ' ver-outdated' : ''}">${ver}</span>`;
   const expiry = calcExpiryDate(ts);
@@ -1028,7 +1028,7 @@ function renderHeader(c) {
 
   // Assessment version badge
   const ver = c.assessment_version || 'v1';
-  const CURRENT_VER = 'v3.5';
+  const CURRENT_VER = 'v4';
   const verIsOutdated = ver !== CURRENT_VER && ver !== 'v3';
   const verBadgeHtml = verIsOutdated
     ? `<span class="badge-ver ver-outdated" title="이 판정은 ${ver} 설문 기준입니다. ${CURRENT_VER}로 재검토 필요.">${ver} 판정 — ${CURRENT_VER} 미반영</span>`

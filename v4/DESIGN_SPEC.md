@@ -2,7 +2,7 @@
 
 > 작성: 2026-04-06 | 담당: Designer
 > 목적: MD 파일(피트스탑_준비_*.md)의 풍부한 분석 내용을 고밀도 IB 터미널 스타일로 시각화
-> 기반: pitstop-portal/v2/index.html 디자인 시스템 그대로 계승
+> 기반: pitstop-portal/v4/index.html 디자인 시스템 그대로 계승
 
 ---
 
@@ -717,7 +717,7 @@ BE가 MD를 파싱하여 생성할 JSON 구조에서 각 섹션이 참조할 키
 
 | 파일 | 참조 목적 |
 |------|----------|
-| `pitstop-portal/v2/index.html` | 전체 CSS 시스템, 레이아웃, 컴포넌트 클래스 |
+| `pitstop-portal/v4/index.html` | 전체 CSS 시스템, 레이아웃, 컴포넌트 클래스 |
 | `[GONEX]/피트스탑/리콘랩스/피트스탑_준비_리콘랩스.md` | 실제 데이터 구조 및 표현 방식 레퍼런스 |
 | 기존 `.crit-card`, `.mezz-card`, `.stage-bar`, `.co-stat-pill` | 컴포넌트 재사용 1순위 |
 | 기존 `.grade-badge`, `.ci-verdict` | 상태 뱃지 재사용 |
