@@ -915,6 +915,12 @@ function renderActive(c) {
     html += renderFindings(c);
   }
 
+  // D+. Pivot Strategy (optional — 회사별 pivot_data.json이 있으면)
+  if (c.pivot_strategy) {
+    html += `<div class="section-divider"></div>`;
+    html += renderPivotStrategy(c);
+  }
+
   // E. Financials
   const fin = c.financials || {};
   const hasFin = fin.bs_summary || fin.cash_balance || fin.cash_flow_dw || fin.cash_flow_submitted || fin.headcount;
@@ -1128,6 +1134,634 @@ function renderFindings(c) {
   });
 
   html += `</ul></div>`;
+  return html;
+}
+
+/* ─── D+. Pivot Strategy ────────────────────────────────────────── */
+function renderPivotStrategy(c) {
+  const p = c.pivot_strategy || {};
+  const meta = p._meta || {};
+  const head = p.headline || {};
+  const acq = p.acquisition_structure || {};
+  const term = p.dayoff_termination || {};
+  const ops = p.zoom_operations_2025 || {};
+  const fin = p.zoom_financials_ttm || {};
+  const adep = p.ad_dependency_simulation || {};
+  const inv = p.investor_status || {};
+  const bep = p.bep_roadmap || {};
+  const guid = p.post_bep_guidance || {};
+  const assess = p.pitstop_assessment || {};
+
+  const num = (v, suffix='', fallback='—') => (v !== undefined && v !== null && v !== '') ? `${v}${suffix}` : fallback;
+  const eok = (v) => num(v, '억');
+  const pct = (v) => num(v, '%');
+
+  let html = `<div class="dash-section">
+    <div class="section-label">Pivot Strategy <span style="background:var(--surface2);border:1px solid var(--border-hi);border-radius:3px;padding:1px 6px;font-size:9px;color:var(--text-pri);">→ ${esc(meta.pivot_target || '피벗 대상')}</span></div>
+    <div class="section-title">${esc(meta.company || '회사')} → ${esc(meta.pivot_target || '')}</div>`;
+
+  if (head.one_liner) {
+    html += `<div style="background:var(--surface);border-left:3px solid var(--text-pri);padding:10px 14px;margin-top:10px;border-radius:3px;">
+      <div style="font-size:11px;color:var(--text-sec);margin-bottom:4px;">HEADLINE</div>
+      <div style="color:var(--text-pri);line-height:1.5;">${esc(head.one_liner)}</div>
+    </div>`;
+  }
+  if (head.verdict_hint) {
+    html += `<div style="background:var(--surface2);border:1px solid var(--border);padding:10px 14px;margin-top:8px;border-radius:3px;">
+      <div style="font-size:11px;color:var(--text-sec);margin-bottom:4px;">VERDICT HINT</div>
+      <div style="color:var(--text-pri);line-height:1.5;font-size:12px;">${esc(head.verdict_hint)}</div>
+    </div>`;
+  }
+
+  html += `<div style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:14px;">`;
+
+  html += `<div style="border:1px solid var(--border);border-radius:3px;padding:12px 14px;background:var(--surface);">
+    <div style="font-size:11px;color:var(--text-sec);margin-bottom:8px;letter-spacing:0.04em;">1. 인수 구조</div>
+    <table class="mini-table" style="width:100%;font-size:12px;">
+      <tr><td style="color:var(--text-sec);padding:3px 0;">방식</td><td>${esc(acq.method || '—')}</td></tr>
+      <tr><td style="color:var(--text-sec);padding:3px 0;">당초안</td><td>${esc(acq.original_plan || '—')}</td></tr>
+      <tr><td style="color:var(--text-sec);padding:3px 0;">지분율</td><td>${esc(acq.dayoff_ownership_of_zoom || '—')}</td></tr>
+      <tr><td style="color:var(--text-sec);padding:3px 0;">줌줌 원구조</td><td>${esc(acq.zoom_origin || '—')}</td></tr>
+      <tr><td style="color:var(--text-sec);padding:3px 0;">Native Signal 역지분</td><td>${esc(acq.native_signal_stake_in_dayoff || '—')}</td></tr>
+      <tr><td style="color:var(--text-sec);padding:3px 0;">투자자 동의</td><td>${esc(acq.investor_consent || '—')}</td></tr>
+    </table>
+    <div style="margin-top:8px;padding-top:8px;border-top:1px dashed var(--border);">
+      <div style="font-size:11px;color:var(--text-sec);margin-bottom:4px;">줌줌투어 실사 결과</div>
+      <div style="font-size:12px;color:var(--text-pri);">차입금: ${esc(acq.zoom_standalone_audit?.borrowings || '—')} / 메자닌: ${esc(acq.zoom_standalone_audit?.mezzanine || '—')} / 우발부채: ${esc(acq.zoom_standalone_audit?.contingent_liabilities || '—')}</div>
+      ${acq.zoom_standalone_audit?.open_items ? `<div style="font-size:11px;color:var(--text-sec);margin-top:4px;">* ${esc(acq.zoom_standalone_audit.open_items)}</div>` : ''}
+    </div>
+  </div>`;
+
+  html += `<div style="border:1px solid var(--border);border-radius:3px;padding:12px 14px;background:var(--surface);">
+    <div style="font-size:11px;color:var(--text-sec);margin-bottom:8px;letter-spacing:0.04em;">2. 데이오프 종료</div>
+    <table class="mini-table" style="width:100%;font-size:12px;">
+      <tr><td style="color:var(--text-sec);padding:3px 0;vertical-align:top;">현재 방식</td><td>${esc(term.method_current || '—')}</td></tr>
+      <tr><td style="color:var(--text-sec);padding:3px 0;vertical-align:top;">향후</td><td>${esc(term.method_future || '—')}</td></tr>
+    </table>
+    <div style="margin-top:8px;padding-top:8px;border-top:1px dashed var(--border);">
+      <div style="font-size:11px;color:var(--text-sec);margin-bottom:4px;">부채 승계 (${esc(term.parent_debt_succession?.borrowings || '—')}, ${esc(term.parent_debt_succession?.mezzanine || '—')})</div>
+      <div style="font-size:12px;color:var(--text-pri);">${esc(term.parent_debt_succession?.direction || '—')}</div>
+      ${term.parent_debt_succession?.risk ? `<div style="font-size:11px;color:#d84a4a;margin-top:4px;">⚠ ${esc(term.parent_debt_succession.risk)}</div>` : ''}
+    </div>
+    <div style="margin-top:8px;padding-top:8px;border-top:1px dashed var(--border);">
+      <div style="font-size:11px;color:var(--text-sec);margin-bottom:4px;">수탁예수금</div>
+      <div style="font-size:12px;color:var(--text-pri);">잔액 ${eok(term.prepayment_liability?.amount_eok)} · ${esc(term.prepayment_liability?.refund_plan || '—')}</div>
+    </div>
+    <div style="margin-top:8px;padding-top:8px;border-top:1px dashed var(--border);">
+      <div style="font-size:11px;color:var(--text-sec);margin-bottom:4px;">인력 재배치</div>
+      ${(term.headcount_transition || []).map(h => `<div style="font-size:12px;color:var(--text-pri);">· ${esc(h.role)} ${esc(h.count)}인 — ${esc(h.action)}</div>`).join('')}
+      ${term.severance_reserve ? `<div style="font-size:11px;color:#d84a4a;margin-top:4px;">⚠ 퇴직금: ${esc(term.severance_reserve)}</div>` : ''}
+    </div>
+  </div>`;
+
+  html += `<div style="border:1px solid var(--border);border-radius:3px;padding:12px 14px;background:var(--surface);">
+    <div style="font-size:11px;color:var(--text-sec);margin-bottom:8px;letter-spacing:0.04em;">3. 줌줌투어 운영 지표 (2025)</div>
+    <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:8px;">
+      <div><div style="font-size:10px;color:var(--text-sec);">재구매율</div><div style="font-size:18px;color:var(--text-pri);font-weight:500;">${pct(ops.repurchase_rate_pct)}${ops.repurchase_rate_yoy_delta_pp !== undefined ? ` <span style="font-size:11px;color:#2e8f5f;">(+${ops.repurchase_rate_yoy_delta_pp}pp)</span>` : ''}</div></div>
+      <div><div style="font-size:10px;color:var(--text-sec);">객단가 AOV</div><div style="font-size:18px;color:var(--text-pri);font-weight:500;">${ops.aov_krw ? ops.aov_krw.toLocaleString() : '—'}원${ops.aov_yoy_pct !== undefined ? ` <span style="font-size:11px;color:#2e8f5f;">(+${ops.aov_yoy_pct}%)</span>` : ''}</div></div>
+    </div>
+    <div style="margin-top:10px;padding-top:8px;border-top:1px dashed var(--border);">
+      <div style="font-size:11px;color:var(--text-sec);margin-bottom:4px;">국가별 매출 비중</div>
+      <div style="display:flex;gap:8px;flex-wrap:wrap;font-size:12px;">
+        ${Object.entries(ops.geo_mix || {}).map(([k,v]) => `<span style="background:var(--surface2);padding:2px 8px;border-radius:3px;border:1px solid var(--border);"><span style="color:var(--text-sec);">${esc(k.replace('_','/'))}:</span> ${v}%</span>`).join('')}
+      </div>
+    </div>
+  </div>`;
+
+  html += `<div style="border:1px solid var(--border);border-radius:3px;padding:12px 14px;background:var(--surface);">
+    <div style="font-size:11px;color:var(--text-sec);margin-bottom:8px;letter-spacing:0.04em;">4. 줌줌투어 재무 TTM (최근 1년)</div>
+    <table class="mini-table" style="width:100%;font-size:12px;">
+      <tr><td style="color:var(--text-sec);padding:3px 0;">누적 GMV</td><td style="text-align:right;font-weight:500;">${eok(fin.gmv_eok)}</td></tr>
+      <tr><td style="color:var(--text-sec);padding:3px 0;">누적 순매출</td><td style="text-align:right;font-weight:500;">${eok(fin.net_sales_eok)}</td></tr>
+      <tr><td style="color:var(--text-sec);padding:3px 0;">평균 Take Rate</td><td style="text-align:right;">${pct(fin.avg_take_rate_pct)}</td></tr>
+      <tr><td style="color:var(--text-sec);padding:3px 0;">ROAS (순매출)</td><td style="text-align:right;">${num(fin.roas_by_sales, 'x')}</td></tr>
+      <tr><td style="color:var(--text-sec);padding:3px 0;">ROAS (GMV)</td><td style="text-align:right;">${num(fin.roas_by_gmv, 'x')}</td></tr>
+      <tr><td style="color:var(--text-sec);padding:3px 0;">광고선전비</td><td style="text-align:right;">${eok(fin.advertising_eok)} (월 ${fin.advertising_monthly_m_krw || '—'}M)</td></tr>
+      <tr><td style="color:var(--text-sec);padding:3px 0;">프로모션</td><td style="text-align:right;">${eok(fin.promotion_eok)} (월 ${fin.promotion_monthly_m_krw || '—'}M)</td></tr>
+      <tr><td style="color:var(--text-pri);padding:5px 0 3px;font-weight:500;border-top:1px solid var(--border);">공헌이익</td><td style="text-align:right;font-weight:500;border-top:1px solid var(--border);padding-top:5px;color:#2e8f5f;">${eok(fin.contribution_margin_eok)} · ${pct(fin.contribution_margin_pct)}</td></tr>
+    </table>
+  </div>`;
+
+  html += `</div>`;
+
+  if (adep.d30_pct !== undefined) {
+    html += `<div style="margin-top:14px;border:1px solid var(--border);border-radius:3px;padding:12px 14px;background:var(--surface);">
+      <div style="font-size:11px;color:var(--text-sec);margin-bottom:8px;letter-spacing:0.04em;">5. 광고 중단 시 매출 하락 시뮬레이션</div>
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px;">
+        <div style="text-align:center;padding:8px;background:var(--surface2);border-radius:3px;"><div style="font-size:10px;color:var(--text-sec);">30일</div><div style="font-size:20px;color:#d84a4a;font-weight:500;">${adep.d30_pct}%</div></div>
+        <div style="text-align:center;padding:8px;background:var(--surface2);border-radius:3px;"><div style="font-size:10px;color:var(--text-sec);">60일</div><div style="font-size:20px;color:#d84a4a;font-weight:500;">${adep.d60_pct}%</div></div>
+        <div style="text-align:center;padding:8px;background:var(--surface2);border-radius:3px;"><div style="font-size:10px;color:var(--text-sec);">90일</div><div style="font-size:20px;color:#d84a4a;font-weight:500;">${adep.d90_pct}%</div></div>
+      </div>
+      ${adep.implication ? `<div style="font-size:12px;color:var(--text-pri);margin-top:8px;">→ ${esc(adep.implication)}</div>` : ''}
+    </div>`;
+  }
+
+  if (bep.target_month) {
+    html += `<div style="margin-top:14px;border:1px solid var(--border);border-radius:3px;padding:12px 14px;background:var(--surface);">
+      <div style="font-size:11px;color:var(--text-sec);margin-bottom:8px;letter-spacing:0.04em;">6. BEP 로드맵</div>
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:10px;">
+        <div><div style="font-size:10px;color:var(--text-sec);">월 고정비</div><div style="font-size:16px;color:var(--text-pri);">${(bep.fixed_cost_monthly_eok_range || []).join('~')}억</div></div>
+        <div><div style="font-size:10px;color:var(--text-sec);">BEP 매출/월</div><div style="font-size:16px;color:var(--text-pri);font-weight:500;">${(bep.bep_revenue_monthly_eok_range || []).join('~')}억</div></div>
+        <div><div style="font-size:10px;color:var(--text-sec);">목표 월</div><div style="font-size:16px;color:#2e8f5f;font-weight:500;">${esc(bep.target_month)}</div></div>
+      </div>
+      ${bep.preconditions ? `<div style="font-size:11px;color:var(--text-sec);">전제: ${bep.preconditions.map(p => esc(p)).join(' · ')}</div>` : ''}
+      ${bep.q4_reversal_risk ? `<div style="font-size:11px;color:#d84a4a;margin-top:4px;">⚠ ${esc(bep.q4_reversal_risk)}</div>` : ''}
+      ${bep.annual_breakeven_target ? `<div style="font-size:11px;color:var(--text-pri);margin-top:4px;">→ ${esc(bep.annual_breakeven_target)}</div>` : ''}
+    </div>`;
+  }
+
+  if (guid.months && guid.months.length) {
+    html += `<div style="margin-top:14px;border:1px solid var(--border);border-radius:3px;padding:12px 14px;background:var(--surface);">
+      <div style="font-size:11px;color:var(--text-sec);margin-bottom:4px;letter-spacing:0.04em;">7. Post-BEP 12개월 가이던스</div>
+      ${guid.note ? `<div style="font-size:11px;color:var(--text-sec);margin-bottom:8px;">${esc(guid.note)}</div>` : ''}
+      <div style="overflow-x:auto;">
+      <table class="mini-table" style="width:100%;font-size:11px;border-collapse:collapse;">
+        <thead><tr style="background:var(--surface2);border-bottom:1px solid var(--border);">
+          <th style="padding:5px 8px;text-align:left;color:var(--text-sec);font-weight:400;">월</th>
+          <th style="padding:5px 8px;text-align:right;color:var(--text-sec);font-weight:400;">GMV</th>
+          <th style="padding:5px 8px;text-align:right;color:var(--text-sec);font-weight:400;">순매출</th>
+          <th style="padding:5px 8px;text-align:right;color:var(--text-sec);font-weight:400;">영업이익</th>
+          <th style="padding:5px 8px;text-align:right;color:var(--text-sec);font-weight:400;">OP률</th>
+        </tr></thead>
+        <tbody>
+        ${guid.months.map(m => {
+          const pos = m.op_m_krw > 0;
+          const neg = m.op_m_krw < 0;
+          const col = pos ? '#2e8f5f' : (neg ? '#d84a4a' : 'var(--text-pri)');
+          return `<tr style="border-bottom:1px solid var(--border);">
+            <td style="padding:4px 8px;color:var(--text-pri);">${esc(m.m)}</td>
+            <td style="padding:4px 8px;text-align:right;color:var(--text-pri);">${m.gmv_eok}억</td>
+            <td style="padding:4px 8px;text-align:right;color:var(--text-pri);">${m.net_sales_eok}억</td>
+            <td style="padding:4px 8px;text-align:right;color:${col};">${m.op_m_krw > 0 ? '+' : ''}${m.op_m_krw}M</td>
+            <td style="padding:4px 8px;text-align:right;color:${col};">${m.op_pct}%</td>
+          </tr>`;
+        }).join('')}
+        </tbody>
+      </table>
+      </div>
+      ${guid.summary ? `<div style="margin-top:8px;font-size:11px;color:var(--text-sec);">합계: GMV ${guid.summary.total_gmv_eok}억 · 순매출 ${guid.summary.total_net_sales_eok}억 · 누적 OP ${guid.summary.total_op_m_krw}M · 흑자 ${guid.summary.cumulative_op_positive_months}개월 / 적자 ${guid.summary.cumulative_op_negative_months}개월</div>` : ''}
+    </div>`;
+  }
+
+  if (inv.rcps_holders && inv.rcps_holders.length) {
+    html += `<div style="margin-top:14px;border:1px solid var(--border);border-radius:3px;padding:12px 14px;background:var(--surface);">
+      <div style="font-size:11px;color:var(--text-sec);margin-bottom:8px;letter-spacing:0.04em;">8. 투자자 · 자본 구조</div>
+      <div style="font-size:12px;color:var(--text-pri);margin-bottom:6px;">RCPS 보유자: ${inv.rcps_holders.map(h => `${esc(h.name)} ${h.amount_eok}억`).join(' · ')}</div>
+      <div style="font-size:12px;color:var(--text-sec);">${esc(inv.awareness || '')} · 추가 납입 의사: ${esc(inv.additional_injection_intent || '—')}</div>
+      ${inv.shinbo_convertible_option ? `<div style="font-size:11px;color:var(--text-pri);margin-top:6px;">→ 신보 전환: ${esc(inv.shinbo_convertible_option)}</div>` : ''}
+      ${inv.strategic_meeting ? `<div style="font-size:11px;color:var(--text-pri);margin-top:2px;">→ 전략적 투자: ${esc(inv.strategic_meeting)}</div>` : ''}
+      ${inv.ceo_loan_handling ? `<div style="font-size:11px;color:var(--text-pri);margin-top:2px;">→ 대표 가수금: ${esc(inv.ceo_loan_handling)}</div>` : ''}
+    </div>`;
+  }
+
+  // 9. 연간 P&L 시계열 (zoom_historical_pnl)
+  const hist = p.zoom_historical_pnl || {};
+  if (hist.annual_trend_eok && hist.annual_trend_eok.length) {
+    const rows = hist.annual_trend_eok;
+    const yoy = hist.yoy_analysis || {};
+    html += `<div style="margin-top:14px;border:1px solid var(--border);border-radius:3px;padding:12px 14px;background:var(--surface);">
+      <div style="font-size:11px;color:var(--text-sec);margin-bottom:8px;letter-spacing:0.04em;">9. 줌줌투어 연간 P&amp;L 3년 시계열 <span style="color:var(--text-dim);font-size:10px;">(${esc(hist.source || '')})</span></div>
+      <div style="overflow-x:auto;">
+      <table class="mini-table" style="width:100%;font-size:11px;border-collapse:collapse;">
+        <thead><tr style="background:var(--surface2);border-bottom:1px solid var(--border);">
+          <th style="padding:5px 8px;text-align:left;color:var(--text-sec);font-weight:400;">기간</th>
+          <th style="padding:5px 8px;text-align:right;color:var(--text-sec);font-weight:400;">매출</th>
+          <th style="padding:5px 8px;text-align:right;color:var(--text-sec);font-weight:400;">GP</th>
+          <th style="padding:5px 8px;text-align:right;color:var(--text-sec);font-weight:400;">판관비</th>
+          <th style="padding:5px 8px;text-align:right;color:var(--text-sec);font-weight:400;">영업손익</th>
+          <th style="padding:5px 8px;text-align:right;color:var(--text-sec);font-weight:400;">OP률</th>
+          <th style="padding:5px 8px;text-align:right;color:var(--text-sec);font-weight:400;">광고비</th>
+          <th style="padding:5px 8px;text-align:right;color:var(--text-sec);font-weight:400;">급여</th>
+        </tr></thead>
+        <tbody>
+        ${rows.map(r => {
+          const op = r.operating_income_eok;
+          const col = op > 0 ? '#2e8f5f' : (op < 0 ? '#d84a4a' : 'var(--text-pri)');
+          return `<tr style="border-bottom:1px solid var(--border);">
+            <td style="padding:4px 8px;color:var(--text-pri);">${esc(r.period || r.label || '—')}</td>
+            <td style="padding:4px 8px;text-align:right;color:var(--text-pri);">${num(r.revenue_eok, '억')}</td>
+            <td style="padding:4px 8px;text-align:right;color:var(--text-pri);">${num(r.gross_profit_eok, '억')}</td>
+            <td style="padding:4px 8px;text-align:right;color:var(--text-pri);">${num(r.sga_eok, '억')}</td>
+            <td style="padding:4px 8px;text-align:right;color:${col};font-weight:500;">${op > 0 ? '+' : ''}${num(op, '억')}</td>
+            <td style="padding:4px 8px;text-align:right;color:${col};">${num(r.op_margin_pct, '%')}</td>
+            <td style="padding:4px 8px;text-align:right;color:var(--text-pri);">${num(r.advertising_eok, '억')}</td>
+            <td style="padding:4px 8px;text-align:right;color:var(--text-pri);">${num(r.salary_eok, '억')}</td>
+          </tr>`;
+        }).join('')}
+        </tbody>
+      </table>
+      </div>
+      ${(yoy.key_observations && yoy.key_observations.length) ? `
+      <div style="margin-top:10px;padding-top:8px;border-top:1px dashed var(--border);">
+        <div style="font-size:11px;color:var(--text-sec);margin-bottom:4px;">Key Observations</div>
+        <ul style="list-style:none;padding:0;margin:0;">
+          ${yoy.key_observations.map(o => `<li style="font-size:12px;color:var(--text-pri);padding:3px 0;">· ${esc(o)}</li>`).join('')}
+        </ul>
+        ${yoy.cagr_fy24_to_fy26ann_pct !== undefined ? `<div style="font-size:11px;color:var(--text-sec);margin-top:6px;">CAGR (FY24→FY26 연환산): <span style="color:${yoy.cagr_fy24_to_fy26ann_pct < 0 ? '#d84a4a' : '#2e8f5f'};font-weight:500;">${yoy.cagr_fy24_to_fy26ann_pct}%</span></div>` : ''}
+      </div>` : ''}
+    </div>`;
+  }
+
+  // 10. 인수계약 조건 (contract_key_terms)
+  const ct = p.contract_key_terms || {};
+  if (ct.deal_structure || (ct.key_covenants && ct.key_covenants.length)) {
+    const ds = ct.deal_structure || {};
+    const dp = ct.dilution_protection || {};
+    html += `<div style="margin-top:14px;border:1px solid var(--border);border-radius:3px;padding:12px 14px;background:var(--surface);">
+      <div style="font-size:11px;color:var(--text-sec);margin-bottom:8px;letter-spacing:0.04em;">10. 인수계약 핵심 조건 <span style="color:var(--text-dim);font-size:10px;">(${esc(ct.source || '')})</span></div>
+      <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:12px;">
+        <div>
+          <div style="font-size:11px;color:var(--text-sec);margin-bottom:4px;">Deal Structure</div>
+          <table class="mini-table" style="width:100%;font-size:12px;">
+            <tr><td style="color:var(--text-sec);padding:3px 0;">방식</td><td>${esc(ds.method || '—')}</td></tr>
+            <tr><td style="color:var(--text-sec);padding:3px 0;">대가</td><td>${esc(ds.consideration || ct.consideration || '—')}</td></tr>
+            <tr><td style="color:var(--text-sec);padding:3px 0;">줌줌 평가액</td><td>${ds.valuation_zoom_total_eok ? ds.valuation_zoom_total_eok + '억' : '—'}</td></tr>
+            <tr><td style="color:var(--text-sec);padding:3px 0;">줌줌 1주</td><td>${ds.valuation_zoom_per_share_krw ? ds.valuation_zoom_per_share_krw.toLocaleString() + '원' : '—'}</td></tr>
+            <tr><td style="color:var(--text-sec);padding:3px 0;">데이오프 발행가</td><td>${ds.dayoff_new_share_issue_price_krw ? ds.dayoff_new_share_issue_price_krw.toLocaleString() + '원' : '—'}</td></tr>
+          </table>
+        </div>
+        <div>
+          <div style="font-size:11px;color:var(--text-sec);margin-bottom:4px;">희석방지 조항</div>
+          ${dp.clause ? `<div style="font-size:12px;color:var(--text-pri);margin-bottom:6px;">${esc(dp.clause)}</div>` : ''}
+          ${dp.trigger ? `<div style="font-size:11px;color:var(--text-sec);">Trigger: ${esc(dp.trigger)}</div>` : ''}
+          ${dp.mechanism ? `<div style="font-size:11px;color:var(--text-sec);margin-top:4px;">Mechanism: ${esc(dp.mechanism)}</div>` : ''}
+        </div>
+      </div>
+      ${(ct.key_covenants && ct.key_covenants.length) ? `
+      <div style="margin-top:10px;padding-top:8px;border-top:1px dashed var(--border);">
+        <div style="font-size:11px;color:var(--text-sec);margin-bottom:4px;">Key Covenants (${ct.key_covenants.length}건)</div>
+        <ul style="list-style:none;padding:0;margin:0;">
+          ${ct.key_covenants.map(c => `<li style="font-size:12px;color:var(--text-pri);padding:3px 0;">· ${esc(typeof c === 'string' ? c : (c.title || c.name || JSON.stringify(c)))}</li>`).join('')}
+        </ul>
+      </div>` : ''}
+      ${(ct.consent_rights && ct.consent_rights.length) ? `
+      <div style="margin-top:10px;padding-top:8px;border-top:1px dashed var(--border);">
+        <div style="font-size:11px;color:var(--text-sec);margin-bottom:4px;">Consent Rights (${ct.consent_rights.length}건)</div>
+        <ul style="list-style:none;padding:0;margin:0;">
+          ${ct.consent_rights.map(c => `<li style="font-size:12px;color:var(--text-pri);padding:3px 0;">· ${esc(typeof c === 'string' ? c : (c.description || c.title || JSON.stringify(c)))}</li>`).join('')}
+        </ul>
+      </div>` : ''}
+    </div>`;
+  }
+
+  // 11. 섹터 벤치마크 (zoom_sector_benchmark)
+  const sb = p.zoom_sector_benchmark || {};
+  if (sb.zoom_vs_sector || (sb.company_comparables && sb.company_comparables.length)) {
+    const vs = sb.zoom_vs_sector || {};
+    const comps = sb.company_comparables || [];
+    const pos = sb.overall_competitive_position || {};
+    const verdictColor = (v) => v === 'OVER' || v === 'ABOVE' ? '#2e8f5f' : (v === 'UNDER' || v === 'BELOW' ? '#d84a4a' : 'var(--text-pri)');
+
+    html += `<div style="margin-top:14px;border:1px solid var(--border);border-radius:3px;padding:12px 14px;background:var(--surface);">
+      <div style="font-size:11px;color:var(--text-sec);margin-bottom:8px;letter-spacing:0.04em;">11. 섹터 벤치마크 <span style="background:var(--surface2);border:1px solid var(--border);border-radius:3px;padding:1px 6px;font-size:9px;color:var(--text-pri);">Tier: ${esc(pos.sector_tier || 'AVERAGE')}</span></div>
+
+      <!-- 줌줌 vs 섹터 지표 대비 카드 -->
+      <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(220px, 1fr));gap:8px;">
+        ${Object.entries(vs).map(([metric, obj]) => {
+          // 키 명명 변형 대응: zoom/zoom_pct/zoom_krw/zoom_usd, sector_avg/sector_avg_pct/sector_benchmark_pct, delta_pp/delta_pp_on_net_rev/delta_usd/multiple
+          const zoomVal = obj.zoom_pct ?? obj.zoom ?? obj.zoom_top2_pct ?? obj.zoom_krw ?? obj.zoom_usd;
+          const zoomUnit = (obj.zoom_pct !== undefined || obj.zoom_top2_pct !== undefined) ? '%' : (obj.zoom_krw !== undefined ? '원' : (obj.zoom_usd !== undefined ? 'USD' : ''));
+          const secVal = obj.sector_avg_pct ?? obj.sector_avg ?? obj.sector_benchmark_pct ?? obj.sector_benchmark_usd ?? obj.klook_top_region_pct ?? obj.sector_median;
+          const secUnit = zoomUnit;
+          const delta = obj.delta_pp ?? obj.delta_pp_on_net_rev ?? obj.delta_pp_gp_over_gmv ?? obj.delta_pct ?? obj.delta_usd;
+          const deltaUnit = obj.delta_pp !== undefined || obj.delta_pp_on_net_rev !== undefined || obj.delta_pp_gp_over_gmv !== undefined ? 'pp' : (obj.delta_usd !== undefined ? 'USD' : '');
+          const mult = obj.multiple;
+          const v = obj.verdict || obj.verdict_gmv_basis || obj.verdict_level || '';
+          const col = verdictColor(v);
+          const label = metric.replace(/_/g, ' ');
+          const zDisp = zoomVal !== undefined && zoomVal !== null ? (typeof zoomVal === 'number' ? zoomVal.toLocaleString() + zoomUnit : zoomVal) : '—';
+          const sDisp = secVal !== undefined && secVal !== null ? (typeof secVal === 'number' ? secVal.toLocaleString() + secUnit : secVal) : '—';
+          return `<div style="background:var(--surface2);border:1px solid var(--border);border-radius:3px;padding:10px 12px;">
+            <div style="font-size:10px;color:var(--text-sec);margin-bottom:4px;text-transform:uppercase;letter-spacing:0.04em;">${esc(label)}</div>
+            <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:4px;">
+              <span style="font-size:16px;color:var(--text-pri);font-weight:500;">${zDisp}</span>
+              <span style="font-size:10px;color:${col};font-weight:500;">${esc(v)}</span>
+            </div>
+            <div style="font-size:11px;color:var(--text-sec);">섹터: ${sDisp}${delta !== undefined && delta !== null ? ` · Δ ${delta > 0 ? '+' : ''}${delta}${deltaUnit}` : ''}${mult !== undefined ? ` · ×${mult}` : ''}</div>
+            ${obj.interpretation ? `<div style="font-size:11px;color:var(--text-pri);margin-top:6px;line-height:1.4;">${esc(obj.interpretation)}</div>` : ''}
+          </div>`;
+        }).join('')}
+      </div>
+
+      <!-- 경쟁사 비교 테이블 -->
+      ${comps.length ? `
+      <div style="margin-top:12px;padding-top:8px;border-top:1px dashed var(--border);">
+        <div style="font-size:11px;color:var(--text-sec);margin-bottom:6px;">비교 기업 (${comps.length}사)</div>
+        <div style="overflow-x:auto;">
+        <table class="mini-table" style="width:100%;font-size:11px;border-collapse:collapse;">
+          <thead><tr style="background:var(--surface2);border-bottom:1px solid var(--border);">
+            <th style="padding:5px 8px;text-align:left;color:var(--text-sec);font-weight:400;">회사</th>
+            <th style="padding:5px 8px;text-align:left;color:var(--text-sec);font-weight:400;">국가</th>
+            <th style="padding:5px 8px;text-align:right;color:var(--text-sec);font-weight:400;">매출</th>
+            <th style="padding:5px 8px;text-align:right;color:var(--text-sec);font-weight:400;">Take Rate</th>
+            <th style="padding:5px 8px;text-align:right;color:var(--text-sec);font-weight:400;">AOV</th>
+            <th style="padding:5px 8px;text-align:right;color:var(--text-sec);font-weight:400;">CM/EBITDA</th>
+            <th style="padding:5px 8px;text-align:left;color:var(--text-sec);font-weight:400;">세그먼트</th>
+          </tr></thead>
+          <tbody>
+          ${comps.map(c => {
+            const rev = c.revenue_usd_m ? `$${c.revenue_usd_m}M` : (c.revenue_eok ? `${c.revenue_eok}억` : (c.revenue_2024_usd_m ? `$${c.revenue_2024_usd_m}M` : '—'));
+            const tr = c.take_rate_pct !== null && c.take_rate_pct !== undefined ? `${c.take_rate_pct}%` : '—';
+            const aov = c.aov_usd ? `$${c.aov_usd}` : (c.aov_krw ? `${c.aov_krw.toLocaleString()}원` : '—');
+            const cm = c.contribution_margin_pct !== null && c.contribution_margin_pct !== undefined ? `${c.contribution_margin_pct}%` : (c.ebitda_margin_pct !== null && c.ebitda_margin_pct !== undefined ? `${c.ebitda_margin_pct}% (EBITDA)` : '—');
+            return `<tr style="border-bottom:1px solid var(--border);">
+              <td style="padding:4px 8px;color:var(--text-pri);font-weight:500;">${esc(c.name || '—')}</td>
+              <td style="padding:4px 8px;color:var(--text-sec);">${esc(c.country || c.region || '—')}</td>
+              <td style="padding:4px 8px;text-align:right;color:var(--text-pri);">${rev}</td>
+              <td style="padding:4px 8px;text-align:right;color:var(--text-pri);">${tr}</td>
+              <td style="padding:4px 8px;text-align:right;color:var(--text-pri);">${aov}</td>
+              <td style="padding:4px 8px;text-align:right;color:var(--text-pri);">${cm}</td>
+              <td style="padding:4px 8px;color:var(--text-sec);font-size:10px;">${esc(c.segment || '—')}</td>
+            </tr>`;
+          }).join('')}
+          </tbody>
+        </table>
+        </div>
+      </div>` : ''}
+
+      <!-- Strengths / Weaknesses -->
+      ${(pos.strengths || pos.weaknesses) ? `
+      <div style="margin-top:12px;display:grid;grid-template-columns:repeat(2,1fr);gap:10px;">
+        ${pos.strengths ? `<div style="border-left:3px solid #2e8f5f;padding:8px 10px;background:var(--surface2);border-radius:3px;">
+          <div style="font-size:11px;color:#2e8f5f;margin-bottom:4px;">Strengths</div>
+          <ul style="list-style:none;padding:0;margin:0;">
+            ${pos.strengths.map(s => `<li style="font-size:11px;color:var(--text-pri);padding:2px 0;line-height:1.4;">· ${esc(s)}</li>`).join('')}
+          </ul>
+        </div>` : ''}
+        ${pos.weaknesses ? `<div style="border-left:3px solid #d84a4a;padding:8px 10px;background:var(--surface2);border-radius:3px;">
+          <div style="font-size:11px;color:#d84a4a;margin-bottom:4px;">Weaknesses</div>
+          <ul style="list-style:none;padding:0;margin:0;">
+            ${pos.weaknesses.map(s => `<li style="font-size:11px;color:var(--text-pri);padding:2px 0;line-height:1.4;">· ${esc(s)}</li>`).join('')}
+          </ul>
+        </div>` : ''}
+      </div>` : ''}
+
+      ${pos.sector_tier_note ? `<div style="font-size:10px;color:var(--text-dim);margin-top:8px;border-top:1px dashed var(--border);padding-top:6px;">Note: ${esc(pos.sector_tier_note)}</div>` : ''}
+      ${(sb.sources && sb.sources.length) ? `<div style="font-size:10px;color:var(--text-dim);margin-top:4px;">Sources: ${sb.sources.length}건 (공개 자료 기반)</div>` : ''}
+    </div>`;
+  }
+
+  // 12. IR 덱 분석 (ir_deck_analysis)
+  const ir = p.ir_deck_analysis || {};
+  if (ir._meta || ir.company_overview || ir.business_model) {
+    const irMeta = ir._meta || {};
+    const trac = ir.traction || {};
+    const fg = ir.financial_guidance || {};
+    const dscs = ir.ir_vs_email_discrepancies || [];
+    const irStr = ir.ir_strengths_for_investors || [];
+    const irWk = ir.ir_weaknesses_for_investors || [];
+    const addIns = ir.pitstop_additional_insights || [];
+
+    html += `<div style="margin-top:14px;border:1px solid var(--border);border-radius:3px;padding:12px 14px;background:var(--surface);">
+      <div style="font-size:11px;color:var(--text-sec);margin-bottom:8px;letter-spacing:0.04em;">12. IR 덱 분석 <span style="color:var(--text-dim);font-size:10px;">(${esc(irMeta.source_file || '')} · ${irMeta.total_pages || '?'}p)</span></div>`;
+
+    // CEO 메시지 / 비전
+    const ov = ir.company_overview || {};
+    if (ov.vision || ov.ceo_message) {
+      html += `<div style="background:var(--surface2);padding:10px 12px;border-radius:3px;margin-bottom:10px;">
+        ${ov.vision ? `<div style="font-size:11px;color:var(--text-sec);margin-bottom:4px;">VISION</div><div style="font-size:12px;color:var(--text-pri);margin-bottom:6px;">${esc(ov.vision)}</div>` : ''}
+        ${ov.ceo_message ? `<div style="font-size:11px;color:var(--text-sec);margin-bottom:4px;">CEO MESSAGE</div><div style="font-size:12px;color:var(--text-pri);">${esc(ov.ceo_message)}</div>` : ''}
+      </div>`;
+    }
+
+    // IR vs 이메일 일치성 검증 (가장 중요)
+    if (dscs.length) {
+      const divCount = dscs.filter(d => d.verdict === 'divergent').length;
+      const consCount = dscs.filter(d => d.verdict === 'consistent').length;
+      html += `<div style="margin-bottom:10px;">
+        <div style="font-size:11px;color:var(--text-sec);margin-bottom:6px;">IR 덱 vs CEO 이메일 정합성 — <span style="color:#d84a4a;font-weight:500;">divergent ${divCount}건</span> · consistent ${consCount}건</div>
+        <div style="overflow-x:auto;">
+        <table class="mini-table" style="width:100%;font-size:11px;border-collapse:collapse;">
+          <thead><tr style="background:var(--surface2);border-bottom:1px solid var(--border);">
+            <th style="padding:5px 8px;text-align:left;color:var(--text-sec);font-weight:400;">항목</th>
+            <th style="padding:5px 8px;text-align:left;color:var(--text-sec);font-weight:400;">IR</th>
+            <th style="padding:5px 8px;text-align:left;color:var(--text-sec);font-weight:400;">이메일</th>
+            <th style="padding:5px 8px;text-align:center;color:var(--text-sec);font-weight:400;">verdict</th>
+          </tr></thead>
+          <tbody>
+          ${dscs.map(d => {
+            const v = d.verdict || '';
+            const col = v === 'divergent' ? '#d84a4a' : (v === 'consistent' ? '#2e8f5f' : 'var(--text-pri)');
+            return `<tr style="border-bottom:1px solid var(--border);">
+              <td style="padding:4px 8px;color:var(--text-pri);font-weight:500;">${esc(d.topic || '')}</td>
+              <td style="padding:4px 8px;color:var(--text-pri);font-size:10px;">${esc(d.ir_says || '—')}</td>
+              <td style="padding:4px 8px;color:var(--text-pri);font-size:10px;">${esc(d.email_says || '—')}</td>
+              <td style="padding:4px 8px;text-align:center;color:${col};font-weight:500;">${esc(v.toUpperCase())}</td>
+            </tr>`;
+          }).join('')}
+          </tbody>
+        </table>
+        </div>
+      </div>`;
+    }
+
+    // 재무 가이던스 + BEP timing
+    if (fg.revenue_target || fg.bep_timing_ir || fg.bep_timing_email) {
+      const uof = fg.use_of_funds || {};
+      const fb = fg.funding_breakdown || {};
+      const fr = fg.future_rounds || {};
+      html += `<div style="margin-bottom:10px;border:1px dashed var(--border);padding:8px 10px;border-radius:3px;">
+        <div style="font-size:11px;color:var(--text-sec);margin-bottom:4px;">재무 가이던스 (IR vs 이메일)</div>
+        <div style="font-size:12px;color:var(--text-pri);">${fg.bep_timing_ir ? `IR BEP: <span style="font-weight:500;">${esc(fg.bep_timing_ir)}</span>` : ''}${fg.bep_timing_email ? ` / 이메일 BEP: <span style="font-weight:500;">${esc(fg.bep_timing_email)}</span>` : ''}${fg.bep_gap_note ? `<br><span style="font-size:11px;color:#d84a4a;">⚠ ${esc(fg.bep_gap_note)}</span>` : ''}</div>
+        ${fg.funding_request_eok ? `<div style="font-size:11px;color:var(--text-pri);margin-top:6px;">자금 요청: <span style="font-weight:500;">${fg.funding_request_eok}억</span>${fb.직접_요청 !== undefined ? ` (직접 ${fb.직접_요청}억 + 신보 전환옵션 ${fb.신보_투자전환옵션_실행}억)` : ''}</div>` : ''}
+        ${(uof.categories && uof.categories.length) ? `<div style="font-size:11px;color:var(--text-sec);margin-top:4px;">자금 용도: ${uof.categories.map(c => esc(c)).join(' · ')}${uof.weight_disclosure ? `<br><span style="color:#d84a4a;">⚠ ${esc(uof.weight_disclosure)}</span>` : ''}</div>` : ''}
+        ${(fr.Series_A || fr.Series_B) ? `<div style="font-size:11px;color:var(--text-sec);margin-top:4px;">차기 라운드: Series A ${esc(fr.Series_A || '—')} / Series B ${esc(fr.Series_B || '—')}</div>` : ''}
+      </div>`;
+    }
+
+    // 5개년 모형 (객체 배열을 테이블로)
+    const rd = ir.roadmap || {};
+    const fym = rd.five_year_financial_model;
+    if (Array.isArray(fym) && fym.length) {
+      html += `<div style="margin-bottom:10px;border:1px dashed var(--border);padding:8px 10px;border-radius:3px;">
+        <div style="font-size:11px;color:var(--text-sec);margin-bottom:6px;">5개년 재무 모형 (IR p.19)</div>
+        <div style="overflow-x:auto;">
+        <table class="mini-table" style="width:100%;font-size:11px;border-collapse:collapse;">
+          <thead><tr style="background:var(--surface2);border-bottom:1px solid var(--border);">
+            <th style="padding:5px 8px;text-align:left;color:var(--text-sec);font-weight:400;">연도</th>
+            <th style="padding:5px 8px;text-align:right;color:var(--text-sec);font-weight:400;">MAU</th>
+            <th style="padding:5px 8px;text-align:right;color:var(--text-sec);font-weight:400;">GMV</th>
+            <th style="padding:5px 8px;text-align:right;color:var(--text-sec);font-weight:400;">매출</th>
+            <th style="padding:5px 8px;text-align:right;color:var(--text-sec);font-weight:400;">영업이익</th>
+            <th style="padding:5px 8px;text-align:right;color:var(--text-sec);font-weight:400;">Take Rate</th>
+            <th style="padding:5px 8px;text-align:left;color:var(--text-sec);font-weight:400;">Milestone</th>
+          </tr></thead>
+          <tbody>
+          ${fym.map(r => {
+            const op = r.op_income_eok;
+            const col = op > 0 ? '#2e8f5f' : (op < 0 ? '#d84a4a' : 'var(--text-pri)');
+            const tr = (r.gmv_eok && r.revenue_eok) ? `${(r.revenue_eok / r.gmv_eok * 100).toFixed(1)}%` : '—';
+            return `<tr style="border-bottom:1px solid var(--border);">
+              <td style="padding:4px 8px;color:var(--text-pri);font-weight:500;">${r.year}</td>
+              <td style="padding:4px 8px;text-align:right;color:var(--text-pri);">${r.mau_man ? r.mau_man + '만' : '—'}</td>
+              <td style="padding:4px 8px;text-align:right;color:var(--text-pri);">${r.gmv_eok ? r.gmv_eok + '억' : '—'}</td>
+              <td style="padding:4px 8px;text-align:right;color:var(--text-pri);">${r.revenue_eok ? r.revenue_eok + '억' : '—'}</td>
+              <td style="padding:4px 8px;text-align:right;color:${col};font-weight:500;">${op > 0 ? '+' : ''}${op !== undefined ? op + '억' : '—'}</td>
+              <td style="padding:4px 8px;text-align:right;color:var(--text-sec);">${tr}</td>
+              <td style="padding:4px 8px;color:var(--text-sec);font-size:10px;">${esc(r.milestone || '')}</td>
+            </tr>`;
+          }).join('')}
+          </tbody>
+        </table>
+        </div>
+      </div>`;
+    }
+
+    // Strengths / Weaknesses (IR 관점) — 객체 형식 {rank, claim, page, why}
+    const renderIrItem = (s) => {
+      if (typeof s === 'string') return esc(s);
+      const claim = s.claim || s.point || '';
+      const page = s.page ? ` <span style="color:var(--text-dim);">(p${s.page})</span>` : '';
+      const why = s.why ? `<div style="color:var(--text-sec);font-size:10px;margin-top:2px;padding-left:8px;">${esc(s.why)}</div>` : '';
+      return `<div style="font-weight:500;color:var(--text-pri);">${esc(claim)}${page}</div>${why}`;
+    };
+    if (irStr.length || irWk.length) {
+      html += `<div style="display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-bottom:10px;">`;
+      if (irStr.length) {
+        html += `<div style="border-left:3px solid #2e8f5f;padding:8px 10px;background:var(--surface2);border-radius:3px;">
+          <div style="font-size:11px;color:#2e8f5f;margin-bottom:4px;">IR 강점 (투자자 관점)</div>
+          <ol style="list-style:decimal;padding-left:18px;margin:0;">
+            ${irStr.map(s => `<li style="font-size:11px;color:var(--text-pri);padding:4px 0;line-height:1.4;">${renderIrItem(s)}</li>`).join('')}
+          </ol>
+        </div>`;
+      }
+      if (irWk.length) {
+        html += `<div style="border-left:3px solid #d84a4a;padding:8px 10px;background:var(--surface2);border-radius:3px;">
+          <div style="font-size:11px;color:#d84a4a;margin-bottom:4px;">IR 약점 (투자자 관점)</div>
+          <ol style="list-style:decimal;padding-left:18px;margin:0;">
+            ${irWk.map(s => `<li style="font-size:11px;color:var(--text-pri);padding:4px 0;line-height:1.4;">${renderIrItem(s)}</li>`).join('')}
+          </ol>
+        </div>`;
+      }
+      html += `</div>`;
+    }
+
+    // 피트스탑 추가 인사이트
+    if (addIns.length) {
+      html += `<div style="border-left:3px solid var(--text-pri);padding:8px 10px;background:var(--surface2);border-radius:3px;">
+        <div style="font-size:11px;color:var(--text-sec);margin-bottom:6px;">피트스탑 추가 인사이트 (IR 검토에서 발굴)</div>
+        ${addIns.map((it, i) => `<div style="font-size:11px;color:var(--text-pri);padding:4px 0;line-height:1.5;${i < addIns.length-1 ? 'border-bottom:1px dashed var(--border);' : ''}">
+          <div style="font-weight:500;color:var(--text-pri);">${i+1}. ${esc(it.insight || '')}</div>
+          ${it.implication ? `<div style="color:var(--text-sec);font-size:10px;margin-top:2px;">→ ${esc(it.implication)}</div>` : ''}
+          ${it.action_for_kyi ? `<div style="color:#d84a4a;font-size:10px;margin-top:2px;">[Action] ${esc(it.action_for_kyi)}</div>` : ''}
+        </div>`).join('')}
+      </div>`;
+    }
+    html += `</div>`;
+  }
+
+  // 13. 최근 6개월 통합 P&L (monthly_pnl_6m)
+  const m6 = p.monthly_pnl_6m || {};
+  if (m6.monthly_pnl_eok && m6.monthly_pnl_eok.length) {
+    const rows = m6.monthly_pnl_eok;
+    const arc = m6.account_reclassification_evidence || {};
+    const trd = m6.trend_analysis || {};
+    const bep = m6.ceo_guidance_check || {};
+
+    html += `<div style="margin-top:14px;border:1px solid var(--border);border-radius:3px;padding:12px 14px;background:var(--surface);">
+      <div style="font-size:11px;color:var(--text-sec);margin-bottom:8px;letter-spacing:0.04em;">13. 최근 6개월 통합 P&amp;L <span style="color:var(--text-dim);font-size:10px;">(${esc(m6.scope || '')})</span></div>
+
+      <div style="overflow-x:auto;margin-bottom:10px;">
+      <table class="mini-table" style="width:100%;font-size:11px;border-collapse:collapse;">
+        <thead><tr style="background:var(--surface2);border-bottom:1px solid var(--border);">
+          <th style="padding:5px 6px;text-align:left;color:var(--text-sec);font-weight:400;">월</th>
+          <th style="padding:5px 6px;text-align:right;color:var(--text-sec);font-weight:400;">매출</th>
+          <th style="padding:5px 6px;text-align:right;color:var(--text-sec);font-weight:400;">GP</th>
+          <th style="padding:5px 6px;text-align:right;color:var(--text-sec);font-weight:400;">GP%</th>
+          <th style="padding:5px 6px;text-align:right;color:var(--text-sec);font-weight:400;">SGA</th>
+          <th style="padding:5px 6px;text-align:right;color:var(--text-sec);font-weight:400;">서비스fee</th>
+          <th style="padding:5px 6px;text-align:right;color:var(--text-sec);font-weight:400;">광고</th>
+          <th style="padding:5px 6px;text-align:right;color:var(--text-sec);font-weight:400;">급여</th>
+          <th style="padding:5px 6px;text-align:right;color:var(--text-sec);font-weight:400;">OP</th>
+          <th style="padding:5px 6px;text-align:right;color:var(--text-sec);font-weight:400;">OP%</th>
+          <th style="padding:5px 6px;text-align:left;color:var(--text-sec);font-weight:400;">scope</th>
+        </tr></thead>
+        <tbody>
+        ${rows.map(r => {
+          const op = r.operating_income_eok;
+          const col = op > 0 ? '#2e8f5f' : (op < 0 ? '#d84a4a' : 'var(--text-pri)');
+          return `<tr style="border-bottom:1px solid var(--border);">
+            <td style="padding:3px 6px;color:var(--text-pri);">${esc(r.month || '')}</td>
+            <td style="padding:3px 6px;text-align:right;color:var(--text-pri);">${num(r.revenue_eok, '')}</td>
+            <td style="padding:3px 6px;text-align:right;color:var(--text-pri);">${num(r.gross_profit_eok, '')}</td>
+            <td style="padding:3px 6px;text-align:right;color:var(--text-sec);">${num(r.gp_margin_pct, '%')}</td>
+            <td style="padding:3px 6px;text-align:right;color:var(--text-pri);">${num(r.sga_eok, '')}</td>
+            <td style="padding:3px 6px;text-align:right;color:var(--text-pri);">${num(r.service_fee_eok, '')}</td>
+            <td style="padding:3px 6px;text-align:right;color:var(--text-pri);">${num(r.advertising_eok, '')}</td>
+            <td style="padding:3px 6px;text-align:right;color:var(--text-pri);">${num(r.salary_eok, '')}</td>
+            <td style="padding:3px 6px;text-align:right;color:${col};font-weight:500;">${op > 0 ? '+' : ''}${num(op, '')}</td>
+            <td style="padding:3px 6px;text-align:right;color:${col};">${num(r.op_margin_pct, '%')}</td>
+            <td style="padding:3px 6px;color:var(--text-sec);font-size:10px;">${esc(r.scope || '')}</td>
+          </tr>`;
+        }).join('')}
+        </tbody>
+      </table>
+      </div>
+
+      <!-- 계정 재분류 evidence -->
+      ${arc.verdict ? `<div style="border:1px solid #d84a4a;border-left-width:3px;border-radius:3px;padding:10px 12px;background:var(--surface2);margin-bottom:10px;">
+        <div style="font-size:11px;color:#d84a4a;margin-bottom:4px;">회계 계정 재분류 검증</div>
+        <div style="font-size:12px;color:var(--text-pri);"><strong>verdict:</strong> ${esc(arc.verdict)}</div>
+        ${arc.first_appearance_in_sga_month ? `<div style="font-size:11px;color:var(--text-sec);margin-top:4px;">SGA 등장 시점: ${esc(arc.first_appearance_in_sga_month)}</div>` : ''}
+        ${arc.magnitude_eok !== undefined ? `<div style="font-size:11px;color:var(--text-sec);margin-top:2px;">규모: ${arc.magnitude_eok}억 (해외 인건비 service_fee 통합)</div>` : ''}
+        ${arc.implication ? `<div style="font-size:11px;color:var(--text-pri);margin-top:6px;line-height:1.4;">→ ${esc(arc.implication)}</div>` : ''}
+      </div>` : ''}
+
+      <!-- BEP 갭 진단 -->
+      ${bep.stated_bep_revenue_per_month_eok ? `<div style="border:1px dashed var(--border);padding:10px 12px;border-radius:3px;background:var(--surface2);">
+        <div style="font-size:11px;color:var(--text-sec);margin-bottom:4px;">CEO BEP 가이던스 vs 실제</div>
+        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px;">
+          <div><div style="font-size:10px;color:var(--text-sec);">CEO 제시</div><div style="font-size:14px;color:var(--text-pri);font-weight:500;">${(bep.stated_bep_revenue_per_month_eok || []).join('~')}억/월</div></div>
+          <div><div style="font-size:10px;color:var(--text-sec);">최근 3M 실제</div><div style="font-size:14px;color:var(--text-pri);">${num(bep.actual_recent_3m_avg_revenue_eok, '억/월')}</div></div>
+          <div><div style="font-size:10px;color:var(--text-sec);">갭</div><div style="font-size:14px;color:#d84a4a;font-weight:500;">${num(bep.gap_eok, '억')}</div></div>
+        </div>
+        ${bep.trajectory_to_bep ? `<div style="font-size:11px;color:var(--text-pri);margin-top:6px;line-height:1.4;">${esc(bep.trajectory_to_bep)}</div>` : ''}
+      </div>` : ''}
+
+      <!-- Trend observations -->
+      ${(trd.key_observations && trd.key_observations.length) ? `<div style="margin-top:8px;font-size:11px;color:var(--text-pri);">
+        <div style="font-size:10px;color:var(--text-sec);margin-bottom:4px;">Key Observations</div>
+        ${trd.key_observations.map(o => `<div style="padding:2px 0;">· ${esc(o)}</div>`).join('')}
+      </div>` : ''}
+    </div>`;
+  }
+
+  if (assess.positive_signals || assess.kill_switches) {
+    html += `<div style="margin-top:14px;display:grid;grid-template-columns:repeat(2,1fr);gap:12px;">`;
+    if (assess.positive_signals) {
+      html += `<div style="border:1px solid #2e8f5f;border-left-width:3px;border-radius:3px;padding:12px 14px;background:var(--surface);">
+        <div style="font-size:11px;color:#2e8f5f;margin-bottom:6px;letter-spacing:0.04em;">POSITIVE SIGNALS</div>
+        <ul style="list-style:none;padding:0;margin:0;">
+          ${assess.positive_signals.map(s => `<li style="font-size:12px;color:var(--text-pri);padding:3px 0;">· ${esc(s)}</li>`).join('')}
+        </ul>
+      </div>`;
+    }
+    if (assess.kill_switches) {
+      html += `<div style="border:1px solid #d84a4a;border-left-width:3px;border-radius:3px;padding:12px 14px;background:var(--surface);">
+        <div style="font-size:11px;color:#d84a4a;margin-bottom:6px;letter-spacing:0.04em;">KILL-SWITCHES</div>
+        <ul style="list-style:none;padding:0;margin:0;">
+          ${assess.kill_switches.map(s => `<li style="font-size:12px;color:var(--text-pri);padding:3px 0;">· ${esc(s)}</li>`).join('')}
+        </ul>
+      </div>`;
+    }
+    html += `</div>`;
+  }
+  if (assess.next_checks_s2 && assess.next_checks_s2.length) {
+    html += `<div style="margin-top:12px;border:1px solid var(--border);border-radius:3px;padding:12px 14px;background:var(--surface2);">
+      <div style="font-size:11px;color:var(--text-sec);margin-bottom:6px;letter-spacing:0.04em;">NEXT — S2 서면 확인 체크리스트</div>
+      <ol style="padding-left:20px;margin:0;">
+        ${assess.next_checks_s2.map(s => `<li style="font-size:12px;color:var(--text-pri);padding:2px 0;">${esc(s)}</li>`).join('')}
+      </ol>
+    </div>`;
+  }
+
+  if (meta.source || meta.docs_received) {
+    html += `<div style="margin-top:10px;font-size:10px;color:var(--text-dim);border-top:1px dashed var(--border);padding-top:6px;">
+      ${meta.source ? `Source: ${esc(meta.source)}` : ''}${meta.docs_received ? ` · Docs: ${meta.docs_received.length}건` : ''}${meta.last_updated ? ` · Updated: ${esc(meta.last_updated)}` : ''}
+    </div>`;
+  }
+
+  html += `</div>`;
   return html;
 }
 

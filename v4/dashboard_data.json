@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-04-24T01:46:48.840551+00:00",
+  "generated_at": "2026-04-26T21:52:41.215203+00:00",
   "source": "피트스탑_준비_*.md + go_nogo_assessment.json",
   "assessment_versions": {
     "v1": {
@@ -97,7 +97,8 @@
         "[HIGH] 동의권 복잡성: 동의권: 필요 — 동의권자 3명 이상 — 신규 투자 시 기존 투자자 동의 필수",
         "[HIGH] 메자닌 오버행: RCPS 2억 / 만기 2033.05 / 전환가 2,700원 / 투자자 : GS리테일",
         "[CRITICAL] 현금 고갈 임박: 현금: 0.0억",
-        "[MEDIUM] 연속 순손실: 최근 2개년 순손실 지속"
+        "[MEDIUM] 연속 순손실: 최근 2개년 순손실 지속",
+        "[HIGH] 피벗 전략 진행 중: 위기 극복을 위해 모회사 서비스 ‘데이오프’를 종료, 80% 이상의 비용을 절감하고 BEP 달성이 가능한 자회사 서비스 ‘줌줌투어’에 모든 역량을 집중하여 위기를 극복할 계획을 수립하였습니다 / 근거자료 4건 수취"
       ],
       "financials": {
         "bs_summary": {
@@ -436,8 +437,122 @@
           }
         },
         "headcount": {
-          "headers": [],
-          "rows": []
+          "headers": [
+            "월",
+            "인원(명)",
+            "입사",
+            "퇴사"
+          ],
+          "rows": [
+            [
+              "2024-11",
+              "7",
+              "0",
+              "0"
+            ],
+            [
+              "2024-12",
+              "8",
+              "1",
+              "0"
+            ],
+            [
+              "2025-01",
+              "8",
+              "0",
+              "0"
+            ],
+            [
+              "2025-02",
+              "9",
+              "1",
+              "0"
+            ],
+            [
+              "2025-03",
+              "9",
+              "0",
+              "1"
+            ],
+            [
+              "2025-04",
+              "9",
+              "1",
+              "1"
+            ],
+            [
+              "2025-05",
+              "8",
+              "0",
+              "1"
+            ],
+            [
+              "2025-06",
+              "7",
+              "0",
+              "0"
+            ],
+            [
+              "2025-07",
+              "7",
+              "0",
+              "0"
+            ],
+            [
+              "2025-08",
+              "7",
+              "0",
+              "0"
+            ],
+            [
+              "2025-09",
+              "7",
+              "0",
+              "0"
+            ],
+            [
+              "2025-10",
+              "7",
+              "0",
+              "0"
+            ],
+            [
+              "2025-11",
+              "7",
+              "0",
+              "0"
+            ],
+            [
+              "2025-12",
+              "7",
+              "0",
+              "0"
+            ],
+            [
+              "2026-01",
+              "7",
+              "0",
+              "0"
+            ],
+            [
+              "2026-02",
+              "7",
+              "0",
+              "1"
+            ],
+            [
+              "2026-03",
+              "6",
+              "0",
+              "0"
+            ],
+            [
+              "2026-04",
+              "6",
+              "0",
+              "0"
+            ]
+          ]
         }
       },
       "ir_analysis": {
@@ -475,7 +590,13 @@
           "id": 4,
           "severity": "MEDIUM",
           "title": "연속 순손실",
-          "detail": "최근 2개년 순손실 지속 ---"
+          "detail": "최근 2개년 순손실 지속"
+        },
+        {
+          "id": 5,
+          "severity": "HIGH",
+          "title": "피벗 전략 진행 중",
+          "detail": "위기 극복을 위해 모회사 서비스 ‘데이오프’를 종료, 80% 이상의 비용을 절감하고 BEP 달성이 가능한 자회사 서비스 ‘줌줌투어’에 모든 역량을 집중하여 위기를 극복할 계획을 수립하였습니다 / 근거자료 4건 수취 ---"
         }
       ],
       "intuition_check": {
@@ -546,7 +667,2195 @@
         }
       ],
       "email_draft": "",
-      "assessment_version": "v4"
+      "assessment_version": "v4",
+      "pivot_strategy": {
+        "_meta": {
+          "company": "데이오프컴퍼니",
+          "pivot_target": "줌줌투어",
+          "source": "CEO 조현수 메일 회신 2026-04-23 (피트스탑 서류보충 요청 응답)",
+          "last_updated": "2026-04-26",
+          "docs_received": [
+            "(줌줌투어) 기간별손익계산서_2023.07.01~2024.06.30.xls",
+            "(줌줌투어) 기간별손익계산서_2024.07.01~2025.06.30.xls",
+            "(줌줌투어) 기간별손익계산서_2025.07.01~2026.03.31.xls",
+            "줌줌투어 인수계약서 주요 조건 요약.docx"
+          ],
+          "parse_notes": "xls 3건 + docx 1건 파싱 완료 (xlrd 1.2.0 / python-docx 1.2.0)",
+          "parse_notes_6m": "최근6개월손익계산서_데이오프컴퍼니_줌줌투어(26.03).xls 파싱 완료 (xlrd 1.2.0). 데이오프 6M + 줌줌 9M, 통합 P&L + 분리 raw 보존."
+        },
+        "headline": {
+          "one_liner": "데이오프(OTA, 적자 지속) 서비스 종료 → 줌줌투어(호주/미주 특화 OTA, 공헌이익률 40.9%) 집중. BEP 2026.08 목표.",
+          "verdict_hint": "피벗 방향성은 정합적이나 (a) 데이오프 잔존 부채 6억+RCPS 4억 승계 미확정, (b) 수탁예수금 1억 환급재원 미확보, (c) 광고 중단 시 90일 -67.3% 매출 하락 — 3대 Kill-Switch 해소 여부가 Go/No-Go 결정"
+        },
+        "acquisition_structure": {
+          "method": "주식 스왑 (액면가 주식 발행 + 줌줌투어 매입)",
+          "original_plan": "현물출자 (과세이연 불가로 변경)",
+          "dayoff_ownership_of_zoom": "100%",
+          "zoom_origin": "호주법인 Native Signal의 100% 한국 자회사",
+          "native_signal_stake_in_dayoff": "33.3% 보통주",
+          "investor_consent": "리픽싱 웨이버 동의 완료",
+          "zoom_standalone_audit": {
+            "borrowings": "없음",
+            "mezzanine": "없음",
+            "contingent_liabilities": "없음",
+            "open_items": "해외 인건비 원천징수 이슈 — 서비스 제공지 해외라 비대상 확인"
+          }
+        },
+        "dayoff_termination": {
+          "method_current": "서비스 종료 + 비용절감 (모회사 손실 최소화)",
+          "method_future": "법인 해산 등 옵션 검토 예정",
+          "parent_debt_succession": {
+            "borrowings": "6억 (신보 4 + 기보 1 + 중진공 1)",
+            "mezzanine": "RCPS 4억",
+            "direction": "자회사 승계 지양 방향 희망, 실현 가능성 자문 필요",
+            "risk": "승계 시 줌줌투어 재무 훼손, 미승계 시 잔존법인 처리 불투명"
+          },
+          "prepayment_liability": {
+            "amount_eok": 1.0,
+            "type": "상품 공급사 수탁예수금",
+            "refund_plan": "부재 — 3개월 내 후속자금 마련 목표",
+            "funding_sources": [
+              "정부지원사업 4월 선정: 5,000만원 (인건비/운영비 충당)",
+              "미디어 채널 월 4~500만원 수익"
+            ]
+          },
+          "headcount_transition": [
+            {
+              "role": "디자이너",
+              "count": 1,
+              "action": "2026-04말 계약 종료"
+            },
+            {
+              "role": "마케터",
+              "count": 1,
+              "action": "주 2일 전환 (월 450만원 급여 절감)"
+            },
+            {
+              "role": "개발자",
+              "count": 2,
+              "action": "줌줌투어 전환 배치 예정"
+            },
+            {
+              "role": "운영",
+              "count": 1,
+              "action": "이미 줌줌투어 업무 수행 중"
+            }
+          ],
+          "severance_reserve": "해결책 없음 — 후속자금 마련 노력 중"
+        },
+        "zoom_operations_2025": {
+          "repurchase_rate_pct": 27,
+          "repurchase_rate_yoy_delta_pp": 12.5,
+          "aov_krw": 407809,
+          "aov_yoy_pct": 5.7,
+          "geo_mix": {
+            "미주": 46.5,
+            "호주": 46.4,
+            "유럽": 3.9,
+            "아시아_기타": 3.1
+          }
+        },
+        "zoom_financials_ttm": {
+          "gmv_eok": 170.0,
+          "net_sales_eok": 25.0,
+          "avg_take_rate_pct": 14.99,
+          "roas_by_sales": 3.87,
+          "roas_by_gmv": 25.84,
+          "pg_fee_eok": 4.668,
+          "pg_fee_of_gmv_pct": 2.75,
+          "promotion_eok": 3.816,
+          "promotion_monthly_m_krw": 32.0,
+          "advertising_eok": 6.581,
+          "advertising_monthly_m_krw": 54.8,
+          "contribution_margin_eok": 10.419,
+          "contribution_margin_monthly_m_krw": 86.8,
+          "contribution_margin_pct": 40.9
+        },
+        "ad_dependency_simulation": {
+          "description": "광고 전체 중단 시 예상 매출 하락 (과거 마케팅 지표 기반)",
+          "d30_pct": -52.8,
+          "d60_pct": -59.4,
+          "d90_pct": -67.3,
+          "implication": "광고 중단 불가. ROAS 고정 + 비용 조정 접근이 합리적."
+        },
+        "investor_status": {
+          "rcps_holders": [
+            {
+              "name": "GS리테일",
+              "amount_eok": 2.0,
+              "maturity": "2033-05",
+              "conversion_price_krw": 2700
+            },
+            {
+              "name": "씨엔티테크",
+              "amount_eok": 1.0,
+              "maturity": "2033-07",
+              "conversion_price_krw": 2700
+            },
+            {
+              "name": "데이오프 개인조합",
+              "amount_eok": 1.0,
+              "maturity": null,
+              "conversion_price_krw": null
+            }
+          ],
+          "awareness": "모든 투자자 현상황 인식",
+          "additional_injection_intent": "없음",
+          "shinbo_convertible_option": "3억+ 신규 투자 유치 시 5~10억 매칭 전환 검토 가능 (확약 아님)",
+          "strategic_meeting": "기존 여행사 전략적 투자 미팅 예정 (2026-04 말 ~ 05 초)",
+          "ceo_loan_handling": "대표 가수금 3.8억 → 출자전환 계획"
+        },
+        "bep_roadmap": {
+          "fixed_cost_monthly_eok_range": [
+            1.0,
+            1.1
+          ],
+          "contribution_margin_pct": 41.0,
+          "bep_revenue_monthly_eok_range": [
+            2.4,
+            2.7
+          ],
+          "target_month": "2026-08",
+          "preconditions": [
+            "중동 전쟁 종결",
+            "매출 회복",
+            "비용 감축 완료"
+          ],
+          "q4_reversal_risk": "9~11월 비수기 적자 재진입 예상",
+          "annual_breakeven_target": "2026-12 이후 연간 흑자전환 기대"
+        },
+        "post_bep_guidance": {
+          "note": "CEO 자체 추정 (실 달성 불확실, 계절성 반영)",
+          "months": [
+            {
+              "m": "2026-09",
+              "gmv_eok": 17.4,
+              "net_sales_eok": 1.8,
+              "op_m_krw": -32,
+              "op_pct": -17.5
+            },
+            {
+              "m": "2026-10",
+              "gmv_eok": 12.9,
+              "net_sales_eok": 3.3,
+              "op_m_krw": 61,
+              "op_pct": 18.6
+            },
+            {
+              "m": "2026-11",
+              "gmv_eok": 15.4,
+              "net_sales_eok": 2.1,
+              "op_m_krw": -13,
+              "op_pct": -6.2
+            },
+            {
+              "m": "2026-12",
+              "gmv_eok": 15.0,
+              "net_sales_eok": 2.3,
+              "op_m_krw": 0,
+              "op_pct": -0.2
+            },
+            {
+              "m": "2027-01",
+              "gmv_eok": 16.4,
+              "net_sales_eok": 2.3,
+              "op_m_krw": -5,
+              "op_pct": 5.3
+            },
+            {
+              "m": "2027-02",
+              "gmv_eok": 13.5,
+              "net_sales_eok": 2.6,
+              "op_m_krw": 14,
+              "op_pct": -29.2
+            },
+            {
+              "m": "2027-03",
+              "gmv_eok": 19.2,
+              "net_sales_eok": 2.7,
+              "op_m_krw": 18,
+              "op_pct": 6.5
+            },
+            {
+              "m": "2027-04",
+              "gmv_eok": 16.5,
+              "net_sales_eok": 2.3,
+              "op_m_krw": -7,
+              "op_pct": 0.0
+            },
+            {
+              "m": "2027-05",
+              "gmv_eok": 14.4,
+              "net_sales_eok": 2.6,
+              "op_m_krw": 5,
+              "op_pct": 2.0
+            },
+            {
+              "m": "2027-06",
+              "gmv_eok": 20.7,
+              "net_sales_eok": 3.0,
+              "op_m_krw": 28,
+              "op_pct": 9.6
+            },
+            {
+              "m": "2027-07",
+              "gmv_eok": 24.5,
+              "net_sales_eok": 3.2,
+              "op_m_krw": 44,
+              "op_pct": 13.6
+            },
+            {
+              "m": "2027-08",
+              "gmv_eok": 25.6,
+              "net_sales_eok": 3.7,
+              "op_m_krw": 71,
+              "op_pct": 19.1
+            }
+          ],
+          "summary": {
+            "total_gmv_eok": 211.5,
+            "total_net_sales_eok": 31.9,
+            "total_op_m_krw": 184,
+            "cumulative_op_positive_months": 8,
+            "cumulative_op_negative_months": 4
+          }
+        },
+        "contract_terms_native_signal": {
+          "dilution_protection": "Native Signal 지분 희석 방지 조항 존재",
+          "consent_rights": "동의권 조항 존재",
+          "cooperation_status": "Native Signal 측 피트스탑 지원 및 필요 동의 협조 확약"
+        },
+        "pitstop_assessment": {
+          "positive_signals": [
+            "줌줌투어 공헌이익률 40.9%는 OTA 업종 평균 대비 양호",
+            "재구매율 27% (YoY +12.5%p) — 서비스 경쟁력 입증",
+            "자체 부채/메자닌/우발부채 clean",
+            "Native Signal 동의권 협조 확약 — 구조조정 집행 리스크 낮음",
+            "인력 재배치 진행 중 — 월 450만원 절감 현실화"
+          ],
+          "kill_switches": [
+            "데이오프 잔존 부채 6억 + RCPS 4억 승계 주체 미확정 → 자회사(줌줌투어)로 이관 시 피벗 전제 훼손",
+            "수탁예수금 1억 환급재원 부재 → 소비자 민원 리스크",
+            "광고 중단 시 90일 -67.3% — 광고비 6.58억(연간) 절대 감축 불가, Lock-in 구조",
+            "BEP 전제 '중동 전쟁 종결' — 외생변수 의존",
+            "Post-BEP 가이던스는 CEO 자체 추정 — 실적 트랙 미확보"
+          ],
+          "next_checks_s2": [
+            "신보 매칭 전환 옵션 실효성 검증 (3억+ 투자 유치 레버리지)",
+            "기존 여행사 전략적 투자 미팅 결과 확인 (2026-04말~05초)",
+            "퇴직금 충당 해결책 도출 여부",
+            "Post-BEP 가이던스 중 2026-09 실적 vs 예측 모니터링"
+          ]
+        },
+        "zoom_historical_pnl": {
+          "source": "추가자료/(줌줌투어) 기간별손익계산서 3건 — xlrd 1.2.0 파싱",
+          "parse_date": "2026-04-24",
+          "units": "억원 (원본: 원, ÷1e8)",
+          "sign_convention": "영업손실 라벨(FY24/FY25)은 부호 반전 후 저장. 양수=이익, 음수=손실",
+          "period_meta": [
+            {
+              "label": "FY24 (2023.07~2024.06)",
+              "from": "2023-07",
+              "to": "2024-06",
+              "months": 12
+            },
+            {
+              "label": "FY25 (2024.07~2025.06)",
+              "from": "2024-07",
+              "to": "2025-06",
+              "months": 12
+            },
+            {
+              "label": "FY26 9M (2025.07~2026.03)",
+              "from": "2025-07",
+              "to": "2026-03",
+              "months": 9
+            }
+          ],
+          "annual_trend_eok": [
+            {
+              "period": "FY24 (2023.07~2024.06)",
+              "period_from": "2023-07",
+              "period_to": "2024-06",
+              "months_in_period": 12,
+              "revenue_eok": 36.251,
+              "cost_of_sales_eok": 15.46,
+              "gross_profit_eok": 20.791,
+              "gross_margin_pct": 57.35,
+              "sga_eok": 21.137,
+              "operating_income_eok": -0.346,
+              "op_margin_pct": -0.95,
+              "salary_eok": 5.966,
+              "advertising_eok": 5.965,
+              "commission_eok": 0.525,
+              "promotion_and_sales_commission_eok": 3.406,
+              "contract_labor_eok": 2.529,
+              "severance_eok": 0.0,
+              "annualized_revenue_eok": 36.251,
+              "source_file": "(줌줌투어) 기간별손익계산서_2023.07.01~2024.06.30.xls",
+              "opl_label_in_source": "Ⅴ. 영     업     손     실"
+            },
+            {
+              "period": "FY25 (2024.07~2025.06)",
+              "period_from": "2024-07",
+              "period_to": "2025-06",
+              "months_in_period": 12,
+              "revenue_eok": 28.718,
+              "cost_of_sales_eok": 13.489,
+              "gross_profit_eok": 15.229,
+              "gross_margin_pct": 53.03,
+              "sga_eok": 23.102,
+              "operating_income_eok": -7.873,
+              "op_margin_pct": -27.41,
+              "salary_eok": 6.133,
+              "advertising_eok": 7.877,
+              "commission_eok": 0.068,
+              "promotion_and_sales_commission_eok": 3.671,
+              "contract_labor_eok": 2.44,
+              "severance_eok": 0.488,
+              "annualized_revenue_eok": 28.718,
+              "source_file": "(줌줌투어) 기간별손익계산서_2024.07.01~2025.06.30.xls",
+              "opl_label_in_source": "Ⅴ. 영     업     손     실"
+            },
+            {
+              "period": "FY26 9M (2025.07~2026.03)",
+              "period_from": "2025-07",
+              "period_to": "2026-03",
+              "months_in_period": 9,
+              "revenue_eok": 19.855,
+              "cost_of_sales_eok": 3.7,
+              "gross_profit_eok": 16.155,
+              "gross_margin_pct": 81.36,
+              "sga_eok": 15.975,
+              "operating_income_eok": 0.18,
+              "op_margin_pct": 0.91,
+              "salary_eok": 1.855,
+              "advertising_eok": 5.187,
+              "commission_eok": 2.714,
+              "promotion_and_sales_commission_eok": 3.208,
+              "contract_labor_eok": 0.687,
+              "severance_eok": 1.085,
+              "annualized_revenue_eok": 26.473,
+              "source_file": "(줌줌투어) 기간별손익계산서_2025.07.01~2026.03.31.xls",
+              "opl_label_in_source": "Ⅴ. 영     업     이     익"
+            }
+          ],
+          "yoy_analysis": {
+            "fy24_to_fy25_rev_growth_pct": -20.78,
+            "fy26_9m_annualized_rev_eok": 26.473,
+            "cagr_fy24_to_fy26ann_pct": -14.54,
+            "op_trend": "개선 (적자→흑자 전환)",
+            "key_observations": [
+              "FY24 매출 36.251억 → FY25 28.718억 (YoY -20.78%) → FY26 9M 환산연간 26.473억",
+              "영업손익: FY24 -0.346억 → FY25 -7.873억 (대폭 악화) → FY26 9M 0.18억 (흑자전환)",
+              "FY25 영업적자 -7.873억의 주원인: 판관비 23.102억 (FY24 대비 +1.96억) 중 광고선전비 7.877억 급증",
+              "FY26 9M 구조조정: 직원급여 1.855억 (FY25 6.133억 대비 대폭 감축, 9M 기준) — 단 퇴직급여 1.085억 일시계상",
+              "광고선전비 추이: FY24 5.965억 → FY25 7.877억 → FY26 9M 5.187억 — 매출 대비 광고 의존도 지속",
+              "매출총이익률: FY24 57.35% → FY25 53.03% → FY26 9M 81.36% (플랫폼사용비 분류 변경 가능성, PG만 매출원가)"
+            ]
+          },
+          "monthly_seasonality": [
+            {
+              "month_yyyymm": "2023-07",
+              "revenue_eok": 2.796,
+              "operating_income_eok": 0.173
+            },
+            {
+              "month_yyyymm": "2023-08",
+              "revenue_eok": 3.457,
+              "operating_income_eok": 0.498
+            },
+            {
+              "month_yyyymm": "2023-09",
+              "revenue_eok": 3.36,
+              "operating_income_eok": -0.055
+            },
+            {
+              "month_yyyymm": "2023-10",
+              "revenue_eok": 3.171,
+              "operating_income_eok": -0.02
+            },
+            {
+              "month_yyyymm": "2023-11",
+              "revenue_eok": 3.09,
+              "operating_income_eok": -0.238
+            },
+            {
+              "month_yyyymm": "2023-12",
+              "revenue_eok": 3.715,
+              "operating_income_eok": 0.172
+            },
+            {
+              "month_yyyymm": "2024-01",
+              "revenue_eok": 3.992,
+              "operating_income_eok": 0.402
+            },
+            {
+              "month_yyyymm": "2024-02",
+              "revenue_eok": 4.002,
+              "operating_income_eok": 0.633
+            },
+            {
+              "month_yyyymm": "2024-03",
+              "revenue_eok": 2.048,
+              "operating_income_eok": -1.157
+            },
+            {
+              "month_yyyymm": "2024-04",
+              "revenue_eok": 1.937,
+              "operating_income_eok": -0.278
+            },
+            {
+              "month_yyyymm": "2024-05",
+              "revenue_eok": 2.508,
+              "operating_income_eok": -0.119
+            },
+            {
+              "month_yyyymm": "2024-06",
+              "revenue_eok": 2.175,
+              "operating_income_eok": -0.357
+            },
+            {
+              "month_yyyymm": "2024-07",
+              "revenue_eok": 3.134,
+              "operating_income_eok": -0.372
+            },
+            {
+              "month_yyyymm": "2024-08",
+              "revenue_eok": 3.008,
+              "operating_income_eok": -0.667
+            },
+            {
+              "month_yyyymm": "2024-09",
+              "revenue_eok": 2.849,
+              "operating_income_eok": -0.905
+            },
+            {
+              "month_yyyymm": "2024-10",
+              "revenue_eok": 2.27,
+              "operating_income_eok": -0.953
+            },
+            {
+              "month_yyyymm": "2024-11",
+              "revenue_eok": 2.11,
+              "operating_income_eok": -0.982
+            },
+            {
+              "month_yyyymm": "2024-12",
+              "revenue_eok": 2.636,
+              "operating_income_eok": -0.87
+            },
+            {
+              "month_yyyymm": "2025-01",
+              "revenue_eok": 3.345,
+              "operating_income_eok": 0.016
+            },
+            {
+              "month_yyyymm": "2025-02",
+              "revenue_eok": 2.722,
+              "operating_income_eok": -0.247
+            },
+            {
+              "month_yyyymm": "2025-03",
+              "revenue_eok": 1.556,
+              "operating_income_eok": -1.109
+            },
+            {
+              "month_yyyymm": "2025-04",
+              "revenue_eok": 1.576,
+              "operating_income_eok": -0.504
+            },
+            {
+              "month_yyyymm": "2025-05",
+              "revenue_eok": 1.846,
+              "operating_income_eok": -0.489
+            },
+            {
+              "month_yyyymm": "2025-06",
+              "revenue_eok": 1.666,
+              "operating_income_eok": -0.793
+            },
+            {
+              "month_yyyymm": "2025-07",
+              "revenue_eok": 2.175,
+              "operating_income_eok": 0.103
+            },
+            {
+              "month_yyyymm": "2025-08",
+              "revenue_eok": 2.418,
+              "operating_income_eok": 0.141
+            },
+            {
+              "month_yyyymm": "2025-09",
+              "revenue_eok": 1.841,
+              "operating_income_eok": -0.443
+            },
+            {
+              "month_yyyymm": "2025-10",
+              "revenue_eok": 3.4,
+              "operating_income_eok": 1.137
+            },
+            {
+              "month_yyyymm": "2025-11",
+              "revenue_eok": 2.036,
+              "operating_income_eok": -1.458
+            },
+            {
+              "month_yyyymm": "2025-12",
+              "revenue_eok": 2.268,
+              "operating_income_eok": 0.565
+            },
+            {
+              "month_yyyymm": "2026-01",
+              "revenue_eok": 2.182,
+              "operating_income_eok": -0.121
+            },
+            {
+              "month_yyyymm": "2026-02",
+              "revenue_eok": 2.255,
+              "operating_income_eok": 0.145
+            },
+            {
+              "month_yyyymm": "2026-03",
+              "revenue_eok": 1.279,
+              "operating_income_eok": 0.112
+            }
+          ]
+        },
+        "contract_key_terms": {
+          "source": "추가자료/줌줌투어 인수계약서 주요 조건 요약.docx",
+          "parse_date": "2026-04-24",
+          "parties": [
+            {
+              "name": "데이오프컴퍼니",
+              "role": "인수인 (신주 발행 주체)"
+            },
+            {
+              "name": "NSP (Native Signal Pty Ltd)",
+              "role": "현물출자자 / 줌줌투어 기존 대주주 (호주법인)"
+            },
+            {
+              "name": "줌줌투어 주식회사",
+              "role": "편입 대상 자회사"
+            }
+          ],
+          "deal_structure": {
+            "method": "현물출자 (NSP 보유 줌줌투어 보통주 20,000주 → 데이오프컴퍼니)",
+            "consideration": "데이오프컴퍼니 보통주 신주 574,420주 제3자 배정 발행하여 NSP에 교부",
+            "valuation_zoom_total_eok": 20.7,
+            "valuation_zoom_per_share_krw": 103676,
+            "dayoff_new_share_issue_price_krw": 3738,
+            "shares_zoom_in_eok_basis": 20000,
+            "shares_dayoff_issued": 574420
+          },
+          "consideration": "주식 대주식 (현금 미포함), NSP에 데이오프 신주 574,420주 배정",
+          "key_covenants": [
+            "Lock-up: 거래종결일로부터 1년간 양 당사자 취득 주식 제3자 양도·담보 제공 불가",
+            "자산 이전: NSP는 ZoomZoom Tour 플랫폼·상표권·도메인 등 주요 무형자산을 줌줌투어로 이전 완료",
+            "영업 수준 유지: 종전 영업 수준 유지를 위한 인적·물적 상태 보장",
+            "수탁예수금 별도 관리: NSP 보유 해외 결제 대금을 별도 계좌로 독립 관리, 실사·감사 시 즉시 줌줌투어로 이체 의무"
+          ],
+          "dilution_protection": {
+            "clause": "지분율 33.3% 보장 조항",
+            "trigger": "M&A 등 경영권/사업권 이전되는 '대상거래' 진행 시",
+            "condition": "데이오프컴퍼니 기업가치가 60억 원 미만으로 평가될 경우",
+            "mechanism": "NSP 보유 지분율이 33.3%가 되도록 기존 주주들이 주식을 양도하여 조정"
+          },
+          "consent_rights": [
+            "사전 서면 동의권 대상: 합병, 분할, 중요한 영업양도 등 주요 경영사항 변경",
+            "면제 요건 3개 (모두 충족 시 NSP 동의 불요):",
+            "  (1) 기업가치 60억 원(줌줌투어 단독 피인수 시 20억 원) 이상 평가",
+            "  (2) 인수 주체가 서비스계약상의 권리·의무를 포괄 승계",
+            "  (3) NSP 보유 주식의 1/3을 현금으로 매수(Cash-Out)하는 조건 포함"
+          ],
+          "termination_triggers": [
+            "문서상 명시적 해지 트리거 조항은 요약본에 포함되지 않음 (원본 계약서 확인 필요)"
+          ],
+          "special_conditions": [
+            "원안: 현물출자였으나 과세이연 불가로 실제 거래는 '주식 스왑'으로 변경 (collected_data 교차참조)",
+            "NSP = 호주법인 Native Signal의 한국 자회사 줌줌투어 지배주주",
+            "수탁예수금 관리 조항은 데이오프컴퍼니 수탁예수금 1억 리스크와 별개의 NSP→줌줌투어 라인"
+          ],
+          "raw_paragraphs": [
+            "[요약] 데이오프컴퍼니-줌줌투어 전략적 제휴 및 현물출자 계약",
+            "본 계약은 데이오프컴퍼니가 줌줌투어를 완전 자회사로 편입하여 사업 시너지를 극대화하고, 그 대가로 줌줌투어의 대주주인 NSP(Native Signal Pty Ltd)에게 데이오프컴퍼니의 신주를 배정하는 현물출자 거래를 골자로 합니다.",
+            "1. 거래 구조 및 밸류에이션",
+            "거래 방식: NSP가 보유한 줌줌투어 보통주 20,000주를 데이오프컴퍼니에 현물출자하고, 데이오프컴퍼니는 보통주 신주 574,420주를 제3자 배정 방식으로 발행하여 NSP에 교부함.",
+            "평가 가액: 줌줌투어 주식의 총 평가액은 약 20.7억 원(1주당 103,676원)이며, 데이오프컴퍼니의 신주 발행가액은 1주당 3,738원임.",
+            "2. 주요 주주 보호 및 조정 조항 (Downside Protection)",
+            "지분율 33.3% 보장: 향후 M&A 등 경영권/사업권이 이전되는 '대상거래' 진행 시, 데이오프컴퍼니의 기업가치가 60억 원 미만으로 평가될 경우 NSP의 보유 지분율이 33.3%가 되도록 기존 주주들이 주식을 양도하여 조정함.",
+            "사전 서면 동의권: 합병, 분할, 중요한 영업양도 등 주요 경영사항 변경 시, 아래 조건을 모두 충족하지 못하면 NSP의 사전 서면 동의를 득해야 함.",
+            "기업가치 60억 원(줌줌투어 단독 피인수 시 20억 원) 이상 평가.",
+            "인수 주체가 서비스계약상의 권리·의무를 포괄 승계.",
+            "NSP 보유 주식의 1/3을 현금으로 매수(Cash-Out)하는 조건 포함.",
+            "3. 기타 주요 의무 및 제약",
+            "처분 제한 (Lock-up): 경영 안정성 확보를 위해 거래종결일로부터 1년간 양 당사자는 취득한 주식을 제3자에게 양도하거나 담보로 제공할 수 없음.",
+            "자산 및 인력 인계: NSP는 ZoomZoom Tour 플랫폼, 상표권, 도메인 등 주요 무형자산을 줌줌투어로 이전 완료해야 하며, 종전 영업 수준 유지를 위한 인적·물적 상태를 보장함 .",
+            "수탁예수금 관리: NSP는 보유 중인 줌줌투어 관련 해외 결제 대금(수탁예수금)을 별도 계좌로 독립 관리하며, 투자 실사나 감사 등 필요 사유 발생 시 즉시 줌줌투어로 이체할 의무를 가짐."
+          ]
+        },
+        "zoom_sector_benchmark": {
+          "_meta": {
+            "compiled_at": "2026-04-24 KST",
+            "purpose": "피트스탑 대시보드 피벗 전략 섹션 — 줌줌투어 섹터 경쟁력 블록",
+            "fx_assumptions": {
+              "USD_KRW": 1360,
+              "EUR_KRW": 1480,
+              "note": "2026-04 approx"
+            }
+          },
+          "zoom_position": {
+            "gmv_krw_eok_ttm": 170,
+            "gmv_usd_m_ttm": 12.5,
+            "net_revenue_krw_eok_ttm": 25,
+            "net_revenue_usd_m_ttm": 1.8,
+            "take_rate_pct": 14.99,
+            "contribution_margin_pct_on_net_revenue": 40.9,
+            "aov_krw": 407809,
+            "aov_usd_equiv": 300.0,
+            "repurchase_rate_pct": 27.0,
+            "repurchase_rate_yoy_delta_pp": 12.5,
+            "roas_net_revenue": 3.87,
+            "roas_gmv": 25.84,
+            "segment_mix": {
+              "americas_pct": 46.5,
+              "australia_pct": 46.4,
+              "europe_pct": 3.9,
+              "asia_pct": 3.1
+            },
+            "business_note": "한국 자유여행객 대상 호주/미주 투어·액티비티 예약 플랫폼"
+          },
+          "sector_averages": {
+            "tours_and_activities_ota_global": {
+              "companies": [
+                "GetYourGuide",
+                "Klook",
+                "Viator"
+              ],
+              "take_rate_pct_range": [
+                17.8,
+                25.0
+              ],
+              "take_rate_median": 20.0,
+              "take_rate_mean": 20.9,
+              "contribution_margin_pct_range": [
+                11.2,
+                null
+              ],
+              "contribution_margin_note": "Klook S-1 공개 11.2% (GP/GTV). GetYourGuide/Viator 비공개",
+              "ebitda_margin_pct_range": [
+                0.6,
+                null
+              ],
+              "ebitda_margin_note": "Klook 0.6% (LTM). GetYourGuide 흑자전환, Viator 개선중",
+              "aov_usd_range": [
+                46.8,
+                300
+              ],
+              "aov_note": "Klook USD 46.8 (단품 액티비티) ~ 줌줌 USD 300 (패키지형 다일차) — 상품 성격 차이",
+              "growth_yoy_pct_range": [
+                14,
+                40
+              ],
+              "note": "Klook이 아시아발 글로벌로 줌줌과 구조적으로 가장 유사. Take rate median 20%가 업계 벤치마크"
+            },
+            "korea_travel_ota": {
+              "companies": [
+                "MyRealTrip",
+                "Yanolja(Consumer)",
+                "Yeogiuhttae",
+                "Interpark Triple"
+              ],
+              "revenue_krw_eok_range": [
+                892,
+                6712
+              ],
+              "ebitda_margin_pct_range": [
+                -3,
+                22.7
+              ],
+              "ebitda_margin_note": "여기어때 22.7% (최고), 야놀자 12.4%, 마리트 0.15%, 인터파크 적자",
+              "take_rate_note": "한국 OTA는 숙박·항공 패키지 믹스로 투어 전문보다 낮음 (마리트 추정 6~7%)",
+              "note": "숙박·항공 복합 포트폴리오. 줌줌은 투어·액티비티 단일 카테고리로 구조적 차이"
+            },
+            "global_ota_reference": {
+              "booking_take_rate_pct": 16,
+              "airbnb_take_rate_pct": 15,
+              "airbnb_ebitda_margin_pct": 36,
+              "note": "숙박 중심 글로벌 OTA는 투어·액티비티보다 take rate 낮음 (15~17%). EBITDA 마진 30%+"
+            }
+          },
+          "company_comparables": [
+            {
+              "name": "GetYourGuide",
+              "country": "Germany",
+              "category": "Tours & Activities OTA (Global)",
+              "revenue_latest_usd_m": 1100,
+              "revenue_fiscal_note": "LTM as of Oct 2025, revenue approaching EUR 1B (~USD 1.1B)",
+              "gmv_usd_m": null,
+              "take_rate_pct": 25.0,
+              "take_rate_range_pct": [
+                20,
+                30
+              ],
+              "contribution_margin_pct": null,
+              "ebitda_margin_pct": null,
+              "ebitda_note": "Adjusted EBITDA profitable for past 12 months (Oct 2025)",
+              "aov_usd": null,
+              "repurchase_rate_pct": null,
+              "segment_mix": null,
+              "growth_yoy_pct": 30,
+              "growth_note": "Q3 2025 GMV +30% YoY, 10M experiences booked",
+              "valuation_usd_m": 2000,
+              "valuation_note": "Last round USD 194M at USD 2B valuation (May 2023)",
+              "confidence": "high",
+              "source": "Skift 2025-10-21; GetYourGuide Press 2025; Arival 2025 (commission disclosure)"
+            },
+            {
+              "name": "Klook",
+              "country": "Hong Kong",
+              "category": "Tours & Activities OTA (APAC origin -> Global)",
+              "revenue_latest_usd_m": 540,
+              "revenue_fiscal_note": "LTM Sep 2025 from F-1 filing (+40% YoY). FY2024 USD 417.1M (+24.4%)",
+              "gmv_usd_m": 3040,
+              "gmv_note": "LTM Sep 2025 GTV USD 3.04B (+34%). FY2024 USD 2.5B vs FY2023 USD 1.8B",
+              "take_rate_pct": 17.8,
+              "take_rate_range_pct": [
+                17,
+                18
+              ],
+              "contribution_margin_pct": 11.2,
+              "contribution_margin_note": "Gross profit / GTV = 11.2% (Klook S-1)",
+              "gross_margin_pct": 63.0,
+              "ebitda_margin_pct": 0.6,
+              "ebitda_note": "Adj EBITDA USD 3.5M / USD 540M rev = 0.6% (LTM Sep25). Net loss USD 17M",
+              "aov_usd": 46.8,
+              "aov_note": "USD 3.04B GTV / 65M experiences ~= USD 46.8 per experience",
+              "repurchase_rate_pct": null,
+              "segment_mix": {
+                "apac_pct": 87,
+                "ex_apac_pct": 13
+              },
+              "segment_note": "FY2024 APAC 87% of GTV, ex-APAC 13% (up from 5% in 2022)",
+              "growth_yoy_pct": 40,
+              "confidence": "high",
+              "source": "MostlyMetrics Klook S-1 Breakdown 2025-11; Latka; Skift 2025-11-10"
+            },
+            {
+              "name": "Viator (Tripadvisor)",
+              "country": "USA",
+              "category": "Tours & Activities OTA (Global)",
+              "revenue_latest_usd_m": 840,
+              "revenue_fiscal_note": "FY2024 revenue USD 840M (+14% YoY)",
+              "gmv_usd_m": 4200,
+              "gmv_note": "FY2024 Gross Bookings Value ~USD 4.2B (+12%)",
+              "take_rate_pct": 20.0,
+              "take_rate_note": "Implied: 840 / 4200 = 20.0%. Supplier commission rack 25-27%",
+              "take_rate_range_pct": [
+                20,
+                27
+              ],
+              "contribution_margin_pct": null,
+              "ebitda_margin_pct": null,
+              "ebitda_note": "Viator + TheFork combined delivered USD 52M incremental adj EBITDA vs PY",
+              "aov_usd": null,
+              "repurchase_rate_pct": null,
+              "segment_mix": null,
+              "growth_yoy_pct": 14,
+              "parent_share_pct": 46,
+              "confidence": "high",
+              "source": "Tripadvisor Q4 2024 IR (ir.tripadvisor.com); TicketingHub supplier FAQ"
+            },
+            {
+              "name": "Airbnb Experiences",
+              "country": "USA",
+              "category": "Experiences (Adjacent)",
+              "revenue_latest_usd_m": null,
+              "revenue_fiscal_note": "Not separately disclosed. Parent FY2024 revenue USD 11.1B",
+              "gmv_usd_m": null,
+              "gmv_note": "Parent FY2024 GBV ~USD 82B (Stays-dominant). Experiences relaunch 2024-2025",
+              "take_rate_pct": 15.0,
+              "take_rate_note": "Parent Airbnb take rate ~15% (industry reference)",
+              "contribution_margin_pct": null,
+              "ebitda_margin_pct": 36.0,
+              "ebitda_note": "Parent adj EBITDA USD 4.0B / USD 11.1B = 36%",
+              "aov_usd": null,
+              "repurchase_rate_pct": null,
+              "confidence": "medium",
+              "source": "Airbnb Q4 2024 FY press release (investors.airbnb.com)"
+            },
+            {
+              "name": "Booking Holdings (Attractions)",
+              "country": "USA/NL",
+              "category": "Attractions/Experiences (Adjacent segment)",
+              "revenue_latest_usd_m": null,
+              "revenue_fiscal_note": "Attractions not separately reportable. Parent FY2024 revenue USD 23.7B",
+              "gmv_usd_m": null,
+              "take_rate_pct": 16.0,
+              "take_rate_note": "Parent take rate 15-17% for accommodations (industry reference)",
+              "contribution_margin_pct": null,
+              "ebitda_margin_pct": null,
+              "confidence": "low",
+              "source": "Booking Holdings Q4 2024 Earnings Release"
+            },
+            {
+              "name": "MyRealTrip",
+              "country": "Korea",
+              "category": "Korean outbound tours & activities OTA (most direct KR comparable)",
+              "revenue_latest_krw_eok": 892,
+              "revenue_latest_usd_m": 65.6,
+              "revenue_fiscal_note": "FY2024 매출 892억원 (+47%), 영업이익 1.3억원 (창사 첫 연간 흑자)",
+              "gmv_krw_eok": null,
+              "gmv_note": "2024 Q2 거래액 3,716억원 (+77%). FY2024 GMV 미공시. 분기*4 추정 1.3~1.5조원",
+              "take_rate_pct": null,
+              "take_rate_note": "공식 미공시. 매출/거래액 기준 추정 6~7% (숙박·항공 패키지 믹스로 낮음)",
+              "take_rate_estimated_range_pct": [
+                6,
+                7
+              ],
+              "contribution_margin_pct": null,
+              "ebitda_margin_pct": 0.15,
+              "ebitda_note": "영업이익률 0.15% (1.3억 / 892억)",
+              "aov_krw": null,
+              "repurchase_rate_pct": null,
+              "segment_mix": "한국발 outbound, 숙박+항공+투어 혼합",
+              "growth_yoy_pct": 47,
+              "funding_usd_m": 55.6,
+              "funding_note": "2024-01 Series F 756억원, 누적 1,900억원",
+              "confidence": "high (매출/이익), medium (take rate 추정)",
+              "source": "ZDNet 2025-04-08; Wowtale 2024-07-03; TheVC"
+            },
+            {
+              "name": "Yanolja (Consumer Platform)",
+              "country": "Korea",
+              "category": "Korean OTA (accommodation-heavy)",
+              "revenue_latest_krw_eok": 6712,
+              "revenue_latest_usd_m": 493.5,
+              "revenue_fiscal_note": "FY2024 컨슈머플랫폼 매출 6,712억 (+6.1%). 연결 9,245억",
+              "gmv_krw_eok": 270000,
+              "gmv_note": "FY2024 글로벌 통합거래액 27조원 (+186%, 인수효과 포함)",
+              "take_rate_pct": null,
+              "contribution_margin_pct": null,
+              "ebitda_margin_pct": 12.4,
+              "ebitda_note": "조정 EBITDA 마진 12% (1,147억/9,245억), 영업이익 492억",
+              "segment_mix": "숙박 중심, 투어/액티비티 세분화 비공개",
+              "growth_yoy_pct": 22,
+              "confidence": "medium (전사 high, 투어 세그 미공개)",
+              "source": "Wowtale 2025-03-31; ZDNet 2025-03-31"
+            },
+            {
+              "name": "Yeogiuhttae (GCCompany)",
+              "country": "Korea",
+              "category": "Korean OTA (accommodation + 해외 확대)",
+              "revenue_latest_krw_eok": 2490,
+              "revenue_latest_usd_m": 183.1,
+              "revenue_fiscal_note": "FY2024 매출 2,490억원, 영업이익 565억원",
+              "gmv_krw_eok": null,
+              "gmv_note": "해외숙소 거래액 +2.3x YoY",
+              "take_rate_pct": null,
+              "contribution_margin_pct": null,
+              "ebitda_margin_pct": 22.7,
+              "ebitda_note": "영업이익률 22.7% — 한국 OTA 중 최고",
+              "segment_mix": {
+                "accommodation": "main",
+                "tours_airtickets": {
+                  "tour_brokerage_eok": 165,
+                  "airticket_brokerage_eok": 86
+                }
+              },
+              "segment_note": "관광알선 67->165억 (+147%), 항공권대행 37->86억 (+130%)",
+              "confidence": "high",
+              "source": "Platum 2025; TopDaily"
+            },
+            {
+              "name": "Interpark Triple (Yanolja subsidiary)",
+              "country": "Korea",
+              "category": "Korean OTA (항공+해외여행)",
+              "revenue_latest_krw_eok": null,
+              "revenue_fiscal_note": "Q2 757억 (+30%, 영업손실 -5억). Q3 728억 (영업손실 -89억). FY2024 추정 2,900~3,000억",
+              "ebitda_margin_pct": null,
+              "ebitda_note": "Q2 조정EBITDA 29억, Q3 영업손실 -89억 — 개선 진행",
+              "segment_mix": "항공·숙소 결합, 패키지 확대",
+              "growth_yoy_pct": 30,
+              "confidence": "medium",
+              "source": "Newsspace; TheVC"
+            }
+          ],
+          "zoom_vs_sector": {
+            "take_rate": {
+              "zoom_pct": 14.99,
+              "sector_avg_pct": 20.0,
+              "sector_range": [
+                17.8,
+                25.0
+              ],
+              "delta_pp": -5.01,
+              "verdict": "UNDER",
+              "interpretation": "투어·액티비티 OTA 섹터 median 20% (Klook 17.8%, Viator 20%, GetYourGuide 25%) 대비 5.0%p 낮음. (a)호주/미주 현지 공급자에게 유리한 조건으로 상품 수급 확보, (b)한국 자유여행객 타겟 가격 경쟁력 전략 추정. Upside: 공급자 록인 심화 시 단계적 인상 여지"
+            },
+            "contribution_margin": {
+              "zoom_pct": 40.9,
+              "zoom_basis": "net revenue",
+              "zoom_gp_over_gmv_est_pct": 6.13,
+              "sector_benchmark_pct": 11.2,
+              "sector_benchmark_basis": "GP / GTV (Klook S-1)",
+              "delta_pp_on_net_rev": null,
+              "delta_pp_gp_over_gmv": -5.07,
+              "verdict_net_rev": "ABOVE (정의상 직접비교 부적절)",
+              "verdict_gmv_basis": "UNDER",
+              "interpretation": "정의 불일치 주의: 줌줌 40.9% 공헌이익률은 '순매출 기준'. GP/GMV로 환산 시 40.9% x 14.99% = 6.1%로 Klook 11.2% 대비 5.1%p 열위. 순매출 단위 경제성은 양호하나 GMV 효율성은 개선 필요"
+            },
+            "aov": {
+              "zoom_krw": 407809,
+              "zoom_usd": 300.0,
+              "sector_benchmark_usd": 46.8,
+              "sector_benchmark_source": "Klook LTM Sep25 GTV/experiences",
+              "delta_usd": 253.2,
+              "multiple": 6.4,
+              "verdict": "ABOVE",
+              "interpretation": "줌줌 AOV USD 300은 Klook USD 46.8의 6.4배. (a)다일차 투어·호주/미주 장거리 상품 특성, (b)단품 액티비티 아닌 패키지형 구성 때문. 객단가 높을수록 AOV당 공헌이익 절대값 높음 — LTV 잠재력 긍정적"
+            },
+            "repurchase_rate": {
+              "zoom_pct": 27.0,
+              "zoom_yoy_delta_pp": 12.5,
+              "sector_benchmark_pct": 52,
+              "sector_benchmark_source": "Booking Genius 확장 후 repeat 52% (FY2024)",
+              "ota_industry_general_pct_range": [
+                40,
+                52
+              ],
+              "delta_pp": -25.0,
+              "verdict_level": "UNDER",
+              "verdict_trend": "ABOVE",
+              "interpretation": "절대 수준 27%는 Top-tier OTA(52%) 대비 하위. 그러나 YoY +12.5%p 개선 속도는 상위권. 호주/미주는 한국인에게 '일생 1~2회' 목적지 특성상 repeat 구조적 한계 — 절대값보다 개선 속도 주목"
+            },
+            "segment_concentration": {
+              "zoom_top2_pct": 92.9,
+              "zoom_note": "Americas 46.5% + Australia 46.4% = 92.9%",
+              "klook_top_region_pct": 87,
+              "verdict": "HIGHER_CONCENTRATION",
+              "interpretation": "Klook APAC 87% 대비 92.9%로 지역 집중도 더 높음. 장점: 전문성/공급자 네트워크 심화. 단점: 지정학·환율·여행 금지령 한 지역 쇼크가 전사 영향"
+            }
+          },
+          "overall_competitive_position": {
+            "strengths": [
+              "AOV 압도적 우위 (USD 300 vs Klook USD 46.8, 6.4배) — 다일차 패키지형 투어로 주문당 수익 절대값 높음",
+              "공헌이익률 40.9% (순매출 기준) — 고정비 흡수력 섹터 상위권",
+              "재구매율 YoY +12.5%p 개선 속도 — 섹터 평균 리텐션 개선폭 상회",
+              "호주/미주 2개 지역 92.9% 집중 — 공급자 네트워크·전문성·브랜드 포지셔닝 확보",
+              "ROAS 순매출 3.87x — 한국 OTA 평균(마리트 영업이익률 0.15%) 대비 마케팅 효율성 우수"
+            ],
+            "weaknesses": [
+              "Take Rate 14.99%는 섹터 median 20% 대비 5%p 열위 (Klook 17.8%, Viator 20%, GetYourGuide 25% 대비 최하위)",
+              "GMV 규모 170억원 = USD 12.5M은 Klook USD 3B의 1/240 — 섹터 scale disadvantage",
+              "재구매율 27% 절대값은 Booking Genius 52% 대비 절반 수준 — 충성 고객 기반 미성숙",
+              "지역 집중도 92.9%는 리스크 — 호주/미주 한쪽 여행 충격 시 전사 매출 반토막",
+              "GP/GMV 환산 약 6.1%로 Klook 11.2% 대비 열위 — Take rate 낮은 구조의 한계"
+            ],
+            "sector_tier": "AVERAGE",
+            "sector_tier_note": "절대 규모는 섹터 최하위이나 단위 경제성(공헌이익률·AOV·ROAS)은 Klook과 견줄 만함. 소규모·고효율 니치 플레이어 포지션. Tier 상향 조건: (1)GMV 1,000억원 돌파 (2)Take rate 17~18%로 인상 (3)재구매율 35%+"
+          },
+          "data_quality": {
+            "companies_benchmarked": 9,
+            "companies_with_revenue": 7,
+            "companies_with_take_rate": 5,
+            "companies_with_contribution_margin": 2,
+            "companies_with_aov": 1,
+            "companies_with_repurchase_rate": 0,
+            "high_confidence_count": 6,
+            "medium_confidence_count": 2,
+            "low_confidence_count": 1,
+            "notes": "투어·액티비티 OTA 중 상세재무 공개는 Klook(S-1 2025-11)과 Viator(Tripadvisor 10-K)뿐. GetYourGuide는 PR 레벨. 한국 OTA는 감사보고서 전사실적만, 투어·액티비티 세그먼트 분리 공시 없음. Repurchase rate는 OTA 산업 평균치(Booking Genius 52%)를 proxy 활용"
+          },
+          "sources": [
+            "https://skift.com/2025/10/21/getyourguide-profitable-travel-experiences/",
+            "https://www.getyourguide.press/blog/milestone-from-getyourguide",
+            "https://arival.travel/article/getyourguide-commission-increasing-for-some-operators/",
+            "https://www.mostlymetrics.com/p/klook-ipo-s1-breakdown",
+            "https://skift.com/2025/11/10/klook-ipo-global-travel-experiences-future/",
+            "https://getlatka.com/companies/klook",
+            "https://ir.tripadvisor.com/static-files/0d9c3dd8-ff4c-4a06-85b0-e641d90cfefe",
+            "https://www.ticketinghub.com/blog/viator-supplier-faqs",
+            "https://investors.airbnb.com/press-releases/news-details/2025/Airbnb-Announces-Fourth-Quarter-and-Full-Year-2024-Results/",
+            "https://s201.q4cdn.com/865305287/files/doc_financials/2024/q4/Q4-2024-BKNG-Earnings-Release.pdf",
+            "https://zdnet.co.kr/view/?no=20250408100928",
+            "https://wowtale.net/2024/07/03/79075/",
+            "https://thevc.kr/myrealtrip",
+            "https://wowtale.net/2025/03/31/239190/",
+            "https://platum.kr/archives/257390",
+            "https://www.topdaily.kr/articles/100961",
+            "https://www.newsspace.kr/mobile/article.html?no=4505",
+            "https://www.arrivia.com/insights/customer-retention-benefits-travel-loyalty-programs/"
+          ]
+        },
+        "ir_deck_analysis": {
+          "_meta": {
+            "source_file": "IR_Deck_데이오프컴퍼니 - Hyunsoo Cho (Nick).pdf",
+            "source_sha256": "ec94d18166c56b68dc601b0b3ead3fb5aea2f6435a0007c9c33df96da0b59192",
+            "source_size_bytes": 16589344,
+            "parse_date": "2026-04-26",
+            "parse_ts_kst": "2026-04-26T22:36:50+09:00",
+            "total_pages": 20,
+            "total_text_chars": 2376,
+            "parser": "pdfplumber 0.11.9",
+            "raw_extraction_path": "scripts/raw_extraction.json",
+            "analysis_method": "pdfplumber 페이지별 텍스트/표 추출 → 슬라이드 순회 분석 → pivot_data.json(zoom_financials_ttm, dayoff_termination, bep_roadmap, ad_dependency_simulation, zoom_operations_2025) 교차 점검",
+            "limitations": [
+              "IR 덱은 이미지·도형 비중이 큼 — 페이지당 평균 119자, 전체 2,376자",
+              "글꼴 미내장 한글 일부 (cid:xxx) 잔존 (괄호 등 기호) — 의미 손실 미미",
+              "p1 표지 외 팀/조직/이력 슬라이드 부재 — 팀 분석은 IR에서 도출 불가"
+            ]
+          },
+          "company_overview": {
+            "vision": "검색을 넘어 발견의 가치로 (p5)",
+            "mission": "콘텐츠 x 커머스 융합 여행 플랫폼 — 발견형 여행 커머스 (p1, p2)",
+            "history": [
+              {
+                "date": "2023-09",
+                "event": "데이오프 한국 플랫폼 운영 시작",
+                "page": 2
+              },
+              {
+                "date": "2025-10",
+                "event": "데이오프 재팬 오픈, 일본 방한 여행객 타겟",
+                "page": 10
+              },
+              {
+                "date": "2026-02",
+                "event": "줌줌투어 인수 (호주·미주 투어/액티비티 OTA, 점유율 2위)",
+                "page": 12
+              }
+            ],
+            "ceo_message": "리스크 Q&A 형식으로 자체 답변 (p9): '롱테일 시장 한계 → 일본 진출(25.10) 완료', '가격 경쟁력 → 강소 여행사 볼트온, 줌줌투어 인수(26.02) 완료'",
+            "core_capabilities": [
+              "고품질 콘텐츠 제작 및 확산 채널력 (p2, p6, p7)",
+              "AI 기반 콘텐츠 자동화 시스템 (p2, p16)",
+              "월 80만 온드미디어 조회수 (블로그·유튜브) (p7, p8)"
+            ]
+          },
+          "business_model": {
+            "dayoff_segment": {
+              "positioning": "발견형 여행 커머스, 바디·롱테일 영역 (p3)",
+              "ir_2025_metrics": {
+                "mau_man": 11,
+                "annual_gmv_eok": 32,
+                "annual_net_sales_eok": 1.5,
+                "owned_media_views_man": 80,
+                "partnerships_count_man": 9,
+                "cumulative_funding_eok": 4,
+                "page": 8
+              },
+              "loss_disclosure": "미언급 — 영업손실 -7.87억 (이메일)은 IR 비공개",
+              "service_termination_disclosure": "미언급 — IR은 데이오프를 살아있는 자산('바디·롱테일')으로 포지셔닝. 이메일 '서비스 종료' 의사결정 미반영"
+            },
+            "zoom_segment": {
+              "positioning": "투어 및 액티비티 여행 플랫폼, 호주·미주 점유율 2위 업체 (p12)",
+              "acquisition_date": "2026-02",
+              "ir_annual_metrics": {
+                "mau_man": 17,
+                "annual_gmv_eok": 189,
+                "annual_net_sales_eok": 19,
+                "members_man": 1.1,
+                "direct_contract_products_man": 46,
+                "partner_count_man": 0.2,
+                "page": 13
+              },
+              "synergy_axes": {
+                "한국": "바디/롱테일 상품 특화",
+                "일본": "직계약 상품 API",
+                "북미": "숏헤드 상품 특화",
+                "중화권": "직계약 상품",
+                "shared": "부킹엔진 / 콘텐츠 / 다국어 통합 예약 시스템 (p14)"
+              }
+            },
+            "fee_structure": "미언급 (수수료/PG/광고/판촉 분해는 IR 부재 — 이메일에서 14.99% Take Rate)",
+            "supplier_network": "줌줌투어 기준 직계약 상품 46만 + 입점 파트너 2천 (p13). 데이오프는 9만 건 파트너십(p8)",
+            "monetization_funnel": "검색엔진/AI/SNS 콘텐츠 조회 → 상품 페이지 이동 → 결제 (p4)"
+          },
+          "market": {
+            "tam_sam_som_eok": {
+              "tam_eok": 1840000,
+              "tam_label": "글로벌 개인화 여행 시장 184조 (전체 고관여 여행객 타겟, AI 여행 에이전트 전략)",
+              "sam_eok": 200000,
+              "sam_label": "한국 인바운드 여행 시장 20조 (일본·북미·중화권 방한 외국인 타겟)",
+              "som_eok": 240000,
+              "som_label": "한국 온라인 여행 시장 24조 (한국 고관여 여행객 타겟, 고품질 큐레이션)",
+              "page": 11,
+              "internal_consistency_flag": "SOM(24조) > SAM(20조) — 일반적 IR 정의(SOM ⊂ SAM ⊂ TAM)와 어긋남. 각 축의 시장 정의가 서로 다른 모집단(고관여 vs 인바운드 vs 온라인)으로 보이며, 전형적 깔때기 구조 위반. 인터뷰에서 정의 핀다운 필요"
+            },
+            "competitive_landscape": [
+              "기존 여행사 (HEAD/숏헤드 영역, p3)",
+              "줌줌투어는 호주·미주 투어/액티비티 점유율 2위 (p12, 1위 미언급)"
+            ],
+            "differentiation": [
+              "발견형 여행 커머스 (검색을 넘어 발견의 가치) (p5)",
+              "콘텐츠 x 커머스 융합 (p2)",
+              "AI 콘텐츠 자동화 (p2, p16)",
+              "월 80만 온드미디어 조회수 (p7)",
+              "데이오프 x 줌줌투어 시너지 4축 (p14)"
+            ]
+          },
+          "traction": {
+            "dayoff_2025": {
+              "mau_man": 11,
+              "gmv_eok": 32,
+              "net_sales_eok": 1.5,
+              "owned_media_views_monthly_man": 80,
+              "partnerships_man": 9,
+              "cumulative_funding_eok": 4,
+              "page": 8
+            },
+            "zoom_annual": {
+              "mau_man": 17,
+              "gmv_eok": 189,
+              "net_sales_eok": 19,
+              "members_man": 1.1,
+              "direct_products_man": 46,
+              "partners_man": 0.2,
+              "page": 13
+            },
+            "japan_platform": {
+              "launch_date": "2025-10",
+              "cumulative_gmv_man_krw": 7000,
+              "page": 10,
+              "kyi_note": "약 6개월 누적 7천만원 = 월평균 약 1,170만원, 추가 자금 투입 필요성 IR 자체 명시"
+            },
+            "user_metrics": {
+              "repurchase_rate_pct": "미언급 (이메일 27%, YoY +12.5pp)",
+              "aov_krw": "미언급 (이메일 407,809원 ≈ $300)",
+              "roas": "미언급 (이메일 ROAS 3.87)"
+            },
+            "ceo_email_consistency_check": "괴리 — 줌줌투어 GMV/순매출 IR(189/19) vs 이메일 TTM(170/25). Take Rate 환산 IR 10.05% vs 이메일 14.99% (+4.94pp gap). 재구매율·AOV·ROAS는 IR 비공개로 이메일이 추가 정보 제공"
+          },
+          "team": {
+            "members": "미언급 (IR 본문에 팀 슬라이드 없음. p1 표지에 nick@dayoff.co.kr만 노출)",
+            "core_capabilities": [
+              "고품질 콘텐츠 제작 (p2, p6)",
+              "AI 콘텐츠 자동화 (p2, p16)",
+              "월 80만 온드미디어 운영 (p7)"
+            ],
+            "kyi_note": "IR에 팀/조직/이력 페이지 부재 — 통상 시드~Pre-A 덱 결격. 별도 1pager 요청 권고"
+          },
+          "roadmap": {
+            "short_term_6m": [
+              {
+                "period": "26.2Q",
+                "event": "추가 볼트온 완료, 비즈니스 시너지 창출, 후속 투자 유치",
+                "page": 15
+              }
+            ],
+            "mid_term_12_24m": [
+              {
+                "period": "26.4Q",
+                "event": "BEP 12월 달성, 일본 플랫폼 활성화, 콘텐츠 자동화 고도화",
+                "page": 15
+              },
+              {
+                "period": "27.2Q",
+                "event": "Series A 투자 유치, 북미 플랫폼 오픈, 흑자 기반 스케일업",
+                "page": 15
+              }
+            ],
+            "long_term_36m_plus": [
+              {
+                "year": 2028,
+                "event": "클라우드 기업 인수 (Series B M&A 동반)",
+                "page": 19
+              },
+              {
+                "year": 2029,
+                "event": "글로벌 캠페인",
+                "page": 19
+              },
+              {
+                "year": 2030,
+                "event": "AI 에이전트",
+                "page": 19
+              }
+            ],
+            "five_year_financial_model": [
+              {
+                "year": 2026,
+                "mau_man": 27,
+                "gmv_eok": 210,
+                "revenue_eok": 20,
+                "op_income_eok": -4,
+                "milestone": "일본 진출"
+              },
+              {
+                "year": 2027,
+                "mau_man": 35,
+                "gmv_eok": 380,
+                "revenue_eok": 38,
+                "op_income_eok": 1,
+                "milestone": "BEP 달성"
+              },
+              {
+                "year": 2028,
+                "mau_man": 80,
+                "gmv_eok": 1000,
+                "revenue_eok": 110,
+                "op_income_eok": 5,
+                "milestone": "클라우드 기업 인수"
+              },
+              {
+                "year": 2029,
+                "mau_man": 200,
+                "gmv_eok": 2500,
+                "revenue_eok": 250,
+                "op_income_eok": 25,
+                "milestone": "글로벌 캠페인"
+              },
+              {
+                "year": 2030,
+                "mau_man": 400,
+                "gmv_eok": 5000,
+                "revenue_eok": 550,
+                "op_income_eok": 50,
+                "milestone": "AI 에이전트"
+              }
+            ],
+            "page": 19
+          },
+          "financial_guidance": {
+            "revenue_target": [
+              {
+                "year": 2026,
+                "revenue_eok": 20
+              },
+              {
+                "year": 2027,
+                "revenue_eok": 38
+              },
+              {
+                "year": 2028,
+                "revenue_eok": 110
+              },
+              {
+                "year": 2029,
+                "revenue_eok": 250
+              },
+              {
+                "year": 2030,
+                "revenue_eok": 550
+              }
+            ],
+            "bep_timing_ir": "26.4Q 12월 달성 (p15)",
+            "bep_timing_email": "2026-08",
+            "bep_gap_note": "IR 26.4Q(=12월) vs 이메일 2026-08, 4개월 갭. 이메일은 9~11월 비수기 적자 재진입 가이던스 — IR이 더 보수적 표기",
+            "funding_request_eok": 10,
+            "funding_breakdown": {
+              "직접_요청": 5,
+              "신보_투자전환옵션_실행": 5,
+              "page": 18
+            },
+            "use_of_funds": {
+              "categories": [
+                "일본 플랫폼 활성화",
+                "콘텐츠 자동화 시스템 고도화",
+                "데이오프 x 줌줌투어 시스템 통합",
+                "AI 인프라 (개발인력, AI 토큰)"
+              ],
+              "weight_disclosure": "미언급 — 카테고리별 분배 비중 미공개",
+              "page": 18
+            },
+            "future_rounds": {
+              "Series_A": "27.2Q",
+              "Series_B": "2028 (M&A 동반, 클라우드 기업 인수)",
+              "page": 19
+            }
+          },
+          "ir_vs_email_discrepancies": [
+            {
+              "topic": "줌줌투어 TTM 수치",
+              "ir_says": "GMV 189억 / 순매출 19억 (Take Rate 환산 10.05%)",
+              "email_says": "GMV 170억 / 순매출 25억 (Take Rate 14.99%)",
+              "verdict": "divergent",
+              "ir_page": 13,
+              "delta": {
+                "gmv_eok_diff": 19.0,
+                "net_sales_eok_diff": -6.0,
+                "take_rate_pp_diff": -4.94
+              },
+              "kyi_followup": "기간 정의(연간 vs TTM 4월기준) + 매출 인식 기준(총액 vs 순액) 인터뷰 핀다운"
+            },
+            {
+              "topic": "BEP 시점",
+              "ir_says": "26.4Q 12월 달성 (p15 로드맵)",
+              "email_says": "2026-08, 9~11월 비수기 적자 재진입 가이던스",
+              "verdict": "divergent",
+              "ir_page": 15,
+              "kyi_followup": "월별 캐시플로우 가이던스 vs IR 분기 통합 표기 통일 — 4개월 갭 원인"
+            },
+            {
+              "topic": "투자 요청금액",
+              "ir_says": "희망 투자 5억 + 신보 투자전환옵션 5억 = 10억 (p18)",
+              "email_says": "5~10억 범위",
+              "verdict": "consistent",
+              "ir_page": 18,
+              "kyi_followup": "신보 매칭 전환 옵션 실효성/조건 검증"
+            },
+            {
+              "topic": "데이오프 잔존 부채/RCPS 승계",
+              "ir_says": "미언급",
+              "email_says": "잔존 부채 6억 + RCPS 4억, 자회사 승계 지양 희망",
+              "verdict": "divergent",
+              "ir_page": null,
+              "kyi_followup": "투자자 입장에서 결격 사유 — IR에서 의도적 누락인지 확인"
+            },
+            {
+              "topic": "수탁예수금 1억 환급재원",
+              "ir_says": "미언급",
+              "email_says": "환급 계획 없음, 3개월 내 후속자금 마련 목표",
+              "verdict": "divergent",
+              "ir_page": null,
+              "kyi_followup": "공급사 민원·법적 리스크 시점 + 환급 우선순위 인터뷰"
+            },
+            {
+              "topic": "광고 의존도",
+              "ir_says": "미언급 (콘텐츠/AI/SEO 유입 강조 — p2, p7, p16)",
+              "email_says": "광고 중단 시 90일 -67.3%, ROAS 3.87 Lock-in",
+              "verdict": "divergent",
+              "ir_page": null,
+              "kyi_followup": "콘텐츠/SEO 유입 비중 vs 광고 유입 비중 실측 데이터 요청"
+            },
+            {
+              "topic": "데이오프 적자",
+              "ir_says": "GMV 32억 / 순매출 1.5억만 표기, 영업손실 -7.87억 미언급 (p8)",
+              "email_says": "FY25 적자 -7.87억, 광고 +32% 역증액이 주범",
+              "verdict": "divergent",
+              "ir_page": 8,
+              "kyi_followup": "투자자에게 데이오프 단독 P&L을 공개하지 않은 의도"
+            },
+            {
+              "topic": "데이오프 서비스 종료 의사결정",
+              "ir_says": "미언급. 데이오프는 '바디·롱테일' 살아있는 자산으로 표기 (p3, p14)",
+              "email_says": "데이오프 서비스 종료, 줌줌투어 집중",
+              "verdict": "divergent",
+              "ir_page": null,
+              "kyi_followup": "IR이 '종료'가 아니라 '시너지 자산'으로 포지셔닝 — 본 IR 작성 시점이 종료 의사결정 이전인지 확인"
+            },
+            {
+              "topic": "재구매율",
+              "ir_says": "미언급 (직접 수치 없음, '고품질 큐레이션' 정성 표현)",
+              "email_says": "27% (YoY +12.5pp)",
+              "verdict": "consistent",
+              "ir_page": null,
+              "kyi_followup": "이메일 수치가 더 강한 신호 — 다음 IR 개정 시 반영 권고"
+            },
+            {
+              "topic": "AOV",
+              "ir_says": "미언급",
+              "email_says": "$300 (407,809원, YoY +5.7%)",
+              "verdict": "consistent",
+              "ir_page": null,
+              "kyi_followup": "다일차 패키지형 AOV — 단품 OTA 대비 차별점, IR 보강 권고"
+            }
+          ],
+          "ir_strengths_for_investors": [
+            {
+              "rank": 1,
+              "claim": "TAM/SAM/SOM 3축 명시 (184조 / 20조 / 24조)",
+              "page": 11,
+              "why": "한국 인바운드 SAM 20조에서 호주·미주 발신 일본·중화권 인바운드까지 확장 논리가 코어"
+            },
+            {
+              "rank": 2,
+              "claim": "5개년 재무 모형 정량 제시 (26→30: GMV 210→5,000억, 매출 20→550억, 손익 -4→+50억)",
+              "page": 19,
+              "why": "PreA → Series A(27) → Series B(M&A 동반) 단계별 자금/이벤트 매핑이 IR로서 정합"
+            },
+            {
+              "rank": 3,
+              "claim": "데이오프 x 줌줌투어 시너지 4축(한국/일본/북미/중화권 × 바디롱테일/숏헤드/직계약/통합부킹)",
+              "page": 14,
+              "why": "단순 합병이 아닌 수요·공급 그리드 구조화. 인수 PMI 스토리가 시각적으로 깔끔"
+            },
+            {
+              "rank": 4,
+              "claim": "AI 콘텐츠 자동화 단계 로드맵 (리서치→테마→제작→검수→SEO→발행, 26→27 단계적 AI 전환)",
+              "page": 16,
+              "why": "콘텐츠 인건비 → AI 전환의 unit economics 개선 트리거. KYI ROAS 관점 가치 있음"
+            },
+            {
+              "rank": 5,
+              "claim": "오리지널 상품 라인업 4종 (K-Food, 의료관광, K-Pop, K-Beauty)",
+              "page": 17,
+              "why": "롱테일 OTA가 PB로 마진 확장하는 표준 플레이북. Take Rate 우상향 근거 마련"
+            }
+          ],
+          "ir_weaknesses_for_investors": [
+            {
+              "rank": 1,
+              "claim": "줌줌투어 IR 수치(GMV 189억 / 순매출 19억) ≠ CEO 이메일 TTM(GMV 170억 / 순매출 25억)",
+              "page": 13,
+              "why": "IR Take Rate 환산 10.05% vs 이메일 14.99% — 4.94%p 차이. 기간(연간 vs TTM) 정의 불일치 가능. 둘 중 하나는 잘못된 수치이며, BEP·공헌이익률 전제가 흔들림"
+            },
+            {
+              "rank": 2,
+              "claim": "데이오프 잔존 부채 6억(신보 4 + 기보 1 + 중진공 1) + RCPS 4억 미언급",
+              "page": null,
+              "why": "IR 어디에도 모회사 부채/메자닌 승계 이슈 노출 안 됨. Native Signal 동의권 + 신보 투자전환옵션 5억과 직결되는 핵심 변수가 묵음 처리"
+            },
+            {
+              "rank": 3,
+              "claim": "수탁예수금 1억 환급재원 부재 미언급 (소비자 민원 리스크)",
+              "page": null,
+              "why": "공급사 예치금 미환급 시 줌줌투어 영업 정지 트리거 가능 — IR 미공시는 KYI 관점에서 큰 결격"
+            },
+            {
+              "rank": 4,
+              "claim": "광고 의존도 (광고 중단 90일 -67.3% 매출) 미언급",
+              "page": null,
+              "why": "이메일 ROAS=3.87 / 공헌이익률 40.9% 구조의 Lock-in 본질이 IR에 안 보임. BEP 후에도 광고 6.58억/년 절대 감축 불가 — '흑자 스케일업' 표현이 과장"
+            },
+            {
+              "rank": 5,
+              "claim": "BEP 표기 불일치 — IR p15는 '26.4Q 12월 달성' / 이메일은 '2026-08'",
+              "page": 15,
+              "why": "4개월 갭. 9~11월 비수기 적자 재진입 가이던스(이메일)와 정합성 부재. 어느 쪽이 보수적 가이던스인지 인터뷰에서 핀다운 필요"
+            }
+          ],
+          "pitstop_additional_insights": [
+            {
+              "insight": "5개년 재무모형의 매출 CAGR 일관성 점검 — 26→30 매출 20→550억은 CAGR 약 128%",
+              "page": 19,
+              "implication": "GMV CAGR 약 121%, 매출 CAGR 약 128% — 매출이 GMV보다 빨리 성장 = Take Rate 우상향 가정. 현 실측 14.99% → 2030년 11% 수준 (5,000억 GMV / 550억 매출)으로 오히려 하락 — 모델 내부 정합성 미스 가능",
+              "action_for_kyi": "30년 매출 550억 도출 가정(Take Rate, AOV, MAU) IR 작성 백업 시트 요청. 단순 추세 그림이라면 가이던스 신뢰도 하향"
+            },
+            {
+              "insight": "Series B를 'M&A 동반'으로 표기 — 28년 클라우드 기업 인수 이벤트와 연결",
+              "page": 19,
+              "implication": "롱테일 OTA가 클라우드 기업을 인수한다는 시나리오는 통상적이지 않음. AI/부킹엔진 기술 확보용 SaaS 인수일 가능성 — but 통합 법인 가치 희석 리스크",
+              "action_for_kyi": "28년 M&A 타깃 카테고리·IRR 가정 인터뷰. KYI 입장에서 Series B 희석 시나리오 사전 보호 조항 검토"
+            },
+            {
+              "insight": "27.2Q Series A 시점 = BEP(26.4Q) 후 6개월 — 흑자 6개월 트랙으로 Series A는 짧음",
+              "page": 15,
+              "implication": "월별 후행지표 6개월(2027.1~6) 확보 후 Series A 진입. 9~11월 비수기 적자 재진입(이메일 가이던스)이 실현되면 트랙 훼손 → Series A 지연 가능",
+              "action_for_kyi": "Series A 가정 밸류에이션 + 만약 27.2Q 미달 시 브릿지 라운드 조건 사전 협의"
+            },
+            {
+              "insight": "AI 콘텐츠 자동화 — 26년 일부 단계 / 27년 전 단계 AI 전환 (p16)",
+              "page": 16,
+              "implication": "외부 에디터/내부 디자이너 인건비를 AI로 대체. 공헌이익률 40.9% 위 영업레버리지 강화 트리거이나, AI 토큰 비용·품질 저하 리스크가 IR에 미정량. 이메일도 미언급",
+              "action_for_kyi": "AI 토큰 단가 가정 + 27년 콘텐츠 인력 N→N-x 감축 정량치 요청"
+            },
+            {
+              "insight": "데이오프 = '바디·롱테일' 자산 (p3) vs 이메일 '서비스 종료' — IR 메시지 일관성 부재",
+              "page": 3,
+              "implication": "IR 작성일이 종료 의사결정 이전이면 IR을 즉시 개정해야 투자자 미스리딩 회피. 현 IR로 외부 라운드 진행 시 KYI는 미스리딩 리스크 동반",
+              "action_for_kyi": "IR 작성일/개정 계획 확인. 종료 사실 미반영 IR로 외부 IR 진행 중인지 확인"
+            },
+            {
+              "insight": "일본 플랫폼 누적 거래액 7천만원 (25.10 오픈 후 약 6개월) — 월평균 약 1,170만원",
+              "page": 10,
+              "implication": "25.10 일본 진출 ROI는 미미. p18 '일본 플랫폼 활성화'에 5억 중 일부 투입 예정 — 추가 5억 투입 후 월 거래액 목표 가이던스가 IR에 미정량",
+              "action_for_kyi": "일본 플랫폼 26.4Q '활성화' 정량 KPI(월 GMV, MAU) 요청. ROI 미달 시 자금 회수 트리거 사전 합의"
+            },
+            {
+              "insight": "월 80만 조회수 / 9만 건 파트너십 — 콘텐츠 체널력 absolute 수치이나 전환율 미공개",
+              "page": 8,
+              "implication": "조회수 → 상품 페이지 이동 → 결제 퍼널의 전환율(CR) 미공개. 광고 의존도 67.3% (이메일) 가 사실이면 '콘텐츠 채널력'은 마케팅 깔때기 상단에 그치고 결제 전환은 광고 의존",
+              "action_for_kyi": "Owned-media → 결제 전환 CR + 광고 유입 CR 비교 데이터 요청"
+            }
+          ]
+        },
+        "monthly_pnl_6m": {
+          "_meta": {
+            "source_file": "최근6개월손익계산서_데이오프컴퍼니_줌줌투어(26.03) - Hyunsoo Cho (Nick).xls",
+            "parse_date": "2026-04-26",
+            "parser": "xlrd 1.2.0",
+            "sheet_count": 3,
+            "period_range": [
+              "2025-07",
+              "2026-03"
+            ],
+            "sheet_periods": {
+              "dayoff_25.09-25.12": [
+                "2025-09",
+                "2025-10",
+                "2025-11",
+                "2025-12"
+              ],
+              "dayoff_26.01-26.02": [
+                "2026-01",
+                "2026-02"
+              ],
+              "zoom_25.07-26.03": [
+                "2025-07",
+                "2025-08",
+                "2025-09",
+                "2025-10",
+                "2025-11",
+                "2025-12",
+                "2026-01",
+                "2026-02",
+                "2026-03"
+              ]
+            },
+            "sign_convention": "데이오프 시트는 '영업손실' 라벨 → 양수가 손실을 의미하므로 부호 반전. 줌줌 시트는 '영업이익' 라벨 → 그대로. 당기순손실/이익도 동일 규칙."
+          },
+          "scope": "통합 (데이오프컴퍼니 + 줌줌투어 단순 합산) + 분리 시트 raw 보존",
+          "monthly_pnl_eok": [
+            {
+              "month": "2025-07",
+              "revenue_eok": 2.1747,
+              "cost_of_sales_eok": 0.4397,
+              "gross_profit_eok": 1.7351,
+              "gp_margin_pct": 79.78,
+              "sga_eok": 1.6323,
+              "service_fee_eok": 0.1664,
+              "platform_fee_eok": 0.0,
+              "advertising_eok": 0.6871,
+              "salary_eok": 0.2403,
+              "severance_eok": 0.0948,
+              "commission_dom_eok": 0.0,
+              "commission_overseas_eok": 0.1664,
+              "rent_eok": 0.011,
+              "sales_commission_eok": 0.2621,
+              "outsourcing_eok": 0.0,
+              "contract_labor_eok": 0.075,
+              "sw_service_eok": 0.0462,
+              "operating_income_eok": 0.1027,
+              "op_margin_pct": 4.72,
+              "net_income_eok": 0.1003,
+              "scope_components": [
+                "zoom"
+              ],
+              "other_sga_eok": 0.0495
+            },
+            {
+              "month": "2025-08",
+              "revenue_eok": 2.4183,
+              "cost_of_sales_eok": 0.479,
+              "gross_profit_eok": 1.9393,
+              "gp_margin_pct": 80.19,
+              "sga_eok": 1.798,
+              "service_fee_eok": 0.2178,
+              "platform_fee_eok": 0.0,
+              "advertising_eok": 0.7171,
+              "salary_eok": 0.2403,
+              "severance_eok": 0.0,
+              "commission_dom_eok": 0.0,
+              "commission_overseas_eok": 0.2178,
+              "rent_eok": 0.0115,
+              "sales_commission_eok": 0.349,
+              "outsourcing_eok": 0.0,
+              "contract_labor_eok": 0.075,
+              "sw_service_eok": 0.0916,
+              "operating_income_eok": 0.1413,
+              "op_margin_pct": 5.84,
+              "net_income_eok": 0.1413,
+              "scope_components": [
+                "zoom"
+              ],
+              "other_sga_eok": 0.0956
+            },
+            {
+              "month": "2025-09",
+              "revenue_eok": 1.9885,
+              "cost_of_sales_eok": 0.4829,
+              "gross_profit_eok": 1.5056,
+              "gp_margin_pct": 75.72,
+              "sga_eok": 2.4646,
+              "service_fee_eok": 0.2424,
+              "platform_fee_eok": 0.0,
+              "advertising_eok": 0.6912,
+              "salary_eok": 0.572,
+              "severance_eok": 0.0,
+              "commission_dom_eok": 0.1414,
+              "commission_overseas_eok": 0.2424,
+              "rent_eok": 0.051,
+              "sales_commission_eok": 0.3081,
+              "outsourcing_eok": 0.0603,
+              "contract_labor_eok": 0.075,
+              "sw_service_eok": 0.1697,
+              "operating_income_eok": -0.959,
+              "op_margin_pct": -48.23,
+              "net_income_eok": -0.9755,
+              "scope_components": [
+                "dayoff",
+                "zoom"
+              ],
+              "other_sga_eok": 0.1535
+            },
+            {
+              "month": "2025-10",
+              "revenue_eok": 3.5843,
+              "cost_of_sales_eok": 0.4375,
+              "gross_profit_eok": 3.1468,
+              "gp_margin_pct": 87.79,
+              "sga_eok": 2.4386,
+              "service_fee_eok": 0.1828,
+              "platform_fee_eok": 0.0,
+              "advertising_eok": 0.633,
+              "salary_eok": 0.572,
+              "severance_eok": 0.0,
+              "commission_dom_eok": 0.0973,
+              "commission_overseas_eok": 0.1828,
+              "rent_eok": 0.051,
+              "sales_commission_eok": 0.5423,
+              "outsourcing_eok": 0.068,
+              "contract_labor_eok": 0.0751,
+              "sw_service_eok": 0.0489,
+              "operating_income_eok": 0.7082,
+              "op_margin_pct": 19.76,
+              "net_income_eok": 0.6703,
+              "scope_components": [
+                "dayoff",
+                "zoom"
+              ],
+              "other_sga_eok": 0.1683
+            },
+            {
+              "month": "2025-11",
+              "revenue_eok": 2.1566,
+              "cost_of_sales_eok": 0.4037,
+              "gross_profit_eok": 1.7529,
+              "gp_margin_pct": 81.28,
+              "sga_eok": 3.886,
+              "service_fee_eok": 0.3419,
+              "platform_fee_eok": 0.0,
+              "advertising_eok": 0.5777,
+              "salary_eok": 0.9845,
+              "severance_eok": 0.9901,
+              "commission_dom_eok": 0.3041,
+              "commission_overseas_eok": 0.3419,
+              "rent_eok": 0.051,
+              "sales_commission_eok": 0.3546,
+              "outsourcing_eok": 0.0644,
+              "contract_labor_eok": 0.075,
+              "sw_service_eok": 0.0534,
+              "operating_income_eok": -2.1331,
+              "op_margin_pct": -98.91,
+              "net_income_eok": -2.1539,
+              "scope_components": [
+                "dayoff",
+                "zoom"
+              ],
+              "other_sga_eok": 0.0893
+            },
+            {
+              "month": "2025-12",
+              "revenue_eok": 2.3666,
+              "cost_of_sales_eok": 0.4294,
+              "gross_profit_eok": 1.9372,
+              "gp_margin_pct": 81.86,
+              "sga_eok": 2.1877,
+              "service_fee_eok": 0.2052,
+              "platform_fee_eok": 0.0,
+              "advertising_eok": 0.4405,
+              "salary_eok": 0.392,
+              "severance_eok": 0.0,
+              "commission_dom_eok": 0.3593,
+              "commission_overseas_eok": 0.2052,
+              "rent_eok": 0.051,
+              "sales_commission_eok": 0.3686,
+              "outsourcing_eok": 0.1032,
+              "contract_labor_eok": 0.075,
+              "sw_service_eok": 0.0756,
+              "operating_income_eok": -0.2506,
+              "op_margin_pct": -10.59,
+              "net_income_eok": -0.3001,
+              "scope_components": [
+                "dayoff",
+                "zoom"
+              ],
+              "other_sga_eok": 0.1171
+            },
+            {
+              "month": "2026-01",
+              "revenue_eok": 2.279,
+              "cost_of_sales_eok": 0.4449,
+              "gross_profit_eok": 1.834,
+              "gp_margin_pct": 80.48,
+              "sga_eok": 2.6152,
+              "service_fee_eok": 0.7166,
+              "platform_fee_eok": 0.0,
+              "advertising_eok": 0.5208,
+              "salary_eok": 0.392,
+              "severance_eok": 0.0,
+              "commission_dom_eok": 0.1223,
+              "commission_overseas_eok": 0.7166,
+              "rent_eok": 0.0115,
+              "sales_commission_eok": 0.3729,
+              "outsourcing_eok": 0.2366,
+              "contract_labor_eok": 0.0766,
+              "sw_service_eok": 0.0441,
+              "operating_income_eok": -0.7812,
+              "op_margin_pct": -34.28,
+              "net_income_eok": -0.8086,
+              "scope_components": [
+                "dayoff",
+                "zoom"
+              ],
+              "other_sga_eok": 0.1218
+            },
+            {
+              "month": "2026-02",
+              "revenue_eok": 2.3564,
+              "cost_of_sales_eok": 0.3662,
+              "gross_profit_eok": 1.9902,
+              "gp_margin_pct": 84.46,
+              "sga_eok": 2.2807,
+              "service_fee_eok": 0.6407,
+              "platform_fee_eok": 0.0,
+              "advertising_eok": 0.4586,
+              "salary_eok": 0.3087,
+              "severance_eok": 0.0,
+              "commission_dom_eok": 0.1612,
+              "commission_overseas_eok": 0.6407,
+              "rent_eok": 0.0115,
+              "sales_commission_eok": 0.405,
+              "outsourcing_eok": 0.0427,
+              "contract_labor_eok": 0.089,
+              "sw_service_eok": 0.0575,
+              "operating_income_eok": -0.2905,
+              "op_margin_pct": -12.33,
+              "net_income_eok": -0.3051,
+              "scope_components": [
+                "dayoff",
+                "zoom"
+              ],
+              "other_sga_eok": 0.1057
+            },
+            {
+              "month": "2026-03",
+              "revenue_eok": 1.2789,
+              "cost_of_sales_eok": 0.2163,
+              "gross_profit_eok": 1.0626,
+              "gp_margin_pct": 83.09,
+              "sga_eok": 0.9504,
+              "service_fee_eok": 0.0,
+              "platform_fee_eok": 0.0,
+              "advertising_eok": 0.4638,
+              "salary_eok": 0.0603,
+              "severance_eok": 0.0,
+              "commission_dom_eok": 0.0,
+              "commission_overseas_eok": 0.0,
+              "rent_eok": 0.0115,
+              "sales_commission_eok": 0.2451,
+              "outsourcing_eok": 0.0,
+              "contract_labor_eok": 0.0709,
+              "sw_service_eok": 0.0528,
+              "operating_income_eok": 0.1121,
+              "op_margin_pct": 8.77,
+              "net_income_eok": 0.1126,
+              "scope_components": [
+                "zoom"
+              ],
+              "other_sga_eok": 0.0459
+            }
+          ],
+          "monthly_pnl_dayoff_only_eok": [
+            {
+              "month": "2025-09",
+              "scope": "dayoff",
+              "revenue_eok": 0.147,
+              "cost_of_sales_eok": 0.0,
+              "gross_profit_eok": 0.147,
+              "sga_eok": 0.6629,
+              "platform_fee_in_cogs_eok": 0.0,
+              "service_fee_overseas_eok": 0.0,
+              "advertising_eok": 0.0,
+              "salary_eok": 0.3317,
+              "operating_income_eok": -0.5159,
+              "net_income_eok": -0.533
+            },
+            {
+              "month": "2025-10",
+              "scope": "dayoff",
+              "revenue_eok": 0.1842,
+              "cost_of_sales_eok": 0.0,
+              "gross_profit_eok": 0.1842,
+              "sga_eok": 0.6126,
+              "platform_fee_in_cogs_eok": 0.0,
+              "service_fee_overseas_eok": 0.0,
+              "advertising_eok": 0.0,
+              "salary_eok": 0.3317,
+              "operating_income_eok": -0.4284,
+              "net_income_eok": -0.4456
+            },
+            {
+              "month": "2025-11",
+              "scope": "dayoff",
+              "revenue_eok": 0.1206,
+              "cost_of_sales_eok": 0.0,
+              "gross_profit_eok": 0.1206,
+              "sga_eok": 0.7956,
+              "platform_fee_in_cogs_eok": 0.0,
+              "service_fee_overseas_eok": 0.0,
+              "advertising_eok": 0.0024,
+              "salary_eok": 0.3317,
+              "operating_income_eok": -0.675,
+              "net_income_eok": -0.692
+            },
+            {
+              "month": "2025-12",
+              "scope": "dayoff",
+              "revenue_eok": 0.0983,
+              "cost_of_sales_eok": 0.0,
+              "gross_profit_eok": 0.0983,
+              "sga_eok": 0.9139,
+              "platform_fee_in_cogs_eok": 0.0,
+              "service_fee_overseas_eok": 0.0,
+              "advertising_eok": 0.0,
+              "salary_eok": 0.3317,
+              "operating_income_eok": -0.8156,
+              "net_income_eok": -0.8348
+            },
+            {
+              "month": "2026-01",
+              "scope": "dayoff",
+              "revenue_eok": 0.0972,
+              "cost_of_sales_eok": 0.0,
+              "gross_profit_eok": 0.0972,
+              "sga_eok": 0.7571,
+              "platform_fee_in_cogs_eok": 0.0,
+              "service_fee_overseas_eok": 0.0,
+              "advertising_eok": 0.0,
+              "salary_eok": 0.3317,
+              "operating_income_eok": -0.6599,
+              "net_income_eok": -0.6783
+            },
+            {
+              "month": "2026-02",
+              "scope": "dayoff",
+              "revenue_eok": 0.1012,
+              "cost_of_sales_eok": 0.0,
+              "gross_profit_eok": 0.1012,
+              "sga_eok": 0.5371,
+              "platform_fee_in_cogs_eok": 0.0,
+              "service_fee_overseas_eok": 0.0,
+              "advertising_eok": 0.0,
+              "salary_eok": 0.2483,
+              "operating_income_eok": -0.4358,
+              "net_income_eok": -0.4553
+            }
+          ],
+          "monthly_pnl_zoom_only_eok": [
+            {
+              "month": "2025-07",
+              "scope": "zoom",
+              "revenue_eok": 2.1747,
+              "cost_of_sales_eok": 0.4397,
+              "gross_profit_eok": 1.7351,
+              "sga_eok": 1.6323,
+              "platform_fee_in_cogs_eok": 0.0,
+              "service_fee_overseas_eok": 0.1664,
+              "advertising_eok": 0.6871,
+              "salary_eok": 0.2403,
+              "severance_eok": 0.0948,
+              "operating_income_eok": 0.1027,
+              "net_income_eok": 0.1003
+            },
+            {
+              "month": "2025-08",
+              "scope": "zoom",
+              "revenue_eok": 2.4183,
+              "cost_of_sales_eok": 0.479,
+              "gross_profit_eok": 1.9393,
+              "sga_eok": 1.798,
+              "platform_fee_in_cogs_eok": 0.0,
+              "service_fee_overseas_eok": 0.2178,
+              "advertising_eok": 0.7171,
+              "salary_eok": 0.2403,
+              "severance_eok": 0.0,
+              "operating_income_eok": 0.1413,
+              "net_income_eok": 0.1413
+            },
+            {
+              "month": "2025-09",
+              "scope": "zoom",
+              "revenue_eok": 1.8415,
+              "cost_of_sales_eok": 0.4829,
+              "gross_profit_eok": 1.3586,
+              "sga_eok": 1.8017,
+              "platform_fee_in_cogs_eok": 0.0,
+              "service_fee_overseas_eok": 0.2424,
+              "advertising_eok": 0.6912,
+              "salary_eok": 0.2403,
+              "severance_eok": 0.0,
+              "operating_income_eok": -0.4431,
+              "net_income_eok": -0.4425
+            },
+            {
+              "month": "2025-10",
+              "scope": "zoom",
+              "revenue_eok": 3.4001,
+              "cost_of_sales_eok": 0.4375,
+              "gross_profit_eok": 2.9626,
+              "sga_eok": 1.8261,
+              "platform_fee_in_cogs_eok": 0.0,
+              "service_fee_overseas_eok": 0.1828,
+              "advertising_eok": 0.633,
+              "salary_eok": 0.2403,
+              "severance_eok": 0.0,
+              "operating_income_eok": 1.1366,
+              "net_income_eok": 1.1159
+            },
+            {
+              "month": "2025-11",
+              "scope": "zoom",
+              "revenue_eok": 2.036,
+              "cost_of_sales_eok": 0.4037,
+              "gross_profit_eok": 1.6323,
+              "sga_eok": 3.0904,
+              "platform_fee_in_cogs_eok": 0.0,
+              "service_fee_overseas_eok": 0.3419,
+              "advertising_eok": 0.5753,
+              "salary_eok": 0.6528,
+              "severance_eok": 0.9901,
+              "operating_income_eok": -1.4581,
+              "net_income_eok": -1.4619
+            },
+            {
+              "month": "2025-12",
+              "scope": "zoom",
+              "revenue_eok": 2.2682,
+              "cost_of_sales_eok": 0.4294,
+              "gross_profit_eok": 1.8388,
+              "sga_eok": 1.2738,
+              "platform_fee_in_cogs_eok": 0.0,
+              "service_fee_overseas_eok": 0.2052,
+              "advertising_eok": 0.4405,
+              "salary_eok": 0.0603,
+              "severance_eok": 0.0,
+              "operating_income_eok": 0.565,
+              "net_income_eok": 0.5348
+            },
+            {
+              "month": "2026-01",
+              "scope": "zoom",
+              "revenue_eok": 2.1818,
+              "cost_of_sales_eok": 0.4449,
+              "gross_profit_eok": 1.7369,
+              "sga_eok": 1.8581,
+              "platform_fee_in_cogs_eok": 0.0,
+              "service_fee_overseas_eok": 0.7166,
+              "advertising_eok": 0.5208,
+              "salary_eok": 0.0603,
+              "severance_eok": 0.0,
+              "operating_income_eok": -0.1213,
+              "net_income_eok": -0.1303
+            },
+            {
+              "month": "2026-02",
+              "scope": "zoom",
+              "revenue_eok": 2.2551,
+              "cost_of_sales_eok": 0.3662,
+              "gross_profit_eok": 1.8889,
+              "sga_eok": 1.7436,
+              "platform_fee_in_cogs_eok": 0.0,
+              "service_fee_overseas_eok": 0.6407,
+              "advertising_eok": 0.4586,
+              "salary_eok": 0.0603,
+              "severance_eok": 0.0,
+              "operating_income_eok": 0.1453,
+              "net_income_eok": 0.1502
+            },
+            {
+              "month": "2026-03",
+              "scope": "zoom",
+              "revenue_eok": 1.2789,
+              "cost_of_sales_eok": 0.2163,
+              "gross_profit_eok": 1.0626,
+              "sga_eok": 0.9504,
+              "platform_fee_in_cogs_eok": 0.0,
+              "service_fee_overseas_eok": 0.0,
+              "advertising_eok": 0.4638,
+              "salary_eok": 0.0603,
+              "severance_eok": 0.0,
+              "operating_income_eok": 0.1121,
+              "net_income_eok": 0.1126
+            }
+          ],
+          "account_reclassification_evidence": {
+            "platform_fee_position_history": [
+              {
+                "month": "2025-07",
+                "scope": "zoom",
+                "category": "매출원가",
+                "amount_eok": 0.0,
+                "note": "줌줌투어 손익계산서 행 '서비스매출원가(플랫폼사용비)' 직접값. 0 = 매출원가에 미계상."
+              },
+              {
+                "month": "2025-08",
+                "scope": "zoom",
+                "category": "매출원가",
+                "amount_eok": 0.0,
+                "note": "줌줌투어 손익계산서 행 '서비스매출원가(플랫폼사용비)' 직접값. 0 = 매출원가에 미계상."
+              },
+              {
+                "month": "2025-09",
+                "scope": "zoom",
+                "category": "매출원가",
+                "amount_eok": 0.0,
+                "note": "줌줌투어 손익계산서 행 '서비스매출원가(플랫폼사용비)' 직접값. 0 = 매출원가에 미계상."
+              },
+              {
+                "month": "2025-10",
+                "scope": "zoom",
+                "category": "매출원가",
+                "amount_eok": 0.0,
+                "note": "줌줌투어 손익계산서 행 '서비스매출원가(플랫폼사용비)' 직접값. 0 = 매출원가에 미계상."
+              },
+              {
+                "month": "2025-11",
+                "scope": "zoom",
+                "category": "매출원가",
+                "amount_eok": 0.0,
+                "note": "줌줌투어 손익계산서 행 '서비스매출원가(플랫폼사용비)' 직접값. 0 = 매출원가에 미계상."
+              },
+              {
+                "month": "2025-12",
+                "scope": "zoom",
+                "category": "매출원가",
+                "amount_eok": 0.0,
+                "note": "줌줌투어 손익계산서 행 '서비스매출원가(플랫폼사용비)' 직접값. 0 = 매출원가에 미계상."
+              },
+              {
+                "month": "2026-01",
+                "scope": "zoom",
+                "category": "매출원가",
+                "amount_eok": 0.0,
+                "note": "줌줌투어 손익계산서 행 '서비스매출원가(플랫폼사용비)' 직접값. 0 = 매출원가에 미계상."
+              },
+              {
+                "month": "2026-02",
+                "scope": "zoom",
+                "category": "매출원가",
+                "amount_eok": 0.0,
+                "note": "줌줌투어 손익계산서 행 '서비스매출원가(플랫폼사용비)' 직접값. 0 = 매출원가에 미계상."
+              },
+              {
+                "month": "2026-03",
+                "scope": "zoom",
+                "category": "매출원가",
+                "amount_eok": 0.0,
+                "note": "줌줌투어 손익계산서 행 '서비스매출원가(플랫폼사용비)' 직접값. 0 = 매출원가에 미계상."
+              }
+            ],
+            "service_fee_position_history": [
+              {
+                "month": "2025-07",
+                "scope": "zoom",
+                "category": "판관비",
+                "amount_eok": 0.1664,
+                "note": "줌줌투어 판관비 행 '지급수수료(해외)' 직접값. CEO 가이던스에 따른 'service fee' = 해외 인력 인건비."
+              },
+              {
+                "month": "2025-08",
+                "scope": "zoom",
+                "category": "판관비",
+                "amount_eok": 0.2178,
+                "note": "줌줌투어 판관비 행 '지급수수료(해외)' 직접값. CEO 가이던스에 따른 'service fee' = 해외 인력 인건비."
+              },
+              {
+                "month": "2025-09",
+                "scope": "zoom",
+                "category": "판관비",
+                "amount_eok": 0.2424,
+                "note": "줌줌투어 판관비 행 '지급수수료(해외)' 직접값. CEO 가이던스에 따른 'service fee' = 해외 인력 인건비."
+              },
+              {
+                "month": "2025-10",
+                "scope": "zoom",
+                "category": "판관비",
+                "amount_eok": 0.1828,
+                "note": "줌줌투어 판관비 행 '지급수수료(해외)' 직접값. CEO 가이던스에 따른 'service fee' = 해외 인력 인건비."
+              },
+              {
+                "month": "2025-11",
+                "scope": "zoom",
+                "category": "판관비",
+                "amount_eok": 0.3419,
+                "note": "줌줌투어 판관비 행 '지급수수료(해외)' 직접값. CEO 가이던스에 따른 'service fee' = 해외 인력 인건비."
+              },
+              {
+                "month": "2025-12",
+                "scope": "zoom",
+                "category": "판관비",
+                "amount_eok": 0.2052,
+                "note": "줌줌투어 판관비 행 '지급수수료(해외)' 직접값. CEO 가이던스에 따른 'service fee' = 해외 인력 인건비."
+              },
+              {
+                "month": "2026-01",
+                "scope": "zoom",
+                "category": "판관비",
+                "amount_eok": 0.7166,
+                "note": "줌줌투어 판관비 행 '지급수수료(해외)' 직접값. CEO 가이던스에 따른 'service fee' = 해외 인력 인건비."
+              },
+              {
+                "month": "2026-02",
+                "scope": "zoom",
+                "category": "판관비",
+                "amount_eok": 0.6407,
+                "note": "줌줌투어 판관비 행 '지급수수료(해외)' 직접값. CEO 가이던스에 따른 'service fee' = 해외 인력 인건비."
+              },
+              {
+                "month": "2026-03",
+                "scope": "zoom",
+                "category": "판관비",
+                "amount_eok": 0.0,
+                "note": "줌줌투어 판관비 행 '지급수수료(해외)' 직접값. CEO 가이던스에 따른 'service fee' = 해외 인력 인건비."
+              }
+            ],
+            "first_appearance_in_sga_month": "2025-07",
+            "verdict": "재분류 확인됨 — 줌줌투어 9M 전 기간에 걸쳐 매출원가 항목 '플랫폼사용비'가 0원, 동일 성격 비용이 판관비 '지급수수료(해외)'로 계상 (총 27.1억원)",
+            "magnitude_eok": 2.7139,
+            "implication": "FY26 매출총이익률 81% 점프는 회계 재분류(플랫폼사용비 매출원가→판관비 '지급수수료(해외)')에 의한 아티팩트로 확인. 원가성 비용은 그대로 유지되며 영업이익에 동일하게 부담. 매출총이익률 단독 비교는 무의미.",
+            "zoom_9m_platform_fee_in_cogs_total_eok": 0.0,
+            "zoom_9m_service_fee_overseas_total_eok": 2.7139
+          },
+          "trend_analysis": {
+            "scope": "통합 (데이오프컴퍼니 + 줌줌투어 단순 합산)",
+            "month_range": [
+              "2025-07",
+              "2026-03"
+            ],
+            "n_months": 9,
+            "revenue_trend_pct_first_to_last": -41.19,
+            "monthly_avg_revenue_eok": 2.2893,
+            "monthly_avg_op_eok": -0.3722,
+            "recent_3m_avg_revenue_eok": 1.9714,
+            "recent_3m_avg_op_eok": -0.3199,
+            "bep_low_eok_per_month": 2.4,
+            "bep_high_eok_per_month": 2.7,
+            "bep_gap_eok_per_month_low": 0.4286,
+            "bep_gap_eok_per_month_high": 0.7286,
+            "key_observations": [
+              "6M 매출 합계 20.6억 / 평균 월매출 2.29억 / 평균 월영업이익 -0.37억",
+              "6M 매출 추이 (2025-07 2.17억 → 2026-03 1.28억): -41.19% 변동",
+              "통합 영업이익 변동성 큼: 월별 OP 시계열 = [0.1, 0.14, -0.96, 0.71, -2.13, -0.25, -0.78, -0.29, 0.11]",
+              "줌줌투어 단독: 월별 OP [0.1, 0.14, -0.44, 1.14, -1.46, 0.56, -0.12, 0.15, 0.11] — 11월 -1.46억(퇴직급여 9.9억 일시), 1월 -0.12억",
+              "데이오프 단독 6M: 매출 6개월 합 0.75억 vs SGA 합 4.28억 → 구조적 적자, 줌줌 흑자분 잠식",
+              "플랫폼사용비 매출원가 0원 (전 기간) + 지급수수료(해외) 27.1억(판관비) → 회계 재분류 확정"
+            ]
+          },
+          "consistency_with_zoom_only_3yr": {
+            "comparison_basis": "이 6개월 통합 데이터(2025-09 ~ 2026-02 데이오프 + 2025-07~2026-03 줌줌) vs 추가자료 줌줌단독 FY26 9M (2025-07~2026-03)",
+            "zoom_only_in_this_file_9m_revenue_eok": 19.85,
+            "zoom_only_in_this_file_9m_op_eok": 0.18,
+            "delta_note": "이 파일의 줌줌단독 시트는 동일 기간(FY26 9M)을 다루므로 zoom_historical_pnl과 매출 합계가 일치해야 함 (검증용 sanity check)",
+            "conclusion": "통합 관점: 줌줌투어 9M OP 흑자 약 0.18억(주: 11월 퇴직급여 9.9억 일시계상 흡수 후) + 데이오프 6M OP 적자 약 -3.53억 = 통합으로는 적자. 줌줌 단독 흑자는 (a) 인건비 70% 감축 일회성 + (b) 회계 재분류 두 가지 효과가 결합된 결과이며, 데이오프 측 모회사 비용을 합산하면 그룹 전체는 여전히 영업적자."
+          },
+          "ceo_guidance_check": {
+            "stated_bep_revenue_per_month_eok": [
+              2.4,
+              2.7
+            ],
+            "actual_recent_3m_avg_revenue_eok": 1.9714,
+            "gap_eok": [
+              0.4286,
+              0.7286
+            ],
+            "trajectory_to_bep": "갭 큼 — BEP 하한까지 +0.43억/월 추가 필요 (현 매출의 22%)",
+            "context_note": "CEO 가이던스는 통합 P&L 기준이라 가정. 최근 3M 평균 매출 = 1.97억/월. BEP 2.4~2.7억 도달까지 매출 규모는 현재의 1.22x ~ 1.37x 필요."
+          }
+        }
+      }
     },
     {
       "id": "리콘랩스",
