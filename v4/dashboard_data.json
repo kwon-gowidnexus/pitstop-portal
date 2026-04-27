@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-04-26T21:52:41.215203+00:00",
+  "generated_at": "2026-04-27T22:04:27.522410+00:00",
   "source": "피트스탑_준비_*.md + go_nogo_assessment.json",
   "assessment_versions": {
     "v1": {
@@ -33,7 +33,7 @@
     {
       "id": "데이오프컴퍼니",
       "name": "데이오프컴퍼니",
-      "status": "active",
+      "status": "closed",
       "stage": "stage_1",
       "stage_label": "서류 스크리닝",
       "overall_verdict": "RED",
@@ -559,7 +559,8 @@
         "products": [],
         "team": [],
         "market": "",
-        "discrepancies": []
+        "discrepancies": [],
+        "pivot_analysis_md": ""
       },
       "business_context": {
         "competitors": [],
@@ -668,6 +669,9 @@
       ],
       "email_draft": "",
       "assessment_version": "v4",
+      "gonogo_analysis": {
+        "closed_reason": "G2 부채 과부담(금융부채 8.7억/매출 5.8배 — 정책자금 6억+가수금 3.8억 우선순위 충돌) + G7 자본잠식(-9.6억) × RCPS 4억 오버행(동의권 3명+) — 메자닌 구조화 불가. 모법인 데이오프 종료 + 줌줌투어 신규 출발은 피트스탑 '재정비 후 트랙 복귀' 메타포 외 영역(사실상 차량 교체). 자본잠식 해소 + 줌줌 단독 월매출 0.3억/월갭 0.05억 이하 시그널 확인 시 재진입 가능."
+      },
       "pivot_strategy": {
         "_meta": {
           "company": "데이오프컴퍼니",
@@ -3538,7 +3542,8 @@
             "fact_value": "수입의 97.8% (26.03)",
             "gap": "IR덱이 보조금 의존 구조 은폐"
           }
-        ]
+        ],
+        "pivot_analysis_md": ""
       },
       "business_context": {
         "competitors": [
@@ -4529,7 +4534,8 @@
             "fact_value": "거래액 ≠ 매출. 테이크레이트 ~7%",
             "gap": "중간"
           }
-        ]
+        ],
+        "pivot_analysis_md": ""
       },
       "business_context": {
         "competitors": [
