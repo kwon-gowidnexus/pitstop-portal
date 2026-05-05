@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-05-04T22:13:44.604178+00:00",
+  "generated_at": "2026-05-05T22:11:00.502454+00:00",
   "source": "피트스탑_준비_*.md + go_nogo_assessment.json",
   "assessment_versions": {
     "v1": {
@@ -3950,6 +3950,197 @@
       },
       "gonogo_analysis": {
         "closed_reason": "G3 캐시엔진 부적합 — 매출 8.4억 vs 적자 22.1억, 비용 절감만으로 BEP 불가"
+      }
+    },
+    {
+      "id": "머큐리프로젝트",
+      "name": "머큐리프로젝트",
+      "status": "active",
+      "stage": "stage_1",
+      "stage_label": "서류 스크리닝",
+      "overall_verdict": "RED",
+      "verdict_summary": "RED 1건, YELLOW 4건, PENDING 2건. Stage 2 서면 확인 필요.",
+      "meta": {
+        "ceo": "정진문",
+        "email": "sigma@mercuryproject.com",
+        "founded": "2018.",
+        "business": "\"Commerce AI OS (커머스용 AI Agent)\"",
+        "cf_url": "",
+        "investment_total": "50억~100억 미만 | 필요자금: 10억 이상",
+        "gowid_grade": "",
+        "delinquency": "",
+        "survey_timestamp": "2026-05-05T18:52:42"
+      },
+      "gates": [
+        {
+          "id": "G1",
+          "name": "피트스탑 적합성",
+          "status": "red",
+          "summary": "매출 없음 (pre-revenue) — 피트스탑 범위 초과"
+        },
+        {
+          "id": "G2",
+          "name": "부채 & 동의권",
+          "status": "warning",
+          "summary": "금융부채 없음 (설문: \"1000000000\") / 기존 메자닌: CB 58억 / 만기 2028.04 / 전환가 30,000원 / 투자자 : 알파비스타 인베스트먼트"
+        },
+        {
+          "id": "G3",
+          "name": "캐시 엔진",
+          "status": "unknown",
+          "summary": "DW 데이터 미확보 — 매출/burn 확인 필요"
+        },
+        {
+          "id": "G4",
+          "name": "구조조정 의지",
+          "status": "warning",
+          "summary": "BEP 자가진단: \"가능하다 — 감축 가능한 항목이 있다\" — 구체 계획 확인 필요"
+        },
+        {
+          "id": "G5",
+          "name": "독점 자산",
+          "status": "warning",
+          "summary": "키워드 감지: AI — 기술 깊이 확인 필요"
+        },
+        {
+          "id": "G6",
+          "name": "대표 역량",
+          "status": "unknown",
+          "summary": "사전미팅에서 확인 필요"
+        },
+        {
+          "id": "G7",
+          "name": "EXIT 시나리오",
+          "status": "warning",
+          "summary": "기존 메자닌: CB 58억 / 만기 2028.04 / 전환가 30,000원 / 투자자 : 알파비스타 인베스트먼트"
+        }
+      ],
+      "new_findings": [
+        "[HIGH] 동의권 복잡성: 동의권: 필요 — 동의권자 1~2명 — 신규 투자 시 기존 투자자 동의 필수",
+        "[HIGH] 메자닌 오버행: CB 58억 / 만기 2028.04 / 전환가 30,000원 / 투자자 : 알파비스타 인베스트먼트"
+      ],
+      "financials": {
+        "bs_summary": {
+          "headers": [],
+          "rows": []
+        },
+        "cash_balance": {
+          "headers": [],
+          "rows": []
+        },
+        "cash_flow_dw": {
+          "headers": [],
+          "rows": []
+        },
+        "cash_flow_submitted": {
+          "income": {
+            "headers": [],
+            "rows": []
+          },
+          "expense": {
+            "headers": [],
+            "rows": []
+          },
+          "net": {
+            "headers": [],
+            "rows": []
+          }
+        },
+        "headcount": {
+          "headers": [],
+          "rows": []
+        }
+      },
+      "ir_analysis": {
+        "products": [],
+        "team": [],
+        "market": "",
+        "discrepancies": [],
+        "pivot_analysis_md": ""
+      },
+      "business_context": {
+        "competitors": [],
+        "comp_positioning": "",
+        "shareholders": [],
+        "sh_analysis": []
+      },
+      "red_flags": [
+        {
+          "id": 1,
+          "severity": "HIGH",
+          "title": "동의권 복잡성",
+          "detail": "동의권: 필요 — 동의권자 1~2명 — 신규 투자 시 기존 투자자 동의 필수"
+        },
+        {
+          "id": 2,
+          "severity": "HIGH",
+          "title": "메자닌 오버행",
+          "detail": "CB 58억 / 만기 2028.04 / 전환가 30,000원 / 투자자 : 알파비스타 인베스트먼트 CB 10억 / 만기 2028.04 / 전환가 30,000원 / 투자자 : 마그나 ---"
+        }
+      ],
+      "intuition_check": {
+        "health_check": [],
+        "frames": [],
+        "five_fingers": [],
+        "one_liner": ""
+      },
+      "bep": {
+        "current_state": [],
+        "scenarios": [],
+        "runway_with_investment": []
+      },
+      "khk_preview": {
+        "go": [],
+        "nogo": [],
+        "hold": []
+      },
+      "actions": [
+        {
+          "priority": 1,
+          "action": "DW 재무 데이터 확인",
+          "owner": "자동(CI)",
+          "deadline": "완료 필요"
+        },
+        {
+          "priority": 1,
+          "action": "`/pitstop 머큐리프로젝트` 실행 (심화 분석)",
+          "owner": "KYI",
+          "deadline": "이번 주"
+        },
+        {
+          "priority": 2,
+          "action": "사전 확인 이메일 발송",
+          "owner": "KYI",
+          "deadline": "Stage 1 완료 후"
+        },
+        {
+          "priority": 2,
+          "action": "BEP 시나리오 작성",
+          "owner": "KYI",
+          "deadline": "이메일 발송 전"
+        },
+        {
+          "priority": 3,
+          "action": "사전미팅 (G6 대표역량 확인)",
+          "owner": "KYI+KHK",
+          "deadline": "Stage 2 완료 후"
+        }
+      ],
+      "email_draft": "",
+      "assessment_version": "v3",
+      "_screener": {
+        "survey_v2": {
+          "shareholder_register": "https://drive.google.com/open?id=1f2urEhb324NTXbYuHI3dlxiQOfRmhEay",
+          "debt_status": "1000000000",
+          "mezzanine_status": "CB 58억 / 만기 2028.04 / 전환가 30,000원 / 투자자 : 알파비스타 인베스트먼트\nCB 10억 / 만기 2028.04 / 전환가 30,000원 / 투자자 : 마그나 인베스트먼트",
+          "investor_consent": "필요 — 동의권자 1~2명",
+          "mezzanine_contract": "https://drive.google.com/open?id=1AIXNqlCVAudijSnZbLmgJ2jDiWDAE-pP",
+          "bep_selfcheck": "가능하다 — 감축 가능한 항목이 있다",
+          "purpose_debt": "",
+          "purpose_payroll": "",
+          "purpose_marketing": "",
+          "purpose_tech": ""
+        }
       }
     },
     {
