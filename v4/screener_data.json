@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-07T13:19:42.929655",
+  "generated_at": "2026-06-08T08:42:35.391669",
   "data_source": "고위드 DW (BigQuery) + Metabase RM",
   "criteria_definitions": {
     "ceo_awareness": "대표의 객관적 인식 + 변화 의지 (인터뷰 필수)",
@@ -108,9 +108,9 @@
           "latest_month": "2026-06-01"
         },
         "balance": {
-          "balance_change_3m": -11.7,
+          "balance_change_3m": -9.4,
           "declining_months": 1,
-          "current_balance_eok": 3.3,
+          "current_balance_eok": 3.4,
           "months_available": 6
         },
         "financial_history": [
@@ -299,12 +299,12 @@
         "conversion_upside": {
           "name": "전환 매력도",
           "grade": "red",
-          "detail": "매출 3m 성장 -18.1% (역성장)"
+          "detail": "매출 3m 성장 -18.0% (역성장)"
         },
         "debt_leakage": {
           "name": "부채 유출 리스크",
           "grade": "green",
-          "detail": "잔고 3m 변화 +55.9% (안정)"
+          "detail": "잔고 3m 변화 +54.5% (안정)"
         },
         "shareholder_rights": {
           "name": "주주 동의권",
@@ -314,15 +314,15 @@
       },
       "cf_trends": {
         "revenue": {
-          "revenue_growth_3m": -18.1,
-          "revenue_12m_eok": 196.2,
+          "revenue_growth_3m": -18.0,
+          "revenue_12m_eok": 196.3,
           "months_available": 12,
           "latest_month": "2026-06-01"
         },
         "balance": {
-          "balance_change_3m": 55.9,
+          "balance_change_3m": 54.5,
           "declining_months": 1,
-          "current_balance_eok": 28.0,
+          "current_balance_eok": 27.8,
           "months_available": 6
         },
         "financial_history": [
@@ -383,8 +383,8 @@
           "grade": "red",
           "confidence": "medium",
           "evidence": [
-            "12개월 매출입금 196.2억 (현금주의)",
-            "매출 추이: 최근 3개월 -18% (19.8억 → 17.5억 → 5.3억)",
+            "12개월 매출입금 196.3억 (현금주의)",
+            "매출 추이: 최근 3개월 -18% (19.8억 → 17.5억 → 5.4억)",
             "영업적자 -24.7억/년 (월 2.1억)",
             "런웨이 10.2개월 (CF 기준)"
           ],
@@ -723,12 +723,12 @@
         "conversion_upside": {
           "name": "전환 매력도",
           "grade": "red",
-          "detail": "매출 3m 성장 -60.9% (역성장)"
+          "detail": "매출 3m 성장 -59.2% (역성장)"
         },
         "debt_leakage": {
           "name": "부채 유출 리스크",
           "grade": "red",
-          "detail": "잔고 3m 변화 -14.0% + CB/사채 전환 이슈 미확인. 자본잠식으로 전환 구조 복잡"
+          "detail": "잔고 3m 변화 -12.7% + CB/사채 전환 이슈 미확인. 자본잠식으로 전환 구조 복잡"
         },
         "shareholder_rights": {
           "name": "주주 동의권",
@@ -738,15 +738,15 @@
       },
       "cf_trends": {
         "revenue": {
-          "revenue_growth_3m": -60.9,
-          "revenue_12m_eok": 79.9,
+          "revenue_growth_3m": -59.2,
+          "revenue_12m_eok": 80.4,
           "months_available": 12,
           "latest_month": "2026-06-01"
         },
         "balance": {
-          "balance_change_3m": -14.0,
+          "balance_change_3m": -12.7,
           "declining_months": 0,
-          "current_balance_eok": 4.7,
+          "current_balance_eok": 4.8,
           "months_available": 6
         },
         "financial_history": [
@@ -809,8 +809,8 @@
           "grade": "red",
           "confidence": "medium",
           "evidence": [
-            "12개월 매출입금 79.9억 (현금주의)",
-            "매출 추이: 최근 3개월 -61% (3.6억 → 5.2억 → 1.0억)",
+            "12개월 매출입금 80.4억 (현금주의)",
+            "매출 추이: 최근 3개월 -59% (3.6억 → 5.2억 → 1.4억)",
             "영업적자 -5.8억/년 (월 0.5억)",
             "런웨이 20.0개월 (CF 기준)"
           ],
@@ -945,7 +945,7 @@
         "debt_leakage": {
           "name": "부채 유출 리스크",
           "grade": "red",
-          "detail": "잔고 3m 변화 -65.6% (급감) + CB/전환사채 존재 여부 미확인 — 금융부채 괴리(9.1억)의 원인일 가능성"
+          "detail": "잔고 3m 변화 -70.8% (급감) + CB/전환사채 존재 여부 미확인 — 금융부채 괴리(9.1억)의 원인일 가능성"
         },
         "shareholder_rights": {
           "name": "주주 동의권",
@@ -961,7 +961,7 @@
           "latest_month": "2026-06-01"
         },
         "balance": {
-          "balance_change_3m": -65.6,
+          "balance_change_3m": -70.8,
           "declining_months": 1,
           "current_balance_eok": 0.1,
           "months_available": 6
@@ -1382,7 +1382,7 @@
         "debt_leakage": {
           "name": "부채 유출 리스크",
           "grade": "red",
-          "detail": "잔고 3m 변화 -73.4% (급감)"
+          "detail": "잔고 3m 변화 -74.4% (급감)"
         },
         "shareholder_rights": {
           "name": "주주 동의권",
@@ -1398,7 +1398,7 @@
           "latest_month": "2026-06-01"
         },
         "balance": {
-          "balance_change_3m": -73.4,
+          "balance_change_3m": -74.4,
           "declining_months": 2,
           "current_balance_eok": 0.6,
           "months_available": 6
@@ -1463,7 +1463,7 @@
           "confidence": "medium",
           "evidence": [
             "12개월 매출입금 103.3억 (현금주의)",
-            "매출 추이: 최근 3개월 -51% (7.3억 → 5.7억 → 0.0억)",
+            "매출 추이: 최근 3개월 -51% (7.3억 → 5.7억 → 0.1억)",
             "영업이익 +4.1억 (흑자 17개월 유지)",
             "런웨이 2.5개월 (CF 기준)"
           ],
@@ -1600,7 +1600,7 @@
         "debt_leakage": {
           "name": "부채 유출 리스크",
           "grade": "red",
-          "detail": "잔고 3m 변화 -69.3% (급감)"
+          "detail": "잔고 3m 변화 -67.2% (급감)"
         },
         "shareholder_rights": {
           "name": "주주 동의권",
@@ -1616,7 +1616,7 @@
           "latest_month": "2026-06-01"
         },
         "balance": {
-          "balance_change_3m": -69.3,
+          "balance_change_3m": -67.2,
           "declining_months": 2,
           "current_balance_eok": 0.2,
           "months_available": 6
@@ -1810,7 +1810,7 @@
         "debt_leakage": {
           "name": "부채 유출 리스크",
           "grade": "green",
-          "detail": "잔고 3m 변화 +46.8% (안정) | [설문] 메자닌: RCPS 77억 / 투자자: 카카오벤처스, 롯데벤처스, 네이버D2SF, 한국투자파트너스, 한화비전, 디케이테크인, 블루포인트파트너스, 기술보증기금 (메자닌 존재 확인)"
+          "detail": "잔고 3m 변화 +49.5% (안정) | [설문] 메자닌: RCPS 77억 / 투자자: 카카오벤처스, 롯데벤처스, 네이버D2SF, 한국투자파트너스, 한화비전, 디케이테크인, 블루포인트파트너스, 기술보증기금 (메자닌 존재 확인)"
         },
         "shareholder_rights": {
           "name": "주주 동의권",
@@ -1826,7 +1826,7 @@
           "latest_month": "2026-06-01"
         },
         "balance": {
-          "balance_change_3m": 46.8,
+          "balance_change_3m": 49.5,
           "declining_months": 0,
           "current_balance_eok": 1.1,
           "months_available": 6
@@ -2022,7 +2022,7 @@
         "debt_leakage": {
           "name": "부채 유출 리스크",
           "grade": "green",
-          "detail": "잔고 3m 변화 +429.6% (안정) | [설문] 메자닌: 0"
+          "detail": "잔고 3m 변화 +423.4% (안정) | [설문] 메자닌: 0"
         },
         "shareholder_rights": {
           "name": "주주 동의권",
@@ -2038,7 +2038,7 @@
           "latest_month": "2026-06-01"
         },
         "balance": {
-          "balance_change_3m": 429.6,
+          "balance_change_3m": 423.4,
           "declining_months": 0,
           "current_balance_eok": 2.9,
           "months_available": 6
@@ -2243,7 +2243,7 @@
           "latest_month": "2026-06-01"
         },
         "balance": {
-          "balance_change_3m": -67.7,
+          "balance_change_3m": -70.2,
           "declining_months": 2,
           "current_balance_eok": 0.1,
           "months_available": 6
