@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-14T06:02:14.113147",
+  "generated_at": "2026-06-15T06:02:14.712228",
   "data_source": "고위드 DW (BigQuery) + Metabase RM",
   "criteria_definitions": {
     "ceo_awareness": "대표의 객관적 인식 + 변화 의지 (인터뷰 필수)",
@@ -52,10 +52,10 @@
       },
       "cash_kpi": {
         "balance_date": "2026-06-01",
-        "cash_mtd": 3.3,
+        "cash_mtd": 3.2,
         "monthly_burn": 1.9,
         "burn_positive": false,
-        "runway_months": 1.8
+        "runway_months": 1.7
       },
       "stage": {
         "current": "closed",
@@ -108,7 +108,7 @@
           "latest_month": "2026-06-01"
         },
         "balance": {
-          "balance_change_3m": -16.2,
+          "balance_change_3m": -15.2,
           "declining_months": 1,
           "current_balance_eok": 3.1,
           "months_available": 6
@@ -161,7 +161,7 @@
           "confidence": "high",
           "evidence": [
             "금융부채 0.7억 (단기 0.7억 + 장기 0.0억) [DW FY2025]",
-            "CF 평균잔고 3.5억 — 부채의 497% 커버"
+            "CF 평균잔고 3.5억 — 부채의 495% 커버"
           ],
           "summary": "부채 0.7억, 잔고로 충분히 커버. 구조 건전.",
           "interview_required": false
@@ -174,7 +174,7 @@
             "12개월 매출입금 99.2억 (현금주의)",
             "매출 추이: 최근 3개월 +5% (3.2억 → 7.3억 → 4.3억)",
             "영업이익 +1.8억 (이미 흑자)",
-            "런웨이 1.8개월 (CF 기준)"
+            "런웨이 1.7개월 (CF 기준)"
           ],
           "summary": "이미 영업흑자 또는 매출 성장 추세. BEP 달성/유지 가능.",
           "interview_required": false
@@ -184,9 +184,9 @@
           "grade": "red",
           "confidence": "high",
           "evidence": [
-            "CF 런웨이 1.8개월"
+            "CF 런웨이 1.7개월"
           ],
-          "summary": "런웨이 1.8개월 미만. 즉각적 자금/비용 조치 없으면 생존 위험.",
+          "summary": "런웨이 1.7개월 미만. 즉각적 자금/비용 조치 없으면 생존 위험.",
           "interview_required": true
         },
         "financial_3axis": {
@@ -304,7 +304,7 @@
         "debt_leakage": {
           "name": "부채 유출 리스크",
           "grade": "green",
-          "detail": "잔고 3m 변화 +53.7% (안정)"
+          "detail": "잔고 3m 변화 +53.8% (안정)"
         },
         "shareholder_rights": {
           "name": "주주 동의권",
@@ -320,7 +320,7 @@
           "latest_month": "2026-06-01"
         },
         "balance": {
-          "balance_change_3m": 53.7,
+          "balance_change_3m": 53.8,
           "declining_months": 1,
           "current_balance_eok": 27.6,
           "months_available": 6
@@ -516,7 +516,7 @@
         "debt_leakage": {
           "name": "부채 유출 리스크",
           "grade": "green",
-          "detail": "잔고 3m 변화 +74.4% (안정)"
+          "detail": "잔고 3m 변화 +74.1% (안정)"
         },
         "shareholder_rights": {
           "name": "주주 동의권",
@@ -532,9 +532,9 @@
           "latest_month": "2026-06-01"
         },
         "balance": {
-          "balance_change_3m": 74.4,
-          "declining_months": 0,
-          "current_balance_eok": 34.2,
+          "balance_change_3m": 74.1,
+          "declining_months": 1,
+          "current_balance_eok": 34.1,
           "months_available": 6
         },
         "financial_history": [
@@ -680,7 +680,7 @@
       },
       "cash_kpi": {
         "balance_date": "2026-06-01",
-        "cash_mtd": 4.1,
+        "cash_mtd": 4.0,
         "monthly_burn": 2.8,
         "burn_positive": true,
         "runway_months": 20.0
@@ -728,7 +728,7 @@
         "debt_leakage": {
           "name": "부채 유출 리스크",
           "grade": "red",
-          "detail": "잔고 3m 변화 -30.0% (급감) + CB/사채 전환 이슈 미확인. 자본잠식으로 전환 구조 복잡"
+          "detail": "잔고 3m 변화 -32.4% (급감) + CB/사채 전환 이슈 미확인. 자본잠식으로 전환 구조 복잡"
         },
         "shareholder_rights": {
           "name": "주주 동의권",
@@ -744,9 +744,9 @@
           "latest_month": "2026-06-01"
         },
         "balance": {
-          "balance_change_3m": -30.0,
+          "balance_change_3m": -32.4,
           "declining_months": 1,
-          "current_balance_eok": 3.9,
+          "current_balance_eok": 3.7,
           "months_available": 6
         },
         "financial_history": [
@@ -797,7 +797,7 @@
           "confidence": "high",
           "evidence": [
             "금융부채 12.6억 (단기 5.0억 + 장기 7.6억) [DW FY2025]",
-            "CF 평균잔고 3.9억 — 부채의 31% 커버",
+            "CF 평균잔고 3.8억 — 부채의 30% 커버",
             "자본 -19.1억 (자본잠식)",
             "CB/전환사채 이슈: CB/사채 전환 이슈 미확인. 자본잠식으로 전환 구조 복잡"
           ],
@@ -897,7 +897,7 @@
       },
       "cash_kpi": {
         "balance_date": "2026-06-01",
-        "cash_mtd": 0.6,
+        "cash_mtd": 0.5,
         "monthly_burn": 0.5,
         "burn_positive": true,
         "runway_months": 20.0
@@ -945,7 +945,7 @@
         "debt_leakage": {
           "name": "부채 유출 리스크",
           "grade": "red",
-          "detail": "잔고 3m 변화 -68.2% (급감) + CB/전환사채 존재 여부 미확인 — 금융부채 괴리(9.1억)의 원인일 가능성"
+          "detail": "잔고 3m 변화 -70.3% (급감) + CB/전환사채 존재 여부 미확인 — 금융부채 괴리(9.1억)의 원인일 가능성"
         },
         "shareholder_rights": {
           "name": "주주 동의권",
@@ -961,7 +961,7 @@
           "latest_month": "2026-06-01"
         },
         "balance": {
-          "balance_change_3m": -68.2,
+          "balance_change_3m": -70.3,
           "declining_months": 1,
           "current_balance_eok": 0.1,
           "months_available": 6
@@ -1117,7 +1117,7 @@
         "cash_mtd": 1.4,
         "monthly_burn": 0.2,
         "burn_positive": false,
-        "runway_months": 7.0
+        "runway_months": 6.8
       },
       "stage": {
         "current": "closed",
@@ -1162,7 +1162,7 @@
         "debt_leakage": {
           "name": "부채 유출 리스크",
           "grade": "red",
-          "detail": "잔고 3m 변화 +266.1% (안정) + CB 22.1억 출자전환 미완료. 전환 선행 필수 (내부 심사 조건)"
+          "detail": "잔고 3m 변화 +262.5% (안정) + CB 22.1억 출자전환 미완료. 전환 선행 필수 (내부 심사 조건)"
         },
         "shareholder_rights": {
           "name": "주주 동의권",
@@ -1178,7 +1178,7 @@
           "latest_month": "2026-06-01"
         },
         "balance": {
-          "balance_change_3m": 266.1,
+          "balance_change_3m": 262.5,
           "declining_months": 1,
           "current_balance_eok": 1.0,
           "months_available": 6
@@ -1248,7 +1248,7 @@
             "12개월 매출입금 14.8억 (현금주의)",
             "매출 추이: 최근 3개월 +158% (0.0억 → 6.2억 → 0.0억)",
             "영업이익 +1.2억 (흑자 17개월 유지)",
-            "런웨이 7.0개월 (CF 기준)"
+            "런웨이 6.8개월 (CF 기준)"
           ],
           "summary": "이미 영업흑자 또는 매출 성장 추세. BEP 달성/유지 가능.",
           "interview_required": false
@@ -1258,10 +1258,10 @@
           "grade": "red",
           "confidence": "high",
           "evidence": [
-            "CF 런웨이 7.0개월",
+            "CF 런웨이 6.8개월",
             "자본잠식 해소: 24.5년 소요 (자본 -29.4억 / OP +1.2억)"
           ],
-          "summary": "런웨이 7.0개월 미만. 즉각적 자금/비용 조치 없으면 생존 위험.",
+          "summary": "런웨이 6.8개월 미만. 즉각적 자금/비용 조치 없으면 생존 위험.",
           "interview_required": true
         },
         "financial_3axis": {
@@ -1334,7 +1334,7 @@
       },
       "cash_kpi": {
         "balance_date": "2026-06-01",
-        "cash_mtd": 1.8,
+        "cash_mtd": 1.7,
         "monthly_burn": 1.4,
         "burn_positive": false,
         "runway_months": 1.3
@@ -1382,7 +1382,7 @@
         "debt_leakage": {
           "name": "부채 유출 리스크",
           "grade": "red",
-          "detail": "잔고 3m 변화 -66.9% (급감)"
+          "detail": "잔고 3m 변화 -65.5% (급감)"
         },
         "shareholder_rights": {
           "name": "주주 동의권",
@@ -1398,7 +1398,7 @@
           "latest_month": "2026-06-01"
         },
         "balance": {
-          "balance_change_3m": -66.9,
+          "balance_change_3m": -65.5,
           "declining_months": 2,
           "current_balance_eok": 0.8,
           "months_available": 6
@@ -1600,7 +1600,7 @@
         "debt_leakage": {
           "name": "부채 유출 리스크",
           "grade": "red",
-          "detail": "잔고 3m 변화 -54.7% (급감)"
+          "detail": "잔고 3m 변화 -52.9% (급감)"
         },
         "shareholder_rights": {
           "name": "주주 동의권",
@@ -1616,7 +1616,7 @@
           "latest_month": "2026-06-01"
         },
         "balance": {
-          "balance_change_3m": -54.7,
+          "balance_change_3m": -52.9,
           "declining_months": 2,
           "current_balance_eok": 0.2,
           "months_available": 6
@@ -1765,7 +1765,7 @@
         "cash_mtd": 0.7,
         "monthly_burn": 0.5,
         "burn_positive": false,
-        "runway_months": 1.3
+        "runway_months": 1.4
       },
       "stage": {
         "current": "closed",
@@ -1810,7 +1810,7 @@
         "debt_leakage": {
           "name": "부채 유출 리스크",
           "grade": "green",
-          "detail": "잔고 3m 변화 +34.5% (안정) | [설문] 메자닌: RCPS 77억 / 투자자: 카카오벤처스, 롯데벤처스, 네이버D2SF, 한국투자파트너스, 한화비전, 디케이테크인, 블루포인트파트너스, 기술보증기금 (메자닌 존재 확인)"
+          "detail": "잔고 3m 변화 +31.2% (안정) | [설문] 메자닌: RCPS 77억 / 투자자: 카카오벤처스, 롯데벤처스, 네이버D2SF, 한국투자파트너스, 한화비전, 디케이테크인, 블루포인트파트너스, 기술보증기금 (메자닌 존재 확인)"
         },
         "shareholder_rights": {
           "name": "주주 동의권",
@@ -1826,7 +1826,7 @@
           "latest_month": "2026-06-01"
         },
         "balance": {
-          "balance_change_3m": 34.5,
+          "balance_change_3m": 31.2,
           "declining_months": 0,
           "current_balance_eok": 1.0,
           "months_available": 6
@@ -1894,11 +1894,11 @@
             "12개월 매출입금 5.7억 (현금주의)",
             "매출 추이: 최근 3개월 -52% (0.2억 → 0.8억 → 0.1억)",
             "영업적자 -22.1억/년 (월 1.8억)",
-            "런웨이 1.3개월 (CF 기준)",
+            "런웨이 1.4개월 (CF 기준)",
             "[설문] BEP 자가진단: 가능하다 — 감축 가능한 항목이 있다",
             "CEO 자가진단: BEP 달성 가능 (인터뷰 검증 필요)"
           ],
-          "summary": "매출 하락 추세 + 런웨이 1.3개월. BEP 달성 시급.",
+          "summary": "매출 하락 추세 + 런웨이 1.4개월. BEP 달성 시급.",
           "interview_required": true
         },
         "worst_case": {
@@ -1906,9 +1906,9 @@
           "grade": "red",
           "confidence": "high",
           "evidence": [
-            "CF 런웨이 1.3개월"
+            "CF 런웨이 1.4개월"
           ],
-          "summary": "런웨이 1.3개월 미만. 즉각적 자금/비용 조치 없으면 생존 위험.",
+          "summary": "런웨이 1.4개월 미만. 즉각적 자금/비용 조치 없으면 생존 위험.",
           "interview_required": true
         },
         "financial_3axis": {
@@ -1974,10 +1974,10 @@
       },
       "cash_kpi": {
         "balance_date": "2026-06-01",
-        "cash_mtd": 3.0,
+        "cash_mtd": 3.2,
         "monthly_burn": 0.5,
         "burn_positive": false,
-        "runway_months": 5.5
+        "runway_months": 5.8
       },
       "stage": {
         "current": "closed",
@@ -2017,12 +2017,12 @@
         "conversion_upside": {
           "name": "전환 매력도",
           "grade": "green",
-          "detail": "매출 3m 성장 +61.5%"
+          "detail": "매출 3m 성장 +64.7%"
         },
         "debt_leakage": {
           "name": "부채 유출 리스크",
           "grade": "green",
-          "detail": "잔고 3m 변화 +621.2% (안정) | [설문] 메자닌: 0"
+          "detail": "잔고 3m 변화 +640.2% (안정) | [설문] 메자닌: 0"
         },
         "shareholder_rights": {
           "name": "주주 동의권",
@@ -2032,15 +2032,15 @@
       },
       "cf_trends": {
         "revenue": {
-          "revenue_growth_3m": 61.5,
-          "revenue_12m_eok": 39.5,
+          "revenue_growth_3m": 64.7,
+          "revenue_12m_eok": 39.7,
           "months_available": 12,
           "latest_month": "2026-06-01"
         },
         "balance": {
-          "balance_change_3m": 621.2,
+          "balance_change_3m": 640.2,
           "declining_months": 0,
-          "current_balance_eok": 4.0,
+          "current_balance_eok": 4.1,
           "months_available": 6
         },
         "financial_history": [
@@ -2091,7 +2091,7 @@
           "confidence": "high",
           "evidence": [
             "금융부채 26.2억 (단기 26.2억 + 장기 0.0억) [DW FY2025]",
-            "CF 평균잔고 2.0억 — 부채의 8% 커버",
+            "CF 평균잔고 2.1억 — 부채의 8% 커버",
             "커버율 8% — 잔고로 부채 통제 불가",
             "[설문] 부채 현황 자기보고: 25억원"
           ],
@@ -2103,14 +2103,14 @@
           "grade": "red",
           "confidence": "medium",
           "evidence": [
-            "12개월 매출입금 39.5억 (현금주의)",
-            "매출 추이: 최근 3개월 +61% (2.7억 → 2.5억 → 4.2억)",
+            "12개월 매출입금 39.7억 (현금주의)",
+            "매출 추이: 최근 3개월 +65% (2.7억 → 2.5억 → 4.4억)",
             "영업적자 -1768290573.0억/년 (월 147357547.8억)",
-            "런웨이 5.5개월 (CF 기준)",
+            "런웨이 5.8개월 (CF 기준)",
             "[설문] BEP 자가진단: 가능하다 — 감축 가능한 항목이 있다",
             "CEO 자가진단: BEP 달성 가능 (인터뷰 검증 필요)"
           ],
-          "summary": "매출 하락 추세 + 런웨이 5.5개월. BEP 달성 시급.",
+          "summary": "매출 하락 추세 + 런웨이 5.8개월. BEP 달성 시급.",
           "interview_required": true
         },
         "worst_case": {
@@ -2118,9 +2118,9 @@
           "grade": "red",
           "confidence": "high",
           "evidence": [
-            "CF 런웨이 5.5개월"
+            "CF 런웨이 5.8개월"
           ],
-          "summary": "런웨이 5.5개월 미만. 즉각적 자금/비용 조치 없으면 생존 위험.",
+          "summary": "런웨이 5.8개월 미만. 즉각적 자금/비용 조치 없으면 생존 위험.",
           "interview_required": true
         },
         "financial_3axis": {
@@ -2187,7 +2187,7 @@
       },
       "cash_kpi": {
         "balance_date": "2026-06-01",
-        "cash_mtd": 0.2,
+        "cash_mtd": 0.3,
         "monthly_burn": 0.1,
         "burn_positive": true,
         "runway_months": 20.0
@@ -2243,9 +2243,9 @@
           "latest_month": "2026-06-01"
         },
         "balance": {
-          "balance_change_3m": 84.8,
+          "balance_change_3m": 111.1,
           "declining_months": 0,
-          "current_balance_eok": 0.3,
+          "current_balance_eok": 0.4,
           "months_available": 6
         },
         "financial_history": [
@@ -2393,7 +2393,7 @@
       },
       "cash_kpi": {
         "balance_date": "2026-06-01",
-        "cash_mtd": 0.8,
+        "cash_mtd": 0.9,
         "monthly_burn": 2.9,
         "burn_positive": false,
         "runway_months": 0.3
@@ -2449,9 +2449,9 @@
           "latest_month": "2026-06-01"
         },
         "balance": {
-          "balance_change_3m": -43.1,
+          "balance_change_3m": -38.5,
           "declining_months": 0,
-          "current_balance_eok": 1.4,
+          "current_balance_eok": 1.5,
           "months_available": 6
         },
         "financial_history": [
