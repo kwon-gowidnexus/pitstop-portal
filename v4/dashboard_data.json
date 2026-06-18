@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-17T22:52:08.656928+00:00",
+  "generated_at": "2026-06-18T23:02:52.351707+00:00",
   "source": "피트스탑_준비_*.md + go_nogo_assessment.json",
   "assessment_versions": {
     "v1": {
@@ -4900,6 +4900,181 @@
           "investor_consent": "필요 — 동의권자 3명 이상",
           "shareholder_register": "https://drive.google.com/open?id=1ucaLhTXyk_5Yhkq2MDwjRTU_udMw6YEt",
           "bep_selfcheck": "가능하다 — 감축 가능한 항목이 있다"
+        }
+      }
+    },
+    {
+      "id": "유림기업",
+      "name": "유림기업",
+      "status": "active",
+      "stage": "stage_1",
+      "stage_label": "서류 스크리닝",
+      "overall_verdict": "RED",
+      "verdict_summary": "RED 1건, YELLOW 2건, PENDING 3건. Stage 2 서면 확인 필요.",
+      "meta": {
+        "ceo": "김철민",
+        "email": "kcm327@gmail.com",
+        "founded": "2013.",
+        "business": "\"㈜유림기업은 음식물류폐기물 수집·운반을 주력으로 하는 폐기물 자원화 전문기업입니다. 서울·경기·인천 권역을 중심으로 음식물류폐기물 수거 및 운반\"",
+        "cf_url": "",
+        "investment_total": "10억~20억 미만 | 필요자금: 10억 이상",
+        "gowid_grade": "",
+        "delinquency": "",
+        "survey_timestamp": "2026-06-18T19:47:43"
+      },
+      "gates": [
+        {
+          "id": "G1",
+          "name": "피트스탑 적합성",
+          "status": "red",
+          "summary": "매출 없음 (pre-revenue) — 피트스탑 범위 초과"
+        },
+        {
+          "id": "G2",
+          "name": "부채 & 동의권",
+          "status": "green",
+          "summary": "금융부채 없음 (설문: \"은행 금액 실행일"
+        },
+        {
+          "id": "G3",
+          "name": "캐시 엔진",
+          "status": "unknown",
+          "summary": "DW 데이터 미확보 — 매출/burn 확인 필요"
+        },
+        {
+          "id": "G4",
+          "name": "구조조정 의지",
+          "status": "warning",
+          "summary": "BEP 자가진단: \"가능하다 — 감축 가능한 항목이 있다\" — 구체 계획 확인 필요"
+        },
+        {
+          "id": "G5",
+          "name": "독점 자산",
+          "status": "unknown",
+          "summary": "사업설명에서 명확한 기술 해자 미감지 — 인터뷰 확인 필요"
+        },
+        {
+          "id": "G6",
+          "name": "대표 역량",
+          "status": "unknown",
+          "summary": "사전미팅에서 확인 필요"
+        },
+        {
+          "id": "G7",
+          "name": "EXIT 시나리오",
+          "status": "warning",
+          "summary": "기존 메자닌: 0"
+        }
+      ],
+      "new_findings": [],
+      "financials": {
+        "bs_summary": {
+          "headers": [],
+          "rows": []
+        },
+        "cash_balance": {
+          "headers": [],
+          "rows": []
+        },
+        "cash_flow_dw": {
+          "headers": [],
+          "rows": []
+        },
+        "cash_flow_submitted": {
+          "income": {
+            "headers": [],
+            "rows": []
+          },
+          "expense": {
+            "headers": [],
+            "rows": []
+          },
+          "net": {
+            "headers": [],
+            "rows": []
+          }
+        },
+        "headcount": {
+          "headers": [],
+          "rows": []
+        }
+      },
+      "ir_analysis": {
+        "products": [],
+        "team": [],
+        "market": "",
+        "discrepancies": [],
+        "pivot_analysis_md": ""
+      },
+      "business_context": {
+        "competitors": [],
+        "comp_positioning": "",
+        "shareholders": [],
+        "sh_analysis": []
+      },
+      "red_flags": [],
+      "intuition_check": {
+        "health_check": [],
+        "frames": [],
+        "five_fingers": [],
+        "one_liner": ""
+      },
+      "bep": {
+        "current_state": [],
+        "scenarios": [],
+        "runway_with_investment": []
+      },
+      "khk_preview": {
+        "go": [],
+        "nogo": [],
+        "hold": []
+      },
+      "actions": [
+        {
+          "priority": 1,
+          "action": "DW 재무 데이터 확인",
+          "owner": "자동(CI)",
+          "deadline": "완료 필요"
+        },
+        {
+          "priority": 1,
+          "action": "`/pitstop 유림기업` 실행 (심화 분석)",
+          "owner": "KYI",
+          "deadline": "이번 주"
+        },
+        {
+          "priority": 2,
+          "action": "사전 확인 이메일 발송",
+          "owner": "KYI",
+          "deadline": "Stage 1 완료 후"
+        },
+        {
+          "priority": 2,
+          "action": "BEP 시나리오 작성",
+          "owner": "KYI",
+          "deadline": "이메일 발송 전"
+        },
+        {
+          "priority": 3,
+          "action": "사전미팅 (G6 대표역량 확인)",
+          "owner": "KYI+KHK",
+          "deadline": "Stage 2 완료 후"
+        }
+      ],
+      "email_draft": "",
+      "assessment_version": "v3",
+      "_screener": {
+        "survey_v2": {
+          "shareholder_register": "https://drive.google.com/open?id=1JJOM9ir0y8vl2O8F2RFJlSENhA5sLDE1",
+          "debt_status": "은행 금액 실행일\n농협은행 650,000,000 2021.03.15 \n농협은행 417,000,000 2021.04.30 \n우리은행 300,000,000 2023.09.13\n우리은행 278,000,000 2021.11.25\n우리은행 293,500,000 2026.04.27\n우리은행 200,000,000 2024.02.14\n우리은행 154,000,000 2026.04.27\n우리은행 69,000,000 2026.04.27\n하나은행 330,000,000 2022.12.16\n신한은행 200,000,000 2025.09.15",
+          "mezzanine_status": "0",
+          "investor_consent": "동의 불필요 (또는 해당 투자자 없음)",
+          "mezzanine_contract": "",
+          "bep_selfcheck": "가능하다 — 감축 가능한 항목이 있다",
+          "purpose_debt": "",
+          "purpose_payroll": "",
+          "purpose_marketing": "",
+          "purpose_tech": ""
         }
       }
     },
