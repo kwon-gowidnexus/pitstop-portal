@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-13T10:25:02.687955",
+  "generated_at": "2026-07-14T06:02:43.070841",
   "data_source": "고위드 DW (BigQuery) + Metabase RM",
   "criteria_definitions": {
     "ceo_awareness": "대표의 객관적 인식 + 변화 의지 (인터뷰 필수)",
@@ -108,9 +108,9 @@
           "latest_month": "2026-07-01"
         },
         "balance": {
-          "balance_change_3m": -5.9,
+          "balance_change_3m": -11.1,
           "declining_months": 0,
-          "current_balance_eok": 3.3,
+          "current_balance_eok": 3.1,
           "months_available": 6
         },
         "financial_history": [
@@ -304,7 +304,7 @@
         "debt_leakage": {
           "name": "부채 유출 리스크",
           "grade": "green",
-          "detail": "잔고 3m 변화 +13.0% (안정)"
+          "detail": "잔고 3m 변화 +13.1% (안정)"
         },
         "shareholder_rights": {
           "name": "주주 동의권",
@@ -320,9 +320,9 @@
           "latest_month": "2026-07-01"
         },
         "balance": {
-          "balance_change_3m": 13.0,
+          "balance_change_3m": 13.1,
           "declining_months": 1,
-          "current_balance_eok": 25.3,
+          "current_balance_eok": 25.4,
           "months_available": 6
         },
         "financial_history": [
@@ -516,7 +516,7 @@
         "debt_leakage": {
           "name": "부채 유출 리스크",
           "grade": "green",
-          "detail": "잔고 3m 변화 +101.9% (안정)"
+          "detail": "잔고 3m 변화 +101.7% (안정)"
         },
         "shareholder_rights": {
           "name": "주주 동의권",
@@ -532,9 +532,9 @@
           "latest_month": "2026-07-01"
         },
         "balance": {
-          "balance_change_3m": 101.9,
+          "balance_change_3m": 101.7,
           "declining_months": 0,
-          "current_balance_eok": 52.9,
+          "current_balance_eok": 52.8,
           "months_available": 6
         },
         "financial_history": [
@@ -728,7 +728,7 @@
         "debt_leakage": {
           "name": "부채 유출 리스크",
           "grade": "red",
-          "detail": "잔고 3m 변화 -5.3% + CB/사채 전환 이슈 미확인. 자본잠식으로 전환 구조 복잡"
+          "detail": "잔고 3m 변화 -8.2% + CB/사채 전환 이슈 미확인. 자본잠식으로 전환 구조 복잡"
         },
         "shareholder_rights": {
           "name": "주주 동의권",
@@ -744,9 +744,9 @@
           "latest_month": "2026-07-01"
         },
         "balance": {
-          "balance_change_3m": -5.3,
+          "balance_change_3m": -8.2,
           "declining_months": 2,
-          "current_balance_eok": 3.2,
+          "current_balance_eok": 3.1,
           "months_available": 6
         },
         "financial_history": [
@@ -945,7 +945,7 @@
         "debt_leakage": {
           "name": "부채 유출 리스크",
           "grade": "red",
-          "detail": "잔고 3m 변화 +75.4% (안정) + CB/전환사채 존재 여부 미확인 — 금융부채 괴리(9.1억)의 원인일 가능성"
+          "detail": "잔고 3m 변화 +65.5% (안정) + CB/전환사채 존재 여부 미확인 — 금융부채 괴리(9.1억)의 원인일 가능성"
         },
         "shareholder_rights": {
           "name": "주주 동의권",
@@ -961,7 +961,7 @@
           "latest_month": "2026-07-01"
         },
         "balance": {
-          "balance_change_3m": 75.4,
+          "balance_change_3m": 65.5,
           "declining_months": 2,
           "current_balance_eok": 0.1,
           "months_available": 6
@@ -1161,7 +1161,7 @@
         "debt_leakage": {
           "name": "부채 유출 리스크",
           "grade": "red",
-          "detail": "잔고 3m 변화 +245.7% (안정) + CB 22.1억 출자전환 미완료. 전환 선행 필수 (내부 심사 조건)"
+          "detail": "잔고 3m 변화 +244.3% (안정) + CB 22.1억 출자전환 미완료. 전환 선행 필수 (내부 심사 조건)"
         },
         "shareholder_rights": {
           "name": "주주 동의권",
@@ -1177,7 +1177,7 @@
           "latest_month": "2026-07-01"
         },
         "balance": {
-          "balance_change_3m": 245.7,
+          "balance_change_3m": 244.3,
           "declining_months": 0,
           "current_balance_eok": 1.2,
           "months_available": 6
@@ -1397,7 +1397,7 @@
           "latest_month": "2026-07-01"
         },
         "balance": {
-          "balance_change_3m": -85.5,
+          "balance_change_3m": -86.2,
           "declining_months": 3,
           "current_balance_eok": 0.6,
           "months_available": 6
@@ -1600,7 +1600,7 @@
         "debt_leakage": {
           "name": "부채 유출 리스크",
           "grade": "yellow",
-          "detail": "잔고 3m 변화 -18.4%"
+          "detail": "잔고 3m 변화 -18.1%"
         },
         "shareholder_rights": {
           "name": "주주 동의권",
@@ -1616,7 +1616,7 @@
           "latest_month": "2026-07-01"
         },
         "balance": {
-          "balance_change_3m": -18.4,
+          "balance_change_3m": -18.1,
           "declining_months": 0,
           "current_balance_eok": 0.7,
           "months_available": 6
@@ -1810,7 +1810,7 @@
         "debt_leakage": {
           "name": "부채 유출 리스크",
           "grade": "green",
-          "detail": "잔고 3m 변화 +160.3% (안정) | [설문] 메자닌: RCPS 77억 / 투자자: 카카오벤처스, 롯데벤처스, 네이버D2SF, 한국투자파트너스, 한화비전, 디케이테크인, 블루포인트파트너스, 기술보증기금 (메자닌 존재 확인)"
+          "detail": "잔고 3m 변화 +155.9% (안정) | [설문] 메자닌: RCPS 77억 / 투자자: 카카오벤처스, 롯데벤처스, 네이버D2SF, 한국투자파트너스, 한화비전, 디케이테크인, 블루포인트파트너스, 기술보증기금 (메자닌 존재 확인)"
         },
         "shareholder_rights": {
           "name": "주주 동의권",
@@ -1826,7 +1826,7 @@
           "latest_month": "2026-07-01"
         },
         "balance": {
-          "balance_change_3m": 160.3,
+          "balance_change_3m": 155.9,
           "declining_months": 0,
           "current_balance_eok": 0.8,
           "months_available": 6
@@ -2022,7 +2022,7 @@
         "debt_leakage": {
           "name": "부채 유출 리스크",
           "grade": "green",
-          "detail": "잔고 3m 변화 +984.3% (안정) | [설문] 메자닌: 0"
+          "detail": "잔고 3m 변화 +970.2% (안정) | [설문] 메자닌: 0"
         },
         "shareholder_rights": {
           "name": "주주 동의권",
@@ -2038,9 +2038,9 @@
           "latest_month": "2026-07-01"
         },
         "balance": {
-          "balance_change_3m": 984.3,
+          "balance_change_3m": 970.2,
           "declining_months": 0,
-          "current_balance_eok": 7.9,
+          "current_balance_eok": 7.8,
           "months_available": 6
         },
         "financial_history": [
@@ -2242,7 +2242,7 @@
           "latest_month": "2026-07-01"
         },
         "balance": {
-          "balance_change_3m": -33.1,
+          "balance_change_3m": -34.2,
           "declining_months": 1,
           "current_balance_eok": 0.2,
           "months_available": 6
@@ -2448,9 +2448,9 @@
           "latest_month": "2026-07-01"
         },
         "balance": {
-          "balance_change_3m": -44.5,
+          "balance_change_3m": -41.8,
           "declining_months": 1,
-          "current_balance_eok": 0.8,
+          "current_balance_eok": 0.9,
           "months_available": 6
         },
         "financial_history": [
@@ -2650,9 +2650,9 @@
           "latest_month": "2026-07-01"
         },
         "balance": {
-          "balance_change_3m": -21.6,
+          "balance_change_3m": 5.7,
           "declining_months": 1,
-          "current_balance_eok": 0.7,
+          "current_balance_eok": 1.0,
           "months_available": 6
         },
         "financial_history": [
@@ -2853,7 +2853,7 @@
           "latest_month": "2026-07-01"
         },
         "balance": {
-          "balance_change_3m": -29.6,
+          "balance_change_3m": -31.2,
           "declining_months": 2,
           "current_balance_eok": 0.3,
           "months_available": 6
@@ -3057,9 +3057,9 @@
           "latest_month": "2026-07-01"
         },
         "balance": {
-          "balance_change_3m": -67.5,
+          "balance_change_3m": -65.8,
           "declining_months": 1,
-          "current_balance_eok": 2.0,
+          "current_balance_eok": 2.1,
           "months_available": 6
         },
         "financial_history": [
