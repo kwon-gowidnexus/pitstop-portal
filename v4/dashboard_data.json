@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-20T22:12:04.263003+00:00",
+  "generated_at": "2026-07-21T22:13:06.931866+00:00",
   "source": "피트스탑_준비_*.md + go_nogo_assessment.json",
   "assessment_versions": {
     "v1": {
@@ -5516,10 +5516,10 @@
         "monthly_pl_url": "https://drive.google.com/open?id=1jdlt2guf_bnfYmY02R-S4kgu1dy8M-Rz",
         "cash_kpi": {
           "balance_date": "2026-07-01",
-          "cash_mtd": 3.0,
+          "cash_mtd": 2.9,
           "monthly_burn": 0.8,
           "burn_positive": false,
-          "runway_months": 3.7
+          "runway_months": 3.6
         },
         "stage": {
           "current": "closed",
@@ -5551,7 +5551,7 @@
           "conversion_upside": {
             "name": "전환 매력도",
             "grade": "green",
-            "detail": "매출 3m 성장 +119.2%"
+            "detail": "매출 3m 성장 +120.1%"
           },
           "debt_leakage": {
             "name": "부채 유출 리스크",
@@ -5566,13 +5566,13 @@
         },
         "cf_trends": {
           "revenue": {
-            "revenue_growth_3m": 119.2,
-            "revenue_12m_eok": 94.8,
+            "revenue_growth_3m": 120.1,
+            "revenue_12m_eok": 94.9,
             "months_available": 12,
             "latest_month": "2026-07-01"
           },
           "balance": {
-            "balance_change_3m": -10.2,
+            "balance_change_3m": -11.4,
             "declining_months": 0,
             "current_balance_eok": 3.1,
             "months_available": 6
@@ -5625,7 +5625,7 @@
             "confidence": "high",
             "evidence": [
               "금융부채 0.7억 (단기 0.7억 + 장기 0.0억) [DW FY2025]",
-              "CF 평균잔고 3.2억 — 부채의 455% 커버"
+              "CF 평균잔고 3.2억 — 부채의 451% 커버"
             ],
             "summary": "부채 0.7억, 잔고로 충분히 커버. 구조 건전.",
             "interview_required": false
@@ -5635,10 +5635,10 @@
             "grade": "green",
             "confidence": "medium",
             "evidence": [
-              "12개월 매출입금 94.8억 (현금주의)",
-              "매출 추이: 최근 3개월 +119% (7.3억 → 6.3억 → 5.2억)",
+              "12개월 매출입금 94.9억 (현금주의)",
+              "매출 추이: 최근 3개월 +120% (7.3억 → 6.3억 → 5.3억)",
               "영업이익 +1.8억 (이미 흑자)",
-              "런웨이 3.7개월 (CF 기준)"
+              "런웨이 3.6개월 (CF 기준)"
             ],
             "summary": "이미 영업흑자 또는 매출 성장 추세. BEP 달성/유지 가능.",
             "interview_required": false
@@ -5648,9 +5648,9 @@
             "grade": "red",
             "confidence": "high",
             "evidence": [
-              "CF 런웨이 3.7개월"
+              "CF 런웨이 3.6개월"
             ],
-            "summary": "런웨이 3.7개월 미만. 즉각적 자금/비용 조치 없으면 생존 위험.",
+            "summary": "런웨이 3.6개월 미만. 즉각적 자금/비용 조치 없으면 생존 위험.",
             "interview_required": true
           },
           "financial_3axis": {
@@ -5832,7 +5832,7 @@
         "monthly_pl_url": "https://drive.google.com/open?id=1uNlkC2JEWojJkSW1EJhm086xUjprDGcr",
         "cash_kpi": {
           "balance_date": "2026-07-01",
-          "cash_mtd": 61.9,
+          "cash_mtd": 62.0,
           "monthly_burn": 3.1,
           "burn_positive": false,
           "runway_months": 20.0
@@ -5875,12 +5875,12 @@
           "conversion_upside": {
             "name": "전환 매력도",
             "grade": "red",
-            "detail": "매출 3m 성장 -21.3% (역성장)"
+            "detail": "매출 3m 성장 -15.2% (역성장)"
           },
           "debt_leakage": {
             "name": "부채 유출 리스크",
             "grade": "green",
-            "detail": "잔고 3m 변화 +14.6% (안정)"
+            "detail": "잔고 3m 변화 +15.3% (안정)"
           },
           "shareholder_rights": {
             "name": "주주 동의권",
@@ -5890,15 +5890,15 @@
         },
         "cf_trends": {
           "revenue": {
-            "revenue_growth_3m": -21.3,
-            "revenue_12m_eok": 204.8,
+            "revenue_growth_3m": -15.2,
+            "revenue_12m_eok": 208.4,
             "months_available": 12,
             "latest_month": "2026-07-01"
           },
           "balance": {
-            "balance_change_3m": 14.6,
+            "balance_change_3m": 15.3,
             "declining_months": 1,
-            "current_balance_eok": 25.7,
+            "current_balance_eok": 25.9,
             "months_available": 6
           },
           "financial_history": [
@@ -5959,8 +5959,8 @@
             "grade": "red",
             "confidence": "medium",
             "evidence": [
-              "12개월 매출입금 204.8억 (현금주의)",
-              "매출 추이: 최근 3개월 -21% (17.5억 → 24.0억 → 4.2억)",
+              "12개월 매출입금 208.4억 (현금주의)",
+              "매출 추이: 최근 3개월 -15% (17.5억 → 24.0억 → 7.8억)",
               "영업적자 -24.7억/년 (월 2.1억)",
               "런웨이 20.0개월 (CF 기준)"
             ],
@@ -6156,7 +6156,7 @@
         "monthly_pl_url": "https://drive.google.com/open?id=1hnv1Fn2Tyk6W166K7RSgaNn6WofAyFwM",
         "cash_kpi": {
           "balance_date": "2026-07-01",
-          "cash_mtd": 47.5,
+          "cash_mtd": 48.1,
           "monthly_burn": 1.7,
           "burn_positive": false,
           "runway_months": 20.0
@@ -6199,7 +6199,7 @@
           "conversion_upside": {
             "name": "전환 매력도",
             "grade": "green",
-            "detail": "매출 3m 성장 -93.9% (역성장) + 독점성 확인"
+            "detail": "매출 3m 성장 -93.8% (역성장) + 독점성 확인"
           },
           "debt_leakage": {
             "name": "부채 유출 리스크",
@@ -6214,7 +6214,7 @@
         },
         "cf_trends": {
           "revenue": {
-            "revenue_growth_3m": -93.9,
+            "revenue_growth_3m": -93.8,
             "revenue_12m_eok": 31.7,
             "months_available": 12,
             "latest_month": "2026-07-01"
@@ -6273,7 +6273,7 @@
             "confidence": "high",
             "evidence": [
               "금융부채 12.2억 (단기 12.0억 + 장기 0.2억) [DW FY2025]",
-              "CF 평균잔고 38.9억 — 부채의 318% 커버"
+              "CF 평균잔고 39.1억 — 부채의 320% 커버"
             ],
             "summary": "부채 12.2억, 잔고로 충분히 커버. 구조 건전.",
             "interview_required": false
@@ -6480,7 +6480,7 @@
         "monthly_pl_url": "https://drive.google.com/open?id=1ZVl5WBcxRBCOMg7qJ1oVNPRY6wOlovYo",
         "cash_kpi": {
           "balance_date": "2026-07-01",
-          "cash_mtd": 2.8,
+          "cash_mtd": 2.9,
           "monthly_burn": 3.0,
           "burn_positive": true,
           "runway_months": 20.0
@@ -6523,12 +6523,12 @@
           "conversion_upside": {
             "name": "전환 매력도",
             "grade": "red",
-            "detail": "매출 3m 성장 -36.6% (역성장)"
+            "detail": "매출 3m 성장 -30.0% (역성장)"
           },
           "debt_leakage": {
             "name": "부채 유출 리스크",
             "grade": "red",
-            "detail": "잔고 3m 변화 -17.4% + CB/사채 전환 이슈 미확인. 자본잠식으로 전환 구조 복잡"
+            "detail": "잔고 3m 변화 -17.2% + CB/사채 전환 이슈 미확인. 자본잠식으로 전환 구조 복잡"
           },
           "shareholder_rights": {
             "name": "주주 동의권",
@@ -6538,13 +6538,13 @@
         },
         "cf_trends": {
           "revenue": {
-            "revenue_growth_3m": -36.6,
-            "revenue_12m_eok": 74.8,
+            "revenue_growth_3m": -30.0,
+            "revenue_12m_eok": 76.0,
             "months_available": 12,
             "latest_month": "2026-07-01"
           },
           "balance": {
-            "balance_change_3m": -17.4,
+            "balance_change_3m": -17.2,
             "declining_months": 2,
             "current_balance_eok": 2.8,
             "months_available": 6
@@ -6609,8 +6609,8 @@
             "grade": "red",
             "confidence": "medium",
             "evidence": [
-              "12개월 매출입금 74.8억 (현금주의)",
-              "매출 추이: 최근 3개월 -37% (5.3억 → 4.8억 → 2.1억)",
+              "12개월 매출입금 76.0억 (현금주의)",
+              "매출 추이: 최근 3개월 -30% (5.3억 → 4.8억 → 3.4억)",
               "영업적자 -5.8억/년 (월 0.5억)",
               "런웨이 20.0개월 (CF 기준)"
             ],
@@ -6855,12 +6855,12 @@
           "conversion_upside": {
             "name": "전환 매력도",
             "grade": "red",
-            "detail": "매출 3m 성장 -18.9% (역성장)"
+            "detail": "매출 3m 성장 -18.4% (역성장)"
           },
           "debt_leakage": {
             "name": "부채 유출 리스크",
             "grade": "red",
-            "detail": "잔고 3m 변화 +81.5% (안정) + CB/전환사채 존재 여부 미확인 — 금융부채 괴리(9.1억)의 원인일 가능성"
+            "detail": "잔고 3m 변화 +73.3% (안정) + CB/전환사채 존재 여부 미확인 — 금융부채 괴리(9.1억)의 원인일 가능성"
           },
           "shareholder_rights": {
             "name": "주주 동의권",
@@ -6870,13 +6870,13 @@
         },
         "cf_trends": {
           "revenue": {
-            "revenue_growth_3m": -18.9,
-            "revenue_12m_eok": 347.6,
+            "revenue_growth_3m": -18.4,
+            "revenue_12m_eok": 348.1,
             "months_available": 12,
             "latest_month": "2026-07-01"
           },
           "balance": {
-            "balance_change_3m": 81.5,
+            "balance_change_3m": 73.3,
             "declining_months": 2,
             "current_balance_eok": 0.1,
             "months_available": 6
@@ -6941,8 +6941,8 @@
             "grade": "red",
             "confidence": "medium",
             "evidence": [
-              "12개월 매출입금 347.6억 (현금주의)",
-              "매출 추이: 최근 3개월 -19% (28.1억 → 25.7억 → 16.5억)",
+              "12개월 매출입금 348.1억 (현금주의)",
+              "매출 추이: 최근 3개월 -18% (28.1억 → 25.7억 → 17.0억)",
               "영업적자 -7.9억/년 (월 0.7억)",
               "런웨이 0.3개월 (CF 기준)"
             ],
@@ -7190,12 +7190,12 @@
           "conversion_upside": {
             "name": "전환 매력도",
             "grade": "red",
-            "detail": "매출 3m 성장 +439.8% + 독점성 부재"
+            "detail": "매출 3m 성장 +440.1% + 독점성 부재"
           },
           "debt_leakage": {
             "name": "부채 유출 리스크",
             "grade": "red",
-            "detail": "잔고 3m 변화 +208.0% (안정) + CB 22.1억 출자전환 미완료. 전환 선행 필수 (내부 심사 조건)"
+            "detail": "잔고 3m 변화 +204.1% (안정) + CB 22.1억 출자전환 미완료. 전환 선행 필수 (내부 심사 조건)"
           },
           "shareholder_rights": {
             "name": "주주 동의권",
@@ -7205,15 +7205,15 @@
         },
         "cf_trends": {
           "revenue": {
-            "revenue_growth_3m": 439.8,
-            "revenue_12m_eok": 15.5,
+            "revenue_growth_3m": 440.1,
+            "revenue_12m_eok": 15.6,
             "months_available": 12,
             "latest_month": "2026-07-01"
           },
           "balance": {
-            "balance_change_3m": 208.0,
+            "balance_change_3m": 204.1,
             "declining_months": 0,
-            "current_balance_eok": 1.1,
+            "current_balance_eok": 1.0,
             "months_available": 6
           },
           "financial_history": [
@@ -7278,7 +7278,7 @@
             "grade": "green",
             "confidence": "medium",
             "evidence": [
-              "12개월 매출입금 15.5억 (현금주의)",
+              "12개월 매출입금 15.6억 (현금주의)",
               "매출 추이: 최근 3개월 +440% (6.2억 → 0.9억 → 0.0억)",
               "영업이익 +1.2억 (흑자 18개월 유지)",
               "런웨이 8.2개월 (CF 기준)"
@@ -7551,7 +7551,7 @@
             "latest_month": "2026-07-01"
           },
           "balance": {
-            "balance_change_3m": -89.3,
+            "balance_change_3m": -89.7,
             "declining_months": 3,
             "current_balance_eok": 0.4,
             "months_available": 6
@@ -7877,12 +7877,12 @@
           "conversion_upside": {
             "name": "전환 매력도",
             "grade": "green",
-            "detail": "매출 3m 성장 +225.2%"
+            "detail": "매출 3m 성장 +225.3%"
           },
           "debt_leakage": {
             "name": "부채 유출 리스크",
             "grade": "yellow",
-            "detail": "잔고 3m 변화 -18.8%"
+            "detail": "잔고 3m 변화 -19.4%"
           },
           "shareholder_rights": {
             "name": "주주 동의권",
@@ -7892,13 +7892,13 @@
         },
         "cf_trends": {
           "revenue": {
-            "revenue_growth_3m": 225.2,
+            "revenue_growth_3m": 225.3,
             "revenue_12m_eok": 1.5,
             "months_available": 12,
             "latest_month": "2026-07-01"
           },
           "balance": {
-            "balance_change_3m": -18.8,
+            "balance_change_3m": -19.4,
             "declining_months": 0,
             "current_balance_eok": 0.6,
             "months_available": 6
