@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-03T23:15:33.996867+00:00",
+  "generated_at": "2026-09-06T22:55:39.311153+00:00",
   "source": "피트스탑_준비_*.md + go_nogo_assessment.json",
   "assessment_versions": {
     "v1": {
@@ -30,6 +30,204 @@
     }
   },
   "companies": [
+    {
+      "id": "고수플러스",
+      "name": "고수플러스",
+      "status": "active",
+      "stage": "stage_1",
+      "stage_label": "서류 스크리닝",
+      "overall_verdict": "RED",
+      "verdict_summary": "RED 2건, YELLOW 3건, PENDING 2건. Stage 2 서면 확인 필요.",
+      "meta": {
+        "ceo": "박영은",
+        "email": "specialist@gsplus.kr",
+        "founded": "2020.",
+        "business": "\"1. 업종 1) 프롭테크 · 리빙 인프라 — 도심 유휴 상업용 부동산을 20주 턴키 리모델링으로 중단기 주거(스테이)·숙박(호스텔) 자산으로 전\"",
+        "cf_url": "",
+        "investment_total": "30억~50억 미만 | 필요자금: 5억~10억 미만",
+        "gowid_grade": "",
+        "delinquency": "",
+        "survey_timestamp": "2026-09-05T13:41:34"
+      },
+      "gates": [
+        {
+          "id": "G1",
+          "name": "피트스탑 적합성",
+          "status": "red",
+          "summary": "매출 없음 (pre-revenue) — 피트스탑 범위 초과"
+        },
+        {
+          "id": "G2",
+          "name": "부채 & 동의권",
+          "status": "red",
+          "summary": "금융부채 없음 (설문: \"* 총 차입금 2,473백만원 (메자닌은 다음 항목에 별도 기재)"
+        },
+        {
+          "id": "G3",
+          "name": "캐시 엔진",
+          "status": "unknown",
+          "summary": "DW 데이터 미확보 — 매출/burn 확인 필요"
+        },
+        {
+          "id": "G4",
+          "name": "구조조정 의지",
+          "status": "warning",
+          "summary": "BEP 자가진단: \"2026년 상반기 가결산 기준 이미 영업이익 흑자 전환(영업이익 +79백만원). 비용 절감이 아니라 기 발생 미지급 비용 약 1,000백만원(대부분 재무제표 부채에 기반영, 현금 정산만 남은 금액)의 해소가 과제이며, 이를 정리하면 손익·현금흐름 모두 정상 궤도.\""
+        },
+        {
+          "id": "G5",
+          "name": "독점 자산",
+          "status": "warning",
+          "summary": "키워드 감지: 플랫폼 — 기술 깊이 확인 필요"
+        },
+        {
+          "id": "G6",
+          "name": "대표 역량",
+          "status": "unknown",
+          "summary": "사전미팅에서 확인 필요"
+        },
+        {
+          "id": "G7",
+          "name": "EXIT 시나리오",
+          "status": "warning",
+          "summary": "기존 메자닌: * 총 전환사채 2,797백만원 (8개 회차, 전량 미전환) / BW 없음 / RCPS 15,622주"
+        }
+      ],
+      "new_findings": [
+        "[HIGH] 동의권 복잡성: 동의권: 필요 — 동의권자 3명 이상 — 신규 투자 시 기존 투자자 동의 필수",
+        "[HIGH] 메자닌 오버행: * 총 전환사채 2,797백만원 (8개 회차, 전량 미전환) / BW 없음 / RCPS 15,622주",
+        "[HIGH] 피벗 전략 진행 중: 2026년 상반기 영업이익 흑자 전환(+79백만원)으로 손익은 돌아섰고, 지금 막힌 건 현금입니다"
+      ],
+      "financials": {
+        "bs_summary": {
+          "headers": [],
+          "rows": []
+        },
+        "cash_balance": {
+          "headers": [],
+          "rows": []
+        },
+        "cash_flow_dw": {
+          "headers": [],
+          "rows": []
+        },
+        "cash_flow_submitted": {
+          "income": {
+            "headers": [],
+            "rows": []
+          },
+          "expense": {
+            "headers": [],
+            "rows": []
+          },
+          "net": {
+            "headers": [],
+            "rows": []
+          }
+        },
+        "headcount": {
+          "headers": [],
+          "rows": []
+        }
+      },
+      "ir_analysis": {
+        "products": [],
+        "team": [],
+        "market": "",
+        "discrepancies": [],
+        "pivot_analysis_md": ""
+      },
+      "business_context": {
+        "competitors": [],
+        "comp_positioning": "",
+        "shareholders": [],
+        "sh_analysis": []
+      },
+      "red_flags": [
+        {
+          "id": 1,
+          "severity": "HIGH",
+          "title": "동의권 복잡성",
+          "detail": "동의권: 필요 — 동의권자 3명 이상 — 신규 투자 시 기존 투자자 동의 필수"
+        },
+        {
+          "id": 2,
+          "severity": "HIGH",
+          "title": "메자닌 오버행",
+          "detail": "* 총 전환사채 2,797백만원 (8개 회차, 전량 미전환) / BW 없음 / RCPS 15,622주 1. 기관투자자 CB 1) 제1회 어니스트벤처스 500백만원 — 발행 202"
+        },
+        {
+          "id": 3,
+          "severity": "HIGH",
+          "title": "피벗 전략 진행 중",
+          "detail": "2026년 상반기 영업이익 흑자 전환(+79백만원)으로 손익은 돌아섰고, 지금 막힌 건 현금입니다 ---"
+        }
+      ],
+      "intuition_check": {
+        "health_check": [],
+        "frames": [],
+        "five_fingers": [],
+        "one_liner": ""
+      },
+      "bep": {
+        "current_state": [],
+        "scenarios": [],
+        "runway_with_investment": []
+      },
+      "khk_preview": {
+        "go": [],
+        "nogo": [],
+        "hold": []
+      },
+      "actions": [
+        {
+          "priority": 1,
+          "action": "DW 재무 데이터 확인",
+          "owner": "자동(CI)",
+          "deadline": "완료 필요"
+        },
+        {
+          "priority": 1,
+          "action": "`/pitstop 고수플러스` 실행 (심화 분석)",
+          "owner": "KYI",
+          "deadline": "이번 주"
+        },
+        {
+          "priority": 2,
+          "action": "사전 확인 이메일 발송",
+          "owner": "KYI",
+          "deadline": "Stage 1 완료 후"
+        },
+        {
+          "priority": 2,
+          "action": "BEP 시나리오 작성",
+          "owner": "KYI",
+          "deadline": "이메일 발송 전"
+        },
+        {
+          "priority": 3,
+          "action": "사전미팅 (G6 대표역량 확인)",
+          "owner": "KYI+KHK",
+          "deadline": "Stage 2 완료 후"
+        }
+      ],
+      "email_draft": "",
+      "assessment_version": "v3",
+      "_screener": {
+        "survey_v2": {
+          "shareholder_register": "https://drive.google.com/open?id=1IDYsBNRgY2ymg6ngOsLoKOgOzBUgwKn6",
+          "debt_status": "* 총 차입금 2,473백만원 (메자닌은 다음 항목에 별도 기재)\n\n1. 은행\n1) 기업은행 770백만원 — 만기 2027.05.26, 1년 단위 연장, 하남사옥 담보\n2) 기업은행 90백만원 — 만기 2027.05.07, 1년 단위 연장\n\n2. 기술보증기금/신용보증기금\n1) 신용보증기금 500백만원 — 만기 2027.08.07, 1년 단위 연장(2026.08 연장 완료)\n2) 신용보증기금 270백만원 — 만기 2027.04.29, 1년 단위 연장\n3) 신용보증기금 243백만원 — 만기 2027.05.06, 1년 단위 연장\n4) 기술보증기금 0원\n\n3. 정책금융\n1) 소상공인시장진흥공단 500백만원 — 2026.11 거치 종료, 2026.12~2031.11 60개월 균등분할\n2) 중소벤처기업진흥공단 100백만원 — 2026.09 거치 종료, 2026.10~2029.09 원리금 균등\n\n4. 사채/기타\n0원 (전환사채는 메자닌 항목 기재)\n\n5. 연차별 상환 계획\n1) 2026년: 거치기간 이자 납부, 10월 중진공·12월 소진공 분할상환 개시(월 원리금 약 11백만원)\n2) 2027년: 신보·기업은행 만기 1,873백만원 도래, 전액 연장 예정(정상 거래 유지 중)\n3) 2029.09 중진공 완제 / 2031.11 소진공 완제",
+          "mezzanine_status": "* 총 전환사채 2,797백만원 (8개 회차, 전량 미전환) / BW 없음 / RCPS 15,622주\n\n1. 기관투자자 CB\n1) 제1회 어니스트벤처스 500백만원 — 발행 2022.12.30, 만기 2027.12.29, 전환가 7,465원, 표면 0% / 만기보장 3%\n2) 제2회 어니스트벤처스 500백만원 — 발행 2023.07.14, 만기 2028.07.13, 전환가 11,515원, 표면 0% / 만기보장 3%\n3) 제3회 성동ESG 200백만원 — 발행 2023.07.14, 만기 2028.07.13, 전환가 11,515원, 표면 0% / 만기보장 3%\n4) 제8회 어니스트벤처스 300백만원 — 발행 2024.12.02, 만기 2029.12.02, 전환가 21,000원, 표면 0% / 만기보장 연복리 5%\n\n2. 개인·조합 CB\n1) 제4회 개인 8인 430백만원 — 발행 2024.05, 만기 2028.05.28, 전환가 20,286원, 표면·만기보장 연 14%(분기 지급)\n2) 제5회 ㈜가온비엠에스 외 개인 7인 470백만원 — 발행 2024.09.05, 만기 2028.09.04, 전환가 20,286원, 표면·만기보장 연 14%(분기 지급)\n3) 제7회 화양연화개인투자조합1호 267백만원 — 발행 2024.10.28, 만기 2028.10.27, 전환가 20,286원, 표면·만기보장 연 14%(분기 지급)\n4) 크라우드펀딩 CB\n제6회 크라우디 청약자(무기명식, 예탁원 전자등록) 130백만원 — 발행 2024.10.16, 만기 2027.10.16, 전환가 23,000원, 표면 0% / 만기보장 연복리 12%(만기 상환액 183백만원)\n\n3. BW\n0원\n\n4. RCPS\n1) 코맥스벤처러스 개인투자조합8호 13,452주\n2) 비룡-이노스타트업6호 2,170주",
+          "investor_consent": "필요 — 동의권자 3명 이상",
+          "mezzanine_contract": "https://drive.google.com/open?id=1TABbppqXOeU59Em5RgLxBF1_RH7qGxRL",
+          "bep_selfcheck": "2026년 상반기 가결산 기준 이미 영업이익 흑자 전환(영업이익 +79백만원). 비용 절감이 아니라 기 발생 미지급 비용 약 1,000백만원(대부분 재무제표 부채에 기반영, 현금 정산만 남은 금액)의 해소가 과제이며, 이를 정리하면 손익·현금흐름 모두 정상 궤도.",
+          "purpose_debt": "",
+          "purpose_payroll": "",
+          "purpose_marketing": "",
+          "purpose_tech": ""
+        }
+      }
+    },
     {
       "id": "데이오프컴퍼니",
       "name": "데이오프컴퍼니",
